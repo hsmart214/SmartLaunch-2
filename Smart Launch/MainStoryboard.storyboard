@@ -11,15 +11,15 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qQ-Ry-Ebi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="GvN-5i-deZ" customClass="SLTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="6oE-31-SqH">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.82033262380000005" green="0.89572063660000001" blue="0.92915675949999998" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.68286241790000002" green="0.81521056810000003" blue="0.92915675949999998" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection headerTitle="Simulation Info" id="ri0-PN-VAx">
+                            <tableViewSection id="ri0-PN-VAx">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="KgR-Q9-D1D" detailTextLabel="iCK-1f-buG" imageView="XtA-pq-iql" style="IBUITableViewCellStyleValue1" id="G5y-J9-mPG">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="10" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
@@ -51,7 +51,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="YmC-1B-k9S" detailTextLabel="THL-7p-Ght" imageView="s7Z-7t-CcG" style="IBUITableViewCellStyleValue1" id="bqh-aa-g7v">
-                                        <rect key="frame" x="0.0" y="91" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="55" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -83,7 +83,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="oRf-Ij-uUA">
-                                        <rect key="frame" x="0.0" y="135" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="99" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -133,7 +133,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JOl-nm-ZG9">
-                                        <rect key="frame" x="0.0" y="179" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="143" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -158,7 +158,7 @@
                             <tableViewSection headerTitle="Simulation Results" id="ID9-bj-CBM">
                                 <cells>
                                     <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="31" id="ZMz-TP-Mim">
-                                        <rect key="frame" x="0.0" y="270" width="320" height="32"/>
+                                        <rect key="frame" x="0.0" y="234" width="320" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="30"/>
@@ -194,7 +194,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="32" id="712-hE-Ouk">
-                                        <rect key="frame" x="0.0" y="302" width="320" height="32"/>
+                                        <rect key="frame" x="0.0" y="266" width="320" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="31"/>
@@ -226,7 +226,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="32" id="jTW-Fl-cN6">
-                                        <rect key="frame" x="0.0" y="334" width="320" height="32"/>
+                                        <rect key="frame" x="0.0" y="298" width="320" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="31"/>
@@ -258,7 +258,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="31" id="Ufv-XD-w9u">
-                                        <rect key="frame" x="0.0" y="366" width="320" height="32"/>
+                                        <rect key="frame" x="0.0" y="330" width="320" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="30"/>
@@ -337,7 +337,7 @@
         <scene sceneID="GV9-un-eTz">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XPg-dX-sKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="3DS-gC-v50" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="3DS-gC-v50" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="skz-Sl-D91">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -345,7 +345,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="NsS-1d-7WK">
-                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
@@ -361,7 +361,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3H5-qb-0rQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="zQV-Vm-7Uj" customClass="SLRocketPropertiesTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mx8-kW-IOB">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="SPW-Nl-W6S">
@@ -692,7 +692,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3V-KP-XYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="38o-7C-IHk" customClass="SLRocketsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hV1-Ii-pnf">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -747,7 +747,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H6p-B7-D6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="WFU-0M-lp7" customClass="SLMotorSearchViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BFP-lD-iwi">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Order Results by:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="E3q-nt-i6B">
@@ -822,7 +822,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXk-NL-WA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="EdF-aV-KbJ" customClass="SLMotorTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Z8Y-dK-0C1">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -875,11 +875,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWd-aG-ld1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="T1D-DK-4uP" customClass="SLMotorViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ptp-iL-an3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="redraw" id="C5T-h5-ntl" customClass="SLMotorThrustCurveView">
-                                <rect key="frame" x="48" y="204" width="256" height="157"/>
+                                <rect key="frame" x="48" y="195" width="256" height="157"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -1019,16 +1019,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LYS-lf-z1d" sceneMemberID="firstResponder"/>
                 <viewController id="iOW-FR-FZW" customClass="SLLaunchAngleViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="maK-uv-VgV" customClass="SLLaunchAngleView">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="redraw" id="ApV-dD-O2H" customClass="SLLaunchAngleView">
-                                <rect key="frame" x="80" y="65" width="160" height="224"/>
+                                <rect key="frame" x="80" y="65" width="160" height="180"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-0.34906598925590515" maxValue="0.34906598925590515" id="gmM-hJ-Gyn">
-                                <rect key="frame" x="78" y="325" width="164" height="23"/>
+                                <rect key="frame" x="78" y="281" width="164" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <color key="minimumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="maximumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1051,7 +1051,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="szG-Zf-IWo">
-                                <rect key="frame" x="0.0" y="371" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="327" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="Calibrate" id="a86-L6-1Pi">
@@ -1112,11 +1112,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VmT-TL-JnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="hPd-e5-ij0" customClass="SLInformationTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CcT-ZX-zcy">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i3h-xE-OQ2">
-                            <rect key="frame" x="0.0" y="373" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="329" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="PdS-V0-dUu"/>
@@ -1184,26 +1184,8 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                                             <segue destination="Biw-b4-lIz" kind="push" identifier="unitsSegue" id="Iok-AC-eV6"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="4MG-63-CJt" style="IBUITableViewCellStyleDefault" id="mdM-FP-Bxq">
-                                        <rect key="frame" x="0.0" y="285" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Reset Rocket Favorites" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4MG-63-CJt">
-                                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Muo-ci-vct" style="IBUITableViewCellStyleDefault" id="2BK-3Z-fcc">
-                                        <rect key="frame" x="0.0" y="329" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="285" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1235,7 +1217,7 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1916" y="1412"/>
+            <point key="canvasLocation" x="1848" y="1412"/>
         </scene>
         <!--UnitsTVC - Unit Preferences-->
         <scene sceneID="uMR-4z-ReG">
@@ -1243,7 +1225,7 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eZl-Uj-WbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Biw-b4-lIz" customClass="SLUnitsTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="U0W-qX-gSI">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="IbB-XF-5I6">
@@ -1502,19 +1484,23 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2577" y="1412"/>
+            <point key="canvasLocation" x="2299" y="1412"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zwB-On-akz">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxl-u9-ozS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="dOo-WU-xrq" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="dOo-WU-xrq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UVu-Bt-1vM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="KQ1-wF-Lwb">
+                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="hPd-e5-ij0" kind="relationship" relationship="rootViewController" id="Y3t-yd-Qyk"/>
                     </connections>
@@ -1528,7 +1514,7 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSx-PB-xhN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="spy-jN-gf0" customClass="SLSimSettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="h4E-5w-xr3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.82033262380000005" green="0.89572063660000001" blue="0.92915675949999998" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -1681,7 +1667,7 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="IV4-7P-9b3">
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="IV4-7P-9b3">
                                         <rect key="frame" x="0.0" y="231" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1766,6 +1752,7 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
         <class className="SLInformationTVC" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLInformationTVC.h"/>
             <relationships>
+                <relationship kind="action" name="userDidPressDone:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="doneButton" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="infoTextView" candidateClass="UITextView"/>
             </relationships>
@@ -1776,6 +1763,9 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
         <class className="SLLaunchAngleViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLLaunchAngleViewController.h"/>
             <relationships>
+                <relationship kind="action" name="angleSliderValueChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="calibrateButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="motionButtonPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="angleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="angleSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="angleView" candidateClass="SLLaunchAngleView"/>
@@ -1788,6 +1778,8 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
         <class className="SLMotorSearchViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorSearchViewController.h"/>
             <relationships>
+                <relationship kind="action" name="search1ValueChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="search2ValueChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="search1Control" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="search2Control" candidateClass="UISegmentedControl"/>
@@ -1819,6 +1811,13 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
         <class className="SLRocketPropertiesTVC" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLRocketPropertiesTVC.h"/>
             <relationships>
+                <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="deleteButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="motorDiameterChanged:" candidateClass="UIStepper"/>
+                <relationship kind="action" name="saveButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="textEditingDidBegin:" candidateClass="UITextField"/>
+                <relationship kind="action" name="textEditingDidEnd:" candidateClass="UITextField"/>
+                <relationship kind="action" name="textEditingDidEndOnExit:" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="cdField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="deleteButton" candidateClass="UIBarButtonItem"/>
@@ -1844,6 +1843,10 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
         <class className="SLSimSettingsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLSimSettingsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="launchGuideLengthChanged:" candidateClass="UIStepper"/>
+                <relationship kind="action" name="siteAltitudeChanged:" candidateClass="UIStepper"/>
+                <relationship kind="action" name="windDirectionChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="windVelocityChanged:" candidateClass="UIStepper"/>
                 <relationship kind="outlet" name="launchAngleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="launchGuideLengthLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="launchGuideLengthStepper" candidateClass="UIStepper"/>
@@ -1878,6 +1881,10 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
         <class className="SLUnitsTVC" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLUnitsTVC.h"/>
             <relationships>
+                <relationship kind="action" name="controlValueChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="defaultButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="revertButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="saveButtonPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="altitudeControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="diamControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="lengthControl" candidateClass="UISegmentedControl"/>
@@ -1895,6 +1902,6 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="kMz-de-aHC"/>
-        <segue reference="eYh-Tw-iw8"/>
+        <segue reference="He7-Fk-vJN"/>
     </inferredMetricsTieBreakers>
 </document>

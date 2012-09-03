@@ -223,12 +223,18 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self startCameraControllerFromViewController:self usingDelegate:self];
     [self startMotionUpdates];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:YES animated:animated];
 }
 
 - (void)viewDidUnload

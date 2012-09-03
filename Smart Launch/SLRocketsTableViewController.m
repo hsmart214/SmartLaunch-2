@@ -89,6 +89,11 @@
     [self.tableView reloadData];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:YES animated:animated];
+}
+
 - (void)viewDidUnload{
     self.rocketArray = nil;
     self.rockets = nil;

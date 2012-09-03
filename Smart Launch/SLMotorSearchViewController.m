@@ -190,6 +190,11 @@ NSInteger sortFunction(id md1, id md2, void *context){
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:NO animated:animated];
+}
+
 - (void)viewDidUnload
 {
     [self setSearch1Control:nil];

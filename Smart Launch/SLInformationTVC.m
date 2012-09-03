@@ -36,6 +36,11 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:NO animated:animated];
+}
+
 - (void)viewDidUnload
 {
     [self setDoneButton:nil];

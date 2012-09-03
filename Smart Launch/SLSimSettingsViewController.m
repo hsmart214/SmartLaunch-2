@@ -171,7 +171,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [self.navigationController setToolbarHidden:YES animated:YES];
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:YES animated:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

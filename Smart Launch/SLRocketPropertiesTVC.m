@@ -147,6 +147,11 @@
     [self updateDisplay];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:NO animated:animated];
+}
+
 - (void)viewDidUnload
 {
     [self setNameField:nil];

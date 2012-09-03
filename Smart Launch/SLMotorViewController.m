@@ -59,7 +59,6 @@
     self.motorLength.text = [self.motor.length description];
     self.totalImpulse.text = [NSString stringWithFormat:@"%1.1f N-sec", [self.motor.totalImpulse floatValue]];
     self.initialThrust.text = [NSString stringWithFormat:@"%1.2f N", [self.motor.peakThrust floatValue]];
-//    self.thrustCurve.motor = self.motor;
     self.thrustCurve.dataSource = self;
     [self.thrustCurve setNeedsDisplay];
 }

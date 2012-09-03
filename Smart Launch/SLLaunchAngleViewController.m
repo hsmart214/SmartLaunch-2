@@ -182,13 +182,19 @@
     }
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:NO animated:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
     [settings setObject: [NSNumber numberWithFloat:fabsf(self.angleSlider.value)] forKey:LAUNCH_ANGLE_KEY];
     [defaults setObject:settings forKey:SETTINGS_KEY];
     [self.delegate sender:self didChangeLaunchAngle:[NSNumber numberWithFloat:fabsf(self.angleSlider.value)]];
     [defaults synchronize];
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidUnload

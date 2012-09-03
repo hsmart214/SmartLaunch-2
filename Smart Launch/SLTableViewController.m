@@ -152,6 +152,9 @@
 #pragma mark - Smart Launch
 
 - (IBAction)windDirectionDidChange:(UIButton *)sender {
+    if (self.simRunning) return; // this is to keep from showing sim results not consistent with sim settings
+    // otherwise you could change wind direction in the middle of a sim run, but the sim would not run again to account for the change
+    
     NSArray *buttonNames = [NSArray arrayWithObjects:
                             @"With Wind",
                             @"CrossWind",
@@ -244,7 +247,13 @@
 
 #pragma mark - View Life Cycle
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:YES animated:animated];
+}
+
 - (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [self updateDisplay];
 }
 
