@@ -1018,17 +1018,17 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LYS-lf-z1d" sceneMemberID="firstResponder"/>
                 <viewController id="iOW-FR-FZW" customClass="SLLaunchAngleViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="maK-uv-VgV" customClass="SLLaunchAngleView">
+                    <view key="view" contentMode="center" id="maK-uv-VgV" customClass="SLLaunchAngleView">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="redraw" id="ApV-dD-O2H" customClass="SLLaunchAngleView">
-                                <rect key="frame" x="80" y="65" width="160" height="180"/>
+                                <rect key="frame" x="80" y="76" width="160" height="220"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-0.34906598925590515" maxValue="0.34906598925590515" id="gmM-hJ-Gyn">
-                                <rect key="frame" x="78" y="281" width="164" height="23"/>
+                                <rect key="frame" x="78" y="330" width="164" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <color key="minimumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="maximumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1050,41 +1050,37 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="szG-Zf-IWo">
-                                <rect key="frame" x="0.0" y="327" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="Calibrate" id="a86-L6-1Pi">
-                                        <connections>
-                                            <action selector="calibrateButtonPressed:" destination="iOW-FR-FZW" id="0Zt-oM-mjD"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem systemItem="flexibleSpace" id="c76-mZ-eGF"/>
-                                    <barButtonItem systemItem="camera" id="5RO-1L-9sW">
-                                        <connections>
-                                            <segue destination="H1F-XQ-yQW" kind="push" identifier="PhotoAngleSegue" id="T7p-i7-KAu"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="s3j-zc-1zl"/>
-                                    <barButtonItem title="Motion On" id="6Bn-p5-2Dc">
-                                        <connections>
-                                            <action selector="motionButtonPressed:" destination="iOW-FR-FZW" id="uHi-WG-JGW"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="0.82033262380000005" green="0.89572063660000001" blue="0.92915675949999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Calibrate" id="h7g-cd-ZIJ">
+                            <connections>
+                                <action selector="calibrateButtonPressed:" destination="iOW-FR-FZW" id="0AU-Le-u1c"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="fuF-eU-gxL"/>
+                        <barButtonItem systemItem="camera" id="hUo-Z1-QdE">
+                            <connections>
+                                <segue destination="H1F-XQ-yQW" kind="push" identifier="PhotoAngleSegue" id="1pV-hX-QqJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="W17-jd-Tll"/>
+                        <barButtonItem title="Motion On" id="cjW-4y-JOX">
+                            <connections>
+                                <action selector="motionButtonPressed:" destination="iOW-FR-FZW" id="GDY-TW-0oa"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Launch Angle" id="QaZ-Iy-VB7"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="angleLabel" destination="iNJ-X7-UTL" id="8Y4-6n-iPr"/>
                         <outlet property="angleSlider" destination="gmM-hJ-Gyn" id="S2j-Fa-2yd"/>
                         <outlet property="angleView" destination="ApV-dD-O2H" id="d3c-bs-pJg"/>
-                        <outlet property="calibrateButton" destination="a86-L6-1Pi" id="Fgr-xs-X9v"/>
-                        <outlet property="cameraButton" destination="5RO-1L-9sW" id="L5B-Fm-EUv"/>
-                        <outlet property="motionButton" destination="6Bn-p5-2Dc" id="ADg-XK-Nd4"/>
-                        <outlet property="toolbar" destination="szG-Zf-IWo" id="dwe-Qu-eP7"/>
+                        <outlet property="calibrateButton" destination="h7g-cd-ZIJ" id="UuE-dY-5TU"/>
+                        <outlet property="cameraButton" destination="hUo-Z1-QdE" id="tPw-cd-eoq"/>
+                        <outlet property="motionButton" destination="cjW-4y-JOX" id="1Wh-eJ-ubl"/>
                     </connections>
                 </viewController>
             </objects>
@@ -1115,19 +1111,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i3h-xE-OQ2">
-                            <rect key="frame" x="0.0" y="329" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <items>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="PdS-V0-dUu"/>
-                                <barButtonItem systemItem="done" id="17L-gg-I7l">
-                                    <connections>
-                                        <action selector="userDidPressDone:" destination="hPd-e5-ij0" id="hlx-qx-YeP"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="12a-Ws-Cwb"/>
-                            </items>
-                        </toolbar>
                         <sections>
                             <tableViewSection headerTitle="Information" id="Jnl-rV-ADI">
                                 <cells>
@@ -1210,7 +1193,16 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                             <outlet property="delegate" destination="hPd-e5-ij0" id="ZGF-Mg-HL8"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="PdS-V0-dUu"/>
+                        <barButtonItem systemItem="done" id="17L-gg-I7l">
+                            <connections>
+                                <action selector="userDidPressDone:" destination="hPd-e5-ij0" id="hlx-qx-YeP"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Smart Launch" id="osN-WE-ac2"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="doneButton" destination="CcT-ZX-zcy" id="eLW-rS-R57"/>
                         <outlet property="infoTextView" destination="l6g-Ka-VRk" id="6Se-SV-hcF"/>
@@ -1228,29 +1220,6 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="IbB-XF-5I6">
-                            <rect key="frame" x="0.0" y="352" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <items>
-                                <barButtonItem title="Default" id="4aJ-2Z-DQk">
-                                    <connections>
-                                        <action selector="defaultButtonPressed:" destination="Biw-b4-lIz" id="5rr-cg-vpb"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="A0L-Bu-nyI"/>
-                                <barButtonItem title="Revert" id="ajq-td-sd1">
-                                    <connections>
-                                        <action selector="revertButtonPressed:" destination="Biw-b4-lIz" id="DHb-qZ-Fb7"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="jzj-Jw-JQr"/>
-                                <barButtonItem systemItem="save" id="gYH-Uq-EmL">
-                                    <connections>
-                                        <action selector="saveButtonPressed:" destination="Biw-b4-lIz" id="yht-fH-h8k"/>
-                                    </connections>
-                                </barButtonItem>
-                            </items>
-                        </toolbar>
                         <sections>
                             <tableViewSection headerTitle="Rocket" id="BEx-VP-kCg">
                                 <cells>
@@ -1471,8 +1440,27 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                             <outlet property="delegate" destination="Biw-b4-lIz" id="sm1-Tq-PpB"/>
                         </connections>
                     </tableView>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem title="Default" id="4aJ-2Z-DQk">
+                            <connections>
+                                <action selector="defaultButtonPressed:" destination="Biw-b4-lIz" id="5rr-cg-vpb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="jzj-Jw-JQr"/>
+                        <barButtonItem title="Revert" id="ajq-td-sd1">
+                            <connections>
+                                <action selector="revertButtonPressed:" destination="Biw-b4-lIz" id="DHb-qZ-Fb7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="A0L-Bu-nyI"/>
+                        <barButtonItem systemItem="save" id="gYH-Uq-EmL">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="Biw-b4-lIz" id="yht-fH-h8k"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Unit Preferences" id="1Pw-vG-K4R"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="altitudeControl" destination="urG-Qb-6gK" id="erb-ub-IAZ"/>
                         <outlet property="diamControl" destination="dlb-gN-Wdf" id="1Qi-qk-aVA"/>
@@ -1498,7 +1486,7 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="KQ1-wF-Lwb">
-                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
@@ -1772,7 +1760,6 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                 <relationship kind="outlet" name="calibrateButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="cameraButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="motionButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
         <class className="SLMotorSearchViewController" superclassName="UIViewController">

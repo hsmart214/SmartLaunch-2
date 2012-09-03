@@ -29,7 +29,6 @@
 @property (nonatomic) CGFloat xyCalibrationAngle;
 @property (nonatomic) CGFloat yzCalibrationAngle;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
-@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
 @end
 
@@ -47,7 +46,6 @@
 @synthesize xyCalibrationAngle = _xyCalibrationAngle;
 @synthesize yzCalibrationAngle = _yzCalibrationAngle;
 @synthesize cameraButton = _cameraButton;
-@synthesize toolbar = _toolbar;
 @synthesize delegate = _delegate;
 
 #pragma mark - Constant declarations
@@ -174,11 +172,11 @@
     self.angleLabel.text = [NSString stringWithFormat:@"%1.1f", launchAngle * DEGREES_PER_RADIAN];
     [self.angleSlider setValue: launchAngle animated:YES];
     self.angleView.dataSource = self;
+    
+    // check to see if the device has a camera.  If not, disable the camera button in the toolbar
+    
     if (![UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerSourceTypeCamera]){
-        NSMutableArray *tbItems = [self.toolbar.items mutableCopy];
-        [tbItems removeObjectAtIndex:2]; // this is the camera button;
-        [self.toolbar setItems:tbItems animated:YES];
-        self.cameraButton = nil;
+        [self.cameraButton setEnabled:NO];
     }
 }
 
@@ -212,7 +210,6 @@
     [self setMotionButton:nil];
     [self setCalibrateButton:nil];
     [self setCameraButton:nil];
-    [self setToolbar:nil];
     [super viewDidUnload];
 
 }
