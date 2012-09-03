@@ -7,17 +7,148 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4220A4CC15F55CC60055EE35 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4A515F55CC60055EE35 /* MainStoryboard.storyboard */; };
+		4220A4CD15F55CC60055EE35 /* SLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AB15F55CC60055EE35 /* SLTableViewController.m */; };
+		4220A4CE15F55CC60055EE35 /* SLInformationTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AD15F55CC60055EE35 /* SLInformationTVC.m */; };
+		4220A4CF15F55CC60055EE35 /* SLSimSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AF15F55CC60055EE35 /* SLSimSettingsViewController.m */; };
+		4220A4D015F55CC60055EE35 /* SLUnitsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4B115F55CC60055EE35 /* SLUnitsTVC.m */; };
+		4220A4D115F55CC60055EE35 /* SLLaunchAngleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4B315F55CC60055EE35 /* SLLaunchAngleViewController.m */; };
+		4220A4D215F55CC60055EE35 /* SLLaunchAngleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4B515F55CC60055EE35 /* SLLaunchAngleView.m */; };
+		4220A4D315F55CC60055EE35 /* SLPhotoAngleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4B715F55CC60055EE35 /* SLPhotoAngleViewController.m */; };
+		4220A4D415F55CC60055EE35 /* SLMotorSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4B915F55CC60055EE35 /* SLMotorSearchViewController.m */; };
+		4220A4D515F55CC60055EE35 /* SLMotorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4BB15F55CC60055EE35 /* SLMotorTableViewController.m */; };
+		4220A4D615F55CC60055EE35 /* SLMotorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4BD15F55CC60055EE35 /* SLMotorViewController.m */; };
+		4220A4D715F55CC60055EE35 /* SLMotorThrustCurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4BF15F55CC60055EE35 /* SLMotorThrustCurveView.m */; };
+		4220A4D815F55CC60055EE35 /* SLRocketsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4C115F55CC60055EE35 /* SLRocketsTableViewController.m */; };
+		4220A4D915F55CC60055EE35 /* SLRocketPropertiesTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4C315F55CC60055EE35 /* SLRocketPropertiesTVC.m */; };
+		4220A4DA15F55CC60055EE35 /* SLUnitsConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4C515F55CC60055EE35 /* SLUnitsConvertor.m */; };
+		4220A4DB15F55CC60055EE35 /* Rocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4C715F55CC60055EE35 /* Rocket.m */; };
+		4220A4DC15F55CC60055EE35 /* RocketMotor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4C915F55CC60055EE35 /* RocketMotor.m */; };
+		4220A4DD15F55CC60055EE35 /* SLPhysicsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4CB15F55CC60055EE35 /* SLPhysicsModel.m */; };
+		4220A4EA15F55D120055EE35 /* CancelButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4DE15F55D120055EE35 /* CancelButtonSelected.png */; };
+		4220A4EB15F55D120055EE35 /* CancelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4DF15F55D120055EE35 /* CancelButton.png */; };
+		4220A4EC15F55D120055EE35 /* AcceptButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E015F55D120055EE35 /* AcceptButton.png */; };
+		4220A4ED15F55D120055EE35 /* AcceptButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E115F55D120055EE35 /* AcceptButtonSelected.png */; };
+		4220A4EE15F55D120055EE35 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E215F55D120055EE35 /* Default.png */; };
+		4220A4EF15F55D120055EE35 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E315F55D120055EE35 /* Default@2x.png */; };
+		4220A4F015F55D120055EE35 /* AngleWarning.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E415F55D120055EE35 /* AngleWarning.png */; };
+		4220A4F115F55D120055EE35 /* SmartLaunch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E515F55D120055EE35 /* SmartLaunch@2x.png */; };
+		4220A4F215F55D120055EE35 /* SmartLaunch@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E615F55D120055EE35 /* SmartLaunch@1x.png */; };
+		4220A4F315F55D120055EE35 /* Alpha.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E715F55D120055EE35 /* Alpha.png */; };
+		4220A4F415F55D120055EE35 /* atmosphere.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E815F55D120055EE35 /* atmosphere.txt */; };
+		4220A4F515F55D120055EE35 /* motors.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E915F55D120055EE35 /* motors.txt */; };
+		4220A4FE15F55D760055EE35 /* Viewfinder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4FA15F55D760055EE35 /* Viewfinder.png */; };
+		4220A4FF15F55D760055EE35 /* Viewfinder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4FB15F55D760055EE35 /* Viewfinder@2x.png */; };
+		4220A50015F55D760055EE35 /* Vellum.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4FC15F55D760055EE35 /* Vellum.png */; };
+		4220A50115F55D760055EE35 /* Vellum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4FD15F55D760055EE35 /* Vellum@2x.png */; };
+		4220A51815F55D8D0055EE35 /* Aerotech.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50215F55D8D0055EE35 /* Aerotech.png */; };
+		4220A51915F55D8D0055EE35 /* Hypertek.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50315F55D8D0055EE35 /* Hypertek.png */; };
+		4220A51A15F55D8D0055EE35 /* Loki Research.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50415F55D8D0055EE35 /* Loki Research.png */; };
+		4220A51B15F55D8D0055EE35 /* Aerotech Hybrid.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50515F55D8D0055EE35 /* Aerotech Hybrid.png */; };
+		4220A51C15F55D8D0055EE35 /* Aerotech RMS.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50615F55D8D0055EE35 /* Aerotech RMS.png */; };
+		4220A51D15F55D8D0055EE35 /* AMW Pro-X.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50715F55D8D0055EE35 /* AMW Pro-X.png */; };
+		4220A51E15F55D8D0055EE35 /* Animal Motor Works.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50815F55D8D0055EE35 /* Animal Motor Works.png */; };
+		4220A51F15F55D8D0055EE35 /* Apogee.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50915F55D8D0055EE35 /* Apogee.png */; };
+		4220A52015F55D8D0055EE35 /* Cesaroni.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50A15F55D8D0055EE35 /* Cesaroni.png */; };
+		4220A52115F55D8D0055EE35 /* Contrail.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50B15F55D8D0055EE35 /* Contrail.png */; };
+		4220A52215F55D8D0055EE35 /* Ellis Mountain.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50C15F55D8D0055EE35 /* Ellis Mountain.png */; };
+		4220A52315F55D8D0055EE35 /* Estes.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50D15F55D8D0055EE35 /* Estes.png */; };
+		4220A52415F55D8D0055EE35 /* Gorilla.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50E15F55D8D0055EE35 /* Gorilla.png */; };
+		4220A52515F55D8D0055EE35 /* Kosdon by Aerotech.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50F15F55D8D0055EE35 /* Kosdon by Aerotech.png */; };
+		4220A52615F55D8D0055EE35 /* Kosdon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A51015F55D8D0055EE35 /* Kosdon.png */; };
+		4220A52715F55D8D0055EE35 /* Propulsion Polymers.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A51115F55D8D0055EE35 /* Propulsion Polymers.png */; };
+		4220A52815F55D8D0055EE35 /* Public Missiles Ltd.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A51215F55D8D0055EE35 /* Public Missiles Ltd.png */; };
+		4220A52915F55D8D0055EE35 /* Quest.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A51315F55D8D0055EE35 /* Quest.png */; };
+		4220A52A15F55D8D0055EE35 /* RATTworks.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A51415F55D8D0055EE35 /* RATTworks.png */; };
+		4220A52B15F55D8D0055EE35 /* RoadRunner.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A51515F55D8D0055EE35 /* RoadRunner.png */; };
+		4220A52C15F55D8D0055EE35 /* Sky Ripper.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A51615F55D8D0055EE35 /* Sky Ripper.png */; };
+		4220A52D15F55D8D0055EE35 /* West Coast Hybrids.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A51715F55D8D0055EE35 /* West Coast Hybrids.png */; };
 		4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930915F4893000F7BABC /* UIKit.framework */; };
 		4256930C15F4893000F7BABC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930B15F4893000F7BABC /* Foundation.framework */; };
 		4256930E15F4893000F7BABC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930D15F4893000F7BABC /* CoreGraphics.framework */; };
 		4256931415F4893000F7BABC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4256931215F4893000F7BABC /* InfoPlist.strings */; };
 		4256931615F4893000F7BABC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931515F4893000F7BABC /* main.m */; };
 		4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931915F4893000F7BABC /* SLAppDelegate.m */; };
-		4256931D15F4893000F7BABC /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4256931B15F4893000F7BABC /* MainStoryboard.storyboard */; };
-		4256932015F4893000F7BABC /* SLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931F15F4893000F7BABC /* SLViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4220A4A515F55CC60055EE35 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		4220A4A615F55CC60055EE35 /* SLDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLDefinitions.h; sourceTree = "<group>"; };
+		4220A4A715F55CC60055EE35 /* SLModalPresenterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLModalPresenterDelegate.h; sourceTree = "<group>"; };
+		4220A4A815F55CC60055EE35 /* SLPhotoAngleFinderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPhotoAngleFinderDelegate.h; sourceTree = "<group>"; };
+		4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSimulationDelegate.h; sourceTree = "<group>"; };
+		4220A4AA15F55CC60055EE35 /* SLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTableViewController.h; sourceTree = "<group>"; };
+		4220A4AB15F55CC60055EE35 /* SLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLTableViewController.m; sourceTree = "<group>"; };
+		4220A4AC15F55CC60055EE35 /* SLInformationTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLInformationTVC.h; sourceTree = "<group>"; };
+		4220A4AD15F55CC60055EE35 /* SLInformationTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLInformationTVC.m; sourceTree = "<group>"; };
+		4220A4AE15F55CC60055EE35 /* SLSimSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSimSettingsViewController.h; sourceTree = "<group>"; };
+		4220A4AF15F55CC60055EE35 /* SLSimSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSimSettingsViewController.m; sourceTree = "<group>"; };
+		4220A4B015F55CC60055EE35 /* SLUnitsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLUnitsTVC.h; sourceTree = "<group>"; };
+		4220A4B115F55CC60055EE35 /* SLUnitsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLUnitsTVC.m; sourceTree = "<group>"; };
+		4220A4B215F55CC60055EE35 /* SLLaunchAngleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLLaunchAngleViewController.h; sourceTree = "<group>"; };
+		4220A4B315F55CC60055EE35 /* SLLaunchAngleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLLaunchAngleViewController.m; sourceTree = "<group>"; };
+		4220A4B415F55CC60055EE35 /* SLLaunchAngleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLLaunchAngleView.h; sourceTree = "<group>"; };
+		4220A4B515F55CC60055EE35 /* SLLaunchAngleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLLaunchAngleView.m; sourceTree = "<group>"; };
+		4220A4B615F55CC60055EE35 /* SLPhotoAngleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPhotoAngleViewController.h; sourceTree = "<group>"; };
+		4220A4B715F55CC60055EE35 /* SLPhotoAngleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPhotoAngleViewController.m; sourceTree = "<group>"; };
+		4220A4B815F55CC60055EE35 /* SLMotorSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMotorSearchViewController.h; sourceTree = "<group>"; };
+		4220A4B915F55CC60055EE35 /* SLMotorSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMotorSearchViewController.m; sourceTree = "<group>"; };
+		4220A4BA15F55CC60055EE35 /* SLMotorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMotorTableViewController.h; sourceTree = "<group>"; };
+		4220A4BB15F55CC60055EE35 /* SLMotorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMotorTableViewController.m; sourceTree = "<group>"; };
+		4220A4BC15F55CC60055EE35 /* SLMotorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMotorViewController.h; sourceTree = "<group>"; };
+		4220A4BD15F55CC60055EE35 /* SLMotorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMotorViewController.m; sourceTree = "<group>"; };
+		4220A4BE15F55CC60055EE35 /* SLMotorThrustCurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMotorThrustCurveView.h; sourceTree = "<group>"; };
+		4220A4BF15F55CC60055EE35 /* SLMotorThrustCurveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMotorThrustCurveView.m; sourceTree = "<group>"; };
+		4220A4C015F55CC60055EE35 /* SLRocketsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRocketsTableViewController.h; sourceTree = "<group>"; };
+		4220A4C115F55CC60055EE35 /* SLRocketsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRocketsTableViewController.m; sourceTree = "<group>"; };
+		4220A4C215F55CC60055EE35 /* SLRocketPropertiesTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRocketPropertiesTVC.h; sourceTree = "<group>"; };
+		4220A4C315F55CC60055EE35 /* SLRocketPropertiesTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRocketPropertiesTVC.m; sourceTree = "<group>"; };
+		4220A4C415F55CC60055EE35 /* SLUnitsConvertor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLUnitsConvertor.h; sourceTree = "<group>"; };
+		4220A4C515F55CC60055EE35 /* SLUnitsConvertor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLUnitsConvertor.m; sourceTree = "<group>"; };
+		4220A4C615F55CC60055EE35 /* Rocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rocket.h; sourceTree = "<group>"; };
+		4220A4C715F55CC60055EE35 /* Rocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rocket.m; sourceTree = "<group>"; };
+		4220A4C815F55CC60055EE35 /* RocketMotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RocketMotor.h; sourceTree = "<group>"; };
+		4220A4C915F55CC60055EE35 /* RocketMotor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RocketMotor.m; sourceTree = "<group>"; };
+		4220A4CA15F55CC60055EE35 /* SLPhysicsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPhysicsModel.h; sourceTree = "<group>"; };
+		4220A4CB15F55CC60055EE35 /* SLPhysicsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPhysicsModel.m; sourceTree = "<group>"; };
+		4220A4DE15F55D120055EE35 /* CancelButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CancelButtonSelected.png; sourceTree = "<group>"; };
+		4220A4DF15F55D120055EE35 /* CancelButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CancelButton.png; sourceTree = "<group>"; };
+		4220A4E015F55D120055EE35 /* AcceptButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcceptButton.png; sourceTree = "<group>"; };
+		4220A4E115F55D120055EE35 /* AcceptButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcceptButtonSelected.png; sourceTree = "<group>"; };
+		4220A4E215F55D120055EE35 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4220A4E315F55D120055EE35 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4220A4E415F55D120055EE35 /* AngleWarning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AngleWarning.png; sourceTree = "<group>"; };
+		4220A4E515F55D120055EE35 /* SmartLaunch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SmartLaunch@2x.png"; sourceTree = "<group>"; };
+		4220A4E615F55D120055EE35 /* SmartLaunch@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SmartLaunch@1x.png"; sourceTree = "<group>"; };
+		4220A4E715F55D120055EE35 /* Alpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Alpha.png; sourceTree = "<group>"; };
+		4220A4E815F55D120055EE35 /* atmosphere.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = atmosphere.txt; sourceTree = "<group>"; };
+		4220A4E915F55D120055EE35 /* motors.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = motors.txt; sourceTree = "<group>"; };
+		4220A4FA15F55D760055EE35 /* Viewfinder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Viewfinder.png; sourceTree = "<group>"; };
+		4220A4FB15F55D760055EE35 /* Viewfinder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Viewfinder@2x.png"; sourceTree = "<group>"; };
+		4220A4FC15F55D760055EE35 /* Vellum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Vellum.png; sourceTree = "<group>"; };
+		4220A4FD15F55D760055EE35 /* Vellum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Vellum@2x.png"; sourceTree = "<group>"; };
+		4220A50215F55D8D0055EE35 /* Aerotech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Aerotech.png; sourceTree = "<group>"; };
+		4220A50315F55D8D0055EE35 /* Hypertek.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hypertek.png; sourceTree = "<group>"; };
+		4220A50415F55D8D0055EE35 /* Loki Research.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loki Research.png"; sourceTree = "<group>"; };
+		4220A50515F55D8D0055EE35 /* Aerotech Hybrid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Aerotech Hybrid.png"; sourceTree = "<group>"; };
+		4220A50615F55D8D0055EE35 /* Aerotech RMS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Aerotech RMS.png"; sourceTree = "<group>"; };
+		4220A50715F55D8D0055EE35 /* AMW Pro-X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMW Pro-X.png"; sourceTree = "<group>"; };
+		4220A50815F55D8D0055EE35 /* Animal Motor Works.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Animal Motor Works.png"; sourceTree = "<group>"; };
+		4220A50915F55D8D0055EE35 /* Apogee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Apogee.png; sourceTree = "<group>"; };
+		4220A50A15F55D8D0055EE35 /* Cesaroni.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cesaroni.png; sourceTree = "<group>"; };
+		4220A50B15F55D8D0055EE35 /* Contrail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Contrail.png; sourceTree = "<group>"; };
+		4220A50C15F55D8D0055EE35 /* Ellis Mountain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ellis Mountain.png"; sourceTree = "<group>"; };
+		4220A50D15F55D8D0055EE35 /* Estes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Estes.png; sourceTree = "<group>"; };
+		4220A50E15F55D8D0055EE35 /* Gorilla.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gorilla.png; sourceTree = "<group>"; };
+		4220A50F15F55D8D0055EE35 /* Kosdon by Aerotech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kosdon by Aerotech.png"; sourceTree = "<group>"; };
+		4220A51015F55D8D0055EE35 /* Kosdon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kosdon.png; sourceTree = "<group>"; };
+		4220A51115F55D8D0055EE35 /* Propulsion Polymers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Propulsion Polymers.png"; sourceTree = "<group>"; };
+		4220A51215F55D8D0055EE35 /* Public Missiles Ltd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Public Missiles Ltd.png"; sourceTree = "<group>"; };
+		4220A51315F55D8D0055EE35 /* Quest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quest.png; sourceTree = "<group>"; };
+		4220A51415F55D8D0055EE35 /* RATTworks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RATTworks.png; sourceTree = "<group>"; };
+		4220A51515F55D8D0055EE35 /* RoadRunner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RoadRunner.png; sourceTree = "<group>"; };
+		4220A51615F55D8D0055EE35 /* Sky Ripper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sky Ripper.png"; sourceTree = "<group>"; };
+		4220A51715F55D8D0055EE35 /* West Coast Hybrids.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "West Coast Hybrids.png"; sourceTree = "<group>"; };
 		4256930515F4893000F7BABC /* Smart Launch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Launch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4256930915F4893000F7BABC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4256930B15F4893000F7BABC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -28,9 +159,6 @@
 		4256931715F4893000F7BABC /* Smart Launch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart Launch-Prefix.pch"; sourceTree = "<group>"; };
 		4256931815F4893000F7BABC /* SLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAppDelegate.h; sourceTree = "<group>"; };
 		4256931915F4893000F7BABC /* SLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAppDelegate.m; sourceTree = "<group>"; };
-		4256931C15F4893000F7BABC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		4256931E15F4893000F7BABC /* SLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLViewController.h; sourceTree = "<group>"; };
-		4256931F15F4893000F7BABC /* SLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +175,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4220A52E15F55D9B0055EE35 /* Logos */ = {
+			isa = PBXGroup;
+			children = (
+				4220A4E715F55D120055EE35 /* Alpha.png */,
+				4220A50215F55D8D0055EE35 /* Aerotech.png */,
+				4220A50315F55D8D0055EE35 /* Hypertek.png */,
+				4220A50415F55D8D0055EE35 /* Loki Research.png */,
+				4220A50515F55D8D0055EE35 /* Aerotech Hybrid.png */,
+				4220A50615F55D8D0055EE35 /* Aerotech RMS.png */,
+				4220A50715F55D8D0055EE35 /* AMW Pro-X.png */,
+				4220A50815F55D8D0055EE35 /* Animal Motor Works.png */,
+				4220A50915F55D8D0055EE35 /* Apogee.png */,
+				4220A50A15F55D8D0055EE35 /* Cesaroni.png */,
+				4220A50B15F55D8D0055EE35 /* Contrail.png */,
+				4220A50C15F55D8D0055EE35 /* Ellis Mountain.png */,
+				4220A50D15F55D8D0055EE35 /* Estes.png */,
+				4220A50E15F55D8D0055EE35 /* Gorilla.png */,
+				4220A50F15F55D8D0055EE35 /* Kosdon by Aerotech.png */,
+				4220A51015F55D8D0055EE35 /* Kosdon.png */,
+				4220A51115F55D8D0055EE35 /* Propulsion Polymers.png */,
+				4220A51215F55D8D0055EE35 /* Public Missiles Ltd.png */,
+				4220A51315F55D8D0055EE35 /* Quest.png */,
+				4220A51415F55D8D0055EE35 /* RATTworks.png */,
+				4220A51515F55D8D0055EE35 /* RoadRunner.png */,
+				4220A51615F55D8D0055EE35 /* Sky Ripper.png */,
+				4220A51715F55D8D0055EE35 /* West Coast Hybrids.png */,
+			);
+			name = Logos;
+			sourceTree = "<group>";
+		};
+		4220A52F15F55DAB0055EE35 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				4220A4E415F55D120055EE35 /* AngleWarning.png */,
+				4220A4FA15F55D760055EE35 /* Viewfinder.png */,
+				4220A4FB15F55D760055EE35 /* Viewfinder@2x.png */,
+				4220A4FC15F55D760055EE35 /* Vellum.png */,
+				4220A4FD15F55D760055EE35 /* Vellum@2x.png */,
+			);
+			name = Backgrounds;
+			sourceTree = "<group>";
+		};
+		4220A53015F55DBE0055EE35 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				4220A4DE15F55D120055EE35 /* CancelButtonSelected.png */,
+				4220A4DF15F55D120055EE35 /* CancelButton.png */,
+				4220A4E015F55D120055EE35 /* AcceptButton.png */,
+				4220A4E115F55D120055EE35 /* AcceptButtonSelected.png */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
+		4220A53115F55DEF0055EE35 /* System Images */ = {
+			isa = PBXGroup;
+			children = (
+				4220A4E215F55D120055EE35 /* Default.png */,
+				4220A4E315F55D120055EE35 /* Default@2x.png */,
+				4220A4E515F55D120055EE35 /* SmartLaunch@2x.png */,
+				4220A4E615F55D120055EE35 /* SmartLaunch@1x.png */,
+			);
+			name = "System Images";
+			sourceTree = "<group>";
+		};
+		4220A53215F55DFF0055EE35 /* Data Files */ = {
+			isa = PBXGroup;
+			children = (
+				4220A4E815F55D120055EE35 /* atmosphere.txt */,
+				4220A4E915F55D120055EE35 /* motors.txt */,
+			);
+			name = "Data Files";
+			sourceTree = "<group>";
+		};
 		425692FA15F4893000F7BABC = {
 			isa = PBXGroup;
 			children = (
@@ -77,11 +278,45 @@
 		4256930F15F4893000F7BABC /* Smart Launch */ = {
 			isa = PBXGroup;
 			children = (
-				4256931815F4893000F7BABC /* SLAppDelegate.h */,
-				4256931915F4893000F7BABC /* SLAppDelegate.m */,
-				4256931B15F4893000F7BABC /* MainStoryboard.storyboard */,
-				4256931E15F4893000F7BABC /* SLViewController.h */,
-				4256931F15F4893000F7BABC /* SLViewController.m */,
+				4220A4A515F55CC60055EE35 /* MainStoryboard.storyboard */,
+				4220A4A615F55CC60055EE35 /* SLDefinitions.h */,
+				4220A4A715F55CC60055EE35 /* SLModalPresenterDelegate.h */,
+				4220A4A815F55CC60055EE35 /* SLPhotoAngleFinderDelegate.h */,
+				4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */,
+				4220A4AA15F55CC60055EE35 /* SLTableViewController.h */,
+				4220A4AB15F55CC60055EE35 /* SLTableViewController.m */,
+				4220A4AC15F55CC60055EE35 /* SLInformationTVC.h */,
+				4220A4AD15F55CC60055EE35 /* SLInformationTVC.m */,
+				4220A4AE15F55CC60055EE35 /* SLSimSettingsViewController.h */,
+				4220A4AF15F55CC60055EE35 /* SLSimSettingsViewController.m */,
+				4220A4B015F55CC60055EE35 /* SLUnitsTVC.h */,
+				4220A4B115F55CC60055EE35 /* SLUnitsTVC.m */,
+				4220A4B215F55CC60055EE35 /* SLLaunchAngleViewController.h */,
+				4220A4B315F55CC60055EE35 /* SLLaunchAngleViewController.m */,
+				4220A4B415F55CC60055EE35 /* SLLaunchAngleView.h */,
+				4220A4B515F55CC60055EE35 /* SLLaunchAngleView.m */,
+				4220A4B615F55CC60055EE35 /* SLPhotoAngleViewController.h */,
+				4220A4B715F55CC60055EE35 /* SLPhotoAngleViewController.m */,
+				4220A4B815F55CC60055EE35 /* SLMotorSearchViewController.h */,
+				4220A4B915F55CC60055EE35 /* SLMotorSearchViewController.m */,
+				4220A4BA15F55CC60055EE35 /* SLMotorTableViewController.h */,
+				4220A4BB15F55CC60055EE35 /* SLMotorTableViewController.m */,
+				4220A4BC15F55CC60055EE35 /* SLMotorViewController.h */,
+				4220A4BD15F55CC60055EE35 /* SLMotorViewController.m */,
+				4220A4BE15F55CC60055EE35 /* SLMotorThrustCurveView.h */,
+				4220A4BF15F55CC60055EE35 /* SLMotorThrustCurveView.m */,
+				4220A4C015F55CC60055EE35 /* SLRocketsTableViewController.h */,
+				4220A4C115F55CC60055EE35 /* SLRocketsTableViewController.m */,
+				4220A4C215F55CC60055EE35 /* SLRocketPropertiesTVC.h */,
+				4220A4C315F55CC60055EE35 /* SLRocketPropertiesTVC.m */,
+				4220A4C415F55CC60055EE35 /* SLUnitsConvertor.h */,
+				4220A4C515F55CC60055EE35 /* SLUnitsConvertor.m */,
+				4220A4C615F55CC60055EE35 /* Rocket.h */,
+				4220A4C715F55CC60055EE35 /* Rocket.m */,
+				4220A4C815F55CC60055EE35 /* RocketMotor.h */,
+				4220A4C915F55CC60055EE35 /* RocketMotor.m */,
+				4220A4CA15F55CC60055EE35 /* SLPhysicsModel.h */,
+				4220A4CB15F55CC60055EE35 /* SLPhysicsModel.m */,
 				4256931015F4893000F7BABC /* Supporting Files */,
 			);
 			path = "Smart Launch";
@@ -90,6 +325,13 @@
 		4256931015F4893000F7BABC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4220A52E15F55D9B0055EE35 /* Logos */,
+				4220A52F15F55DAB0055EE35 /* Backgrounds */,
+				4220A53015F55DBE0055EE35 /* Buttons */,
+				4220A53115F55DEF0055EE35 /* System Images */,
+				4220A53215F55DFF0055EE35 /* Data Files */,
+				4256931815F4893000F7BABC /* SLAppDelegate.h */,
+				4256931915F4893000F7BABC /* SLAppDelegate.m */,
 				4256931115F4893000F7BABC /* Smart Launch-Info.plist */,
 				4256931215F4893000F7BABC /* InfoPlist.strings */,
 				4256931515F4893000F7BABC /* main.m */,
@@ -151,7 +393,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				4256931415F4893000F7BABC /* InfoPlist.strings in Resources */,
-				4256931D15F4893000F7BABC /* MainStoryboard.storyboard in Resources */,
+				4220A4CC15F55CC60055EE35 /* MainStoryboard.storyboard in Resources */,
+				4220A4EA15F55D120055EE35 /* CancelButtonSelected.png in Resources */,
+				4220A4EB15F55D120055EE35 /* CancelButton.png in Resources */,
+				4220A4EC15F55D120055EE35 /* AcceptButton.png in Resources */,
+				4220A4ED15F55D120055EE35 /* AcceptButtonSelected.png in Resources */,
+				4220A4EE15F55D120055EE35 /* Default.png in Resources */,
+				4220A4EF15F55D120055EE35 /* Default@2x.png in Resources */,
+				4220A4F015F55D120055EE35 /* AngleWarning.png in Resources */,
+				4220A4F115F55D120055EE35 /* SmartLaunch@2x.png in Resources */,
+				4220A4F215F55D120055EE35 /* SmartLaunch@1x.png in Resources */,
+				4220A4F315F55D120055EE35 /* Alpha.png in Resources */,
+				4220A4F415F55D120055EE35 /* atmosphere.txt in Resources */,
+				4220A4F515F55D120055EE35 /* motors.txt in Resources */,
+				4220A4FE15F55D760055EE35 /* Viewfinder.png in Resources */,
+				4220A4FF15F55D760055EE35 /* Viewfinder@2x.png in Resources */,
+				4220A50015F55D760055EE35 /* Vellum.png in Resources */,
+				4220A50115F55D760055EE35 /* Vellum@2x.png in Resources */,
+				4220A51815F55D8D0055EE35 /* Aerotech.png in Resources */,
+				4220A51915F55D8D0055EE35 /* Hypertek.png in Resources */,
+				4220A51A15F55D8D0055EE35 /* Loki Research.png in Resources */,
+				4220A51B15F55D8D0055EE35 /* Aerotech Hybrid.png in Resources */,
+				4220A51C15F55D8D0055EE35 /* Aerotech RMS.png in Resources */,
+				4220A51D15F55D8D0055EE35 /* AMW Pro-X.png in Resources */,
+				4220A51E15F55D8D0055EE35 /* Animal Motor Works.png in Resources */,
+				4220A51F15F55D8D0055EE35 /* Apogee.png in Resources */,
+				4220A52015F55D8D0055EE35 /* Cesaroni.png in Resources */,
+				4220A52115F55D8D0055EE35 /* Contrail.png in Resources */,
+				4220A52215F55D8D0055EE35 /* Ellis Mountain.png in Resources */,
+				4220A52315F55D8D0055EE35 /* Estes.png in Resources */,
+				4220A52415F55D8D0055EE35 /* Gorilla.png in Resources */,
+				4220A52515F55D8D0055EE35 /* Kosdon by Aerotech.png in Resources */,
+				4220A52615F55D8D0055EE35 /* Kosdon.png in Resources */,
+				4220A52715F55D8D0055EE35 /* Propulsion Polymers.png in Resources */,
+				4220A52815F55D8D0055EE35 /* Public Missiles Ltd.png in Resources */,
+				4220A52915F55D8D0055EE35 /* Quest.png in Resources */,
+				4220A52A15F55D8D0055EE35 /* RATTworks.png in Resources */,
+				4220A52B15F55D8D0055EE35 /* RoadRunner.png in Resources */,
+				4220A52C15F55D8D0055EE35 /* Sky Ripper.png in Resources */,
+				4220A52D15F55D8D0055EE35 /* West Coast Hybrids.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,7 +444,23 @@
 			files = (
 				4256931615F4893000F7BABC /* main.m in Sources */,
 				4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */,
-				4256932015F4893000F7BABC /* SLViewController.m in Sources */,
+				4220A4CD15F55CC60055EE35 /* SLTableViewController.m in Sources */,
+				4220A4CE15F55CC60055EE35 /* SLInformationTVC.m in Sources */,
+				4220A4CF15F55CC60055EE35 /* SLSimSettingsViewController.m in Sources */,
+				4220A4D015F55CC60055EE35 /* SLUnitsTVC.m in Sources */,
+				4220A4D115F55CC60055EE35 /* SLLaunchAngleViewController.m in Sources */,
+				4220A4D215F55CC60055EE35 /* SLLaunchAngleView.m in Sources */,
+				4220A4D315F55CC60055EE35 /* SLPhotoAngleViewController.m in Sources */,
+				4220A4D415F55CC60055EE35 /* SLMotorSearchViewController.m in Sources */,
+				4220A4D515F55CC60055EE35 /* SLMotorTableViewController.m in Sources */,
+				4220A4D615F55CC60055EE35 /* SLMotorViewController.m in Sources */,
+				4220A4D715F55CC60055EE35 /* SLMotorThrustCurveView.m in Sources */,
+				4220A4D815F55CC60055EE35 /* SLRocketsTableViewController.m in Sources */,
+				4220A4D915F55CC60055EE35 /* SLRocketPropertiesTVC.m in Sources */,
+				4220A4DA15F55CC60055EE35 /* SLUnitsConvertor.m in Sources */,
+				4220A4DB15F55CC60055EE35 /* Rocket.m in Sources */,
+				4220A4DC15F55CC60055EE35 /* RocketMotor.m in Sources */,
+				4220A4DD15F55CC60055EE35 /* SLPhysicsModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,14 +473,6 @@
 				4256931315F4893000F7BABC /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		4256931B15F4893000F7BABC /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4256931C15F4893000F7BABC /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -280,6 +568,7 @@
 				4256932515F4893000F7BABC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
