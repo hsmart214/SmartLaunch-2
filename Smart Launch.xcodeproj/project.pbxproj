@@ -1,0 +1,287 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930915F4893000F7BABC /* UIKit.framework */; };
+		4256930C15F4893000F7BABC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930B15F4893000F7BABC /* Foundation.framework */; };
+		4256930E15F4893000F7BABC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930D15F4893000F7BABC /* CoreGraphics.framework */; };
+		4256931415F4893000F7BABC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4256931215F4893000F7BABC /* InfoPlist.strings */; };
+		4256931615F4893000F7BABC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931515F4893000F7BABC /* main.m */; };
+		4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931915F4893000F7BABC /* SLAppDelegate.m */; };
+		4256931D15F4893000F7BABC /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4256931B15F4893000F7BABC /* MainStoryboard.storyboard */; };
+		4256932015F4893000F7BABC /* SLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931F15F4893000F7BABC /* SLViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4256930515F4893000F7BABC /* Smart Launch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Launch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4256930915F4893000F7BABC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4256930B15F4893000F7BABC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4256930D15F4893000F7BABC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4256931115F4893000F7BABC /* Smart Launch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Smart Launch-Info.plist"; sourceTree = "<group>"; };
+		4256931315F4893000F7BABC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4256931515F4893000F7BABC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4256931715F4893000F7BABC /* Smart Launch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart Launch-Prefix.pch"; sourceTree = "<group>"; };
+		4256931815F4893000F7BABC /* SLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAppDelegate.h; sourceTree = "<group>"; };
+		4256931915F4893000F7BABC /* SLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAppDelegate.m; sourceTree = "<group>"; };
+		4256931C15F4893000F7BABC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		4256931E15F4893000F7BABC /* SLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLViewController.h; sourceTree = "<group>"; };
+		4256931F15F4893000F7BABC /* SLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4256930215F4893000F7BABC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */,
+				4256930C15F4893000F7BABC /* Foundation.framework in Frameworks */,
+				4256930E15F4893000F7BABC /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		425692FA15F4893000F7BABC = {
+			isa = PBXGroup;
+			children = (
+				4256930F15F4893000F7BABC /* Smart Launch */,
+				4256930815F4893000F7BABC /* Frameworks */,
+				4256930615F4893000F7BABC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4256930615F4893000F7BABC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4256930515F4893000F7BABC /* Smart Launch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4256930815F4893000F7BABC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4256930915F4893000F7BABC /* UIKit.framework */,
+				4256930B15F4893000F7BABC /* Foundation.framework */,
+				4256930D15F4893000F7BABC /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4256930F15F4893000F7BABC /* Smart Launch */ = {
+			isa = PBXGroup;
+			children = (
+				4256931815F4893000F7BABC /* SLAppDelegate.h */,
+				4256931915F4893000F7BABC /* SLAppDelegate.m */,
+				4256931B15F4893000F7BABC /* MainStoryboard.storyboard */,
+				4256931E15F4893000F7BABC /* SLViewController.h */,
+				4256931F15F4893000F7BABC /* SLViewController.m */,
+				4256931015F4893000F7BABC /* Supporting Files */,
+			);
+			path = "Smart Launch";
+			sourceTree = "<group>";
+		};
+		4256931015F4893000F7BABC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4256931115F4893000F7BABC /* Smart Launch-Info.plist */,
+				4256931215F4893000F7BABC /* InfoPlist.strings */,
+				4256931515F4893000F7BABC /* main.m */,
+				4256931715F4893000F7BABC /* Smart Launch-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4256930415F4893000F7BABC /* Smart Launch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4256932315F4893000F7BABC /* Build configuration list for PBXNativeTarget "Smart Launch" */;
+			buildPhases = (
+				4256930115F4893000F7BABC /* Sources */,
+				4256930215F4893000F7BABC /* Frameworks */,
+				4256930315F4893000F7BABC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Smart Launch";
+			productName = "Smart Launch";
+			productReference = 4256930515F4893000F7BABC /* Smart Launch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		425692FC15F4893000F7BABC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SL;
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "J. HOWARD SMART";
+			};
+			buildConfigurationList = 425692FF15F4893000F7BABC /* Build configuration list for PBXProject "Smart Launch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 425692FA15F4893000F7BABC;
+			productRefGroup = 4256930615F4893000F7BABC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4256930415F4893000F7BABC /* Smart Launch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4256930315F4893000F7BABC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4256931415F4893000F7BABC /* InfoPlist.strings in Resources */,
+				4256931D15F4893000F7BABC /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4256930115F4893000F7BABC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4256931615F4893000F7BABC /* main.m in Sources */,
+				4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */,
+				4256932015F4893000F7BABC /* SLViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4256931215F4893000F7BABC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4256931315F4893000F7BABC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4256931B15F4893000F7BABC /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4256931C15F4893000F7BABC /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4256932115F4893000F7BABC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4256932215F4893000F7BABC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4256932415F4893000F7BABC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
+				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4256932515F4893000F7BABC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
+				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		425692FF15F4893000F7BABC /* Build configuration list for PBXProject "Smart Launch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4256932115F4893000F7BABC /* Debug */,
+				4256932215F4893000F7BABC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4256932315F4893000F7BABC /* Build configuration list for PBXNativeTarget "Smart Launch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4256932415F4893000F7BABC /* Debug */,
+				4256932515F4893000F7BABC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 425692FC15F4893000F7BABC /* Project object */;
+}
