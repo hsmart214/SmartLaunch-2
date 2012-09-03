@@ -63,6 +63,8 @@
 		4220A52B15F55D8D0055EE35 /* RoadRunner.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A51515F55D8D0055EE35 /* RoadRunner.png */; };
 		4220A52C15F55D8D0055EE35 /* Sky Ripper.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A51615F55D8D0055EE35 /* Sky Ripper.png */; };
 		4220A52D15F55D8D0055EE35 /* West Coast Hybrids.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A51715F55D8D0055EE35 /* West Coast Hybrids.png */; };
+		4220A53D15F561CF0055EE35 /* Goblin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A53B15F561CF0055EE35 /* Goblin@2x.png */; };
+		4220A53E15F561CF0055EE35 /* Goblin.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A53C15F561CF0055EE35 /* Goblin.png */; };
 		4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930915F4893000F7BABC /* UIKit.framework */; };
 		4256930C15F4893000F7BABC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930B15F4893000F7BABC /* Foundation.framework */; };
 		4256930E15F4893000F7BABC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930D15F4893000F7BABC /* CoreGraphics.framework */; };
@@ -149,6 +151,8 @@
 		4220A51515F55D8D0055EE35 /* RoadRunner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RoadRunner.png; sourceTree = "<group>"; };
 		4220A51615F55D8D0055EE35 /* Sky Ripper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sky Ripper.png"; sourceTree = "<group>"; };
 		4220A51715F55D8D0055EE35 /* West Coast Hybrids.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "West Coast Hybrids.png"; sourceTree = "<group>"; };
+		4220A53B15F561CF0055EE35 /* Goblin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Goblin@2x.png"; sourceTree = "<group>"; };
+		4220A53C15F561CF0055EE35 /* Goblin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Goblin.png; sourceTree = "<group>"; };
 		4256930515F4893000F7BABC /* Smart Launch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Launch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4256930915F4893000F7BABC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4256930B15F4893000F7BABC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -178,7 +182,6 @@
 		4220A52E15F55D9B0055EE35 /* Logos */ = {
 			isa = PBXGroup;
 			children = (
-				4220A4E715F55D120055EE35 /* Alpha.png */,
 				4220A50215F55D8D0055EE35 /* Aerotech.png */,
 				4220A50315F55D8D0055EE35 /* Hypertek.png */,
 				4220A50415F55D8D0055EE35 /* Loki Research.png */,
@@ -246,6 +249,16 @@
 				4220A4E915F55D120055EE35 /* motors.txt */,
 			);
 			name = "Data Files";
+			sourceTree = "<group>";
+		};
+		4220A53F15F561E30055EE35 /* Rocket Images */ = {
+			isa = PBXGroup;
+			children = (
+				4220A53B15F561CF0055EE35 /* Goblin@2x.png */,
+				4220A53C15F561CF0055EE35 /* Goblin.png */,
+				4220A4E715F55D120055EE35 /* Alpha.png */,
+			);
+			name = "Rocket Images";
 			sourceTree = "<group>";
 		};
 		425692FA15F4893000F7BABC = {
@@ -325,6 +338,7 @@
 		4256931015F4893000F7BABC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4220A53F15F561E30055EE35 /* Rocket Images */,
 				4220A52E15F55D9B0055EE35 /* Logos */,
 				4220A52F15F55DAB0055EE35 /* Backgrounds */,
 				4220A53015F55DBE0055EE35 /* Buttons */,
@@ -432,6 +446,8 @@
 				4220A52B15F55D8D0055EE35 /* RoadRunner.png in Resources */,
 				4220A52C15F55D8D0055EE35 /* Sky Ripper.png in Resources */,
 				4220A52D15F55D8D0055EE35 /* West Coast Hybrids.png in Resources */,
+				4220A53D15F561CF0055EE35 /* Goblin@2x.png in Resources */,
+				4220A53E15F561CF0055EE35 /* Goblin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

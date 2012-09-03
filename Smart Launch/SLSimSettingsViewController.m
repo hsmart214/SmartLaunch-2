@@ -9,24 +9,22 @@
 #import "SLSimSettingsViewController.h"
 #import "SLDefinitions.h"
 
-@interface SLSimSettingsViewController ()
+#define INITIAL_ROW_COUNT 7
+
+@interface SLSimSettingsViewController ()<UITableViewDelegate, UITableViewDataSource, SLSimulationDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *launchAngleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *windVelocityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *windVelocityUnitsLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *windDirectionControl;
-@property (weak, nonatomic) IBOutlet UISlider *windVelocitySlider;
-@property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
-@property (weak, nonatomic) IBOutlet UILabel *temperatureUnitsLabel;
-@property (weak, nonatomic) IBOutlet UISlider *temperatureSlider;
+@property (weak, nonatomic) IBOutlet UIStepper *windVelocityStepper;
 @property (weak, nonatomic) IBOutlet UILabel *launchGuideLengthLabel;
 @property (weak, nonatomic) IBOutlet UILabel *launchGuideLengthUnitsLabel;
-@property (weak, nonatomic) IBOutlet UISlider *launchGuideLengthSlider;
+@property (weak, nonatomic) IBOutlet UIStepper *launchGuideLengthStepper;
 @property (weak, nonatomic) IBOutlet UILabel *siteAltitudeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *siteAltitudeUnitsLabel;
-@property (weak, nonatomic) IBOutlet UISlider *siteAltitudeSlider;
+@property (weak, nonatomic) IBOutlet UIStepper *siteAltitudeStepper;
 
 @property (strong, nonatomic) NSMutableDictionary *settings;
-@property (nonatomic) float alt_step;
 
 @end
 
@@ -37,19 +35,16 @@
 @synthesize windVelocityLabel = _windVelocityLabel;
 @synthesize windVelocityUnitsLabel = _windVelocityUnitsLabel;
 @synthesize windDirectionControl = _windDirectionControl;
-@synthesize windVelocitySlider = _windVelocitySlider;
-@synthesize temperatureLabel = _temperatureLabel;
-@synthesize temperatureUnitsLabel = _temperatureUnitsLabel;
-@synthesize temperatureSlider = _temperatureSlider;
+@synthesize windVelocityStepper = _windVelocityStepper;
 @synthesize launchGuideLengthLabel = _launchGuideLengthLabel;
 @synthesize launchGuideLengthUnitsLabel = _launchGuideLengthUnitsLabel;
-@synthesize launchGuideLengthSlider = _launchGuideLengthSlider;
+@synthesize launchGuideLengthStepper = _launchGuideLengthStepper;
 @synthesize siteAltitudeLabel = _siteAltitudeLabel;
 @synthesize siteAltitudeUnitsLabel = _siteAltitudeUnitsLabel;
-@synthesize siteAltitudeSlider = _siteAltitudeSlider;
+@synthesize siteAltitudeStepper = _siteAltitudeStepper;
 
 @synthesize delegate = _delegate;
-@synthesize alt_step = _alt_step;
+
 
 - (NSMutableDictionary *)settings{
     if (!_settings){
@@ -72,36 +67,25 @@
     [self saveSettings];
 }
 
-- (IBAction)windVelocityChanged:(UISlider *)sender {
+- (IBAction)windVelocityChanged:(UIStepper *)sender {
     self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", sender.value];
 }
 
-- (IBAction)temperatureChanged:(UISlider *)sender {
-    self.temperatureLabel.text = [NSString stringWithFormat:@"%1.0f", sender.value];
-}
+//- (IBAction)temperatureChanged:(UISlider *)sender {
+//    self.temperatureLabel.text = [NSString stringWithFormat:@"%1.0f", sender.value];
+//}
 
-- (IBAction)launchGuideLengthChanged:(UISlider *)sender {
+- (IBAction)launchGuideLengthChanged:(UIStepper *)sender {
     self.launchGuideLengthLabel.text = [NSString stringWithFormat:@"%1.0f", sender.value];
 }
 
-- (IBAction)siteAltitudeChanged:(UISlider *)sender {
-    double alt = sender.value;
-    alt = floor(alt/self.alt_step) * self.alt_step;
-    self.siteAltitudeLabel.text = [NSString stringWithFormat:@"%1.0f", alt];
+- (IBAction)siteAltitudeChanged:(UIStepper *)sender {
+    //    double alt = sender.value;
+    //    alt = floor(alt/self.alt_step) * self.alt_step;
+    self.siteAltitudeLabel.text = [NSString stringWithFormat:@"%1.0f", sender.value];
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    self.windVelocitySlider.value = [self.windVelocityLabel.text floatValue];
-    NSNumber *metricValue = [SLUnitsConvertor metricStandardOf:[NSNumber numberWithFloat:self.windVelocitySlider.value] forKey:VELOCITY_UNIT_KEY];
-    [self.settings setObject:metricValue forKey:WIND_VELOCITY_KEY];
-    metricValue = [SLUnitsConvertor metricStandardOf:[NSNumber numberWithFloat:self.temperatureSlider.value] forKey:TEMP_UNIT_KEY];
-    [self.settings setObject:metricValue forKey:LAUNCH_TEMPERATURE_KEY];
-    metricValue = [SLUnitsConvertor metricStandardOf:[NSNumber numberWithFloat:self.launchGuideLengthSlider.value] forKey:LENGTH_UNIT_KEY];
-    [self.settings setObject:metricValue forKey:LAUNCH_GUIDE_LENGTH_KEY];
-    metricValue = [SLUnitsConvertor metricStandardOf:[NSNumber numberWithFloat:self.siteAltitudeSlider.value] forKey:ALT_UNIT_KEY];
-    [self.settings setObject:metricValue forKey:LAUNCH_ALTITUDE_KEY];
-    [self saveSettings];
-}
+#pragma mark - SLSimulationDelegate method
 
 - (void)sender:(id)sender didChangeLaunchAngle:(NSNumber *)launchAngle{
     [self.settings setObject:launchAngle forKey:LAUNCH_ANGLE_KEY];
@@ -109,9 +93,13 @@
     [self saveSettings];
 }
 
+#pragma mark - UITableViewDelegate/DataSource methods
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+#pragma mark - Segue
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"launchAngleSegue"]){
@@ -120,9 +108,12 @@
     }
 }
 
+#pragma mark - View lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.delegate = self;
     UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
     NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
     UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
@@ -131,7 +122,6 @@
     // set up the unit labels for the preferred units
     
     self.windVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
-    self.temperatureUnitsLabel.text = [SLUnitsConvertor displayStringForKey:TEMP_UNIT_KEY];
     self.launchGuideLengthUnitsLabel.text = [SLUnitsConvertor displayStringForKey:LENGTH_UNIT_KEY];
     self.siteAltitudeUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
     
@@ -139,52 +129,61 @@
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     
     if ([[unitPrefs objectForKey:ALT_UNIT_KEY] isEqualToString:K_METERS]){
-        [self.siteAltitudeSlider setMaximumValue:4000];
-        self.alt_step = 50;
-    }else{// must be meters
-        [self.siteAltitudeSlider setMaximumValue:10000];
-        self.alt_step = 100;
+        [self.siteAltitudeStepper setMaximumValue:4000];
+        self.siteAltitudeStepper.stepValue = 50;
+    }else{// must be feet
+        [self.siteAltitudeStepper setMaximumValue:10000];
+        self.siteAltitudeStepper.stepValue = 100;
     }
     if ([[unitPrefs objectForKey:VELOCITY_UNIT_KEY] isEqualToString:K_METER_PER_SEC]){
-        [self.windVelocitySlider setMaximumValue:8.95];
+        [self.windVelocityStepper setMaximumValue:8.95];
+        self.windVelocityStepper.stepValue = 0.5;
     }else if ([[unitPrefs objectForKey:VELOCITY_UNIT_KEY] isEqualToString:K_FEET_PER_SEC]){
-        [self.windVelocitySlider setMaximumValue:30];
+        [self.windVelocityStepper setMaximumValue:30];
+        self.windVelocityStepper.stepValue = 2.0;
     }else{// must be MPH
-        [self.windVelocitySlider setMaximumValue:20];
-    }
-    if ([[unitPrefs objectForKey:TEMP_UNIT_KEY] isEqualToString:K_CELSIUS]){
-        [self.temperatureSlider setMinimumValue:-10];
-        [self.temperatureSlider setMaximumValue:42];
-    }else if ([[unitPrefs objectForKey:TEMP_UNIT_KEY] isEqualToString:K_KELVINS]){
-        [self.temperatureSlider setMinimumValue:260];
-        [self.temperatureSlider setMaximumValue:315];
-    }else{//must be Fahrenheit
-        [self.temperatureSlider setMinimumValue:0];
-        [self.temperatureSlider setMaximumValue:110];
+        [self.windVelocityStepper setMaximumValue:20];
+        self.windVelocityStepper.stepValue = 1.0;
     }
     if ([[unitPrefs objectForKey:LENGTH_UNIT_KEY] isEqualToString:K_FEET]){
-        [self.launchGuideLengthSlider setMaximumValue:20];
+        [self.launchGuideLengthStepper setMaximumValue:20];
+        self.launchGuideLengthStepper.stepValue = 0.5;
     }else if ([[unitPrefs objectForKey:LENGTH_UNIT_KEY] isEqualToString:K_INCHES]){
-        [self.launchGuideLengthSlider setMaximumValue:240];
+        [self.launchGuideLengthStepper setMaximumValue:240];
+        self.launchGuideLengthStepper.stepValue = 2.0;
     }else{//must be meters
-        [self.launchGuideLengthSlider setMaximumValue:7];
+        [self.launchGuideLengthStepper setMaximumValue:7];
+        self.launchGuideLengthStepper.stepValue = 0.2;
     }
     
     float launchAngle = [[self.settings objectForKey:LAUNCH_ANGLE_KEY] floatValue];
     self.launchAngleLabel.text = [NSString stringWithFormat:@"%1.1f", launchAngle * DEGREES_PER_RADIAN];
     float windVelocity = [[SLUnitsConvertor displayUnitsOf: [self.settings objectForKey:WIND_VELOCITY_KEY]forKey:VELOCITY_UNIT_KEY] floatValue];
     self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", windVelocity];
-    self.windVelocitySlider.value = windVelocity;
-    float temperature = [[SLUnitsConvertor displayUnitsOf:[self.settings objectForKey:LAUNCH_TEMPERATURE_KEY] forKey:TEMP_UNIT_KEY] floatValue];
-    self.temperatureLabel.text = [NSString stringWithFormat:@"%1.0f", temperature];
-    self.temperatureSlider.value = temperature;
+    self.windVelocityStepper.value = windVelocity;
     float guideLength = [[SLUnitsConvertor displayUnitsOf:[self.settings objectForKey:LAUNCH_GUIDE_LENGTH_KEY] forKey:LENGTH_UNIT_KEY] floatValue];
     self.launchGuideLengthLabel.text = [NSString stringWithFormat:@"%1.0f", guideLength];
-    self.launchGuideLengthSlider.value = guideLength;
+    self.launchGuideLengthStepper.value = guideLength;
     float altitude = [[SLUnitsConvertor displayUnitsOf:[self.settings objectForKey:LAUNCH_ALTITUDE_KEY] forKey:ALT_UNIT_KEY] floatValue];
-    float alt = floorf(altitude/self.alt_step) * self.alt_step;
+    float alt = floorf(altitude/self.siteAltitudeStepper.stepValue) * self.siteAltitudeStepper.stepValue;
     self.siteAltitudeLabel.text = [NSString stringWithFormat:@"%1.0f", alt];
-    self.siteAltitudeSlider.value = altitude;
+    self.siteAltitudeStepper.value = alt;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setToolbarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    self.windVelocityStepper.value = [self.windVelocityLabel.text floatValue];
+    NSNumber *metricValue = [SLUnitsConvertor metricStandardOf:[NSNumber numberWithFloat:self.windVelocityStepper.value] forKey:VELOCITY_UNIT_KEY];
+    [self.settings setObject:metricValue forKey:WIND_VELOCITY_KEY];
+    [self.settings setObject:metricValue forKey:LAUNCH_TEMPERATURE_KEY];
+    metricValue = [SLUnitsConvertor metricStandardOf:[NSNumber numberWithFloat:self.launchGuideLengthStepper.value] forKey:LENGTH_UNIT_KEY];
+    [self.settings setObject:metricValue forKey:LAUNCH_GUIDE_LENGTH_KEY];
+    metricValue = [SLUnitsConvertor metricStandardOf:[NSNumber numberWithFloat:self.siteAltitudeStepper.value] forKey:ALT_UNIT_KEY];
+    [self.settings setObject:metricValue forKey:LAUNCH_ALTITUDE_KEY];
+    [self saveSettings];
 }
 
 - (void)viewDidUnload
@@ -194,16 +193,13 @@
     [self setWindVelocityLabel:nil];
     [self setWindVelocityUnitsLabel:nil];
     [self setWindDirectionControl:nil];
-    [self setWindVelocitySlider:nil];
-    [self setTemperatureLabel:nil];
-    [self setTemperatureUnitsLabel:nil];
-    [self setTemperatureSlider:nil];
+    [self setWindVelocityStepper:nil];
     [self setLaunchGuideLengthLabel:nil];
     [self setLaunchGuideLengthUnitsLabel:nil];
-    [self setLaunchGuideLengthSlider:nil];
+    [self setLaunchGuideLengthStepper:nil];
     [self setSiteAltitudeLabel:nil];
     [self setSiteAltitudeUnitsLabel:nil];
-    [self setSiteAltitudeSlider:nil];
+    [self setSiteAltitudeStepper:nil];
     [super viewDidUnload];
 }
 
