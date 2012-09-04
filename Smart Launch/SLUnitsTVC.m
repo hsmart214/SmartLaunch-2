@@ -39,17 +39,22 @@
 - (IBAction)defaultButtonPressed:(UIBarButtonItem *)sender {
     NSString *msg = @"Reset Default Units?";
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:msg delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles: @"Metric", @"Standard", nil];
-    [actionSheet showInView:self.view];
+    [actionSheet showFromToolbar:self.navigationController.toolbar];
 }
 - (IBAction)revertButtonPressed:(UIBarButtonItem *)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
+    [settings setObject:self.oldPrefs forKey:UNIT_PREFS_KEY];
+    [defaults setObject:settings forKey:SETTINGS_KEY];
     [defaults setObject:self.oldPrefs forKey:UNIT_PREFS_KEY];
+    [defaults synchronize];
     [self updateDisplay];
 }
 
 - (IBAction)controlValueChanged:(UISegmentedControl *)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *newPrefs = [[defaults objectForKey:UNIT_PREFS_KEY]mutableCopy];
+    NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
+    NSMutableDictionary *newPrefs = [[settings objectForKey:UNIT_PREFS_KEY]mutableCopy];
     switch (self.diamControl.selectedSegmentIndex) {
         case 0:
             [newPrefs setObject:K_INCHES forKey:DIAM_UNIT_KEY];
@@ -105,13 +110,16 @@
         case 1:
             [newPrefs setObject:K_NEWTONS forKey:THRUST_UNIT_KEY];
     }
+    [settings setObject:newPrefs forKey:UNIT_PREFS_KEY];
+    [defaults setObject:settings forKey:SETTINGS_KEY];
     [defaults setObject:newPrefs forKey:UNIT_PREFS_KEY];
     [defaults synchronize];
 }
 
 - (void)updateDisplay{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
+    NSDictionary *settings = [defaults objectForKey:SETTINGS_KEY];
+    NSDictionary *unitPrefs = [settings objectForKey:UNIT_PREFS_KEY];
     if ([[unitPrefs objectForKey:DIAM_UNIT_KEY] isEqualToString:K_INCHES]){
         [self.diamControl setSelectedSegmentIndex:0];
     }else{//must be mm
@@ -157,7 +165,8 @@
 {
     [super viewDidLoad];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.oldPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
+    NSDictionary *settings = [defaults objectForKey:SETTINGS_KEY];
+    self.oldPrefs = [settings objectForKey:UNIT_PREFS_KEY];
     [self updateDisplay];
 }
 
@@ -206,12 +215,17 @@
                                       K_MILES_PER_HOUR, VELOCITY_UNIT_KEY,
                                       K_POUNDS, THRUST_UNIT_KEY, nil];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
     switch (buttonIndex) {
         case 0://metric
+            [settings setObject:metricDefaults forKey:UNIT_PREFS_KEY];
+            [defaults setObject:settings forKey:SETTINGS_KEY];
             [defaults setObject:metricDefaults forKey:UNIT_PREFS_KEY];
             [defaults synchronize];
             break;
         case 1:
+            [settings setObject:standardDefaults forKey:UNIT_PREFS_KEY];
+            [defaults setObject:settings forKey:SETTINGS_KEY];
             [defaults setObject:standardDefaults forKey:UNIT_PREFS_KEY];
             [defaults synchronize];
             break;
@@ -232,7 +246,11 @@
                                       K_MILES_PER_HOUR, VELOCITY_UNIT_KEY,
                                       K_POUNDS, THRUST_UNIT_KEY, nil];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *settings = [defaults objectForKey:SETTINGS_KEY];
+    [settings setObject:stdDefaults forKey:UNIT_PREFS_KEY];
+    [defaults setObject:settings forKey:SETTINGS_KEY];
     [defaults setObject:stdDefaults forKey:UNIT_PREFS_KEY];
+    [defaults synchronize];
 }
 
 @end

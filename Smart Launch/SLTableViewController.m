@@ -22,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *burnoutToApogeeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *apogeeAltitudeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *apogeeAltitudeUnitsLabel;
-//@property (weak, nonatomic) IBOutlet UIBarButtonItem *infoButton;
 @property (strong, nonatomic) Rocket *rocket;
 @property (strong, nonatomic) RocketMotor *motor;
 @property (strong, nonatomic) SLPhysicsModel *model;
@@ -40,7 +39,6 @@
 @synthesize settings = _settings;
 @synthesize simRunning = _simRunning;
 @synthesize spinner;
-//@synthesize infoButton;
 
 @synthesize rocketCell;
 @synthesize motorCell;
@@ -280,7 +278,6 @@
     [self setBurnoutToApogeeLabel:nil];
     [self setApogeeAltitudeLabel:nil];
     [self setApogeeAltitudeUnitsLabel:nil];
-//    [self setInfoButton:nil];
     [self setSpinner:nil];
     [super viewDidUnload];
 }
