@@ -29,8 +29,6 @@
 		4220A4EB15F55D120055EE35 /* CancelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4DF15F55D120055EE35 /* CancelButton.png */; };
 		4220A4EC15F55D120055EE35 /* AcceptButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E015F55D120055EE35 /* AcceptButton.png */; };
 		4220A4ED15F55D120055EE35 /* AcceptButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E115F55D120055EE35 /* AcceptButtonSelected.png */; };
-		4220A4EE15F55D120055EE35 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E215F55D120055EE35 /* Default.png */; };
-		4220A4EF15F55D120055EE35 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E315F55D120055EE35 /* Default@2x.png */; };
 		4220A4F015F55D120055EE35 /* AngleWarning.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E415F55D120055EE35 /* AngleWarning.png */; };
 		4220A4F115F55D120055EE35 /* SmartLaunch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E515F55D120055EE35 /* SmartLaunch@2x.png */; };
 		4220A4F215F55D120055EE35 /* SmartLaunch@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E615F55D120055EE35 /* SmartLaunch@1x.png */; };
@@ -65,6 +63,9 @@
 		4220A52D15F55D8D0055EE35 /* West Coast Hybrids.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A51715F55D8D0055EE35 /* West Coast Hybrids.png */; };
 		4220A53D15F561CF0055EE35 /* Goblin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A53B15F561CF0055EE35 /* Goblin@2x.png */; };
 		4220A53E15F561CF0055EE35 /* Goblin.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A53C15F561CF0055EE35 /* Goblin.png */; };
+		4220A54315F57E190055EE35 /* Default@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 4220A54115F57E190055EE35 /* Default@2x.PNG */; };
+		4220A54515F57E7B0055EE35 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A54415F57E7B0055EE35 /* Default.png */; };
+		4220A54715F57E820055EE35 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A54615F57E820055EE35 /* Default@2x.png */; };
 		4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930915F4893000F7BABC /* UIKit.framework */; };
 		4256930C15F4893000F7BABC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930B15F4893000F7BABC /* Foundation.framework */; };
 		4256930E15F4893000F7BABC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930D15F4893000F7BABC /* CoreGraphics.framework */; };
@@ -117,8 +118,6 @@
 		4220A4DF15F55D120055EE35 /* CancelButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CancelButton.png; sourceTree = "<group>"; };
 		4220A4E015F55D120055EE35 /* AcceptButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcceptButton.png; sourceTree = "<group>"; };
 		4220A4E115F55D120055EE35 /* AcceptButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcceptButtonSelected.png; sourceTree = "<group>"; };
-		4220A4E215F55D120055EE35 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		4220A4E315F55D120055EE35 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4220A4E415F55D120055EE35 /* AngleWarning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AngleWarning.png; sourceTree = "<group>"; };
 		4220A4E515F55D120055EE35 /* SmartLaunch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SmartLaunch@2x.png"; sourceTree = "<group>"; };
 		4220A4E615F55D120055EE35 /* SmartLaunch@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SmartLaunch@1x.png"; sourceTree = "<group>"; };
@@ -153,6 +152,10 @@
 		4220A51715F55D8D0055EE35 /* West Coast Hybrids.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "West Coast Hybrids.png"; sourceTree = "<group>"; };
 		4220A53B15F561CF0055EE35 /* Goblin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Goblin@2x.png"; sourceTree = "<group>"; };
 		4220A53C15F561CF0055EE35 /* Goblin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Goblin.png; sourceTree = "<group>"; };
+		4220A54015F57E190055EE35 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4220A54115F57E190055EE35 /* Default@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.PNG"; sourceTree = "<group>"; };
+		4220A54415F57E7B0055EE35 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4220A54615F57E820055EE35 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4256930515F4893000F7BABC /* Smart Launch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Launch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4256930915F4893000F7BABC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4256930B15F4893000F7BABC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -234,8 +237,8 @@
 		4220A53115F55DEF0055EE35 /* System Images */ = {
 			isa = PBXGroup;
 			children = (
-				4220A4E215F55D120055EE35 /* Default.png */,
-				4220A4E315F55D120055EE35 /* Default@2x.png */,
+				4220A54015F57E190055EE35 /* Default.png */,
+				4220A54115F57E190055EE35 /* Default@2x.PNG */,
 				4220A4E515F55D120055EE35 /* SmartLaunch@2x.png */,
 				4220A4E615F55D120055EE35 /* SmartLaunch@1x.png */,
 			);
@@ -264,6 +267,8 @@
 		425692FA15F4893000F7BABC = {
 			isa = PBXGroup;
 			children = (
+				4220A54615F57E820055EE35 /* Default@2x.png */,
+				4220A54415F57E7B0055EE35 /* Default.png */,
 				4256930F15F4893000F7BABC /* Smart Launch */,
 				4256930815F4893000F7BABC /* Frameworks */,
 				4256930615F4893000F7BABC /* Products */,
@@ -412,8 +417,6 @@
 				4220A4EB15F55D120055EE35 /* CancelButton.png in Resources */,
 				4220A4EC15F55D120055EE35 /* AcceptButton.png in Resources */,
 				4220A4ED15F55D120055EE35 /* AcceptButtonSelected.png in Resources */,
-				4220A4EE15F55D120055EE35 /* Default.png in Resources */,
-				4220A4EF15F55D120055EE35 /* Default@2x.png in Resources */,
 				4220A4F015F55D120055EE35 /* AngleWarning.png in Resources */,
 				4220A4F115F55D120055EE35 /* SmartLaunch@2x.png in Resources */,
 				4220A4F215F55D120055EE35 /* SmartLaunch@1x.png in Resources */,
@@ -448,6 +451,9 @@
 				4220A52D15F55D8D0055EE35 /* West Coast Hybrids.png in Resources */,
 				4220A53D15F561CF0055EE35 /* Goblin@2x.png in Resources */,
 				4220A53E15F561CF0055EE35 /* Goblin.png in Resources */,
+				4220A54315F57E190055EE35 /* Default@2x.PNG in Resources */,
+				4220A54515F57E7B0055EE35 /* Default.png in Resources */,
+				4220A54715F57E820055EE35 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
