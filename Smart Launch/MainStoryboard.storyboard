@@ -364,30 +364,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="SPW-Nl-W6S">
-                            <rect key="frame" x="0.0" y="352" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <items>
-                                <barButtonItem systemItem="cancel" id="RZ3-3Y-7Sh">
-                                    <connections>
-                                        <action selector="cancelButtonPressed:" destination="zQV-Vm-7Uj" id="STc-R9-S5D"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="R0p-jJ-4iu"/>
-                                <barButtonItem systemItem="trash" id="Loz-kB-avz">
-                                    <color key="tintColor" red="1" green="0.34556255400000002" blue="0.35735250839999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <connections>
-                                        <action selector="deleteButtonPressed:" destination="zQV-Vm-7Uj" id="l2P-qO-I5n"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="FAK-KN-H5V"/>
-                                <barButtonItem systemItem="save" id="ND6-vG-fTm">
-                                    <connections>
-                                        <action selector="saveButtonPressed:" destination="zQV-Vm-7Uj" id="5MP-Bk-TR8"/>
-                                    </connections>
-                                </barButtonItem>
-                            </items>
-                        </toolbar>
                         <sections>
                             <tableViewSection id="Nnu-XM-fqv">
                                 <cells>
@@ -662,11 +638,24 @@
                             <outlet property="delegate" destination="zQV-Vm-7Uj" id="tlG-8C-Tps"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem systemItem="cancel" id="RZ3-3Y-7Sh">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="zQV-Vm-7Uj" id="STc-R9-S5D"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="EUc-1V-VSD"/>
+                        <barButtonItem systemItem="save" id="ND6-vG-fTm">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="zQV-Vm-7Uj" id="5MP-Bk-TR8"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="Xh6-JS-c1v"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="cancelButton" destination="RZ3-3Y-7Sh" id="eqz-E3-uG7"/>
                         <outlet property="cdField" destination="0db-Mq-psK" id="Wft-hg-csk"/>
-                        <outlet property="deleteButton" destination="Loz-kB-avz" id="ESA-JD-ddp"/>
                         <outlet property="diamField" destination="VzY-UN-hRW" id="6x4-Mo-zcQ"/>
                         <outlet property="diamUnitsLabel" destination="Stj-K4-p0F" id="Aq4-X5-9GN"/>
                         <outlet property="kitNameField" destination="QkL-bv-fDb" id="Pg4-Ul-TFU"/>
@@ -680,7 +669,6 @@
                         <outlet property="motorDiamUnitsLabel" destination="j6E-Jo-Ivw" id="No3-DN-I8F"/>
                         <outlet property="nameField" destination="zuO-C6-ztX" id="Hey-kP-e0j"/>
                         <outlet property="saveButton" destination="ND6-vG-fTm" id="6wd-Gy-IwX"/>
-                        <outlet property="toolbar" destination="SPW-Nl-W6S" id="md3-3t-KAe"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -751,14 +739,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Order Results by:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="E3q-nt-i6B">
-                                <rect key="frame" x="20" y="224" width="186" height="21"/>
+                                <rect key="frame" x="20" y="275" width="186" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" id="UPU-M5-ha4">
-                                <rect key="frame" x="20" y="253" width="280" height="44"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="UPU-M5-ha4">
+                                <rect key="frame" x="20" y="304" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Brand"/>
@@ -770,27 +758,21 @@
                                 </connections>
                             </segmentedControl>
                             <pickerView contentMode="scaleToFill" id="7QI-te-Bke">
-                                <rect key="frame" x="40" y="0.0" width="240" height="216"/>
+                                <rect key="frame" x="40" y="20" width="240" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YPZ-cS-1Ww">
-                                <rect key="frame" x="118" y="309" width="85" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" title="Search">
-                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="EdF-aV-KbJ" kind="push" identifier="motorSearchSegue" id="ACy-Ax-09y"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.82033262380000005" green="0.89572063660000001" blue="0.92915675949999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="lKn-KL-2KG"/>
+                        <barButtonItem title="List Motors" id="YPA-hA-Pk0">
+                            <connections>
+                                <segue destination="EdF-aV-KbJ" kind="push" identifier="motorSearchSegue" id="R2K-BE-5Ag"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="hjE-Gs-QBm"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="aPv-at-WlO">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="OKS-jr-6UK">
@@ -806,11 +788,11 @@
                             </connections>
                         </segmentedControl>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="pickerView" destination="7QI-te-Bke" id="u2o-Ys-Dit"/>
                         <outlet property="search1Control" destination="OKS-jr-6UK" id="rdL-yZ-58G"/>
                         <outlet property="search2Control" destination="UPU-M5-ha4" id="8ZE-5i-LXL"/>
-                        <outlet property="searchButton" destination="YPZ-cS-1Ww" id="jLH-0d-gvX"/>
                     </connections>
                 </viewController>
             </objects>
@@ -879,8 +861,8 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="redraw" id="C5T-h5-ntl" customClass="SLMotorThrustCurveView">
-                                <rect key="frame" x="48" y="195" width="256" height="157"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <rect key="frame" x="48" y="182" width="256" height="157"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Manufacturer:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Ltx-g2-IUv">
@@ -982,8 +964,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="mqW-Dj-WAS">
-                                <rect key="frame" x="155" y="370" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="155" y="347" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -1799,7 +1781,6 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLRocketPropertiesTVC.h"/>
             <relationships>
                 <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="deleteButtonPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="motorDiameterChanged:" candidateClass="UIStepper"/>
                 <relationship kind="action" name="saveButtonPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="textEditingDidBegin:" candidateClass="UITextField"/>

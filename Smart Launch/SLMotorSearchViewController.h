@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *search1Control;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *search2Control;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
-@property (weak, nonatomic) IBOutlet UIButton *searchButton;
 @property (strong, nonatomic) NSDictionary *manufacturerNames;
 @property (strong, nonatomic) NSArray *allMotors;
 @property (weak, nonatomic) id<SLSimulationDelegate> delegate;

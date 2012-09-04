@@ -19,7 +19,6 @@
 @synthesize search1Control;
 @synthesize search2Control;
 @synthesize pickerView;
-@synthesize searchButton;
 @synthesize manufacturerNames = _manufacturerNames;
 @synthesize impulseClasses = _impulseClasses;
 @synthesize motorDiameters = _motorDiameters;
@@ -200,7 +199,6 @@ NSInteger sortFunction(id md1, id md2, void *context){
     [self setSearch1Control:nil];
     [self setSearch2Control:nil];
     [self setPickerView:nil];
-    [self setSearchButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

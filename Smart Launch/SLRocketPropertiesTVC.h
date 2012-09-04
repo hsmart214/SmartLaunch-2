@@ -28,7 +28,6 @@
 #pragma mark Model
 @property (nonatomic, strong) Rocket *rocket;
 
-@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *kitNameField;
 @property (weak, nonatomic) IBOutlet UITextField *manField;
@@ -45,7 +44,6 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *deleteButton;
 
 @property (nonatomic, weak) id <SLRocketsTVCDelegate> delegate;
 @end

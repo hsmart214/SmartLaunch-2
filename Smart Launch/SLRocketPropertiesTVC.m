@@ -25,7 +25,6 @@
 
 @synthesize oldRocket = _oldRocket;
 @synthesize rocket = _rocket;
-@synthesize toolbar = _toolbar;
 @synthesize delegate = _delegate;
 @synthesize scrollView = _scrollView;
 @synthesize activeField = _activeField;
@@ -44,7 +43,6 @@
 @synthesize motorDiamUnitsLabel;
 @synthesize cancelButton;
 @synthesize saveButton;
-@synthesize deleteButton;
 @synthesize validMotorDiameters = _validMotorDiameters;
 @synthesize motorDiamStepper;
 
@@ -115,21 +113,13 @@
     self.tableView.delegate = self;
     if (!_rocket){
         _rocket = [[Rocket alloc] init];
-        // if we were not passed a Rocket* then we don't need the delete button (at index 2)
-        NSMutableArray *items = [NSMutableArray array];
-        for (NSInteger i = 0; i < [self.toolbar.items count]; i++){
-            if (i != DELETE_BUTTON_INDEX) [items addObject:[self.toolbar.items objectAtIndex:i]];
-        }
-        self.toolbar.items = items;
         self.motorDiamStepper.value = [self.motorDiamStepper minimumValue];
         self.motorDiamLabel.text = [NSString stringWithFormat:@"%1.0f", self.motorDiamStepper.value];
         _rocket.motorSize = [NSNumber numberWithInteger:6];
     }else {
         self.oldRocket = [self.rocket copy];    // in case we need to delete this Rocket* later
     }
-    
-    [self registerForKeyboardNotifications];
-    
+        
     // set up the unit labels based on user preferences
     self.motorDiamUnitsLabel.text = [SLUnitsConvertor displayStringForKey:MOTOR_SIZE_UNIT_KEY];
     self.massUnitsLabel.text = [SLUnitsConvertor displayStringForKey:MASS_UNIT_KEY];
@@ -171,8 +161,6 @@
     [self setScrollView:nil];
     [self setMotorDiamLabel:nil];
     [self setMotorDiamUnitsLabel:nil];
-    [self setDeleteButton:nil];
-    [self setToolbar:nil];
     [self setRocket:nil];
     [self setMotorDiamStepper:nil];
     [super viewDidUnload];
@@ -214,48 +202,6 @@
 }
 
 
-
-// Call this method somewhere in your view controller setup code.
-- (void)registerForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWasShown:)
-                                                 name:UIKeyboardDidShowNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillBeHidden:)
-                                                 name:UIKeyboardWillHideNotification object:nil];
-    
-}
-
-// Called when the UIKeyboardDidShowNotification is sent.
-- (void)keyboardWasShown:(NSNotification*)aNotification
-{
-    NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-    self.scrollView.contentInset = contentInsets;
-    self.scrollView.scrollIndicatorInsets = contentInsets;
-    
-    // If active text field is hidden by keyboard, scroll it so it's visible
-    // Your application might not need or want this behavior.
-    CGRect aRect = self.view.frame;
-    aRect.size.height -= kbSize.height;
-    if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
-        CGPoint scrollPoint = CGPointMake(0.0, kbSize.height);
-        [self.scrollView setContentOffset:scrollPoint animated:YES];
-    }
-}
-
-// Called when the UIKeyboardWillHideNotification is sent
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
-{
-    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    self.scrollView.contentInset = contentInsets;
-    self.scrollView.scrollIndicatorInsets = contentInsets;
-}
-
 #pragma mark - UIStepper method
 
 - (IBAction)motorDiameterChanged:(UIStepper *)sender {
@@ -291,29 +237,11 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)deleteButtonPressed:(UIBarButtonItem *)sender {
-    NSString *message = [NSString stringWithFormat:@"Delete %@?", self.rocket.name];
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:message delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles: nil];
-    [actionSheet showInView:self.view];
-}
-
 
 // pop back without saving
 - (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
     if (self.oldRocket)[self.delegate SLRocketPropertiesTVC:self savedRocket:self.oldRocket];
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-#pragma mark - UIActionSheetDelegate methods
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == [actionSheet destructiveButtonIndex]){
-        [self.delegate SLRocketPropertiesTVC:self deletedRocket:self.oldRocket];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    if (buttonIndex ==[actionSheet cancelButtonIndex]){
-        // do nothing
-    }
 }
 
 #pragma mark - UITableViewDelegate method
