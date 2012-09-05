@@ -258,7 +258,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="31" id="Ufv-XD-w9u">
-                                        <rect key="frame" x="0.0" y="330" width="320" height="32"/>
+                                        <rect key="frame" x="0.0" y="330" width="320" height="31"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="30"/>
@@ -280,6 +280,31 @@
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9vk-EL-oW0">
                                                     <rect key="frame" x="245" y="4" width="35" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="31" id="9VQ-Y0-pNB">
+                                        <rect key="frame" x="0.0" y="361" width="320" height="32"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Thrust : Weight" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="deK-p7-qgf">
+                                                    <rect key="frame" x="20" y="4" width="122" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ZaG-DN-paM">
+                                                    <rect key="frame" x="193" y="4" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -327,6 +352,7 @@
                         <outlet property="motorCell" destination="bqh-aa-g7v" id="2fW-Cd-TGe"/>
                         <outlet property="rocketCell" destination="G5y-J9-mPG" id="ivL-0A-hF3"/>
                         <outlet property="spinner" destination="MtB-pR-vsv" id="SjI-BT-WXP"/>
+                        <outlet property="thrustToWeightLabel" destination="ZaG-DN-paM" id="Jvg-cK-mTt"/>
                         <outlet property="windDirectionButton" destination="nxu-FO-G1l" id="BEV-DQ-w73"/>
                     </connections>
                 </tableViewController>
@@ -1683,6 +1709,21 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                                                         <action selector="siteAltitudeChanged:" destination="spy-jN-gf0" eventType="valueChanged" id="ntg-3f-Hiz"/>
                                                     </connections>
                                                 </stepper>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gE5-Hi-W1G">
+                                                    <rect key="frame" x="20" y="3" width="114" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="GPS altitude">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="GPSAltitudeRequested:" destination="spy-jN-gf0" eventType="touchUpInside" id="PWd-xI-2jI"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -1697,6 +1738,7 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                     </tableView>
                     <navigationItem key="navigationItem" title="Sim Settings" id="2pq-jn-pIP"/>
                     <connections>
+                        <outlet property="GPSAltButton" destination="gE5-Hi-W1G" id="iEG-Gd-GOg"/>
                         <outlet property="launchAngleLabel" destination="H5g-ww-muH" id="D1Q-ef-Fur"/>
                         <outlet property="launchGuideLengthLabel" destination="h6N-BY-2my" id="g7t-D6-66e"/>
                         <outlet property="launchGuideLengthStepper" destination="4cy-X0-grf" id="hcE-kz-Mbm"/>
@@ -1752,7 +1794,6 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                 <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="search1Control" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="search2Control" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="searchButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="SLMotorTableViewController" superclassName="UITableViewController">
@@ -1788,7 +1829,6 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                 <relationship kind="action" name="textEditingDidEndOnExit:" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="cdField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="deleteButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="diamField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="diamUnitsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="kitNameField" candidateClass="UITextField"/>
@@ -1802,7 +1842,6 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                 <relationship kind="outlet" name="motorDiamUnitsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
         <class className="SLRocketsTableViewController" superclassName="UITableViewController">
@@ -1811,10 +1850,12 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
         <class className="SLSimSettingsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLSimSettingsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="GPSAltitudeRequested:" candidateClass="UIButton"/>
                 <relationship kind="action" name="launchGuideLengthChanged:" candidateClass="UIStepper"/>
                 <relationship kind="action" name="siteAltitudeChanged:" candidateClass="UIStepper"/>
                 <relationship kind="action" name="windDirectionChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="action" name="windVelocityChanged:" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="GPSAltButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="launchAngleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="launchGuideLengthLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="launchGuideLengthStepper" candidateClass="UIStepper"/>
@@ -1831,7 +1872,6 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
         <class className="SLTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="infoButtonPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="windDirectionDidChange:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="apogeeAltitudeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="apogeeAltitudeUnitsLabel" candidateClass="UILabel"/>
@@ -1843,6 +1883,7 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                 <relationship kind="outlet" name="motorCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="rocketCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="thrustToWeightLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="windDirectionButton" candidateClass="UIButton"/>
             </relationships>
         </class>
@@ -1869,7 +1910,7 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="eYh-Tw-iw8"/>
         <segue reference="kMz-de-aHC"/>
-        <segue reference="He7-Fk-vJN"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,7 +11,7 @@
 
 #define INITIAL_ROW_COUNT 7
 
-@interface SLSimSettingsViewController ()<UITableViewDelegate, UITableViewDataSource, SLSimulationDelegate>
+@interface SLSimSettingsViewController ()<UITableViewDelegate, UITableViewDataSource, SLSimulationDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *launchAngleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *windVelocityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *windVelocityUnitsLabel;
@@ -23,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *siteAltitudeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *siteAltitudeUnitsLabel;
 @property (weak, nonatomic) IBOutlet UIStepper *siteAltitudeStepper;
+@property (weak, nonatomic) IBOutlet UIButton *GPSAltButton;
+@property (nonatomic, strong) CLLocationManager* locationManager;
+@property (nonatomic, strong) NSString *launchGuideLengthFormatString;
 
 @property (strong, nonatomic) NSMutableDictionary *settings;
 
@@ -42,6 +45,9 @@
 @synthesize siteAltitudeLabel = _siteAltitudeLabel;
 @synthesize siteAltitudeUnitsLabel = _siteAltitudeUnitsLabel;
 @synthesize siteAltitudeStepper = _siteAltitudeStepper;
+@synthesize GPSAltButton = _GPSAltButton;
+@synthesize locationManager = _locationManager;
+@synthesize launchGuideLengthFormatString = _launchGuideLengthFormatString;
 
 @synthesize delegate = _delegate;
 
@@ -52,6 +58,15 @@
         _settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
     }
     return _settings;
+}
+
+- (CLLocationManager *)locationManager{
+    if (!_locationManager){
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.purpose = NSLocalizedString(@"Only used to determine your altitude.", nil);
+        _locationManager.delegate = self;
+    }
+    return _locationManager;
 }
 
 - (void)saveSettings{
@@ -71,18 +86,39 @@
     self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", sender.value];
 }
 
-//- (IBAction)temperatureChanged:(UISlider *)sender {
-//    self.temperatureLabel.text = [NSString stringWithFormat:@"%1.0f", sender.value];
-//}
-
 - (IBAction)launchGuideLengthChanged:(UIStepper *)sender {
-    self.launchGuideLengthLabel.text = [NSString stringWithFormat:@"%1.0f", sender.value];
+    self.launchGuideLengthLabel.text = [NSString stringWithFormat:self.launchGuideLengthFormatString, sender.value];
 }
 
 - (IBAction)siteAltitudeChanged:(UIStepper *)sender {
     //    double alt = sender.value;
     //    alt = floor(alt/self.alt_step) * self.alt_step;
     self.siteAltitudeLabel.text = [NSString stringWithFormat:@"%1.0f", sender.value];
+}
+
+- (IBAction)GPSAltitudeRequested:(UIButton *)sender {
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized ||
+        [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
+        [self.locationManager startUpdatingLocation];
+    }
+    
+}
+
+#pragma mark - CLLocationManagerDelegate methods
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+    // If it's a relatively recent event, turn off updates to save power
+    NSDate* eventDate = newLocation.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) < 15.0)
+    {
+        NSNumber *altGPSmeters = [NSNumber numberWithFloat: newLocation.altitude];
+        NSNumber *altGPSforDisplay = [SLUnitsConvertor displayUnitsOf:altGPSmeters forKey:ALT_MSL_KEY];
+        self.siteAltitudeLabel.text = [NSString stringWithFormat:@"%1.0f",[altGPSforDisplay floatValue]];
+        self.siteAltitudeStepper.value = [altGPSforDisplay floatValue];
+        [self.locationManager stopUpdatingLocation];
+    }
+    // else skip the event and process the next one.
 }
 
 #pragma mark - SLSimulationDelegate method
@@ -146,14 +182,20 @@
         self.windVelocityStepper.stepValue = 1.0;
     }
     if ([[unitPrefs objectForKey:LENGTH_UNIT_KEY] isEqualToString:K_FEET]){
+        self.launchGuideLengthFormatString = @"%1.1f";
         [self.launchGuideLengthStepper setMaximumValue:20];
         self.launchGuideLengthStepper.stepValue = 0.5;
+        self.launchGuideLengthStepper.minimumValue = 0.5;
     }else if ([[unitPrefs objectForKey:LENGTH_UNIT_KEY] isEqualToString:K_INCHES]){
+        self.launchGuideLengthFormatString = @"%1.0f";
         [self.launchGuideLengthStepper setMaximumValue:240];
         self.launchGuideLengthStepper.stepValue = 2.0;
+        self.launchGuideLengthStepper.minimumValue = 4.0;
     }else{//must be meters
+        self.launchGuideLengthFormatString = @"%1.1f";
         [self.launchGuideLengthStepper setMaximumValue:7];
         self.launchGuideLengthStepper.stepValue = 0.2;
+        self.launchGuideLengthStepper.minimumValue = 0.2;
     }
     
     float launchAngle = [[self.settings objectForKey:LAUNCH_ANGLE_KEY] floatValue];
@@ -162,7 +204,8 @@
     self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", windVelocity];
     self.windVelocityStepper.value = windVelocity;
     float guideLength = [[SLUnitsConvertor displayUnitsOf:[self.settings objectForKey:LAUNCH_GUIDE_LENGTH_KEY] forKey:LENGTH_UNIT_KEY] floatValue];
-    self.launchGuideLengthLabel.text = [NSString stringWithFormat:@"%1.0f", guideLength];
+    if (guideLength < self.launchGuideLengthStepper.minimumValue) guideLength = self.launchGuideLengthStepper.minimumValue;
+    self.launchGuideLengthLabel.text = [NSString stringWithFormat:self.launchGuideLengthFormatString, guideLength];
     self.launchGuideLengthStepper.value = guideLength;
     float altitude = [[SLUnitsConvertor displayUnitsOf:[self.settings objectForKey:LAUNCH_ALTITUDE_KEY] forKey:ALT_UNIT_KEY] floatValue];
     float alt = floorf(altitude/self.siteAltitudeStepper.stepValue) * self.siteAltitudeStepper.stepValue;
@@ -201,6 +244,7 @@
     [self setSiteAltitudeLabel:nil];
     [self setSiteAltitudeUnitsLabel:nil];
     [self setSiteAltitudeStepper:nil];
+    [self setGPSAltButton:nil];
     [super viewDidUnload];
 }
 

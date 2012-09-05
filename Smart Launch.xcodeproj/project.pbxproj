@@ -63,6 +63,7 @@
 		4220A53E15F561CF0055EE35 /* Goblin.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A53C15F561CF0055EE35 /* Goblin.png */; };
 		4220A54A15F57F190055EE35 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A54815F57F190055EE35 /* Default.png */; };
 		4220A54B15F57F190055EE35 /* Default@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 4220A54915F57F190055EE35 /* Default@2x.PNG */; };
+		4232060515F7124F0027A18E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4232060415F7124F0027A18E /* CoreLocation.framework */; };
 		4249475215F5802C00BBBDF6 /* SmartLaunch.png in Resources */ = {isa = PBXBuildFile; fileRef = 4249475115F5802C00BBBDF6 /* SmartLaunch.png */; };
 		4249475415F5803000BBBDF6 /* SmartLaunch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4249475315F5803000BBBDF6 /* SmartLaunch@2x.png */; };
 		4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930915F4893000F7BABC /* UIKit.framework */; };
@@ -151,6 +152,7 @@
 		4220A53C15F561CF0055EE35 /* Goblin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Goblin.png; sourceTree = "<group>"; };
 		4220A54815F57F190055EE35 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4220A54915F57F190055EE35 /* Default@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.PNG"; sourceTree = "<group>"; };
+		4232060415F7124F0027A18E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4249475115F5802C00BBBDF6 /* SmartLaunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SmartLaunch.png; path = ../SmartLaunch.png; sourceTree = "<group>"; };
 		4249475315F5803000BBBDF6 /* SmartLaunch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SmartLaunch@2x.png"; path = "../SmartLaunch@2x.png"; sourceTree = "<group>"; };
 		4256930515F4893000F7BABC /* Smart Launch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Launch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4232060515F7124F0027A18E /* CoreLocation.framework in Frameworks */,
 				4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */,
 				4256930C15F4893000F7BABC /* Foundation.framework in Frameworks */,
 				4256930E15F4893000F7BABC /* CoreGraphics.framework in Frameworks */,
@@ -281,6 +284,7 @@
 		4256930815F4893000F7BABC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4232060415F7124F0027A18E /* CoreLocation.framework */,
 				4256930915F4893000F7BABC /* UIKit.framework */,
 				4256930B15F4893000F7BABC /* Foundation.framework */,
 				4256930D15F4893000F7BABC /* CoreGraphics.framework */,

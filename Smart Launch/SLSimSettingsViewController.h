@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SLSimulationDelegate.h"
 #import "SLUnitsConvertor.h"
-
+#import <CoreLocation/CoreLocation.h>
 
 
 @interface SLSimSettingsViewController : UITableViewController <SLSimulationDelegate>

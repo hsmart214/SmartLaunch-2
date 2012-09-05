@@ -40,9 +40,12 @@ NSInteger sortFunction(id md1, id md2, void *context){
 
 - (NSArray *)allMotors{
     if (!_allMotors){
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        _allMotors = [defaults objectForKey:ALL_MOTORS_KEY];
-        if (_allMotors) return _allMotors;
+        NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
+        NSURL *motorFileURL = [cacheURL URLByAppendingPathComponent:MOTOR_CACHE_FILENAME];
+        if ([[NSFileManager defaultManager]fileExistsAtPath:[motorFileURL path]]){
+            _allMotors = [NSArray arrayWithContentsOfURL:motorFileURL];
+            return _allMotors;
+        }
         NSMutableArray *build = [NSMutableArray array];
         NSBundle *mainBundle = [NSBundle mainBundle];
         NSURL *motorsURL = [mainBundle URLForResource:@"motors" withExtension:@"txt"];
@@ -77,7 +80,6 @@ NSInteger sortFunction(id md1, id md2, void *context){
             [motorData setValue:[chunks objectAtIndex:4] forKey:PROP_MASS_KEY];
             [motorData setValue:[chunks objectAtIndex:5] forKey:MOTOR_MASS_KEY];
             [motorData setValue:[self.manufacturerNames objectForKey:[chunks objectAtIndex:6]] forKey:MAN_KEY];
-            // NSLog(@"%@", [chunks objectAtIndex:0]);
             // figure out the impulse class from the motor name in the header line
             
             NSString *mname = [chunks objectAtIndex:0];
@@ -106,9 +108,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
             [build addObject:motorData];
         }
         _allMotors = [[NSArray arrayWithArray:build] sortedArrayUsingFunction:sortFunction context:NULL];
-        [defaults setObject:_allMotors forKey:ALL_MOTORS_KEY];
-        [defaults synchronize];
-        // NSLog(@"Loaded %d motors", [build count]);
+        [_allMotors writeToURL:motorFileURL atomically:YES];
     }
     return _allMotors;
 }

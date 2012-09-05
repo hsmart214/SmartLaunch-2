@@ -61,15 +61,13 @@
 //        [self performSegueWithIdentifier:@"unitsSegue" sender:self];
     }
     if (indexPath.row == 1){
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-        NSString *message = [NSString stringWithFormat:@"Delete all saved Rockets?"];
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:message delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles: nil];
-        [actionSheet showInView:self.view];
-    } else if (indexPath.row == 2){
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults removeObjectForKey:ALL_MOTORS_KEY];
-        [defaults synchronize];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
+        NSURL *motorFileURL = [cacheURL URLByAppendingPathComponent:MOTOR_CACHE_FILENAME];
+        if ([[NSFileManager defaultManager]fileExistsAtPath:[motorFileURL path]]){
+            [[NSFileManager defaultManager] removeItemAtURL:motorFileURL error:nil];
+        }
+
     }
 }
 

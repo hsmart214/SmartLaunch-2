@@ -22,12 +22,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *burnoutToApogeeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *apogeeAltitudeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *apogeeAltitudeUnitsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *thrustToWeightLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+
 @property (strong, nonatomic) Rocket *rocket;
 @property (strong, nonatomic) RocketMotor *motor;
 @property (strong, nonatomic) SLPhysicsModel *model;
 @property (strong, nonatomic) NSMutableDictionary *settings;
 @property (atomic) BOOL simRunning;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 @end
 
@@ -39,6 +41,7 @@
 @synthesize settings = _settings;
 @synthesize simRunning = _simRunning;
 @synthesize spinner;
+@synthesize thrustToWeightLabel;
 
 @synthesize rocketCell;
 @synthesize motorCell;
@@ -170,6 +173,7 @@
 }
 
 - (void)updateDisplay{
+    self.thrustToWeightLabel.text = [NSString stringWithFormat:@"%1.1f", ([[self.motor peakThrust] floatValue])/(([self.rocket.mass floatValue] + [self.motor.loadedMass floatValue])*(GRAV_ACCEL))];
     self.rocketCell.textLabel.text = self.rocket.name;
     self.rocketCell.detailTextLabel.text = [NSString stringWithFormat:@"%dmm", [self.rocket.motorSize intValue]];
     self.motorCell.textLabel.text = self.motor.name;
@@ -227,9 +231,6 @@
         dispatch_release(queue);
     }
 }
-- (IBAction)infoButtonPressed:(UIBarButtonItem *)sender {
-    
-}
 
 - (void)dismissModalViewController{
     [self.presentedViewController dismissModalViewControllerAnimated:YES];
@@ -279,6 +280,7 @@
     [self setApogeeAltitudeLabel:nil];
     [self setApogeeAltitudeUnitsLabel:nil];
     [self setSpinner:nil];
+    [self setThrustToWeightLabel:nil];
     [super viewDidUnload];
 }
 
