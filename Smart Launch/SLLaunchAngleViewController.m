@@ -173,10 +173,13 @@
     [self.angleSlider setValue: launchAngle animated:YES];
     self.angleView.dataSource = self;
     
-    // check to see if the device has a camera.  If not, disable the camera button in the toolbar
+    // check to see if the device has a camera.  If not, remove the camera button from the toolbar
     
     if (![UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerSourceTypeCamera]){
-        [self.cameraButton setEnabled:NO];
+        NSMutableArray *buttons = [self.toolbarItems mutableCopy];
+        [buttons removeObject:self.cameraButton];
+        [self setToolbarItems:buttons animated:YES];
+        self.cameraButton = nil;
     }
 }
 

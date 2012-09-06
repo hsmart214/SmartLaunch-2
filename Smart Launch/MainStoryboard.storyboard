@@ -1220,7 +1220,7 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1390" y="1412"/>
+            <point key="canvasLocation" x="1848" y="1618"/>
         </scene>
         <!--UnitsTVC - Unit Preferences-->
         <scene sceneID="uMR-4z-ReG">
@@ -1483,7 +1483,7 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2176" y="1344"/>
+            <point key="canvasLocation" x="2299" y="1364"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zwB-On-akz">
@@ -1505,7 +1505,7 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="835" y="1412"/>
+            <point key="canvasLocation" x="1390" y="1618"/>
         </scene>
         <!--Motor PrefsTVC - Motor Preferences-->
         <scene sceneID="RSD-3e-Pzg">
@@ -1556,7 +1556,7 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2176" y="1927"/>
+            <point key="canvasLocation" x="2299" y="1947"/>
         </scene>
         <!--Sim Settings View Controller - Sim Settings-->
         <scene sceneID="YHu-gs-V94">
