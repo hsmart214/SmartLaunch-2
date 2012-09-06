@@ -1175,15 +1175,15 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                                             <segue destination="Biw-b4-lIz" kind="push" identifier="unitsSegue" id="Iok-AC-eV6"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Muo-ci-vct" style="IBUITableViewCellStyleDefault" id="2BK-3Z-fcc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Muo-ci-vct" style="IBUITableViewCellStyleDefault" id="2BK-3Z-fcc">
                                         <rect key="frame" x="0.0" y="285" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Reset Motor Data" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Muo-ci-vct">
-                                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Motor Preferences" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Muo-ci-vct">
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1192,6 +1192,9 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="fnV-kq-I4I" kind="push" identifier="Motor Preferences" id="gx8-fy-Y6l"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1217,7 +1220,7 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1848" y="1412"/>
+            <point key="canvasLocation" x="1390" y="1412"/>
         </scene>
         <!--UnitsTVC - Unit Preferences-->
         <scene sceneID="uMR-4z-ReG">
@@ -1480,7 +1483,7 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2299" y="1412"/>
+            <point key="canvasLocation" x="2176" y="1344"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zwB-On-akz">
@@ -1502,7 +1505,58 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1390" y="1412"/>
+            <point key="canvasLocation" x="835" y="1412"/>
+        </scene>
+        <!--Motor PrefsTVC - Motor Preferences-->
+        <scene sceneID="RSD-3e-Pzg">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EEM-mr-VxI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="fnV-kq-I4I" customClass="SLMotorPrefsTVC" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="VpY-15-88I">
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Motor Prefs Cell" id="XWS-cp-ciK">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="fnV-kq-I4I" id="vdE-vj-crg"/>
+                            <outlet property="delegate" destination="fnV-kq-I4I" id="910-3k-gDH"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Select All" id="nbG-kp-4qz">
+                            <connections>
+                                <action selector="selectAllMotorKeys:" destination="fnV-kq-I4I" id="scq-zG-SiW"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="2ho-jV-fi2"/>
+                        <barButtonItem title="Revert" id="icM-wv-TyU">
+                            <connections>
+                                <action selector="revertPrefs:" destination="fnV-kq-I4I" id="hRI-DE-09g"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="kr7-q3-AVb"/>
+                        <barButtonItem systemItem="save" id="yij-mP-BwS">
+                            <connections>
+                                <action selector="savePrefsAndReturn:" destination="fnV-kq-I4I" id="JQg-jR-SLM"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Motor Preferences" id="OCh-XT-FSD"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="2176" y="1927"/>
         </scene>
         <!--Sim Settings View Controller - Sim Settings-->
         <scene sceneID="YHu-gs-V94">
@@ -1784,6 +1838,14 @@ The free-flight angle of attack is displayed to give the rocketeer an idea of ho
                 <relationship kind="outlet" name="calibrateButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="cameraButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="motionButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="SLMotorPrefsTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorPrefsTVC.h"/>
+            <relationships>
+                <relationship kind="action" name="revertPrefs:"/>
+                <relationship kind="action" name="savePrefsAndReturn:"/>
+                <relationship kind="action" name="selectAllMotorKeys:"/>
             </relationships>
         </class>
         <class className="SLMotorSearchViewController" superclassName="UIViewController">

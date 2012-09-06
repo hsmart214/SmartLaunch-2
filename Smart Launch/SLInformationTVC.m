@@ -56,12 +56,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section != 1) return;
-    if (indexPath.row == 0){
-//        [self performSegueWithIdentifier:@"unitsSegue" sender:self];
-    }
-    if (indexPath.row == 1){
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == 2){
         NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
         NSURL *motorFileURL = [cacheURL URLByAppendingPathComponent:MOTOR_CACHE_FILENAME];
         if ([[NSFileManager defaultManager]fileExistsAtPath:[motorFileURL path]]){
@@ -72,10 +68,6 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString:@"unitsSegue"]) {
-//        [segue.destinationViewController setDelegate:self.delegate];
-//        [segue.destinationViewController setPresenter:self];
-    }
 }
 
 #pragma mark - SLModalPresenterDelegate method

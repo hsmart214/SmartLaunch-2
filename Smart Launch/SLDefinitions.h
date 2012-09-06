@@ -106,6 +106,7 @@ typedef CGPoint ThrustPoint;
 // Interface prefs defines
 
 #define CELL_DETAIL_DATA_KEY @"SmartLaunch_Cell_Data_Key"
+#define MOTOR_PREFS_KEY @"SmartLaunch_Motor_Preferences_Key"
 
 // had to add the K_ prefix to keep from grep'ing inappropriate things
 
