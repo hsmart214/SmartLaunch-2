@@ -12,6 +12,11 @@
 @interface SLMotorSearchViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 @property (nonatomic, strong) NSArray *impulseClasses;
 @property (nonatomic, strong) NSArray *motorDiameters;
+@property (nonatomic, strong) NSDictionary *motorKeyPrefs; // Dict of NSNumber BOOLs = should show motors with this key?
+
+@property (nonatomic, strong) NSArray *preferredManufacturers;
+@property (nonatomic, strong) NSArray *preferredImpulseClasses;
+@property (nonatomic, strong) NSArray *preferredMotorDiameters;
 @end
 
 @implementation SLMotorSearchViewController
@@ -24,6 +29,7 @@
 @synthesize motorDiameters = _motorDiameters;
 @synthesize allMotors = _allMotors;
 @synthesize delegate = _delegate;
+@synthesize motorKeyPrefs = _motorKeyPrefs;
 
 NSInteger sortFunction(id md1, id md2, void *context){
     NSString *first = [(NSDictionary *)md1 objectForKey:NAME_KEY];
@@ -36,6 +42,16 @@ NSInteger sortFunction(id md1, id md2, void *context){
     if (thrust1 > thrust2) return NSOrderedDescending;
     if (thrust1 < thrust2) return NSOrderedAscending;
     return NSOrderedSame;
+}
+
+- (NSDictionary *)motorKeyPrefs{
+    // note that these preferences cannot change while this controller is alive
+    if (!_motorKeyPrefs){
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        _motorKeyPrefs = [defaults objectForKey:MOTOR_PREFS_KEY];
+        if (!_motorKeyPrefs) _motorKeyPrefs = [NSDictionary dictionary];
+    }
+    return _motorKeyPrefs;
 }
 
 - (NSArray *)allMotors{
@@ -105,7 +121,16 @@ NSInteger sortFunction(id md1, id md2, void *context){
             }
             [motorData setValue:times forKey:TIME_KEY];
             [motorData setValue:thrusts forKey:THRUST_KEY];
-            [build addObject:motorData];
+            
+            //check to see if any of the keys are exluded by the user's preference
+            // first add "mm" to the motor diameter string
+            NSString *motorDiamKey = (NSString *)[[motorData objectForKey:MOTOR_DIAM_KEY] stringByAppendingString:@"mm"];
+            if ([[self.motorKeyPrefs objectForKey:[motorData objectForKey:MAN_KEY]] boolValue] &&
+                [[self.motorKeyPrefs objectForKey:[motorData objectForKey:IMPULSE_KEY]] boolValue] &&
+                [[self.motorKeyPrefs objectForKey:motorDiamKey] boolValue])
+            {
+                [build addObject:motorData]; // if not excluded, add it to the growing list off allMotors
+            }
         }
         _allMotors = [[NSArray arrayWithArray:build] sortedArrayUsingFunction:sortFunction context:NULL];
         [_allMotors writeToURL:motorFileURL atomically:YES];
@@ -123,10 +148,10 @@ NSInteger sortFunction(id md1, id md2, void *context){
                               @"Animal Motor Works", @"AMW",
                               @"Apogee", @"Apogee",
                               @"Cesaroni", @"CTI",
-                              @"Contrail", @"Contrail_Rockets",
+                              @"Contrail Rockets", @"Contrail_Rockets",
                               @"Ellis Mountain", @"Ellis",
                               @"Estes", @"Estes",
-                              @"Gorilla", @"Gorilla_Rocket_Motors",
+                              @"Gorilla Rocket Motors", @"Gorilla_Rocket_Motors",
                               @"Hypertek", @"HT",
                               @"Kosdon by Aerotech", @"KA",
                               @"Kosdon", @"KOS-TRM",
@@ -143,19 +168,47 @@ NSInteger sortFunction(id md1, id md2, void *context){
 }
 
 - (NSArray *)impulseClasses{
-    if (!_impulseClasses){
-        _impulseClasses = [NSArray arrayWithObjects:@"1/8 A", @"1/4 A", @"1/2 A", @"A", @"B", @"C", @"D", 
-                           @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", nil];
-    }
-    return _impulseClasses;
+    return [RocketMotor impulseClasses];
 }
 
 - (NSArray  *)motorDiameters{
-    if (!_motorDiameters){
-        _motorDiameters = [NSArray arrayWithObjects:@"6mm", @"13mm", @"18mm", @"24mm", @"29mm", 
-                           @"38mm", @"54mm", @"75mm", @"98mm", @"150mm", nil];
+    return [RocketMotor motorDiameters];
+}
+
+- (NSArray *)preferredManufacturers{
+    // note that these preferences cannot change while this controller is alive
+    if (!_preferredManufacturers){
+        NSMutableArray *prefMan = [NSMutableArray arrayWithCapacity:32];
+        for (NSString *key in [RocketMotor manufacturerNames]){
+            if ([[self.motorKeyPrefs objectForKey:key] boolValue]) [prefMan addObject:key];
+        }
+        _preferredManufacturers = [prefMan copy];
     }
-    return _motorDiameters;
+    return _preferredManufacturers;
+}
+
+- (NSArray *)preferredImpulseClasses{
+    // note that these preferences cannot change while this controller is alive
+    if (!_preferredImpulseClasses){
+        NSMutableArray *prefICs = [NSMutableArray arrayWithCapacity:32];
+        for (NSString *key in [RocketMotor impulseClasses]){
+            if ([[self.motorKeyPrefs objectForKey:key] boolValue]) [prefICs addObject:key];
+        }
+        _preferredImpulseClasses = [prefICs copy];
+    }
+    return _preferredImpulseClasses;
+}
+
+- (NSArray *)preferredMotorDiameters{
+    // note that these preferences cannot change while this controller is alive
+    if (!_preferredMotorDiameters){
+        NSMutableArray *prefDiams = [NSMutableArray arrayWithCapacity:16];
+        for (NSString *key in [RocketMotor motorDiameters]){
+            if ([[self.motorKeyPrefs objectForKey:key] boolValue]) [prefDiams addObject:key];
+        }
+        _preferredMotorDiameters = [prefDiams copy];
+    }
+    return _preferredMotorDiameters;
 }
 
 
@@ -211,13 +264,13 @@ NSInteger sortFunction(id md1, id md2, void *context){
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
     switch (self.search1Control.selectedSegmentIndex) {
         case 0:  // Motor manufacturer selected
-            return [self.manufacturerNames count];
+            return [self.preferredManufacturers count];
             break;
         case 1:  // Impulse Class selected
-            return [self.impulseClasses count];
+            return [self.preferredImpulseClasses count];
             break;
         case 2:  // Motor Diameter selected
-            return [self.motorDiameters count];
+            return [self.preferredMotorDiameters count];
         default:
             break;
     }
@@ -225,17 +278,17 @@ NSInteger sortFunction(id md1, id md2, void *context){
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:YES];
-    NSArray *sorts = [NSArray arrayWithObject:sort];
+//    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:YES];
+//    NSArray *sorts = [NSArray arrayWithObject:sort];
     switch (self.search1Control.selectedSegmentIndex) {
         case 0:  // Motor manufacturer selected
-            return [[[self.manufacturerNames allValues] sortedArrayUsingDescriptors:sorts] objectAtIndex:row];
+            return [self.preferredManufacturers objectAtIndex:row];
             break;
         case 1:  // Impulse Class selected
-            return [self.impulseClasses objectAtIndex:row];
+            return [self.preferredImpulseClasses objectAtIndex:row];
             break;
         case 2:  // Motor Diameter selected
-            return [self.motorDiameters objectAtIndex:row];
+            return [self.preferredMotorDiameters objectAtIndex:row];
         default:
             break;
     }
@@ -275,9 +328,9 @@ NSInteger sortFunction(id md1, id md2, void *context){
                     
                 }else{                  // only include the one manufacturer selected
                     NSMutableArray *motorsByManufacturer = [NSMutableArray array];
-                    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:YES];
-                    NSArray *sorts = [NSArray arrayWithObject:sort];
-                    NSString *manuf = [[[self.manufacturerNames allValues] sortedArrayUsingDescriptors:sorts] objectAtIndex:selectedRow];
+//                    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:YES];
+//                    NSArray *sorts = [NSArray arrayWithObject:sort];
+                    NSString *manuf = [self.preferredManufacturers objectAtIndex:selectedRow];
                     for (NSDictionary *motorDict in self.allMotors){
                         if ([[motorDict objectForKey:MAN_KEY] isEqualToString:manuf]){
                             [motorsByManufacturer addObject:motorDict];
@@ -294,7 +347,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
                     
                 }else{                  // only include the one impulse class selected
                     NSMutableArray *motorsByImpulseClass = [NSMutableArray array];
-                    NSString *impulseClass = [self.impulseClasses objectAtIndex:selectedRow];
+                    NSString *impulseClass = [self.preferredImpulseClasses objectAtIndex:selectedRow];
                     for (NSDictionary *motorDict in self.allMotors){
                         if ([[motorDict objectForKey:IMPULSE_KEY] isEqualToString:impulseClass]){
                             [motorsByImpulseClass addObject:motorDict];
@@ -311,7 +364,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
                     
                 }else{                  // only include the one diameter selected
                     NSMutableArray *motorsByDiameter = [NSMutableArray array];
-                    NSString *requestedDiameter = [self.motorDiameters objectAtIndex:selectedRow];
+                    NSString *requestedDiameter = [self.preferredMotorDiameters objectAtIndex:selectedRow];
                     requestedDiameter = [requestedDiameter substringToIndex:[requestedDiameter length]-2];
                     for (NSDictionary *motorDict in self.allMotors){
                         if ([[motorDict objectForKey:MOTOR_DIAM_KEY] isEqualToString:requestedDiameter]){
@@ -329,9 +382,9 @@ NSInteger sortFunction(id md1, id md2, void *context){
             switch (self.search2Control.selectedSegmentIndex){
                 case 0:{    // sort the results by manufacturer, each into its own array
                     [(SLMotorTableViewController *)segue.destinationViewController setSectionKey:MAN_KEY];
-                    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:YES];
-                    NSArray *sorts = [NSArray arrayWithObject:sort];
-                    for (NSString *man in [[self.manufacturerNames allValues] sortedArrayUsingDescriptors:sorts]){
+//                    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:YES];
+//                    NSArray *sorts = [NSArray arrayWithObject:sort];
+                    for (NSString *man in self.preferredManufacturers){
                         NSMutableArray *motorsForMan = [NSMutableArray array];
                         for (NSDictionary *motorDict in searchResult){
                             if ([[motorDict objectForKey:MAN_KEY] isEqualToString:man]){
@@ -345,7 +398,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
                 }
                 case 1:{    // sort the results by impulse class
                     [(SLMotorTableViewController *)segue.destinationViewController setSectionKey:IMPULSE_KEY];
-                    for (NSString *imp in self.impulseClasses){
+                    for (NSString *imp in self.preferredImpulseClasses){
                         NSMutableArray *motorsForImpulse = [NSMutableArray array];
                         for (NSDictionary *motorDict in searchResult){
                             if ([[motorDict objectForKey:IMPULSE_KEY] isEqualToString:imp]){
@@ -359,7 +412,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
                 }
                 case 2:{    // sort the results by diameter
                     [(SLMotorTableViewController *)segue.destinationViewController setSectionKey:MOTOR_DIAM_KEY];
-                    for (NSString *diam in self.motorDiameters){
+                    for (NSString *diam in self.preferredMotorDiameters){
                         NSString *testDiam = [diam substringToIndex:[diam length]-2];
                         NSMutableArray *motorsForDiam = [NSMutableArray array];
                         for (NSDictionary *motorDict in searchResult){
