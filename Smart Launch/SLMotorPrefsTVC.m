@@ -8,12 +8,10 @@
 
 #import "SLMotorPrefsTVC.h"
 #import "SLDefinitions.h"
+#import "RocketMotor.h"
 
 @interface SLMotorPrefsTVC ()
 
-@property (nonatomic, strong) NSArray *manufacturerNames;
-@property (nonatomic, strong) NSArray *impulseClasses;
-@property (nonatomic, strong) NSArray *motorDiameters;
 // model = dictionary of NSNumber BOOL values telling the App whether to display motors with the keys
 // (manufacturer, diameter, impulse class)
 @property (nonatomic, strong) NSMutableDictionary *motorPrefs;
@@ -24,63 +22,15 @@
 
 @implementation SLMotorPrefsTVC
 
-@synthesize manufacturerNames = _manufacturerNames;
-@synthesize impulseClasses = _impulseClasses;
-@synthesize motorDiameters = _motorDiameters;
 @synthesize motorPrefs = _motorPrefs;
 @synthesize oldMotorPrefs = _oldMotorPrefs;
-
-- (NSArray *)manufacturerNames{
-    if (!_manufacturerNames){
-        _manufacturerNames = [NSArray arrayWithObjects:
-                              @"AMW Pro-X", 
-                              @"Aerotech RMS",
-                              @"Aerotech",
-                              @"Aerotech Hybrid",
-                              @"Animal Motor Works",
-                              @"Apogee",
-                              @"Cesaroni",
-                              @"Contrail Rockets",
-                              @"Ellis Mountain",
-                              @"Estes",
-                              @"Gorilla Rocket Motors",
-                              @"Hypertek",
-                              @"Kosdon by Aerotech",
-                              @"Kosdon",
-                              @"Loki Research",
-                              @"Public Missiles Ltd",
-                              @"Propulsion Polymers",
-                              @"Quest",
-                              @"RATTworks",
-                              @"RoadRunner",
-                              @"Sky Ripper",
-                              @"West Coast Hybrids", nil];
-    }
-    return _manufacturerNames;
-}
-
-- (NSArray *)impulseClasses{
-    if (!_impulseClasses){
-        _impulseClasses = [NSArray arrayWithObjects:@"1/8 A", @"1/4 A", @"1/2 A", @"A", @"B", @"C", @"D",
-                           @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", nil];
-    }
-    return _impulseClasses;
-}
-
-- (NSArray  *)motorDiameters{
-    if (!_motorDiameters){
-        _motorDiameters = [NSArray arrayWithObjects:@"6mm", @"13mm", @"18mm", @"24mm", @"29mm",
-                           @"38mm", @"54mm", @"75mm", @"98mm", @"150mm", nil];
-    }
-    return _motorDiameters;
-}
 
 - (NSMutableDictionary*)motorPrefs{
     if (!_motorPrefs){
         _motorPrefs = [NSMutableDictionary dictionaryWithCapacity:64];
-        for (NSString *key in self.manufacturerNames) [_motorPrefs setObject:[NSNumber numberWithBool:YES] forKey:key];
-        for (NSString *key in self.motorDiameters) [_motorPrefs setObject:[NSNumber numberWithBool:YES] forKey:key];
-        for (NSString *key in self.impulseClasses) [_motorPrefs setObject:[NSNumber numberWithBool:YES] forKey:key];
+        for (NSString *key in [RocketMotor manufacturerNames]) [_motorPrefs setObject:[NSNumber numberWithBool:YES] forKey:key];
+        for (NSString *key in [RocketMotor motorDiameters]) [_motorPrefs setObject:[NSNumber numberWithBool:YES] forKey:key];
+        for (NSString *key in [RocketMotor impulseClasses]) [_motorPrefs setObject:[NSNumber numberWithBool:YES] forKey:key];
     }
     return _motorPrefs;
 }
@@ -99,9 +49,19 @@
 }
 
 - (IBAction)savePrefsAndReturn:(id)sender {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.motorPrefs forKey:MOTOR_PREFS_KEY];
-    [defaults synchronize];
+    // if we haven't changed anything, just pop back
+    if (![self.motorPrefs isEqualToDictionary:self.oldMotorPrefs]){
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:self.motorPrefs forKey:MOTOR_PREFS_KEY];
+        [defaults synchronize];
+        
+        // find out if there is a cache of the motor data, if so, delete it to force re-initialization with the new prefs
+        NSURL *cacheURL =[[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
+        NSURL *motorFileURL = [cacheURL URLByAppendingPathComponent:MOTOR_CACHE_FILENAME];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[motorFileURL path]]){
+            [[NSFileManager defaultManager] removeItemAtURL:motorFileURL error:nil];
+        }
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -114,7 +74,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.motorPrefs = [[defaults objectForKey:MOTOR_PREFS_KEY] mutableCopy];
     // notice here that if _motorPrefs is left nil above, the following line will fill both dictionaries with YES values
-    self.oldMotorPrefs = self.motorPrefs;
+    self.oldMotorPrefs = [self.motorPrefs copy];
 }
 
 - (void)viewDidUnload
@@ -151,11 +111,11 @@
 {
     switch (section) {
         case 0:
-            return [self.manufacturerNames count];
+            return [[RocketMotor manufacturerNames] count];
         case 1:
-            return [self.motorDiameters count];
+            return [[RocketMotor motorDiameters] count];
         case 2:
-            return [self.impulseClasses count];
+            return [[RocketMotor impulseClasses] count];
             
         default:
             return 0;   // should never reach this default
@@ -169,13 +129,13 @@
     NSString *cellText;
     switch (indexPath.section) {
         case 0:
-            cellText = [self.manufacturerNames objectAtIndex:indexPath.row];
+            cellText = [[RocketMotor manufacturerNames] objectAtIndex:indexPath.row];
             break;
         case 1:
-            cellText = [self.motorDiameters objectAtIndex:indexPath.row];
+            cellText = [[RocketMotor motorDiameters] objectAtIndex:indexPath.row];
             break;
         case 2:
-            cellText = [self.impulseClasses objectAtIndex:indexPath.row];
+            cellText = [[RocketMotor impulseClasses] objectAtIndex:indexPath.row];
         default:
             break;
     }

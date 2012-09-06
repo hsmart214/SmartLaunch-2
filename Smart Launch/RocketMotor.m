@@ -123,9 +123,48 @@
     return [self.mass floatValue] - percentOfBurn * [self.propellantMass floatValue];
 }
 
+#pragma mark - RocketMotor Class methods
+
+
 +(RocketMotor *)motorWithMotorDict:(NSDictionary *)motorDict{
     RocketMotor *motor = [[RocketMotor alloc] initWithMotorDict:(NSDictionary *)motorDict];
     return motor;
+}
+
++ (NSArray *)manufacturerNames{
+    return [NSArray arrayWithObjects:
+            @"AMW Pro-X",
+            @"Aerotech RMS",
+            @"Aerotech",
+            @"Aerotech Hybrid",
+            @"Animal Motor Works",
+            @"Apogee",
+            @"Cesaroni",
+            @"Contrail Rockets",
+            @"Ellis Mountain",
+            @"Estes",
+            @"Gorilla Rocket Motors",
+            @"Hypertek",
+            @"Kosdon by Aerotech",
+            @"Kosdon",
+            @"Loki Research",
+            @"Public Missiles Ltd",
+            @"Propulsion Polymers",
+            @"Quest",
+            @"RATTworks",
+            @"RoadRunner",
+            @"Sky Ripper",
+            @"West Coast Hybrids", nil];
+}
+
++ (NSArray *)impulseClasses{
+    return [NSArray arrayWithObjects:@"1/8 A", @"1/4 A", @"1/2 A", @"A", @"B", @"C", @"D",
+            @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", nil];
+}
+
++ (NSArray *)motorDiameters{
+    return [NSArray arrayWithObjects:@"6mm", @"13mm", @"18mm", @"24mm", @"29mm",
+            @"38mm", @"54mm", @"75mm", @"98mm", @"150mm", nil];
 }
 
 @end

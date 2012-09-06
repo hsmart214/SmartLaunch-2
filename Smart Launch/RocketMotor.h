@@ -41,11 +41,15 @@
 @property (nonatomic, readonly) NSArray *thrusts;
 
 
--(CGFloat)thrustAtTime:(CGFloat)time;
--(CGFloat)massAtTime:(CGFloat)time;
+- (CGFloat)thrustAtTime:(CGFloat)time;
+- (CGFloat)massAtTime:(CGFloat)time;
 
-+(RocketMotor *)motorWithMotorDict: (NSDictionary *)motorDict;
++ (RocketMotor *)motorWithMotorDict: (NSDictionary *)motorDict;
++ (NSArray *)manufacturerNames;
++ (NSArray *)impulseClasses;
++ (NSArray *)motorDiameters;
 
--(NSDictionary *)motorDict;
+
+- (NSDictionary *)motorDict;
 
 @end
