@@ -150,6 +150,7 @@
 {
     [super viewDidLoad];
     self.tableView.delegate = self;
+    [self.GPSAltButton setTitle: NSLocalizedString(@"GPS Disabled", nil) forState:UIControlStateDisabled] ;
     UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
     NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
     UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
@@ -211,6 +212,11 @@
     float alt = floorf(altitude/self.siteAltitudeStepper.stepValue) * self.siteAltitudeStepper.stepValue;
     self.siteAltitudeLabel.text = [NSString stringWithFormat:@"%1.0f", alt];
     self.siteAltitudeStepper.value = alt;
+    
+    // disable the GPS if location services denied
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+        [self.GPSAltButton setEnabled:NO];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
