@@ -91,6 +91,7 @@ typedef CGPoint ThrustPoint;
 #define MOTOR_SEARCH_1_KEY @"SmartLaunch_Motor_Search_Key1"
 #define MOTOR_SEARCH_2_KEY @"SmartLaunch_Motor_Search_Key2"
 #define MOTOR_SEARCH_PICKER_INDEX @"SmartLaunch_Motor_Picker_Index"
+#define MOTOR_SEARCH_MATCH_DIAM_KEY @"SmartLaunch_Motor_Match_Diam_Key"
 
 #pragma mark Settings dictionary keys
 

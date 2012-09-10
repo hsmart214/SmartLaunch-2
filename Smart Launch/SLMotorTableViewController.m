@@ -28,14 +28,6 @@
 @synthesize selectedMotorDict = _selectedMotorDict;
 @synthesize delegate = _delegate;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

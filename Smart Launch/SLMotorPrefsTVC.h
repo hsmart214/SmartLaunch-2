@@ -10,5 +10,7 @@
 
 @interface SLMotorPrefsTVC : UITableViewController
 
++ (NSDictionary *)motorKeysAllSelected;
+
 
 @end

@@ -10,6 +10,7 @@
 #import "SLPhysicsModel.h"
 #import "SLDefinitions.h"
 #import "SLUnitsTVC.h"
+#import "SLMotorSearchViewController.h"
 
 @interface SLTableViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *rocketCell;
@@ -85,10 +86,10 @@
 
 - (id)defaultFetchWithKey:(NSString *)key{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    return [defaults objectForKey:key];
+    return [[defaults objectForKey:key] mutableCopy];
 }
 
-- (NSDictionary *)settings{
+- (NSMutableDictionary *)settings{
     if (!_settings){
         _settings = [self defaultFetchWithKey:SETTINGS_KEY];
     }
@@ -116,7 +117,7 @@
     [self.settings setValue:launchAngle forKey:LAUNCH_ANGLE_KEY];
     [self defaultStoreWithKey:SETTINGS_KEY andValue:self.settings];
     self.launchAngleLabel.text = [NSString stringWithFormat:@"%1.1f", [launchAngle floatValue] * DEGREES_PER_RADIAN];
-    [self updateDisplay];
+    if (self.view.window)[self updateDisplay];
 }
 
 - (void)sender:(id)sender didChangeRocket:(Rocket *)rocket{
@@ -126,7 +127,7 @@
     [self defaultStoreWithKey:SETTINGS_KEY andValue:self.settings];
     self.rocketCell.textLabel.text = rocket.name;
     self.rocketCell.detailTextLabel.text = [NSString stringWithFormat:@"%dmm", [rocket.motorSize intValue]];
-    [self updateDisplay];
+    if (self.view.window)[self updateDisplay];
 }
 
 - (void)sender:(id)sender didChangeRocketMotor:(RocketMotor *)motor{
@@ -139,11 +140,11 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:motor.manufacturer ofType:@"jpg"];
     UIImage *theImage = [UIImage imageWithContentsOfFile:path];
     self.motorCell.imageView.image = theImage;
-    [self updateDisplay];
+    if (self.view.window)[self updateDisplay];
 }
 
 - (void)sender:(id)sender didChangeSimSettings:(NSDictionary *)settings withUpdate:(BOOL)update{
-    self.settings = [NSMutableDictionary dictionaryWithDictionary: settings];
+    self.settings = [settings mutableCopy];
     [self defaultStoreWithKey:SETTINGS_KEY andValue:self.settings];
     if (update){
         [self updateDisplay];
@@ -241,6 +242,10 @@
     if ([[segue identifier] isEqualToString:@"settingsModalSegue"]){
         [[[(UINavigationController *)segue.destinationViewController viewControllers] objectAtIndex:0] setDelegate:self];
     }
+    if ([[segue identifier] isEqualToString:@"motorSelectorSegue"]){
+        // this is part of the model for this destination VC, so we can set this
+        [(SLMotorSearchViewController *)segue.destinationViewController setRocketMotorMountDiameter:self.rocket.motorSize];
+    }
 }
 
 
@@ -264,7 +269,6 @@
     UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
     [backgroundView setImage:backgroundImage];
     self.tableView.backgroundView = backgroundView;
-    [self updateDisplay];
 }
 
 - (void)viewDidUnload

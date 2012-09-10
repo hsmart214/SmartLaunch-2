@@ -169,4 +169,14 @@
     }
 }
 
+#pragma mark - SLMotorPrefsTVC class method
+
++ (NSDictionary *)motorKeysAllSelected{
+    NSMutableDictionary* buildDict = [NSMutableDictionary dictionaryWithCapacity:64];
+    for (NSString *key in [RocketMotor manufacturerNames]) [buildDict setObject:[NSNumber numberWithBool:YES] forKey:key];
+    for (NSString *key in [RocketMotor motorDiameters]) [buildDict setObject:[NSNumber numberWithBool:YES] forKey:key];
+    for (NSString *key in [RocketMotor impulseClasses]) [buildDict setObject:[NSNumber numberWithBool:YES] forKey:key];
+    return [buildDict copy];
+}
+
 @end

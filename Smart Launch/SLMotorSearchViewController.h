@@ -19,5 +19,6 @@
 @property (strong, nonatomic) NSDictionary *manufacturerNames;
 @property (strong, nonatomic) NSArray *allMotors;
 @property (weak, nonatomic) id<SLSimulationDelegate> delegate;
+@property (nonatomic, strong) NSNumber *rocketMotorMountDiameter;
 
 @end

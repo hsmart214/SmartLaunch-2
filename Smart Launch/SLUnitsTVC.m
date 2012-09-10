@@ -246,7 +246,7 @@
                                       K_MILES_PER_HOUR, VELOCITY_UNIT_KEY,
                                       K_POUNDS, THRUST_UNIT_KEY, nil];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *settings = [defaults objectForKey:SETTINGS_KEY];
+    NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
     [settings setObject:stdDefaults forKey:UNIT_PREFS_KEY];
     [defaults setObject:settings forKey:SETTINGS_KEY];
     [defaults setObject:stdDefaults forKey:UNIT_PREFS_KEY];
