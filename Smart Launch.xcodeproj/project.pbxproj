@@ -46,10 +46,10 @@
 		4220A51E15F55D8D0055EE35 /* Animal Motor Works.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50815F55D8D0055EE35 /* Animal Motor Works.png */; };
 		4220A51F15F55D8D0055EE35 /* Apogee.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50915F55D8D0055EE35 /* Apogee.png */; };
 		4220A52015F55D8D0055EE35 /* Cesaroni.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50A15F55D8D0055EE35 /* Cesaroni.png */; };
-		4220A52115F55D8D0055EE35 /* Contrail.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50B15F55D8D0055EE35 /* Contrail.png */; };
+		4220A52115F55D8D0055EE35 /* Contrail Rockets.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50B15F55D8D0055EE35 /* Contrail Rockets.png */; };
 		4220A52215F55D8D0055EE35 /* Ellis Mountain.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50C15F55D8D0055EE35 /* Ellis Mountain.png */; };
 		4220A52315F55D8D0055EE35 /* Estes.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50D15F55D8D0055EE35 /* Estes.png */; };
-		4220A52415F55D8D0055EE35 /* Gorilla.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50E15F55D8D0055EE35 /* Gorilla.png */; };
+		4220A52415F55D8D0055EE35 /* Gorilla Rocket Motors.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50E15F55D8D0055EE35 /* Gorilla Rocket Motors.png */; };
 		4220A52515F55D8D0055EE35 /* Kosdon by Aerotech.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50F15F55D8D0055EE35 /* Kosdon by Aerotech.png */; };
 		4220A52615F55D8D0055EE35 /* Kosdon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A51015F55D8D0055EE35 /* Kosdon.png */; };
 		4220A52715F55D8D0055EE35 /* Propulsion Polymers.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A51115F55D8D0055EE35 /* Propulsion Polymers.png */; };
@@ -137,10 +137,10 @@
 		4220A50815F55D8D0055EE35 /* Animal Motor Works.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Animal Motor Works.png"; sourceTree = "<group>"; };
 		4220A50915F55D8D0055EE35 /* Apogee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Apogee.png; sourceTree = "<group>"; };
 		4220A50A15F55D8D0055EE35 /* Cesaroni.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cesaroni.png; sourceTree = "<group>"; };
-		4220A50B15F55D8D0055EE35 /* Contrail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Contrail.png; sourceTree = "<group>"; };
+		4220A50B15F55D8D0055EE35 /* Contrail Rockets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Contrail Rockets.png"; sourceTree = "<group>"; };
 		4220A50C15F55D8D0055EE35 /* Ellis Mountain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ellis Mountain.png"; sourceTree = "<group>"; };
 		4220A50D15F55D8D0055EE35 /* Estes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Estes.png; sourceTree = "<group>"; };
-		4220A50E15F55D8D0055EE35 /* Gorilla.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gorilla.png; sourceTree = "<group>"; };
+		4220A50E15F55D8D0055EE35 /* Gorilla Rocket Motors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gorilla Rocket Motors.png"; sourceTree = "<group>"; };
 		4220A50F15F55D8D0055EE35 /* Kosdon by Aerotech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kosdon by Aerotech.png"; sourceTree = "<group>"; };
 		4220A51015F55D8D0055EE35 /* Kosdon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kosdon.png; sourceTree = "<group>"; };
 		4220A51115F55D8D0055EE35 /* Propulsion Polymers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Propulsion Polymers.png"; sourceTree = "<group>"; };
@@ -199,10 +199,10 @@
 				4220A50815F55D8D0055EE35 /* Animal Motor Works.png */,
 				4220A50915F55D8D0055EE35 /* Apogee.png */,
 				4220A50A15F55D8D0055EE35 /* Cesaroni.png */,
-				4220A50B15F55D8D0055EE35 /* Contrail.png */,
+				4220A50B15F55D8D0055EE35 /* Contrail Rockets.png */,
 				4220A50C15F55D8D0055EE35 /* Ellis Mountain.png */,
 				4220A50D15F55D8D0055EE35 /* Estes.png */,
-				4220A50E15F55D8D0055EE35 /* Gorilla.png */,
+				4220A50E15F55D8D0055EE35 /* Gorilla Rocket Motors.png */,
 				4220A50F15F55D8D0055EE35 /* Kosdon by Aerotech.png */,
 				4220A51015F55D8D0055EE35 /* Kosdon.png */,
 				4220A51115F55D8D0055EE35 /* Propulsion Polymers.png */,
@@ -441,10 +441,10 @@
 				4220A51E15F55D8D0055EE35 /* Animal Motor Works.png in Resources */,
 				4220A51F15F55D8D0055EE35 /* Apogee.png in Resources */,
 				4220A52015F55D8D0055EE35 /* Cesaroni.png in Resources */,
-				4220A52115F55D8D0055EE35 /* Contrail.png in Resources */,
+				4220A52115F55D8D0055EE35 /* Contrail Rockets.png in Resources */,
 				4220A52215F55D8D0055EE35 /* Ellis Mountain.png in Resources */,
 				4220A52315F55D8D0055EE35 /* Estes.png in Resources */,
-				4220A52415F55D8D0055EE35 /* Gorilla.png in Resources */,
+				4220A52415F55D8D0055EE35 /* Gorilla Rocket Motors.png in Resources */,
 				4220A52515F55D8D0055EE35 /* Kosdon by Aerotech.png in Resources */,
 				4220A52615F55D8D0055EE35 /* Kosdon.png in Resources */,
 				4220A52715F55D8D0055EE35 /* Propulsion Polymers.png in Resources */,
