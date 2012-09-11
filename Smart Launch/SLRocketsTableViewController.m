@@ -61,27 +61,15 @@
         _rockets = [[defaults objectForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
         if (!_rockets || [_rockets count] == 0){     // If the rocket list is empty give them an example rocket
             _rockets = [NSMutableDictionary dictionary];
-            NSDictionary *alphaPList = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   @"Alpha", ROCKET_NAME_KEY,
-                                   @"Alpha III", ROCKET_KITNAME_KEY,
-                                   @"Estes", ROCKET_MAN_KEY,
-                                   [NSNumber numberWithFloat:0.02479], ROCKET_DIAM_KEY,
-                                   [NSNumber numberWithFloat:0.2794], ROCKET_LENGTH_KEY,
-                                   [NSNumber numberWithFloat:0.034], ROCKET_MASS_KEY,
-                                   [NSNumber numberWithInteger:18], ROCKET_MOTORSIZE_KEY,
-                                   [NSNumber numberWithFloat:DEFAULT_CD], ROCKET_CD_KEY, nil];
-            [_rockets setObject:alphaPList forKey:@"Alpha"];
+            [_rockets setObject:[[Rocket defaultRocket] rocketPropertyList] forKey:@"Goblin"];
             [defaults setObject:_rockets forKey:FAVORITE_ROCKETS_KEY];
             [defaults synchronize];
+            [self updateRocketArray];
         }
     }
     return _rockets;
 }
 
-//- (id)initWithStyle:(UITableViewStyle)style{
-//    self = [super initWithStyle:style];
-//    return self;
-//}
 
 - (void)viewDidLoad{
     [super viewDidLoad];

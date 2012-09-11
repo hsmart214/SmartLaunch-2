@@ -69,4 +69,18 @@
     Rocket *rocket = [[Rocket alloc] initWithProperties:rocketDict];
     return rocket;
 }
+
++(Rocket *)defaultRocket{
+    NSDictionary *goblinProperties = [NSDictionary dictionaryWithObjectsAndKeys:
+                                      @"Goblin", ROCKET_NAME_KEY,
+                                      @"Goblin", ROCKET_KITNAME_KEY,
+                                      @"Estes", ROCKET_MAN_KEY,
+                                      [NSNumber numberWithFloat:0.033655], ROCKET_DIAM_KEY,
+                                      [NSNumber numberWithFloat:0.36322], ROCKET_LENGTH_KEY,
+                                      [NSNumber numberWithFloat:0.034], ROCKET_MASS_KEY,
+                                      [NSNumber numberWithInteger:24], ROCKET_MOTORSIZE_KEY,
+                                      [NSNumber numberWithFloat:DEFAULT_CD], ROCKET_CD_KEY, nil];
+
+    return [[Rocket alloc] initWithProperties:goblinProperties];
+}
 @end

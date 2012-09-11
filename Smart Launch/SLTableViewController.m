@@ -61,9 +61,14 @@
         NSDictionary *rocketDict = [defaults objectForKey:SELECTED_ROCKET_KEY];
         if (rocketDict){
             _rocket = [Rocket rocketWithRocketDict:rocketDict];
+        }else{
+            // no selected rocket.  this will only happen on the first launch
+            _rocket = [Rocket defaultRocket];
+            [defaults setObject:[_rocket rocketPropertyList] forKey:SELECTED_ROCKET_KEY];
+            [defaults synchronize];
         }
     }
-    return _rocket; // OK to return nil if no rocket selected - make the user select one
+    return _rocket;
 }
 
 - (RocketMotor *)motor{

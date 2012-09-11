@@ -34,4 +34,6 @@
 
 - (Rocket *)copyWithZone:(NSZone *)zone;
 
++(Rocket *)defaultRocket;
+
 @end
