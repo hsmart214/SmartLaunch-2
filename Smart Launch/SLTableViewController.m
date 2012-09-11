@@ -77,9 +77,14 @@
         NSDictionary *motorDict = [defaults objectForKey:SELECTED_MOTOR_KEY];
         if (motorDict){
             _motor = [RocketMotor motorWithMotorDict:motorDict];
+        }else{
+            // no selected motor.  this should only happen on the first start-up
+            _motor = [RocketMotor defaultMotor];
+            [defaults setObject:[_motor motorDict] forKey:SELECTED_MOTOR_KEY];
+            [defaults synchronize];
         }
     }
-    return _motor;  // OK to return nil if no motor selected - go select one
+    return _motor;
 }
 
 - (void)defaultStoreWithKey:(NSString *)key

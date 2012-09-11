@@ -396,6 +396,17 @@ NSInteger sortFunction(id md1, id md2, void *context){
 }
 // need to handle the case where the rockets mmt is of a size that the user has suppressed from allMotors
 
+- (NSArray *)currentlyAllowedMotorDiametersWithMM{
+    // returns an array on NSStrings with the "mm" after the motor size
+    if (!self.restrictedMotorDiamPrefs) return self.preferredMotorDiameters;
+    NSMutableArray *allowed  = [NSMutableArray arrayWithCapacity:2];
+    for (NSString *diamMM in self.restrictedMotorDiamPrefs){
+        if ([self preferredMotorDiametersContainsDiameter:diamMM]){
+            [allowed addObject:diamMM];
+        }
+    }
+    return [allowed copy];
+}
 
 #pragma mark prepareForSegue
 

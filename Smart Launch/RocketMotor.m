@@ -49,10 +49,12 @@
 }
 
 -(void)calculateDerivedValues{
+    // curve starts at (0,0) which is NOT included in the arrays
+    // use trapezoidal approximation to the area-under-the-curve
     double impulse = 0.5 * [[self.thrusts objectAtIndex:0] floatValue] * [[self.times objectAtIndex:0] floatValue];
     self.calcPeakThrust = [self.thrusts objectAtIndex:0];
     for (NSInteger i = 1; i < [self.times count]; i++) {
-        if ([[self.thrusts objectAtIndex:i] floatValue] > [self.calcPeakThrust floatValue]) self.calcPeakThrust = [self.thrusts objectAtIndex:i];
+        if ([[self.thrusts objectAtIndex:i] floatValue] > [self.calcPeakThrust floatValue]) self.calcPeakThrust = [self.thrusts objectAtIndex:i]; // defines the first local maximum of the thrust curve.  Unlikely to have a second maximum
         double deltaT = [[self.times objectAtIndex:i] floatValue] - [[self.times objectAtIndex:i-1] floatValue];
         double fiminus1 = [[self.thrusts objectAtIndex:i-1] floatValue];
         double deltaF = [[self.thrusts objectAtIndex:i] floatValue] - fiminus1;
@@ -165,6 +167,64 @@
 + (NSArray *)motorDiameters{
     return [NSArray arrayWithObjects:@"6mm", @"13mm", @"18mm", @"24mm", @"29mm",
             @"38mm", @"54mm", @"75mm", @"98mm", @"150mm", nil];
+}
+
++ (RocketMotor *)defaultMotor{  // Estes D12
+    NSArray *times = [NSArray arrayWithObjects:
+                      [NSNumber numberWithFloat:0.049],
+                      [NSNumber numberWithFloat:0.166],
+                      [NSNumber numberWithFloat:0.184],
+                      [NSNumber numberWithFloat:0.237],
+                      [NSNumber numberWithFloat:0.282],
+                      [NSNumber numberWithFloat:0.297],
+                      [NSNumber numberWithFloat:0.311],
+                      [NSNumber numberWithFloat:0.322],
+                      [NSNumber numberWithFloat:0.348],
+                      [NSNumber numberWithFloat:0.386],
+                      [NSNumber numberWithFloat:0.442],
+                      [NSNumber numberWithFloat:0.546],
+                      [NSNumber numberWithFloat:0.718],
+                      [NSNumber numberWithFloat:0.879],
+                      [NSNumber numberWithFloat:1.066],
+                      [NSNumber numberWithFloat:1.257],
+                      [NSNumber numberWithFloat:1.436],
+                      [NSNumber numberWithFloat:1.59],
+                      [NSNumber numberWithFloat:1.612],
+                      [NSNumber numberWithFloat:1.65], nil];
+    NSArray *thrusts = [NSArray arrayWithObjects:
+                      [NSNumber numberWithFloat:2.569],
+                      [NSNumber numberWithFloat:9.369],
+                      [NSNumber numberWithFloat:17.275],
+                      [NSNumber numberWithFloat:24.258],
+                      [NSNumber numberWithFloat:29.73],
+                      [NSNumber numberWithFloat:27.01],
+                      [NSNumber numberWithFloat:22.589],
+                      [NSNumber numberWithFloat:17.99],
+                      [NSNumber numberWithFloat:14.126],
+                      [NSNumber numberWithFloat:12.099],
+                      [NSNumber numberWithFloat:10.808],
+                      [NSNumber numberWithFloat:9.876],
+                      [NSNumber numberWithFloat:9.306],
+                      [NSNumber numberWithFloat:9.105],
+                      [NSNumber numberWithFloat:8.901],
+                      [NSNumber numberWithFloat:8.698],
+                      [NSNumber numberWithFloat:8.31],
+                      [NSNumber numberWithFloat:8.294],
+                      [NSNumber numberWithFloat:4.613],
+                      [NSNumber numberWithFloat:0.0], nil];
+    NSDictionary *estesD12 = [NSDictionary dictionaryWithObjectsAndKeys:
+                              [NSNumber numberWithFloat:0.0426], MOTOR_MASS_KEY,
+                              [NSNumber numberWithFloat:0.0211], PROP_MASS_KEY,
+                              times, TIME_KEY,
+                              thrusts, THRUST_KEY,
+                              @"D12", NAME_KEY,
+                              @"Estes", MAN_KEY,
+                              @"D", IMPULSE_KEY,
+                              [NSNumber numberWithInteger:24], MOTOR_DIAM_KEY,
+                              [NSNumber numberWithFloat:0.07], MOTOR_LENGTH_KEY,
+                              @"0-3-5-7", DELAYS_KEY,
+                              nil];
+    return [RocketMotor motorWithMotorDict:estesD12];
 }
 
 @end
