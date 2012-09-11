@@ -67,6 +67,7 @@
 		4240A07D15F86CEC00D67F3E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4240A07B15F86CEC00D67F3E /* Default@2x.png */; };
 		4249475215F5802C00BBBDF6 /* SmartLaunch.png in Resources */ = {isa = PBXBuildFile; fileRef = 4249475115F5802C00BBBDF6 /* SmartLaunch.png */; };
 		4249475415F5803000BBBDF6 /* SmartLaunch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4249475315F5803000BBBDF6 /* SmartLaunch@2x.png */; };
+		424AFFDE15FEEC8E00F98771 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 424AFFDD15FEEC8E00F98771 /* iTunesArtwork */; };
 		4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930915F4893000F7BABC /* UIKit.framework */; };
 		4256930C15F4893000F7BABC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930B15F4893000F7BABC /* Foundation.framework */; };
 		4256930E15F4893000F7BABC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930D15F4893000F7BABC /* CoreGraphics.framework */; };
@@ -158,6 +159,7 @@
 		4240A07B15F86CEC00D67F3E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4249475115F5802C00BBBDF6 /* SmartLaunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SmartLaunch.png; path = ../SmartLaunch.png; sourceTree = "<group>"; };
 		4249475315F5803000BBBDF6 /* SmartLaunch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SmartLaunch@2x.png"; path = "../SmartLaunch@2x.png"; sourceTree = "<group>"; };
+		424AFFDD15FEEC8E00F98771 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		4256930515F4893000F7BABC /* Smart Launch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Launch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4256930915F4893000F7BABC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4256930B15F4893000F7BABC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -240,6 +242,7 @@
 		4220A53115F55DEF0055EE35 /* System Images */ = {
 			isa = PBXGroup;
 			children = (
+				424AFFDD15FEEC8E00F98771 /* iTunesArtwork */,
 				4240A07A15F86CEC00D67F3E /* Default.png */,
 				4240A07B15F86CEC00D67F3E /* Default@2x.png */,
 				4249475315F5803000BBBDF6 /* SmartLaunch@2x.png */,
@@ -457,6 +460,7 @@
 				4249475415F5803000BBBDF6 /* SmartLaunch@2x.png in Resources */,
 				4240A07C15F86CEC00D67F3E /* Default.png in Resources */,
 				4240A07D15F86CEC00D67F3E /* Default@2x.png in Resources */,
+				424AFFDE15FEEC8E00F98771 /* iTunesArtwork in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
