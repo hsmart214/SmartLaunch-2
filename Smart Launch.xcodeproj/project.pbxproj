@@ -276,7 +276,6 @@
 		425692FA15F4893000F7BABC = {
 			isa = PBXGroup;
 			children = (
-				421437211601ADEE0020AA1D /* MobileCoreServices.framework */,
 				4256930F15F4893000F7BABC /* Smart Launch */,
 				4256930815F4893000F7BABC /* Frameworks */,
 				4256930615F4893000F7BABC /* Products */,
@@ -294,6 +293,7 @@
 		4256930815F4893000F7BABC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				421437211601ADEE0020AA1D /* MobileCoreServices.framework */,
 				4232060415F7124F0027A18E /* CoreLocation.framework */,
 				4256930915F4893000F7BABC /* UIKit.framework */,
 				4256930B15F4893000F7BABC /* Foundation.framework */,

@@ -8,7 +8,6 @@
 
 #import "SLLaunchAngleViewController.h"
 #import "SLLaunchAngleView.h"
-#import "GLKit/GLKit.h"
 #import "CoreMotion/CoreMotion.h"
 #import "SLDefinitions.h"
 #import "SLPhotoAngleViewController.h"
@@ -84,7 +83,7 @@
     CGFloat angle = xyAngle;
     //    CGFloat angle = atanf(sqrtf(tanf(xyAngle)*tanf(xyAngle)+tanf(yzAngle)*tanf(yzAngle)));
     //    if (self.xAccel > 0) angle = -angle;
-    self.angleLabel.text = [NSString stringWithFormat:@"%1.1f", fabsf(GLKMathRadiansToDegrees(angle))];
+    self.angleLabel.text = [NSString stringWithFormat:@"%1.1f", fabsf(angle * DEGREES_PER_RADIAN)];
     if (fabsf(angle - self.angleSlider.value) > TOLERANCE){
         self.angleSlider.value = angle;
         [self.angleView setNeedsDisplay];
@@ -111,7 +110,7 @@
 
 - (IBAction)angleSliderValueChanged:(UISlider *)sender {
     //self.angleView.angle = sender.value;
-    self.angleLabel.text = [NSString stringWithFormat:@"%1.1f",fabsf(GLKMathRadiansToDegrees(sender.value))];
+    self.angleLabel.text = [NSString stringWithFormat:@"%1.1f",fabsf(sender.value * DEGREES_PER_RADIAN)];
     [self.angleView setNeedsDisplay];
 }
 
