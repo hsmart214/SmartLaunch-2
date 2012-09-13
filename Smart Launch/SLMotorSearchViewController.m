@@ -394,7 +394,6 @@ NSInteger sortFunction(id md1, id md2, void *context){
     }
     [self.pickerView reloadAllComponents];
 }
-// need to handle the case where the rockets mmt is of a size that the user has suppressed from allMotors
 
 - (NSArray *)currentlyAllowedMotorDiametersWithMM{
     // returns an array on NSStrings with the "mm" after the motor size

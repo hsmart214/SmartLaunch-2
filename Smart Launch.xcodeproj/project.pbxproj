@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		421437221601ADEE0020AA1D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 421437211601ADEE0020AA1D /* MobileCoreServices.framework */; };
 		4220A4CC15F55CC60055EE35 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4A515F55CC60055EE35 /* MainStoryboard.storyboard */; };
 		4220A4CD15F55CC60055EE35 /* SLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AB15F55CC60055EE35 /* SLTableViewController.m */; };
 		4220A4CE15F55CC60055EE35 /* SLInformationTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AD15F55CC60055EE35 /* SLInformationTVC.m */; };
@@ -77,6 +78,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		421437211601ADEE0020AA1D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4220A4A515F55CC60055EE35 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		4220A4A615F55CC60055EE35 /* SLDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLDefinitions.h; sourceTree = "<group>"; };
 		4220A4A715F55CC60055EE35 /* SLModalPresenterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLModalPresenterDelegate.h; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				421437221601ADEE0020AA1D /* MobileCoreServices.framework in Frameworks */,
 				4232060515F7124F0027A18E /* CoreLocation.framework in Frameworks */,
 				4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */,
 				4256930C15F4893000F7BABC /* Foundation.framework in Frameworks */,
@@ -273,6 +276,7 @@
 		425692FA15F4893000F7BABC = {
 			isa = PBXGroup;
 			children = (
+				421437211601ADEE0020AA1D /* MobileCoreServices.framework */,
 				4256930F15F4893000F7BABC /* Smart Launch */,
 				4256930815F4893000F7BABC /* Frameworks */,
 				4256930615F4893000F7BABC /* Products */,
