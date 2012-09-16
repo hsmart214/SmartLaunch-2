@@ -43,7 +43,7 @@
 
 - (CGFloat)hrange{
     if (_hrange==0.0){
-        CGFloat btime = [self.dataSource timeValueRange:self];
+        CGFloat btime = [self.dataSource motorThrustCurveViewTimeValueRange:self];
         _hrange = ceil(btime);
     }
     return _hrange;
@@ -51,7 +51,7 @@
 
 - (CGFloat)vrange{
     if(_vrange==0.0){
-        CGFloat fmax = [self.dataSource dataValueRange:self];
+        CGFloat fmax = [self.dataSource motorThrustCurveViewDataValueRange:self];
         int ex = floor(log10(fmax));
         double mant = fmax/pow(10.0, ex);
         _vrange = ceil(mant * 10.0)/10.0;
@@ -65,8 +65,8 @@
 {
     if (!_dataSource) return;
     ///    CGFloat ppp = [UIScreen mainScreen].scale;
-    CGFloat tmax = [self.dataSource timeValueRange:self];
-    CGFloat fmax = [self.dataSource dataValueRange:self];
+    CGFloat tmax = [self.dataSource motorThrustCurveViewTimeValueRange:self];
+    CGFloat fmax = [self.dataSource motorThrustCurveViewDataValueRange:self];
     CGFloat graphWidth = self.frame.size.width * WIDTH_FRACTION;
     CGFloat margin = (self.frame.size.width - graphWidth) / 2.0;
     CGFloat graphHeight = self.frame.size.height - 2*margin;
@@ -121,7 +121,7 @@
     
     while (time < tmax) {
         time += 1/(ppp*hscale);
-        double thrust = [self.dataSource dataValueForTimeIndex:time forView:self];
+        double thrust = [self.dataSource motorThrustCurveView:self dataValueForTimeIndex:time];
         int ex = floor(log10(fmax));
         double mant = thrust/pow(10, ex);
         CGFloat yvalue = origin.y - mant * vscale;

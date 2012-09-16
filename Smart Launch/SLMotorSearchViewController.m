@@ -253,6 +253,16 @@ NSInteger sortFunction(id md1, id md2, void *context){
         self.search2Control.selectedSegmentIndex = [[lastMotorSearch objectForKey:MOTOR_SEARCH_2_KEY] intValue];
         [self.pickerView selectRow:[[lastMotorSearch objectForKey:MOTOR_SEARCH_PICKER_INDEX] intValue] inComponent:0 animated:YES];
         self.restrictMotorDiametersSegmentedControl.selectedSegmentIndex = [[lastMotorSearch objectForKey:MOTOR_SEARCH_MATCH_DIAM_KEY]integerValue];
+    }else{
+        self.search1Control.selectedSegmentIndex = 0; // Brand
+        self.search2Control.selectedSegmentIndex = 1; // Class
+        NSInteger row = [self.preferredManufacturers indexOfObject:@"Estes"];
+        if (row != NSNotFound){
+            [self.pickerView selectRow:row inComponent:0 animated:YES];
+        }else{
+            [self.pickerView selectRow:0 inComponent:0 animated:YES];
+        }
+        self.restrictMotorDiametersSegmentedControl.selectedSegmentIndex = 1;   // MMT or less
     }
 }
 
@@ -427,10 +437,10 @@ NSInteger sortFunction(id md1, id md2, void *context){
     if ([segue.identifier isEqualToString:@"motorSearchSegue"]){
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSDictionary *lastMotorSearch = [NSDictionary dictionaryWithObjectsAndKeys:
-                                         [NSNumber numberWithInt:[self.pickerView selectedRowInComponent:0]], MOTOR_SEARCH_PICKER_INDEX,
-                                         [NSNumber numberWithInt:self.search1Control.selectedSegmentIndex], MOTOR_SEARCH_1_KEY,
-                                         [NSNumber numberWithInt:self.search2Control.selectedSegmentIndex], MOTOR_SEARCH_2_KEY,
-                                         [NSNumber numberWithInt:self.restrictMotorDiametersSegmentedControl.selectedSegmentIndex], MOTOR_SEARCH_MATCH_DIAM_KEY, nil];
+                                        [NSNumber numberWithInt:[self.pickerView selectedRowInComponent:0]], MOTOR_SEARCH_PICKER_INDEX,
+                                        [NSNumber numberWithInt:self.search1Control.selectedSegmentIndex], MOTOR_SEARCH_1_KEY,
+                                        [NSNumber numberWithInt:self.search2Control.selectedSegmentIndex], MOTOR_SEARCH_2_KEY,
+                                        [NSNumber numberWithInt:self.restrictMotorDiametersSegmentedControl.selectedSegmentIndex], MOTOR_SEARCH_MATCH_DIAM_KEY, nil];
         [defaults setObject:lastMotorSearch forKey:LAST_MOTOR_SEARCH_KEY];
         [defaults synchronize];
         [[segue destinationViewController]setDelegate:self.delegate];

@@ -14,9 +14,9 @@
 
 @protocol SLMotorThrustCurveViewDataSource <NSObject>
 
--(CGFloat)dataValueRange:(SLMotorThrustCurveView *) sender;
--(CGFloat)timeValueRange:(SLMotorThrustCurveView *)sender;
--(CGFloat)dataValueForTimeIndex:(CGFloat)time forView:(SLMotorThrustCurveView *)sender;
+-(CGFloat)motorThrustCurveViewDataValueRange: (SLMotorThrustCurveView *)sender;
+-(CGFloat)motorThrustCurveViewTimeValueRange:(SLMotorThrustCurveView *)sender;
+-(CGFloat)motorThrustCurveView:(SLMotorThrustCurveView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex;
 
 @end
 

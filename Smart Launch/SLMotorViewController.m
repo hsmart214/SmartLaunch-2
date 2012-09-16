@@ -30,16 +30,16 @@
 
 #pragma mark SLMotorThrustCurveDataSource protocol methods
 
-- (CGFloat)dataValueRange:(SLMotorThrustCurveView *)sender{
+- (CGFloat)motorThrustCurveViewDataValueRange: (SLMotorThrustCurveView *)sender{
     return [self.motor.peakThrust floatValue];
 }
 
-- (CGFloat)timeValueRange:(SLMotorThrustCurveView *)sender{
+- (CGFloat)motorThrustCurveViewTimeValueRange:(SLMotorThrustCurveView *)sender{
     return [[self.motor.times lastObject] floatValue];
 }
 
-- (CGFloat)dataValueForTimeIndex:(CGFloat)time forView:(SLMotorThrustCurveView *)sender{
-    return [self.motor thrustAtTime:time];
+- (CGFloat)motorThrustCurveView:(SLMotorThrustCurveView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
+    return [self.motor thrustAtTime:timeIndex];
 }
 
 - (void)viewDidLoad
