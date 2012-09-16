@@ -160,7 +160,7 @@
 }
 
 + (NSArray *)impulseClasses{
-    return [NSArray arrayWithObjects:@"1/8 A", @"1/4 A", @"1/2 A", @"A", @"B", @"C", @"D",
+    return [NSArray arrayWithObjects:@"1/8A", @"1/4A", @"1/2A", @"A", @"B", @"C", @"D",
             @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", nil];
 }
 
