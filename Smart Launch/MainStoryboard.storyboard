@@ -304,7 +304,7 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ZaG-DN-paM">
-                                                    <rect key="frame" x="193" y="4" width="44" height="21"/>
+                                                    <rect key="frame" x="193" y="4" width="67" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1150,7 +1150,22 @@
                                                     <rect key="frame" x="20" y="16" width="280" height="163"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <mutableString key="text">Smart Launch 1.0©2012 Get Smart SoftwareNo warranty is implied.Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.Simulation results have been made as accurate as possible without details of the modeled rocket's physical configuration.Get Smart Software is not responsible for any use of simulation results for the planning of rocket launches.The primary intent of this software is to give the rocketeer an idea of whether motor choice and wind conditions will affect stability at the time the rocket leaves the launch guide. Use of this software will certainly not guarantee stability. Simulation results are to be used in conjunction with other indicators of stability, such as CP/CG relation to help guide decision making.This software goes beyond thrust-to-weight and uses the actual thrust curve to model the liftoff acceleration. Thrust-weight ratio is displayed for reference.The free-flight angle of attack is displayed to give the rocketeer an idea of how far from neutral AoA the rocket will be, which can be used to guide decisions about stability.These calculations will depend very little on anything but the rocket's lift mass, and the motor thrust curve. It is always a good idea to weigh your loaded rocket prior to launch to make the thrust to weight determination.Special thanks to Jennifer Smart (VandIChe of deviantart.com) and Sydney Writer (NEOkeitaro of deviantart.com) for their artwork used in this application.All company logos are the registered trademarks of the respective motor manufacturers. No official approval or sponsorship of the data in this application should be inferred.Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</mutableString>
+                                                    <string key="text">Smart Launch 1.0
+©2012 Get Smart Software
+No warranty is implied.
+Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
+Simulation results have been made as accurate as possible without details of the modeled rocket's physical configuration.
+Get Smart Software is not responsible for any use of simulation results for the planning of rocket launches.
+The primary intent of this software is to give the rocketeer an idea of whether motor choice and wind conditions will affect stability at the time the rocket leaves the launch guide. Use of this software will certainly not guarantee stability. Simulation results are to be used in conjunction with other indicators of stability, such as CP/CG relation to help guide decision making.
+This software goes beyond thrust-to-weight and uses the actual thrust curve to model the liftoff acceleration. Thrust-weight ratio is displayed for reference.
+The free-flight angle of attack is displayed to give the rocketeer an idea of how far from neutral AoA the rocket will be, which can be used to guide decisions about stability.
+These calculations will depend very little on anything but the rocket's lift mass, and the motor thrust curve. It is always a good idea to weigh your loaded rocket prior to launch to make the thrust to weight determination.
+
+Special thanks to Jennifer Smart (VandIChe of deviantart.com) and Sydney Writer (NEOkeitaro of deviantart.com) for their artwork used in this application.
+
+All company logos are the registered trademarks of the respective motor manufacturers. No official approval or sponsorship of the data in this application should be inferred.
+
+Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -1981,7 +1996,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="He7-Fk-vJN"/>
+        <segue reference="eYh-Tw-iw8"/>
         <segue reference="kMz-de-aHC"/>
     </inferredMetricsTieBreakers>
 </document>

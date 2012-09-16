@@ -103,12 +103,10 @@
     if (!_settings){
         _settings = [self defaultFetchWithKey:SETTINGS_KEY];
     }
-    if (!_settings){
+    if (!_settings){    // This can only happen on the very first run of the program
         _settings = [NSMutableDictionary dictionary];
-        [self defaultStoreWithKey:UNIT_PREFS_KEY andValue:_settings];
-        [SLUnitsTVC setStandardDefaults];
-    }
-    if (![_settings objectForKey:UNIT_PREFS_KEY]){
+        [self defaultStoreWithKey:SETTINGS_KEY andValue:_settings];
+        // If this is the first run we also need to set the standard defaults
         [SLUnitsTVC setStandardDefaults];
     }
     return _settings;
@@ -184,7 +182,7 @@
 }
 
 - (void)updateDisplay{
-    self.thrustToWeightLabel.text = [NSString stringWithFormat:@"%1.1f", ([[self.motor peakThrust] floatValue])/(([self.rocket.mass floatValue] + [self.motor.loadedMass floatValue])*(GRAV_ACCEL))];
+    self.thrustToWeightLabel.text = [NSString stringWithFormat:@"%1.1f : 1", ([[self.motor peakThrust] floatValue])/(([self.rocket.mass floatValue] + [self.motor.loadedMass floatValue])*(GRAV_ACCEL))];
     self.rocketCell.textLabel.text = self.rocket.name;
     self.rocketCell.detailTextLabel.text = [NSString stringWithFormat:@"%dmm", [self.rocket.motorSize intValue]];
     self.motorCell.textLabel.text = self.motor.name;
@@ -192,6 +190,8 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:self.motor.manufacturer ofType:@"png"];
     UIImage *theImage = [UIImage imageWithContentsOfFile:path];
     self.motorCell.imageView.image = theImage;
+    
+    // In the following I let the SLUnitsConvertor class do all of the unit changing.  This controller is not even aware of the UNIT_PREFS settings
 
     self.launchAngleLabel.text = [NSString stringWithFormat:@"%1.1f",[[self.settings objectForKey:LAUNCH_ANGLE_KEY] floatValue] * DEGREES_PER_RADIAN];
     NSArray *buttonNames = [NSArray arrayWithObjects:
