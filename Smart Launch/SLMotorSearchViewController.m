@@ -145,6 +145,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
         }
         _allMotors = [[NSArray arrayWithArray:build] sortedArrayUsingFunction:sortFunction context:NULL];
         [_allMotors writeToURL:motorFileURL atomically:YES];
+        //NSLog(@"Loaded %d motors.",[_allMotors count]);
     }
     return _allMotors;
 }

@@ -120,7 +120,7 @@
     cameraUI.delegate = delegate;
     cameraUI.showsCameraControls = NO;
     
-    [controller presentModalViewController: cameraUI animated: YES];
+    [controller presentModalViewController: cameraUI animated: NO];
     cameraUI.cameraOverlayView = self.angleView;
     self.angleView.opaque = NO;
     return YES;
