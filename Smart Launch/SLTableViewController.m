@@ -295,6 +295,10 @@
     [self setApogeeAltitudeUnitsLabel:nil];
     [self setSpinner:nil];
     [self setThrustToWeightLabel:nil];
+    self.rocket = nil;
+    self.motor = nil;
+    self.model = nil;
+    self.settings = nil;
     [super viewDidUnload];
 }
 

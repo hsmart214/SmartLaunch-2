@@ -244,6 +244,11 @@
     // Release any retained subviews of the main view.
     self.accelerometer.delegate = nil;
     self.accelerometer = nil;
+    self.cancelButton = nil;
+    self.acceptButton = nil;
+    self.angleView = nil;
+    self.angleLabel = nil;
+    self.warningView = nil;
 
 }
 

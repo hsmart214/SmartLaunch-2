@@ -171,6 +171,7 @@
     [self setAltitudeControl:nil];
     [self setVelocityControl:nil];
     [self setThrustControl:nil];
+    self.oldPrefs = nil;
     [super viewDidUnload];
 }
 

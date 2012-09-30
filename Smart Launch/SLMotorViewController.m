@@ -73,6 +73,7 @@
     [self setThrustCurve:nil];
     [self setMotorLength:nil];
     [self setPropellantMass:nil];
+    self.motor = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

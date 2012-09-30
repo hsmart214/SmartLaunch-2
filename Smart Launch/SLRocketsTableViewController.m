@@ -87,6 +87,7 @@
     self.rockets = nil;
     self.selectedRocket = nil;
     self.detailData = nil;
+    self.delegate = nil;
     [super viewDidUnload];
 }
 

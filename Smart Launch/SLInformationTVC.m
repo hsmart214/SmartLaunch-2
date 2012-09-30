@@ -45,9 +45,8 @@
 {
     [self setDoneButton:nil];
     [self setInfoTextView:nil];
+    self.delegate = nil;
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

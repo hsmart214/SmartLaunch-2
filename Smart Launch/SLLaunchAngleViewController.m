@@ -212,6 +212,7 @@
     [self setMotionButton:nil];
     [self setCalibrateButton:nil];
     [self setCameraButton:nil];
+    self.delegate = nil;
     [super viewDidUnload];
 
 }

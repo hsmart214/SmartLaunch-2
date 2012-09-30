@@ -79,6 +79,8 @@
 
 - (void)viewDidUnload
 {
+    self.oldMotorPrefs = nil;
+    self.motorPrefs = nil;
     [super viewDidUnload];
 }
 

@@ -239,6 +239,7 @@
 - (void)viewDidUnload
 {
     [self.delegate sender:self didChangeSimSettings:self.settings withUpdate:YES];
+    self.delegate = nil;
     [self setLaunchAngleLabel:nil];
     [self setWindVelocityLabel:nil];
     [self setWindVelocityUnitsLabel:nil];
@@ -251,6 +252,9 @@
     [self setSiteAltitudeUnitsLabel:nil];
     [self setSiteAltitudeStepper:nil];
     [self setGPSAltButton:nil];
+    self.locationManager = nil;
+    self.settings = nil;
+    self.launchGuideLengthFormatString = nil;
     [super viewDidUnload];
 }
 

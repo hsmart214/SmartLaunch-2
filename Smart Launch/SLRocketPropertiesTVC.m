@@ -163,6 +163,10 @@
     [self setMotorDiamUnitsLabel:nil];
     [self setRocket:nil];
     [self setMotorDiamStepper:nil];
+    self.rocket = nil;
+    self.delegate = nil;
+    self.oldRocket = nil;
+    self.validMotorDiameters = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

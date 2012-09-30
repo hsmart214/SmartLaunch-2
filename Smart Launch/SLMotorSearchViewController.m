@@ -283,6 +283,16 @@ NSInteger sortFunction(id md1, id md2, void *context){
     [self setSearch2Control:nil];
     [self setPickerView:nil];
     [self setRestrictMotorDiametersSegmentedControl:nil];
+    self.preferredImpulseClasses = nil;
+    self.preferredManufacturers = nil;
+    self.preferredMotorDiameters = nil;
+    self.restrictedMotorDiamPrefs = nil;
+    self.impulseClasses = nil;
+    self.motorDiameters = nil;
+    self.motorKeyPrefs = nil;
+    self.allMotors = nil;
+    self.manufacturerNames = nil;
+    self.rocketMotorMountDiameter = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
