@@ -31,11 +31,8 @@
 		4220A4EC15F55D120055EE35 /* AcceptButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E015F55D120055EE35 /* AcceptButton.png */; };
 		4220A4ED15F55D120055EE35 /* AcceptButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E115F55D120055EE35 /* AcceptButtonSelected.png */; };
 		4220A4F015F55D120055EE35 /* AngleWarning.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E415F55D120055EE35 /* AngleWarning.png */; };
-		4220A4F315F55D120055EE35 /* Alpha.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E715F55D120055EE35 /* Alpha.png */; };
 		4220A4F415F55D120055EE35 /* atmosphere.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E815F55D120055EE35 /* atmosphere.txt */; };
 		4220A4F515F55D120055EE35 /* motors.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E915F55D120055EE35 /* motors.txt */; };
-		4220A4FE15F55D760055EE35 /* Viewfinder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4FA15F55D760055EE35 /* Viewfinder.png */; };
-		4220A4FF15F55D760055EE35 /* Viewfinder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4FB15F55D760055EE35 /* Viewfinder@2x.png */; };
 		4220A50015F55D760055EE35 /* Vellum.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4FC15F55D760055EE35 /* Vellum.png */; };
 		4220A50115F55D760055EE35 /* Vellum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4FD15F55D760055EE35 /* Vellum@2x.png */; };
 		4220A51815F55D8D0055EE35 /* Aerotech.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A50215F55D8D0055EE35 /* Aerotech.png */; };
@@ -76,6 +73,8 @@
 		4256931415F4893000F7BABC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4256931215F4893000F7BABC /* InfoPlist.strings */; };
 		4256931615F4893000F7BABC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931515F4893000F7BABC /* main.m */; };
 		4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931915F4893000F7BABC /* SLAppDelegate.m */; };
+		42DABC531617FD0100CA6C5E /* Viewfinder.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC511617FD0100CA6C5E /* Viewfinder.png */; };
+		42DABC541617FD0100CA6C5E /* Viewfinder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC521617FD0100CA6C5E /* Viewfinder@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,11 +123,8 @@
 		4220A4E015F55D120055EE35 /* AcceptButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcceptButton.png; sourceTree = "<group>"; };
 		4220A4E115F55D120055EE35 /* AcceptButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcceptButtonSelected.png; sourceTree = "<group>"; };
 		4220A4E415F55D120055EE35 /* AngleWarning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AngleWarning.png; sourceTree = "<group>"; };
-		4220A4E715F55D120055EE35 /* Alpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Alpha.png; sourceTree = "<group>"; };
 		4220A4E815F55D120055EE35 /* atmosphere.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = atmosphere.txt; sourceTree = "<group>"; };
 		4220A4E915F55D120055EE35 /* motors.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = motors.txt; sourceTree = "<group>"; };
-		4220A4FA15F55D760055EE35 /* Viewfinder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Viewfinder.png; sourceTree = "<group>"; };
-		4220A4FB15F55D760055EE35 /* Viewfinder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Viewfinder@2x.png"; sourceTree = "<group>"; };
 		4220A4FC15F55D760055EE35 /* Vellum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Vellum.png; sourceTree = "<group>"; };
 		4220A4FD15F55D760055EE35 /* Vellum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Vellum@2x.png"; sourceTree = "<group>"; };
 		4220A50215F55D8D0055EE35 /* Aerotech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Aerotech.png; sourceTree = "<group>"; };
@@ -174,6 +170,8 @@
 		4256931715F4893000F7BABC /* Smart Launch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart Launch-Prefix.pch"; sourceTree = "<group>"; };
 		4256931815F4893000F7BABC /* SLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAppDelegate.h; sourceTree = "<group>"; };
 		4256931915F4893000F7BABC /* SLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAppDelegate.m; sourceTree = "<group>"; };
+		42DABC511617FD0100CA6C5E /* Viewfinder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Viewfinder.png; path = ../Viewfinder.png; sourceTree = "<group>"; };
+		42DABC521617FD0100CA6C5E /* Viewfinder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Viewfinder@2x.png"; path = "../Viewfinder@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,9 +222,9 @@
 		4220A52F15F55DAB0055EE35 /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				42DABC511617FD0100CA6C5E /* Viewfinder.png */,
+				42DABC521617FD0100CA6C5E /* Viewfinder@2x.png */,
 				4220A4E415F55D120055EE35 /* AngleWarning.png */,
-				4220A4FA15F55D760055EE35 /* Viewfinder.png */,
-				4220A4FB15F55D760055EE35 /* Viewfinder@2x.png */,
 				4220A4FC15F55D760055EE35 /* Vellum.png */,
 				4220A4FD15F55D760055EE35 /* Vellum@2x.png */,
 			);
@@ -271,7 +269,6 @@
 			children = (
 				4220A53B15F561CF0055EE35 /* Goblin@2x.png */,
 				4220A53C15F561CF0055EE35 /* Goblin.png */,
-				4220A4E715F55D120055EE35 /* Alpha.png */,
 			);
 			name = "Rocket Images";
 			sourceTree = "<group>";
@@ -432,11 +429,8 @@
 				4220A4EC15F55D120055EE35 /* AcceptButton.png in Resources */,
 				4220A4ED15F55D120055EE35 /* AcceptButtonSelected.png in Resources */,
 				4220A4F015F55D120055EE35 /* AngleWarning.png in Resources */,
-				4220A4F315F55D120055EE35 /* Alpha.png in Resources */,
 				4220A4F415F55D120055EE35 /* atmosphere.txt in Resources */,
 				4220A4F515F55D120055EE35 /* motors.txt in Resources */,
-				4220A4FE15F55D760055EE35 /* Viewfinder.png in Resources */,
-				4220A4FF15F55D760055EE35 /* Viewfinder@2x.png in Resources */,
 				4220A50015F55D760055EE35 /* Vellum.png in Resources */,
 				4220A50115F55D760055EE35 /* Vellum@2x.png in Resources */,
 				4220A51815F55D8D0055EE35 /* Aerotech.png in Resources */,
@@ -469,6 +463,8 @@
 				4240A07D15F86CEC00D67F3E /* Default@2x.png in Resources */,
 				424AFFDE15FEEC8E00F98771 /* iTunesArtwork in Resources */,
 				423DC8EE160A678600A87A4F /* Default-568h@2x.png in Resources */,
+				42DABC531617FD0100CA6C5E /* Viewfinder.png in Resources */,
+				42DABC541617FD0100CA6C5E /* Viewfinder@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
