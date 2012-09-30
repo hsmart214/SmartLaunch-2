@@ -120,7 +120,8 @@
     cameraUI.delegate = delegate;
     cameraUI.showsCameraControls = NO;
     
-    [controller presentModalViewController: cameraUI animated: NO];
+    [controller presentModalViewController: cameraUI animated: NO]; // looks better not animated, besides
+                                                                    // if animated, generates "unbalanced calls" error
     cameraUI.cameraOverlayView = self.angleView;
     self.angleView.opaque = NO;
     return YES;
