@@ -339,4 +339,11 @@
     return [NSArray arrayWithArray:data];
 }
 
+-(void)dealloc{
+    self.flightProfile = nil;
+    self.stdAtmosphere = nil;
+    self.motor = nil;
+    self.rocket = nil;
+}
+
 @end

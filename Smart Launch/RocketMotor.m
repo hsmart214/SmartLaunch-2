@@ -79,6 +79,19 @@
     return self;
 }
 
+-(void)dealloc{
+    _mass = nil;
+    _propellantMass = nil;
+    _times = nil;
+    _thrusts = nil;
+    _name = nil;
+    _manufacturer = nil;
+    _impulseClass = nil;
+    _diameter = nil;
+    _length = nil;
+    _delays = nil;
+}
+
 -(NSDictionary *)motorDict{
     NSString *delayString = [self.delays objectAtIndex:0];
     if ([self.delays count]>1){

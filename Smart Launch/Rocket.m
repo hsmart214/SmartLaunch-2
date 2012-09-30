@@ -51,6 +51,17 @@
     return self;
 }
 
+- (void)dealloc{
+    self.name = nil;
+    self.length = nil;
+    self.diameter = nil;
+    self.cd = nil;
+    self.motorSize = nil;
+    self.mass = nil;
+    self.kitName = nil;
+    self.manufacturer = nil;
+}
+
 -(NSDictionary *)rocketPropertyList{
     NSMutableDictionary *rocketProperties = [NSMutableDictionary dictionary];
     if (self.name) [rocketProperties setObject:self.name forKey:ROCKET_NAME_KEY];
