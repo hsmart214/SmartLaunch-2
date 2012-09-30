@@ -16,8 +16,8 @@
 			<array>
 				<string>Default.png</string>
 				<string>Default@2x.png</string>
-				<string>SmartLaunch.png</string>
-				<string>SmartLaunch@2x.png</string>
+				<string>57icon.png</string>
+				<string>114icon.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
