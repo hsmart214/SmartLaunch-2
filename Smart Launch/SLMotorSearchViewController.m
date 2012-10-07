@@ -293,6 +293,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
     self.allMotors = nil;
     self.manufacturerNames = nil;
     self.rocketMotorMountDiameter = nil;
+    self.delegate = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
