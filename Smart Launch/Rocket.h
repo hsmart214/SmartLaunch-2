@@ -19,14 +19,14 @@
 
 @interface Rocket : NSObject<NSCopying>
 
-@property (nonatomic, retain) NSString * name;          //user's name for the rocket
-@property (nonatomic, retain) NSNumber * length;        //meters
-@property (nonatomic, retain) NSNumber * diameter;      //meters
-@property (nonatomic, retain) NSNumber * cd;            //dimensionless
-@property (nonatomic, retain) NSNumber * motorSize;     //this one is an integer number of millimeters
-@property (nonatomic, retain) NSNumber * mass;          //kilograms
-@property (nonatomic, retain) NSString * kitName;       //manufacturer's name for the kit
-@property (nonatomic, retain) NSString * manufacturer;  //company that made the kit (if any)
+@property (nonatomic, strong) NSString * name;          //user's name for the rocket
+@property (nonatomic, strong) NSNumber * length;        //meters
+@property (nonatomic, strong) NSNumber * diameter;      //meters
+@property (nonatomic, strong) NSNumber * cd;            //dimensionless
+@property (nonatomic, strong) NSNumber * motorSize;     //this one is an integer number of millimeters
+@property (nonatomic, strong) NSNumber * mass;          //kilograms
+@property (nonatomic, strong) NSString * kitName;       //manufacturer's name for the kit
+@property (nonatomic, strong) NSString * manufacturer;  //company that made the kit (if any)
 
 -(NSDictionary *)rocketPropertyList;
 

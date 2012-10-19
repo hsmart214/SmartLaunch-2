@@ -166,7 +166,7 @@
     double area = _PI_ * radius * radius;
     double rho = STANDARD_RHO * [[atmosphereData objectForKey:RHO_RATIO_KEY] floatValue];
     double cd = [self.rocket.cd floatValue];
-    double ccd = cd; // "corrected cd" adjusted for transonic region
+    double ccd; // "corrected cd" adjusted for transonic region
     double mach = v / [[atmosphereData objectForKey:MACH_ONE_KEY] floatValue];
     // this uses the same mach correction the wRASP uses
     if (mach < 0.9) {
