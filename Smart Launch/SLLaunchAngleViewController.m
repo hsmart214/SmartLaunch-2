@@ -194,19 +194,21 @@
     [defaults setObject:settings forKey:SETTINGS_KEY];
     [self.delegate sender:self didChangeLaunchAngle:[NSNumber numberWithFloat:fabsf(self.angleSlider.value)]];
     [defaults synchronize];
+    self.accelerometer.delegate = nil;
+    self.accelerometer = nil;
     [super viewWillDisappear:animated];
 }
 
 - (void)viewDidUnload
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
-    [self.delegate sender:self didChangeLaunchAngle:[NSNumber numberWithFloat:[self.angleLabel.text floatValue]]];
-    [settings setObject: [NSNumber numberWithFloat:fabsf(self.angleSlider.value)] forKey:LAUNCH_ANGLE_KEY];
-    [defaults setObject:settings forKey:SETTINGS_KEY];
-    [defaults synchronize];
-    self.accelerometer.delegate = nil;
-    self.accelerometer = nil;
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
+//    [self.delegate sender:self didChangeLaunchAngle:[NSNumber numberWithFloat:[self.angleLabel.text floatValue]]];
+//    [settings setObject: [NSNumber numberWithFloat:fabsf(self.angleSlider.value)] forKey:LAUNCH_ANGLE_KEY];
+//    [defaults setObject:settings forKey:SETTINGS_KEY];
+//    [defaults synchronize];
+//    self.accelerometer.delegate = nil;
+//    self.accelerometer = nil;
     [self setAngleLabel:nil];
     [self setAngleSlider:nil];
     [self setMotionButton:nil];
