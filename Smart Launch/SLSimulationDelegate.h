@@ -20,3 +20,14 @@
 -(void)dismissModalViewController;
 
 @end
+
+@protocol SLSimulationDataSource <NSObject>
+
+@optional
+
+-(NSNumber *)freeFlightVelocity;
+-(NSNumber *)freeFlightAoA;
+-(NSNumber *)windVelocity;
+-(NSNumber *)launchAngle;
+
+@end

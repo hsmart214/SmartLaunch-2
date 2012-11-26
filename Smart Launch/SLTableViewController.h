@@ -11,6 +11,6 @@
 #import "SLDefinitions.h"
 #import "SLUnitsConvertor.h"
 
-@interface SLTableViewController : UITableViewController <SLSimulationDelegate>
+@interface SLTableViewController : UITableViewController <SLSimulationDelegate, SLSimulationDataSource>
 
 @end

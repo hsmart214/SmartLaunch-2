@@ -20,6 +20,7 @@ enum LaunchDirection {
 
 #define BACKGROUND_IMAGE_FILENAME @"Vellum"
 #define MOTOR_CACHE_FILENAME @"motorcache.plist"
+#define VERTICAL_ROCKET_PIC_NAME @"Rocket"
 
 #pragma mark Calculation constants
 

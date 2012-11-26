@@ -45,6 +45,9 @@
 		4256931415F4893000F7BABC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4256931215F4893000F7BABC /* InfoPlist.strings */; };
 		4256931615F4893000F7BABC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931515F4893000F7BABC /* main.m */; };
 		4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931915F4893000F7BABC /* SLAppDelegate.m */; };
+		42D78095166295F1000C7D6C /* SLAnimatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D78094166295F1000C7D6C /* SLAnimatedViewController.m */; };
+		42D780981662AB3E000C7D6C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D780971662AB3E000C7D6C /* QuartzCore.framework */; };
+		42D7809B1663291B000C7D6C /* SLAnimatedRocketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D7809A1663291B000C7D6C /* SLAnimatedRocketView.m */; };
 		42DABC531617FD0100CA6C5E /* Viewfinder.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC511617FD0100CA6C5E /* Viewfinder.png */; };
 		42DABC541617FD0100CA6C5E /* Viewfinder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC521617FD0100CA6C5E /* Viewfinder@2x.png */; };
 		42DABC6C1617FDAA00CA6C5E /* Aerotech Hybrid.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC561617FDAA00CA6C5E /* Aerotech Hybrid.png */; };
@@ -144,6 +147,11 @@
 		4256931715F4893000F7BABC /* Smart Launch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart Launch-Prefix.pch"; sourceTree = "<group>"; };
 		4256931815F4893000F7BABC /* SLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAppDelegate.h; sourceTree = "<group>"; };
 		4256931915F4893000F7BABC /* SLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAppDelegate.m; sourceTree = "<group>"; };
+		42D78093166295F1000C7D6C /* SLAnimatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAnimatedViewController.h; sourceTree = "<group>"; };
+		42D78094166295F1000C7D6C /* SLAnimatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAnimatedViewController.m; sourceTree = "<group>"; };
+		42D780971662AB3E000C7D6C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		42D780991663291B000C7D6C /* SLAnimatedRocketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAnimatedRocketView.h; sourceTree = "<group>"; };
+		42D7809A1663291B000C7D6C /* SLAnimatedRocketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAnimatedRocketView.m; sourceTree = "<group>"; };
 		42DABC511617FD0100CA6C5E /* Viewfinder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Viewfinder.png; path = ../Viewfinder.png; sourceTree = "<group>"; };
 		42DABC521617FD0100CA6C5E /* Viewfinder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Viewfinder@2x.png"; path = "../Viewfinder@2x.png"; sourceTree = "<group>"; };
 		42DABC561617FDAA00CA6C5E /* Aerotech Hybrid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Aerotech Hybrid.png"; sourceTree = "<group>"; };
@@ -183,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42D780981662AB3E000C7D6C /* QuartzCore.framework in Frameworks */,
 				421437221601ADEE0020AA1D /* MobileCoreServices.framework in Frameworks */,
 				4232060515F7124F0027A18E /* CoreLocation.framework in Frameworks */,
 				4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */,
@@ -270,6 +279,7 @@
 		4256930815F4893000F7BABC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				42D780971662AB3E000C7D6C /* QuartzCore.framework */,
 				421437211601ADEE0020AA1D /* MobileCoreServices.framework */,
 				4232060415F7124F0027A18E /* CoreLocation.framework */,
 				4256930915F4893000F7BABC /* UIKit.framework */,
@@ -283,6 +293,10 @@
 			isa = PBXGroup;
 			children = (
 				4220A4A515F55CC60055EE35 /* MainStoryboard.storyboard */,
+				42D780991663291B000C7D6C /* SLAnimatedRocketView.h */,
+				42D7809A1663291B000C7D6C /* SLAnimatedRocketView.m */,
+				42D78093166295F1000C7D6C /* SLAnimatedViewController.h */,
+				42D78094166295F1000C7D6C /* SLAnimatedViewController.m */,
 				4220A4A715F55CC60055EE35 /* SLModalPresenterDelegate.h */,
 				4220A4A815F55CC60055EE35 /* SLPhotoAngleFinderDelegate.h */,
 				4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */,
@@ -504,6 +518,8 @@
 				4220A4DC15F55CC60055EE35 /* RocketMotor.m in Sources */,
 				4220A4DD15F55CC60055EE35 /* SLPhysicsModel.m in Sources */,
 				4240A07815F8341900D67F3E /* SLMotorPrefsTVC.m in Sources */,
+				42D78095166295F1000C7D6C /* SLAnimatedViewController.m in Sources */,
+				42D7809B1663291B000C7D6C /* SLAnimatedRocketView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

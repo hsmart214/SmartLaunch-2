@@ -243,6 +243,24 @@
     }
 }
 
+#pragma mark - SLSimulationDataSource methods
+
+- (NSNumber *)freeFlightVelocity{
+    return [NSNumber numberWithDouble:[self.model velocityAtEndOfLaunchGuide]];
+}
+
+- (NSNumber *)freeFlightAoA{
+    return [NSNumber numberWithFloat:[self.model freeFlightAngleOfAttack]];
+}
+
+- (NSNumber *)windVelocity{
+    return [NSNumber numberWithFloat:self.model.windVelocity];
+}
+
+- (NSNumber *)launchAngle{
+    return [NSNumber numberWithFloat:self.model.launchGuideAngle];
+}
+
 - (void)dismissModalViewController{
     [self.presentedViewController dismissModalViewControllerAnimated:YES];
 }
@@ -255,6 +273,10 @@
     if ([[segue identifier] isEqualToString:@"motorSelectorSegue"]){
         // this is part of the model for this destination VC, so we can set this
         [(SLMotorSearchViewController *)segue.destinationViewController setRocketMotorMountDiameter:self.rocket.motorSize];
+    }
+    if ([[segue identifier] isEqualToString:@"AnimationSegue"]){
+        [segue.destinationViewController setDelegate:self];
+        [segue.destinationViewController setDataSource:self];
     }
 }
 
