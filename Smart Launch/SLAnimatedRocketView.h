@@ -11,5 +11,6 @@
 @interface SLAnimatedRocketView : UIView
 
 -(void)tiltRocketToAngle:(float)angle;
-
+-(void)UpdateVectorsWithRocketVelocity:(float)rocketVelocity
+                       andWindVelocity:(float)windVelocity;
 @end

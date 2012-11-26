@@ -10,10 +10,11 @@
 #import "SLAnimatedViewController.h"
 #import "SLDefinitions.h"       
 #import "SLUnitsConvertor.h"
+#import "SLAnimatedRocketView.h"
 
 @interface SLAnimatedViewController ()
 
-@property (weak, nonatomic) IBOutlet UIView *rocketView;
+@property (weak, nonatomic) IBOutlet SLAnimatedRocketView *rocketView;
 @property (weak, nonatomic) IBOutlet UILabel *windVelocityUnitsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ffVelocityUnitsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *windVelocityLabel;
@@ -24,16 +25,12 @@
 
 @implementation SLAnimatedViewController
 
-- (void)tiltRocketViewToAngle:(float)angle{
-    
-    [self.rocketView setNeedsDisplay];
-}
-
 - (void)drawVectors{
     float wind = [[self.dataSource windVelocity] floatValue];
     float velocity = [[self.dataSource freeFlightVelocity] floatValue];
     float launchAngle = [[self.dataSource launchAngle] floatValue];
-    [self tiltRocketViewToAngle:-launchAngle];
+    [self.rocketView tiltRocketToAngle:-launchAngle];
+    [self.rocketView UpdateVectorsWithRocketVelocity:velocity andWindVelocity:wind];
 }
 
 - (void)updateDisplay{

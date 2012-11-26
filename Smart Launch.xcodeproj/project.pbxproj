@@ -45,6 +45,8 @@
 		4256931415F4893000F7BABC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4256931215F4893000F7BABC /* InfoPlist.strings */; };
 		4256931615F4893000F7BABC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931515F4893000F7BABC /* main.m */; };
 		4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931915F4893000F7BABC /* SLAppDelegate.m */; };
+		42AEF2E216633603009F65AA /* Rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AEF2E016633603009F65AA /* Rocket.png */; };
+		42AEF2E316633603009F65AA /* Rocket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AEF2E116633603009F65AA /* Rocket@2x.png */; };
 		42D78095166295F1000C7D6C /* SLAnimatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D78094166295F1000C7D6C /* SLAnimatedViewController.m */; };
 		42D780981662AB3E000C7D6C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D780971662AB3E000C7D6C /* QuartzCore.framework */; };
 		42D7809B1663291B000C7D6C /* SLAnimatedRocketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D7809A1663291B000C7D6C /* SLAnimatedRocketView.m */; };
@@ -75,8 +77,6 @@
 		42DABC841617FE5F00CA6C5E /* 57icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC821617FE5F00CA6C5E /* 57icon.png */; };
 		42DABC851617FE5F00CA6C5E /* 114icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC831617FE5F00CA6C5E /* 114icon.png */; };
 		42DABC871617FE9C00CA6C5E /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC861617FE9C00CA6C5E /* iTunesArtwork */; };
-		42DC0F371652047600C8A438 /* Rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DC0F351652047600C8A438 /* Rocket.png */; };
-		42DC0F381652047600C8A438 /* Rocket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DC0F361652047600C8A438 /* Rocket@2x.png */; };
 		42E5914716213D7E003EF252 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E5914616213D7E003EF252 /* Default.png */; };
 		42E5914916213D91003EF252 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E5914816213D91003EF252 /* Default-568h@2x.png */; };
 		42E5914C16213E1C003EF252 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E5914A16213DC7003EF252 /* Default@2x.png */; };
@@ -147,6 +147,8 @@
 		4256931715F4893000F7BABC /* Smart Launch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart Launch-Prefix.pch"; sourceTree = "<group>"; };
 		4256931815F4893000F7BABC /* SLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAppDelegate.h; sourceTree = "<group>"; };
 		4256931915F4893000F7BABC /* SLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAppDelegate.m; sourceTree = "<group>"; };
+		42AEF2E016633603009F65AA /* Rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rocket.png; sourceTree = SOURCE_ROOT; };
+		42AEF2E116633603009F65AA /* Rocket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket@2x.png"; sourceTree = SOURCE_ROOT; };
 		42D78093166295F1000C7D6C /* SLAnimatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAnimatedViewController.h; sourceTree = "<group>"; };
 		42D78094166295F1000C7D6C /* SLAnimatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAnimatedViewController.m; sourceTree = "<group>"; };
 		42D780971662AB3E000C7D6C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -179,8 +181,6 @@
 		42DABC821617FE5F00CA6C5E /* 57icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57icon.png; path = ../57icon.png; sourceTree = "<group>"; };
 		42DABC831617FE5F00CA6C5E /* 114icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114icon.png; path = ../114icon.png; sourceTree = "<group>"; };
 		42DABC861617FE9C00CA6C5E /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = ../iTunesArtwork; sourceTree = "<group>"; };
-		42DC0F351652047600C8A438 /* Rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Rocket.png; path = ../Rocket.png; sourceTree = "<group>"; };
-		42DC0F361652047600C8A438 /* Rocket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Rocket@2x.png"; path = "../Rocket@2x.png"; sourceTree = "<group>"; };
 		42E5914616213D7E003EF252 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		42E5914816213D91003EF252 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		42E5914A16213DC7003EF252 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
@@ -251,8 +251,8 @@
 		4220A53F15F561E30055EE35 /* Rocket Images */ = {
 			isa = PBXGroup;
 			children = (
-				42DC0F351652047600C8A438 /* Rocket.png */,
-				42DC0F361652047600C8A438 /* Rocket@2x.png */,
+				42AEF2E016633603009F65AA /* Rocket.png */,
+				42AEF2E116633603009F65AA /* Rocket@2x.png */,
 				4220A53B15F561CF0055EE35 /* Goblin@2x.png */,
 				4220A53C15F561CF0055EE35 /* Goblin.png */,
 			);
@@ -486,8 +486,8 @@
 				42E5914716213D7E003EF252 /* Default.png in Resources */,
 				42E5914916213D91003EF252 /* Default-568h@2x.png in Resources */,
 				42E5914C16213E1C003EF252 /* Default@2x.png in Resources */,
-				42DC0F371652047600C8A438 /* Rocket.png in Resources */,
-				42DC0F381652047600C8A438 /* Rocket@2x.png in Resources */,
+				42AEF2E216633603009F65AA /* Rocket.png in Resources */,
+				42AEF2E316633603009F65AA /* Rocket@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
