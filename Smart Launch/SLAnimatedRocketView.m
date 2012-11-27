@@ -11,7 +11,7 @@
 
 #define X_INSET 30.0
 #define Y_INSET 10.0
-#define TOP_BUFFER 50.0
+#define TOP_BUFFER 100.0
 #define VECTOR_WIDTH 5.0
 #define VECTOR_HEAD 10.0
 
@@ -73,17 +73,18 @@
     //Figure out the scale that will show the vectors the best
     CGFloat scale;
     CGFloat xAvail = self.bounds.size.width - X_INSET;
-    CGFloat yAvail = self.bounds.size.height - TOP_BUFFER;
-    float rhz = rv * sinf(_launchAngle);
+    CGFloat yAvail = self.bounds.size.height - TOP_BUFFER - self.goblin.bounds.size.height;
+    float rhoriz = rv * sinf(_launchAngle);
     float xExtent;
     if (wv > 0){
-        xExtent = rhz + wv;
+        xExtent = rhoriz + wv;
     }else{
-        xExtent = MAX(rhz, -wv);
+        xExtent = MAX(rhoriz, -wv);
     }
+    
     float yExtent = rv * cosf(_launchAngle);
-    if (xAvail/xExtent * yExtent > yAvail){
-        scale = xAvail/xExtent;
+    if (xExtent!=0){
+        scale = MIN((xAvail/xExtent), (yAvail/yExtent));
     }else{
         scale = yAvail/yExtent;
     }
@@ -92,7 +93,7 @@
     
     //Draw the rocket velocity vector
     CGFloat ctrx, ctry, tipx, tipy, rad;
-    float headAngle = 1.75  * _PI_;
+    float headAngle = 0.75  * _PI_;
     ctrx = self.goblin.center.x;
     ctry = self.goblin.center.y;
     rad = self.goblin.bounds.size.height/2.0;
@@ -102,11 +103,11 @@
     CGContextSetLineWidth(context, VECTOR_WIDTH);
     CGPathMoveToPoint(vectors, nil, tipx, tipy);
     CGPoint rvTip, wvTip, head;
-    rvTip.x = tipx - rv * scale * cosf(_launchAngle);
-    rvTip.y = tipy - rv * scale * sinf(_launchAngle);
+    rvTip.x = tipx - rv * scale * sinf(_launchAngle);
+    rvTip.y = tipy - rv * scale * cosf(_launchAngle);
     CGPathAddLineToPoint(vectors, nil, rvTip.x, rvTip.y);
-    head.x = rvTip.x + VECTOR_HEAD * sinf(headAngle + _launchAngle);
-    head.y = rvTip.y - VECTOR_HEAD * cosf(headAngle + _launchAngle);
+    head.x = rvTip.x + VECTOR_HEAD * sinf(headAngle - _launchAngle);
+    head.y = rvTip.y - VECTOR_HEAD * cosf(headAngle - _launchAngle);
     CGPathAddLineToPoint(vectors, nil, head.x, head.y);
     CGContextAddPath(context, vectors);
     CGPathRelease(vectors);
