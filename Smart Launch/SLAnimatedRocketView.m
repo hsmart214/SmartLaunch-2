@@ -29,8 +29,8 @@
 @synthesize launchAngle = _launchAngle;
 
 -(void)tiltRocketToAngle:(float)angle{
-    self.launchAngle = angle;
-    CGAffineTransform tx = CGAffineTransformMakeRotation(angle);
+    self.launchAngle = -angle;  //in the model the launch angle is always positive, in Quartz, ccw is negative, so we switch it here
+    CGAffineTransform tx = CGAffineTransformMakeRotation(-angle);
     [self.goblin setTransform:tx];
     [self setNeedsDisplay];
 }
@@ -81,7 +81,7 @@
     //Draw the rocket velocity vector
     CGFloat ctrx, ctry, tipx, tipy, rad, headAngle;
     if (wv > 0){
-        headAngle = 0.75  * _PI_;
+        headAngle = -0.75  * _PI_;
     }else{
         headAngle = -0.25 * _PI_;
     }

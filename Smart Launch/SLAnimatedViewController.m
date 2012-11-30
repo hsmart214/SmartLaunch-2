@@ -29,7 +29,13 @@
     float wind = [[self.dataSource windVelocity] floatValue];
     float velocity = [[self.dataSource freeFlightVelocity] floatValue];
     float launchAngle = [[self.dataSource launchAngle] floatValue];
-    [self.rocketView tiltRocketToAngle:-launchAngle];
+    enum LaunchDirection dir = [self.dataSource launchGuideDirection];
+    if (dir == CrossWind) launchAngle = 0.0;           // crosswind the AoA is the same as upright
+    
+    [self.rocketView tiltRocketToAngle:launchAngle];   // in the model the launch angle is always positive
+    
+    if (dir == IntoWind) wind = -wind;                 // this is how we display the opposite wind direction
+    
     [self.rocketView UpdateVectorsWithRocketVelocity:velocity andWindVelocity:wind];
 }
 

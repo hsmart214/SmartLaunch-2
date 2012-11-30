@@ -261,6 +261,10 @@
     return [NSNumber numberWithFloat:self.model.launchGuideAngle];
 }
 
+- (enum LaunchDirection)launchGuideDirection{
+    return [self.model LaunchGuideDirection];
+}
+
 - (void)dismissModalViewController{
     [self.presentedViewController dismissModalViewControllerAnimated:YES];
 }

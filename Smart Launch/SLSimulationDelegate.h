@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Rocket.h"
 #import "RocketMotor.h"
+#import "SLDefinitions.h"
 
 @protocol SLSimulationDelegate <NSObject>
 
@@ -29,5 +30,6 @@
 -(NSNumber *)freeFlightAoA;
 -(NSNumber *)windVelocity;
 -(NSNumber *)launchAngle;
+-(enum LaunchDirection)launchGuideDirection;
 
 @end
