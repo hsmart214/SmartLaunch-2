@@ -13,4 +13,5 @@
 -(void)tiltRocketToAngle:(float)angle;
 -(void)UpdateVectorsWithRocketVelocity:(float)rocketVelocity
                        andWindVelocity:(float)windVelocity;
+-(void)startFresh;
 @end

@@ -10,7 +10,7 @@
 #import "SLDefinitions.h"
 
 #define X_INSET 30.0
-#define Y_INSET 10.0
+#define Y_INSET 100.0
 #define TOP_BUFFER 100.0
 #define VECTOR_WIDTH 5.0
 #define VECTOR_HEAD 10.0
@@ -48,19 +48,6 @@
     CGRect frame = CGRectMake(s.width - orig.x, s.height - orig.y, self.goblin.bounds.size.width, self.goblin.bounds.size.height);
     [self.goblin setFrame:frame];
     [self addSubview:self.goblin];
-}
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self startFresh];
-    }
-    return self;
-}
-
-- (void)awakeFromNib{
-    [self startFresh];
 }
 
 
@@ -139,7 +126,7 @@
     //Draw the angle of attack vector
     
     vectors = CGPathCreateMutable();
-    CGContextSetStrokeColorWithColor(context, [[UIColor greenColor] CGColor]);
+    CGContextSetStrokeColorWithColor(context, [[UIColor purpleColor] CGColor]);
     CGPathMoveToPoint(vectors, nil, wvTip.x, wvTip.y);
     CGPathAddLineToPoint(vectors, nil, tipx, tipy);
     float aoa = atanf((wvTip.x-tipx)/(wvTip.y-tipy));

@@ -56,6 +56,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.rocketView startFresh];
     [self updateDisplay];
 }
 
