@@ -8,6 +8,7 @@
 
 #import "SLAnimatedRocketView.h"
 #import "SLDefinitions.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define X_INSET 30.0
 #define Y_INSET 100.0
@@ -50,6 +51,19 @@
     [self addSubview:self.goblin];
 }
 
+void drawVectorWithHead(CGMutablePathRef path, CGPoint fromPt, CGPoint toPt){
+    CGPathMoveToPoint(path, nil, fromPt.x, fromPt.y);
+    CGPathAddLineToPoint(path, nil, toPt.x, toPt.y);
+    float angle = atanf((toPt.y-fromPt.y)/(toPt.x-fromPt.x));
+    CGPoint ccwPt, cwPt;
+    ccwPt.x = toPt.x + VECTOR_HEAD * cosf(angle - _PI_*3/4);
+    ccwPt.y = toPt.y + VECTOR_HEAD * sinf(angle - _PI_*3/4);
+    cwPt.x = toPt.x + VECTOR_HEAD * cosf(angle + _PI_*3/4);
+    cwPt.y = toPt.y + VECTOR_HEAD * sinf(angle + _PI_*3/4);
+    CGPathAddLineToPoint(path, nil, ccwPt.x, ccwPt.y);
+    CGPathAddLineToPoint(path, nil, cwPt.x, cwPt.y);
+    CGPathAddLineToPoint(path, nil, toPt.x, toPt.y);
+}
 
 - (void)drawRect:(CGRect)rect
 {
@@ -78,63 +92,71 @@
     //Scale is points per unit velocity (meters/sec)
     CGMutablePathRef vectors = CGPathCreateMutable();
     
-    //Draw the rocket velocity vector
-    CGFloat ctrx, ctry, tipx, tipy, rad, headAngle;
+    //Draw the rocket velocity vector ============================================
+    CGFloat rad, headAngle;
+    CGPoint rvTip, rvEnd, wvTip, ctr, tip;
     if (wv > 0){
-        headAngle = -0.75  * _PI_;
+        headAngle = 0.75  * _PI_;
     }else{
-        headAngle = -0.25 * _PI_;
+        headAngle = 0.75 * _PI_;
     }
-    ctrx = self.goblin.center.x;
-    ctry = self.goblin.center.y;
-    rad = self.goblin.bounds.size.height/2.0;
-    tipx = ctrx - rad * sinf(-_launchAngle);
-    tipy = ctry - rad * cosf(_launchAngle);
+    ctr = self.goblin.center;
+    rad = self.goblin.bounds.size.height/2.0;  // radius to the tip of the Goblin image
+    tip.x = ctr.x - rad * sinf(-_launchAngle); // tip of the Goblin image
+    tip.y = ctr.y - rad * cosf(_launchAngle);
     CGContextSetStrokeColorWithColor(context, [[UIColor redColor] CGColor]);
     CGContextSetLineWidth(context, VECTOR_WIDTH);
-    CGPathMoveToPoint(vectors, nil, tipx, tipy);
-    CGPoint rvTip, wvTip, head;
-    rvTip.x = tipx - rv * scale * sinf(-_launchAngle);
-    rvTip.y = tipy - rv * scale * cosf(_launchAngle);
-    CGPathAddLineToPoint(vectors, nil, rvTip.x, rvTip.y);
-    head.x = rvTip.x + VECTOR_HEAD * sinf(headAngle + _launchAngle);
-    head.y = rvTip.y - VECTOR_HEAD * cosf(headAngle - _launchAngle);
-    CGPathAddLineToPoint(vectors, nil, head.x, head.y);
+//    CGPathMoveToPoint(vectors, nil, tip.x, tip.y);
+    rvTip.x = tip.x - rv * scale * sinf(-_launchAngle);
+    rvTip.y = tip.y - rv * scale * cosf(_launchAngle);
+    rvEnd = tip;
+    rvEnd.x -= wv * scale;
+    rvTip.x -= wv * scale;
+    wvTip.x = rvTip.x + wv * scale;
+    wvTip.y = rvTip.y;
+
+//    CGPathAddLineToPoint(vectors, nil, rvTip.x, rvTip.y);
+//    CGPathMoveToPoint(vectors, nil, tip.x, tip.y);
+//    head.x = tip.x + VECTOR_HEAD * sinf(headAngle + (_launchAngle - _PI_/2));
+//    head.y = tip.y - VECTOR_HEAD * cosf(headAngle + (_launchAngle - _PI_/2));
+//    CGPathAddLineToPoint(vectors, nil, head.x, head.y);
+    drawVectorWithHead(vectors, rvTip, rvEnd);
     CGContextAddPath(context, vectors);
     CGPathRelease(vectors);
     CGContextStrokePath(context);
     
-    //Draw the wind velocity vector
+    //Draw the wind velocity vector ================================================
 
     vectors = CGPathCreateMutable();
     CGContextSetStrokeColorWithColor(context, [[UIColor blueColor] CGColor]);
-    CGPathMoveToPoint(vectors, nil, rvTip.x, rvTip.y);
-    wvTip.x = rvTip.x - wv * scale;
-    wvTip.y = rvTip.y;
-    CGPathAddLineToPoint(vectors, nil, wvTip.x, wvTip.y);
-    if (wv > 0){
-        head.x = wvTip.x + VECTOR_HEAD * 0.707;
-    }else{
-        head.x = wvTip.x - VECTOR_HEAD * 0.707;
-    }
-    head.y = wvTip.y - VECTOR_HEAD * 0.707;
-    CGPathAddLineToPoint(vectors, nil, head.x, head.y);
+//    CGPathMoveToPoint(vectors, nil, rvTip.x, rvTip.y);
+//    CGPathAddLineToPoint(vectors, nil, wvTip.x, wvTip.y);
+//    if (wv > 0){
+//        head.x = rvTip.x - VECTOR_HEAD * 0.707;
+//    }else{
+//        head.x = rvTip.x - VECTOR_HEAD * 0.707;
+//    }
+//    head.y = rvTip.y - VECTOR_HEAD * 0.707;
+//    CGPathMoveToPoint(vectors, nil, rvTip.x, rvTip.y);
+//    CGPathAddLineToPoint(vectors, nil, head.x, head.y);
+    drawVectorWithHead(vectors, rvTip, wvTip);
     CGContextAddPath(context, vectors);
     CGPathRelease(vectors);
     CGContextStrokePath(context);
     
-    //Draw the angle of attack vector
+    //Draw the angle of attack vector ===============================================
     
     vectors = CGPathCreateMutable();
     CGContextSetStrokeColorWithColor(context, [[UIColor purpleColor] CGColor]);
-    CGPathMoveToPoint(vectors, nil, wvTip.x, wvTip.y);
-    CGPathAddLineToPoint(vectors, nil, tipx, tipy);
-    float aoa = atanf((wvTip.x-tipx)/(wvTip.y-tipy));
-    headAngle = 1.25 * _PI_ + _launchAngle - aoa;
-    if (wv < 0) headAngle = aoa + _PI_/4.0;
-    head.x = tipx + VECTOR_HEAD * cosf(headAngle);
-    head.y = tipy - VECTOR_HEAD * sinf(headAngle);
-    CGPathAddLineToPoint(vectors, nil, head.x, head.y);
+//    CGPathMoveToPoint(vectors, nil, wvTip.x, wvTip.y);
+//    CGPathAddLineToPoint(vectors, nil, tip.x, tip.y);
+//    float aoa = atanf((wvTip.x-tip.x)/(wvTip.y-tip.y));
+//    headAngle = 1.25 * _PI_ + _launchAngle - aoa;
+//    if (wv < 0) headAngle = aoa + _PI_/4.0;
+//    head.x = tip.x + VECTOR_HEAD * cosf(headAngle);
+//    head.y = tip.y - VECTOR_HEAD * sinf(headAngle);
+//    CGPathAddLineToPoint(vectors, nil, head.x, head.y);
+    drawVectorWithHead(vectors, rvTip, tip);
     CGContextAddPath(context, vectors);
     CGPathRelease(vectors);
     CGContextStrokePath(context);
