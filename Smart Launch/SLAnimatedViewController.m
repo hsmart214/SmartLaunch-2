@@ -20,13 +20,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *windVelocityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ffVelocityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ffAoALabel;
+@property (weak, nonatomic) IBOutlet UISlider *windVelocitySlider;
 
 @end
 
 @implementation SLAnimatedViewController
 
+- (IBAction)windVelocityChanged:(UISlider *)sender {
+    self.windVelocityLabel.text = [NSString stringWithFormat:@"%2.1f", sender.value];
+    [self drawVectors];
+}
+
 - (void)drawVectors{
-    float wind = [[self.dataSource windVelocity] floatValue];
+    float wind = self.windVelocitySlider.value;
     float velocity = [[self.dataSource freeFlightVelocity] floatValue];
     float launchAngle = [[self.dataSource launchAngle] floatValue];
     enum LaunchDirection dir = [self.dataSource launchGuideDirection];
@@ -40,12 +46,9 @@
 }
 
 - (void)updateDisplay{
-    self.windVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
-    NSNumber *velocity = [SLUnitsConvertor displayUnitsOf:[self.dataSource windVelocity] forKey:VELOCITY_UNIT_KEY];
-    self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", [velocity floatValue]];
     
     self.ffVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
-    velocity = [SLUnitsConvertor displayUnitsOf:[self.dataSource freeFlightVelocity] forKey:VELOCITY_UNIT_KEY];
+    NSNumber *velocity = [SLUnitsConvertor displayUnitsOf:[self.dataSource freeFlightVelocity] forKey:VELOCITY_UNIT_KEY];
     self.ffVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", [velocity floatValue]];
     
     NSNumber *aoa = [self.dataSource freeFlightAoA];
@@ -55,6 +58,10 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setToolbarHidden:NO animated:animated];
+    self.windVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
+    NSNumber *velocity = [SLUnitsConvertor displayUnitsOf:[self.dataSource windVelocity] forKey:VELOCITY_UNIT_KEY];
+    self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", [velocity floatValue]];
+    self.windVelocitySlider.value = [velocity floatValue];
     [self updateDisplay];
     [super viewWillAppear:animated];
 }
@@ -62,6 +69,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
+    UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
+    [backgroundView setImage:backgroundImage];
+    [self.view insertSubview:backgroundView atIndex:0];
     [self.rocketView startFresh];
     [self updateDisplay];
 }
@@ -80,6 +92,7 @@
     [self setFfVelocityLabel:nil];
     [self setFfAoALabel:nil];
     [self setRocketView:nil];
+    [self setWindVelocitySlider:nil];
     [super viewDidUnload];
 }
 @end
