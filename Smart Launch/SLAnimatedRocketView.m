@@ -53,68 +53,34 @@
 }
 
 void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint fromPt, const CGPoint toPt, const bool ccwLoop){
+    float angle = 0.5 * _PI_ + atanf((toPt.y-fromPt.y)/(toPt.x-fromPt.x));
+    if (fromPt.x <= toPt.x){
+        angle += _PI_;
+    }
     CGContextSetStrokeColorWithColor(context, [color CGColor]);
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, nil, fromPt.x, fromPt.y);
-    CGPathAddLineToPoint(path, nil, toPt.x, toPt.y);
-    CGPathCloseSubpath(path);
     CGPoint corner, cross;
-    
-    if (toPt.y == fromPt.y){    //This must be the wind vector - the only horizontal vector
-        float offset;
-        if (ccwLoop){
-            offset = -VECTOR_HEAD * 0.707;
-        }else{
-            offset = VECTOR_HEAD * 0.707;
-        }
-        corner.x = toPt.x + offset;
-        corner.y = toPt.y - fabs(offset);
-        cross.x = corner.x;
-        cross.y = toPt.y;
-        
-    }else{  // This is either the rocket vector or the angle of attack vector
-        
-        float angle;    // This is the angle of our vector in our view's coordinate system (0° to the right, CW positive)
-        float headAngle;// This is the angle of the vector head half-arrow
-        
-        if (toPt.x == fromPt.x){
-            angle = _PI_ * 0.5;   //We will not have an upward vertical vector
-            float offset;
-            if (ccwLoop){
-                offset = -VECTOR_HEAD * 0.707;
-            }else{
-                offset = VECTOR_HEAD * 0.707;
-            }
-            corner.x = toPt.x + offset;
-            corner.y = toPt.y - VECTOR_HEAD * 0.707;
-            cross.x = toPt.x;
-            cross.y = corner.y;
-        }else{
-            angle = atanf((toPt.y-fromPt.y)/(toPt.x-fromPt.x));
-            headAngle = 0.75 * _PI_ - angle;
-            
-            if (ccwLoop){
-                corner.x = toPt.x + VECTOR_HEAD * 0.707 * cosf(headAngle);
-                corner.y = toPt.y - VECTOR_HEAD * 0.707 * sinf(headAngle);
-            }else{
-                corner.x = toPt.x - VECTOR_HEAD * 0.707 * cosf(headAngle - _PI_ * 0.5);
-                corner.y = toPt.y - VECTOR_HEAD * 0.707 * sinf(headAngle - _PI_ * 0.5);
-            }
-            cross.x = toPt.x - cosf(angle) * VECTOR_HEAD * 0.707;
-            cross.y = toPt.y - sinf(angle) * VECTOR_HEAD * 0.707;
-        }
-        
-    }
-    CGPathMoveToPoint(path, nil, cross.x, cross.y);
-    
-    CGPathAddLineToPoint(path, nil, corner.x, corner.y);
-    
-    CGPathAddLineToPoint(path, nil, toPt.x, toPt.y);
+    CGAffineTransform rot = CGAffineTransformMakeRotation(angle);
+    CGAffineTransform tran = CGAffineTransformMakeTranslation(toPt.x, toPt.y);
+    CGAffineTransform tx = CGAffineTransformConcat(rot, tran);
+    float length = sqrtf((fromPt.x-toPt.x)*(fromPt.x-toPt.x) + (fromPt.y-toPt.y)*(fromPt.y-toPt.y));
+    float offset = VECTOR_HEAD * 0.707106;
+    if (!ccwLoop) offset *= -1;
+    corner.x = offset;
+    corner.y = - fabsf(offset);
+    cross.x = 0;
+    cross.y = - fabsf(offset);
+    CGPathMoveToPoint(path, &tx, 0, -length);
+    CGPathAddLineToPoint(path, &tx, 0, 0);
+    CGPathCloseSubpath(path);
+    CGPathMoveToPoint(path, &tx, 0, 0);
+    CGPathAddLineToPoint(path, &tx, corner.x, corner.y);
+    CGPathAddLineToPoint(path, &tx, cross.x, cross.y);
     CGPathCloseSubpath(path);
     CGContextAddPath(context, path);
-    CGPathRelease(path);
     CGContextStrokePath(context);
-
+    CGPathRelease(path);
+    
 }
 
 - (void)drawRect:(CGRect)rect
@@ -162,7 +128,7 @@ void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint from
     UIColor *color = [UIColor redColor];
     CGContextSetLineWidth(context, VECTOR_WIDTH);
     CGContextSetLineJoin(context, kCGLineJoinMiter);
-    if (self.launchAngle == 0.0) ccwLoop = true;    // only for this vector, so we have to reset this for the others below
+    if (self.launchAngle == 0.0) ccwLoop = false;    // only for this vector, so we have to reset this for the others below
     drawVectorWithHead(context, color, rvTip, rvEnd, ccwLoop);
     
     //Draw the wind velocity vector ================================================
@@ -171,7 +137,7 @@ void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint from
     drawVectorWithHead(context, color, wvTip, rvTip, ccwLoop);
     
     //Draw the angle of attack vector ===============================================
-    
+    ccwLoop = !ccwLoop;
     color = [UIColor purpleColor];
     drawVectorWithHead(context, color, wvTip, tip, ccwLoop);
     
