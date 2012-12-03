@@ -202,8 +202,6 @@
 }
 
 
-
-
 - (double)velocityAtEndOfLaunchGuide{
     if (!self.liftMass) return 0;       // This will protect againt divide-by-zero errors
     return [self velocityAtAltitude:self.launchGuideLength];
@@ -219,7 +217,7 @@
     // There is probably a better way to do this vector addition but I am not coming up with it right now
     switch (self.LaunchGuideDirection) {
         case CrossWind:
-            return asinf(self.windVelocity/velocity);
+            return atanf(self.windVelocity/velocity);
             break;
         case WithWind:
             alpha1 = self.launchGuideAngle;
@@ -246,14 +244,16 @@
     self.altitude = 0;
     self.velocity = 0;
     self.timeIndex = 0;
+    double g = self.gravityAccel;
+    float mRocket = [self.rocket.mass floatValue];
     for (int i = 0; i < [self.motor.times count]; i++){
         while (self.timeIndex < [[self.motor.times objectAtIndex:i] floatValue]) {
-            self.timeIndex += 1.0/DIVS_DURING_BURN;
-            double mass = [self.motor massAtTime:self.timeIndex] + [self.rocket.mass floatValue];
-            double a = [self.motor thrustAtTime:self.timeIndex]/mass - self.gravityAccel - [self dragAtVelocity:self.velocity andAltitude:self.altitude]/mass;
+            _timeIndex += 1.0/DIVS_DURING_BURN;
+            double mass = [self.motor massAtTime:_timeIndex] + mRocket;
+            double a = [self.motor thrustAtTime:_timeIndex]/mass - g - [self dragAtVelocity:_velocity andAltitude:_altitude]/mass;
             if (a > 0) {        //remember DIVS is in units of 1/sec
-                self.altitude += (self.velocity / DIVS_DURING_BURN) + (0.5 * a /(DIVS_DURING_BURN * DIVS_DURING_BURN));
-                self.velocity += a / DIVS_DURING_BURN;
+                _altitude += (_velocity / DIVS_DURING_BURN) + (0.5 * a /(DIVS_DURING_BURN * DIVS_DURING_BURN));
+                _velocity += a / DIVS_DURING_BURN;
             }else{
                 a = 0;
             }
@@ -267,13 +267,15 @@
 }
 
 - (void)integrateBurnoutToApogee{
+    float mRocket = [self.rocket.mass floatValue];
+    double g = self.gravityAccel;
     while (self.velocity > 0) {
-        self.timeIndex += 1.0/DIVS_AFTER_BURNOUT;
-        double mass = [self.motor massAtTime:self.timeIndex] + [self.rocket.mass floatValue];
-        double a = - self.gravityAccel - [self dragAtVelocity:self.velocity andAltitude:self.altitude]/mass;
+        _timeIndex += 1.0/DIVS_AFTER_BURNOUT;
+        double mass = [self.motor massAtTime:_timeIndex] + mRocket;
+        double a = - g - [self dragAtVelocity:_velocity andAltitude:_altitude]/mass;
         
-        self.altitude += ((self.velocity / DIVS_AFTER_BURNOUT) + (0.5 * a /(DIVS_AFTER_BURNOUT * DIVS_AFTER_BURNOUT)) * cos(self.launchGuideAngle));
-        self.velocity += a / DIVS_AFTER_BURNOUT;
+        _altitude += ((_velocity / DIVS_AFTER_BURNOUT) + (0.5 * a /(DIVS_AFTER_BURNOUT * DIVS_AFTER_BURNOUT)) * cos(_launchGuideAngle));
+        _velocity += a / DIVS_AFTER_BURNOUT;
         
         NSNumber *time = [NSNumber numberWithDouble:self.timeIndex];
         NSNumber *vel = [NSNumber numberWithDouble:self.velocity];
@@ -290,7 +292,6 @@
     for (NSInteger i = 0; i < [self.flightProfile count]; i++){
         NSArray *flightDataPoint = [self.flightProfile objectAtIndex:i];
         double altAtIndex = [[flightDataPoint objectAtIndex:ALT_INDEX] doubleValue];
-        //        NSLog(@"altitude = %3.3f", altAtIndex);
         if (altAtIndex > alt){
             counter = i;
             break;
@@ -315,6 +316,8 @@
     return [[[self.flightProfile lastObject] objectAtIndex:TIME_INDEX] doubleValue] - self.burnoutTime;
 }
 
+//This one is for plotting the flight profile - gives back an array of data with the flight data with an increment (pixel width)
+
 - (NSArray *)flightDataWithTimeIncrement:(float)increment{
     // time, altitude, velocity, acceleration
     // here I am going to make the simplifying assumption that the increment will be substantially larger than 1/DIVS
@@ -337,6 +340,29 @@
         [data addObject:[self.flightProfile objectAtIndex:profileIndex]];
     }
     return [NSArray arrayWithArray:data];
+}
+
+// This next method is for the rapid updates necessary for the drawRect routine in the animated view
+
+-(float)quickFFVelocityAtLaunchAngle:(float)angle andGuideLength:(float)length{
+    float g = GRAV_ACCEL * cosf(angle);
+    float dist = 0.0;   // This quick calculation ignores the difference between distance travelled and altitude
+    float timedex = 0.0;
+    float v = 0.0;
+    float mRocket = [self.rocket.mass floatValue];
+    //This will loop until the rocket JUST leaves the launch guide - close enough for display purposes
+    while (dist < length) {
+        timedex += 1.0/DIVS_DURING_BURN;
+        float mass = [self.motor massAtTime:timedex] + mRocket;
+        float a = [self.motor thrustAtTime:timedex]/mass - g - [self dragAtVelocity:v andAltitude:dist]/mass;
+        if (a > 0) {        //remember DIVS is in units of 1/sec
+            dist += (v / DIVS_DURING_BURN) + (0.5 * a /(DIVS_DURING_BURN * DIVS_DURING_BURN));
+            v += a / DIVS_DURING_BURN;
+        }else{
+            a = 0;
+        }
+    }
+    return v;
 }
 
 -(void)dealloc{

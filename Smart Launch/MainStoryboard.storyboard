@@ -1616,7 +1616,7 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="20" id="sSx-Z2-iLr">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="0.0" maxValue="8.9499999999999993" id="sSx-Z2-iLr">
                                         <rect key="frame" x="18" y="39" width="264" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="minimumTrackTintColor" red="0.68286241790000002" green="0.81521056810000003" blue="0.92915675949999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -1626,56 +1626,79 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                         </connections>
                                     </slider>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Free Flight" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VUI-Lu-hK3">
-                                        <rect key="frame" x="1" y="146" width="101" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Velocity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Mh-3l-EYi">
-                                        <rect key="frame" x="12" y="175" width="77" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                        <rect key="frame" x="0.0" y="185" width="101" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="000.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sl2-iL-wo9">
                                         <rect key="frame" x="0.0" y="204" width="43" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="MPH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L8V-aF-hel">
                                         <rect key="frame" x="51" y="204" width="51" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Angle of Attack" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6mX-Is-M42">
-                                        <rect key="frame" x="0.0" y="267" width="132" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="AoA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6mX-Is-M42">
+                                        <rect key="frame" x="0.0" y="247" width="34" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i4Z-7Z-GUS">
-                                        <rect key="frame" x="22" y="296" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                        <rect key="frame" x="36" y="247" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="°" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8uY-qi-QEG">
-                                        <rect key="frame" x="63" y="296" width="7" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                        <rect key="frame" x="81" y="247" width="20" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Guide Length" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xR9-bD-850">
+                                        <rect key="frame" x="0.0" y="281" width="103" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R7D-r0-F9j">
+                                        <rect key="frame" x="0.0" y="301" width="47" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="guB-hz-5EE">
+                                        <rect key="frame" x="55" y="301" width="46" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" id="GgB-uN-ZaK">
+                                        <rect key="frame" x="0.0" y="325" width="94" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <action selector="launchGuideLengthValueChanged:" destination="yti-Mh-6fj" eventType="valueChanged" id="X5v-Qy-sLm"/>
+                                        </connections>
+                                    </stepper>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="W6h-DW-Tzi" appends="YES" id="goC-WC-ZFP"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.82033262380000005" green="0.89572063660000001" blue="0.92915675949999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -1683,7 +1706,7 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                     <toolbarItems>
                         <barButtonItem title="Sim Values" id="CJZ-al-qlu"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="2Ro-et-Qrp"/>
-                        <barButtonItem title="Motion On" id="yau-Q7-roK"/>
+                        <barButtonItem title="Save to Sim" id="yau-Q7-roK"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Launch Smart" id="EJG-pz-Nfh">
                         <barButtonItem key="rightBarButtonItem" title="Item" style="done" id="Rqb-cW-ssQ">
@@ -1706,6 +1729,9 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                         <outlet property="ffAoALabel" destination="i4Z-7Z-GUS" id="0s8-Zh-IFx"/>
                         <outlet property="ffVelocityLabel" destination="Sl2-iL-wo9" id="A5Y-cI-ETE"/>
                         <outlet property="ffVelocityUnitsLabel" destination="L8V-aF-hel" id="nno-Au-AH3"/>
+                        <outlet property="launchGuideLengthLabel" destination="R7D-r0-F9j" id="SgF-yL-ofc"/>
+                        <outlet property="launchGuideLengthStepper" destination="GgB-uN-ZaK" id="EsO-xI-mK2"/>
+                        <outlet property="launchGuideLengthUnitsLabel" destination="guB-hz-5EE" id="ZbR-Nx-V8j"/>
                         <outlet property="rocketView" destination="13V-Wa-arQ" id="TVe-8E-5Md"/>
                         <outlet property="windVelocityLabel" destination="FBh-WY-Hs7" id="62Y-lV-MiM"/>
                         <outlet property="windVelocitySlider" destination="sSx-Z2-iLr" id="Cwq-Ei-57u"/>
@@ -1713,6 +1739,11 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZEB-SJ-dwm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="W6h-DW-Tzi">
+                    <connections>
+                        <action selector="handleRocketTiltPanGesture:" destination="yti-Mh-6fj" id="utR-wd-RzS"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="834" y="766"/>
         </scene>

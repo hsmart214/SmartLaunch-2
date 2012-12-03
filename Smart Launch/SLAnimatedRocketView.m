@@ -10,10 +10,10 @@
 #import "SLDefinitions.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define X_INSET 30.0
+#define X_INSET 100.0
 #define Y_INSET 100.0
 #define TOP_BUFFER 100.0
-#define VECTOR_WIDTH 5.0
+#define VECTOR_WIDTH 3.0
 #define VECTOR_HEAD 10.0
 
 @interface SLAnimatedRocketView()
@@ -58,6 +58,7 @@ void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint from
         angle += _PI_;
     }
     CGContextSetStrokeColorWithColor(context, [color CGColor]);
+    CGContextSetFillColorWithColor(context,[color CGColor]);
     CGMutablePathRef path = CGPathCreateMutable();
     CGPoint corner, cross;
     CGAffineTransform rot = CGAffineTransformMakeRotation(angle);
@@ -73,12 +74,14 @@ void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint from
     CGPathMoveToPoint(path, &tx, 0, -length);
     CGPathAddLineToPoint(path, &tx, 0, 0);
     CGPathCloseSubpath(path);
+    CGContextAddPath(context, path);
+    CGContextStrokePath(context);
     CGPathMoveToPoint(path, &tx, 0, 0);
     CGPathAddLineToPoint(path, &tx, corner.x, corner.y);
     CGPathAddLineToPoint(path, &tx, cross.x, cross.y);
     CGPathCloseSubpath(path);
     CGContextAddPath(context, path);
-    CGContextStrokePath(context);
+    CGContextFillPath(context);
     CGPathRelease(path);
     
 }
@@ -129,7 +132,7 @@ void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint from
     CGContextSetLineWidth(context, VECTOR_WIDTH);
     CGContextSetLineJoin(context, kCGLineJoinMiter);
     if (self.launchAngle == 0.0) ccwLoop = false;    // only for this vector, so we have to reset this for the others below
-    drawVectorWithHead(context, color, rvTip, rvEnd, ccwLoop);
+    drawVectorWithHead(context, color, rvEnd, rvTip, !ccwLoop);
     
     //Draw the wind velocity vector ================================================
     ccwLoop = self.windVelocity < 0.0;

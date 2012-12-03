@@ -44,6 +44,7 @@
 
 - (double)burnoutToApogee;                  // SECONDS from burnout to apogee - the ideal motor delay
 
+- (float)quickFFVelocityAtLaunchAngle:(float)angle andGuideLength:(float)length;
                                             // a constructed array of time, altitude, velocity, acceleration - NSArray of NSArray
                                             // for use in graphing the flightProfile
 - (NSArray *)flightDataWithTimeIncrement: (float)increment;  

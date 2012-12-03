@@ -261,8 +261,16 @@
     return [NSNumber numberWithFloat:self.model.launchGuideAngle];
 }
 
+- (NSNumber *)launchGuideLength{
+    return [NSNumber numberWithFloat:self.model.launchGuideLength];
+}
+
 - (enum LaunchDirection)launchGuideDirection{
     return [self.model LaunchGuideDirection];
+}
+
+- (float)quickFFVelocityAtAngle:(float)angle andGuideLength:(float)length{
+    return [self.model quickFFVelocityAtLaunchAngle:angle andGuideLength:length];
 }
 
 - (void)dismissModalViewController{

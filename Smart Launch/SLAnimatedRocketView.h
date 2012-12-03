@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SLSimulationDelegate.h"
 
 @interface SLAnimatedRocketView : UIView
 

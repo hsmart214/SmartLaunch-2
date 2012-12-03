@@ -30,6 +30,8 @@
 -(NSNumber *)freeFlightAoA;
 -(NSNumber *)windVelocity;
 -(NSNumber *)launchAngle;
+-(NSNumber *)launchGuideLength;
 -(enum LaunchDirection)launchGuideDirection;
+-(float)quickFFVelocityAtAngle:(float)angle andGuideLength:(float)length;
 
 @end
