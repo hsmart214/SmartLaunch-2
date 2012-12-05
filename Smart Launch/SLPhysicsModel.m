@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSMutableArray *flightProfile;
 @property (nonatomic, strong) NSArray *stdAtmosphere;
 @property (nonatomic) double angle;
+@property (nonatomic) double ffVelocity;
 
 
 @end
@@ -188,19 +189,15 @@
     return [self.rocket.mass floatValue] + [self.motor.loadedMass floatValue];
 }
 
-- (float)massAtTime:(float)time{
-    return [self.rocket.mass floatValue] + [self.motor massAtTime:time];
-}
-
-- (void)setLaunchGuideAngle:(float)launchGuideAngle{
+- (void)setLaunchGuideAngle:(float)angle{
     
     // Make sure the maximum deviation from vertical is not exceeded
-    if (launchGuideAngle>MAX_LAUNCH_GUIDE_ANGLE) launchGuideAngle=MAX_LAUNCH_GUIDE_ANGLE;
-    if (-launchGuideAngle>MAX_LAUNCH_GUIDE_ANGLE) launchGuideAngle=-MAX_LAUNCH_GUIDE_ANGLE;
-    _launchGuideAngle = launchGuideAngle;
+    if (angle>MAX_LAUNCH_GUIDE_ANGLE) angle=MAX_LAUNCH_GUIDE_ANGLE;
+    if (-angle>MAX_LAUNCH_GUIDE_ANGLE) angle=-MAX_LAUNCH_GUIDE_ANGLE;
+    _launchGuideAngle = angle;
     
     // Account for the slight diminution of gravity's effect from the tilting of the launch guide
-    self.gravityAccel = GRAV_ACCEL*cos(launchGuideAngle);
+    self.gravityAccel = GRAV_ACCEL*cos(angle);
 }
 
 
@@ -244,6 +241,7 @@
 #pragma mark Full Integration of Flight Profile
 
 - (void)integrateToEndOfLaunchGuide{
+    /*  During travel along the launch guide motion is constrained to a straight line */
     self.altitude = 0;
     self.velocity = 0;
     self.timeIndex = 0;
@@ -269,6 +267,7 @@
         [self.flightProfile addObject:@[time, alt, vel, accel]];
         totalDistanceTravelled += distanceTravelled;
     }
+    self.ffVelocity = _velocity;
 }
 
 - (void)integrateToBurnout{
@@ -285,7 +284,7 @@
         
         double distanceTravelled = (_velocity / DIVS_DURING_BURN) + (0.5 * a /(DIVS_DURING_BURN * DIVS_DURING_BURN));
         _altitude += distanceTravelled * cos(_angle);
-        _angle += atan(distanceFallen/distanceTravelled);
+        _angle += atan(distanceFallen*tan(_angle)/(distanceTravelled-distanceFallen));
         _velocity += a / DIVS_DURING_BURN;
         
         NSNumber *time = @(_timeIndex);
@@ -309,7 +308,7 @@
         double distanceTravelled = (_velocity / DIVS_DURING_BURN) + (0.5 * a /(DIVS_DURING_BURN * DIVS_DURING_BURN));
         deltaAlt = distanceTravelled * cos(_angle);
         _altitude += deltaAlt;
-        _angle += fabs(atan(distanceFallen/distanceTravelled));
+        _angle += atan(distanceFallen*tan(_angle)/(distanceTravelled-distanceFallen));
         _velocity += a / DIVS_AFTER_BURNOUT;
         
         NSNumber *time = @(_timeIndex);
