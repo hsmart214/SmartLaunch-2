@@ -12,7 +12,7 @@
     This will tell us how to add the rocket velocity and wind vectors
  */
 
-enum LaunchDirection {
+enum LaunchDirection : NSUInteger {
     WithWind = 0,
     CrossWind = 1,
     IntoWind = 2

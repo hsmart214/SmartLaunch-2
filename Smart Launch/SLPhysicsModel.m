@@ -21,6 +21,7 @@
 @property (nonatomic) double burnoutTime;
 @property (nonatomic, strong) NSMutableArray *flightProfile;
 @property (nonatomic, strong) NSArray *stdAtmosphere;
+@property (nonatomic) double angle;
 
 
 @end
@@ -244,26 +245,31 @@
     self.altitude = 0;
     self.velocity = 0;
     self.timeIndex = 0;
+    self.angle = self.launchGuideAngle;
     double g = self.gravityAccel;
     float mRocket = [self.rocket.mass floatValue];
-    for (int i = 0; i < [self.motor.times count]; i++){
-        while (self.timeIndex < [[self.motor.times objectAtIndex:i] floatValue]) {
-            _timeIndex += 1.0/DIVS_DURING_BURN;
-            double mass = [self.motor massAtTime:_timeIndex] + mRocket;
-            double a = [self.motor thrustAtTime:_timeIndex]/mass - g - [self dragAtVelocity:_velocity andAltitude:_altitude]/mass;
-            if (a > 0) {        //remember DIVS is in units of 1/sec
-                _altitude += (_velocity / DIVS_DURING_BURN) + (0.5 * a /(DIVS_DURING_BURN * DIVS_DURING_BURN));
-                _velocity += a / DIVS_DURING_BURN;
-            }else{
-                a = 0;
-            }
-            NSNumber *time = [NSNumber numberWithDouble:self.timeIndex];
-            NSNumber *vel = [NSNumber numberWithDouble:self.velocity];
-            NSNumber *alt = [NSNumber numberWithDouble:self.altitude];
-            NSNumber *accel = [NSNumber numberWithDouble:a];
-            [self.flightProfile addObject:[NSArray arrayWithObjects:time, alt, vel, accel, nil]];
+    double distanceFallen = 0.5 * GRAV_ACCEL / (DIVS_DURING_BURN * DIVS_DURING_BURN);   // 1/2 a t^2
+    
+    while (self.timeIndex < [[self.motor.times lastObject] floatValue]) {
+        _timeIndex += 1.0/DIVS_DURING_BURN;
+        g = GRAV_ACCEL * cos(_angle);
+        double mass = [self.motor massAtTime:_timeIndex] + mRocket;
+        double a = [self.motor thrustAtTime:_timeIndex]/mass - g - [self dragAtVelocity:_velocity andAltitude:_altitude]/mass;
+        if (a > 0) {        //remember DIVS is in units of 1/sec
+            double distanceTravelled = (_velocity / DIVS_DURING_BURN) + (0.5 * a /(DIVS_DURING_BURN * DIVS_DURING_BURN));
+            _altitude += distanceTravelled * cos(_angle);
+            _angle += fabs(atan(distanceFallen/distanceTravelled));
+            _velocity += a / DIVS_DURING_BURN;
+        }else{
+            a = 0;
         }
-    }    
+        NSNumber *time = [NSNumber numberWithDouble:self.timeIndex];
+        NSNumber *vel = [NSNumber numberWithDouble:self.velocity];
+        NSNumber *alt = [NSNumber numberWithDouble:self.altitude];
+        NSNumber *accel = [NSNumber numberWithDouble:a];
+        [self.flightProfile addObject:[NSArray arrayWithObjects:time, alt, vel, accel, nil]];
+    }
+    
 }
 
 - (void)integrateBurnoutToApogee{

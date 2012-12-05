@@ -26,6 +26,7 @@
 
 @optional
 
+-(NSMutableDictionary *)simulationSettings;
 -(NSNumber *)freeFlightVelocity;
 -(NSNumber *)freeFlightAoA;
 -(NSNumber *)windVelocity;

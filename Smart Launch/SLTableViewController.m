@@ -245,6 +245,10 @@
 
 #pragma mark - SLSimulationDataSource methods
 
+- (NSMutableDictionary *)simulationSettings{
+    return [self.settings mutableCopy];
+}
+
 - (NSNumber *)freeFlightVelocity{
     return [NSNumber numberWithDouble:[self.model velocityAtEndOfLaunchGuide]];
 }

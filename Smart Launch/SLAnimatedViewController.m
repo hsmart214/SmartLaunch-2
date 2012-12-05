@@ -26,12 +26,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *launchGuideLengthUnitsLabel;
 @property (weak, nonatomic) IBOutlet UIStepper *launchGuideLengthStepper;
 @property (weak, nonatomic) IBOutlet UILabel *launchGuideLengthLabel;
+@property (weak, nonatomic) IBOutlet UIButton *launchDirectionButton;
 //These properties are kept locally for the display of vectors - sort of "what it" scenarios - Always kept as metric values so the calculation will be fast
 @property (nonatomic) float displayLaunchAngle;
 @property (nonatomic) float displayFFVelocity;
 @property (nonatomic) float displayWindVelocity;
 @property (nonatomic) float displayLaunchGuideLength;
+@property (nonatomic) enum LaunchDirection displayLaunchDirection;
 @property (nonatomic, strong) NSString *launchGuideLengthFormatString;
+
 
 @end
 
@@ -40,7 +43,7 @@
 - (void)setDisplayLaunchAngle:(float)angle{
     if (angle == _displayLaunchAngle) return;
     if (angle > MAX_LAUNCH_GUIDE_ANGLE) angle = MAX_LAUNCH_GUIDE_ANGLE;
-    if (angle < -MAX_LAUNCH_GUIDE_ANGLE) angle = -MAX_LAUNCH_GUIDE_ANGLE;
+    if (angle < 0) angle = 0;
     _displayLaunchAngle = angle;
     self.displayFFVelocity = [self.dataSource quickFFVelocityAtAngle:_displayLaunchAngle andGuideLength:_displayLaunchGuideLength];
 }
@@ -51,6 +54,7 @@
     self.displayWindVelocity = sender.value;
     [self updateDisplay];
 }
+
 - (IBAction)launchGuideLengthValueChanged:(UIStepper *)sender { // Remember this stepper keeps values in display units, not metric
     self.displayLaunchGuideLength = [[SLUnitsConvertor metricStandardOf:[NSNumber numberWithFloat:sender.value] forKey:LENGTH_UNIT_KEY] floatValue];
     self.launchGuideLengthLabel.text = [NSString stringWithFormat:self.launchGuideLengthFormatString, sender.value];
@@ -59,6 +63,7 @@
 }
 
 - (IBAction)handleRocketTiltPanGesture:(UIPanGestureRecognizer *)gesture {
+    if (self.displayLaunchDirection == CrossWind) return;       // The launch angle always appears vertical for crosswind calculations
     if ((gesture.state == UIGestureRecognizerStateChanged) ||
         (gesture.state == UIGestureRecognizerStateEnded)) {
         CGPoint movement = [gesture translationInView:self.rocketView];
@@ -70,12 +75,41 @@
     }
 }
 
+- (IBAction)pullValuesFromSimulation:(UIBarButtonItem *)sender {
+    [self importSimValues];
+}
+
+- (IBAction)pushValuesToSimulation:(UIBarButtonItem *)sender{
+    NSMutableDictionary *settings = [self.dataSource simulationSettings];
+    settings[LAUNCH_ANGLE_KEY] = @(self.displayLaunchAngle);
+    settings[WIND_VELOCITY_KEY] = @(self.displayWindVelocity);
+    settings[WIND_DIRECTION_KEY] = @(self.displayLaunchDirection);
+    settings[LAUNCH_GUIDE_LENGTH_KEY] = [SLUnitsConvertor metricStandardOf:@(self.launchGuideLengthStepper.value) forKey:LENGTH_UNIT_KEY];
+    [self.delegate sender:self didChangeSimSettings:settings withUpdate:NO];
+}
+
+- (IBAction)launchDirectionChanged:(UIButton *)sender {
+    NSArray *buttonNames = @[@"With Wind", @"CrossWind", @"Into Wind"];
+    NSInteger dir;
+    for (dir = 0; dir < 3; dir++) {
+        if ([sender.currentTitle isEqualToString:[buttonNames objectAtIndex:dir]]){
+            break;
+        }
+    }
+    dir = (dir + 1) % 3;
+    [sender setTitle:[buttonNames objectAtIndex:dir] forState:UIControlStateNormal];
+    self.displayLaunchDirection = (enum LaunchDirection)dir;
+    [sender setTitle: buttonNames[dir] forState:UIControlStateNormal];
+    [self updateDisplay];
+
+}
+
 
 - (void)drawVectors{
     float wind = self.displayWindVelocity;
     float velocity = self.displayFFVelocity;
     float launchAngle = self.displayLaunchAngle;
-    enum LaunchDirection dir = [self.dataSource launchGuideDirection];
+    enum LaunchDirection dir = self.displayLaunchDirection;
     if (dir == CrossWind) launchAngle = 0.0;           // crosswind the AoA is the same as upright
     
     [self.rocketView tiltRocketToAngle:launchAngle];   // in the model the launch angle is always positive
@@ -93,7 +127,7 @@
     self.ffVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", [velocity floatValue]];
     
     float AoA, alpha1, alpha2, opposite, adjacent;
-    switch ([self.dataSource launchGuideDirection]) {
+    switch (self.displayLaunchDirection) {
         case CrossWind:
             AoA = atanf(self.windVelocitySlider.value/[velocity floatValue]);
             break;
@@ -120,8 +154,7 @@
     [self drawVectors];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [self.navigationController setToolbarHidden:NO animated:animated];
+- (void)importSimValues{
     self.windVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
     NSNumber *velocity = [SLUnitsConvertor displayUnitsOf:[self.dataSource windVelocity] forKey:VELOCITY_UNIT_KEY];
     self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", [velocity floatValue]];
@@ -135,6 +168,15 @@
     self.displayLaunchGuideLength = [[self.dataSource launchGuideLength]floatValue];
     NSNumber *displayLength = [SLUnitsConvertor displayUnitsOf:[self.dataSource launchGuideLength] forKey:LENGTH_UNIT_KEY];
     self.launchGuideLengthLabel.text = [NSString stringWithFormat:@"%2.1f", [displayLength floatValue]];
+    self.launchGuideLengthStepper.value = [[SLUnitsConvertor displayUnitsOf:[self.dataSource launchGuideLength] forKey:LENGTH_UNIT_KEY] floatValue];
+    self.displayLaunchDirection = [self.dataSource launchGuideDirection];
+    NSArray *buttonNames = @[@"With Wind", @"CrossWind", @"Into Wind"];
+    [self.launchDirectionButton setTitle:buttonNames[self.displayLaunchDirection] forState:UIControlStateNormal];
+    [self updateDisplay];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setToolbarHidden:NO animated:animated];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
@@ -156,9 +198,9 @@
         self.launchGuideLengthStepper.stepValue = 0.2;
         self.launchGuideLengthStepper.minimumValue = 0.2;
     }
-    self.launchGuideLengthStepper.value = [[SLUnitsConvertor displayUnitsOf:[self.dataSource launchGuideLength] forKey:LENGTH_UNIT_KEY] floatValue];
     
-    [self updateDisplay];
+    [self importSimValues];
+    
     [super viewWillAppear:animated];
 }
 
@@ -180,18 +222,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (void)viewDidUnload {
-    [self setRocketView:nil];
-    [self setWindVelocityUnitsLabel:nil];
-    [self setFfVelocityUnitsLabel:nil];
-    [self setWindVelocityLabel:nil];
-    [self setFfVelocityLabel:nil];
-    [self setFfAoALabel:nil];
-    [self setRocketView:nil];
-    [self setWindVelocitySlider:nil];
-    [self setLaunchGuideLengthUnitsLabel:nil];
-    [self setLaunchGuideLengthLabel:nil];
-    [self setLaunchGuideLengthStepper:nil];
+    [self setLaunchDirectionButton:nil];
     [super viewDidUnload];
 }
 @end
