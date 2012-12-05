@@ -129,20 +129,20 @@
     float AoA, alpha1, alpha2, opposite, adjacent;
     switch (self.displayLaunchDirection) {
         case CrossWind:
-            AoA = atanf(self.windVelocitySlider.value/[velocity floatValue]);
+            AoA = asinf(self.windVelocitySlider.value/self.displayFFVelocity);
             break;
             
         case WithWind:
             alpha1 = self.displayLaunchAngle;
-            opposite = [velocity floatValue]*sin(alpha1)-self.windVelocitySlider.value;
-            adjacent = [velocity floatValue]*cos(alpha1);
+            opposite = self.displayFFVelocity*sin(alpha1)-self.windVelocitySlider.value;
+            adjacent = self.displayFFVelocity*cos(alpha1);
             alpha2 = atanf(opposite/adjacent);
             AoA = alpha1-alpha2;
             break;
         case IntoWind:
             alpha1 = self.displayLaunchAngle;
-            opposite = [velocity floatValue]*sin(alpha1)+self.windVelocitySlider.value;
-            adjacent = [velocity floatValue]*cos(alpha1);
+            opposite = self.displayFFVelocity*sin(alpha1)+self.windVelocitySlider.value;
+            adjacent = self.displayFFVelocity*cos(alpha1);
             alpha2 = atanf(opposite/adjacent);
             AoA = alpha2-alpha1;
             break;
@@ -161,7 +161,7 @@
     self.windVelocitySlider.value = [[self.dataSource windVelocity]floatValue]; //always kept metric
     NSNumber *aoa = [self.dataSource freeFlightAoA];
     self.ffAoALabel.text = [NSString stringWithFormat:@"%1.1f", [aoa floatValue] * DEGREES_PER_RADIAN];
-    self.displayWindVelocity = [[self.dataSource windVelocity] floatValue];
+    self.displayWindVelocity = self.windVelocitySlider.value;
     self.displayLaunchAngle = [[self.dataSource launchAngle] floatValue];
     self.displayFFVelocity = [[self.dataSource freeFlightVelocity] floatValue];
     self.launchGuideLengthUnitsLabel.text = [SLUnitsConvertor displayStringForKey:LENGTH_UNIT_KEY];
@@ -173,6 +173,8 @@
     NSArray *buttonNames = @[@"With Wind", @"CrossWind", @"Into Wind"];
     [self.launchDirectionButton setTitle:buttonNames[self.displayLaunchDirection] forState:UIControlStateNormal];
     [self updateDisplay];
+//    NSLog(@"Model velocity = %3.1f m/s",[[self.dataSource freeFlightVelocity]floatValue]);
+//    NSLog(@"Quick velocity = %3.1f m/s.", [self.dataSource quickFFVelocityAtAngle:_displayLaunchAngle andGuideLength:_displayLaunchGuideLength]);
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -220,11 +222,5 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-- (void)viewDidUnload {
-    [self setLaunchDirectionButton:nil];
-    [super viewDidUnload];
 }
 @end

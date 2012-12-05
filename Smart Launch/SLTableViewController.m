@@ -258,19 +258,19 @@
 }
 
 - (NSNumber *)windVelocity{
-    return [NSNumber numberWithFloat:self.model.windVelocity];
+    return self.settings[WIND_VELOCITY_KEY];
 }
 
 - (NSNumber *)launchAngle{
-    return [NSNumber numberWithFloat:self.model.launchGuideAngle];
+    return self.settings[LAUNCH_ANGLE_KEY];
 }
 
 - (NSNumber *)launchGuideLength{
-    return [NSNumber numberWithFloat:self.model.launchGuideLength];
+    return self.settings[LAUNCH_GUIDE_LENGTH_KEY];
 }
 
 - (enum LaunchDirection)launchGuideDirection{
-    return [self.model LaunchGuideDirection];
+    return [self.settings[WIND_DIRECTION_KEY] integerValue];
 }
 
 - (float)quickFFVelocityAtAngle:(float)angle andGuideLength:(float)length{
@@ -317,27 +317,6 @@
     UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
     [backgroundView setImage:backgroundImage];
     self.tableView.backgroundView = backgroundView;
-}
-
-- (void)viewDidUnload
-{
-    [self setRocketCell:nil];
-    [self setMotorCell:nil];
-    [self setWindDirectionButton:nil];
-    [self setLaunchAngleLabel:nil];
-    [self setFfAngleOfAttackLabel:nil];
-    [self setFfVelocityLabel:nil];
-    [self setFfVelocityUnitsLabel:nil];
-    [self setBurnoutToApogeeLabel:nil];
-    [self setApogeeAltitudeLabel:nil];
-    [self setApogeeAltitudeUnitsLabel:nil];
-    [self setSpinner:nil];
-    [self setThrustToWeightLabel:nil];
-    self.rocket = nil;
-    self.motor = nil;
-    self.model = nil;
-    self.settings = nil;
-    [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
