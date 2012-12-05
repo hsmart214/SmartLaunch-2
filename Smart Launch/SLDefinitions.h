@@ -62,8 +62,9 @@ typedef CGPoint ThrustPoint;
 
 #define TIME_INDEX 0
 #define ALT_INDEX 1
-#define VEL_INDEX 2
-#define ACCEL_INDEX 3
+#define TRAV_INDEX 2
+#define VEL_INDEX 3
+#define ACCEL_INDEX 4
 
 #pragma mark String literal constants
 

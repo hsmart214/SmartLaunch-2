@@ -12,41 +12,29 @@
 @interface SLPhysicsModel()
 
 /* This is the opposing acceleration from gravity, the component of g along the axis of the launch guide */
-@property (nonatomic) float gravityAccel;
-/* This is the mass of the rocket plus the initial motor mass */
-@property (nonatomic, readonly) float liftMass;
-@property (nonatomic) double altitude;
-@property (nonatomic) double velocity;
+@property (nonatomic) double altitude;      // y component of the rocket's position
+@property (nonatomic) double travel;        // x component of the rocket's position
+@property (nonatomic) double velocity;      // magnitude of the rocket's velocity vector
 @property (nonatomic) double timeIndex;
-@property (nonatomic) double burnoutTime;
 @property (nonatomic, strong) NSMutableArray *flightProfile;
 @property (nonatomic, strong) NSArray *stdAtmosphere;
-@property (nonatomic) double angle;
-@property (nonatomic) double ffVelocity;
-
+@property (nonatomic) double angle;         // current 2D angle of flight
 
 @end
 
 @implementation SLPhysicsModel
 
-@synthesize stdAtmosphere = _stdAtmosphere;                     //
-@synthesize gravityAccel = _gravityAccel;                       //acceleration due to gravity along the launch guide axis (positive, metric)
-@synthesize prevSegmentEndVelocity = _prevSegmentEndVelocity;   //velocity in METERS/SECOND
-@synthesize currSegmentEndVelocity = _currSegmentEndVelocity;   //velocity in METERS/SECOND
 @synthesize launchGuideAngle = _launchGuideAngle;               //angle in RADIANS
 @synthesize launchGuideLength = _launchGuideLength;             //length in METERS
 @synthesize LaunchGuideDirection = _LaunchGuideDirection;       //crossWind, intoWind, withWind
 @synthesize windVelocity = _windVelocity;                       //velocity in METERS/SECOND
-@synthesize liftMass;                                           //mass in KILOGRAMS
 @synthesize motor = _motor;
 @synthesize rocket = _rocket;
-@synthesize temperature = _temperature;                         //CELSIUS
 @synthesize launchAltitude = _launchAltitude;                   //ground elevation in METERS
 @synthesize flightProfile = _flightProfile;
 @synthesize altitude = _altitude;                               //altitude AGL in METERS
 @synthesize velocity = _velocity;                               //METERS/SECOND
 @synthesize timeIndex = _timeIndex;                             //SECONDS since ignition (not first motion)
-@synthesize burnoutTime = _burnoutTime;                         //SECONDS from ignition to burnout
 
 
 - (NSArray *)stdAtmosphere{
@@ -75,14 +63,12 @@
             [textLines removeObjectAtIndex:0];
         }
         _stdAtmosphere = build;
-//        NSLog(@"%@ %d %@",@"Read in", [build count], @"atmosphere data points.");
     }
     return _stdAtmosphere;
 }
 
 - (void)resetFlight{
     self.flightProfile = nil;
-    self.burnoutTime = 0.0;
 }
 
 // each element of this mutable array will be a point of the profile
@@ -137,31 +123,6 @@
     return _launchAltitude;
 }
 
-- (float)temperature{
-    if (!_temperature){
-        _temperature = STANDARD_TEMP;        // change this to grab the temp from the user prefs
-    }
-    return _temperature;
-}
-
-//- (double)dragAtVelocity:(double)v 
-//            andAltitude:(double)altAGL{
-//    double currAlt = altAGL + self.launchAltitude;
-//    // the temp at sea level would be technically higher based on the temperature lapse rate. (Theoretical only)
-//    //double calcSeaLevelTemp = self.temperature + self.launchAltitude * T_LAPSE_RATE;
-//    // this theoretical addition to the launch temp is backed out again in the next two calculations by using currAlt
-//    //double currTemperature = calcSeaLevelTemp - currAlt * T_LAPSE_RATE;
-//    double currTemperature = STANDARD_TEMP - currAlt * T_LAPSE_RATE;
-//    //double pressure = STANDARD_PRESSURE * powf((1.0 - T_LAPSE_RATE * currAlt / calcSeaLevelTemp), PRESSURE_EXPONENT);
-//    double pressure = STANDARD_PRESSURE * pow(((currTemperature + ABSOLUTE_ZERO_CELSIUS)/(STANDARD_TEMP)), PRESSURE_EXPONENT);
-////    double density = pressure * MOLAR_MASS / (GAS_CONSTANT * (calcSeaLevelTemp - T_LAPSE_RATE * currAlt));
-//    double density = pressure / (0.2869 * (currTemperature + ABSOLUTE_ZERO_CELSIUS));
-//    double radius = [self.rocket.diameter floatValue]/2.0;
-//    double area = _PI_*radius*radius;
-//    // drag = 1/2 rho v^2 Cd A
-//    return 0.5*density*v*v*[self.rocket.cd floatValue]*area;
-//}
-
 - (double)dragAtVelocity:(double)v
              andAltitude:(double)altAGL{
     NSDictionary *atmosphereData = [self atmosphereDataAtAltitudeAGL:altAGL];
@@ -190,14 +151,10 @@
 }
 
 - (void)setLaunchGuideAngle:(float)angle{
-    
     // Make sure the maximum deviation from vertical is not exceeded
     if (angle>MAX_LAUNCH_GUIDE_ANGLE) angle=MAX_LAUNCH_GUIDE_ANGLE;
     if (-angle>MAX_LAUNCH_GUIDE_ANGLE) angle=-MAX_LAUNCH_GUIDE_ANGLE;
-    _launchGuideAngle = angle;
-    
-    // Account for the slight diminution of gravity's effect from the tilting of the launch guide
-    self.gravityAccel = GRAV_ACCEL*cos(angle);
+    _launchGuideAngle = angle;    
 }
 
 
@@ -241,8 +198,9 @@
 #pragma mark Full Integration of Flight Profile
 
 - (void)integrateToEndOfLaunchGuide{
-    /*  During travel along the launch guide motion is constrained to a straight line */
+    /*  During travel along the launch guide motion is constrained to a straight line, making the calculations easier for a time */
     self.altitude = 0;
+    self.travel = 0;
     self.velocity = 0;
     self.timeIndex = 0;
     float mRocket = [self.rocket.mass floatValue];
@@ -256,6 +214,7 @@
         if (a > 0) {        //remember DIVS is in units of 1/sec
             distanceTravelled = (_velocity / DIVS_DURING_BURN) + (0.5 * a /(DIVS_DURING_BURN * DIVS_DURING_BURN));
             _altitude += distanceTravelled * cos(_launchGuideAngle);
+            _travel += distanceTravelled * sin(_launchGuideAngle);
             _velocity += a / DIVS_DURING_BURN;
         }else{
             a = 0;
@@ -263,59 +222,70 @@
         NSNumber *time = @(_timeIndex);
         NSNumber *vel = @(_velocity);
         NSNumber *alt = @(_altitude);
+        NSNumber *trav = @(_travel);
         NSNumber *accel = @(a);
-        [self.flightProfile addObject:@[time, alt, vel, accel]];
+        [self.flightProfile addObject:@[time, alt, trav, vel, accel]];
         totalDistanceTravelled += distanceTravelled;
     }
-    self.ffVelocity = _velocity;
 }
 
 - (void)integrateToBurnout{
+    double t_squared = 1/ (DIVS_DURING_BURN * DIVS_DURING_BURN);
     self.angle = self.launchGuideAngle;
     float mRocket = [self.rocket.mass floatValue];
-    double distanceFallen = 0.5 * GRAV_ACCEL / (DIVS_DURING_BURN * DIVS_DURING_BURN);   // 1/2 a t^2
     float burnoutTime = [[self.motor.times lastObject] floatValue];
     
-    while (self.timeIndex < burnoutTime) {
+    while (_timeIndex < burnoutTime) {
         _timeIndex += 1.0/DIVS_DURING_BURN;
         double g = GRAV_ACCEL * cos(_angle);
         double mass = [self.motor massAtTime:_timeIndex] + mRocket;
-        double a = [self.motor thrustAtTime:_timeIndex]/mass - g - [self dragAtVelocity:_velocity andAltitude:_altitude]/mass;
+        double acc = [self.motor thrustAtTime:_timeIndex]/mass - [self dragAtVelocity:_velocity andAltitude:_altitude]/mass;
         
-        double distanceTravelled = (_velocity / DIVS_DURING_BURN) + (0.5 * a /(DIVS_DURING_BURN * DIVS_DURING_BURN));
-        _altitude += distanceTravelled * cos(_angle);
-        _angle += atan(distanceFallen*tan(_angle)/(distanceTravelled-distanceFallen));
-        _velocity += a / DIVS_DURING_BURN;
+        double y_accel = acc * cos(_angle) - GRAV_ACCEL;
+        double x_accel = acc * sin(_angle);
+        double y_dist = _velocity * cos(_angle) / DIVS_DURING_BURN + (0.5 * y_accel * t_squared);
+        double x_dist = _velocity * sin(_angle) / DIVS_DURING_BURN + (0.5 * x_accel * t_squared);
+        _altitude += y_dist;
+        _travel += x_dist;
+        _velocity += (acc - g) / DIVS_DURING_BURN;
+
+        _angle = atan(x_dist/y_dist);
         
         NSNumber *time = @(_timeIndex);
         NSNumber *vel = @(_velocity);
         NSNumber *alt = @(_altitude);
-        NSNumber *accel = @(a);
-        [self.flightProfile addObject:@[time, alt, vel, accel]];
+        NSNumber *trav = @(_travel);
+        NSNumber *accel = @(acc);
+        [self.flightProfile addObject:@[time, alt, trav, vel, accel]];
     }
     
 }
 
 - (void)integrateBurnoutToApogee{
-    float mRocket = [self.rocket.mass floatValue];
-    double mass = mRocket + [self.motor massAtTime:_timeIndex];
-    double distanceFallen = 0.5 * GRAV_ACCEL / (DIVS_DURING_BURN * DIVS_DURING_BURN);   // 1/2 a t^2
+    double t_squared = 1/ (DIVS_AFTER_BURNOUT * DIVS_AFTER_BURNOUT);
+    double mass = [self.rocket.mass floatValue] + [self.motor massAtTime:_timeIndex];
     double deltaAlt = 1;
     while (deltaAlt > 0) {
         double g = GRAV_ACCEL * cos(_angle);
         _timeIndex += 1.0/DIVS_AFTER_BURNOUT;
-        double a = - g - [self dragAtVelocity:_velocity andAltitude:_altitude]/mass;
-        double distanceTravelled = (_velocity / DIVS_DURING_BURN) + (0.5 * a /(DIVS_DURING_BURN * DIVS_DURING_BURN));
-        deltaAlt = distanceTravelled * cos(_angle);
-        _altitude += deltaAlt;
-        _angle += atan(distanceFallen*tan(_angle)/(distanceTravelled-distanceFallen));
-        _velocity += a / DIVS_AFTER_BURNOUT;
+        double acc = - [self dragAtVelocity:_velocity andAltitude:_altitude]/mass;
+        double y_accel = acc * cos(_angle) - GRAV_ACCEL;
+        double x_accel = acc * sin(_angle);
+        double y_dist = _velocity * cos(_angle) / DIVS_AFTER_BURNOUT + (0.5 * y_accel * t_squared);
+        double x_dist = _velocity * sin(_angle) / DIVS_AFTER_BURNOUT + (0.5 * x_accel * t_squared);
+        _altitude += y_dist;
+        deltaAlt = y_dist;
+        _travel += x_dist;
+        _velocity += (acc - g) / DIVS_AFTER_BURNOUT;
+        
+        _angle = atan(x_dist/y_dist);
         
         NSNumber *time = @(_timeIndex);
         NSNumber *vel = @(_velocity);
         NSNumber *alt = @(_altitude);
-        NSNumber *accel = @(a);
-        [self.flightProfile addObject:@[time, alt, vel, accel]];
+        NSNumber *trav = @(_travel);
+        NSNumber *accel = @(acc);
+        [self.flightProfile addObject:@[time, alt, trav, vel, accel]];
     }
 }
 
@@ -346,7 +316,7 @@
 }
 
 - (double)burnoutToApogee{
-    return [[[self.flightProfile lastObject] objectAtIndex:TIME_INDEX] doubleValue] - self.burnoutTime;
+    return [[[self.flightProfile lastObject] objectAtIndex:TIME_INDEX] doubleValue] - [[self.motor.times lastObject]floatValue];
 }
 
 //This one is for plotting the flight profile - gives back an array of data with the flight data with an increment (pixel width)

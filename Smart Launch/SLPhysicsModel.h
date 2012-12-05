@@ -16,15 +16,12 @@
 
 @interface SLPhysicsModel : NSObject
 
-@property (nonatomic) double prevSegmentEndVelocity;
-@property (nonatomic) double currSegmentEndVelocity;
 @property (nonatomic) float launchGuideLength;
 @property (nonatomic) float launchGuideAngle;
 @property (nonatomic) enum LaunchDirection LaunchGuideDirection;
 @property (nonatomic) float windVelocity;
 @property (nonatomic, strong) RocketMotor *motor;
 @property (nonatomic, strong) Rocket *rocket;
-@property (nonatomic) float temperature;
 @property (nonatomic) float launchAltitude;
 
 

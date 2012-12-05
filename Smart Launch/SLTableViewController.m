@@ -212,7 +212,6 @@
             float len = [[self.settings objectForKey:LAUNCH_GUIDE_LENGTH_KEY] floatValue];
             if (len == 0) len = 1.0;
             self.model.launchGuideLength = len;
-            self.model.temperature = [[self.settings objectForKey:LAUNCH_TEMPERATURE_KEY] floatValue];
             self.model.windVelocity = [[self.settings objectForKey:WIND_VELOCITY_KEY] floatValue];
             self.model.LaunchGuideDirection = (enum LaunchDirection)[[self.settings objectForKey:WIND_DIRECTION_KEY] intValue];
             self.model.launchAltitude = [[self.settings objectForKey:LAUNCH_ALTITUDE_KEY] floatValue];
