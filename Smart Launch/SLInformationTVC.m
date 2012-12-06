@@ -42,15 +42,6 @@
     [self.navigationController setToolbarHidden:NO animated:animated];
 }
 
-- (void)viewDidUnload
-{
-    [self setDoneButton:nil];
-    [self setInfoTextView:nil];
-    self.delegate = nil;
-    [self setSpinner:nil];
-    [super viewDidUnload];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -73,6 +64,13 @@
             }
             NSUInteger versionNumber = [version integerValue];
             if (versionNumber > currentVersion){
+                // nuke the cache
+                NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask]lastObject];
+                NSURL *motorCacheURL = [cacheURL URLByAppendingPathComponent:MOTOR_CACHE_FILENAME];
+                if ([[NSFileManager defaultManager]fileExistsAtPath:[motorCacheURL path]]){
+                    [[NSFileManager defaultManager] removeItemAtURL:motorCacheURL error:nil];
+                }
+                // get the new data from the website
                 NSURL *dataURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
                 NSURL *motorFileURL = [dataURL URLByAppendingPathComponent:MOTOR_DATA_FILENAME];
                 NSString *allMotors = [NSString stringWithContentsOfURL:motorFileWWWURL encoding:NSUTF8StringEncoding error:&err];
