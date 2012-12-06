@@ -23,6 +23,7 @@
 @property (nonatomic, strong) RocketMotor *motor;
 @property (nonatomic, strong) Rocket *rocket;
 @property (nonatomic) float launchAltitude;
+@property (nonatomic, readonly) NSUInteger version;
 
 
 /* The first public method returns the velocity that the rocket will attain at the end of the launch guide */

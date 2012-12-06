@@ -36,6 +36,9 @@
 @synthesize velocity = _velocity;                               //METERS/SECOND
 @synthesize timeIndex = _timeIndex;                             //SECONDS since ignition (not first motion)
 
+- (NSUInteger)version{
+    return 2;
+}
 
 - (NSArray *)stdAtmosphere{
     if (!_stdAtmosphere){

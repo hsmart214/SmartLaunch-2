@@ -11,8 +11,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 #define X_INSET 130.0
-#define Y_INSET 130.0
-#define TOP_BUFFER 80.0
+#define Y_INSET 100.0
+#define TOP_BUFFER 50.0
 #define VECTOR_WIDTH 3.0
 #define VECTOR_HEAD 10.0
 

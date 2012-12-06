@@ -129,7 +129,7 @@
     float AoA, alpha1, alpha2, opposite, adjacent;
     switch (self.displayLaunchDirection) {
         case CrossWind:
-            AoA = asinf(self.windVelocitySlider.value/self.displayFFVelocity);
+            AoA = atanf(self.windVelocitySlider.value/self.displayFFVelocity);
             break;
             
         case WithWind:
