@@ -10,6 +10,7 @@
 #import "RocketMotor.h"
 #import "SLUnitsConvertor.h"
 #import "SLMotorThrustCurveView.h"
+#import "SLSimulationDelegate.h"
 
 @interface SLMotorViewController : UIViewController
 
@@ -23,4 +24,5 @@
 @property (weak, nonatomic) IBOutlet SLMotorThrustCurveView *thrustCurve;
 
 @property (nonatomic, strong) RocketMotor *motor;
+@property (nonatomic, weak) id<SLSimulationDelegate> delegate;
 @end

@@ -42,6 +42,16 @@
     return [self.motor thrustAtTime:timeIndex];
 }
 
+- (IBAction)userChoseMotor:(UIBarButtonItem *)sender {
+    [self.delegate sender:self didChangeRocketMotor:self.motor];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setToolbarHidden:NO animated:animated];
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -63,20 +73,7 @@
     [self.thrustCurve setNeedsDisplay];
 }
 
-- (void)viewDidUnload
-{
-    [self setMotorManufacturer:nil];
-    [self setMotorDiameter:nil];
-    [self setMotorMass:nil];
-    [self setTotalImpulse:nil];
-    [self setInitialThrust:nil];
-    [self setThrustCurve:nil];
-    [self setMotorLength:nil];
-    [self setPropellantMass:nil];
-    self.motor = nil;
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

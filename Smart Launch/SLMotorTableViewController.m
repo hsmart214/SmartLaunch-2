@@ -95,6 +95,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender{
     if ([segue.identifier isEqualToString:@"motorDetailSegue"]){
         [(SLMotorViewController *)segue.destinationViewController setMotor:self.selectedMotor];
+        [(SLMotorViewController *)segue.destinationViewController setDelegate:self.delegate];
         [segue.destinationViewController setTitle:self.selectedMotor.name];
     }
 }
