@@ -8,10 +8,12 @@
 
 #import "SLInformationTVC.h"
 
-@interface SLInformationTVC ()
+
+@interface SLInformationTVC ()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *doneButton;
 @property (weak, nonatomic) IBOutlet UITextView *infoTextView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (nonatomic, strong) UIAlertView *alert;
 
 @end
 
@@ -47,54 +49,69 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)requestNewMotorList{
+    [self.spinner startAnimating];
+    dispatch_queue_t myQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(myQueue, ^(void){
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUInteger currentVersion = [[defaults objectForKey:MOTOR_FILE_VERSION_KEY] integerValue];  //nil if never used, resulting in 0
+        NSURL *motorFileWWWURL = [NSURL URLWithString:MOTORS_WWW_URL];
+        NSURL *motorFileVersionWWWURL = [NSURL URLWithString:MOTORS_VERSION_WWW_URL];
+        NSError *err = nil;
+        NSString *version = [NSString stringWithContentsOfURL:motorFileVersionWWWURL encoding:NSUTF8StringEncoding error:&err];
+        if (err){
+            NSLog(@"Error reading Motor version from mySmartSoftware.com");
+            self.alert = [[UIAlertView alloc]initWithTitle:@"Motor List Update" message:@"Unable to contact website." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.alert show];
+            });
+        }
+        NSUInteger versionNumber = [version integerValue];
+        if (versionNumber > currentVersion){
+            // nuke the cache
+            NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask]lastObject];
+            NSURL *motorCacheURL = [cacheURL URLByAppendingPathComponent:MOTOR_CACHE_FILENAME];
+            if ([[NSFileManager defaultManager]fileExistsAtPath:[motorCacheURL path]]){
+                [[NSFileManager defaultManager] removeItemAtURL:motorCacheURL error:nil];
+            }
+            // get the new data from the website
+            NSURL *dataURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+            NSURL *motorFileURL = [dataURL URLByAppendingPathComponent:MOTOR_DATA_FILENAME];
+            NSString *allMotors = [NSString stringWithContentsOfURL:motorFileWWWURL encoding:NSUTF8StringEncoding error:&err];
+            if (err){
+                NSLog(@"Error reading Motor data file from mySmartSoftware.com");
+            }else{
+                if ([[NSFileManager defaultManager]fileExistsAtPath:[motorFileURL path]]){
+                    [[NSFileManager defaultManager] removeItemAtURL:motorFileURL error:nil];
+                }
+                [allMotors writeToURL:motorFileURL atomically:YES encoding:NSUTF8StringEncoding error:&err];
+                if (err){
+                    NSLog(@"Error writing Motor data file to data directory.");
+                }else{
+                    [defaults setInteger:versionNumber forKey:MOTOR_FILE_VERSION_KEY];
+                    [defaults synchronize];
+                    self.alert = [[UIAlertView alloc]initWithTitle:@"Motor List Update" message:@"Your motor list has been updated." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.alert show];
+                    });
+                }
+            }
+        }else{
+            self.alert = [[UIAlertView alloc]initWithTitle:@"Motor List Update" message:@"Your motor list is current." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.alert show];
+            });
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.spinner stopAnimating];
+        });
+    });
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 2){
-        [self.spinner startAnimating];
-        dispatch_queue_t myQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_async(myQueue, ^(void){
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            NSUInteger currentVersion = [[defaults objectForKey:MOTOR_FILE_VERSION_KEY] integerValue];  //nil if never used, resulting in 0
-            NSURL *motorFileWWWURL = [NSURL URLWithString:MOTORS_WWW_URL];
-            NSURL *motorFileVersionWWWURL = [NSURL URLWithString:MOTORS_VERSION_WWW_URL];
-            NSError *err = nil;
-            NSString *version = [NSString stringWithContentsOfURL:motorFileVersionWWWURL encoding:NSUTF8StringEncoding error:&err];
-            if (err){
-                NSLog(@"Error reading Motor version from mySmartSoftware.com");
-            }
-            NSUInteger versionNumber = [version integerValue];
-            if (versionNumber > currentVersion){
-                // nuke the cache
-                NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask]lastObject];
-                NSURL *motorCacheURL = [cacheURL URLByAppendingPathComponent:MOTOR_CACHE_FILENAME];
-                if ([[NSFileManager defaultManager]fileExistsAtPath:[motorCacheURL path]]){
-                    [[NSFileManager defaultManager] removeItemAtURL:motorCacheURL error:nil];
-                }
-                // get the new data from the website
-                NSURL *dataURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-                NSURL *motorFileURL = [dataURL URLByAppendingPathComponent:MOTOR_DATA_FILENAME];
-                NSString *allMotors = [NSString stringWithContentsOfURL:motorFileWWWURL encoding:NSUTF8StringEncoding error:&err];
-                if (err){
-                    NSLog(@"Error reading Motor data file from mySmartSoftware.com");
-                }else{
-                    if ([[NSFileManager defaultManager]fileExistsAtPath:[motorFileURL path]]){
-                        [[NSFileManager defaultManager] removeItemAtURL:motorFileURL error:nil];
-                    }
-                    [allMotors writeToURL:motorFileURL atomically:YES encoding:NSUTF8StringEncoding error:&err];
-                    if (err){
-                        NSLog(@"Error writing Motor data file to data directory.");
-                    }else{
-                        [defaults setInteger:versionNumber forKey:MOTOR_FILE_VERSION_KEY];
-                        [defaults synchronize];
-                    }
-                }
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.spinner stopAnimating];
-            });
-        });
-        
-        
+        [self requestNewMotorList];
     }
 }
 
@@ -105,6 +122,12 @@
 
 - (void)dismissModalVC:(id)sender{
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - UIAlerViewDelegate method
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    
 }
 
 #pragma mark - UIActionSheet delegate method
@@ -120,5 +143,10 @@
     }
 }
 
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.alert dismissWithClickedButtonIndex:0 animated:NO];
+    self.alert = nil;
+}
 
 @end
