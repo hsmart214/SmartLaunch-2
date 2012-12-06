@@ -17,9 +17,14 @@ enum LaunchDirection : NSUInteger {
     CrossWind = 1,
     IntoWind = 2
 };
+    
+#define MOTORS_WWW_URL @"http://www.mysmartsoftware.com/data/motors.txt"
+#define MOTORS_VERSION_WWW_URL @"http://www.mysmartsoftware.com/data/version.txt"
+#define MOTOR_VERSION_FILENAME @"version"
 
 #define BACKGROUND_IMAGE_FILENAME @"Vellum"
 #define MOTOR_CACHE_FILENAME @"motorcache.plist"
+#define MOTOR_DATA_FILENAME @"motors.txt"
 #define VERTICAL_ROCKET_PIC_NAME @"Rocket"
 
 #pragma mark Calculation constants
@@ -70,6 +75,7 @@ typedef CGPoint ThrustPoint;
 
 #define SETTINGS_KEY @"SmartLaunchSettingsDictionary"
 
+#define MOTOR_FILE_VERSION_KEY @"SmartLaunch_Motor_File_Version"
 #define ALL_MOTORS_KEY @"SmartLaunch_All_Motors"
 #define LAST_MOTOR_SEARCH_KEY @"SmartLaunch_Last_Motor_Search"
 #define FAVORITE_ROCKETS_KEY @"SmartLaunch_Favorite_Rockets"

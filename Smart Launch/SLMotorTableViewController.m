@@ -34,15 +34,6 @@
     [self.navigationController setToolbarHidden:YES animated:animated];
 }
 
-- (void)viewDidUnload{
-    [super viewDidUnload];
-    self.delegate = nil;
-    self.motors = nil;
-    self.sectionKey = nil;
-    self.selectedMotor = nil;
-    self.selectedMotorDict = nil;
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);

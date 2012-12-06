@@ -77,13 +77,6 @@
     self.oldMotorPrefs = [self.motorPrefs copy];
 }
 
-- (void)viewDidUnload
-{
-    self.oldMotorPrefs = nil;
-    self.motorPrefs = nil;
-    [super viewDidUnload];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -171,7 +164,7 @@
     }
 }
 
-#pragma mark - SLMotorPrefsTVC class method
+#pragma mark - SLMotorPrefsTVC class methods
 
 + (NSDictionary *)motorKeysAllSelected{
     NSMutableDictionary* buildDict = [NSMutableDictionary dictionaryWithCapacity:64];

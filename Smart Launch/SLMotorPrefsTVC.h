@@ -12,5 +12,4 @@
 
 + (NSDictionary *)motorKeysAllSelected;
 
-
 @end

@@ -67,6 +67,10 @@ NSInteger sortFunction(id md1, id md2, void *context){
 
 - (NSArray *)allMotors{
     if (!_allMotors){
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSInteger currentMotorsVersion = [defaults integerForKey:MOTOR_FILE_VERSION_KEY];
+        NSBundle *mainBundle = [NSBundle mainBundle];
+        NSInteger bundleMotorVersion = [[NSString stringWithContentsOfURL:[mainBundle URLForResource:MOTOR_VERSION_FILENAME withExtension:@"txt"] encoding:NSUTF8StringEncoding error:nil]integerValue];
         NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
         NSURL *motorFileURL = [cacheURL URLByAppendingPathComponent:MOTOR_CACHE_FILENAME];
         if ([[NSFileManager defaultManager]fileExistsAtPath:[motorFileURL path]]){
@@ -74,8 +78,12 @@ NSInteger sortFunction(id md1, id md2, void *context){
             return _allMotors;
         }
         NSMutableArray *build = [NSMutableArray array];
-        NSBundle *mainBundle = [NSBundle mainBundle];
+        
         NSURL *motorsURL = [mainBundle URLForResource:@"motors" withExtension:@"txt"];
+        if (currentMotorsVersion > bundleMotorVersion){
+            NSURL *docURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+            motorsURL = [docURL URLByAppendingPathComponent:MOTOR_DATA_FILENAME];
+        }
         NSError *err;
         NSString *motors = [NSString stringWithContentsOfURL:motorsURL encoding:NSUTF8StringEncoding error:&err];
         if (err){
@@ -277,26 +285,6 @@ NSInteger sortFunction(id md1, id md2, void *context){
     [self motorDiameterRestrictionChanged:self.restrictMotorDiametersSegmentedControl];
 }
 
-- (void)viewDidUnload
-{
-    [self setSearch1Control:nil];
-    [self setSearch2Control:nil];
-    [self setPickerView:nil];
-    [self setRestrictMotorDiametersSegmentedControl:nil];
-    self.preferredImpulseClasses = nil;
-    self.preferredManufacturers = nil;
-    self.preferredMotorDiameters = nil;
-    self.restrictedMotorDiamPrefs = nil;
-    self.impulseClasses = nil;
-    self.motorDiameters = nil;
-    self.motorKeyPrefs = nil;
-    self.allMotors = nil;
-    self.manufacturerNames = nil;
-    self.rocketMotorMountDiameter = nil;
-    self.delegate = nil;
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
