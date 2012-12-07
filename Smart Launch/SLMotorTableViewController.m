@@ -59,7 +59,7 @@
     NSDictionary *motorDict = [[self.motors objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     cell.textLabel.text = [motorDict objectForKey:NAME_KEY];
-    cell.detailTextLabel.text = [motorDict objectForKey:MAN_KEY];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Propellant %5.0f g",[[motorDict objectForKey:PROP_MASS_KEY] floatValue] * 1000];
     NSString *path = [[NSBundle mainBundle] pathForResource:[motorDict objectForKey:MAN_KEY] ofType:@"png"];
     UIImage *theImage = [UIImage imageWithContentsOfFile:path];
     cell.imageView.image = theImage;

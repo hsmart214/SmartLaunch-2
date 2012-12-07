@@ -114,28 +114,28 @@
 }
 
 -(CGFloat)thrustAtTime:(CGFloat)time{
-    if ((time == 0.0) || (time >= [[self.times lastObject] floatValue])) return 0.0;
+    if ((time == 0.0) || (time >= [[_times lastObject] floatValue])) return 0.0;
     NSInteger i = 0;
-    while ([[self.times objectAtIndex:i] floatValue] < time) {
+    while ([[_times objectAtIndex:i] floatValue] < time) {
         i++;
     }
     double fiminus1 = 0.0;
     double timinus1 = 0.0;
     if (i>0) {
-        fiminus1 = [[self.thrusts objectAtIndex:i-1] doubleValue];
-        timinus1 = [[self.times objectAtIndex:i-1] doubleValue];
+        fiminus1 = [[_thrusts objectAtIndex:i-1] doubleValue];
+        timinus1 = [[_times objectAtIndex:i-1] doubleValue];
     }
-    double dti = [[self.times objectAtIndex:i] doubleValue];
-    double dfi = [[self.thrusts objectAtIndex:i] doubleValue];
+    double dti = [[_times objectAtIndex:i] doubleValue];
+    double dfi = [[_thrusts objectAtIndex:i] doubleValue];
     
     double ftime = fiminus1 + ((time - timinus1)/(dti - timinus1)) * (dfi - fiminus1);
     return ftime;
 }
 
 -(CGFloat)massAtTime:(CGFloat)time{
-    double percentOfBurn = time / [[self.times lastObject] floatValue];
+    double percentOfBurn = time / [[_times lastObject] floatValue];
     if (percentOfBurn > 1.0) percentOfBurn = 1.0;
-    return [self.mass floatValue] - percentOfBurn * [self.propellantMass floatValue];
+    return [_mass floatValue] - percentOfBurn * [_propellantMass floatValue];
 }
 
 #pragma mark - RocketMotor Class methods
@@ -182,7 +182,7 @@
             @"38mm", @"54mm", @"75mm", @"98mm", @"150mm", nil];
 }
 
-+ (RocketMotor *)defaultMotor{  // Estes D12
+/*+ (RocketMotor *)defaultEstesMotor{  // Estes D12
     NSArray *times = [NSArray arrayWithObjects:
                       [NSNumber numberWithFloat:0.049],
                       [NSNumber numberWithFloat:0.166],
@@ -238,6 +238,86 @@
                               @"0-3-5-7", DELAYS_KEY,
                               nil];
     return [RocketMotor motorWithMotorDict:estesD12];
+}*/
+
++ (RocketMotor *)defaultMotor{
+    NSArray *times = @[@(0.011),
+    @(0.018),
+    @(0.032),
+    @(0.079),
+    @(0.122),
+    @(0.136),
+    @(0.169),
+    @(0.201),
+    @(0.223),
+    @(0.233),
+    @(0.255),
+    @(0.276),
+    @(0.352),
+    @(0.402),
+    @(0.420),
+    @(0.459),
+    @(0.488),
+    @(0.556),
+    @(0.671),
+    @(0.707),
+    @(0.729),
+    @(0.779),
+    @(0.793),
+    @(0.836),
+    @(0.904),
+    @(0.926),
+    @(0.990),
+    @(1.026),
+    @(1.123),
+    @(1.231),
+    @(1.342),
+    @(1.400)];
+    NSArray *thrusts = @[@(14.506),
+    @(25.13),
+    @(20.938),
+    @(19.065),
+    @(21.139),
+    @(19.686),
+    @(21.139),
+    @(20.728),
+    @(21.76),
+    @(20.938),
+    @(21.97),
+    @(20.938),
+    @(20.728),
+    @(20.107),
+    @(20.728),
+    @(20.107),
+    @(20.517),
+    @(18.243),
+    @(15.959),
+    @(14.717),
+    @(15.127),
+    @(12.853),
+    @(13.474),
+    @(11.401),
+    @(10.158),
+    @(10.569),
+    @(8.083),
+    @(8.498),
+    @(6.011),
+    @(2.487),
+    @(0.829),
+    @(0)];
+    //D10 18 70 3-5-7 0.0098 0.0259 Apogee
+
+    NSDictionary *apogeeD10 = @{NAME_KEY: @"D10",
+        MOTOR_DIAM_KEY: @(18.0),
+        MOTOR_LENGTH_KEY: @(70.0),
+        DELAYS_KEY: @"3-5-7",
+        PROP_MASS_KEY: @(0.0098),
+        MOTOR_MASS_KEY: @(0.0259),
+        MAN_KEY: @"Apogee",
+        IMPULSE_KEY: @"D",
+        TIME_KEY: times,
+        THRUST_KEY: thrusts};
+    return [RocketMotor motorWithMotorDict:apogeeD10];
 }
 
 @end

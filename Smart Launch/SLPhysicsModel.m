@@ -207,7 +207,8 @@
     self.velocity = 0;
     self.timeIndex = 0;
     float mRocket = [self.rocket.mass floatValue];
-    double totalDistanceTravelled, distanceTravelled = 0;
+    double totalDistanceTravelled = 0;
+    double distanceTravelled = 0;
     double g = GRAV_ACCEL * cos(_launchGuideAngle);
     
     while (totalDistanceTravelled < _launchGuideLength) {
@@ -364,8 +365,6 @@
         if (a > 0) {        //remember DIVS is in units of 1/sec
             dist += (v / DIVS_DURING_BURN) + (0.5 * a /(DIVS_DURING_BURN * DIVS_DURING_BURN));
             v += a / DIVS_DURING_BURN;
-        }else{
-            a = 0;
         }
     }
     return v;

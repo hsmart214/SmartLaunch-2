@@ -111,7 +111,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 2){
-        [self requestNewMotorList];
+        // If a thread is running to check for motors already, the spinner will be visible
+        if ([self.spinner isHidden]) [self requestNewMotorList];
     }
 }
 
