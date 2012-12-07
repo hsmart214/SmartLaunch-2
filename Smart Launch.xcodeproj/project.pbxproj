@@ -38,6 +38,28 @@
 		4220A53D15F561CF0055EE35 /* Goblin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A53B15F561CF0055EE35 /* Goblin@2x.png */; };
 		4220A53E15F561CF0055EE35 /* Goblin.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A53C15F561CF0055EE35 /* Goblin.png */; };
 		4232060515F7124F0027A18E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4232060415F7124F0027A18E /* CoreLocation.framework */; };
+		4238F13F16727226009A944D /* Aerotech Hybrid.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F12916727226009A944D /* Aerotech Hybrid.png */; };
+		4238F14016727226009A944D /* Aerotech RMS.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F12A16727226009A944D /* Aerotech RMS.png */; };
+		4238F14116727226009A944D /* Aerotech.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F12B16727226009A944D /* Aerotech.png */; };
+		4238F14216727226009A944D /* AMW Pro-X.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F12C16727226009A944D /* AMW Pro-X.png */; };
+		4238F14316727226009A944D /* Animal Motor Works.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F12D16727226009A944D /* Animal Motor Works.png */; };
+		4238F14416727226009A944D /* Apogee.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F12E16727226009A944D /* Apogee.png */; };
+		4238F14516727226009A944D /* Cesaroni.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F12F16727226009A944D /* Cesaroni.png */; };
+		4238F14616727226009A944D /* Contrail Rockets.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F13016727226009A944D /* Contrail Rockets.png */; };
+		4238F14716727226009A944D /* Ellis Mountain.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F13116727226009A944D /* Ellis Mountain.png */; };
+		4238F14816727226009A944D /* Estes.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F13216727226009A944D /* Estes.png */; };
+		4238F14916727226009A944D /* Gorilla Rocket Motors.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F13316727226009A944D /* Gorilla Rocket Motors.png */; };
+		4238F14A16727226009A944D /* Hypertek.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F13416727226009A944D /* Hypertek.png */; };
+		4238F14B16727226009A944D /* Kosdon by Aerotech.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F13516727226009A944D /* Kosdon by Aerotech.png */; };
+		4238F14C16727226009A944D /* Kosdon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F13616727226009A944D /* Kosdon.png */; };
+		4238F14D16727226009A944D /* Loki Research.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F13716727226009A944D /* Loki Research.png */; };
+		4238F14E16727226009A944D /* Propulsion Polymers.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F13816727226009A944D /* Propulsion Polymers.png */; };
+		4238F14F16727226009A944D /* Public Missiles Ltd.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F13916727226009A944D /* Public Missiles Ltd.png */; };
+		4238F15016727226009A944D /* Quest.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F13A16727226009A944D /* Quest.png */; };
+		4238F15116727226009A944D /* RATTworks.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F13B16727226009A944D /* RATTworks.png */; };
+		4238F15216727226009A944D /* RoadRunner.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F13C16727226009A944D /* RoadRunner.png */; };
+		4238F15316727226009A944D /* Sky Ripper.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F13D16727226009A944D /* Sky Ripper.png */; };
+		4238F15416727226009A944D /* West Coast Hybrids.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238F13E16727226009A944D /* West Coast Hybrids.png */; };
 		4240A07815F8341900D67F3E /* SLMotorPrefsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4240A07715F8341900D67F3E /* SLMotorPrefsTVC.m */; };
 		4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930915F4893000F7BABC /* UIKit.framework */; };
 		4256930C15F4893000F7BABC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930B15F4893000F7BABC /* Foundation.framework */; };
@@ -53,28 +75,6 @@
 		42D7809B1663291B000C7D6C /* SLAnimatedRocketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D7809A1663291B000C7D6C /* SLAnimatedRocketView.m */; };
 		42DABC531617FD0100CA6C5E /* Viewfinder.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC511617FD0100CA6C5E /* Viewfinder.png */; };
 		42DABC541617FD0100CA6C5E /* Viewfinder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC521617FD0100CA6C5E /* Viewfinder@2x.png */; };
-		42DABC6C1617FDAA00CA6C5E /* Aerotech Hybrid.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC561617FDAA00CA6C5E /* Aerotech Hybrid.png */; };
-		42DABC6D1617FDAA00CA6C5E /* Aerotech RMS.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC571617FDAA00CA6C5E /* Aerotech RMS.png */; };
-		42DABC6E1617FDAA00CA6C5E /* Aerotech.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC581617FDAA00CA6C5E /* Aerotech.png */; };
-		42DABC6F1617FDAA00CA6C5E /* AMW Pro-X.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC591617FDAA00CA6C5E /* AMW Pro-X.png */; };
-		42DABC701617FDAA00CA6C5E /* Animal Motor Works.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC5A1617FDAA00CA6C5E /* Animal Motor Works.png */; };
-		42DABC711617FDAA00CA6C5E /* Apogee.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC5B1617FDAA00CA6C5E /* Apogee.png */; };
-		42DABC721617FDAA00CA6C5E /* Cesaroni.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC5C1617FDAA00CA6C5E /* Cesaroni.png */; };
-		42DABC731617FDAA00CA6C5E /* Contrail Rockets.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC5D1617FDAA00CA6C5E /* Contrail Rockets.png */; };
-		42DABC741617FDAA00CA6C5E /* Ellis Mountain.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC5E1617FDAA00CA6C5E /* Ellis Mountain.png */; };
-		42DABC751617FDAA00CA6C5E /* Estes.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC5F1617FDAA00CA6C5E /* Estes.png */; };
-		42DABC761617FDAA00CA6C5E /* Gorilla Rocket Motors.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC601617FDAA00CA6C5E /* Gorilla Rocket Motors.png */; };
-		42DABC771617FDAA00CA6C5E /* Hypertek.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC611617FDAA00CA6C5E /* Hypertek.png */; };
-		42DABC781617FDAA00CA6C5E /* Kosdon by Aerotech.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC621617FDAA00CA6C5E /* Kosdon by Aerotech.png */; };
-		42DABC791617FDAA00CA6C5E /* Kosdon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC631617FDAA00CA6C5E /* Kosdon.png */; };
-		42DABC7A1617FDAA00CA6C5E /* Loki Research.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC641617FDAA00CA6C5E /* Loki Research.png */; };
-		42DABC7B1617FDAA00CA6C5E /* Propulsion Polymers.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC651617FDAA00CA6C5E /* Propulsion Polymers.png */; };
-		42DABC7C1617FDAA00CA6C5E /* Public Missiles Ltd.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC661617FDAA00CA6C5E /* Public Missiles Ltd.png */; };
-		42DABC7D1617FDAA00CA6C5E /* Quest.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC671617FDAA00CA6C5E /* Quest.png */; };
-		42DABC7E1617FDAA00CA6C5E /* RATTworks.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC681617FDAA00CA6C5E /* RATTworks.png */; };
-		42DABC7F1617FDAA00CA6C5E /* RoadRunner.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC691617FDAA00CA6C5E /* RoadRunner.png */; };
-		42DABC801617FDAA00CA6C5E /* Sky Ripper.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC6A1617FDAA00CA6C5E /* Sky Ripper.png */; };
-		42DABC811617FDAA00CA6C5E /* West Coast Hybrids.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC6B1617FDAA00CA6C5E /* West Coast Hybrids.png */; };
 		42DABC841617FE5F00CA6C5E /* 57icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC821617FE5F00CA6C5E /* 57icon.png */; };
 		42DABC851617FE5F00CA6C5E /* 114icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC831617FE5F00CA6C5E /* 114icon.png */; };
 		42DABC871617FE9C00CA6C5E /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 42DABC861617FE9C00CA6C5E /* iTunesArtwork */; };
@@ -136,6 +136,28 @@
 		4220A53B15F561CF0055EE35 /* Goblin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Goblin@2x.png"; sourceTree = "<group>"; };
 		4220A53C15F561CF0055EE35 /* Goblin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Goblin.png; sourceTree = "<group>"; };
 		4232060415F7124F0027A18E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4238F12916727226009A944D /* Aerotech Hybrid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Aerotech Hybrid.png"; sourceTree = "<group>"; };
+		4238F12A16727226009A944D /* Aerotech RMS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Aerotech RMS.png"; sourceTree = "<group>"; };
+		4238F12B16727226009A944D /* Aerotech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Aerotech.png; sourceTree = "<group>"; };
+		4238F12C16727226009A944D /* AMW Pro-X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMW Pro-X.png"; sourceTree = "<group>"; };
+		4238F12D16727226009A944D /* Animal Motor Works.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Animal Motor Works.png"; sourceTree = "<group>"; };
+		4238F12E16727226009A944D /* Apogee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Apogee.png; sourceTree = "<group>"; };
+		4238F12F16727226009A944D /* Cesaroni.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cesaroni.png; sourceTree = "<group>"; };
+		4238F13016727226009A944D /* Contrail Rockets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Contrail Rockets.png"; sourceTree = "<group>"; };
+		4238F13116727226009A944D /* Ellis Mountain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ellis Mountain.png"; sourceTree = "<group>"; };
+		4238F13216727226009A944D /* Estes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Estes.png; sourceTree = "<group>"; };
+		4238F13316727226009A944D /* Gorilla Rocket Motors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gorilla Rocket Motors.png"; sourceTree = "<group>"; };
+		4238F13416727226009A944D /* Hypertek.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hypertek.png; sourceTree = "<group>"; };
+		4238F13516727226009A944D /* Kosdon by Aerotech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kosdon by Aerotech.png"; sourceTree = "<group>"; };
+		4238F13616727226009A944D /* Kosdon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kosdon.png; sourceTree = "<group>"; };
+		4238F13716727226009A944D /* Loki Research.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loki Research.png"; sourceTree = "<group>"; };
+		4238F13816727226009A944D /* Propulsion Polymers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Propulsion Polymers.png"; sourceTree = "<group>"; };
+		4238F13916727226009A944D /* Public Missiles Ltd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Public Missiles Ltd.png"; sourceTree = "<group>"; };
+		4238F13A16727226009A944D /* Quest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quest.png; sourceTree = "<group>"; };
+		4238F13B16727226009A944D /* RATTworks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RATTworks.png; sourceTree = "<group>"; };
+		4238F13C16727226009A944D /* RoadRunner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RoadRunner.png; sourceTree = "<group>"; };
+		4238F13D16727226009A944D /* Sky Ripper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sky Ripper.png"; sourceTree = "<group>"; };
+		4238F13E16727226009A944D /* West Coast Hybrids.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "West Coast Hybrids.png"; sourceTree = "<group>"; };
 		4240A07615F8341900D67F3E /* SLMotorPrefsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMotorPrefsTVC.h; sourceTree = "<group>"; };
 		4240A07715F8341900D67F3E /* SLMotorPrefsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMotorPrefsTVC.m; sourceTree = "<group>"; };
 		4256930515F4893000F7BABC /* SmartLaunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartLaunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,28 +180,6 @@
 		42D7809A1663291B000C7D6C /* SLAnimatedRocketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAnimatedRocketView.m; sourceTree = "<group>"; };
 		42DABC511617FD0100CA6C5E /* Viewfinder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Viewfinder.png; path = ../Viewfinder.png; sourceTree = "<group>"; };
 		42DABC521617FD0100CA6C5E /* Viewfinder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Viewfinder@2x.png"; path = "../Viewfinder@2x.png"; sourceTree = "<group>"; };
-		42DABC561617FDAA00CA6C5E /* Aerotech Hybrid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Aerotech Hybrid.png"; sourceTree = "<group>"; };
-		42DABC571617FDAA00CA6C5E /* Aerotech RMS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Aerotech RMS.png"; sourceTree = "<group>"; };
-		42DABC581617FDAA00CA6C5E /* Aerotech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Aerotech.png; sourceTree = "<group>"; };
-		42DABC591617FDAA00CA6C5E /* AMW Pro-X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMW Pro-X.png"; sourceTree = "<group>"; };
-		42DABC5A1617FDAA00CA6C5E /* Animal Motor Works.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Animal Motor Works.png"; sourceTree = "<group>"; };
-		42DABC5B1617FDAA00CA6C5E /* Apogee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Apogee.png; sourceTree = "<group>"; };
-		42DABC5C1617FDAA00CA6C5E /* Cesaroni.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cesaroni.png; sourceTree = "<group>"; };
-		42DABC5D1617FDAA00CA6C5E /* Contrail Rockets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Contrail Rockets.png"; sourceTree = "<group>"; };
-		42DABC5E1617FDAA00CA6C5E /* Ellis Mountain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ellis Mountain.png"; sourceTree = "<group>"; };
-		42DABC5F1617FDAA00CA6C5E /* Estes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Estes.png; sourceTree = "<group>"; };
-		42DABC601617FDAA00CA6C5E /* Gorilla Rocket Motors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gorilla Rocket Motors.png"; sourceTree = "<group>"; };
-		42DABC611617FDAA00CA6C5E /* Hypertek.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hypertek.png; sourceTree = "<group>"; };
-		42DABC621617FDAA00CA6C5E /* Kosdon by Aerotech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kosdon by Aerotech.png"; sourceTree = "<group>"; };
-		42DABC631617FDAA00CA6C5E /* Kosdon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kosdon.png; sourceTree = "<group>"; };
-		42DABC641617FDAA00CA6C5E /* Loki Research.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loki Research.png"; sourceTree = "<group>"; };
-		42DABC651617FDAA00CA6C5E /* Propulsion Polymers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Propulsion Polymers.png"; sourceTree = "<group>"; };
-		42DABC661617FDAA00CA6C5E /* Public Missiles Ltd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Public Missiles Ltd.png"; sourceTree = "<group>"; };
-		42DABC671617FDAA00CA6C5E /* Quest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quest.png; sourceTree = "<group>"; };
-		42DABC681617FDAA00CA6C5E /* RATTworks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RATTworks.png; sourceTree = "<group>"; };
-		42DABC691617FDAA00CA6C5E /* RoadRunner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RoadRunner.png; sourceTree = "<group>"; };
-		42DABC6A1617FDAA00CA6C5E /* Sky Ripper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sky Ripper.png"; sourceTree = "<group>"; };
-		42DABC6B1617FDAA00CA6C5E /* West Coast Hybrids.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "West Coast Hybrids.png"; sourceTree = "<group>"; };
 		42DABC821617FE5F00CA6C5E /* 57icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57icon.png; path = ../57icon.png; sourceTree = "<group>"; };
 		42DABC831617FE5F00CA6C5E /* 114icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114icon.png; path = ../114icon.png; sourceTree = "<group>"; };
 		42DABC861617FE9C00CA6C5E /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = ../iTunesArtwork; sourceTree = "<group>"; };
@@ -260,6 +260,35 @@
 				4220A53C15F561CF0055EE35 /* Goblin.png */,
 			);
 			name = "Rocket Images";
+			sourceTree = "<group>";
+		};
+		4238F12816727226009A944D /* Manufacturer name pngs */ = {
+			isa = PBXGroup;
+			children = (
+				4238F12916727226009A944D /* Aerotech Hybrid.png */,
+				4238F12A16727226009A944D /* Aerotech RMS.png */,
+				4238F12B16727226009A944D /* Aerotech.png */,
+				4238F12C16727226009A944D /* AMW Pro-X.png */,
+				4238F12D16727226009A944D /* Animal Motor Works.png */,
+				4238F12E16727226009A944D /* Apogee.png */,
+				4238F12F16727226009A944D /* Cesaroni.png */,
+				4238F13016727226009A944D /* Contrail Rockets.png */,
+				4238F13116727226009A944D /* Ellis Mountain.png */,
+				4238F13216727226009A944D /* Estes.png */,
+				4238F13316727226009A944D /* Gorilla Rocket Motors.png */,
+				4238F13416727226009A944D /* Hypertek.png */,
+				4238F13516727226009A944D /* Kosdon by Aerotech.png */,
+				4238F13616727226009A944D /* Kosdon.png */,
+				4238F13716727226009A944D /* Loki Research.png */,
+				4238F13816727226009A944D /* Propulsion Polymers.png */,
+				4238F13916727226009A944D /* Public Missiles Ltd.png */,
+				4238F13A16727226009A944D /* Quest.png */,
+				4238F13B16727226009A944D /* RATTworks.png */,
+				4238F13C16727226009A944D /* RoadRunner.png */,
+				4238F13D16727226009A944D /* Sky Ripper.png */,
+				4238F13E16727226009A944D /* West Coast Hybrids.png */,
+			);
+			path = "Manufacturer name pngs";
 			sourceTree = "<group>";
 		};
 		425692FA15F4893000F7BABC = {
@@ -348,7 +377,7 @@
 		4256931015F4893000F7BABC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				42DABC551617FDAA00CA6C5E /* Manufacturer name pngs */,
+				4238F12816727226009A944D /* Manufacturer name pngs */,
 				4220A53F15F561E30055EE35 /* Rocket Images */,
 				4220A52F15F55DAB0055EE35 /* Backgrounds */,
 				4220A53015F55DBE0055EE35 /* Buttons */,
@@ -362,36 +391,6 @@
 				4256931715F4893000F7BABC /* Smart Launch-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		42DABC551617FDAA00CA6C5E /* Manufacturer name pngs */ = {
-			isa = PBXGroup;
-			children = (
-				42DABC561617FDAA00CA6C5E /* Aerotech Hybrid.png */,
-				42DABC571617FDAA00CA6C5E /* Aerotech RMS.png */,
-				42DABC581617FDAA00CA6C5E /* Aerotech.png */,
-				42DABC591617FDAA00CA6C5E /* AMW Pro-X.png */,
-				42DABC5A1617FDAA00CA6C5E /* Animal Motor Works.png */,
-				42DABC5B1617FDAA00CA6C5E /* Apogee.png */,
-				42DABC5C1617FDAA00CA6C5E /* Cesaroni.png */,
-				42DABC5D1617FDAA00CA6C5E /* Contrail Rockets.png */,
-				42DABC5E1617FDAA00CA6C5E /* Ellis Mountain.png */,
-				42DABC5F1617FDAA00CA6C5E /* Estes.png */,
-				42DABC601617FDAA00CA6C5E /* Gorilla Rocket Motors.png */,
-				42DABC611617FDAA00CA6C5E /* Hypertek.png */,
-				42DABC621617FDAA00CA6C5E /* Kosdon by Aerotech.png */,
-				42DABC631617FDAA00CA6C5E /* Kosdon.png */,
-				42DABC641617FDAA00CA6C5E /* Loki Research.png */,
-				42DABC651617FDAA00CA6C5E /* Propulsion Polymers.png */,
-				42DABC661617FDAA00CA6C5E /* Public Missiles Ltd.png */,
-				42DABC671617FDAA00CA6C5E /* Quest.png */,
-				42DABC681617FDAA00CA6C5E /* RATTworks.png */,
-				42DABC691617FDAA00CA6C5E /* RoadRunner.png */,
-				42DABC6A1617FDAA00CA6C5E /* Sky Ripper.png */,
-				42DABC6B1617FDAA00CA6C5E /* West Coast Hybrids.png */,
-			);
-			name = "Manufacturer name pngs";
-			path = "../Manufacturer name pngs";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -461,28 +460,6 @@
 				4220A53E15F561CF0055EE35 /* Goblin.png in Resources */,
 				42DABC531617FD0100CA6C5E /* Viewfinder.png in Resources */,
 				42DABC541617FD0100CA6C5E /* Viewfinder@2x.png in Resources */,
-				42DABC6C1617FDAA00CA6C5E /* Aerotech Hybrid.png in Resources */,
-				42DABC6D1617FDAA00CA6C5E /* Aerotech RMS.png in Resources */,
-				42DABC6E1617FDAA00CA6C5E /* Aerotech.png in Resources */,
-				42DABC6F1617FDAA00CA6C5E /* AMW Pro-X.png in Resources */,
-				42DABC701617FDAA00CA6C5E /* Animal Motor Works.png in Resources */,
-				42DABC711617FDAA00CA6C5E /* Apogee.png in Resources */,
-				42DABC721617FDAA00CA6C5E /* Cesaroni.png in Resources */,
-				42DABC731617FDAA00CA6C5E /* Contrail Rockets.png in Resources */,
-				42DABC741617FDAA00CA6C5E /* Ellis Mountain.png in Resources */,
-				42DABC751617FDAA00CA6C5E /* Estes.png in Resources */,
-				42DABC761617FDAA00CA6C5E /* Gorilla Rocket Motors.png in Resources */,
-				42DABC771617FDAA00CA6C5E /* Hypertek.png in Resources */,
-				42DABC781617FDAA00CA6C5E /* Kosdon by Aerotech.png in Resources */,
-				42DABC791617FDAA00CA6C5E /* Kosdon.png in Resources */,
-				42DABC7A1617FDAA00CA6C5E /* Loki Research.png in Resources */,
-				42DABC7B1617FDAA00CA6C5E /* Propulsion Polymers.png in Resources */,
-				42DABC7C1617FDAA00CA6C5E /* Public Missiles Ltd.png in Resources */,
-				42DABC7D1617FDAA00CA6C5E /* Quest.png in Resources */,
-				42DABC7E1617FDAA00CA6C5E /* RATTworks.png in Resources */,
-				42DABC7F1617FDAA00CA6C5E /* RoadRunner.png in Resources */,
-				42DABC801617FDAA00CA6C5E /* Sky Ripper.png in Resources */,
-				42DABC811617FDAA00CA6C5E /* West Coast Hybrids.png in Resources */,
 				42DABC841617FE5F00CA6C5E /* 57icon.png in Resources */,
 				42DABC851617FE5F00CA6C5E /* 114icon.png in Resources */,
 				42DABC871617FE9C00CA6C5E /* iTunesArtwork in Resources */,
@@ -492,6 +469,28 @@
 				42AEF2E216633603009F65AA /* Rocket.png in Resources */,
 				42AEF2E316633603009F65AA /* Rocket@2x.png in Resources */,
 				42A1B6191670599E004F1FA0 /* version.txt in Resources */,
+				4238F13F16727226009A944D /* Aerotech Hybrid.png in Resources */,
+				4238F14016727226009A944D /* Aerotech RMS.png in Resources */,
+				4238F14116727226009A944D /* Aerotech.png in Resources */,
+				4238F14216727226009A944D /* AMW Pro-X.png in Resources */,
+				4238F14316727226009A944D /* Animal Motor Works.png in Resources */,
+				4238F14416727226009A944D /* Apogee.png in Resources */,
+				4238F14516727226009A944D /* Cesaroni.png in Resources */,
+				4238F14616727226009A944D /* Contrail Rockets.png in Resources */,
+				4238F14716727226009A944D /* Ellis Mountain.png in Resources */,
+				4238F14816727226009A944D /* Estes.png in Resources */,
+				4238F14916727226009A944D /* Gorilla Rocket Motors.png in Resources */,
+				4238F14A16727226009A944D /* Hypertek.png in Resources */,
+				4238F14B16727226009A944D /* Kosdon by Aerotech.png in Resources */,
+				4238F14C16727226009A944D /* Kosdon.png in Resources */,
+				4238F14D16727226009A944D /* Loki Research.png in Resources */,
+				4238F14E16727226009A944D /* Propulsion Polymers.png in Resources */,
+				4238F14F16727226009A944D /* Public Missiles Ltd.png in Resources */,
+				4238F15016727226009A944D /* Quest.png in Resources */,
+				4238F15116727226009A944D /* RATTworks.png in Resources */,
+				4238F15216727226009A944D /* RoadRunner.png in Resources */,
+				4238F15316727226009A944D /* Sky Ripper.png in Resources */,
+				4238F15416727226009A944D /* West Coast Hybrids.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
