@@ -3,7 +3,7 @@
 //  Smart Launch
 //
 //  Created by J. Howard Smart on 6/24/12.
-//  Copyright (c) 2012 Smart Software. All rights reserved.
+//  Copyright (c) 2012 All rights reserved.
 //
 //  As much as possible, all internal calculations will be carried out using the metric system.
 //  The user will be able to localize the interface to the desired units for display purposes.

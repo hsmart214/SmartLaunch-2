@@ -3,7 +3,7 @@
 //  Launch Smart
 //
 //  Created by J. Howard Smart on 7/3/12.
-//  Copyright (c) 2012 mySmartSoftware. All rights reserved.
+//  Copyright (c) 2012 All rights reserved.
 //
 
 #import "SLInformationTVC.h"

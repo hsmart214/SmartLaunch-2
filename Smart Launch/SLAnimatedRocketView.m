@@ -3,7 +3,7 @@
 //  Smart Launch
 //
 //  Created by J. HOWARD SMART on 11/25/12.
-//  Copyright (c) 2012 J. HOWARD SMART. All rights reserved.
+//  Copyright (c) 2012 All rights reserved.
 //
 
 #import "SLAnimatedRocketView.h"

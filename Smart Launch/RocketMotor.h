@@ -1,9 +1,9 @@
 //
 //  RocketMotor.h
-//  SafeLaunchMotorPicker
+//  Smart Launch
 //
 //  Created by J. Howard Smart on 6/16/12.
-//  Copyright (c) 2012 Smart Software. All rights reserved.
+//  Copyright (c) 2012 All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
