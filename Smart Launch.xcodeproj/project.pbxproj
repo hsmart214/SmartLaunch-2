@@ -205,7 +205,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		421BB10A167293FD00F29D95 /* Manufacturer name pngs */ = {
+		421BB10A167293FD00F29D95 /* Company name/Logo pngs */ = {
 			isa = PBXGroup;
 			children = (
 				421BB10B167293FD00F29D95 /* Aerotech Hybrid.png */,
@@ -231,6 +231,7 @@
 				421BB11F167293FD00F29D95 /* Sky Ripper.png */,
 				421BB120167293FD00F29D95 /* West Coast Hybrids.png */,
 			);
+			name = "Company name/Logo pngs";
 			path = "Manufacturer name pngs";
 			sourceTree = "<group>";
 		};
@@ -377,7 +378,7 @@
 		4256931015F4893000F7BABC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				421BB10A167293FD00F29D95 /* Manufacturer name pngs */,
+				421BB10A167293FD00F29D95 /* Company name/Logo pngs */,
 				4220A53F15F561E30055EE35 /* Rocket Images */,
 				4220A52F15F55DAB0055EE35 /* Backgrounds */,
 				4220A53015F55DBE0055EE35 /* Buttons */,
