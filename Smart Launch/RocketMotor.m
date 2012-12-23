@@ -172,6 +172,18 @@
             @"West Coast Hybrids", nil];
 }
 
++ (NSArray *)hybridManufacturerNames{
+    return [NSArray arrayWithObjects:
+            @"Aerotech Hybrid",
+            @"Contrail Rockets",
+            @"Hypertek",
+            @"Propulsion Polymers",
+            @"RATTworks",
+            @"Sky Ripper",
+            @"West Coast Hybrids", nil];
+}
+
+
 + (NSArray *)impulseClasses{
     return [NSArray arrayWithObjects:@"1/8A", @"1/4A", @"1/2A", @"A", @"B", @"C", @"D",
             @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", nil];

@@ -149,6 +149,7 @@
         default:
             break;
     }
+    if (self.windVelocitySlider.value == 0) AoA = 0.0;
     AoA *= DEGREES_PER_RADIAN;
     self.ffAoALabel.text = [NSString stringWithFormat:@"%2.1f",AoA];
     [self drawVectors];

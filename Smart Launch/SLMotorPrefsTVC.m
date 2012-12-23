@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSMutableDictionary *motorPrefs;
 // a temporary holder to undo changes
 @property (nonatomic, strong) NSMutableDictionary *oldMotorPrefs;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *hybridButton;
+@property (nonatomic) BOOL showingHybrids;
 
 @end
 
@@ -48,6 +50,22 @@
     [self.tableView reloadData];
 }
 
+- (IBAction)toggleHybrids:(UIBarButtonItem *)sender {
+    if (self.showingHybrids){
+        // we should hide, so hide the motor manufacturers,and change the button name to "show"
+        [self.hybridButton setTitle:@"Show Hybrids"];
+    }else{
+        // we should stop hiding them, change the button back to "Hide"
+        [self.hybridButton setTitle:@"Hide Hybrids"];
+    }
+    BOOL newState = !self.showingHybrids;
+    for (NSString *man in [RocketMotor hybridManufacturerNames]){
+        self.motorPrefs[man] = @(newState);
+    }
+    self.showingHybrids = !self.showingHybrids;
+    [self.tableView reloadData];
+}
+
 - (IBAction)savePrefsAndReturn:(id)sender {
     // if we haven't changed anything, just pop back
     if (![self.motorPrefs isEqualToDictionary:self.oldMotorPrefs]){
@@ -68,13 +86,22 @@
 
 #pragma mark - View Lifecycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+
+- (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setToolbarHidden:NO animated:animated];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.motorPrefs = [[defaults objectForKey:MOTOR_PREFS_KEY] mutableCopy];
     // notice here that if _motorPrefs is left nil above, the following line will fill both dictionaries with YES values
     self.oldMotorPrefs = [self.motorPrefs copy];
+    self.showingHybrids = [defaults boolForKey:SHOWING_HYBRIDS_KEY];
+    if (self.showingHybrids){
+        [self.hybridButton setTitle:@"Hide Hybrids"];
+    }else{
+        [self.hybridButton setTitle:@"Show Hybrids"];
+    }
+
+    [super viewWillAppear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -156,11 +183,11 @@
     if ([cell accessoryType]== UITableViewCellAccessoryCheckmark){
         // it is selected, deselect it and record the deselection
         [cell setAccessoryType:UITableViewCellAccessoryNone];
-        [self.motorPrefs setObject:[NSNumber numberWithBool:NO] forKey:motorKey];
+        [self.motorPrefs setObject:@(NO) forKey:motorKey];
     }else{
         // it is not selected, select it and record the selection
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-        [self.motorPrefs setObject:[NSNumber numberWithBool:YES] forKey:motorKey];
+        [self.motorPrefs setObject:@(YES) forKey:motorKey];
     }
 }
 
@@ -173,5 +200,6 @@
     for (NSString *key in [RocketMotor impulseClasses]) [buildDict setObject:[NSNumber numberWithBool:YES] forKey:key];
     return [buildDict copy];
 }
+
 
 @end

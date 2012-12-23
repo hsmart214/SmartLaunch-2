@@ -111,6 +111,7 @@ typedef CGPoint ThrustPoint;
 #define WIND_DIRECTION_KEY @"SmartLaunch_Wind_Direction"
 #define LAUNCH_ALTITUDE_KEY @"SmartLaunch_Launch_Altitude"
 #define LAUNCH_TEMPERATURE_KEY @"SmartLaunch_Launch_Temperature" 
+#define SHOWING_HYBRIDS_KEY @"SmartLaunch_Showing_Hybrids"
 
 // Interface prefs defines
 

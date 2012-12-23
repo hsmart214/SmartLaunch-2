@@ -19,6 +19,10 @@
 @property (nonatomic, strong) NSMutableArray *flightProfile;
 @property (nonatomic, strong) NSArray *stdAtmosphere;
 @property (nonatomic) double angle;         // current 2D angle of flight
+@property (nonatomic, strong) NSArray *thrusts;
+@property (nonatomic, strong) NSArray *times;
+@property (nonatomic) float motorInitialMass;
+@property (nonatomic) float propellantMass;
 
 @end
 
@@ -38,6 +42,37 @@
 
 - (NSUInteger)version{
     return 2;
+}
+
+/* Going to break data encapsulation here for the sake of performance in the integration loops */
+
+- (void)setMotor:(RocketMotor *)motor{
+    if (_motor != motor){
+        _motor = motor;
+        self.thrusts = self.motor.thrusts;
+        self.times = self.motor.times;
+        self.motorInitialMass = [self.motor.loadedMass floatValue];
+        self.propellantMass = [self.motor.propellantMass floatValue];
+    }
+}
+
+-(CGFloat)thrustAtTime:(CGFloat)time{
+    if ((time == 0.0) || (time >= [[_times lastObject] floatValue])) return 0.0;
+    NSInteger i = 0;
+    while ([[_times objectAtIndex:i] floatValue] < time) {
+        i++;
+    }   // i is now the index of the first thrust point AFTER time (can be zero)
+    double fiminus1 = 0.0;
+    double timinus1 = 0.0;
+    if (i>0) {
+        fiminus1 = [[_thrusts objectAtIndex:i-1] doubleValue];
+        timinus1 = [[_times objectAtIndex:i-1] doubleValue];
+    }
+    double dti = [[_times objectAtIndex:i] doubleValue];
+    double dfi = [[_thrusts objectAtIndex:i] doubleValue];
+    
+    double ftime = fiminus1 + ((time - timinus1)/(dti - timinus1)) * (dfi - fiminus1);
+    return ftime;
 }
 
 - (NSArray *)stdAtmosphere{
@@ -128,6 +163,7 @@
 
 - (double)dragAtVelocity:(double)v
              andAltitude:(double)altAGL{
+    if (v==0) return 0.0;
     NSDictionary *atmosphereData = [self atmosphereDataAtAltitudeAGL:altAGL];
     double radius = [self.rocket.diameter doubleValue]/2;
     double area = _PI_ * radius * radius;
@@ -207,6 +243,7 @@
     self.velocity = 0;
     self.timeIndex = 0;
     float mRocket = [self.rocket.mass floatValue];
+    float burnoutTime = [[self.times lastObject] floatValue];
     double totalDistanceTravelled = 0;
     double distanceTravelled = 0;
     double g = GRAV_ACCEL * cos(_launchGuideAngle);
@@ -230,16 +267,18 @@
         NSNumber *accel = @(a);
         [self.flightProfile addObject:@[time, alt, trav, vel, accel]];
         totalDistanceTravelled += distanceTravelled;
+        if (_timeIndex >= burnoutTime && _velocity <= 0.0) break;           // Just in case you don't get off the pad
     }
 }
 
 - (void)integrateToBurnout{
+    if (_timeIndex >= [[_times lastObject]floatValue] && _velocity <= 0.0) return;      // Just in case you didn't make it off the pad
     double t_squared = 1/ (DIVS_DURING_BURN * DIVS_DURING_BURN);
     self.angle = self.launchGuideAngle;
     float mRocket = [self.rocket.mass floatValue];
     float burnoutTime = [[self.motor.times lastObject] floatValue];
     
-    while (_timeIndex < burnoutTime) {
+    while (_timeIndex <= burnoutTime) {
         _timeIndex += 1.0/DIVS_DURING_BURN;
         double g = GRAV_ACCEL * cos(_angle);
         double mass = [self.motor massAtTime:_timeIndex] + mRocket;
@@ -266,8 +305,10 @@
 }
 
 - (void)integrateBurnoutToApogee{
+    if (_timeIndex >= [[_times lastObject]floatValue] && _velocity <= 0.0) return;      // Just in case you are already stopped
+
     double t_squared = 1/ (DIVS_AFTER_BURNOUT * DIVS_AFTER_BURNOUT);
-    double mass = [self.rocket.mass floatValue] + [self.motor massAtTime:_timeIndex];
+    double mass = [self.rocket.mass floatValue] + _motorInitialMass - _propellantMass;
     double deltaAlt = 1;
     while (deltaAlt > 0) {
         double g = GRAV_ACCEL * cos(_angle);
@@ -297,16 +338,16 @@
     if (alt <= 0) return 0;
     NSInteger counter = 0;
     for (NSInteger i = 0; i < [self.flightProfile count]; i++){
-        NSArray *flightDataPoint = [self.flightProfile objectAtIndex:i];
+        NSArray *flightDataPoint = [_flightProfile objectAtIndex:i];
         double altAtIndex = [[flightDataPoint objectAtIndex:ALT_INDEX] doubleValue];
         if (altAtIndex > alt){
             counter = i;
             break;
         }
     }
-    if ((!counter) || (counter == [self.flightProfile count] - 1)) return 0;
-    NSArray * p0 = [self.flightProfile objectAtIndex:counter-1];
-    NSArray * p1 = [self.flightProfile objectAtIndex:counter];
+    if ((!counter) || (counter == [_flightProfile count] - 1)) return 0;
+    NSArray * p0 = [_flightProfile objectAtIndex:counter-1];
+    NSArray * p1 = [_flightProfile objectAtIndex:counter];
     double v0 = [[p0 objectAtIndex:VEL_INDEX] doubleValue];
     double v1 = [[p1 objectAtIndex:VEL_INDEX] doubleValue];
     double d0 = [[p0 objectAtIndex:ALT_INDEX] doubleValue];
@@ -338,13 +379,13 @@
     while (profileIndex < [self.flightProfile count]) {
         double stopTime = dataIndex++ * increment;
         while ([[[self.flightProfile objectAtIndex:profileIndex] objectAtIndex:TIME_INDEX] doubleValue] < stopTime) {
-            if (++profileIndex >= [self.flightProfile count]){
-                [data addObject:[self.flightProfile lastObject]];
+            if (++profileIndex >= [_flightProfile count]){
+                [data addObject:[_flightProfile lastObject]];
                 return [NSArray arrayWithArray:data];           // increment and test, return out if we overflow the flightProfile
             }
         }
         // now the profileIndex points to the first time point after the requested time.  Close enough to graph well
-        [data addObject:[self.flightProfile objectAtIndex:profileIndex]];
+        [data addObject:[_flightProfile objectAtIndex:profileIndex]];
     }
     return [NSArray arrayWithArray:data];
 }
@@ -367,6 +408,7 @@
             v += a / DIVS_DURING_BURN;
         }
     }
+    
     return v;
 }
 
@@ -375,6 +417,8 @@
     self.stdAtmosphere = nil;
     self.motor = nil;
     self.rocket = nil;
+    self.times = nil;
+    self.thrusts = nil;
 }
 
 @end
