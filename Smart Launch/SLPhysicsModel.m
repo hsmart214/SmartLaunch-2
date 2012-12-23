@@ -251,7 +251,7 @@
     while (totalDistanceTravelled < _launchGuideLength) {
         _timeIndex += 1.0/DIVS_DURING_BURN;
         double mass = [self.motor massAtTime:_timeIndex] + mRocket;
-        double a = [self.motor thrustAtTime:_timeIndex]/mass - g - [self dragAtVelocity:_velocity andAltitude:_altitude]/mass;
+        double a = [self thrustAtTime:_timeIndex]/mass - g - [self dragAtVelocity:_velocity andAltitude:_altitude]/mass;
         if (a > 0) {        //remember DIVS is in units of 1/sec
             distanceTravelled = (_velocity / DIVS_DURING_BURN) + (0.5 * a /(DIVS_DURING_BURN * DIVS_DURING_BURN));
             _altitude += distanceTravelled * cos(_launchGuideAngle);
@@ -282,7 +282,7 @@
         _timeIndex += 1.0/DIVS_DURING_BURN;
         double g = GRAV_ACCEL * cos(_angle);
         double mass = [self.motor massAtTime:_timeIndex] + mRocket;
-        double acc = [self.motor thrustAtTime:_timeIndex]/mass - [self dragAtVelocity:_velocity andAltitude:_altitude]/mass;
+        double acc = [self thrustAtTime:_timeIndex]/mass - [self dragAtVelocity:_velocity andAltitude:_altitude]/mass;
         
         double y_accel = acc * cos(_angle) - GRAV_ACCEL;
         double x_accel = acc * sin(_angle);
