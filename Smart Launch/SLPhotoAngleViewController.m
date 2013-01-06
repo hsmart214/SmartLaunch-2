@@ -8,7 +8,6 @@
 
 #import "SLPhotoAngleViewController.h"
 #import "CoreMotion/CoreMotion.h"
-#import "SLDefinitions.h"
 
 #define VIEW_FINDER_IMAGE_FILENAME @"Viewfinder"
 #define ANGLE_WARNING_IMAGE_FILENAME @"AngleWarning"

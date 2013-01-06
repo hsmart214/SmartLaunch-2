@@ -9,7 +9,6 @@
 #import "SLLaunchAngleViewController.h"
 #import "SLLaunchAngleView.h"
 #import "CoreMotion/CoreMotion.h"
-#import "SLDefinitions.h"
 #import "SLPhotoAngleViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 

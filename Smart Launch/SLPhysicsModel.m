@@ -7,7 +7,6 @@
 //
 
 #import "SLPhysicsModel.h"
-#import "SLDefinitions.h"
 
 @interface SLPhysicsModel()
 

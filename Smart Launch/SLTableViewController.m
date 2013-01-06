@@ -8,7 +8,6 @@
 
 #import "SLTableViewController.h"
 #import "SLPhysicsModel.h"
-#import "SLDefinitions.h"
 #import "SLUnitsTVC.h"
 #import "SLMotorSearchViewController.h"
 

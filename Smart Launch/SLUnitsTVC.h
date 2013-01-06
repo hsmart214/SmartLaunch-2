@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "SLSimulationDelegate.h"
 #import "SLModalPresenterDelegate.h"
-#import "SLDefinitions.h"
 
 @interface SLUnitsTVC : UITableViewController<UIActionSheetDelegate>
 

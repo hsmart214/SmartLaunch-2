@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SLDefinitions.h"
 #import "Rocket.h"
 #import "SLUnitsConvertor.h"
 

@@ -9,7 +9,6 @@
 //  The user will be able to localize the interface to the desired units for display purposes.
 
 #import <Foundation/Foundation.h>
-#import "SLDefinitions.h"
 #import "RocketMotor.h"
 #import "Rocket.h"
 

@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "Rocket.h"
 #import "RocketMotor.h"
-#import "SLDefinitions.h"
 
 @protocol SLSimulationDelegate <NSObject>
 

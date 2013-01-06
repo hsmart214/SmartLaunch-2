@@ -10,7 +10,6 @@
 #import "SLSimulationDelegate.h"
 #import "SLModalPresenterDelegate.h"
 #import "SLUnitsTVC.h"
-#import "SLDefinitions.h"
 
 @interface SLInformationTVC : UITableViewController<SLModalPresenterDelegate, UIActionSheetDelegate>
 

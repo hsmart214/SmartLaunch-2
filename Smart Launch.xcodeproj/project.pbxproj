@@ -112,7 +112,6 @@
 		421BB11F167293FD00F29D95 /* Sky Ripper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sky Ripper.png"; sourceTree = "<group>"; };
 		421BB120167293FD00F29D95 /* West Coast Hybrids.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "West Coast Hybrids.png"; sourceTree = "<group>"; };
 		4220A4A515F55CC60055EE35 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		4220A4A615F55CC60055EE35 /* SLDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLDefinitions.h; sourceTree = "<group>"; };
 		4220A4A715F55CC60055EE35 /* SLModalPresenterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLModalPresenterDelegate.h; sourceTree = "<group>"; };
 		4220A4A815F55CC60055EE35 /* SLPhotoAngleFinderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPhotoAngleFinderDelegate.h; sourceTree = "<group>"; };
 		4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSimulationDelegate.h; sourceTree = "<group>"; };
@@ -345,7 +344,6 @@
 				4220A4A715F55CC60055EE35 /* SLModalPresenterDelegate.h */,
 				4220A4A815F55CC60055EE35 /* SLPhotoAngleFinderDelegate.h */,
 				4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */,
-				4220A4A615F55CC60055EE35 /* SLDefinitions.h */,
 				4220A4AA15F55CC60055EE35 /* SLTableViewController.h */,
 				4220A4AB15F55CC60055EE35 /* SLTableViewController.m */,
 				4220A4AC15F55CC60055EE35 /* SLInformationTVC.h */,

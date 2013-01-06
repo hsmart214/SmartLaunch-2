@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "RocketMotor.h"
 #import "SLSimulationDelegate.h"
-#import "SLDefinitions.h"
 
 @interface SLMotorSearchViewController: UIViewController
 

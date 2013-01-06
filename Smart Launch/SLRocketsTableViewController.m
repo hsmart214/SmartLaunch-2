@@ -7,7 +7,6 @@
 //
 
 #import "SLRocketsTableViewController.h"
-#import "SLDefinitions.h"
 
 @interface SLRocketsTableViewController ()
 

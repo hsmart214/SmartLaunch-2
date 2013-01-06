@@ -7,7 +7,6 @@
 //
 
 #import "SLRocketPropertiesTVC.h"
-#import "SLDefinitions.h"
 
 #define DELETE_BUTTON_INDEX 2
 

@@ -7,8 +7,6 @@
 //
 
 #import "Rocket.h"
-#import "SLDefinitions.h"
-
 
 @implementation Rocket
 

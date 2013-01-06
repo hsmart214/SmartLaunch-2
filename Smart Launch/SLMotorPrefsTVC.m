@@ -7,7 +7,6 @@
 //
 
 #import "SLMotorPrefsTVC.h"
-#import "SLDefinitions.h"
 #import "RocketMotor.h"
 
 @interface SLMotorPrefsTVC ()

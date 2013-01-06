@@ -7,7 +7,6 @@
 //
 
 #import "SLAnimatedRocketView.h"
-#import "SLDefinitions.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define X_INSET 130.0

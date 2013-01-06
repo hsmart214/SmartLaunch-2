@@ -7,7 +7,6 @@
 //
 
 #import "SLSimSettingsViewController.h"
-#import "SLDefinitions.h"
 
 #define INITIAL_ROW_COUNT 7
 

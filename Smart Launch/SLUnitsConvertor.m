@@ -7,7 +7,6 @@
 //
 
 #import "SLUnitsConvertor.h"
-#import "SLDefinitions.h"
 
 @implementation SLUnitsConvertor
 

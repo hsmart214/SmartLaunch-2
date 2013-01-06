@@ -8,7 +8,6 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "SLAnimatedViewController.h"
-#import "SLDefinitions.h"       
 #import "SLUnitsConvertor.h"
 #import "SLAnimatedRocketView.h"
 

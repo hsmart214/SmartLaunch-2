@@ -10,10 +10,9 @@
 #import "SLMotorSearchViewController.h"
 #import "SLMotorViewController.h"
 #import "RocketMotor.h"
-#import "SLDefinitions.h"
 
-#define CELL_VIEW_HEIGHT 86
-#define CELL_VIEW_WIDTH 140
+//#define CELL_VIEW_HEIGHT 86
+//#define CELL_VIEW_WIDTH 140
 
 @interface SLMotorTableViewController ()
 @property (nonatomic, strong) NSDictionary *selectedMotorDict;
