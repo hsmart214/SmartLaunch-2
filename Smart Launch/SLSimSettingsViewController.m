@@ -63,7 +63,7 @@
 - (CLLocationManager *)locationManager{
     if (!_locationManager){
         _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.purpose = NSLocalizedString(@"Only used to determine your altitude.", nil);
+//        _locationManager.purpose = NSLocalizedString(@"Only used to determine your altitude.", nil);
         _locationManager.delegate = self;
     }
     return _locationManager;
