@@ -238,7 +238,7 @@
                 [self.spinner stopAnimating];
             });
         });
-        dispatch_release(queue);
+//        dispatch_release(queue);
     }
 }
 

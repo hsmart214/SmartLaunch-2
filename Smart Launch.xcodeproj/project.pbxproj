@@ -30,7 +30,7 @@
 		421BB134167293FD00F29D95 /* RoadRunner.png in Resources */ = {isa = PBXBuildFile; fileRef = 421BB11E167293FD00F29D95 /* RoadRunner.png */; };
 		421BB135167293FD00F29D95 /* Sky Ripper.png in Resources */ = {isa = PBXBuildFile; fileRef = 421BB11F167293FD00F29D95 /* Sky Ripper.png */; };
 		421BB136167293FD00F29D95 /* West Coast Hybrids.png in Resources */ = {isa = PBXBuildFile; fileRef = 421BB120167293FD00F29D95 /* West Coast Hybrids.png */; };
-		4220A4CC15F55CC60055EE35 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4A515F55CC60055EE35 /* MainStoryboard.storyboard */; };
+		4220A4CC15F55CC60055EE35 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4A515F55CC60055EE35 /* MainStoryboard_iPhone.storyboard */; };
 		4220A4CD15F55CC60055EE35 /* SLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AB15F55CC60055EE35 /* SLTableViewController.m */; };
 		4220A4CE15F55CC60055EE35 /* SLInformationTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AD15F55CC60055EE35 /* SLInformationTVC.m */; };
 		4220A4CF15F55CC60055EE35 /* SLSimSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AF15F55CC60055EE35 /* SLSimSettingsViewController.m */; };
@@ -61,6 +61,7 @@
 		4220A53E15F561CF0055EE35 /* Goblin.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A53C15F561CF0055EE35 /* Goblin.png */; };
 		4232060515F7124F0027A18E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4232060415F7124F0027A18E /* CoreLocation.framework */; };
 		4240A07815F8341900D67F3E /* SLMotorPrefsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4240A07715F8341900D67F3E /* SLMotorPrefsTVC.m */; };
+		4240EDC116990F1E008AB135 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */; };
 		4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930915F4893000F7BABC /* UIKit.framework */; };
 		4256930C15F4893000F7BABC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930B15F4893000F7BABC /* Foundation.framework */; };
 		4256930E15F4893000F7BABC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930D15F4893000F7BABC /* CoreGraphics.framework */; };
@@ -107,7 +108,7 @@
 		421BB11E167293FD00F29D95 /* RoadRunner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RoadRunner.png; sourceTree = "<group>"; };
 		421BB11F167293FD00F29D95 /* Sky Ripper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sky Ripper.png"; sourceTree = "<group>"; };
 		421BB120167293FD00F29D95 /* West Coast Hybrids.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "West Coast Hybrids.png"; sourceTree = "<group>"; };
-		4220A4A515F55CC60055EE35 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		4220A4A515F55CC60055EE35 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		4220A4A615F55CC60055EE35 /* SLDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLDefinitions.h; sourceTree = "<group>"; };
 		4220A4A715F55CC60055EE35 /* SLModalPresenterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLModalPresenterDelegate.h; sourceTree = "<group>"; };
 		4220A4A815F55CC60055EE35 /* SLPhotoAngleFinderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPhotoAngleFinderDelegate.h; sourceTree = "<group>"; };
@@ -160,6 +161,7 @@
 		4232060415F7124F0027A18E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4240A07615F8341900D67F3E /* SLMotorPrefsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMotorPrefsTVC.h; sourceTree = "<group>"; };
 		4240A07715F8341900D67F3E /* SLMotorPrefsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMotorPrefsTVC.m; sourceTree = "<group>"; };
+		4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		4256930515F4893000F7BABC /* SmartLaunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartLaunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4256930915F4893000F7BABC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4256930B15F4893000F7BABC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -325,7 +327,8 @@
 		4256930F15F4893000F7BABC /* Smart Launch */ = {
 			isa = PBXGroup;
 			children = (
-				4220A4A515F55CC60055EE35 /* MainStoryboard.storyboard */,
+				4220A4A515F55CC60055EE35 /* MainStoryboard_iPhone.storyboard */,
+				4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */,
 				42D780991663291B000C7D6C /* SLAnimatedRocketView.h */,
 				42D7809A1663291B000C7D6C /* SLAnimatedRocketView.m */,
 				42D78093166295F1000C7D6C /* SLAnimatedViewController.h */,
@@ -447,7 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4256931415F4893000F7BABC /* InfoPlist.strings in Resources */,
-				4220A4CC15F55CC60055EE35 /* MainStoryboard.storyboard in Resources */,
+				4220A4CC15F55CC60055EE35 /* MainStoryboard_iPhone.storyboard in Resources */,
 				4220A4EA15F55D120055EE35 /* CancelButtonSelected.png in Resources */,
 				4220A4EB15F55D120055EE35 /* CancelButton.png in Resources */,
 				4220A4EC15F55D120055EE35 /* AcceptButton.png in Resources */,
@@ -492,6 +495,7 @@
 				421BB134167293FD00F29D95 /* RoadRunner.png in Resources */,
 				421BB135167293FD00F29D95 /* Sky Ripper.png in Resources */,
 				421BB136167293FD00F29D95 /* West Coast Hybrids.png in Resources */,
+				4240EDC116990F1E008AB135 /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,8 +604,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -612,7 +618,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -649,8 +657,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "App Store";

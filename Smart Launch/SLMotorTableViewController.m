@@ -60,9 +60,10 @@
     
     cell.textLabel.text = [motorDict objectForKey:NAME_KEY];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"Propellant %5.0f g",[[motorDict objectForKey:PROP_MASS_KEY] floatValue] * 1000];
-    NSString *path = [[NSBundle mainBundle] pathForResource:[motorDict objectForKey:MAN_KEY] ofType:@"png"];
-    UIImage *theImage = [UIImage imageWithContentsOfFile:path];
-    cell.imageView.image = theImage;
+//    NSString *path = [[NSBundle mainBundle] pathForResource:[motorDict objectForKey:MAN_KEY] ofType:@"png"];
+//    UIImage *theImage = [UIImage imageWithContentsOfFile:path];
+    //this way the image is cached automatically.  Should make scrolling faster.
+    cell.imageView.image = [UIImage imageNamed:[motorDict objectForKey:MAN_KEY]];
     return cell;
 }
 

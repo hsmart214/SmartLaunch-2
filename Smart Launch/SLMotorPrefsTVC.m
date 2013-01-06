@@ -152,12 +152,15 @@
     switch (indexPath.section) {
         case 0:
             cellText = [[RocketMotor manufacturerNames] objectAtIndex:indexPath.row];
+            cell.imageView.image = [UIImage imageNamed:cellText];
             break;
         case 1:
             cellText = [[RocketMotor motorDiameters] objectAtIndex:indexPath.row];
+            cell.imageView.image = nil;
             break;
         case 2:
             cellText = [[RocketMotor impulseClasses] objectAtIndex:indexPath.row];
+            cell.imageView.image = nil;
         default:
             break;
     }
