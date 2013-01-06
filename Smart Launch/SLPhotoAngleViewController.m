@@ -120,7 +120,7 @@
     cameraUI.delegate = delegate;
     cameraUI.showsCameraControls = NO;
     
-    [controller presentModalViewController: cameraUI animated: NO]; // looks better not animated, besides
+    [controller presentViewController:cameraUI animated:NO completion:nil]; // looks better not animated, besides
                                                                     // if animated, generates "unbalanced calls" error
     cameraUI.cameraOverlayView = self.angleView;
     self.angleView.opaque = NO;
@@ -144,7 +144,7 @@
         [self.angleLabel setFont:newFont];
         [self.angleLabel setNumberOfLines:1];
         [self.angleLabel setTextColor:[UIColor whiteColor]];
-        [self.angleLabel setTextAlignment:UITextAlignmentCenter];
+        [self.angleLabel setTextAlignment:NSTextAlignmentCenter];
         self.angleLabel.text = @"0.0°";
         [self.angleLabel setBackgroundColor:[UIColor clearColor]];
         [_angleView addSubview: self.angleLabel];
@@ -214,13 +214,13 @@
     NSNumber *angle = [NSNumber numberWithFloat:radians];
     [self.delegate sender:self didChangeLaunchAngle:angle];
     self.accelerometer.delegate = nil;
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)cancel{
     self.accelerometer.delegate = nil;
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

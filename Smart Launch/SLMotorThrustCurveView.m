@@ -104,13 +104,13 @@
         CGContextAddLineToPoint(context, origin.x+i*hscale, margin);
         NSString *sec = [NSString stringWithFormat:@"%d", i];
         CGPoint secPt = CGPointMake(origin.x+i*hscale-3, origin.y+SEC_OFFSET);
-        [sec drawAtPoint:secPt forWidth:20 withFont:[UIFont systemFontOfSize:10] fontSize:10 lineBreakMode:UILineBreakModeCharacterWrap baselineAdjustment:UIBaselineAdjustmentNone];
+        [sec drawAtPoint:secPt forWidth:20 withFont:[UIFont systemFontOfSize:10] fontSize:10 lineBreakMode:NSLineBreakByCharWrapping baselineAdjustment:UIBaselineAdjustmentNone];
     }
     CGContextStrokePath(context);
     
     NSString *maxNewtons = [NSString stringWithFormat:@"%1.0f N",self.fullrange];
     CGPoint maxNPoint = CGPointMake(10, 10);
-    [maxNewtons drawAtPoint:maxNPoint forWidth:80 withFont:[UIFont systemFontOfSize:10] fontSize:10 lineBreakMode:UILineBreakModeCharacterWrap baselineAdjustment:UIBaselineAdjustmentNone];
+    [maxNewtons drawAtPoint:maxNPoint forWidth:80 withFont:[UIFont systemFontOfSize:10] fontSize:10 lineBreakMode:NSLineBreakByCharWrapping baselineAdjustment:UIBaselineAdjustmentNone];
     
     CGContextSetLineWidth(context, 2.0);
     [[UIColor redColor] setStroke];

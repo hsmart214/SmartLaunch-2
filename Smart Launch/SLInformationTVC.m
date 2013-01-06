@@ -122,7 +122,7 @@
 #pragma mark - SLModalPresenterDelegate method
 
 - (void)dismissModalVC:(id)sender{
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UIAlerViewDelegate method
