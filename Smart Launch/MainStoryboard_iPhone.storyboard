@@ -2090,7 +2090,7 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="eYh-Tw-iw8"/>
         <segue reference="kMz-de-aHC"/>
+        <segue reference="He7-Fk-vJN"/>
     </inferredMetricsTieBreakers>
 </document>
