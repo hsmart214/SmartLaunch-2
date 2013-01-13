@@ -40,6 +40,7 @@
     self.mass = [rocketProperties objectForKey:ROCKET_MASS_KEY];
     self.kitName = [rocketProperties objectForKey:ROCKET_KITNAME_KEY];
     self.manufacturer = [rocketProperties objectForKey:ROCKET_MAN_KEY];
+    self.recordedFlights = [rocketProperties objectForKey:ROCKET_RECORDED_FLIGHTS_KEY];
     return self;
 }
 

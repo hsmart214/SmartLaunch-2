@@ -151,3 +151,22 @@ enum LaunchDirection : NSUInteger {
 #define K_KILOGRAMS @"kg"
 #define K_OUNCES @"oz"
 #define K_GRAMS @"g"
+    
+    //constants for the Rocket class
+    
+#define ROCKET_NAME_KEY @"RocketName"
+#define ROCKET_LENGTH_KEY @"RocketLength"
+#define ROCKET_DIAM_KEY @"RocketDiameter"
+#define ROCKET_CD_KEY @"RocketCD"
+#define ROCKET_MOTORSIZE_KEY @"RocketMotorSize"
+#define ROCKET_MASS_KEY @"RocketMass"
+#define ROCKET_KITNAME_KEY @"RocketKitName"
+#define ROCKET_MAN_KEY @"RocketManufacturer"
+#define ROCKET_RECORDED_FLIGHTS_KEY @"RecordedFlightsKey"
+    
+    //keys for a recordedFlight NSDictonary*
+
+#define FLIGHT_ALTITUDE_KEY @"FlightAltitude"               //an NSNumber* for a float of the altitude reached
+#define FLIGHT_SETTINGS_KEY @"FlightSettingsDictionary"     //store the complete settings dictionary in effect for the flight
+#define FLIGHT_BEST_CD @"FlightBestDragCoefficient"         //store the calculated best match Cd for this flight - float
+

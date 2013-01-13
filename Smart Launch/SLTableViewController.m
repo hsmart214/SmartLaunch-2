@@ -107,7 +107,13 @@
         _settings = [self defaultFetchWithKey:SETTINGS_KEY];
     }
     if (!_settings){    // This can only happen on the very first run of the program
-        _settings = [NSMutableDictionary dictionary];
+                        // We will put some sensible settings in to avoid problems with nil values
+        _settings = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                     @(0.9), WIND_VELOCITY_KEY,             //2 MPH
+                     @(0.9144), LAUNCH_GUIDE_LENGTH_KEY,    //36 inches
+                     @(0.0), LAUNCH_ANGLE_KEY,
+                     @(33.0), LAUNCH_ALTITUDE_KEY,          //100 feet
+                     nil];
         [self defaultStoreWithKey:SETTINGS_KEY andValue:_settings];
         // If this is the first run we also need to set the standard defaults
         [SLUnitsTVC setStandardDefaults];
