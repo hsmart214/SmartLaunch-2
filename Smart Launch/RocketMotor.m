@@ -14,7 +14,6 @@
 @property (nonatomic, strong) NSNumber *calcTotalImpulse;
 @property (nonatomic, strong) NSNumber *calcPeakThrust;
 
-
 @end
 
 @implementation RocketMotor
@@ -79,18 +78,6 @@
     return self;
 }
 
--(void)dealloc{
-    _mass = nil;
-    _propellantMass = nil;
-    _times = nil;
-    _thrusts = nil;
-    _name = nil;
-    _manufacturer = nil;
-    _impulseClass = nil;
-    _diameter = nil;
-    _length = nil;
-    _delays = nil;
-}
 
 -(NSDictionary *)motorDict{
     NSString *delayString = [self.delays objectAtIndex:0];
@@ -332,4 +319,141 @@
     return [RocketMotor motorWithMotorDict:apogeeD10];
 }
 
++(NSDictionary *)manufacturerDict{
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            @"AMW Pro-X", @"AMW_ProX",
+            @"Aerotech RMS", @"A-RMS",
+            @"Aerotech", @"A",
+            @"Aerotech Hybrid", @"ATH",
+            @"Animal Motor Works", @"AMW",
+            @"Apogee", @"Apogee",
+            @"Cesaroni", @"CTI",
+            @"Contrail Rockets", @"Contrail_Rockets",
+            @"Ellis Mountain", @"Ellis",
+            @"Estes", @"Estes",
+            @"Gorilla Rocket Motors", @"Gorilla_Rocket_Motors",
+            @"Hypertek", @"HT",
+            @"Kosdon by Aerotech", @"KA",
+            @"Kosdon", @"KOS-TRM",
+            @"Loki Research", @"Loki",
+            @"Public Missiles Ltd", @"PML",
+            @"Propulsion Polymers", @"Propul",
+            @"Quest", @"Q",
+            @"RATTworks", @"RATT",
+            @"RoadRunner", @"RR",
+            @"Sky Ripper", @"SkyRip",
+            @"West Coast Hybrids", @"WCoast", nil];
+}
+
+NSInteger sortingFunction(id md1, id md2, void *context){
+    NSString *first = [(NSDictionary *)md1 objectForKey:NAME_KEY];
+    NSString *second = [(NSDictionary *)md2 objectForKey:NAME_KEY];
+    if ([first characterAtIndex:0] > [second characterAtIndex:0]) return NSOrderedDescending;
+    if ([first characterAtIndex:0] < [second characterAtIndex:0]) return NSOrderedAscending;
+    // at this point we know the impulse class is the SAME, so sort by the average thrust
+    NSInteger thrust1 = [[first substringFromIndex:1] integerValue];
+    NSInteger thrust2 = [[second substringFromIndex:1] integerValue];
+    if (thrust1 > thrust2) return NSOrderedDescending;
+    if (thrust1 < thrust2) return NSOrderedAscending;
+    return NSOrderedSame;
+}
+
++(NSArray *)everyMotor{
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+    NSInteger currentMotorsVersion = [defaults longLongForKey:MOTOR_FILE_VERSION_KEY];
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    NSInteger bundleMotorVersion = [[NSString stringWithContentsOfURL:[mainBundle URLForResource:MOTOR_VERSION_FILENAME withExtension:@"txt"] encoding:NSUTF8StringEncoding error:nil]integerValue];
+    NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *motorFileURL = [cacheURL URLByAppendingPathComponent:EVERY_MOTOR_CACHE_FILENAME];
+    if ([[NSFileManager defaultManager]fileExistsAtPath:[motorFileURL path]]){
+        return [NSArray arrayWithContentsOfURL:motorFileURL];
+    }
+    NSMutableArray *build = [NSMutableArray array];
+    
+    NSURL *motorsURL = [mainBundle URLForResource:@"motors" withExtension:@"txt"];
+    if (currentMotorsVersion > bundleMotorVersion){
+        NSURL *docURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        motorsURL = [docURL URLByAppendingPathComponent:MOTOR_DATA_FILENAME];
+    }
+    NSError *err;
+    NSString *motors = [NSString stringWithContentsOfURL:motorsURL encoding:NSUTF8StringEncoding error:&err];
+    if (err){
+        NSLog(@"%@, %@", @"Error reading motors.txt",[err debugDescription]);
+    }
+    NSMutableArray *textLines = [NSMutableArray arrayWithArray:[motors componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\n\r"]]];
+    while ([textLines count] > 0) {
+        NSMutableDictionary *motorData = [NSMutableDictionary dictionary];
+        NSString *header;
+        while (true){ // remove all of the comment lines
+            if ([[textLines objectAtIndex:0] characterAtIndex:0]== ';'){
+                [textLines removeObjectAtIndex:0];
+                if ([textLines count] == 0){
+                    header = nil;
+                    break;
+                }
+            }else{    // and grab the header line
+                header = [textLines objectAtIndex:0];
+                [textLines removeObjectAtIndex:0];
+                break;
+            }
+        }
+        if (!header) break;
+        NSArray *chunks = [header componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        [motorData setValue:[chunks objectAtIndex:0] forKey:NAME_KEY];
+        [motorData setValue:[chunks objectAtIndex:1] forKey:MOTOR_DIAM_KEY];
+        [motorData setValue:[chunks objectAtIndex:2] forKey:MOTOR_LENGTH_KEY];
+        [motorData setValue:[chunks objectAtIndex:3] forKey:DELAYS_KEY];
+        [motorData setValue:[chunks objectAtIndex:4] forKey:PROP_MASS_KEY];
+        [motorData setValue:[chunks objectAtIndex:5] forKey:MOTOR_MASS_KEY];
+        [motorData setValue:[[RocketMotor manufacturerDict] objectForKey:[chunks objectAtIndex:6]] forKey:MAN_KEY];
+        // figure out the impulse class from the motor name in the header line
+        
+        NSString *mname = [chunks objectAtIndex:0];
+        if ([[mname substringToIndex:2] isEqualToString:@"MM"]) {
+            [motorData setValue:@"1/8A" forKey:IMPULSE_KEY];
+        }
+        else if ([[mname substringToIndex:2] isEqualToString:@"1/"]) {
+            [motorData setValue:[mname substringToIndex:4] forKey:IMPULSE_KEY];
+        }
+        else {
+            [motorData setValue:[mname substringToIndex:1] forKey:IMPULSE_KEY];
+        }
+        // after the header the lines are all time / thrust pairs until the thrust is zero
+        NSMutableArray *times = [NSMutableArray array];
+        NSMutableArray *thrusts = [NSMutableArray array];
+        while (true){
+            chunks = [[textLines objectAtIndex:0] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            chunks = [NSArray arrayWithObjects:[chunks objectAtIndex:0], [chunks lastObject], nil];
+            [times addObject:[NSNumber numberWithFloat:[[chunks objectAtIndex:0] floatValue]]];
+            [thrusts addObject:[NSNumber numberWithFloat:[[chunks objectAtIndex:1] floatValue]]];
+            [textLines removeObjectAtIndex:0];
+            if ([[chunks objectAtIndex:1] floatValue] == 0.0) break;
+        }
+        [motorData setValue:times forKey:TIME_KEY];
+        [motorData setValue:thrusts forKey:THRUST_KEY];
+        
+        [build addObject:motorData];
+    }
+    NSArray *allMotors = [[NSArray arrayWithArray:build] sortedArrayUsingFunction:sortingFunction context:NULL];
+    [allMotors writeToURL:motorFileURL atomically:YES];
+    //NSLog(@"Loaded %d motors.",[_allMotors count]);
+
+    return allMotors;
+}
+
+-(void)dealloc{
+    _mass = nil;
+    _propellantMass = nil;
+    _times = nil;
+    _thrusts = nil;
+    _name = nil;
+    _manufacturer = nil;
+    _impulseClass = nil;
+    _diameter = nil;
+    _length = nil;
+    _delays = nil;
+    _calcPeakThrust = nil;
+    _calcTotalImpulse = nil;
+}
 @end

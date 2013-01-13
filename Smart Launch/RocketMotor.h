@@ -8,17 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define NAME_KEY @"motorName"
-#define IMPULSE_KEY @"impulseClass"
-#define MAN_KEY @"motorManufacturer"
-#define MOTOR_MASS_KEY @"motorMass"
-#define PROP_MASS_KEY @"propellantMass"
-#define DELAYS_KEY @"delaysAvailable"
-#define THRUST_KEY @"thrustArray"
-#define TIME_KEY @"timeArray"
-#define MOTOR_DIAM_KEY @"motorDiameter"
-#define MOTOR_LENGTH_KEY @"motorLength"
-
 
 @interface RocketMotor : NSObject
 // An immutable class representing the characteristics of a rocket motor, including
@@ -50,7 +39,7 @@
 + (NSArray *)impulseClasses;
 + (NSArray *)motorDiameters;
 + (RocketMotor *)defaultMotor;  // in the first release this will be the 24mm Estes D12
-
++ (NSArray *)everyMotor;
 
 - (NSDictionary *)motorDict;
 

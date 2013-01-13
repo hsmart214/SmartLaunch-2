@@ -39,6 +39,7 @@ enum LaunchDirection : NSUInteger {
     
 #define BACKGROUND_IMAGE_FILENAME @"Vellum"
 #define MOTOR_CACHE_FILENAME @"motorcache.plist"
+#define EVERY_MOTOR_CACHE_FILENAME @"everymotorcache.plist"
 #define MOTOR_DATA_FILENAME @"motors.txt"
 #define VERTICAL_ROCKET_PIC_NAME @"Rocket"
     
@@ -152,6 +153,19 @@ enum LaunchDirection : NSUInteger {
 #define K_OUNCES @"oz"
 #define K_GRAMS @"g"
     
+    //constants for the RocketMotor class
+    
+#define NAME_KEY @"motorName"
+#define IMPULSE_KEY @"impulseClass"
+#define MAN_KEY @"motorManufacturer"
+#define MOTOR_MASS_KEY @"motorMass"
+#define PROP_MASS_KEY @"propellantMass"
+#define DELAYS_KEY @"delaysAvailable"
+#define THRUST_KEY @"thrustArray"
+#define TIME_KEY @"timeArray"
+#define MOTOR_DIAM_KEY @"motorDiameter"
+#define MOTOR_LENGTH_KEY @"motorLength"
+    
     //constants for the Rocket class
     
 #define ROCKET_NAME_KEY @"RocketName"
@@ -168,5 +182,6 @@ enum LaunchDirection : NSUInteger {
 
 #define FLIGHT_ALTITUDE_KEY @"FlightAltitude"               //an NSNumber* for a float of the altitude reached
 #define FLIGHT_SETTINGS_KEY @"FlightSettingsDictionary"     //store the complete settings dictionary in effect for the flight
+#define FLIGHT_MOTOR_KEY @"FlightMotor"                     //store the name of the motor, not the whole dictionary
 #define FLIGHT_BEST_CD @"FlightBestDragCoefficient"         //store the calculated best match Cd for this flight - float
 
