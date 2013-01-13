@@ -58,7 +58,8 @@ NSInteger sortFunction(id md1, id md2, void *context){
 - (NSDictionary *)motorKeyPrefs{
     // note that these preferences cannot change while this controller is alive
     if (!_motorKeyPrefs){
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
         _motorKeyPrefs = [defaults objectForKey:MOTOR_PREFS_KEY];
         if (!_motorKeyPrefs) _motorKeyPrefs = [SLMotorPrefsTVC motorKeysAllSelected];
     }
@@ -67,8 +68,9 @@ NSInteger sortFunction(id md1, id md2, void *context){
 
 - (NSArray *)allMotors{
     if (!_allMotors){
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSInteger currentMotorsVersion = [defaults integerForKey:MOTOR_FILE_VERSION_KEY];
+        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+        NSInteger currentMotorsVersion = [defaults longLongForKey:MOTOR_FILE_VERSION_KEY];
         NSBundle *mainBundle = [NSBundle mainBundle];
         NSInteger bundleMotorVersion = [[NSString stringWithContentsOfURL:[mainBundle URLForResource:MOTOR_VERSION_FILENAME withExtension:@"txt"] encoding:NSUTF8StringEncoding error:nil]integerValue];
         NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
@@ -241,7 +243,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
     return contained;
 }
 
-
+#pragma mark - View Life Cycle
 
 - (void)viewDidLoad
 {
@@ -255,7 +257,8 @@ NSInteger sortFunction(id md1, id md2, void *context){
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     [self.pickerView reloadAllComponents];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     NSDictionary *lastMotorSearch = [defaults objectForKey:LAST_MOTOR_SEARCH_KEY];
     if (lastMotorSearch) {
         self.search1Control.selectedSegmentIndex = [[lastMotorSearch objectForKey:MOTOR_SEARCH_1_KEY] intValue];
@@ -285,13 +288,24 @@ NSInteger sortFunction(id md1, id md2, void *context){
     [self motorDiameterRestrictionChanged:self.restrictMotorDiametersSegmentedControl];
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.preferredImpulseClasses = nil;
+    self.preferredManufacturers = nil;
+    self.preferredMotorDiameters = nil;
+}
+
+- (void)didReceiveMemoryWarning{
+    self.allMotors = nil;
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark UIPickerView Delegate and Datasource methods
+#pragma mark - UIPickerView Delegate and Datasource methods
 
 
 // methods to implement the picker view
@@ -342,7 +356,8 @@ NSInteger sortFunction(id md1, id md2, void *context){
 - (void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
     if (buttonIndex == [actionSheet destructiveButtonIndex]){
         // this is the one that *does* change the settings to accomodate the current MMT size
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
         NSMutableDictionary *motorPrefs = [self.motorKeyPrefs mutableCopy];
         NSString *motorMM = [NSString stringWithFormat:@"%@mm", [self.rocketMotorMountDiameter description]];
         [motorPrefs setObject:[NSNumber numberWithBool:YES] forKey:motorMM];
@@ -435,7 +450,8 @@ NSInteger sortFunction(id md1, id md2, void *context){
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"motorSearchSegue"]){
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
         NSDictionary *lastMotorSearch = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [NSNumber numberWithInt:[self.pickerView selectedRowInComponent:0]], MOTOR_SEARCH_PICKER_INDEX,
                                         [NSNumber numberWithInt:self.search1Control.selectedSegmentIndex], MOTOR_SEARCH_1_KEY,

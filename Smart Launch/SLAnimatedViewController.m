@@ -180,7 +180,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setToolbarHidden:NO animated:animated];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     
     // For this stepper I am keeping the value in display units to avoid awkward rounding errors
@@ -210,12 +211,19 @@
 {
     [super viewDidLoad];
     UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
-    UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
+    //NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
+    //UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
+    UIImage *backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
     [backgroundView setImage:backgroundImage];
     [self.view insertSubview:backgroundView atIndex:0];
     [self.rocketView startFresh];
     [self updateDisplay];
+}
+
+- (BOOL)shouldAutorotate{
+    //If we are on an iPad, we will be inside a splitviewcontroller
+    //return (self.splitViewController != nil);
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning

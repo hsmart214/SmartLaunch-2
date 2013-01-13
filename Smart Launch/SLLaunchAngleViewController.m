@@ -133,7 +133,8 @@
     NSNumber *xyCalibration = [NSNumber numberWithFloat:self.xyCalibrationAngle];
     NSNumber *yzCalibration = [NSNumber numberWithFloat:self.yzCalibrationAngle];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
     [settings setObject:xyCalibration forKey:XY_CAL_KEY];
     [settings setObject:yzCalibration forKey:YZ_CAL_KEY];
@@ -163,7 +164,8 @@
     [self.view insertSubview:backgroundView atIndex:0];
     self.calibrateButton.enabled = NO;
     self.motionButton.title = @"Motion On";
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     NSDictionary *settings = [defaults objectForKey:SETTINGS_KEY];
     self.xyCalibrationAngle = [[settings objectForKey:XY_CAL_KEY] floatValue];
     self.yzCalibrationAngle = [[settings objectForKey:YZ_CAL_KEY] floatValue];
@@ -187,7 +189,8 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
     [settings setObject: [NSNumber numberWithFloat:fabsf(self.angleSlider.value)] forKey:LAUNCH_ANGLE_KEY];
     [defaults setObject:settings forKey:SETTINGS_KEY];

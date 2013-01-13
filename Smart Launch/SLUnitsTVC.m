@@ -42,14 +42,16 @@
     [actionSheet showFromToolbar:self.navigationController.toolbar];
 }
 - (IBAction)revertButtonPressed:(UIBarButtonItem *)sender {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     [defaults setObject:self.oldPrefs forKey:UNIT_PREFS_KEY];
     [defaults synchronize];
     [self updateDisplay];
 }
 
 - (IBAction)controlValueChanged:(UISegmentedControl *)sender {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     NSMutableDictionary *newPrefs = [[defaults objectForKey:UNIT_PREFS_KEY]mutableCopy];
     switch (self.diamControl.selectedSegmentIndex) {
         case 0:
@@ -111,7 +113,8 @@
 }
 
 - (void)updateDisplay{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     if ([[unitPrefs objectForKey:DIAM_UNIT_KEY] isEqualToString:K_INCHES]){
         [self.diamControl setSelectedSegmentIndex:0];
@@ -157,7 +160,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     self.oldPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     [self updateDisplay];
 }
@@ -207,7 +211,8 @@
                                       K_FEET, ALT_UNIT_KEY,
                                       K_MILES_PER_HOUR, VELOCITY_UNIT_KEY,
                                       K_POUNDS, THRUST_UNIT_KEY, nil];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     switch (buttonIndex) {
         case 0://metric
             [defaults setObject:metricDefaults forKey:UNIT_PREFS_KEY];
@@ -233,7 +238,8 @@
                                       K_FEET, ALT_UNIT_KEY,
                                       K_MILES_PER_HOUR, VELOCITY_UNIT_KEY,
                                       K_POUNDS, THRUST_UNIT_KEY, nil];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     [defaults setObject:stdDefaults forKey:UNIT_PREFS_KEY];
     [defaults synchronize];
 }

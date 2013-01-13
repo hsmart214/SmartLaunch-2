@@ -22,13 +22,15 @@ static SLUnitsConvertor *sUnitsConvertor;
 }
 
 +(NSString *)defaultUnitForKey:(NSString *)key{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     NSDictionary *unitDefaults = [defaults objectForKey:UNIT_PREFS_KEY];
     return [unitDefaults objectForKey:key];
 }
 
 +(void)setDefaultUnit:(NSString *)unit forKey:(NSString *)key{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     NSMutableDictionary *unitDefaults = [[defaults objectForKey:UNIT_PREFS_KEY] mutableCopy];
     [unitDefaults setObject:unit forKey:key];
     [defaults setObject:unitDefaults forKey:UNIT_PREFS_KEY];
@@ -60,7 +62,8 @@ static SLUnitsConvertor *sUnitsConvertor;
                                K_METERS,        ALT_UNIT_KEY,
                                K_NEWTONS,       THRUST_UNIT_KEY,
                                nil];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     
     if ([[unitPrefs objectForKey:dimKey] isEqualToString: [standards objectForKey:dimKey ]]) return dimension;
@@ -139,7 +142,8 @@ static SLUnitsConvertor *sUnitsConvertor;
                                K_METERS,        ALT_UNIT_KEY,
                                K_NEWTONS,       THRUST_UNIT_KEY,
                                nil];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     
     if ([[unitPrefs objectForKey:dimKey] isEqualToString: [standards objectForKey:dimKey]]) return dimension;

@@ -56,7 +56,8 @@
 
 - (Rocket *)rocket{
     if (!_rocket){
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
         NSDictionary *rocketDict = [defaults objectForKey:SELECTED_ROCKET_KEY];
         if (rocketDict){
             _rocket = [Rocket rocketWithRocketDict:rocketDict];
@@ -72,7 +73,8 @@
 
 - (RocketMotor *)motor{
     if (!_motor){
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
         NSDictionary *motorDict = [defaults objectForKey:SELECTED_MOTOR_KEY];
         if (motorDict){
             _motor = [RocketMotor motorWithMotorDict:motorDict];
@@ -88,13 +90,15 @@
 
 - (void)defaultStoreWithKey:(NSString *)key
                    andValue:(id)value{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     [defaults setObject:value forKey:key];
     [defaults synchronize];
 }
 
 - (id)defaultFetchWithKey:(NSString *)key{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     return [[defaults objectForKey:key] mutableCopy];
 }
 

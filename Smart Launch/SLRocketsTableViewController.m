@@ -34,7 +34,8 @@
 }
 
 - (void)pushRocketFavorites{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     [defaults setObject:[self.rockets copy] forKey:FAVORITE_ROCKETS_KEY];
     [defaults synchronize];
 }
@@ -56,7 +57,8 @@
 
 - (NSMutableDictionary *)rockets{
     if (!_rockets){
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
         _rockets = [[defaults objectForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
         if (!_rockets || [_rockets count] == 0){     // If the rocket list is empty give them an example rocket
             _rockets = [NSMutableDictionary dictionary];
@@ -69,6 +71,7 @@
     return _rockets;
 }
 
+#pragma mark - View Life Cycle
 
 - (void)viewDidLoad{
     [super viewDidLoad];
@@ -81,13 +84,9 @@
     [self.navigationController setToolbarHidden:YES animated:animated];
 }
 
-- (void)viewDidUnload{
-    self.rocketArray = nil;
+- (void)didReceiveMemoryWarning{
     self.rockets = nil;
-    self.selectedRocket = nil;
-    self.detailData = nil;
-    self.delegate = nil;
-    [super viewDidUnload];
+    self.rocketArray = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
@@ -110,7 +109,8 @@
 #pragma mark - LSRViewControllerDelegate methods
 
 - (void)SLRocketPropertiesTVC:(SLRocketPropertiesTVC *)sender savedRocket:(Rocket *)rocket{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     NSMutableDictionary *rocketFavorites = [[defaults objectForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
     if (!rocketFavorites) rocketFavorites = [NSMutableDictionary dictionary];
     [rocketFavorites setObject:rocket.rocketPropertyList forKey:rocket.name];
@@ -123,7 +123,8 @@
 }
 
 - (void)SLRocketPropertiesTVC:(SLRocketPropertiesTVC *)sender deletedRocket:(Rocket *)rocket{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     NSMutableDictionary *rocketFavorites = [[defaults objectForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
     if (!rocketFavorites) return;
     if ([rocketFavorites count]==0) return;
@@ -174,7 +175,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.selectedRocket = [self.rocketArray objectAtIndex:indexPath.row];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     [defaults setObject:[self.selectedRocket rocketPropertyList] forKey:SELECTED_ROCKET_KEY];
     [defaults synchronize];
     [self.delegate sender:self didChangeRocket:self.selectedRocket];
@@ -184,7 +186,8 @@
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
     self.selectedRocket = [self.rocketArray objectAtIndex:indexPath.row];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
     [defaults setObject:[self.selectedRocket rocketPropertyList] forKey:SELECTED_ROCKET_KEY];
     [defaults synchronize];
     [self.delegate sender:self didChangeRocket:self.selectedRocket];
