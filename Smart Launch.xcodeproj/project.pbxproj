@@ -73,6 +73,7 @@
 		42AEF2E316633603009F65AA /* Rocket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AEF2E116633603009F65AA /* Rocket@2x.png */; };
 		42BB53C916A293D20029C882 /* SLFlightDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53C816A293D20029C882 /* SLFlightDataCell.m */; };
 		42BB53CD16A295310029C882 /* SLSavedFlightsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */; };
+		42BB53D016A38C4E0029C882 /* SLSaveFlightDataTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CF16A38C4D0029C882 /* SLSaveFlightDataTVC.m */; };
 		42D6AE8916A25242000EE1A8 /* DaVinci~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D6AE8516A25242000EE1A8 /* DaVinci~iPad.png */; };
 		42D6AE8A16A25242000EE1A8 /* DaVinci~iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D6AE8616A25242000EE1A8 /* DaVinci~iPad@2x.png */; };
 		42D6AE8B16A25242000EE1A8 /* DaVinci~iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D6AE8716A25242000EE1A8 /* DaVinci~iPhone.png */; };
@@ -187,6 +188,8 @@
 		42BB53C816A293D20029C882 /* SLFlightDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFlightDataCell.m; sourceTree = "<group>"; };
 		42BB53CB16A295310029C882 /* SLSavedFlightsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSavedFlightsTVC.h; sourceTree = "<group>"; };
 		42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSavedFlightsTVC.m; sourceTree = "<group>"; };
+		42BB53CE16A38C4D0029C882 /* SLSaveFlightDataTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSaveFlightDataTVC.h; sourceTree = "<group>"; };
+		42BB53CF16A38C4D0029C882 /* SLSaveFlightDataTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSaveFlightDataTVC.m; sourceTree = "<group>"; };
 		42D6AE8516A25242000EE1A8 /* DaVinci~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DaVinci~iPad.png"; sourceTree = "<group>"; };
 		42D6AE8616A25242000EE1A8 /* DaVinci~iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DaVinci~iPad@2x.png"; sourceTree = "<group>"; };
 		42D6AE8716A25242000EE1A8 /* DaVinci~iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DaVinci~iPhone.png"; sourceTree = "<group>"; };
@@ -360,6 +363,8 @@
 				42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */,
 				42BB53C716A293D20029C882 /* SLFlightDataCell.h */,
 				42BB53C816A293D20029C882 /* SLFlightDataCell.m */,
+				42BB53CE16A38C4D0029C882 /* SLSaveFlightDataTVC.h */,
+				42BB53CF16A38C4D0029C882 /* SLSaveFlightDataTVC.m */,
 				42D780991663291B000C7D6C /* SLAnimatedRocketView.h */,
 				42D7809A1663291B000C7D6C /* SLAnimatedRocketView.m */,
 				42D78093166295F1000C7D6C /* SLAnimatedViewController.h */,
@@ -568,6 +573,7 @@
 				42D7809B1663291B000C7D6C /* SLAnimatedRocketView.m in Sources */,
 				42BB53C916A293D20029C882 /* SLFlightDataCell.m in Sources */,
 				42BB53CD16A295310029C882 /* SLSavedFlightsTVC.m in Sources */,
+				42BB53D016A38C4E0029C882 /* SLSaveFlightDataTVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -38,6 +38,7 @@
 - (void)resetFlight;                        // reset the flight profile
 
 - (double)apogee;                           // maximum altitude in METERS
+- (float)fastApogee;                        // to be used in the estimations for calculating the best Cd
 
 - (double)burnoutToApogee;                  // SECONDS from burnout to apogee - the ideal motor delay
 

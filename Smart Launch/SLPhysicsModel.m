@@ -359,6 +359,11 @@
     return [[[self.flightProfile lastObject] objectAtIndex:ALT_INDEX] doubleValue];
 }
 
+- (float)fastApogee{
+    //currently this is no different from the slow method, but I hope to speed it up
+    return [[self.flightProfile lastObject][ALT_INDEX] floatValue] ;
+}
+
 - (double)burnoutToApogee{
     return [[[self.flightProfile lastObject] objectAtIndex:TIME_INDEX] doubleValue] - [[self.motor.times lastObject]floatValue];
 }
