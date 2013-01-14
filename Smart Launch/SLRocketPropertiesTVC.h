@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Rocket.h"
 #import "SLUnitsConvertor.h"
+#import "SLSavedFlightsTVC.h"
+
 
 @class SLRocketPropertiesTVC;
 
@@ -22,7 +24,7 @@
 @end
 
 
-@interface SLRocketPropertiesTVC : UITableViewController<UITextFieldDelegate>
+@interface SLRocketPropertiesTVC : UITableViewController<UITextFieldDelegate, SLSavedFlightsDelegate>
 
 #pragma mark Model
 @property (nonatomic, strong) Rocket *rocket;

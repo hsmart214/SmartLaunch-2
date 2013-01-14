@@ -71,6 +71,8 @@
 		42A1B6191670599E004F1FA0 /* version.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42A1B6181670599E004F1FA0 /* version.txt */; };
 		42AEF2E216633603009F65AA /* Rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AEF2E016633603009F65AA /* Rocket.png */; };
 		42AEF2E316633603009F65AA /* Rocket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AEF2E116633603009F65AA /* Rocket@2x.png */; };
+		42BB53C916A293D20029C882 /* SLFlightDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53C816A293D20029C882 /* SLFlightDataCell.m */; };
+		42BB53CD16A295310029C882 /* SLSavedFlightsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */; };
 		42D6AE8916A25242000EE1A8 /* DaVinci~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D6AE8516A25242000EE1A8 /* DaVinci~iPad.png */; };
 		42D6AE8A16A25242000EE1A8 /* DaVinci~iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D6AE8616A25242000EE1A8 /* DaVinci~iPad@2x.png */; };
 		42D6AE8B16A25242000EE1A8 /* DaVinci~iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D6AE8716A25242000EE1A8 /* DaVinci~iPhone.png */; };
@@ -181,6 +183,10 @@
 		42A1B6181670599E004F1FA0 /* version.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = version.txt; sourceTree = "<group>"; };
 		42AEF2E016633603009F65AA /* Rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rocket.png; sourceTree = SOURCE_ROOT; };
 		42AEF2E116633603009F65AA /* Rocket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket@2x.png"; sourceTree = SOURCE_ROOT; };
+		42BB53C716A293D20029C882 /* SLFlightDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFlightDataCell.h; sourceTree = "<group>"; };
+		42BB53C816A293D20029C882 /* SLFlightDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFlightDataCell.m; sourceTree = "<group>"; };
+		42BB53CB16A295310029C882 /* SLSavedFlightsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSavedFlightsTVC.h; sourceTree = "<group>"; };
+		42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSavedFlightsTVC.m; sourceTree = "<group>"; };
 		42D6AE8516A25242000EE1A8 /* DaVinci~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DaVinci~iPad.png"; sourceTree = "<group>"; };
 		42D6AE8616A25242000EE1A8 /* DaVinci~iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DaVinci~iPad@2x.png"; sourceTree = "<group>"; };
 		42D6AE8716A25242000EE1A8 /* DaVinci~iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DaVinci~iPhone.png"; sourceTree = "<group>"; };
@@ -350,6 +356,10 @@
 			children = (
 				4220A4A515F55CC60055EE35 /* MainStoryboard_iPhone.storyboard */,
 				4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */,
+				42BB53CB16A295310029C882 /* SLSavedFlightsTVC.h */,
+				42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */,
+				42BB53C716A293D20029C882 /* SLFlightDataCell.h */,
+				42BB53C816A293D20029C882 /* SLFlightDataCell.m */,
 				42D780991663291B000C7D6C /* SLAnimatedRocketView.h */,
 				42D7809A1663291B000C7D6C /* SLAnimatedRocketView.m */,
 				42D78093166295F1000C7D6C /* SLAnimatedViewController.h */,
@@ -556,6 +566,8 @@
 				4240A07815F8341900D67F3E /* SLMotorPrefsTVC.m in Sources */,
 				42D78095166295F1000C7D6C /* SLAnimatedViewController.m in Sources */,
 				42D7809B1663291B000C7D6C /* SLAnimatedRocketView.m in Sources */,
+				42BB53C916A293D20029C882 /* SLFlightDataCell.m in Sources */,
+				42BB53CD16A295310029C882 /* SLSavedFlightsTVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

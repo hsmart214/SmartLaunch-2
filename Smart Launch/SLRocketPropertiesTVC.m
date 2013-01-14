@@ -16,7 +16,9 @@
 @property (nonatomic, weak) UITextField *activeField;
 @property (nonatomic, strong) Rocket *oldRocket;
 @property (nonatomic, strong) NSArray *validMotorDiameters;
+@property (weak, nonatomic) IBOutlet UILabel *calculatedCdLabel;
 @property (weak, nonatomic) IBOutlet UIStepper *motorDiamStepper;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *calcCdButton;
 
 @end
 
@@ -90,6 +92,22 @@
     [self.saveButton setEnabled:[self isValidRocket]];
 }
 
+- (void)calculateCd{
+    float total = 0.0;
+    for (NSDictionary *flight in self.rocket.recordedFlights){
+        total += [flight[FLIGHT_BEST_CD]floatValue];
+    }
+    NSInteger numFlights = MAX([self.rocket.recordedFlights count], 1);
+    self.calculatedCdLabel.text = [NSString stringWithFormat:@"%1.2f", total/numFlights];
+    //enable the "UseCalcCd" button only if there IS a calc Cd to use
+    [self.calcCdButton setEnabled:(total != 0.0)];
+}
+
+- (IBAction)useCalculatedCd:(UIBarButtonItem *)sender {
+    self.cdField.text = self.calculatedCdLabel.text;
+    [self updateRocket];
+}
+
 - (void)updateDisplay{
     self.nameField.text = self.rocket.name;
     self.kitNameField.text = self.rocket.kitName;
@@ -103,6 +121,7 @@
     self.cdField.text = [NSString stringWithFormat:@"%2.2f", [self.rocket.cd floatValue]];
     self.motorDiamLabel.text = [NSString stringWithFormat:@"%d", [self.rocket.motorSize integerValue]];
     self.motorDiamStepper.value = [self.rocket.motorSize integerValue];
+    [self calculateCd];
 }
 
 
@@ -140,36 +159,6 @@
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO animated:animated];
 }
-
-- (void)viewDidUnload
-{
-    [self setNameField:nil];
-    [self setKitNameField:nil];
-    [self setManField:nil];
-    [self setMassField:nil];
-    [self setDiamField:nil];
-    [self setLenField:nil];
-    [self setCdField:nil];
-    [self setMassUnitsLabel:nil];
-    [self setDiamUnitsLabel:nil];
-    [self setLenUnitsLabel:nil];
-    [self setCancelButton:nil];
-    [self setSaveButton:nil];
-    [self setCancelButton:nil];
-    [self setSaveButton:nil];
-    [self setScrollView:nil];
-    [self setMotorDiamLabel:nil];
-    [self setMotorDiamUnitsLabel:nil];
-    [self setRocket:nil];
-    [self setMotorDiamStepper:nil];
-    self.rocket = nil;
-    self.delegate = nil;
-    self.oldRocket = nil;
-    self.validMotorDiameters = nil;
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -251,6 +240,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - SLSavedFlightsDelegate method
+
+-(void)SLSavedFlightsTVC:(id)sender didUpdateSavedFlights:(NSArray *)savedFlights{
+    self.rocket.recordedFlights = savedFlights;
+    [self calculateCd];
+}
+
+#pragma mark - prepareForSegue
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"savedFlightsSegue"]){
+        //pass on the model for the next table view controller
+        [(SLSavedFlightsTVC *)segue.destinationViewController setSavedFlights:self.rocket.recordedFlights];
+    }
 }
 
 @end
