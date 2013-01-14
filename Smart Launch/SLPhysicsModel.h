@@ -28,6 +28,7 @@
 /* The first public method returns the velocity that the rocket will attain at the end of the launch guide */
 
 - (double) velocityAtEndOfLaunchGuide;
+- (float) maximumVelocity;
 
 /* This will give the resulting angle of attack of the rocket in the air mass at when it leaves the launch guide */
 

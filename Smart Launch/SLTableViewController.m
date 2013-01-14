@@ -10,6 +10,7 @@
 #import "SLPhysicsModel.h"
 #import "SLUnitsTVC.h"
 #import "SLMotorSearchViewController.h"
+#import "SLSaveFlightDataTVC.h"
 
 @interface SLTableViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *rocketCell;
@@ -301,6 +302,19 @@
     if ([[segue identifier] isEqualToString:@"AnimationSegue"]){
         [segue.destinationViewController setDelegate:self];
         [segue.destinationViewController setDataSource:self];
+    }
+    if ([[segue identifier] isEqualToString:@"saveFlightSegue"]){
+        NSMutableArray *flights = [self.rocket.recordedFlights mutableCopy];
+        NSDictionary *flight = @{FLIGHT_MOTOR_KEY : self.motor.name,
+        FLIGHT_BEST_CD : self.rocket.cd,
+        FLIGHT_ALTITUDE_KEY : @([self.apogeeAltitudeLabel.text floatValue])
+        };
+        [flights addObject:flight];
+        self.rocket.recordedFlights = [flights copy];
+        [(SLSaveFlightDataTVC *)segue.destinationViewController setFlightData:flight];
+        [(SLSaveFlightDataTVC *)segue.destinationViewController setPhysicsModel:self.model];
+        [(SLSaveFlightDataTVC *)segue.destinationViewController setRocket:self.rocket];
+        //        [(SLSaveFlightDataTVC *)segue.destinationViewController setSimDataSource:self];
     }
 }
 

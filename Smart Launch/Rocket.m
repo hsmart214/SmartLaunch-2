@@ -71,7 +71,7 @@
     if (self.mass) [rocketProperties setObject:self.mass forKey:ROCKET_MASS_KEY];
     if (self.kitName) [rocketProperties setObject:self.kitName forKey:ROCKET_KITNAME_KEY];
     if (self.manufacturer) [rocketProperties setObject:self.manufacturer forKey:ROCKET_MAN_KEY];
-
+    if (self.recordedFlights) rocketProperties[ROCKET_RECORDED_FLIGHTS_KEY] = self.recordedFlights;
     return rocketProperties;
 }
 

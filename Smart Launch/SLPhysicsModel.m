@@ -14,6 +14,7 @@
 @property (nonatomic) double altitude;      // y component of the rocket's position
 @property (nonatomic) double travel;        // x component of the rocket's position
 @property (nonatomic) double velocity;      // magnitude of the rocket's velocity vector
+@property (nonatomic) float maxVelocity;
 @property (nonatomic) double timeIndex;
 @property (nonatomic, strong) NSMutableArray *flightProfile;
 @property (nonatomic, strong) NSArray *stdAtmosphere;
@@ -298,9 +299,11 @@
         NSNumber *alt = @(_altitude);
         NSNumber *trav = @(_travel);
         NSNumber *accel = @(acc);
-        [self.flightProfile addObject:@[time, alt, trav, vel, accel]];
+        [_flightProfile addObject:@[time, alt, trav, vel, accel]];
     }
-    
+    //I will assume that the maximum velocity will be achieved at burnout
+    //It would be very unusual if this were not true, and if so it would not be far off
+    self.maxVelocity = [[_flightProfile lastObject][VEL_INDEX] floatValue];
 }
 
 - (void)integrateBurnoutToApogee{
@@ -366,6 +369,10 @@
 
 - (double)burnoutToApogee{
     return [[[self.flightProfile lastObject] objectAtIndex:TIME_INDEX] doubleValue] - [[self.motor.times lastObject]floatValue];
+}
+
+- (float)maximumVelocity{
+    return self.maxVelocity;
 }
 
 //This one is for plotting the flight profile - gives back an array of data with the flight data with an increment (pixel width)
