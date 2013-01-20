@@ -7,14 +7,21 @@
 //
 
 #import "SLSaveFlightDataTVC.h"
+#import "SLUnitsConvertor.h"
 
-@interface SLSaveFlightDataTVC ()
+@interface SLSaveFlightDataTVC ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *rocketName;
 @property (weak, nonatomic) IBOutlet UIImageView *motorManufacturerLogo;
 @property (weak, nonatomic) IBOutlet UILabel *motorName;
 @property (weak, nonatomic) IBOutlet UILabel *launchAngleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *simAltitudeLabel;
 @property (weak, nonatomic) IBOutlet UITextField *cdEstimateField;
+@property (weak, nonatomic) IBOutlet UITextField *actualAltitudeField;
+@property (weak, nonatomic) IBOutlet UILabel *altUnitsLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *refineCdButton;
+@property (weak, nonatomic) IBOutlet UIProgressView *calculationProgressIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *cdLabel;
+@property (weak, nonatomic) IBOutlet UILabel *windDirectionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *altitudeLabel;
 
 @end
 
@@ -25,21 +32,93 @@
 }
 
 - (IBAction)saveFlightData:(UIBarButtonItem *)sender {
-    float cd = [self.cdEstimateField.text floatValue];
+    float cd = [self.cdLabel.text floatValue];
+    float alt = [self.actualAltitudeField.text floatValue];
     self.rocket.cd = @(cd);
     NSMutableDictionary *newFlightData = [self.flightData mutableCopy];
     newFlightData[FLIGHT_BEST_CD] = @(cd);
-    self.rocket.recordedFlights = [newFlightData copy];
+    newFlightData[FLIGHT_ALTITUDE_KEY] = [SLUnitsConvertor metricStandardOf:@(alt) forKey:ALT_UNIT_KEY];
+    //fetch the default rockets
+    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+    NSMutableDictionary *rocketPlists = [[defaults objectForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
+    if (!rocketPlists) rocketPlists = [NSMutableDictionary dictionary];
+    //add the flight data
+    [self.rocket addFlight:newFlightData];
+    //put the rocket back in the dictionary
+    rocketPlists[self.rocket.name] = [self.rocket rocketPropertyList];
+    //put the dictionary back into the favorites store
+    [defaults setObject:rocketPlists forKey:FAVORITE_ROCKETS_KEY];
+    [defaults synchronize];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)calculateNewCd:(UIBarButtonItem *)sender {
+    if ([self.actualAltitudeField.text floatValue] == 0.0) return;
     float initialGuess = [self.cdEstimateField.text floatValue];
-    Rocket *tempRocket = [self.rocket copyWithZone:nil];
+    __block Rocket *tempRocket = [self.rocket copyWithZone:nil];
     tempRocket.cd = @(initialGuess);
     self.physicsModel.rocket = tempRocket;
-    float initialAlt = self.physicsModel.fastApogee;
+    
+    //need to do this in a separate thread
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.calculationProgressIndicator.progress = 1/(NEWTON_RAPHSON_ITERATIONS + 1);
+        });
+        float bestGuess = -1.0; // nonsense value is a flag for unused variable;
+        float actualAlt = [self.actualAltitudeField.text floatValue];
+        actualAlt = [[SLUnitsConvertor metricStandardOf:@(actualAlt) forKey:ALT_UNIT_KEY] floatValue];
+        float epsilon = NEWTON_RAPHSON_EPSILON;
+        float guessedAlt, newGuessedAlt;
+        /*
+         The Newton-Raphson method uses the derivative at a point to guide the next guess
+         to reach the nearest zero point of a function.
+         We will estimate the derivative by taking the altitude function at two closely-
+         spaced Cd values.
+         */
+        for (int x = 0; x < NEWTON_RAPHSON_ITERATIONS; x++){
+            guessedAlt = self.physicsModel.fastApogee;
+            float altDifference = guessedAlt - actualAlt;
+            if (fabsf(altDifference) < (actualAlt * NEWTON_RAPHSON_TOLERANCE)) {     // close enough to say we are done
+                bestGuess = [self.physicsModel.rocket.cd floatValue];
+                newGuessedAlt = guessedAlt;
+            } else {
+                // calculate the "derivative"
+                float oldCd = [tempRocket.cd floatValue];
+                float newCd = oldCd + epsilon;
+                tempRocket.cd = @(newCd);
+                self.physicsModel.rocket = tempRocket;
+                newGuessedAlt = self.physicsModel.fastApogee;
+                float slope = (newGuessedAlt - guessedAlt)/epsilon;  // presumably always a negative slope
+                
+                // walk back along the slope to guess the next value
+                newCd = oldCd - altDifference/slope;
+                
+                // get ready for the next iteration
+                tempRocket.cd = @(newCd);
+                self.physicsModel.rocket = tempRocket;
+                epsilon /= NEWTON_RAPHSON_EPSILON_SCALING_FACTOR;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.calculationProgressIndicator.progress = (2 + x)/(NEWTON_RAPHSON_ITERATIONS + 1);
+                    self.cdLabel.text = [NSString stringWithFormat:@"%1.2f",newCd];
+                    self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [[SLUnitsConvertor displayUnitsOf:@(newGuessedAlt) forKey:LENGTH_UNIT_KEY] floatValue], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
+                });
+            }
+        }
+        if (bestGuess < 0){ // we did not short-circuit
+            bestGuess = [tempRocket.cd floatValue];
+        }
+        // put the new best guess into the display
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.cdLabel.text = [NSString stringWithFormat:@"%1.2f",bestGuess];
+            self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [[SLUnitsConvertor displayUnitsOf:@(newGuessedAlt) forKey:ALT_UNIT_KEY] floatValue], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
+        });
+        self.physicsModel.rocket = self.rocket;
+    });
 }
+
+
+
 
 #pragma mark - View Life Cycle
 
@@ -49,13 +128,21 @@
     self.rocketName.text = self.rocket.name;
     self.motorName.text = self.physicsModel.motor.name;
     self.motorManufacturerLogo.image = [UIImage imageNamed:self.physicsModel.motor.manufacturer];
+    self.cdLabel.text = [NSString stringWithFormat:@"%1.2f",[self.rocket.cd floatValue]];
+    self.altUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
+    self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [[SLUnitsConvertor displayUnitsOf:@(self.physicsModel.fastApogee) forKey:ALT_UNIT_KEY] floatValue], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
 }
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - UITextField delegate
+
+- (IBAction)endTextEditing:(UITextField *)sender {
+    [sender resignFirstResponder];
 }
 
 @end

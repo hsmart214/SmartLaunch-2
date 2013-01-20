@@ -56,6 +56,11 @@
     }
 }
 
+- (void)setRocket:(Rocket *)rocket{
+    _rocket = rocket;
+    [self resetFlight];
+}
+
 -(CGFloat)thrustAtTime:(CGFloat)time{
     if ((time == 0.0) || (time >= [[_times lastObject] floatValue])) return 0.0;
     NSInteger i = 0;

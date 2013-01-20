@@ -7,12 +7,44 @@
 //
 
 #import "SLAppDelegate.h"
+#import "Rocket.h"
+#import "RocketMotor.h"
+#import "SLUnitsTVC.h"
+#import "SLMotorPrefsTVC.h"
 
 @implementation SLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+        NSDictionary *rocket = [store dictionaryForKey:SELECTED_ROCKET_KEY];
+        if (!rocket){
+            rocket = [[Rocket defaultRocket] rocketPropertyList];
+            [store setDictionary:rocket forKey:SELECTED_ROCKET_KEY];
+        }
+        NSDictionary *rockets = [store dictionaryForKey:FAVORITE_ROCKETS_KEY];
+        if (!rockets){
+            rockets = @{rocket[ROCKET_NAME_KEY] : rocket};
+            [store setDictionary:rockets forKey:FAVORITE_ROCKETS_KEY];
+        }
+        NSDictionary *motor = [store dictionaryForKey:SELECTED_MOTOR_KEY];
+        if (!motor){
+            motor = [[RocketMotor defaultMotor] motorDict];
+            [store setDictionary:motor forKey:SELECTED_MOTOR_KEY];
+        }
+        NSDictionary *unitPrefs = [store dictionaryForKey:UNIT_PREFS_KEY];
+        if (!unitPrefs){
+            [SLUnitsTVC setStandardDefaults];
+        }
+        NSDictionary *motorPrefs = [store dictionaryForKey:MOTOR_PREFS_KEY];
+        if (!motorPrefs){
+            motorPrefs = [SLMotorPrefsTVC motorKeysAllSelected];
+            [store setDictionary:motorPrefs forKey:MOTOR_PREFS_KEY];
+        }
+        [store synchronize];
+    });
     return YES;
 }
 							

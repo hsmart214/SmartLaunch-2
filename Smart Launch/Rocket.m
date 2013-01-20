@@ -19,6 +19,17 @@
 @synthesize kitName = _kitName;
 @synthesize manufacturer = _manufacturer;
 
+- (void)clearFlights{
+    self.recordedFlights = nil;
+}
+
+- (void)addFlight:(NSDictionary *)flightData{
+    NSMutableArray *newFlights = [self.recordedFlights mutableCopy];
+    if (!newFlights) newFlights = [NSMutableArray array];
+    [newFlights addObject:flightData];
+    self.recordedFlights = [newFlights copy];
+}
+
 - (Rocket *)copyWithZone: (NSZone *)zone{
     return [Rocket rocketWithRocketDict:self.rocketPropertyList];
 }

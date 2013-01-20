@@ -70,7 +70,7 @@
     if (![self.motorPrefs isEqualToDictionary:self.oldMotorPrefs]){
         //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
-        [defaults setObject:self.motorPrefs forKey:MOTOR_PREFS_KEY];
+        [defaults setDictionary:self.motorPrefs forKey:MOTOR_PREFS_KEY];
         [defaults synchronize];
         
         // find out if there is a cache of the motor data, if so, delete it to force re-initialization with the new prefs

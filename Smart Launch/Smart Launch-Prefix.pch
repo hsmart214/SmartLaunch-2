@@ -45,6 +45,11 @@ enum LaunchDirection : NSUInteger {
     
 #pragma mark Calculation constants
     
+#define NEWTON_RAPHSON_ITERATIONS 4
+#define NEWTON_RAPHSON_EPSILON 0.01
+#define NEWTON_RAPHSON_TOLERANCE 0.02
+#define NEWTON_RAPHSON_EPSILON_SCALING_FACTOR 3
+    
 #define DIVS_DURING_BURN 1000                          //how fine-grained is the numerical integration
 #define DIVS_AFTER_BURNOUT 500
     

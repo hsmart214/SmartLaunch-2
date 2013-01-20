@@ -240,7 +240,7 @@
                                       K_POUNDS, THRUST_UNIT_KEY, nil];
     //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
-    [defaults setObject:stdDefaults forKey:UNIT_PREFS_KEY];
+    [defaults setDictionary:stdDefaults forKey:UNIT_PREFS_KEY];
     [defaults synchronize];
 }
 

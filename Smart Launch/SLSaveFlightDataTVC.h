@@ -8,14 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Rocket.h"
-#import "SLSimulationDelegate.h"
 #import "SLPhysicsModel.h"
 
 @interface SLSaveFlightDataTVC : UITableViewController
 //model
 @property (nonatomic, strong) NSDictionary *flightData;
 @property (nonatomic, strong) Rocket *rocket;
-//@property (nonatomic, weak) id<SLSimulationDataSource> simDataSource;
-@property (nonatomic, strong) SLPhysicsModel *physicsModel;
+@property (nonatomic, weak) SLPhysicsModel *physicsModel;
+@property (nonatomic, weak) id delegate;
 
 @end
