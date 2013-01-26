@@ -33,20 +33,6 @@
 
 @implementation SLLaunchAngleViewController
 
-@synthesize angleLabel = _angleLabel;
-@synthesize angleView = _angleView;
-@synthesize angleSlider = _angleSlider;
-@synthesize accelerometer = _accelerometer;
-@synthesize xAccel = _xAccel;
-@synthesize yAccel = _yAccel;
-@synthesize zAccel = _zAccel;
-@synthesize motionButton = _motionButton;
-@synthesize calibrateButton = _calibrateButton;
-@synthesize xyCalibrationAngle = _xyCalibrationAngle;
-@synthesize yzCalibrationAngle = _yzCalibrationAngle;
-@synthesize cameraButton = _cameraButton;
-@synthesize delegate = _delegate;
-
 #pragma mark - Constant declarations
 
 #define XY_CAL_KEY @"com.smartsoftware.launchsafe.xyCalibrationValue"

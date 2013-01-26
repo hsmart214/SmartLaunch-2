@@ -18,23 +18,6 @@
 
 @implementation RocketMotor
 
-@synthesize mass = _mass;
-@synthesize propellantMass = _propellantMass;
-@synthesize times = _times;
-@synthesize thrusts = _thrusts;
-@synthesize name = _name;
-@synthesize impulseClass = _impulseClass;
-@synthesize diameter = _diameter;
-@synthesize length = _length;
-@synthesize manufacturer = _manufacturer;
-@synthesize delays = _delays;
-@synthesize calcPeakThrust = _calcPeakThrust;
-@synthesize calcTotalImpulse = _calcTotalImpulse;
-
--(NSArray *)delays{
-    return _delays;
-}
-
 -(NSNumber *)loadedMass{
     return self.mass;
 }

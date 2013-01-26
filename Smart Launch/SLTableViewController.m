@@ -36,24 +36,6 @@
 
 @implementation SLTableViewController
 
-@synthesize motor = _motor;
-@synthesize rocket = _rocket;
-@synthesize model = _model;
-@synthesize settings = _settings;
-@synthesize simRunning = _simRunning;
-@synthesize spinner;
-@synthesize thrustToWeightLabel;
-
-@synthesize rocketCell;
-@synthesize motorCell;
-@synthesize windDirectionButton;
-@synthesize launchAngleLabel;
-@synthesize ffAngleOfAttackLabel;
-@synthesize ffVelocityLabel;
-@synthesize ffVelocityUnitsLabel;
-@synthesize burnoutToApogeeLabel;
-@synthesize apogeeAltitudeLabel;
-@synthesize apogeeAltitudeUnitsLabel;
 
 - (Rocket *)rocket{
     if (!_rocket){

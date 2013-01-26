@@ -36,18 +36,6 @@
 
 @implementation SLPhotoAngleViewController
 
-@synthesize accelerometer = _accelerometer;
-@synthesize xAccel = _xAccel;
-@synthesize yAccel = _yAccel;
-@synthesize zAccel = _zAccel;
-@synthesize angleView = _angleView;
-@synthesize warningView = _warningView;
-@synthesize angleLabel = _angleLabel;
-@synthesize acceptButton = _acceptButton;
-@synthesize cancelButton = _cancelButton;
-
-@synthesize delegate = _delegate;
-
 - (UIAccelerometer *)accelerometer{
     if (!_accelerometer){
         _accelerometer = [UIAccelerometer sharedAccelerometer];

@@ -32,25 +32,6 @@
 
 @implementation SLSimSettingsViewController
 
-@synthesize settings = _settings;
-@synthesize launchAngleLabel = _launchAngleLabel;
-@synthesize windVelocityLabel = _windVelocityLabel;
-@synthesize windVelocityUnitsLabel = _windVelocityUnitsLabel;
-@synthesize windDirectionControl = _windDirectionControl;
-@synthesize windVelocityStepper = _windVelocityStepper;
-@synthesize launchGuideLengthLabel = _launchGuideLengthLabel;
-@synthesize launchGuideLengthUnitsLabel = _launchGuideLengthUnitsLabel;
-@synthesize launchGuideLengthStepper = _launchGuideLengthStepper;
-@synthesize siteAltitudeLabel = _siteAltitudeLabel;
-@synthesize siteAltitudeUnitsLabel = _siteAltitudeUnitsLabel;
-@synthesize siteAltitudeStepper = _siteAltitudeStepper;
-@synthesize GPSAltButton = _GPSAltButton;
-@synthesize locationManager = _locationManager;
-@synthesize launchGuideLengthFormatString = _launchGuideLengthFormatString;
-
-@synthesize delegate = _delegate;
-
-
 - (NSMutableDictionary *)settings{
     if (!_settings){
         //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

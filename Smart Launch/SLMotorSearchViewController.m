@@ -25,23 +25,6 @@
 
 @implementation SLMotorSearchViewController
 
-@synthesize preferredManufacturers = _preferredManufacturers;
-@synthesize preferredMotorDiameters = _preferredMotorDiameters;
-@synthesize preferredImpulseClasses = _preferredImpulseClasses;
-@synthesize restrictedMotorDiamPrefs = _restrictedMotorDiamPrefs;
-@synthesize restrictMotorDiametersSegmentedControl = _restrictMotorDiametersSegmentedControl;
-
-@synthesize search1Control;
-@synthesize search2Control;
-@synthesize pickerView;
-@synthesize manufacturerNames = _manufacturerNames;
-@synthesize impulseClasses = _impulseClasses;
-@synthesize motorDiameters = _motorDiameters;
-@synthesize allMotors = _allMotors;
-@synthesize delegate = _delegate;
-@synthesize motorKeyPrefs = _motorKeyPrefs;
-@synthesize rocketMotorMountDiameter = _rocketMotorMountDiameter;
-
 NSInteger sortFunction(id md1, id md2, void *context){
     NSString *first = [(NSDictionary *)md1 objectForKey:NAME_KEY];
     NSString *second = [(NSDictionary *)md2 objectForKey:NAME_KEY];

@@ -24,29 +24,6 @@
 
 @implementation SLRocketPropertiesTVC
 
-@synthesize oldRocket = _oldRocket;
-@synthesize rocket = _rocket;
-@synthesize delegate = _delegate;
-@synthesize scrollView = _scrollView;
-@synthesize activeField = _activeField;
-
-@synthesize nameField;
-@synthesize kitNameField;
-@synthesize manField;
-@synthesize massField;
-@synthesize diamField;
-@synthesize lenField;
-@synthesize cdField;
-@synthesize motorDiamLabel;
-@synthesize massUnitsLabel;
-@synthesize diamUnitsLabel;
-@synthesize lenUnitsLabel;
-@synthesize motorDiamUnitsLabel;
-@synthesize cancelButton;
-@synthesize saveButton;
-@synthesize validMotorDiameters = _validMotorDiameters;
-@synthesize motorDiamStepper;
-
 - (NSArray *)validMotorDiameters{
     if (!_validMotorDiameters){
         _validMotorDiameters = [NSArray arrayWithObjects:

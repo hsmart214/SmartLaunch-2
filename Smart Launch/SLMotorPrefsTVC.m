@@ -23,9 +23,6 @@
 
 @implementation SLMotorPrefsTVC
 
-@synthesize motorPrefs = _motorPrefs;
-@synthesize oldMotorPrefs = _oldMotorPrefs;
-
 - (NSMutableDictionary*)motorPrefs{
     if (!_motorPrefs){
         _motorPrefs = [NSMutableDictionary dictionaryWithCapacity:64];

@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *cdLabel;
 @property (weak, nonatomic) IBOutlet UILabel *windDirectionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *altitudeLabel;
+@property (strong, nonatomic) id iCloudObserver;
 
 @end
 
@@ -39,7 +40,8 @@
     newFlightData[FLIGHT_BEST_CD] = @(cd);
     newFlightData[FLIGHT_ALTITUDE_KEY] = [SLUnitsConvertor metricStandardOf:@(alt) forKey:ALT_UNIT_KEY];
     //fetch the default rockets
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
     NSMutableDictionary *rocketPlists = [[defaults objectForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
     if (!rocketPlists) rocketPlists = [NSMutableDictionary dictionary];
     //add the flight data
@@ -48,6 +50,7 @@
     rocketPlists[self.rocket.name] = [self.rocket rocketPropertyList];
     //put the dictionary back into the favorites store
     [defaults setObject:rocketPlists forKey:FAVORITE_ROCKETS_KEY];
+    [store setObject:rocketPlists forKey:FAVORITE_ROCKETS_KEY];
     [defaults synchronize];
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -63,7 +66,8 @@
     //need to do this in a separate thread
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.calculationProgressIndicator.progress = 1/(NEWTON_RAPHSON_ITERATIONS + 1);
+            float prog = 1.0/(NEWTON_RAPHSON_ITERATIONS);
+            [self.calculationProgressIndicator setProgress: prog animated:YES];
         });
         float bestGuess = -1.0; // nonsense value is a flag for unused variable;
         float actualAlt = [self.actualAltitudeField.text floatValue];
@@ -99,7 +103,7 @@
                 self.physicsModel.rocket = tempRocket;
                 epsilon /= NEWTON_RAPHSON_EPSILON_SCALING_FACTOR;
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.calculationProgressIndicator.progress = (2 + x)/(NEWTON_RAPHSON_ITERATIONS + 1);
+                    [self.calculationProgressIndicator setProgress: (float)(2.0 + x)/(NEWTON_RAPHSON_ITERATIONS) animated:YES];
                     self.cdLabel.text = [NSString stringWithFormat:@"%1.2f",newCd];
                     self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [[SLUnitsConvertor displayUnitsOf:@(newGuessedAlt) forKey:LENGTH_UNIT_KEY] floatValue], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
                 });
@@ -112,6 +116,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             self.cdLabel.text = [NSString stringWithFormat:@"%1.2f",bestGuess];
             self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [[SLUnitsConvertor displayUnitsOf:@(newGuessedAlt) forKey:ALT_UNIT_KEY] floatValue], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
+            [self.calculationProgressIndicator setProgress:0.0 animated:YES];
         });
         self.physicsModel.rocket = self.rocket;
     });
@@ -131,7 +136,28 @@
     self.cdLabel.text = [NSString stringWithFormat:@"%1.2f",[self.rocket.cd floatValue]];
     self.altUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
     self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [[SLUnitsConvertor displayUnitsOf:@(self.physicsModel.fastApogee) forKey:ALT_UNIT_KEY] floatValue], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
+    
+    //This is my first ever attempt at registering for a notification.  And I'm using a BLOCK!  I must be nuts.
+    self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+        NSArray *changedKeys = [[notification userInfo] objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
+        for (NSString *key in changedKeys) {
+            [defaults setObject:[store objectForKey:key] forKey:key];
+        }
+        [defaults synchronize];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
 }
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self.iCloudObserver];
+    self.iCloudObserver = nil;
+    [super viewWillDisappear:animated];
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -21,12 +21,6 @@
 
 @implementation SLMotorThrustCurveView
 
-@synthesize dataSource = _dataSource;
-
-@synthesize hrange = _hrange;
-@synthesize vrange = _vrange;
-@synthesize fullrange = _fullrange;
-
 - (void)setup{
     [self setNeedsDisplay];
 }

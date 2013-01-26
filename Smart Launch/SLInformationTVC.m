@@ -18,10 +18,6 @@
 @end
 
 @implementation SLInformationTVC
-@synthesize doneButton = _doneButton;
-@synthesize infoTextView = _infoTextView;
-
-@synthesize delegate = _delegate;
 
 - (IBAction)userDidPressDone:(UIBarButtonItem *)sender {
     [self.delegate dismissModalViewController];

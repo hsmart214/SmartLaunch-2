@@ -19,12 +19,6 @@
 
 @implementation SLRocketsTableViewController
 
-@synthesize selectedRocket = _selectedRocket;
-@synthesize rockets = _rockets;
-@synthesize detailData = _detailData;
-@synthesize rocketArray = _rocketArray;
-@synthesize delegate = _delegate;
-
 - (void)updateRocketArray{
     if ([self.rocketArray count]) [self.rocketArray removeAllObjects];
     NSArray *temp = [self.rockets allValues];

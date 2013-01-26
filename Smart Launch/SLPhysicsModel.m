@@ -28,18 +28,6 @@
 
 @implementation SLPhysicsModel
 
-@synthesize launchGuideAngle = _launchGuideAngle;               //angle in RADIANS
-@synthesize launchGuideLength = _launchGuideLength;             //length in METERS
-@synthesize LaunchGuideDirection = _LaunchGuideDirection;       //crossWind, intoWind, withWind
-@synthesize windVelocity = _windVelocity;                       //velocity in METERS/SECOND
-@synthesize motor = _motor;
-@synthesize rocket = _rocket;
-@synthesize launchAltitude = _launchAltitude;                   //ground elevation in METERS
-@synthesize flightProfile = _flightProfile;
-@synthesize altitude = _altitude;                               //altitude AGL in METERS
-@synthesize velocity = _velocity;                               //METERS/SECOND
-@synthesize timeIndex = _timeIndex;                             //SECONDS since ignition (not first motion)
-
 - (NSUInteger)version{
     return 2;
 }

@@ -1,6 +1,7 @@
 //
 // Prefix header for all source files of the 'Smart Launch' target in the 'Smart Launch' project
-//
+// ©2013 J. Howard Smart
+// mySmartSoftware.com
 
 #import <Availability.h>
 
@@ -46,16 +47,16 @@ enum LaunchDirection : NSUInteger {
 #pragma mark Calculation constants
     
 #define NEWTON_RAPHSON_ITERATIONS 4
-#define NEWTON_RAPHSON_EPSILON 0.01
-#define NEWTON_RAPHSON_TOLERANCE 0.02
-#define NEWTON_RAPHSON_EPSILON_SCALING_FACTOR 3
+#define NEWTON_RAPHSON_EPSILON 0.01             //added to Cd to be used for getting the slope between the two Cd's
+#define NEWTON_RAPHSON_TOLERANCE 0.02           //if we are within this fraction of the actual altitude, we stop early
+#define NEWTON_RAPHSON_EPSILON_SCALING_FACTOR 3 //the epsilon is divided by this factor every time through the iterations
     
-#define DIVS_DURING_BURN 1000                          //how fine-grained is the numerical integration
+#define DIVS_DURING_BURN 1000                   //how fine-grained is the numerical integration
 #define DIVS_AFTER_BURNOUT 500
     
 #define MAX_LAUNCH_GUIDE_ANGLE 0.349066     //20 degrees in radians
 #define DEFAULT_LAUNCH_GUIDE_LENGTH 1.83    //6 feet in meters
-#define DEFAULT_CD 0.75                     //the typical Cd of a 3FNC/4FNC rocket
+#define DEFAULT_CD 0.75                     //the typical Cd of a 3FNC/4FNC small model rocket
 #define GRAV_ACCEL 9.80665
 #define _PI_ 3.14159265359
 #define T_LAPSE_RATE 0.0065

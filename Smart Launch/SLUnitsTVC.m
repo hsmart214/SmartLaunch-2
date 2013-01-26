@@ -23,14 +23,6 @@
 @end
 
 @implementation SLUnitsTVC
-@synthesize diamControl = _diamControl;
-@synthesize lengthControl = _lengthControl;
-@synthesize massControl = _massControl;
-@synthesize tempControl = _tempControl;
-@synthesize altitudeControl = _altitudeControl;
-@synthesize velocityControl = _velocityControl;
-@synthesize thrustControl = _thrustControl;
-@synthesize oldPrefs = _oldPrefs;
 
 - (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];

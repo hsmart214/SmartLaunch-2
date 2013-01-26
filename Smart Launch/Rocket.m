@@ -10,15 +10,6 @@
 
 @implementation Rocket
 
-@synthesize name = _name;
-@synthesize length = _length;
-@synthesize diameter = _diameter;
-@synthesize cd = _cd;
-@synthesize motorSize = _motorSize;
-@synthesize mass = _mass;
-@synthesize kitName = _kitName;
-@synthesize manufacturer = _manufacturer;
-
 - (void)clearFlights{
     self.recordedFlights = nil;
 }

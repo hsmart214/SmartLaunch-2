@@ -177,13 +177,10 @@
 //    NSLog(@"Quick velocity = %3.1f m/s.", [self.dataSource quickFFVelocityAtAngle:_displayLaunchAngle andGuideLength:_displayLaunchGuideLength]);
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [self.navigationController setToolbarHidden:NO animated:animated];
-    
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+- (void)setUpUnits{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
-    
+
     // For this stepper I am keeping the value in display units to avoid awkward rounding errors
     if ([[unitPrefs objectForKey:LENGTH_UNIT_KEY] isEqualToString:K_FEET]){
         self.launchGuideLengthFormatString = @"%1.1f";
@@ -201,7 +198,18 @@
         self.launchGuideLengthStepper.stepValue = 0.2;
         self.launchGuideLengthStepper.minimumValue = 0.2;
     }
+
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setToolbarHidden:NO animated:animated];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+    NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
+    
+    [self setUpUnits];
+        
     [self importSimValues];
     
     [super viewWillAppear:animated];

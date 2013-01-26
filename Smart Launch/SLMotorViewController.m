@@ -14,16 +14,6 @@
 
 @implementation SLMotorViewController 
 
-@synthesize motorManufacturer;
-@synthesize motorDiameter;
-@synthesize motorMass;
-@synthesize motorLength;
-@synthesize propellantMass;
-@synthesize totalImpulse;
-@synthesize initialThrust;
-@synthesize thrustCurve;
-@synthesize motor;
-
 - (void)drawThrustCurve{
     
 }

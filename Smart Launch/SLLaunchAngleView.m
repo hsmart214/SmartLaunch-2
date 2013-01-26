@@ -18,10 +18,6 @@
 
 @implementation SLLaunchAngleView
 
-@synthesize point = _point;
-@synthesize dataSource = _dataSource;
-
-
 - (CGPoint)point{
     CGFloat angle = [self.dataSource angleForLaunchAngleView:self];
     CGFloat x = sqrtf(1/(1+1/(tanf(angle)*tanf(angle))));

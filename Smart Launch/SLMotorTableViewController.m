@@ -21,13 +21,6 @@
 
 @implementation SLMotorTableViewController 
 
-@synthesize motors = _motors;
-@synthesize sectionKey = _sectionKey;
-@synthesize selectedMotor = _selectedMotor;
-@synthesize selectedMotorDict = _selectedMotorDict;
-@synthesize delegate = _delegate;
-
-
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:animated];
