@@ -28,9 +28,10 @@
 }
 
 - (void)pushRocketFavorites{
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
-    [defaults setObject:[self.rockets copy] forKey:FAVORITE_ROCKETS_KEY];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+    [defaults setObject:self.rockets forKey:FAVORITE_ROCKETS_KEY];
+    [store setDictionary:self.rockets forKey:FAVORITE_ROCKETS_KEY];
     [defaults synchronize];
 }
 
@@ -48,15 +49,14 @@
     return _detailData;
 }
 
-
 - (NSMutableDictionary *)rockets{
     if (!_rockets){
-        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         _rockets = [[defaults objectForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
         if (!_rockets || [_rockets count] == 0){     // If the rocket list is empty give them an example rocket
             _rockets = [NSMutableDictionary dictionary];
-            [_rockets setObject:[[Rocket defaultRocket] rocketPropertyList] forKey:@"Goblin"];
+            Rocket *defaultRocket = [Rocket defaultRocket];
+            [_rockets setObject:[defaultRocket rocketPropertyList] forKey:defaultRocket.name];
             [defaults setObject:_rockets forKey:FAVORITE_ROCKETS_KEY];
             [defaults synchronize];
             [self updateRocketArray];
@@ -103,12 +103,13 @@
 #pragma mark - LSRViewControllerDelegate methods
 
 - (void)SLRocketPropertiesTVC:(SLRocketPropertiesTVC *)sender savedRocket:(Rocket *)rocket{
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
     NSMutableDictionary *rocketFavorites = [[defaults objectForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
     if (!rocketFavorites) rocketFavorites = [NSMutableDictionary dictionary];
     [rocketFavorites setObject:rocket.rocketPropertyList forKey:rocket.name];
     [defaults setObject:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
+    [store setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
     self.selectedRocket = rocket;
     self.rockets = rocketFavorites;
     [defaults synchronize];
@@ -117,13 +118,13 @@
 }
 
 - (void)SLRocketPropertiesTVC:(SLRocketPropertiesTVC *)sender deletedRocket:(Rocket *)rocket{
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
     NSMutableDictionary *rocketFavorites = [[defaults objectForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
-    if (!rocketFavorites) return;
-    if ([rocketFavorites count]==0) return;
+    if (!rocketFavorites||[rocketFavorites count]==0) return;
     [rocketFavorites removeObjectForKey:rocket.name];
     [defaults setObject:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
+    [store setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
     [defaults synchronize];
     [self.rockets removeObjectForKey:rocket.name];
     [self updateRocketArray];
@@ -131,8 +132,6 @@
 }
 
 #pragma mark - Table view data source
-
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.rockets count];
@@ -149,7 +148,6 @@
     } else {
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%1.2f m", [detailInfo floatValue]];
     }
-    
     return cell;
 }
 
@@ -169,8 +167,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.selectedRocket = [self.rocketArray objectAtIndex:indexPath.row];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[self.selectedRocket rocketPropertyList] forKey:SELECTED_ROCKET_KEY];
     [defaults synchronize];
     [self.delegate sender:self didChangeRocket:self.selectedRocket];
@@ -180,8 +177,7 @@
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
     self.selectedRocket = [self.rocketArray objectAtIndex:indexPath.row];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[self.selectedRocket rocketPropertyList] forKey:SELECTED_ROCKET_KEY];
     [defaults synchronize];
     [self.delegate sender:self didChangeRocket:self.selectedRocket];

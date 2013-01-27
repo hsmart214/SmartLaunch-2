@@ -173,8 +173,6 @@
     NSArray *buttonNames = @[@"With Wind", @"CrossWind", @"Into Wind"];
     [self.launchDirectionButton setTitle:buttonNames[self.displayLaunchDirection] forState:UIControlStateNormal];
     [self updateDisplay];
-//    NSLog(@"Model velocity = %3.1f m/s",[[self.dataSource freeFlightVelocity]floatValue]);
-//    NSLog(@"Quick velocity = %3.1f m/s.", [self.dataSource quickFFVelocityAtAngle:_displayLaunchAngle andGuideLength:_displayLaunchGuideLength]);
 }
 
 - (void)setUpUnits{
@@ -203,15 +201,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setToolbarHidden:NO animated:animated];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
-    NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
-    
     [self setUpUnits];
-        
     [self importSimValues];
-    
     [super viewWillAppear:animated];
 }
 
@@ -219,8 +210,6 @@
 {
     [super viewDidLoad];
     UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    //NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
-    //UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
     UIImage *backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
     [backgroundView setImage:backgroundImage];
     [self.view insertSubview:backgroundView atIndex:0];

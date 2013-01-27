@@ -49,9 +49,8 @@
     [self.spinner startAnimating];
     dispatch_queue_t myQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(myQueue, ^(void){
-        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
-        NSUInteger currentVersion = [defaults longLongForKey:MOTOR_FILE_VERSION_KEY];  //nil if never used, resulting in 0
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSInteger currentVersion = [defaults integerForKey:MOTOR_FILE_VERSION_KEY];  //nil if never used, resulting in 0
         NSURL *motorFileWWWURL = [NSURL URLWithString:MOTORS_WWW_URL];
         NSURL *motorFileVersionWWWURL = [NSURL URLWithString:MOTORS_VERSION_WWW_URL];
         NSError *err = nil;
@@ -85,7 +84,7 @@
                 if (err){
                     NSLog(@"Error writing Motor data file to data directory.");
                 }else{
-                    [defaults setLongLong:versionNumber forKey:MOTOR_FILE_VERSION_KEY];
+                    [defaults setInteger:versionNumber forKey:MOTOR_FILE_VERSION_KEY];
                     [defaults synchronize];
                     self.alert = [[UIAlertView alloc]initWithTitle:@"Motor List Update" message:@"Your motor list has been updated." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -132,9 +131,10 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == [actionSheet destructiveButtonIndex]){
-        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
-        [defaults setObject:nil forKey:FAVORITE_ROCKETS_KEY];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+        [defaults setNilValueForKey:FAVORITE_ROCKETS_KEY];
+        [store setNilValueForKey:FAVORITE_ROCKETS_KEY];
         [defaults synchronize];
     }
     if (buttonIndex ==[actionSheet cancelButtonIndex]){

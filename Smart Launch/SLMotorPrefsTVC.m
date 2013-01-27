@@ -65,9 +65,8 @@
 - (IBAction)savePrefsAndReturn:(id)sender {
     // if we haven't changed anything, just pop back
     if (![self.motorPrefs isEqualToDictionary:self.oldMotorPrefs]){
-        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
-        [defaults setDictionary:self.motorPrefs forKey:MOTOR_PREFS_KEY];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:self.motorPrefs forKey:MOTOR_PREFS_KEY];
         [defaults synchronize];
         
         // find out if there is a cache of the motor data, if so, delete it to force re-initialization with the new prefs
@@ -87,8 +86,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setToolbarHidden:NO animated:animated];
     
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.motorPrefs = [[defaults objectForKey:MOTOR_PREFS_KEY] mutableCopy];
     // notice here that if _motorPrefs is left nil above, the following line will fill both dictionaries with YES values
     self.oldMotorPrefs = [self.motorPrefs copy];

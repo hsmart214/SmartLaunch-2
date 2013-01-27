@@ -34,8 +34,7 @@
 
 - (NSMutableDictionary *)settings{
     if (!_settings){
-        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         _settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
     }
     return _settings;
@@ -51,9 +50,8 @@
 }
 
 - (void)saveSettings{
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
-    [defaults setObject:[self.settings copy] forKey:SETTINGS_KEY];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:self.settings forKey:SETTINGS_KEY];
     [defaults synchronize];
     [self.delegate sender:self didChangeSimSettings:self.settings withUpdate:NO];
 }
@@ -144,8 +142,7 @@
     self.launchGuideLengthUnitsLabel.text = [SLUnitsConvertor displayStringForKey:LENGTH_UNIT_KEY];
     self.siteAltitudeUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
     
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     
     if ([[unitPrefs objectForKey:ALT_UNIT_KEY] isEqualToString:K_METERS]){

@@ -119,8 +119,7 @@
     NSNumber *xyCalibration = [NSNumber numberWithFloat:self.xyCalibrationAngle];
     NSNumber *yzCalibration = [NSNumber numberWithFloat:self.yzCalibrationAngle];
     
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
     [settings setObject:xyCalibration forKey:XY_CAL_KEY];
     [settings setObject:yzCalibration forKey:YZ_CAL_KEY];
@@ -150,8 +149,7 @@
     [self.view insertSubview:backgroundView atIndex:0];
     self.calibrateButton.enabled = NO;
     self.motionButton.title = @"Motion On";
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *settings = [defaults objectForKey:SETTINGS_KEY];
     self.xyCalibrationAngle = [[settings objectForKey:XY_CAL_KEY] floatValue];
     self.yzCalibrationAngle = [[settings objectForKey:YZ_CAL_KEY] floatValue];
@@ -175,8 +173,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
     [settings setObject: [NSNumber numberWithFloat:fabsf(self.angleSlider.value)] forKey:LAUNCH_ANGLE_KEY];
     [defaults setObject:settings forKey:SETTINGS_KEY];
@@ -187,32 +184,9 @@
     [super viewWillDisappear:animated];
 }
 
-- (void)viewDidUnload
-{
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
-//    [self.delegate sender:self didChangeLaunchAngle:[NSNumber numberWithFloat:[self.angleLabel.text floatValue]]];
-//    [settings setObject: [NSNumber numberWithFloat:fabsf(self.angleSlider.value)] forKey:LAUNCH_ANGLE_KEY];
-//    [defaults setObject:settings forKey:SETTINGS_KEY];
-//    [defaults synchronize];
-//    self.accelerometer.delegate = nil;
-//    self.accelerometer = nil;
-    [self setAngleLabel:nil];
-    [self setAngleSlider:nil];
-    [self setMotionButton:nil];
-    [self setCalibrateButton:nil];
-    [self setCameraButton:nil];
-    self.delegate = nil;
-    [super viewDidUnload];
-
-}
-
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // We have to keep upright for the accelerometer to work
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-
 @end

@@ -117,8 +117,7 @@
 }
 
 + (NSArray *)manufacturerNames{
-    return [NSArray arrayWithObjects:
-            @"AMW Pro-X",
+    return @[@"AMW Pro-X",
             @"Aerotech RMS",
             @"Aerotech",
             @"Aerotech Hybrid",
@@ -139,29 +138,28 @@
             @"RATTworks",
             @"RoadRunner",
             @"Sky Ripper",
-            @"West Coast Hybrids", nil];
+            @"West Coast Hybrids"];
 }
 
 + (NSArray *)hybridManufacturerNames{
-    return [NSArray arrayWithObjects:
-            @"Aerotech Hybrid",
+    return @[@"Aerotech Hybrid",
             @"Contrail Rockets",
             @"Hypertek",
             @"Propulsion Polymers",
             @"RATTworks",
             @"Sky Ripper",
-            @"West Coast Hybrids", nil];
+            @"West Coast Hybrids"];
 }
 
 
 + (NSArray *)impulseClasses{
-    return [NSArray arrayWithObjects:@"1/8A", @"1/4A", @"1/2A", @"A", @"B", @"C", @"D",
-            @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", nil];
+    return @[@"1/8A", @"1/4A", @"1/2A", @"A", @"B", @"C", @"D",
+            @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O"];
 }
 
 + (NSArray *)motorDiameters{
-    return [NSArray arrayWithObjects:@"6mm", @"13mm", @"18mm", @"24mm", @"29mm",
-            @"38mm", @"54mm", @"75mm", @"98mm", @"150mm", nil];
+    return @[@"6mm", @"13mm", @"18mm", @"24mm", @"29mm",
+            @"38mm", @"54mm", @"75mm", @"98mm", @"150mm"];
 }
 
 /*+ (RocketMotor *)defaultEstesMotor{  // Estes D12
@@ -290,11 +288,11 @@
     //D10 18 70 3-5-7 0.0098 0.0259 Apogee
 
     NSDictionary *apogeeD10 = @{NAME_KEY: @"D10",
-        MOTOR_DIAM_KEY: @(18.0),
-        MOTOR_LENGTH_KEY: @(70.0),
+        MOTOR_DIAM_KEY: @18.0,
+        MOTOR_LENGTH_KEY: @70.0,
         DELAYS_KEY: @"3-5-7",
-        PROP_MASS_KEY: @(0.0098),
-        MOTOR_MASS_KEY: @(0.0259),
+        PROP_MASS_KEY: @0.0098,
+        MOTOR_MASS_KEY: @0.0259,
         MAN_KEY: @"Apogee",
         IMPULSE_KEY: @"D",
         TIME_KEY: times,
@@ -342,9 +340,8 @@ NSInteger sortingFunction(id md1, id md2, void *context){
 }
 
 +(NSArray *)everyMotor{
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
-    NSInteger currentMotorsVersion = [defaults longLongForKey:MOTOR_FILE_VERSION_KEY];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger currentMotorsVersion = [defaults integerForKey:MOTOR_FILE_VERSION_KEY];
     NSBundle *mainBundle = [NSBundle mainBundle];
     NSInteger bundleMotorVersion = [[NSString stringWithContentsOfURL:[mainBundle URLForResource:MOTOR_VERSION_FILENAME withExtension:@"txt"] encoding:NSUTF8StringEncoding error:nil]integerValue];
     NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];

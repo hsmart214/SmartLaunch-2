@@ -39,8 +39,7 @@
 
 - (Rocket *)rocket{
     if (!_rocket){
-        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSDictionary *rocketDict = [defaults objectForKey:SELECTED_ROCKET_KEY];
         if (rocketDict){
             _rocket = [Rocket rocketWithRocketDict:rocketDict];
@@ -56,8 +55,7 @@
 
 - (RocketMotor *)motor{
     if (!_motor){
-        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSDictionary *motorDict = [defaults objectForKey:SELECTED_MOTOR_KEY];
         if (motorDict){
             _motor = [RocketMotor motorWithMotorDict:motorDict];
@@ -73,15 +71,13 @@
 
 - (void)defaultStoreWithKey:(NSString *)key
                    andValue:(id)value{
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:value forKey:key];
     [defaults synchronize];
 }
 
 - (id)defaultFetchWithKey:(NSString *)key{
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *defaults = [NSUbiquitousKeyValueStore defaultStore];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     return [[defaults objectForKey:key] mutableCopy];
 }
 
@@ -92,10 +88,10 @@
     if (!_settings){    // This can only happen on the very first run of the program
                         // We will put some sensible settings in to avoid problems with nil values
         _settings = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                     @(0.9), WIND_VELOCITY_KEY,             //2 MPH
-                     @(0.9144), LAUNCH_GUIDE_LENGTH_KEY,    //36 inches
-                     @(0.0), LAUNCH_ANGLE_KEY,
-                     @(33.0), LAUNCH_ALTITUDE_KEY,          //100 feet
+                     @0.9, WIND_VELOCITY_KEY,             //2 MPH
+                     @0.9144, LAUNCH_GUIDE_LENGTH_KEY,    //36 inches
+                     @0.0, LAUNCH_ANGLE_KEY,
+                     @33.0, LAUNCH_ALTITUDE_KEY,          //100 feet
                      nil];
         [self defaultStoreWithKey:SETTINGS_KEY andValue:_settings];
         // If this is the first run we also need to set the standard defaults
@@ -137,8 +133,7 @@
     [self defaultStoreWithKey:SETTINGS_KEY andValue:self.settings];
     self.motorCell.textLabel.text = motor.name;
     self.motorCell.detailTextLabel.text = [NSString stringWithFormat:@"%1.1f", [motor.totalImpulse floatValue]];
-    NSString *path = [[NSBundle mainBundle] pathForResource:motor.manufacturer ofType:@"jpg"];
-    UIImage *theImage = [UIImage imageWithContentsOfFile:path];
+    UIImage *theImage = [UIImage imageNamed:motor.manufacturer];
     self.motorCell.imageView.image = theImage;
     if (self.view.window)[self updateDisplay];
 }
@@ -296,7 +291,6 @@
         [(SLSaveFlightDataTVC *)segue.destinationViewController setFlightData:flight];
         [(SLSaveFlightDataTVC *)segue.destinationViewController setPhysicsModel:self.model];
         [(SLSaveFlightDataTVC *)segue.destinationViewController setRocket:self.rocket];
-        //        [(SLSaveFlightDataTVC *)segue.destinationViewController setSimDataSource:self];
     }
 }
 
@@ -317,7 +311,6 @@
 {
     [super viewDidLoad];
     UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
-    //    NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
     UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
     [backgroundView setImage:backgroundImage];
     self.tableView.backgroundView = backgroundView;
