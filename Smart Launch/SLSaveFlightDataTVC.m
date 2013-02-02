@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 J. HOWARD SMART. All rights reserved.
 //
 
+/* I think this controller needs to respond to iCloud updates because it holds a strong Rocket*
+ which may change externally */
+
 #import "SLSaveFlightDataTVC.h"
 #import "SLUnitsConvertor.h"
 
@@ -122,13 +125,21 @@
     });
 }
 
-
-
-
 #pragma mark - View Life Cycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+    UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
+    [backgroundView setImage:backgroundImage];
+    self.tableView.backgroundView = backgroundView;
+}
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setToolbarHidden:NO animated:animated];
+    
     self.cdEstimateField.text = [NSString stringWithFormat:@"%1.2f",[self.rocket.cd floatValue]];
     self.rocketName.text = self.rocket.name;
     self.motorName.text = self.physicsModel.motor.name;
@@ -143,12 +154,18 @@
         NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
         NSArray *changedKeys = [[notification userInfo] objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
         for (NSString *key in changedKeys) {
-            [defaults setObject:[store objectForKey:key] forKey:key];
+            [defaults setObject:[store objectForKey:key] forKey:key];       // right now this can only be the favorite rockets dictionary
+        }
+        Rocket *possiblyChangedRocket = [defaults dictionaryForKey:FAVORITE_ROCKETS_KEY][self.rocket.name];
+        if (possiblyChangedRocket){
+            self.rocket = possiblyChangedRocket;
+        }else{ // somebody deleted or renamed the current rocket, so we will put it back in under the current name to avoid confusion
+            NSMutableDictionary *rocketFavorites = [[defaults dictionaryForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
+            rocketFavorites[self.rocket.name] = self.rocket;
+            [defaults setObject:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
+            [store setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
         }
         [defaults synchronize];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-        });
     }];
 }
 

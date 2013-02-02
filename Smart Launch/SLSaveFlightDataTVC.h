@@ -15,6 +15,6 @@
 @property (nonatomic, strong) NSDictionary *flightData;
 @property (nonatomic, strong) Rocket *rocket;
 @property (nonatomic, weak) SLPhysicsModel *physicsModel;
-@property (nonatomic, weak) id delegate;
+@property (nonatomic, weak) id delegate;            // this dummy delegate only exists to make the prepareForSegue code easier
 
 @end

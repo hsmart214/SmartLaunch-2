@@ -159,7 +159,7 @@
     self.angleView.dataSource = self;
     
     // check to see if the device has a camera.  If not, remove the camera button from the toolbar
-    if (![[UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerCameraDeviceRear] containsObject:(NSString *)kUTTypeImage]){
+    if (![[UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera] containsObject:(NSString *)kUTTypeImage]){
         NSMutableArray *buttons = [self.toolbarItems mutableCopy];
         [buttons removeObject:self.cameraButton];
         [self setToolbarItems:buttons animated:YES];

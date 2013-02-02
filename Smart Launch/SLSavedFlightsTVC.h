@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Rocket.h"
 
 @protocol SLSavedFlightsDelegate <NSObject>
 
@@ -18,6 +19,6 @@
 
 @interface SLSavedFlightsTVC : UITableViewController
 //model
-@property (nonatomic, strong) NSArray *savedFlights;
+@property (nonatomic, strong) Rocket* rocket;
 
 @end

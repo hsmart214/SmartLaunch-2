@@ -6,6 +6,12 @@
 //  Copyright (c) 2012 All rights reserved.
 //
 
+/* This controller needs to respond to iCloud updates because it holds a strong Rocket*
+ which may change externally.  This is the only place that an existing Rocket * can have
+ its name changed.  The current code default behavior in this situation is to delete the
+ old instance and save a new one under the new name key.  Upon cancellation, the old 
+ instance is restored under the old name. */
+
 #import "SLRocketPropertiesTVC.h"
 
 #define DELETE_BUTTON_INDEX 2
@@ -15,32 +21,18 @@
 @property (weak, nonatomic) UIScrollView *scrollView;
 @property (nonatomic, weak) UITextField *activeField;
 @property (nonatomic, strong) Rocket *oldRocket;
-@property (nonatomic, strong) NSArray *validMotorDiameters;
+@property (nonatomic, strong, readonly) NSArray *validMotorDiameters;
 @property (weak, nonatomic) IBOutlet UILabel *calculatedCdLabel;
 @property (weak, nonatomic) IBOutlet UIStepper *motorDiamStepper;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *calcCdButton;
+@property (nonatomic, strong) id iCloudObserver;
 
 @end
 
 @implementation SLRocketPropertiesTVC
 
 - (NSArray *)validMotorDiameters{
-    if (!_validMotorDiameters){
-        _validMotorDiameters = [NSArray arrayWithObjects:
-                                [NSNumber numberWithInteger:6],
-                                [NSNumber numberWithInteger:13],
-                                [NSNumber numberWithInteger:18],
-                                [NSNumber numberWithInteger:24],
-                                [NSNumber numberWithInteger:29],
-                                [NSNumber numberWithInteger:38],
-                                [NSNumber numberWithInteger:54],
-                                [NSNumber numberWithInteger:66],
-                                [NSNumber numberWithInteger:75],
-                                [NSNumber numberWithInteger:98],
-                                [NSNumber numberWithInteger:150],
-                                nil];
-    }
-    return _validMotorDiameters;
+    return @[@6, @13, @18, @24, @29, @38, @54, @66, @75, @98, @150];
 }
 
 - (BOOL)isValidRocket{
@@ -110,17 +102,10 @@
         _rocket = [[Rocket alloc] init];
         self.motorDiamStepper.value = [self.motorDiamStepper minimumValue];
         self.motorDiamLabel.text = [NSString stringWithFormat:@"%1.0f", self.motorDiamStepper.value];
-        _rocket.motorSize = [NSNumber numberWithInteger:6];
+        _rocket.motorSize = @6;
     }else {
-        self.oldRocket = [self.rocket copy];    // in case we need to delete this Rocket* later
+        self.oldRocket = [self.rocket copyWithZone:nil];    // in case we need to delete this Rocket* later
     }
-        
-    // set up the unit labels based on user preferences
-    self.motorDiamUnitsLabel.text = [SLUnitsConvertor displayStringForKey:MOTOR_SIZE_UNIT_KEY];
-    self.massUnitsLabel.text = [SLUnitsConvertor displayStringForKey:MASS_UNIT_KEY];
-    self.lenUnitsLabel.text = [SLUnitsConvertor displayStringForKey:LENGTH_UNIT_KEY];
-    self.diamUnitsLabel.text = [SLUnitsConvertor displayStringForKey:DIAM_UNIT_KEY];
-    
     self.nameField.delegate = self;
     self.kitNameField.delegate = self;
     self.manField.delegate = self;
@@ -128,13 +113,45 @@
     self.diamField.delegate = self;
     self.lenField.delegate = self;
     self.cdField.delegate = self;
-    
-    [self updateDisplay];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO animated:animated];
+    // set up the unit labels based on user preferences
+    self.motorDiamUnitsLabel.text = [SLUnitsConvertor displayStringForKey:MOTOR_SIZE_UNIT_KEY];
+    self.massUnitsLabel.text = [SLUnitsConvertor displayStringForKey:MASS_UNIT_KEY];
+    self.lenUnitsLabel.text = [SLUnitsConvertor displayStringForKey:LENGTH_UNIT_KEY];
+    self.diamUnitsLabel.text = [SLUnitsConvertor displayStringForKey:DIAM_UNIT_KEY];
+    [self updateDisplay];
+    
+    self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+        NSArray *changedKeys = [[notification userInfo] objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
+        for (NSString *key in changedKeys) {
+            [defaults setObject:[store objectForKey:key] forKey:key];       // right now this can only be the favorite rockets dictionary
+        }
+        [defaults synchronize];
+        Rocket *possiblyChangedRocket = [defaults dictionaryForKey:FAVORITE_ROCKETS_KEY][self.rocket.name];
+        if (possiblyChangedRocket){
+            self.rocket = possiblyChangedRocket;
+        }else{ // somebody deleted or renamed the current rocket, so we will put it back in under the current name to avoid confusion
+            NSMutableDictionary *rocketFavorites = [[defaults dictionaryForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
+            rocketFavorites[self.rocket.name] = self.rocket;
+            [defaults setObject:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
+            [store setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updateDisplay];
+        });
+    }];
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self.iCloudObserver];
+    self.iCloudObserver = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -202,6 +219,14 @@
 #pragma mark - Save/Delete/Cancel actions
 
 - (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
+    if (self.oldRocket.name && ![self.rocket.name isEqualToString:self.oldRocket.name]){
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+        NSMutableDictionary *rocketFavorites = [[defaults dictionaryForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
+        [rocketFavorites removeObjectForKey:self.oldRocket.name];
+        [defaults setObject:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
+        [store setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
+    }
     [self.delegate SLRocketPropertiesTVC: self savedRocket:self.rocket];
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -209,7 +234,6 @@
 
 // pop back without saving
 - (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
-    if (self.oldRocket)[self.delegate SLRocketPropertiesTVC:self savedRocket:self.oldRocket];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -231,7 +255,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"savedFlightsSegue"]){
         //pass on the model for the next table view controller
-        [(SLSavedFlightsTVC *)segue.destinationViewController setSavedFlights:self.rocket.recordedFlights];
+        [(SLSavedFlightsTVC *)segue.destinationViewController setRocket:self.rocket];
     }
 }
 

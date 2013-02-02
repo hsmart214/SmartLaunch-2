@@ -6,24 +6,20 @@
 //  Copyright (c) 2013 J. HOWARD SMART. All rights reserved.
 //
 
+/* This controller needs to respond to iCloud updates because it holds a strong Rocket*
+ which may change externally */
+
 #import "SLSavedFlightsTVC.h"
 #import "SLFlightDataCell.h"
 #import "SLUnitsConvertor.h"
 
 @interface SLSavedFlightsTVC ()
 
+@property (nonatomic, strong) NSArray *savedFlights;
+
 @end
 
 @implementation SLSavedFlightsTVC
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -64,19 +60,17 @@
     cell.altitudeUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
     NSNumber *alt = self.savedFlights[indexPath.row][FLIGHT_ALTITUDE_KEY];
     alt = [SLUnitsConvertor displayUnitsOf:alt forKey:ALT_UNIT_KEY];
-    cell.altitude.text = [NSString stringWithFormat:@"%5.0f", [alt floatValue]];
+    cell.altitude.text = [NSString stringWithFormat:@"%1.0f", [alt floatValue]];
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
+
 
 
 // Override to support editing the table view.
@@ -88,40 +82,15 @@
         [tempFlights removeObjectAtIndex:indexPath.row];
         self.savedFlights = [tempFlights copy];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
 
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
