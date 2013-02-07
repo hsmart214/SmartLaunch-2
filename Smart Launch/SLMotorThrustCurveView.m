@@ -25,6 +25,12 @@
     [self setNeedsDisplay];
 }
 
+-(NSString *)verticalUnits{
+    if (!_verticalUnits){
+        _verticalUnits = @"N";
+    }
+    return _verticalUnits;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -54,11 +60,14 @@
     return _vrange;
 }
 
+-(CGFloat)timeSlice{
+    return self.hrange /self.frame.size.width * WIDTH_FRACTION;
+}
+
 
 - (void)drawRect:(CGRect)rect
 {
     if (!_dataSource) return;
-    ///    CGFloat ppp = [UIScreen mainScreen].scale;
     CGFloat tmax = [self.dataSource motorThrustCurveViewTimeValueRange:self];
     CGFloat fmax = [self.dataSource motorThrustCurveViewDataValueRange:self];
     CGFloat graphWidth = self.frame.size.width * WIDTH_FRACTION;
@@ -102,7 +111,7 @@
     }
     CGContextStrokePath(context);
     
-    NSString *maxNewtons = [NSString stringWithFormat:@"%1.0f N",self.fullrange];
+    NSString *maxNewtons = [NSString stringWithFormat:@"%1.0f %@",self.fullrange, self.verticalUnits];
     CGPoint maxNPoint = CGPointMake(10, 10);
     [maxNewtons drawAtPoint:maxNPoint forWidth:80 withFont:[UIFont systemFontOfSize:10] fontSize:10 lineBreakMode:NSLineBreakByCharWrapping baselineAdjustment:UIBaselineAdjustmentNone];
     

@@ -8,12 +8,13 @@
 
 #import "SLPhysicsModel.h"
 
-@interface SLPhysicsModel()
+@interface SLPhysicsModel() <SLPhysicsModelDatasource>
 
 /* This is the opposing acceleration from gravity, the component of g along the axis of the launch guide */
 @property (nonatomic) double altitude;      // y component of the rocket's position
 @property (nonatomic) double travel;        // x component of the rocket's position
 @property (nonatomic) double velocity;      // magnitude of the rocket's velocity vector
+@property (nonatomic) float machNumber;
 @property (nonatomic) float maxVelocity;
 @property (nonatomic) double timeIndex;
 @property (nonatomic, strong) NSMutableArray *flightProfile;
@@ -29,7 +30,7 @@
 @implementation SLPhysicsModel
 
 - (NSUInteger)version{
-    return 2;
+    return 3;
 }
 
 /* Going to break data encapsulation here for the sake of performance in the integration loops */
@@ -164,6 +165,7 @@
     double cd = [self.rocket.cd floatValue];
     double ccd; // "corrected cd" adjusted for transonic region
     double mach = v / [[atmosphereData objectForKey:MACH_ONE_KEY] floatValue];
+    _machNumber = mach;
     // this uses the same mach correction the wRASP uses
     if (mach < 0.9) {
         ccd = cd;
@@ -258,7 +260,8 @@
         NSNumber *alt = @(_altitude);
         NSNumber *trav = @(_travel);
         NSNumber *accel = @(a);
-        [self.flightProfile addObject:@[time, alt, trav, vel, accel]];
+        NSNumber *mach = @(_machNumber);
+        [self.flightProfile addObject:@[time, alt, trav, vel, accel, mach]];
         totalDistanceTravelled += distanceTravelled;
         if (_timeIndex >= burnoutTime && _velocity <= 0.0) break;           // Just in case you don't get off the pad
     }
@@ -292,7 +295,8 @@
         NSNumber *alt = @(_altitude);
         NSNumber *trav = @(_travel);
         NSNumber *accel = @(acc);
-        [_flightProfile addObject:@[time, alt, trav, vel, accel]];
+        NSNumber *mach = @(_machNumber);
+        [_flightProfile addObject:@[time, alt, trav, vel, accel, mach]];
     }
     //I will assume that the maximum velocity will be achieved at burnout
     //It would be very unusual if this were not true, and if so it would not be far off
@@ -325,7 +329,8 @@
         NSNumber *alt = @(_altitude);
         NSNumber *trav = @(_travel);
         NSNumber *accel = @(acc);
-        [self.flightProfile addObject:@[time, alt, trav, vel, accel]];
+        NSNumber *mach = @(_machNumber);
+        [self.flightProfile addObject:@[time, alt, trav, vel, accel, mach]];
     }
 }
 
@@ -351,13 +356,39 @@
     return (v0 + slope * (alt - d0));
 }
 
+#pragma mark - dataSource methods
+
+-(NSString *)rocketName{
+    return self.rocket.name;
+}
+
+-(NSString *)motorName{
+    return self.motor.name;
+}
+
+-(NSString *)motorManufacturerName{
+    return self.motor.manufacturer;
+}
+
 - (double)apogee{
     return [[[self.flightProfile lastObject] objectAtIndex:ALT_INDEX] doubleValue];
+}
+
+-(NSNumber *)apogeeAltitude{
+    return [[self.flightProfile lastObject] objectAtIndex:ALT_INDEX];
 }
 
 - (float)fastApogee{
     //currently this is no different from the slow method, but I hope to speed it up
     return [[self.flightProfile lastObject][ALT_INDEX] floatValue] ;
+}
+
+- (NSNumber *)coastTime{
+    return @([self burnoutToApogee]);
+}
+
+-(NSNumber *)totalTime{
+    return [self.flightProfile lastObject][TIME_INDEX];
 }
 
 - (double)burnoutToApogee{
@@ -368,16 +399,63 @@
     return self.maxVelocity;
 }
 
+-(NSNumber *)burnoutVelocity{
+    return @(self.maxVelocity);
+}
+
+-(NSNumber *)maxAcceleration{
+    float accelMax = 0.0;
+    for (NSArray *arr in _flightProfile){
+        float accel = [arr[ACCEL_INDEX] floatValue];
+        if (accel > accelMax) accelMax = accel;
+    }
+    return @(accelMax);
+}
+
+-(NSNumber *)maxMachNumber{
+    float maxMach = 0.0;
+    for (NSArray *arr in _flightProfile){
+        float mac = [arr[MACH_INDEX] floatValue];
+        if (mac > maxMach) maxMach = mac;
+    }
+    return @(maxMach);
+}
+
+//These methods are for the plotting of the flight profile. They should run fast enough.  We shall see
+//It occurs to me that I should do binary search on the time to improve performance
+
+-(NSInteger)dataIndexForTimeIndex:(NSNumber *)timeIndex{
+    float t = [timeIndex floatValue];
+    NSInteger pivot = [self.flightProfile count]/2;
+    NSInteger move = pivot/2;
+    while (move>1) {
+        if ([self.flightProfile[pivot][TIME_INDEX] floatValue] > t){
+            //if the pivot point is AFTER the timeIndex, look behind
+            pivot -= move;
+            move /= 2;
+        }else{
+            //look forward
+            pivot += move;
+            move /= 2;
+        }
+    }
+    return pivot;
+}
+
+-(NSNumber *)dataAtTime:(NSNumber *)timeIndex forKey:(NSInteger)dataIndex{
+    NSInteger i = [self dataIndexForTimeIndex:timeIndex];
+    return self.flightProfile[i][dataIndex];
+}
+
 //This one is for plotting the flight profile - gives back an array of data with the flight data with an increment (pixel width)
 
 - (NSArray *)flightDataWithTimeIncrement:(float)increment{
-    // time, altitude, velocity, acceleration
+    // time, altitude, velocity, acceleration, mach
     // here I am going to make the simplifying assumption that the increment will be substantially larger than 1/DIVS
     // since it will be 1/ the number of pixels in one second of displayed profile - on the order of 1/100
     // so for each point I will take the flightProfile info at the first point AFTER the incremented time
     NSMutableArray *data = [NSMutableArray array];
-    [data addObject:[NSArray arrayWithObjects:[NSNumber numberWithDouble:0.0], [NSNumber numberWithDouble:0.0], 
-                     [NSNumber numberWithDouble:0.0], [NSNumber numberWithDouble:0.0],nil]];
+    [data addObject:@[@0.0,@0.0,@0.0,@0.0,@0.0,@0.0]];
     NSInteger profileIndex = 0;
     NSInteger dataIndex = 1;
     while (profileIndex < [self.flightProfile count]) {
@@ -391,7 +469,7 @@
         // now the profileIndex points to the first time point after the requested time.  Close enough to graph well
         [data addObject:[_flightProfile objectAtIndex:profileIndex]];
     }
-    return [NSArray arrayWithArray:data];
+    return [data copy];
 }
 
 // This next method is for the rapid updates necessary for the drawRect routine in the animated view

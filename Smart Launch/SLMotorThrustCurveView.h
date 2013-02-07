@@ -23,5 +23,8 @@
 @interface SLMotorThrustCurveView : UIView
 
 @property (nonatomic, weak) id<SLMotorThrustCurveViewDataSource> dataSource;
+@property (nonatomic, copy) NSString *verticalUnits;
+
+-(CGFloat) timeSlice;
 
 @end

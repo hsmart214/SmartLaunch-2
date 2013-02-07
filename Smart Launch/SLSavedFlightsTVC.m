@@ -15,27 +15,37 @@
 
 @interface SLSavedFlightsTVC ()
 
-@property (nonatomic, strong) NSArray *savedFlights;
+@property (nonatomic, strong) NSMutableArray *savedFlights;
+@property (nonatomic, strong) NSArray *originalSavedFlights;
+@property (nonatomic, strong) id iCloudObserver;
 
 @end
 
 @implementation SLSavedFlightsTVC
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+- (NSMutableArray *)savedFlights{
+    if(!_savedFlights){
+        _savedFlights = [self.rocket.recordedFlights mutableCopy];
+    }
+    return _savedFlights;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Target action
+
+- (IBAction)save:(UIBarButtonItem *)sender {
+    [self.rocketDelegate SLSavedFlightsTVC:self didUpdateSavedFlights:[self.savedFlights copy]];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)cancel:(UIBarButtonItem *)sender {
+    //pop back without changing a thing
+    self.rocket.recordedFlights = self.originalSavedFlights;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)revert:(UIBarButtonItem *)sender {
+    self.savedFlights = [self.originalSavedFlights mutableCopy];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -48,8 +58,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"SavedFlightCell";
-    SLFlightDataCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    SLFlightDataCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SavedFlightCell" forIndexPath:indexPath];
     
     if (!cell){
         cell = [[SLFlightDataCell alloc] init];
@@ -65,22 +74,16 @@
     return cell;
 }
 
-
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
 }
 
-
-
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+                                            forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        NSMutableArray *tempFlights = [self.savedFlights mutableCopy];
-        [tempFlights removeObjectAtIndex:indexPath.row];
-        self.savedFlights = [tempFlights copy];
+        [self.savedFlights removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
@@ -93,4 +96,43 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark View life cycle
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setToolbarHidden:NO animated:animated];
+    self.originalSavedFlights = [self.savedFlights copy];
+    
+    self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification
+                                                                            object:nil
+                                                                             queue:nil
+                                                                        usingBlock:^(NSNotification *notification){
+        /* This is the block */
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+        NSArray *changedKeys = [[notification userInfo] objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
+        for (NSString *key in changedKeys) {
+            [defaults setObject:[store objectForKey:key] forKey:key];       // right now this can only be the favorite rockets dictionary
+        }
+        NSDictionary *possiblyChangedRocket = [defaults dictionaryForKey:FAVORITE_ROCKETS_KEY][self.rocket.name];
+        if (possiblyChangedRocket){
+            self.rocket = [Rocket rocketWithRocketDict:possiblyChangedRocket];
+        }else{// somebody on another device deleted this rocket, so we will put it right back in!
+            NSMutableDictionary *savedRockets = [[defaults dictionaryForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
+            [savedRockets setObject:[self.rocket rocketPropertyList] forKey:self.rocket.name];
+            [defaults setObject:savedRockets forKey:FAVORITE_ROCKETS_KEY];
+            [store setDictionary:savedRockets forKey:FAVORITE_ROCKETS_KEY];
+        }
+        self.savedFlights = [self.rocket.recordedFlights mutableCopy];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+        [defaults synchronize];
+    }];
+    /* End of the block */
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self.iCloudObserver];
+    self.iCloudObserver = nil;
+}
 @end

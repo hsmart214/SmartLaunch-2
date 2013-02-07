@@ -19,6 +19,7 @@
 
 @interface SLSavedFlightsTVC : UITableViewController
 //model
-@property (nonatomic, strong) Rocket* rocket;
+@property (nonatomic, copy) Rocket* rocket;
+@property (nonatomic, weak) id<SLSavedFlightsDelegate> rocketDelegate;
 
 @end

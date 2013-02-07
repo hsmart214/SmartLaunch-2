@@ -104,7 +104,7 @@
         self.motorDiamLabel.text = [NSString stringWithFormat:@"%1.0f", self.motorDiamStepper.value];
         _rocket.motorSize = @6;
     }else {
-        self.oldRocket = [self.rocket copyWithZone:nil];    // in case we need to delete this Rocket* later
+        self.oldRocket = [self.rocket copy];    // in case we need to delete this Rocket* later
     }
     self.nameField.delegate = self;
     self.kitNameField.delegate = self;
@@ -232,7 +232,7 @@
 }
 
 
-// pop back without saving
+// pop back without saving - no way to undo any saves done to the saved flights, though
 - (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -246,7 +246,14 @@
 #pragma mark - SLSavedFlightsDelegate method
 
 -(void)SLSavedFlightsTVC:(id)sender didUpdateSavedFlights:(NSArray *)savedFlights{
-    self.rocket.recordedFlights = savedFlights;
+    self.rocket.recordedFlights = [savedFlights copy];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *rocketFavorites = [[defaults dictionaryForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
+    [rocketFavorites setObject:[self.rocket rocketPropertyList] forKey:self.rocket.name];
+    [defaults setObject:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
+    [[NSUbiquitousKeyValueStore defaultStore] setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
+    [defaults synchronize];
+
     [self calculateCd];
 }
 
@@ -256,6 +263,7 @@
     if ([segue.identifier isEqualToString:@"savedFlightsSegue"]){
         //pass on the model for the next table view controller
         [(SLSavedFlightsTVC *)segue.destinationViewController setRocket:self.rocket];
+        [(SLSavedFlightsTVC *)segue.destinationViewController setRocketDelegate:self];
     }
 }
 

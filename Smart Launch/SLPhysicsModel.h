@@ -12,6 +12,27 @@
 #import "RocketMotor.h"
 #import "Rocket.h"
 
+@protocol SLPhysicsModelDatasource <NSObject>
+
+@optional
+
+- (NSArray *)flightDataWithTimeIncrement: (float)increment;
+    // a constructed array of time, altitude, velocity, acceleration - NSArray of NSArray
+    // for use in graphing the flightProfile
+
+- (float)quickFFVelocityAtLaunchAngle:(float)angle andGuideLength:(float)length;
+-(NSString *)rocketName;
+-(NSString *)motorName;
+-(NSString *)motorManufacturerName;
+-(NSNumber *)burnoutVelocity;
+-(NSNumber *)maxAcceleration;
+-(NSNumber *)coastTime;
+-(NSNumber *)apogeeAltitude;
+-(NSNumber *)maxMachNumber;
+-(NSNumber *)totalTime;
+-(NSNumber *)dataAtTime:(NSNumber *)timeIndex forKey:(NSInteger)dataIndex;
+
+@end
 
 @interface SLPhysicsModel : NSObject
 
@@ -42,10 +63,4 @@
 - (float)fastApogee;                        // to be used in the estimations for calculating the best Cd
 
 - (double)burnoutToApogee;                  // SECONDS from burnout to apogee - the ideal motor delay
-
-- (float)quickFFVelocityAtLaunchAngle:(float)angle andGuideLength:(float)length;
-                                            // a constructed array of time, altitude, velocity, acceleration - NSArray of NSArray
-                                            // for use in graphing the flightProfile
-- (NSArray *)flightDataWithTimeIncrement: (float)increment;  
-
 @end

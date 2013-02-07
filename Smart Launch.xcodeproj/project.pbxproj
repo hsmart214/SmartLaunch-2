@@ -92,6 +92,7 @@
 		42E5914716213D7E003EF252 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E5914616213D7E003EF252 /* Default.png */; };
 		42E5914916213D91003EF252 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E5914816213D91003EF252 /* Default-568h@2x.png */; };
 		42E5914C16213E1C003EF252 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E5914A16213DC7003EF252 /* Default@2x.png */; };
+		42E7317416BF66ED00F6D468 /* SLFlightProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7317316BF66ED00F6D468 /* SLFlightProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -211,6 +212,8 @@
 		42E5914616213D7E003EF252 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		42E5914816213D91003EF252 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		42E5914A16213DC7003EF252 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		42E7317216BF66ED00F6D468 /* SLFlightProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFlightProfileViewController.h; sourceTree = "<group>"; };
+		42E7317316BF66ED00F6D468 /* SLFlightProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFlightProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +362,8 @@
 			children = (
 				4220A4A515F55CC60055EE35 /* MainStoryboard_iPhone.storyboard */,
 				4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */,
+				42E7317216BF66ED00F6D468 /* SLFlightProfileViewController.h */,
+				42E7317316BF66ED00F6D468 /* SLFlightProfileViewController.m */,
 				42BB53CB16A295310029C882 /* SLSavedFlightsTVC.h */,
 				42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */,
 				42BB53C716A293D20029C882 /* SLFlightDataCell.h */,
@@ -574,6 +579,7 @@
 				42BB53C916A293D20029C882 /* SLFlightDataCell.m in Sources */,
 				42BB53CD16A295310029C882 /* SLSavedFlightsTVC.m in Sources */,
 				42BB53D016A38C4E0029C882 /* SLSaveFlightDataTVC.m in Sources */,
+				42E7317416BF66ED00F6D468 /* SLFlightProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

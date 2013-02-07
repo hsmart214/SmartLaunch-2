@@ -35,15 +35,6 @@ static SLUnitsConvertor *sUnitsConvertor;
     [defaults synchronize];
 }
 
-
-+(NSNumber *)conversionForKey:(NSString *)key andValue:(NSNumber *)value{
-    NSNumber *result;
-    if ([key isEqualToString:TEMP_UNIT_KEY]){
-        
-    }
-    return result;
-}
-
 #pragma mark - Class Methods
 // measurements of the rocket (and motor) will always be stored in the metric units used for calculations
 // but the user can ask to see them in US or non-standard units if desired
@@ -51,14 +42,15 @@ static SLUnitsConvertor *sUnitsConvertor;
 // [SLUnitsConvertor metricStandardOf: [self.motorDiamLabel.text floatValue] forKey: MOTOR_SIZE_UNIT_KEY];
 +(NSNumber *)metricStandardOf:(NSNumber *)dimension forKey:(NSString *)dimKey{
     NSDictionary *standards = [NSDictionary dictionaryWithObjectsAndKeys:
-                               K_METERS,        LENGTH_UNIT_KEY, 
+                               K_METERS,        LENGTH_UNIT_KEY,
                                K_METERS,        DIAM_UNIT_KEY,
-                               K_MILLIMETERS,   MOTOR_SIZE_UNIT_KEY, 
-                               K_KILOGRAMS,     MASS_UNIT_KEY, 
-                               K_CELSIUS,       TEMP_UNIT_KEY, 
+                               K_MILLIMETERS,   MOTOR_SIZE_UNIT_KEY,
+                               K_KILOGRAMS,     MASS_UNIT_KEY,
+                               K_CELSIUS,       TEMP_UNIT_KEY,
                                K_METER_PER_SEC, VELOCITY_UNIT_KEY,
                                K_METERS,        ALT_UNIT_KEY,
                                K_NEWTONS,       THRUST_UNIT_KEY,
+                               K_GRAVITIES,     ACCEL_UNIT_KEY,
                                nil];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
@@ -123,6 +115,11 @@ static SLUnitsConvertor *sUnitsConvertor;
             return [NSNumber numberWithFloat:[dimension floatValue] / FEET_PER_METER];
         }
     }
+    if ([dimKey isEqualToString:ACCEL_UNIT_KEY]){   //standard is GRAVITIES
+        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_M_PER_SEC_SQ]){
+            return @([dimension floatValue] / GRAV_ACCEL);
+        }
+    }
     return dimension;
 }
 
@@ -138,6 +135,7 @@ static SLUnitsConvertor *sUnitsConvertor;
                                K_METER_PER_SEC, VELOCITY_UNIT_KEY,
                                K_METERS,        ALT_UNIT_KEY,
                                K_NEWTONS,       THRUST_UNIT_KEY,
+                               K_GRAVITIES,     ACCEL_UNIT_KEY,
                                nil];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
@@ -207,6 +205,11 @@ static SLUnitsConvertor *sUnitsConvertor;
             return [NSNumber numberWithFloat:[dimension floatValue] * POUNDS_PER_KILOGRAM * GRAV_ACCEL];
         }
     }
+    if ([dimKey isEqualToString:ACCEL_UNIT_KEY]){   //standard is GRAVITIES
+        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_M_PER_SEC_SQ]){
+            return @([dimension floatValue] * GRAV_ACCEL);
+        }
+    }
     return dimension;
 }
 
@@ -227,7 +230,8 @@ static SLUnitsConvertor *sUnitsConvertor;
                                     @"mm", K_MILLIMETERS,
                                     @"N", K_NEWTONS,
                                     @"oz", K_OUNCES,
-                                    @"lbs", K_POUNDS,nil];
+                                    @"lbs", K_POUNDS,
+                                    @"m/s^2", K_M_PER_SEC_SQ, nil];
     NSString *preferredUnit = [SLUnitsConvertor defaultUnitForKey:dimKey];
     return [displayStrings objectForKey:preferredUnit];
 }

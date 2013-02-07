@@ -92,6 +92,7 @@ enum LaunchDirection : NSUInteger {
 #define TRAV_INDEX 2
 #define VEL_INDEX 3
 #define ACCEL_INDEX 4
+#define MACH_INDEX 5
     
 #pragma mark String literal constants
     
@@ -108,9 +109,11 @@ enum LaunchDirection : NSUInteger {
 #define DIAM_UNIT_KEY @"SmartLaunch_Diameter_Unit"
 #define TEMP_UNIT_KEY @"SmartLaunch_Temperature_Unit"
 #define VELOCITY_UNIT_KEY @"SmartLaunch_Velocity_Unit"
+#define ACCEL_UNIT_KEY @"SmartLaunch_Acceleration_Unit"
 #define THRUST_UNIT_KEY @"SmartLaunch_Thrust_Unit"
 #define MASS_UNIT_KEY @"SmartLaunch_Mass_Unit"
 #define MOTOR_SIZE_UNIT_KEY @"SmartLaunch_Motor_Size_Unit"
+#define MACH_UNIT_KEY @"SmartLaunch_Mach_Unit_Key"
     
 #define ALT_MSL_KEY @"SmartLaunch_AltitudeMSL"
 #define TEMPERATURE_KEY @"SmartLaunch_Temperature"
@@ -158,6 +161,8 @@ enum LaunchDirection : NSUInteger {
 #define K_KILOGRAMS @"kg"
 #define K_OUNCES @"oz"
 #define K_GRAMS @"g"
+#define K_GRAVITIES @"g"
+#define K_M_PER_SEC_SQ @"m/s^2"
     
     //constants for the RocketMotor class
     

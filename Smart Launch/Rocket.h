@@ -24,6 +24,7 @@
 
 +(Rocket *)rocketWithRocketDict:(NSDictionary *)rocketDict;
 
+-(Rocket *)copy;
 -(Rocket *)copyWithZone:(NSZone *)zone;
 -(void)addFlight:(NSDictionary *)flightData;
 -(void)clearFlights;

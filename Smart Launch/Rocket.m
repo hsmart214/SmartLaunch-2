@@ -25,6 +25,10 @@
     return [Rocket rocketWithRocketDict:self.rocketPropertyList];
 }
 
+- (Rocket *)copy{
+    return [self copyWithZone:nil];
+}
+
 - (NSNumber *)cd{
     if (!_cd){
         _cd = [NSNumber numberWithFloat:DEFAULT_CD];
