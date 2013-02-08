@@ -16,6 +16,8 @@
 @property (nonatomic) CGFloat hrange;
 @property (nonatomic) CGFloat vrange;
 @property (nonatomic) CGFloat fullrange;
+@property (nonatomic, strong) NSString *verticalUnits;
+@property (nonatomic, strong) NSString *verticalUnitsFormat;
 
 @end
 
@@ -30,6 +32,11 @@
         _verticalUnits = @"N";
     }
     return _verticalUnits;
+}
+
+-(void)setVerticalUnits:(NSString *)units withFormat:(NSString *)formatString{
+    self.verticalUnits = units;
+    self.verticalUnitsFormat = [formatString stringByAppendingString:@" %@"];;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -58,6 +65,11 @@
         self.fullrange = _vrange * pow(10.0, ex);
     }
     return _vrange;
+}
+
+-(void)resetAxes{
+    _hrange = 0.0;
+    _vrange = 0.0;
 }
 
 -(CGFloat)timeSlice{
@@ -111,7 +123,7 @@
     }
     CGContextStrokePath(context);
     
-    NSString *maxNewtons = [NSString stringWithFormat:@"%1.0f %@",self.fullrange, self.verticalUnits];
+    NSString *maxNewtons = [NSString stringWithFormat:self.verticalUnitsFormat,self.fullrange, self.verticalUnits];
     CGPoint maxNPoint = CGPointMake(10, 10);
     [maxNewtons drawAtPoint:maxNPoint forWidth:80 withFont:[UIFont systemFontOfSize:10] fontSize:10 lineBreakMode:NSLineBreakByCharWrapping baselineAdjustment:UIBaselineAdjustmentNone];
     

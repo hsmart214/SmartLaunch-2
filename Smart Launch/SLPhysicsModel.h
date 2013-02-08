@@ -14,6 +14,9 @@
 
 @protocol SLPhysicsModelDatasource <NSObject>
 
+// These dataSource methods allow a customer of the model to ask details about the flight profile
+// without revealing internals, and without letting them muck with the model itself.
+
 @optional
 
 - (NSArray *)flightDataWithTimeIncrement: (float)increment;
@@ -26,6 +29,7 @@
 -(NSString *)motorManufacturerName;
 -(NSNumber *)burnoutVelocity;
 -(NSNumber *)maxAcceleration;
+-(NSNumber *)maxDeceleration;
 -(NSNumber *)coastTime;
 -(NSNumber *)apogeeAltitude;
 -(NSNumber *)maxMachNumber;
@@ -34,8 +38,9 @@
 
 @end
 
-@interface SLPhysicsModel : NSObject
+@interface SLPhysicsModel: NSObject<SLPhysicsModelDatasource>
 
+- (float)quickFFVelocityAtLaunchAngle:(float)angle andGuideLength:(float)length;
 @property (nonatomic) float launchGuideLength;
 @property (nonatomic) float launchGuideAngle;
 @property (nonatomic) enum LaunchDirection LaunchGuideDirection;

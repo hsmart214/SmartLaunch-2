@@ -35,14 +35,22 @@ enum SLFlightProfileGraphType {
 -(void)updateDisplay{
     self.rocketNameLabel.text = [self.dataSource rocketName];
     self.motorNameLabel.text = [self.dataSource motorName];
-    self.maxVelocityLabel.text = [NSString stringWithFormat:@"%1.0f",[[self.dataSource burnoutVelocity] floatValue]];
+    self.maxVelocityLabel.text = [NSString stringWithFormat:@"%1.0f",[[SLUnitsConvertor displayUnitsOf:[self.dataSource burnoutVelocity] forKey:VELOCITY_UNIT_KEY] floatValue]];
+    self.apogeeLabel.text = [NSString stringWithFormat:@"%1.0f",[[SLUnitsConvertor displayUnitsOf:[self.dataSource apogeeAltitude] forKey:ALT_UNIT_KEY] floatValue]];
     self.coastTimeLabel.text = [NSString stringWithFormat:@"%1.1f",[[self.dataSource coastTime] floatValue]];
     NSArray *unitNames = @[VELOCITY_UNIT_KEY, ACCEL_UNIT_KEY, ALT_UNIT_KEY, MACH_UNIT_KEY];
+    NSArray *formatStrings = @[@"%1.0f",@"%1.0f",@"%1.0f",@"%1.1f"];
     NSUInteger index = [self.graphTypeSegmentedControl selectedSegmentIndex];
-    [self.graphView setVerticalUnits:[SLUnitsConvertor displayStringForKey:unitNames[index]]];
+    [self.graphView setVerticalUnits:[SLUnitsConvertor displayStringForKey:unitNames[index]]withFormat:formatStrings[index]];
     
     [self.graphView setNeedsDisplay];
 }
+
+- (IBAction)graphTypeChanged:(UISegmentedControl *)sender {
+    [self.graphView resetAxes];
+    [self updateDisplay];
+}
+
 
 #pragma mark - SLMotorThrustCurveViewDataSource methods
 
@@ -63,7 +71,6 @@ enum SLFlightProfileGraphType {
     return [[self.dataSource totalTime] floatValue];
 }
 
-//This is completely wrong and needs to be rewritten
 -(CGFloat)motorThrustCurveView:(SLMotorThrustCurveView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
     switch ((enum SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
         case SLFlightProfileGraphTypeVelocity:

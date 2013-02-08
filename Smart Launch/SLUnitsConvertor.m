@@ -51,6 +51,7 @@ static SLUnitsConvertor *sUnitsConvertor;
                                K_METERS,        ALT_UNIT_KEY,
                                K_NEWTONS,       THRUST_UNIT_KEY,
                                K_GRAVITIES,     ACCEL_UNIT_KEY,
+                               K_MACH,          MACH_UNIT_KEY,
                                nil];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
@@ -231,7 +232,9 @@ static SLUnitsConvertor *sUnitsConvertor;
                                     @"N", K_NEWTONS,
                                     @"oz", K_OUNCES,
                                     @"lbs", K_POUNDS,
-                                    @"m/s^2", K_M_PER_SEC_SQ, nil];
+                                    @"m/s^2", K_M_PER_SEC_SQ,
+                                    @"g", K_GRAVITIES,
+                                    @"", K_MACH, nil];
     NSString *preferredUnit = [SLUnitsConvertor defaultUnitForKey:dimKey];
     return [displayStrings objectForKey:preferredUnit];
 }

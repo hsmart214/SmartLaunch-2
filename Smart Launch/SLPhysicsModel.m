@@ -412,6 +412,15 @@
     return @(accelMax);
 }
 
+-(NSNumber *)maxDeceleration{
+    float decelMax = 0.0;
+    for (NSArray *arr in _flightProfile){
+        float accel = [arr[ACCEL_INDEX] floatValue];
+        if (accel < decelMax) decelMax = accel;
+    }
+    return @(decelMax);
+}
+
 -(NSNumber *)maxMachNumber{
     float maxMach = 0.0;
     for (NSArray *arr in _flightProfile){

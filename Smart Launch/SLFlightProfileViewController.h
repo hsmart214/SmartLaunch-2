@@ -13,5 +13,6 @@
 @interface SLFlightProfileViewController : UIViewController<SLMotorThrustCurveViewDataSource>
 
 @property (nonatomic, weak) id<SLPhysicsModelDatasource> dataSource;
+@property (nonatomic, weak) id delegate;    // This dummy is unused - only to avoid awkward recoding of the prepare method
 
 @end

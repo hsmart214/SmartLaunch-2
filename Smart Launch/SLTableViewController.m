@@ -14,6 +14,7 @@
 #import "SLUnitsTVC.h"
 #import "SLMotorSearchViewController.h"
 #import "SLSaveFlightDataTVC.h"
+#import "SLFlightProfileViewController.h"
 
 @interface SLTableViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *rocketCell;
@@ -294,6 +295,9 @@
         [(SLSaveFlightDataTVC *)segue.destinationViewController setFlightData:flight];
         [(SLSaveFlightDataTVC *)segue.destinationViewController setPhysicsModel:self.model];
         [(SLSaveFlightDataTVC *)segue.destinationViewController setRocket:self.rocket];
+    }
+    if ([[segue identifier] isEqualToString:@"FlightProfileSegue"]){
+        [(SLFlightProfileViewController *)segue.destinationViewController setDataSource:self.model];
     }
 }
 

@@ -189,7 +189,9 @@
                                     K_CELSIUS, TEMP_UNIT_KEY,
                                     K_METERS, ALT_UNIT_KEY,
                                     K_METER_PER_SEC, VELOCITY_UNIT_KEY,
-                                    K_NEWTONS, THRUST_UNIT_KEY, nil];
+                                    K_NEWTONS, THRUST_UNIT_KEY,
+                                    K_M_PER_SEC_SQ, ACCEL_UNIT_KEY,
+                                    K_MACH, MACH_UNIT_KEY, nil];
     NSDictionary *standardDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                       K_MILLIMETERS, MOTOR_SIZE_UNIT_KEY,
                                       K_INCHES, DIAM_UNIT_KEY,
@@ -198,7 +200,9 @@
                                       K_FAHRENHEIT, TEMP_UNIT_KEY,
                                       K_FEET, ALT_UNIT_KEY,
                                       K_MILES_PER_HOUR, VELOCITY_UNIT_KEY,
-                                      K_POUNDS, THRUST_UNIT_KEY, nil];
+                                      K_POUNDS, THRUST_UNIT_KEY,
+                                      K_GRAVITIES, ACCEL_UNIT_KEY,
+                                      K_MACH, MACH_UNIT_KEY, nil];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     switch (buttonIndex) {
         case 0://metric
@@ -217,14 +221,16 @@
 
 +(void)setStandardDefaults{
     NSDictionary *stdDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-                                      K_MILLIMETERS, MOTOR_SIZE_UNIT_KEY,
-                                      K_INCHES, DIAM_UNIT_KEY,
-                                      K_INCHES, LENGTH_UNIT_KEY,
-                                      K_POUNDS, MASS_UNIT_KEY,
-                                      K_FAHRENHEIT, TEMP_UNIT_KEY,
-                                      K_FEET, ALT_UNIT_KEY,
-                                      K_MILES_PER_HOUR, VELOCITY_UNIT_KEY,
-                                      K_POUNDS, THRUST_UNIT_KEY, nil];
+                                 K_MILLIMETERS, MOTOR_SIZE_UNIT_KEY,
+                                 K_INCHES, DIAM_UNIT_KEY,
+                                 K_INCHES, LENGTH_UNIT_KEY,
+                                 K_POUNDS, MASS_UNIT_KEY,
+                                 K_FAHRENHEIT, TEMP_UNIT_KEY,
+                                 K_FEET, ALT_UNIT_KEY,
+                                 K_MILES_PER_HOUR, VELOCITY_UNIT_KEY,
+                                 K_POUNDS, THRUST_UNIT_KEY,
+                                 K_GRAVITIES, ACCEL_UNIT_KEY,
+                                 K_MACH, MACH_UNIT_KEY, nil];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:stdDefaults forKey:UNIT_PREFS_KEY];
     [defaults synchronize];

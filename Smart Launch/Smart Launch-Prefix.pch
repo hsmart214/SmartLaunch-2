@@ -163,6 +163,7 @@ enum LaunchDirection : NSUInteger {
 #define K_GRAMS @"g"
 #define K_GRAVITIES @"g"
 #define K_M_PER_SEC_SQ @"m/s^2"
+#define K_MACH @"Mach"
     
     //constants for the RocketMotor class
     

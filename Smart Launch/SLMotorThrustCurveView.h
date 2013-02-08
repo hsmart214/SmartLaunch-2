@@ -23,8 +23,9 @@
 @interface SLMotorThrustCurveView : UIView
 
 @property (nonatomic, weak) id<SLMotorThrustCurveViewDataSource> dataSource;
-@property (nonatomic, copy) NSString *verticalUnits;
 
--(CGFloat) timeSlice;
+-(void)setVerticalUnits:(NSString *)units withFormat:(NSString *)formatString;
+//-(CGFloat) timeSlice;
+-(void)resetAxes;       // this is called when updating to a different graph without leaving the view
 
 @end
