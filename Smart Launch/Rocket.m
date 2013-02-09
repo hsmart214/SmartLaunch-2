@@ -31,27 +31,27 @@
 
 - (NSNumber *)cd{
     if (!_cd){
-        _cd = [NSNumber numberWithFloat:DEFAULT_CD];
+        _cd = @(DEFAULT_CD);
     }
     return _cd;
 }
 
 -(Rocket *)initWithProperties:(NSDictionary *)rocketProperties{
     self = [super init];
-    self.name = [rocketProperties objectForKey:ROCKET_NAME_KEY];
-    self.length = [rocketProperties objectForKey:ROCKET_LENGTH_KEY];
-    self.diameter = [rocketProperties objectForKey:ROCKET_DIAM_KEY];
-    self.cd = [rocketProperties objectForKey:ROCKET_CD_KEY];
-    self.motorSize = [rocketProperties objectForKey:ROCKET_MOTORSIZE_KEY];
-    self.mass = [rocketProperties objectForKey:ROCKET_MASS_KEY];
-    self.kitName = [rocketProperties objectForKey:ROCKET_KITNAME_KEY];
-    self.manufacturer = [rocketProperties objectForKey:ROCKET_MAN_KEY];
-    self.recordedFlights = [rocketProperties objectForKey:ROCKET_RECORDED_FLIGHTS_KEY];
+    self.name = rocketProperties[ROCKET_NAME_KEY];
+    self.length = rocketProperties[ROCKET_LENGTH_KEY];
+    self.diameter = rocketProperties[ROCKET_DIAM_KEY];
+    self.cd = rocketProperties[ROCKET_CD_KEY];
+    self.motorSize = rocketProperties[ROCKET_MOTORSIZE_KEY];
+    self.mass = rocketProperties[ROCKET_MASS_KEY];
+    self.kitName = rocketProperties[ROCKET_KITNAME_KEY];
+    self.manufacturer = rocketProperties[ROCKET_MAN_KEY];
+    self.recordedFlights = rocketProperties[ROCKET_RECORDED_FLIGHTS_KEY];
     return self;
 }
 
 -(Rocket *)init{
-    NSDictionary *rocketProperties = [NSDictionary dictionary];
+    NSDictionary *rocketProperties = @{};
     self = [self initWithProperties:rocketProperties];
     return self;
 }
@@ -69,14 +69,14 @@
 
 -(NSDictionary *)rocketPropertyList{
     NSMutableDictionary *rocketProperties = [NSMutableDictionary dictionary];
-    if (self.name) [rocketProperties setObject:self.name forKey:ROCKET_NAME_KEY];
-    if (self.length) [rocketProperties setObject:self.length forKey:ROCKET_LENGTH_KEY];
-    if (self.diameter) [rocketProperties setObject:self.diameter forKey:ROCKET_DIAM_KEY];
-    if (self.cd) [rocketProperties setObject:self.cd forKey:ROCKET_CD_KEY];
-    if (self.motorSize) [rocketProperties setObject:self.motorSize forKey:ROCKET_MOTORSIZE_KEY];
-    if (self.mass) [rocketProperties setObject:self.mass forKey:ROCKET_MASS_KEY];
-    if (self.kitName) [rocketProperties setObject:self.kitName forKey:ROCKET_KITNAME_KEY];
-    if (self.manufacturer) [rocketProperties setObject:self.manufacturer forKey:ROCKET_MAN_KEY];
+    if (self.name) rocketProperties[ROCKET_NAME_KEY] = self.name;
+    if (self.length) rocketProperties[ROCKET_LENGTH_KEY] = self.length;
+    if (self.diameter) rocketProperties[ROCKET_DIAM_KEY] = self.diameter;
+    if (self.cd) rocketProperties[ROCKET_CD_KEY] = self.cd;
+    if (self.motorSize) rocketProperties[ROCKET_MOTORSIZE_KEY] = self.motorSize;
+    if (self.mass) rocketProperties[ROCKET_MASS_KEY] = self.mass;
+    if (self.kitName) rocketProperties[ROCKET_KITNAME_KEY] = self.kitName;
+    if (self.manufacturer) rocketProperties[ROCKET_MAN_KEY] = self.manufacturer;
     if (self.recordedFlights) rocketProperties[ROCKET_RECORDED_FLIGHTS_KEY] = self.recordedFlights;
     return rocketProperties;
 }
@@ -87,15 +87,14 @@
 }
 
 +(Rocket *)defaultRocket{
-    NSDictionary *goblinProperties = [NSDictionary dictionaryWithObjectsAndKeys:
-                                      @"Goblin", ROCKET_NAME_KEY,
-                                      @"Goblin", ROCKET_KITNAME_KEY,
-                                      @"Estes", ROCKET_MAN_KEY,
-                                      [NSNumber numberWithFloat:0.033655], ROCKET_DIAM_KEY,
-                                      [NSNumber numberWithFloat:0.36322], ROCKET_LENGTH_KEY,
-                                      [NSNumber numberWithFloat:0.034], ROCKET_MASS_KEY,
-                                      [NSNumber numberWithInteger:24], ROCKET_MOTORSIZE_KEY,
-                                      [NSNumber numberWithFloat:DEFAULT_CD], ROCKET_CD_KEY, nil];
+    NSDictionary *goblinProperties = @{ROCKET_NAME_KEY: @"Goblin",
+                                      ROCKET_KITNAME_KEY: @"Goblin",
+                                      ROCKET_MAN_KEY: @"Estes",
+                                      ROCKET_DIAM_KEY: @0.033655f,
+                                      ROCKET_LENGTH_KEY: @0.36322f,
+                                      ROCKET_MASS_KEY: @0.034f,
+                                      ROCKET_MOTORSIZE_KEY: @24,
+                                      ROCKET_CD_KEY: @(DEFAULT_CD)};
 
     return [[Rocket alloc] initWithProperties:goblinProperties];
 }

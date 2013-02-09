@@ -47,31 +47,31 @@ enum LaunchDirection : NSUInteger {
 #pragma mark Calculation constants
     
 #define NEWTON_RAPHSON_ITERATIONS 4
-#define NEWTON_RAPHSON_EPSILON 0.01             //added to Cd to be used for getting the slope between the two Cd's
-#define NEWTON_RAPHSON_TOLERANCE 0.02           //if we are within this fraction of the actual altitude, we stop early
+#define NEWTON_RAPHSON_EPSILON 0.01F             //added to Cd to be used for getting the slope between the two Cd's
+#define NEWTON_RAPHSON_TOLERANCE 0.02F           //if we are within this fraction of the actual altitude, we stop early
 #define NEWTON_RAPHSON_EPSILON_SCALING_FACTOR 3 //the epsilon is divided by this factor every time through the iterations
     
 #define DIVS_DURING_BURN 1000                   //how fine-grained is the numerical integration
 #define DIVS_AFTER_BURNOUT 500
     
-#define MAX_LAUNCH_GUIDE_ANGLE 0.349066     //20 degrees in radians
-#define DEFAULT_LAUNCH_GUIDE_LENGTH 1.83    //6 feet in meters
-#define DEFAULT_CD 0.75                     //the typical Cd of a 3FNC/4FNC small model rocket
-#define GRAV_ACCEL 9.80665
-#define _PI_ 3.14159265359
-#define T_LAPSE_RATE 0.0065
-#define STANDARD_TEMP 288.15
-#define STANDARD_PRESSURE 101.325
-#define MOLAR_MASS 0.0289644
-#define GAS_CONSTANT 8.31447
-#define PRESSURE_EXPONENT 5.25578
-#define MPH_TO_M_PER_SEC 0.44704
-#define FEET_PER_METER 3.2808399
-#define DEGREES_PER_RADIAN 57.2957
-#define POUNDS_PER_KILOGRAM 2.2046226
-#define OUNCES_PER_KILOGRAM 35.2739616
-#define ABSOLUTE_ZERO_CELSIUS -272.15
-#define STANDARD_RHO 1.22                 //kg per m^3
+#define MAX_LAUNCH_GUIDE_ANGLE 0.349066F    //20 degrees in radians
+#define DEFAULT_LAUNCH_GUIDE_LENGTH 1.83F   //6 feet in meters
+#define DEFAULT_CD 0.75F                    //the typical Cd of a 3FNC/4FNC small model rocket
+#define GRAV_ACCEL 9.80665F
+#define _PI_ 3.14159265359F
+#define T_LAPSE_RATE 0.0065F
+#define STANDARD_TEMP 288.15F
+#define STANDARD_PRESSURE 101.325F
+#define MOLAR_MASS 0.0289644F
+#define GAS_CONSTANT 8.31447F
+#define PRESSURE_EXPONENT 5.25578F
+#define MPH_TO_M_PER_SEC 0.44704F
+#define FEET_PER_METER 3.2808399F
+#define DEGREES_PER_RADIAN 57.2957F
+#define POUNDS_PER_KILOGRAM 2.2046226F
+#define OUNCES_PER_KILOGRAM 35.2739616F
+#define ABSOLUTE_ZERO_CELSIUS -272.15F
+#define STANDARD_RHO 1.22F                 //kg per m^3
     
     /* All calculations done in kilogram-meter-second metric measurements, and radians
      The maximum allowed launch guide angle is set by the Model Rocketry Safety Code and High Power Rocketry Safety Code

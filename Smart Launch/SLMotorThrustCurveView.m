@@ -34,6 +34,13 @@
     return _verticalUnits;
 }
 
+-(NSString *)verticalUnitsFormat{
+    if (!_verticalUnitsFormat){
+        _verticalUnitsFormat = @"%1.0f";
+    }
+    return _verticalUnitsFormat;
+}
+
 -(void)setVerticalUnits:(NSString *)units withFormat:(NSString *)formatString{
     self.verticalUnits = units;
     self.verticalUnitsFormat = [formatString stringByAppendingString:@" %@"];;
@@ -114,6 +121,8 @@
         CGContextAddLineToPoint(context, origin.x + graphWidth, yvalue);
         CGContextStrokePath(context);
     }
+    
+    // Here is a little cheat.  If fmax is < 3.0 
     
     // Draw the hash grid
     

@@ -198,7 +198,7 @@
     if (radians > MAX_LAUNCH_GUIDE_ANGLE){
         radians = MAX_LAUNCH_GUIDE_ANGLE;
     }
-    NSNumber *angle = [NSNumber numberWithFloat:radians];
+    NSNumber *angle = @(radians);
     [self.delegate sender:self didChangeLaunchAngle:angle];
     self.accelerometer.delegate = nil;
     [self dismissViewControllerAnimated:YES completion:nil];

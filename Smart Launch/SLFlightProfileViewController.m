@@ -94,6 +94,13 @@ enum SLFlightProfileGraphType {
 
 #pragma mark - View Lifecycle
 
+-(void)viewDidLoad{
+    UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
+    [backgroundView setImage:backgroundImage];
+    [self.view insertSubview:backgroundView atIndex:0];
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setToolbarHidden:YES animated:YES];
     self.velocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];

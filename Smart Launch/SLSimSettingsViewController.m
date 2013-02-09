@@ -57,8 +57,8 @@
 }
 
 - (IBAction)windDirectionChanged:(UISegmentedControl *)sender {
-    NSNumber *windDir = [NSNumber numberWithInt:self.windDirectionControl.selectedSegmentIndex];
-    [self.settings setObject:windDir forKey:WIND_DIRECTION_KEY];
+    NSNumber *windDir = @(self.windDirectionControl.selectedSegmentIndex);
+    (self.settings)[WIND_DIRECTION_KEY] = windDir;
     [self saveSettings];
 }
 
@@ -92,7 +92,7 @@
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     if (abs(howRecent) < 15.0)
     {
-        NSNumber *altGPSmeters = [NSNumber numberWithFloat: newLocation.altitude];
+        NSNumber *altGPSmeters = @(newLocation.altitude);
         NSNumber *altGPSforDisplay = [SLUnitsConvertor displayUnitsOf:altGPSmeters forKey:ALT_MSL_KEY];
         self.siteAltitudeLabel.text = [NSString stringWithFormat:@"%1.0f",[altGPSforDisplay floatValue]];
         self.siteAltitudeStepper.value = [altGPSforDisplay floatValue];
@@ -104,7 +104,7 @@
 #pragma mark - SLSimulationDelegate method
 
 - (void)sender:(id)sender didChangeLaunchAngle:(NSNumber *)launchAngle{
-    [self.settings setObject:launchAngle forKey:LAUNCH_ANGLE_KEY];
+    (self.settings)[LAUNCH_ANGLE_KEY] = launchAngle;
     self.launchAngleLabel.text = [NSString stringWithFormat:@"%1.1f", [launchAngle floatValue] * DEGREES_PER_RADIAN];
     [self saveSettings];
 }
@@ -145,29 +145,29 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     
-    if ([[unitPrefs objectForKey:ALT_UNIT_KEY] isEqualToString:K_METERS]){
+    if ([unitPrefs[ALT_UNIT_KEY] isEqualToString:K_METERS]){
         [self.siteAltitudeStepper setMaximumValue:4000];
         self.siteAltitudeStepper.stepValue = 50;
     }else{// must be feet
         [self.siteAltitudeStepper setMaximumValue:10000];
         self.siteAltitudeStepper.stepValue = 100;
     }
-    if ([[unitPrefs objectForKey:VELOCITY_UNIT_KEY] isEqualToString:K_METER_PER_SEC]){
+    if ([unitPrefs[VELOCITY_UNIT_KEY] isEqualToString:K_METER_PER_SEC]){
         [self.windVelocityStepper setMaximumValue:8.95];
         self.windVelocityStepper.stepValue = 0.5;
-    }else if ([[unitPrefs objectForKey:VELOCITY_UNIT_KEY] isEqualToString:K_FEET_PER_SEC]){
+    }else if ([unitPrefs[VELOCITY_UNIT_KEY] isEqualToString:K_FEET_PER_SEC]){
         [self.windVelocityStepper setMaximumValue:30];
         self.windVelocityStepper.stepValue = 2.0;
     }else{// must be MPH
         [self.windVelocityStepper setMaximumValue:20];
         self.windVelocityStepper.stepValue = 1.0;
     }
-    if ([[unitPrefs objectForKey:LENGTH_UNIT_KEY] isEqualToString:K_FEET]){
+    if ([unitPrefs[LENGTH_UNIT_KEY] isEqualToString:K_FEET]){
         self.launchGuideLengthFormatString = @"%1.1f";
         [self.launchGuideLengthStepper setMaximumValue:20];
         self.launchGuideLengthStepper.stepValue = 0.5;
         self.launchGuideLengthStepper.minimumValue = 0.5;
-    }else if ([[unitPrefs objectForKey:LENGTH_UNIT_KEY] isEqualToString:K_INCHES]){
+    }else if ([unitPrefs[LENGTH_UNIT_KEY] isEqualToString:K_INCHES]){
         self.launchGuideLengthFormatString = @"%1.0f";
         [self.launchGuideLengthStepper setMaximumValue:240];
         self.launchGuideLengthStepper.stepValue = 2.0;
@@ -179,16 +179,16 @@
         self.launchGuideLengthStepper.minimumValue = 0.2;
     }
     
-    float launchAngle = [[self.settings objectForKey:LAUNCH_ANGLE_KEY] floatValue];
+    float launchAngle = [(self.settings)[LAUNCH_ANGLE_KEY] floatValue];
     self.launchAngleLabel.text = [NSString stringWithFormat:@"%1.1f", launchAngle * DEGREES_PER_RADIAN];
-    float windVelocity = [[SLUnitsConvertor displayUnitsOf: [self.settings objectForKey:WIND_VELOCITY_KEY]forKey:VELOCITY_UNIT_KEY] floatValue];
+    float windVelocity = [[SLUnitsConvertor displayUnitsOf: (self.settings)[WIND_VELOCITY_KEY]forKey:VELOCITY_UNIT_KEY] floatValue];
     self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", windVelocity];
     self.windVelocityStepper.value = windVelocity;
-    float guideLength = [[SLUnitsConvertor displayUnitsOf:[self.settings objectForKey:LAUNCH_GUIDE_LENGTH_KEY] forKey:LENGTH_UNIT_KEY] floatValue];
+    float guideLength = [[SLUnitsConvertor displayUnitsOf:(self.settings)[LAUNCH_GUIDE_LENGTH_KEY] forKey:LENGTH_UNIT_KEY] floatValue];
     if (guideLength < self.launchGuideLengthStepper.minimumValue) guideLength = self.launchGuideLengthStepper.minimumValue;
     self.launchGuideLengthLabel.text = [NSString stringWithFormat:self.launchGuideLengthFormatString, guideLength];
     self.launchGuideLengthStepper.value = guideLength;
-    float altitude = [[SLUnitsConvertor displayUnitsOf:[self.settings objectForKey:LAUNCH_ALTITUDE_KEY] forKey:ALT_UNIT_KEY] floatValue];
+    float altitude = [[SLUnitsConvertor displayUnitsOf:(self.settings)[LAUNCH_ALTITUDE_KEY] forKey:ALT_UNIT_KEY] floatValue];
     float alt = floorf(altitude/self.siteAltitudeStepper.stepValue) * self.siteAltitudeStepper.stepValue;
     self.siteAltitudeLabel.text = [NSString stringWithFormat:@"%1.0f", alt];
     self.siteAltitudeStepper.value = alt;
@@ -206,13 +206,13 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     self.windVelocityStepper.value = [self.windVelocityLabel.text floatValue];
-    NSNumber *metricValue = [SLUnitsConvertor metricStandardOf:[NSNumber numberWithFloat:self.windVelocityStepper.value] forKey:VELOCITY_UNIT_KEY];
-    [self.settings setObject:metricValue forKey:WIND_VELOCITY_KEY];
-    [self.settings setObject:metricValue forKey:LAUNCH_TEMPERATURE_KEY];
-    metricValue = [SLUnitsConvertor metricStandardOf:[NSNumber numberWithFloat:self.launchGuideLengthStepper.value] forKey:LENGTH_UNIT_KEY];
-    [self.settings setObject:metricValue forKey:LAUNCH_GUIDE_LENGTH_KEY];
-    metricValue = [SLUnitsConvertor metricStandardOf:[NSNumber numberWithFloat:self.siteAltitudeStepper.value] forKey:ALT_UNIT_KEY];
-    [self.settings setObject:metricValue forKey:LAUNCH_ALTITUDE_KEY];
+    NSNumber *metricValue = [SLUnitsConvertor metricStandardOf:@(self.windVelocityStepper.value) forKey:VELOCITY_UNIT_KEY];
+    (self.settings)[WIND_VELOCITY_KEY] = metricValue;
+    (self.settings)[LAUNCH_TEMPERATURE_KEY] = metricValue;
+    metricValue = [SLUnitsConvertor metricStandardOf:@(self.launchGuideLengthStepper.value) forKey:LENGTH_UNIT_KEY];
+    (self.settings)[LAUNCH_GUIDE_LENGTH_KEY] = metricValue;
+    metricValue = [SLUnitsConvertor metricStandardOf:@(self.siteAltitudeStepper.value) forKey:ALT_UNIT_KEY];
+    (self.settings)[LAUNCH_ALTITUDE_KEY] = metricValue;
     [self saveSettings];
 }
 

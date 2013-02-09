@@ -48,14 +48,14 @@
 }
 
 - (IBAction)windVelocityChanged:(UISlider *)sender {
-    NSNumber *wind = [SLUnitsConvertor displayUnitsOf:[NSNumber numberWithFloat:sender.value] forKey:VELOCITY_UNIT_KEY];
+    NSNumber *wind = [SLUnitsConvertor displayUnitsOf:@(sender.value) forKey:VELOCITY_UNIT_KEY];
     self.windVelocityLabel.text = [NSString stringWithFormat:@"%2.1f", [wind floatValue]];
     self.displayWindVelocity = sender.value;
     [self updateDisplay];
 }
 
 - (IBAction)launchGuideLengthValueChanged:(UIStepper *)sender { // Remember this stepper keeps values in display units, not metric
-    self.displayLaunchGuideLength = [[SLUnitsConvertor metricStandardOf:[NSNumber numberWithFloat:sender.value] forKey:LENGTH_UNIT_KEY] floatValue];
+    self.displayLaunchGuideLength = [[SLUnitsConvertor metricStandardOf:@((float)sender.value) forKey:LENGTH_UNIT_KEY] floatValue];
     self.launchGuideLengthLabel.text = [NSString stringWithFormat:self.launchGuideLengthFormatString, sender.value];
     self.displayFFVelocity = [self.dataSource quickFFVelocityAtAngle:_displayLaunchAngle andGuideLength:_displayLaunchGuideLength];
     [self updateDisplay];
@@ -91,12 +91,12 @@
     NSArray *buttonNames = @[@"With Wind", @"CrossWind", @"Into Wind"];
     NSInteger dir;
     for (dir = 0; dir < 3; dir++) {
-        if ([sender.currentTitle isEqualToString:[buttonNames objectAtIndex:dir]]){
+        if ([sender.currentTitle isEqualToString:buttonNames[dir]]){
             break;
         }
     }
     dir = (dir + 1) % 3;
-    [sender setTitle:[buttonNames objectAtIndex:dir] forState:UIControlStateNormal];
+    [sender setTitle:buttonNames[dir] forState:UIControlStateNormal];
     self.displayLaunchDirection = (enum LaunchDirection)dir;
     [sender setTitle: buttonNames[dir] forState:UIControlStateNormal];
     [self updateDisplay];
@@ -121,7 +121,7 @@
 - (void)updateDisplay{
     
     self.ffVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
-    NSNumber *vel = [NSNumber numberWithFloat:self.displayFFVelocity];
+    NSNumber *vel = @(self.displayFFVelocity);
     NSNumber *velocity = [SLUnitsConvertor displayUnitsOf:vel forKey:VELOCITY_UNIT_KEY];
     self.ffVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", [velocity floatValue]];
     
@@ -180,12 +180,12 @@
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
 
     // For this stepper I am keeping the value in display units to avoid awkward rounding errors
-    if ([[unitPrefs objectForKey:LENGTH_UNIT_KEY] isEqualToString:K_FEET]){
+    if ([unitPrefs[LENGTH_UNIT_KEY] isEqualToString:K_FEET]){
         self.launchGuideLengthFormatString = @"%1.1f";
         [self.launchGuideLengthStepper setMaximumValue:12];
         self.launchGuideLengthStepper.stepValue = 0.5;
         self.launchGuideLengthStepper.minimumValue = 0.5;
-    }else if ([[unitPrefs objectForKey:LENGTH_UNIT_KEY] isEqualToString:K_INCHES]){
+    }else if ([unitPrefs[LENGTH_UNIT_KEY] isEqualToString:K_INCHES]){
         self.launchGuideLengthFormatString = @"%1.0f";
         [self.launchGuideLengthStepper setMaximumValue:240];
         self.launchGuideLengthStepper.stepValue = 2.0;

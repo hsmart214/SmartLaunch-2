@@ -59,7 +59,7 @@
         if (!_rockets || [_rockets count] == 0){     // If the rocket list is empty give them an example rocket
             _rockets = [NSMutableDictionary dictionary];
             Rocket *defaultRocket = [Rocket defaultRocket];
-            [_rockets setObject:[defaultRocket rocketPropertyList] forKey:defaultRocket.name];
+            _rockets[defaultRocket.name] = [defaultRocket rocketPropertyList];
             [defaults setObject:_rockets forKey:FAVORITE_ROCKETS_KEY];
             [defaults synchronize];
             [self updateRocketArray];
@@ -110,7 +110,7 @@
     NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
     NSMutableDictionary *rocketFavorites = [[defaults objectForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
     if (!rocketFavorites) rocketFavorites = [NSMutableDictionary dictionary];
-    [rocketFavorites setObject:rocket.rocketPropertyList forKey:rocket.name];
+    rocketFavorites[rocket.name] = rocket.rocketPropertyList;
     [defaults setObject:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
     [store setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
     self.selectedRocket = rocket;
@@ -143,9 +143,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"RocketCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    Rocket* cellRocket = [self.rocketArray objectAtIndex:indexPath.row];
+    Rocket* cellRocket = (self.rocketArray)[indexPath.row];
     cell.textLabel.text = cellRocket.name;
-    id detailInfo = [[cellRocket rocketPropertyList] objectForKey:self.detailData];
+    id detailInfo = [cellRocket rocketPropertyList][self.detailData];
     if ([detailInfo isKindOfClass:[NSString class]]){
         cell.detailTextLabel.text = detailInfo;
     } else {
@@ -159,16 +159,16 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.rockets removeObjectForKey:(((Rocket *)[self.rocketArray objectAtIndex:indexPath.row]).name)];
+        [self.rockets removeObjectForKey:(((Rocket *)(self.rocketArray)[indexPath.row]).name)];
         [self updateRocketArray];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self pushRocketFavorites];
     }
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.selectedRocket = [self.rocketArray objectAtIndex:indexPath.row];
+    self.selectedRocket = (self.rocketArray)[indexPath.row];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[self.selectedRocket rocketPropertyList] forKey:SELECTED_ROCKET_KEY];
@@ -178,7 +178,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
-    self.selectedRocket = [self.rocketArray objectAtIndex:indexPath.row];
+    self.selectedRocket = (self.rocketArray)[indexPath.row];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[self.selectedRocket rocketPropertyList] forKey:SELECTED_ROCKET_KEY];

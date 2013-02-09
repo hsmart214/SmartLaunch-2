@@ -152,7 +152,7 @@
     self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
-        NSArray *changedKeys = [[notification userInfo] objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
+        NSArray *changedKeys = [notification userInfo][NSUbiquitousKeyValueStoreChangedKeysKey];
         for (NSString *key in changedKeys) {
             [defaults setObject:[store objectForKey:key] forKey:key];       // right now this can only be the favorite rockets dictionary
         }

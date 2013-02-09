@@ -33,29 +33,29 @@
 -(void)calculateDerivedValues{
     // curve starts at (0,0) which is NOT included in the arrays
     // use trapezoidal approximation to the area-under-the-curve
-    double impulse = 0.5 * [[self.thrusts objectAtIndex:0] floatValue] * [[self.times objectAtIndex:0] floatValue];
-    self.calcPeakThrust = [self.thrusts objectAtIndex:0];
+    double impulse = 0.5 * [(self.thrusts)[0] floatValue] * [(self.times)[0] floatValue];
+    self.calcPeakThrust = (self.thrusts)[0];
     for (NSInteger i = 1; i < [self.times count]; i++) {
-        if ([[self.thrusts objectAtIndex:i] floatValue] > [self.calcPeakThrust floatValue]) self.calcPeakThrust = [self.thrusts objectAtIndex:i]; // defines the first local maximum of the thrust curve.  Unlikely to have a second maximum
-        double deltaT = [[self.times objectAtIndex:i] floatValue] - [[self.times objectAtIndex:i-1] floatValue];
-        double fiminus1 = [[self.thrusts objectAtIndex:i-1] floatValue];
-        double deltaF = [[self.thrusts objectAtIndex:i] floatValue] - fiminus1;
+        if ([(self.thrusts)[i] floatValue] > [self.calcPeakThrust floatValue]) self.calcPeakThrust = (self.thrusts)[i]; // defines the first local maximum of the thrust curve.  Unlikely to have a second maximum
+        double deltaT = [(self.times)[i] floatValue] - [(self.times)[i-1] floatValue];
+        double fiminus1 = [(self.thrusts)[i-1] floatValue];
+        double deltaF = [(self.thrusts)[i] floatValue] - fiminus1;
         impulse += 0.5 * deltaF * deltaT + fiminus1 * deltaT;
     }
-    self.calcTotalImpulse = [NSNumber numberWithDouble:impulse];
+    self.calcTotalImpulse = @(impulse);
 }
 
 -(RocketMotor *)initWithMotorDict:(NSDictionary *)motorDict{
-    self.mass =           [motorDict objectForKey:MOTOR_MASS_KEY];
-    _propellantMass = [motorDict objectForKey:PROP_MASS_KEY];
-    _times =          [motorDict objectForKey:TIME_KEY];
-    _thrusts =        [motorDict objectForKey:THRUST_KEY];
-    _name =           [motorDict objectForKey:NAME_KEY];
-    _manufacturer =   [motorDict objectForKey:MAN_KEY];
-    _impulseClass =   [motorDict objectForKey:IMPULSE_KEY];
-    _diameter =       [motorDict objectForKey:MOTOR_DIAM_KEY];
-    _length =         [motorDict objectForKey:MOTOR_LENGTH_KEY];
-    NSString *delayList = [motorDict objectForKey:DELAYS_KEY];
+    self.mass =           motorDict[MOTOR_MASS_KEY];
+    _propellantMass = motorDict[PROP_MASS_KEY];
+    _times =          motorDict[TIME_KEY];
+    _thrusts =        motorDict[THRUST_KEY];
+    _name =           motorDict[NAME_KEY];
+    _manufacturer =   motorDict[MAN_KEY];
+    _impulseClass =   motorDict[IMPULSE_KEY];
+    _diameter =       motorDict[MOTOR_DIAM_KEY];
+    _length =         motorDict[MOTOR_LENGTH_KEY];
+    NSString *delayList = motorDict[DELAYS_KEY];
     _delays = [delayList componentsSeparatedByString:@"-"];
     [self calculateDerivedValues];
     return self;
@@ -63,40 +63,38 @@
 
 
 -(NSDictionary *)motorDict{
-    NSString *delayString = [self.delays objectAtIndex:0];
+    NSString *delayString = (self.delays)[0];
     if ([self.delays count]>1){
         for (int i = 1; i < [self.delays count]; i++) {
-            delayString = [NSString stringWithFormat:@"%@-%@", delayString, [self.delays objectAtIndex:i]];
+            delayString = [NSString stringWithFormat:@"%@-%@", delayString, (self.delays)[i]];
         }
     }
-    return [NSDictionary dictionaryWithObjectsAndKeys:
-            self.mass, MOTOR_MASS_KEY,
-            self.propellantMass, PROP_MASS_KEY,
-            self.times, TIME_KEY,
-            self.thrusts, THRUST_KEY,
-            self.name, NAME_KEY,
-            self.manufacturer, MAN_KEY,
-            self.impulseClass, IMPULSE_KEY, 
-            self.diameter, MOTOR_DIAM_KEY,
-            self.length, MOTOR_LENGTH_KEY,
-            delayString, DELAYS_KEY,
-            nil];
+    return @{MOTOR_MASS_KEY: self.mass,
+            PROP_MASS_KEY: self.propellantMass,
+            TIME_KEY: self.times,
+            THRUST_KEY: self.thrusts,
+            NAME_KEY: self.name,
+            MAN_KEY: self.manufacturer,
+            IMPULSE_KEY: self.impulseClass, 
+            MOTOR_DIAM_KEY: self.diameter,
+            MOTOR_LENGTH_KEY: self.length,
+            DELAYS_KEY: delayString};
 }
 
 -(CGFloat)thrustAtTime:(CGFloat)time{
     if ((time == 0.0) || (time >= [[_times lastObject] floatValue])) return 0.0;
     NSInteger i = 0;
-    while ([[_times objectAtIndex:i] floatValue] < time) {
+    while ([_times[i] floatValue] < time) {
         i++;
     }
     double fiminus1 = 0.0;
     double timinus1 = 0.0;
     if (i>0) {
-        fiminus1 = [[_thrusts objectAtIndex:i-1] doubleValue];
-        timinus1 = [[_times objectAtIndex:i-1] doubleValue];
+        fiminus1 = [_thrusts[i-1] doubleValue];
+        timinus1 = [_times[i-1] doubleValue];
     }
-    double dti = [[_times objectAtIndex:i] doubleValue];
-    double dfi = [[_thrusts objectAtIndex:i] doubleValue];
+    double dti = [_times[i] doubleValue];
+    double dfi = [_thrusts[i] doubleValue];
     
     double ftime = fiminus1 + ((time - timinus1)/(dti - timinus1)) * (dfi - fiminus1);
     return ftime;
@@ -301,34 +299,33 @@
 }
 
 +(NSDictionary *)manufacturerDict{
-    return [NSDictionary dictionaryWithObjectsAndKeys:
-            @"AMW Pro-X", @"AMW_ProX",
-            @"Aerotech RMS", @"A-RMS",
-            @"Aerotech", @"A",
-            @"Aerotech Hybrid", @"ATH",
-            @"Animal Motor Works", @"AMW",
-            @"Apogee", @"Apogee",
-            @"Cesaroni", @"CTI",
-            @"Contrail Rockets", @"Contrail_Rockets",
-            @"Ellis Mountain", @"Ellis",
-            @"Estes", @"Estes",
-            @"Gorilla Rocket Motors", @"Gorilla_Rocket_Motors",
-            @"Hypertek", @"HT",
-            @"Kosdon by Aerotech", @"KA",
-            @"Kosdon", @"KOS-TRM",
-            @"Loki Research", @"Loki",
-            @"Public Missiles Ltd", @"PML",
-            @"Propulsion Polymers", @"Propul",
-            @"Quest", @"Q",
-            @"RATTworks", @"RATT",
-            @"RoadRunner", @"RR",
-            @"Sky Ripper", @"SkyRip",
-            @"West Coast Hybrids", @"WCoast", nil];
+    return @{@"AMW_ProX": @"AMW Pro-X",
+            @"A-RMS": @"Aerotech RMS",
+            @"A": @"Aerotech",
+            @"ATH": @"Aerotech Hybrid",
+            @"AMW": @"Animal Motor Works",
+            @"Apogee": @"Apogee",
+            @"CTI": @"Cesaroni",
+            @"Contrail_Rockets": @"Contrail Rockets",
+            @"Ellis": @"Ellis Mountain",
+            @"Estes": @"Estes",
+            @"Gorilla_Rocket_Motors": @"Gorilla Rocket Motors",
+            @"HT": @"Hypertek",
+            @"KA": @"Kosdon by Aerotech",
+            @"KOS-TRM": @"Kosdon",
+            @"Loki": @"Loki Research",
+            @"PML": @"Public Missiles Ltd",
+            @"Propul": @"Propulsion Polymers",
+            @"Q": @"Quest",
+            @"RATT": @"RATTworks",
+            @"RR": @"RoadRunner",
+            @"SkyRip": @"Sky Ripper",
+            @"WCoast": @"West Coast Hybrids"};
 }
 
 NSInteger sortingFunction(id md1, id md2, void *context){
-    NSString *first = [(NSDictionary *)md1 objectForKey:NAME_KEY];
-    NSString *second = [(NSDictionary *)md2 objectForKey:NAME_KEY];
+    NSString *first = ((NSDictionary *)md1)[NAME_KEY];
+    NSString *second = ((NSDictionary *)md2)[NAME_KEY];
     if ([first characterAtIndex:0] > [second characterAtIndex:0]) return NSOrderedDescending;
     if ([first characterAtIndex:0] < [second characterAtIndex:0]) return NSOrderedAscending;
     // at this point we know the impulse class is the SAME, so sort by the average thrust
@@ -366,30 +363,30 @@ NSInteger sortingFunction(id md1, id md2, void *context){
         NSMutableDictionary *motorData = [NSMutableDictionary dictionary];
         NSString *header;
         while (true){ // remove all of the comment lines
-            if ([[textLines objectAtIndex:0] characterAtIndex:0]== ';'){
+            if ([textLines[0] characterAtIndex:0]== ';'){
                 [textLines removeObjectAtIndex:0];
                 if ([textLines count] == 0){
                     header = nil;
                     break;
                 }
             }else{    // and grab the header line
-                header = [textLines objectAtIndex:0];
+                header = textLines[0];
                 [textLines removeObjectAtIndex:0];
                 break;
             }
         }
         if (!header) break;
         NSArray *chunks = [header componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        [motorData setValue:[chunks objectAtIndex:0] forKey:NAME_KEY];
-        [motorData setValue:[chunks objectAtIndex:1] forKey:MOTOR_DIAM_KEY];
-        [motorData setValue:[chunks objectAtIndex:2] forKey:MOTOR_LENGTH_KEY];
-        [motorData setValue:[chunks objectAtIndex:3] forKey:DELAYS_KEY];
-        [motorData setValue:[chunks objectAtIndex:4] forKey:PROP_MASS_KEY];
-        [motorData setValue:[chunks objectAtIndex:5] forKey:MOTOR_MASS_KEY];
-        [motorData setValue:[[RocketMotor manufacturerDict] objectForKey:[chunks objectAtIndex:6]] forKey:MAN_KEY];
+        [motorData setValue:chunks[0] forKey:NAME_KEY];
+        [motorData setValue:chunks[1] forKey:MOTOR_DIAM_KEY];
+        [motorData setValue:chunks[2] forKey:MOTOR_LENGTH_KEY];
+        [motorData setValue:chunks[3] forKey:DELAYS_KEY];
+        [motorData setValue:chunks[4] forKey:PROP_MASS_KEY];
+        [motorData setValue:chunks[5] forKey:MOTOR_MASS_KEY];
+        [motorData setValue:[RocketMotor manufacturerDict][chunks[6]] forKey:MAN_KEY];
         // figure out the impulse class from the motor name in the header line
         
-        NSString *mname = [chunks objectAtIndex:0];
+        NSString *mname = chunks[0];
         if ([[mname substringToIndex:2] isEqualToString:@"MM"]) {
             [motorData setValue:@"1/8A" forKey:IMPULSE_KEY];
         }
@@ -403,12 +400,12 @@ NSInteger sortingFunction(id md1, id md2, void *context){
         NSMutableArray *times = [NSMutableArray array];
         NSMutableArray *thrusts = [NSMutableArray array];
         while (true){
-            chunks = [[textLines objectAtIndex:0] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-            chunks = [NSArray arrayWithObjects:[chunks objectAtIndex:0], [chunks lastObject], nil];
-            [times addObject:[NSNumber numberWithFloat:[[chunks objectAtIndex:0] floatValue]]];
-            [thrusts addObject:[NSNumber numberWithFloat:[[chunks objectAtIndex:1] floatValue]]];
+            chunks = [textLines[0] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            chunks = @[chunks[0], [chunks lastObject]];
+            [times addObject:@([chunks[0] floatValue])];
+            [thrusts addObject:@([chunks[1] floatValue])];
             [textLines removeObjectAtIndex:0];
-            if ([[chunks objectAtIndex:1] floatValue] == 0.0) break;
+            if ([chunks[1] floatValue] == 0.0) break;
         }
         [motorData setValue:times forKey:TIME_KEY];
         [motorData setValue:thrusts forKey:THRUST_KEY];

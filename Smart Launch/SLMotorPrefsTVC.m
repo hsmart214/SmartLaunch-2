@@ -26,9 +26,9 @@
 - (NSMutableDictionary*)motorPrefs{
     if (!_motorPrefs){
         _motorPrefs = [NSMutableDictionary dictionaryWithCapacity:64];
-        for (NSString *key in [RocketMotor manufacturerNames]) [_motorPrefs setObject:[NSNumber numberWithBool:YES] forKey:key];
-        for (NSString *key in [RocketMotor motorDiameters]) [_motorPrefs setObject:[NSNumber numberWithBool:YES] forKey:key];
-        for (NSString *key in [RocketMotor impulseClasses]) [_motorPrefs setObject:[NSNumber numberWithBool:YES] forKey:key];
+        for (NSString *key in [RocketMotor manufacturerNames]) _motorPrefs[key] = @YES;
+        for (NSString *key in [RocketMotor motorDiameters]) _motorPrefs[key] = @YES;
+        for (NSString *key in [RocketMotor impulseClasses]) _motorPrefs[key] = @YES;
     }
     return _motorPrefs;
 }
@@ -147,20 +147,20 @@
     NSString *cellText;
     switch (indexPath.section) {
         case 0:
-            cellText = [[RocketMotor manufacturerNames] objectAtIndex:indexPath.row];
+            cellText = [RocketMotor manufacturerNames][indexPath.row];
             cell.imageView.image = [UIImage imageNamed:cellText];
             break;
         case 1:
-            cellText = [[RocketMotor motorDiameters] objectAtIndex:indexPath.row];
+            cellText = [RocketMotor motorDiameters][indexPath.row];
             cell.imageView.image = nil;
             break;
         case 2:
-            cellText = [[RocketMotor impulseClasses] objectAtIndex:indexPath.row];
+            cellText = [RocketMotor impulseClasses][indexPath.row];
             cell.imageView.image = nil;
         default:
             break;
     }
-    if ([[self.motorPrefs objectForKey:cellText] boolValue]){
+    if ([(self.motorPrefs)[cellText] boolValue]){
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
     }else{
         [cell setAccessoryType:UITableViewCellAccessoryNone];
@@ -182,11 +182,11 @@
     if ([cell accessoryType]== UITableViewCellAccessoryCheckmark){
         // it is selected, deselect it and record the deselection
         [cell setAccessoryType:UITableViewCellAccessoryNone];
-        [self.motorPrefs setObject:@(NO) forKey:motorKey];
+        (self.motorPrefs)[motorKey] = @(NO);
     }else{
         // it is not selected, select it and record the selection
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-        [self.motorPrefs setObject:@(YES) forKey:motorKey];
+        (self.motorPrefs)[motorKey] = @(YES);
     }
 }
 
@@ -194,9 +194,9 @@
 
 + (NSDictionary *)motorKeysAllSelected{
     NSMutableDictionary* buildDict = [NSMutableDictionary dictionaryWithCapacity:64];
-    for (NSString *key in [RocketMotor manufacturerNames]) [buildDict setObject:[NSNumber numberWithBool:YES] forKey:key];
-    for (NSString *key in [RocketMotor motorDiameters]) [buildDict setObject:[NSNumber numberWithBool:YES] forKey:key];
-    for (NSString *key in [RocketMotor impulseClasses]) [buildDict setObject:[NSNumber numberWithBool:YES] forKey:key];
+    for (NSString *key in [RocketMotor manufacturerNames]) buildDict[key] = @YES;
+    for (NSString *key in [RocketMotor motorDiameters]) buildDict[key] = @YES;
+    for (NSString *key in [RocketMotor impulseClasses]) buildDict[key] = @YES;
     return [buildDict copy];
 }
 

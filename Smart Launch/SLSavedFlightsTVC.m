@@ -109,7 +109,7 @@
         /* This is the block */
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
-        NSArray *changedKeys = [[notification userInfo] objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
+        NSArray *changedKeys = [notification userInfo][NSUbiquitousKeyValueStoreChangedKeysKey];
         for (NSString *key in changedKeys) {
             [defaults setObject:[store objectForKey:key] forKey:key];       // right now this can only be the favorite rockets dictionary
         }
@@ -118,7 +118,7 @@
             self.rocket = [Rocket rocketWithRocketDict:possiblyChangedRocket];
         }else{// somebody on another device deleted this rocket, so we will put it right back in!
             NSMutableDictionary *savedRockets = [[defaults dictionaryForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
-            [savedRockets setObject:[self.rocket rocketPropertyList] forKey:self.rocket.name];
+            savedRockets[self.rocket.name] = [self.rocket rocketPropertyList];
             [defaults setObject:savedRockets forKey:FAVORITE_ROCKETS_KEY];
             [store setDictionary:savedRockets forKey:FAVORITE_ROCKETS_KEY];
         }

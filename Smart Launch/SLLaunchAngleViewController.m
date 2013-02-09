@@ -116,13 +116,13 @@
 - (IBAction)calibrateButtonPressed:(UIBarButtonItem *)sender {
     self.xyCalibrationAngle = atanf(self.xAccel/self.yAccel);
     self.yzCalibrationAngle = atanf(self.zAccel/self.yAccel);
-    NSNumber *xyCalibration = [NSNumber numberWithFloat:self.xyCalibrationAngle];
-    NSNumber *yzCalibration = [NSNumber numberWithFloat:self.yzCalibrationAngle];
+    NSNumber *xyCalibration = @(self.xyCalibrationAngle);
+    NSNumber *yzCalibration = @(self.yzCalibrationAngle);
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
-    [settings setObject:xyCalibration forKey:XY_CAL_KEY];
-    [settings setObject:yzCalibration forKey:YZ_CAL_KEY];
+    settings[XY_CAL_KEY] = xyCalibration;
+    settings[YZ_CAL_KEY] = yzCalibration;
     [defaults setObject:settings forKey:SETTINGS_KEY];
     [defaults synchronize];
     
@@ -151,9 +151,9 @@
     self.motionButton.title = @"Motion On";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *settings = [defaults objectForKey:SETTINGS_KEY];
-    self.xyCalibrationAngle = [[settings objectForKey:XY_CAL_KEY] floatValue];
-    self.yzCalibrationAngle = [[settings objectForKey:YZ_CAL_KEY] floatValue];
-    float launchAngle = [[settings objectForKey:LAUNCH_ANGLE_KEY] floatValue];
+    self.xyCalibrationAngle = [settings[XY_CAL_KEY] floatValue];
+    self.yzCalibrationAngle = [settings[YZ_CAL_KEY] floatValue];
+    float launchAngle = [settings[LAUNCH_ANGLE_KEY] floatValue];
     self.angleLabel.text = [NSString stringWithFormat:@"%1.1f", launchAngle * DEGREES_PER_RADIAN];
     [self.angleSlider setValue: launchAngle animated:YES];
     self.angleView.dataSource = self;
@@ -175,9 +175,9 @@
 - (void)viewWillDisappear:(BOOL)animated{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
-    [settings setObject: [NSNumber numberWithFloat:fabsf(self.angleSlider.value)] forKey:LAUNCH_ANGLE_KEY];
+    settings[LAUNCH_ANGLE_KEY] = @(fabsf(self.angleSlider.value));
     [defaults setObject:settings forKey:SETTINGS_KEY];
-    [self.delegate sender:self didChangeLaunchAngle:[NSNumber numberWithFloat:fabsf(self.angleSlider.value)]];
+    [self.delegate sender:self didChangeLaunchAngle:@(fabsf(self.angleSlider.value))];
     [defaults synchronize];
     self.accelerometer.delegate = nil;
     self.accelerometer = nil;

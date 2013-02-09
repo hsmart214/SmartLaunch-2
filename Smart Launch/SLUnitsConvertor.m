@@ -24,13 +24,13 @@ static SLUnitsConvertor *sUnitsConvertor;
 +(NSString *)defaultUnitForKey:(NSString *)key{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitDefaults = [defaults objectForKey:UNIT_PREFS_KEY];
-    return [unitDefaults objectForKey:key];
+    return unitDefaults[key];
 }
 
 +(void)setDefaultUnit:(NSString *)unit forKey:(NSString *)key{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *unitDefaults = [[defaults objectForKey:UNIT_PREFS_KEY] mutableCopy];
-    [unitDefaults setObject:unit forKey:key];
+    unitDefaults[key] = unit;
     [defaults setObject:unitDefaults forKey:UNIT_PREFS_KEY];
     [defaults synchronize];
 }
@@ -41,83 +41,81 @@ static SLUnitsConvertor *sUnitsConvertor;
 // This class method can be called to convert a dimension from the displayed units back to the metric for storage
 // [SLUnitsConvertor metricStandardOf: [self.motorDiamLabel.text floatValue] forKey: MOTOR_SIZE_UNIT_KEY];
 +(NSNumber *)metricStandardOf:(NSNumber *)dimension forKey:(NSString *)dimKey{
-    NSDictionary *standards = [NSDictionary dictionaryWithObjectsAndKeys:
-                               K_METERS,        LENGTH_UNIT_KEY,
-                               K_METERS,        DIAM_UNIT_KEY,
-                               K_MILLIMETERS,   MOTOR_SIZE_UNIT_KEY,
-                               K_KILOGRAMS,     MASS_UNIT_KEY,
-                               K_CELSIUS,       TEMP_UNIT_KEY,
-                               K_METER_PER_SEC, VELOCITY_UNIT_KEY,
-                               K_METERS,        ALT_UNIT_KEY,
-                               K_NEWTONS,       THRUST_UNIT_KEY,
-                               K_GRAVITIES,     ACCEL_UNIT_KEY,
-                               K_MACH,          MACH_UNIT_KEY,
-                               nil];
+    NSDictionary *standards = @{LENGTH_UNIT_KEY: K_METERS,
+                               DIAM_UNIT_KEY: K_METERS,
+                               MOTOR_SIZE_UNIT_KEY: K_MILLIMETERS,
+                               MASS_UNIT_KEY: K_KILOGRAMS,
+                               TEMP_UNIT_KEY: K_CELSIUS,
+                               VELOCITY_UNIT_KEY: K_METER_PER_SEC,
+                               ALT_UNIT_KEY: K_METERS,
+                               THRUST_UNIT_KEY: K_NEWTONS,
+                               ACCEL_UNIT_KEY: K_GRAVITIES,
+                               MACH_UNIT_KEY: K_MACH};
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     
-    if ([[unitPrefs objectForKey:dimKey] isEqualToString: [standards objectForKey:dimKey ]]) return dimension;
+    if ([unitPrefs[dimKey] isEqualToString: standards[dimKey]]) return dimension;
     
     if ([dimKey isEqualToString:LENGTH_UNIT_KEY]){      // standard is METERS
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_FEET]){
-            return [NSNumber numberWithFloat:[dimension floatValue] / FEET_PER_METER];
+        if ([unitPrefs[dimKey] isEqualToString:K_FEET]){
+            return @([dimension floatValue] / FEET_PER_METER);
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_INCHES]){
-            return [NSNumber numberWithFloat:[dimension floatValue] / (12 * FEET_PER_METER)];
+        if ([unitPrefs[dimKey] isEqualToString:K_INCHES]){
+            return @([dimension floatValue] / (12 * FEET_PER_METER));
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_CENTIMETERS]){
-            return [NSNumber numberWithFloat:[dimension floatValue] / 100];
+        if ([unitPrefs[dimKey] isEqualToString:K_CENTIMETERS]){
+            return @([dimension floatValue] / 100);
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_MILLIMETERS]){   // who would do this??
-            return [NSNumber numberWithFloat:[dimension floatValue] / 1000];
+        if ([unitPrefs[dimKey] isEqualToString:K_MILLIMETERS]){   // who would do this??
+            return @([dimension floatValue] / 1000);
         }
     }
     if ([dimKey isEqualToString:DIAM_UNIT_KEY]){    // standard is METERS
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_FEET]){          // seriously??
-            return [NSNumber numberWithFloat:[dimension floatValue] / FEET_PER_METER];
+        if ([unitPrefs[dimKey] isEqualToString:K_FEET]){          // seriously??
+            return @([dimension floatValue] / FEET_PER_METER);
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_INCHES]){
-            return [NSNumber numberWithFloat:[dimension floatValue] / (12 * FEET_PER_METER)];
+        if ([unitPrefs[dimKey] isEqualToString:K_INCHES]){
+            return @([dimension floatValue] / (12 * FEET_PER_METER));
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_CENTIMETERS]){   // not widely used
-            return [NSNumber numberWithFloat:[dimension floatValue] / 100];
+        if ([unitPrefs[dimKey] isEqualToString:K_CENTIMETERS]){   // not widely used
+            return @([dimension floatValue] / 100);
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_MILLIMETERS]){
-            return [NSNumber numberWithFloat:[dimension floatValue] / 1000];
+        if ([unitPrefs[dimKey] isEqualToString:K_MILLIMETERS]){
+            return @([dimension floatValue] / 1000);
         }
     }
     if ([dimKey isEqualToString:MASS_UNIT_KEY]){         // standard is KILOGRAMS - others may be used frequently
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_GRAMS]){
-            return [NSNumber numberWithFloat:[dimension floatValue] / 1000];
+        if ([unitPrefs[dimKey] isEqualToString:K_GRAMS]){
+            return @([dimension floatValue] / 1000);
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_POUNDS]){
-            return [NSNumber numberWithFloat:[dimension floatValue] / POUNDS_PER_KILOGRAM];
+        if ([unitPrefs[dimKey] isEqualToString:K_POUNDS]){
+            return @([dimension floatValue] / POUNDS_PER_KILOGRAM);
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_OUNCES]){
-            return [NSNumber numberWithFloat:[dimension floatValue] / OUNCES_PER_KILOGRAM];
+        if ([unitPrefs[dimKey] isEqualToString:K_OUNCES]){
+            return @([dimension floatValue] / OUNCES_PER_KILOGRAM);
         }
     }
     if ([dimKey isEqualToString:TEMP_UNIT_KEY]){    // standard is CELSIUS
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_FAHRENHEIT]){
+        if ([unitPrefs[dimKey] isEqualToString:K_FAHRENHEIT]){
             return [NSNumber numberWithFloat:([dimension floatValue]-32)/1.8];
         }else{//must be Kelvin
-            return [NSNumber numberWithFloat:[dimension floatValue] - ABSOLUTE_ZERO_CELSIUS];
+            return @([dimension floatValue] - ABSOLUTE_ZERO_CELSIUS);
         }
     }
     if ([dimKey isEqualToString:VELOCITY_UNIT_KEY]){    //standard is METERS / SEC
-        if ([[unitPrefs objectForKey:dimKey]isEqualToString:K_MILES_PER_HOUR]){
-            return [NSNumber numberWithFloat:[dimension floatValue] * MPH_TO_M_PER_SEC];
+        if ([unitPrefs[dimKey]isEqualToString:K_MILES_PER_HOUR]){
+            return @([dimension floatValue] * MPH_TO_M_PER_SEC);
         }else{// must be FEET PER SEC
-            return [NSNumber numberWithFloat:[dimension floatValue] / FEET_PER_METER];
+            return @([dimension floatValue] / FEET_PER_METER);
         }
     }
     if ([dimKey isEqualToString:ALT_UNIT_KEY]){    //standard is METERS
-        if ([[unitPrefs objectForKey:dimKey]isEqualToString:K_FEET]){
-            return [NSNumber numberWithFloat:[dimension floatValue] / FEET_PER_METER];
+        if ([unitPrefs[dimKey]isEqualToString:K_FEET]){
+            return @([dimension floatValue] / FEET_PER_METER);
         }
     }
     if ([dimKey isEqualToString:ACCEL_UNIT_KEY]){   //standard is GRAVITIES
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_M_PER_SEC_SQ]){
+        if ([unitPrefs[dimKey] isEqualToString:K_M_PER_SEC_SQ]){
             return @([dimension floatValue] / GRAV_ACCEL);
         }
     }
@@ -127,87 +125,85 @@ static SLUnitsConvertor *sUnitsConvertor;
 // and here is the inverse function to turn the measurement back into display units
 // [LSRUnitsViewController displayUnitsOf: [self.rocket.mass floatValue] forKey: MASS_UNIT_KEY];
 +(NSNumber *)displayUnitsOf:(NSNumber *)dimension forKey:(NSString *)dimKey{
-    NSDictionary *standards = [NSDictionary dictionaryWithObjectsAndKeys:
-                               K_METERS,        LENGTH_UNIT_KEY, 
-                               K_METERS,        DIAM_UNIT_KEY,
-                               K_MILLIMETERS,   MOTOR_SIZE_UNIT_KEY, 
-                               K_KILOGRAMS,     MASS_UNIT_KEY, 
-                               K_CELSIUS,       TEMP_UNIT_KEY, 
-                               K_METER_PER_SEC, VELOCITY_UNIT_KEY,
-                               K_METERS,        ALT_UNIT_KEY,
-                               K_NEWTONS,       THRUST_UNIT_KEY,
-                               K_GRAVITIES,     ACCEL_UNIT_KEY,
-                               nil];
+    NSDictionary *standards = @{LENGTH_UNIT_KEY: K_METERS, 
+                               DIAM_UNIT_KEY: K_METERS,
+                               MOTOR_SIZE_UNIT_KEY: K_MILLIMETERS, 
+                               MASS_UNIT_KEY: K_KILOGRAMS, 
+                               TEMP_UNIT_KEY: K_CELSIUS, 
+                               VELOCITY_UNIT_KEY: K_METER_PER_SEC,
+                               ALT_UNIT_KEY: K_METERS,
+                               THRUST_UNIT_KEY: K_NEWTONS,
+                               ACCEL_UNIT_KEY: K_GRAVITIES};
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     
-    if ([[unitPrefs objectForKey:dimKey] isEqualToString: [standards objectForKey:dimKey]]) return dimension;
+    if ([unitPrefs[dimKey] isEqualToString: standards[dimKey]]) return dimension;
     
     if ([dimKey isEqualToString:LENGTH_UNIT_KEY]){      // standard is METERS
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_FEET]){
-            return [NSNumber numberWithFloat:[dimension floatValue] * FEET_PER_METER];
+        if ([unitPrefs[dimKey] isEqualToString:K_FEET]){
+            return @([dimension floatValue] * FEET_PER_METER);
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_INCHES]){
-            return [NSNumber numberWithFloat:[dimension floatValue] * (12 * FEET_PER_METER)];
+        if ([unitPrefs[dimKey] isEqualToString:K_INCHES]){
+            return @([dimension floatValue] * (12 * FEET_PER_METER));
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_CENTIMETERS]){
-            return [NSNumber numberWithFloat:[dimension floatValue] * 100];
+        if ([unitPrefs[dimKey] isEqualToString:K_CENTIMETERS]){
+            return @([dimension floatValue] * 100);
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_MILLIMETERS]){   // who would do this??
-            return [NSNumber numberWithFloat:[dimension floatValue] * 1000];
+        if ([unitPrefs[dimKey] isEqualToString:K_MILLIMETERS]){   // who would do this??
+            return @([dimension floatValue] * 1000);
         }
     }
     if ([dimKey isEqualToString:DIAM_UNIT_KEY]){    // standard is METERS
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_FEET]){          // seriously??
-            return [NSNumber numberWithFloat:[dimension floatValue] * FEET_PER_METER];
+        if ([unitPrefs[dimKey] isEqualToString:K_FEET]){          // seriously??
+            return @([dimension floatValue] * FEET_PER_METER);
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_INCHES]){
-            return [NSNumber numberWithFloat:[dimension floatValue] * (12 * FEET_PER_METER)];
+        if ([unitPrefs[dimKey] isEqualToString:K_INCHES]){
+            return @([dimension floatValue] * (12 * FEET_PER_METER));
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_CENTIMETERS]){   // not widely used
-            return [NSNumber numberWithFloat:[dimension floatValue] * 100];
+        if ([unitPrefs[dimKey] isEqualToString:K_CENTIMETERS]){   // not widely used
+            return @([dimension floatValue] * 100);
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_MILLIMETERS]){
-            return [NSNumber numberWithFloat:[dimension floatValue] * 1000];
+        if ([unitPrefs[dimKey] isEqualToString:K_MILLIMETERS]){
+            return @([dimension floatValue] * 1000);
         }
     }
     if ([dimKey isEqualToString:MASS_UNIT_KEY]){         // standard is KILOGRAMS - others may be used frequently
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_GRAMS]){
-            return [NSNumber numberWithFloat:[dimension floatValue] * 1000];
+        if ([unitPrefs[dimKey] isEqualToString:K_GRAMS]){
+            return @([dimension floatValue] * 1000);
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_POUNDS]){
-            return [NSNumber numberWithFloat:[dimension floatValue] * POUNDS_PER_KILOGRAM];
+        if ([unitPrefs[dimKey] isEqualToString:K_POUNDS]){
+            return @([dimension floatValue] * POUNDS_PER_KILOGRAM);
         }
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_OUNCES]){
-            return [NSNumber numberWithFloat:[dimension floatValue] * OUNCES_PER_KILOGRAM];
+        if ([unitPrefs[dimKey] isEqualToString:K_OUNCES]){
+            return @([dimension floatValue] * OUNCES_PER_KILOGRAM);
         }
     }
     if ([dimKey isEqualToString:TEMP_UNIT_KEY]){
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_FAHRENHEIT]){ //standard is CELSIUS
+        if ([unitPrefs[dimKey] isEqualToString:K_FAHRENHEIT]){ //standard is CELSIUS
             return [NSNumber numberWithFloat:[dimension floatValue] * 1.8 + 32];
-        }else if([[unitPrefs objectForKey:dimKey] isEqualToString:K_KELVINS]){
-            return [NSNumber numberWithFloat:[dimension floatValue] + ABSOLUTE_ZERO_CELSIUS];
+        }else if([unitPrefs[dimKey] isEqualToString:K_KELVINS]){
+            return @([dimension floatValue] + ABSOLUTE_ZERO_CELSIUS);
         }
     }
     if ([dimKey isEqualToString:VELOCITY_UNIT_KEY]){ //standard in METERS PER SECOND
-        if ([[unitPrefs objectForKey:dimKey]isEqualToString:K_MILES_PER_HOUR]){
-            return [NSNumber numberWithFloat:[dimension floatValue] / MPH_TO_M_PER_SEC];
-        }else if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_FEET_PER_SEC]){
-            return [NSNumber numberWithFloat:[dimension floatValue] * FEET_PER_METER];
+        if ([unitPrefs[dimKey]isEqualToString:K_MILES_PER_HOUR]){
+            return @([dimension floatValue] / MPH_TO_M_PER_SEC);
+        }else if ([unitPrefs[dimKey] isEqualToString:K_FEET_PER_SEC]){
+            return @([dimension floatValue] * FEET_PER_METER);
         }
     }
     if ([dimKey isEqualToString:ALT_UNIT_KEY]){ //standard is METERS
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_FEET]){
-            return [NSNumber numberWithFloat:[dimension floatValue] * FEET_PER_METER];
+        if ([unitPrefs[dimKey] isEqualToString:K_FEET]){
+            return @([dimension floatValue] * FEET_PER_METER);
         }
     }
     if ([dimKey isEqualToString:THRUST_UNIT_KEY]){ //standard is NEWTONS
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_POUNDS]){
-            return [NSNumber numberWithFloat:[dimension floatValue] * POUNDS_PER_KILOGRAM * GRAV_ACCEL];
+        if ([unitPrefs[dimKey] isEqualToString:K_POUNDS]){
+            return @([dimension floatValue] * POUNDS_PER_KILOGRAM * GRAV_ACCEL);
         }
     }
     if ([dimKey isEqualToString:ACCEL_UNIT_KEY]){   //standard is GRAVITIES
-        if ([[unitPrefs objectForKey:dimKey] isEqualToString:K_M_PER_SEC_SQ]){
+        if ([unitPrefs[dimKey] isEqualToString:K_M_PER_SEC_SQ]){
             return @([dimension floatValue] * GRAV_ACCEL);
         }
     }
@@ -215,28 +211,27 @@ static SLUnitsConvertor *sUnitsConvertor;
 }
 
 + (NSString *)displayStringForKey:(NSString *)dimKey{
-    NSDictionary *displayStrings = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    @"°C", K_CELSIUS,
-                                    @"°F", K_FAHRENHEIT, 
-                                    @"cm", K_CENTIMETERS,
-                                    @"ft", K_FEET,
-                                    @"fps", K_FEET_PER_SEC,
-                                    @"g", K_GRAMS,
-                                    @"in", K_INCHES,
-                                    @"K", K_KELVINS,
-                                    @"kg", K_KILOGRAMS,
-                                    @"m/s", K_METER_PER_SEC,
-                                    @"m", K_METERS,
-                                    @"MPH", K_MILES_PER_HOUR,
-                                    @"mm", K_MILLIMETERS,
-                                    @"N", K_NEWTONS,
-                                    @"oz", K_OUNCES,
-                                    @"lbs", K_POUNDS,
-                                    @"m/s^2", K_M_PER_SEC_SQ,
-                                    @"g", K_GRAVITIES,
-                                    @"", K_MACH, nil];
+    NSDictionary *displayStrings = @{K_CELSIUS: @"°C",
+                                    K_FAHRENHEIT: @"°F", 
+                                    K_CENTIMETERS: @"cm",
+                                    K_FEET: @"ft",
+                                    K_FEET_PER_SEC: @"fps",
+                                    K_GRAMS: @"g",
+                                    K_INCHES: @"in",
+                                    K_KELVINS: @"K",
+                                    K_KILOGRAMS: @"kg",
+                                    K_METER_PER_SEC: @"m/s",
+                                    K_METERS: @"m",
+                                    K_MILES_PER_HOUR: @"MPH",
+                                    K_MILLIMETERS: @"mm",
+                                    K_NEWTONS: @"N",
+                                    K_OUNCES: @"oz",
+                                    K_POUNDS: @"lbs",
+                                    K_M_PER_SEC_SQ: @"m/s^2",
+                                    K_GRAVITIES: @"g",
+                                    K_MACH: @""};
     NSString *preferredUnit = [SLUnitsConvertor defaultUnitForKey:dimKey];
-    return [displayStrings objectForKey:preferredUnit];
+    return displayStrings[preferredUnit];
 }
 
 @end

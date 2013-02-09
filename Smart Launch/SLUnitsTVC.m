@@ -45,58 +45,58 @@
     NSMutableDictionary *newPrefs = [[defaults objectForKey:UNIT_PREFS_KEY]mutableCopy];
     switch (self.diamControl.selectedSegmentIndex) {
         case 0:
-            [newPrefs setObject:K_INCHES forKey:DIAM_UNIT_KEY];
+            newPrefs[DIAM_UNIT_KEY] = K_INCHES;
             break;
         case 1:
-            [newPrefs setObject:K_MILLIMETERS forKey:DIAM_UNIT_KEY];
+            newPrefs[DIAM_UNIT_KEY] = K_MILLIMETERS;
     }
     switch (self.lengthControl.selectedSegmentIndex) {
         case 0:
-            [newPrefs setObject:K_INCHES forKey:LENGTH_UNIT_KEY];
+            newPrefs[LENGTH_UNIT_KEY] = K_INCHES;
             break;
         case 1:
-            [newPrefs setObject:K_FEET forKey:LENGTH_UNIT_KEY];
+            newPrefs[LENGTH_UNIT_KEY] = K_FEET;
             break;
         case 2:
-            [newPrefs setObject:K_METERS forKey:LENGTH_UNIT_KEY];
+            newPrefs[LENGTH_UNIT_KEY] = K_METERS;
     }
     switch (self.massControl.selectedSegmentIndex) {
         case 0:
-            [newPrefs setObject:K_OUNCES forKey:MASS_UNIT_KEY];
+            newPrefs[MASS_UNIT_KEY] = K_OUNCES;
             break;
         case 1:
-            [newPrefs setObject:K_POUNDS forKey:MASS_UNIT_KEY];
+            newPrefs[MASS_UNIT_KEY] = K_POUNDS;
             break;
         case 2:
-            [newPrefs setObject:K_KILOGRAMS forKey:MASS_UNIT_KEY];
+            newPrefs[MASS_UNIT_KEY] = K_KILOGRAMS;
     }
     switch (self.tempControl.selectedSegmentIndex) {
         case 0:
-            [newPrefs setObject:K_FAHRENHEIT forKey:TEMP_UNIT_KEY];
+            newPrefs[TEMP_UNIT_KEY] = K_FAHRENHEIT;
             break;
         case 1:
-            [newPrefs setObject:K_CELSIUS forKey:TEMP_UNIT_KEY];
+            newPrefs[TEMP_UNIT_KEY] = K_CELSIUS;
     }
     switch (self.altitudeControl.selectedSegmentIndex) {
         case 0:
-            [newPrefs setObject:K_FEET forKey:ALT_UNIT_KEY];
+            newPrefs[ALT_UNIT_KEY] = K_FEET;
             break;
         case 1:
-            [newPrefs setObject:K_METERS forKey:ALT_UNIT_KEY];
+            newPrefs[ALT_UNIT_KEY] = K_METERS;
     }
     switch (self.velocityControl.selectedSegmentIndex) {
         case 0:
-            [newPrefs setObject:K_MILES_PER_HOUR forKey:VELOCITY_UNIT_KEY];
+            newPrefs[VELOCITY_UNIT_KEY] = K_MILES_PER_HOUR;
             break;
         case 1:
-            [newPrefs setObject:K_METER_PER_SEC forKey:VELOCITY_UNIT_KEY];
+            newPrefs[VELOCITY_UNIT_KEY] = K_METER_PER_SEC;
     }
     switch (self.thrustControl.selectedSegmentIndex) {
         case 0:
-            [newPrefs setObject:K_POUNDS forKey:THRUST_UNIT_KEY];
+            newPrefs[THRUST_UNIT_KEY] = K_POUNDS;
             break;
         case 1:
-            [newPrefs setObject:K_NEWTONS forKey:THRUST_UNIT_KEY];
+            newPrefs[THRUST_UNIT_KEY] = K_NEWTONS;
     }
     [defaults setObject:newPrefs forKey:UNIT_PREFS_KEY];
     [defaults synchronize];
@@ -105,41 +105,41 @@
 - (void)updateDisplay{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
-    if ([[unitPrefs objectForKey:DIAM_UNIT_KEY] isEqualToString:K_INCHES]){
+    if ([unitPrefs[DIAM_UNIT_KEY] isEqualToString:K_INCHES]){
         [self.diamControl setSelectedSegmentIndex:0];
     }else{//must be mm
         [self.diamControl setSelectedSegmentIndex:1];
     }
-    if ([[unitPrefs objectForKey:LENGTH_UNIT_KEY] isEqualToString:K_INCHES]){
+    if ([unitPrefs[LENGTH_UNIT_KEY] isEqualToString:K_INCHES]){
         [self.lengthControl setSelectedSegmentIndex:0];
-    }else if ([[unitPrefs objectForKey:LENGTH_UNIT_KEY] isEqualToString:K_FEET]){
+    }else if ([unitPrefs[LENGTH_UNIT_KEY] isEqualToString:K_FEET]){
         [self.lengthControl setSelectedSegmentIndex:1];
     }else{//must be meters
         [self.lengthControl setSelectedSegmentIndex:2];
     }
-    if ([[unitPrefs objectForKey:MASS_UNIT_KEY] isEqualToString:K_OUNCES]){
+    if ([unitPrefs[MASS_UNIT_KEY] isEqualToString:K_OUNCES]){
         [self.massControl setSelectedSegmentIndex:0];
-    }else if ([[unitPrefs objectForKey:MASS_UNIT_KEY] isEqualToString:K_POUNDS]){
+    }else if ([unitPrefs[MASS_UNIT_KEY] isEqualToString:K_POUNDS]){
         [self.massControl setSelectedSegmentIndex:1];
     }else{//must be kilos
         [self.massControl setSelectedSegmentIndex:2];
     }
-    if ([[unitPrefs objectForKey:TEMP_UNIT_KEY] isEqualToString:K_FAHRENHEIT]){
+    if ([unitPrefs[TEMP_UNIT_KEY] isEqualToString:K_FAHRENHEIT]){
         [self.tempControl setSelectedSegmentIndex:0];
     }else{//must be celsius
         [self.tempControl setSelectedSegmentIndex:1];
     }
-    if ([[unitPrefs objectForKey:ALT_UNIT_KEY] isEqualToString:K_FEET]){
+    if ([unitPrefs[ALT_UNIT_KEY] isEqualToString:K_FEET]){
         [self.altitudeControl setSelectedSegmentIndex:0];
     }else{//must be meters
         [self.altitudeControl setSelectedSegmentIndex:1];
     }
-    if ([[unitPrefs objectForKey:VELOCITY_UNIT_KEY] isEqualToString:K_MILES_PER_HOUR]){
+    if ([unitPrefs[VELOCITY_UNIT_KEY] isEqualToString:K_MILES_PER_HOUR]){
         [self.velocityControl setSelectedSegmentIndex:0];
     }else{//must be meters/sec
         [self.velocityControl setSelectedSegmentIndex:1];
     }
-    if ([[unitPrefs objectForKey:THRUST_UNIT_KEY] isEqualToString:K_POUNDS]) {
+    if ([unitPrefs[THRUST_UNIT_KEY] isEqualToString:K_POUNDS]) {
         [self.thrustControl setSelectedSegmentIndex:0];
     }else{//must be newtons
         [self.thrustControl setSelectedSegmentIndex:1];
@@ -152,19 +152,6 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.oldPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     [self updateDisplay];
-}
-
-- (void)viewDidUnload
-{
-    [self setDiamControl:nil];
-    [self setLengthControl:nil];
-    [self setMassControl:nil];
-    [self setTempControl:nil];
-    [self setAltitudeControl:nil];
-    [self setVelocityControl:nil];
-    [self setThrustControl:nil];
-    self.oldPrefs = nil;
-    [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -181,28 +168,26 @@
 #pragma mark - UIActionSheetDelegate method
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSDictionary *metricDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    K_MILLIMETERS, MOTOR_SIZE_UNIT_KEY,
-                                    K_MILLIMETERS, DIAM_UNIT_KEY,
-                                    K_METERS, LENGTH_UNIT_KEY,
-                                    K_KILOGRAMS, MASS_UNIT_KEY,
-                                    K_CELSIUS, TEMP_UNIT_KEY,
-                                    K_METERS, ALT_UNIT_KEY,
-                                    K_METER_PER_SEC, VELOCITY_UNIT_KEY,
-                                    K_NEWTONS, THRUST_UNIT_KEY,
-                                    K_M_PER_SEC_SQ, ACCEL_UNIT_KEY,
-                                    K_MACH, MACH_UNIT_KEY, nil];
-    NSDictionary *standardDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-                                      K_MILLIMETERS, MOTOR_SIZE_UNIT_KEY,
-                                      K_INCHES, DIAM_UNIT_KEY,
-                                      K_INCHES, LENGTH_UNIT_KEY,
-                                      K_POUNDS, MASS_UNIT_KEY,
-                                      K_FAHRENHEIT, TEMP_UNIT_KEY,
-                                      K_FEET, ALT_UNIT_KEY,
-                                      K_MILES_PER_HOUR, VELOCITY_UNIT_KEY,
-                                      K_POUNDS, THRUST_UNIT_KEY,
-                                      K_GRAVITIES, ACCEL_UNIT_KEY,
-                                      K_MACH, MACH_UNIT_KEY, nil];
+    NSDictionary *metricDefaults = @{MOTOR_SIZE_UNIT_KEY: K_MILLIMETERS,
+                                    DIAM_UNIT_KEY: K_MILLIMETERS,
+                                    LENGTH_UNIT_KEY: K_METERS,
+                                    MASS_UNIT_KEY: K_KILOGRAMS,
+                                    TEMP_UNIT_KEY: K_CELSIUS,
+                                    ALT_UNIT_KEY: K_METERS,
+                                    VELOCITY_UNIT_KEY: K_METER_PER_SEC,
+                                    THRUST_UNIT_KEY: K_NEWTONS,
+                                    ACCEL_UNIT_KEY: K_M_PER_SEC_SQ,
+                                    MACH_UNIT_KEY: K_MACH};
+    NSDictionary *standardDefaults = @{MOTOR_SIZE_UNIT_KEY: K_MILLIMETERS,
+                                      DIAM_UNIT_KEY: K_INCHES,
+                                      LENGTH_UNIT_KEY: K_INCHES,
+                                      MASS_UNIT_KEY: K_POUNDS,
+                                      TEMP_UNIT_KEY: K_FAHRENHEIT,
+                                      ALT_UNIT_KEY: K_FEET,
+                                      VELOCITY_UNIT_KEY: K_MILES_PER_HOUR,
+                                      THRUST_UNIT_KEY: K_POUNDS,
+                                      ACCEL_UNIT_KEY: K_GRAVITIES,
+                                      MACH_UNIT_KEY: K_MACH};
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     switch (buttonIndex) {
         case 0://metric
@@ -220,17 +205,16 @@
 }
 
 +(void)setStandardDefaults{
-    NSDictionary *stdDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 K_MILLIMETERS, MOTOR_SIZE_UNIT_KEY,
-                                 K_INCHES, DIAM_UNIT_KEY,
-                                 K_INCHES, LENGTH_UNIT_KEY,
-                                 K_POUNDS, MASS_UNIT_KEY,
-                                 K_FAHRENHEIT, TEMP_UNIT_KEY,
-                                 K_FEET, ALT_UNIT_KEY,
-                                 K_MILES_PER_HOUR, VELOCITY_UNIT_KEY,
-                                 K_POUNDS, THRUST_UNIT_KEY,
-                                 K_GRAVITIES, ACCEL_UNIT_KEY,
-                                 K_MACH, MACH_UNIT_KEY, nil];
+    NSDictionary *stdDefaults = @{MOTOR_SIZE_UNIT_KEY: K_MILLIMETERS,
+                                 DIAM_UNIT_KEY: K_INCHES,
+                                 LENGTH_UNIT_KEY: K_INCHES,
+                                 MASS_UNIT_KEY: K_POUNDS,
+                                 TEMP_UNIT_KEY: K_FAHRENHEIT,
+                                 ALT_UNIT_KEY: K_FEET,
+                                 VELOCITY_UNIT_KEY: K_MILES_PER_HOUR,
+                                 THRUST_UNIT_KEY: K_POUNDS,
+                                 ACCEL_UNIT_KEY: K_GRAVITIES,
+                                 MACH_UNIT_KEY: K_MACH};
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:stdDefaults forKey:UNIT_PREFS_KEY];
     [defaults synchronize];

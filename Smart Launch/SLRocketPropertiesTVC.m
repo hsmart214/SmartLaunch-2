@@ -50,14 +50,14 @@
     self.rocket.kitName = self.kitNameField.text;
     self.rocket.manufacturer = self.manField.text;
     self.rocket.mass = [SLUnitsConvertor metricStandardOf:
-                        [NSNumber numberWithFloat:fabsf([self.massField.text floatValue])] forKey:MASS_UNIT_KEY];
+                        @(fabsf([self.massField.text floatValue])) forKey:MASS_UNIT_KEY];
     self.rocket.diameter = [SLUnitsConvertor metricStandardOf:
-                            [NSNumber numberWithFloat:fabsf([self.diamField.text floatValue])] forKey:DIAM_UNIT_KEY];
+                            @(fabsf([self.diamField.text floatValue])) forKey:DIAM_UNIT_KEY];
     self.rocket.length = [SLUnitsConvertor metricStandardOf:
-                          [NSNumber numberWithFloat:fabsf([self.lenField.text floatValue])] forKey:LENGTH_UNIT_KEY];
-    self.rocket.cd = [NSNumber numberWithFloat:fabsf([self.cdField.text floatValue])];
+                          @(fabsf([self.lenField.text floatValue])) forKey:LENGTH_UNIT_KEY];
+    self.rocket.cd = @(fabsf([self.cdField.text floatValue]));
     NSInteger motorDiam = [self.motorDiamLabel.text integerValue];
-    self.rocket.motorSize = [NSNumber numberWithInteger:motorDiam];
+    self.rocket.motorSize = @(motorDiam);
     [self.saveButton setEnabled:[self isValidRocket]];
 }
 
@@ -128,7 +128,7 @@
     self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
-        NSArray *changedKeys = [[notification userInfo] objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
+        NSArray *changedKeys = [notification userInfo][NSUbiquitousKeyValueStoreChangedKeysKey];
         for (NSString *key in changedKeys) {
             [defaults setObject:[store objectForKey:key] forKey:key];       // right now this can only be the favorite rockets dictionary
         }
@@ -197,16 +197,16 @@
     if (direction > 0){
         // increment motor size to next larger valid size
         for (int i=0; i < [self.validMotorDiameters count]; i++){
-            if ([[self.validMotorDiameters objectAtIndex:i]integerValue] == mmt){
-                newSize = [[self.validMotorDiameters objectAtIndex:i+1] integerValue];
+            if ([(self.validMotorDiameters)[i]integerValue] == mmt){
+                newSize = [(self.validMotorDiameters)[i+1] integerValue];
                 break;
             }
         }
     }else{
         // decrement motor size to next smaller valid size
         for (int i=0; i < [self.validMotorDiameters count]; i++){
-            if ([[self.validMotorDiameters objectAtIndex:i]integerValue] == mmt){
-                newSize = [[self.validMotorDiameters objectAtIndex:i-1] integerValue];
+            if ([(self.validMotorDiameters)[i]integerValue] == mmt){
+                newSize = [(self.validMotorDiameters)[i-1] integerValue];
                 break;
             }
         }
@@ -249,7 +249,7 @@
     self.rocket.recordedFlights = [savedFlights copy];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *rocketFavorites = [[defaults dictionaryForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
-    [rocketFavorites setObject:[self.rocket rocketPropertyList] forKey:self.rocket.name];
+    rocketFavorites[self.rocket.name] = [self.rocket rocketPropertyList];
     [defaults setObject:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
     [[NSUbiquitousKeyValueStore defaultStore] setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
     [defaults synchronize];

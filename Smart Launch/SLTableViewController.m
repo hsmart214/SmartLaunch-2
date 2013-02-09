@@ -156,19 +156,18 @@
     if (self.simRunning) return; // this is to keep from showing sim results not consistent with sim settings
     // otherwise you could change wind direction in the middle of a sim run, but the sim would not run again to account for the change
     
-    NSArray *buttonNames = [NSArray arrayWithObjects:
-                            @"With Wind",
+    NSArray *buttonNames = @[@"With Wind",
                             @"CrossWind",
-                            @"Into Wind", nil];
+                            @"Into Wind"];
     NSInteger dir;
     for (dir = 0; dir < 3; dir++) {
-        if ([sender.currentTitle isEqualToString:[buttonNames objectAtIndex:dir]]){
+        if ([sender.currentTitle isEqualToString:buttonNames[dir]]){
             break;
         }
     }
     dir = (dir + 1) % 3;
-    [sender setTitle:[buttonNames objectAtIndex:dir] forState:UIControlStateNormal];
-    [self.settings setObject:[NSNumber numberWithInt:dir] forKey:WIND_DIRECTION_KEY];
+    [sender setTitle:buttonNames[dir] forState:UIControlStateNormal];
+    (self.settings)[WIND_DIRECTION_KEY] = @(dir);
     [self updateDisplay];
 }
 
@@ -184,12 +183,11 @@
     
     // In the following I let the SLUnitsConvertor class do all of the unit changing.  This controller is not even aware of the UNIT_PREFS settings
 
-    self.launchAngleLabel.text = [NSString stringWithFormat:@"%1.1f",[[self.settings objectForKey:LAUNCH_ANGLE_KEY] floatValue] * DEGREES_PER_RADIAN];
-    NSArray *buttonNames = [NSArray arrayWithObjects:
-                            @"With Wind",
+    self.launchAngleLabel.text = [NSString stringWithFormat:@"%1.1f",[(self.settings)[LAUNCH_ANGLE_KEY] floatValue] * DEGREES_PER_RADIAN];
+    NSArray *buttonNames = @[@"With Wind",
                             @"CrossWind",
-                            @"Into Wind", nil];
-    [self.windDirectionButton setTitle:[buttonNames objectAtIndex:[[self.settings objectForKey:WIND_DIRECTION_KEY] intValue]] forState:UIControlStateNormal];
+                            @"Into Wind"];
+    [self.windDirectionButton setTitle:buttonNames[[(self.settings)[WIND_DIRECTION_KEY] intValue]] forState:UIControlStateNormal];
     self.ffVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
     self.apogeeAltitudeUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
     if (self.view.window && !self.simRunning){
@@ -199,13 +197,13 @@
         dispatch_async(queue, ^{
             self.model.motor = self.motor;
             self.model.rocket = self.rocket;
-            self.model.launchGuideAngle = [[self.settings objectForKey:LAUNCH_ANGLE_KEY] floatValue];
-            float len = [[self.settings objectForKey:LAUNCH_GUIDE_LENGTH_KEY] floatValue];
+            self.model.launchGuideAngle = [(self.settings)[LAUNCH_ANGLE_KEY] floatValue];
+            float len = [(self.settings)[LAUNCH_GUIDE_LENGTH_KEY] floatValue];
             if (len == 0) len = 1.0;
             self.model.launchGuideLength = len;
-            self.model.windVelocity = [[self.settings objectForKey:WIND_VELOCITY_KEY] floatValue];
-            self.model.LaunchGuideDirection = (enum LaunchDirection)[[self.settings objectForKey:WIND_DIRECTION_KEY] intValue];
-            self.model.launchAltitude = [[self.settings objectForKey:LAUNCH_ALTITUDE_KEY] floatValue];
+            self.model.windVelocity = [(self.settings)[WIND_VELOCITY_KEY] floatValue];
+            self.model.LaunchGuideDirection = (enum LaunchDirection)[(self.settings)[WIND_DIRECTION_KEY] intValue];
+            self.model.launchAltitude = [(self.settings)[LAUNCH_ALTITUDE_KEY] floatValue];
             [self.model resetFlight];
             
             // run the sim in metric units
@@ -217,8 +215,8 @@
             
             // convert the two results that might be in different units
             
-            double velocityInPreferredUnits = [[SLUnitsConvertor displayUnitsOf:[NSNumber numberWithDouble:ffVelocity] forKey:VELOCITY_UNIT_KEY] doubleValue];
-            double apogeeInPreferredUnits = [[SLUnitsConvertor displayUnitsOf:[NSNumber numberWithDouble:apogee] forKey:ALT_UNIT_KEY] doubleValue];
+            double velocityInPreferredUnits = [[SLUnitsConvertor displayUnitsOf:@(ffVelocity) forKey:VELOCITY_UNIT_KEY] doubleValue];
+            double apogeeInPreferredUnits = [[SLUnitsConvertor displayUnitsOf:@(apogee) forKey:ALT_UNIT_KEY] doubleValue];
             dispatch_async(dispatch_get_main_queue(), ^{
                 // display the result, all in user-defined units
                 self.ffAngleOfAttackLabel.text = [NSString stringWithFormat:@"%1.1f", aoa];
@@ -240,11 +238,11 @@
 }
 
 - (NSNumber *)freeFlightVelocity{
-    return [NSNumber numberWithDouble:[self.model velocityAtEndOfLaunchGuide]];
+    return @([self.model velocityAtEndOfLaunchGuide]);
 }
 
 - (NSNumber *)freeFlightAoA{
-    return [NSNumber numberWithFloat:[self.model freeFlightAngleOfAttack]];
+    return @([self.model freeFlightAngleOfAttack]);
 }
 
 - (NSNumber *)windVelocity{
@@ -274,7 +272,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     [segue.destinationViewController setDelegate:self];
     if ([[segue identifier] isEqualToString:@"settingsModalSegue"]){
-        [[[(UINavigationController *)segue.destinationViewController viewControllers] objectAtIndex:0] setDelegate:self];
+        [[(UINavigationController *)segue.destinationViewController viewControllers][0] setDelegate:self];
     }
     if ([[segue identifier] isEqualToString:@"motorSelectorSegue"]){
         // this is part of the model for this destination VC, so we can set this

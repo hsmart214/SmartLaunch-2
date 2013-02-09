@@ -53,17 +53,17 @@
 -(CGFloat)thrustAtTime:(CGFloat)time{
     if ((time == 0.0) || (time >= [[_times lastObject] floatValue])) return 0.0;
     NSInteger i = 0;
-    while ([[_times objectAtIndex:i] floatValue] < time) {
+    while ([_times[i] floatValue] < time) {
         i++;
     }   // i is now the index of the first thrust point AFTER time (can be zero)
     double fiminus1 = 0.0;
     double timinus1 = 0.0;
     if (i>0) {
-        fiminus1 = [[_thrusts objectAtIndex:i-1] doubleValue];
-        timinus1 = [[_times objectAtIndex:i-1] doubleValue];
+        fiminus1 = [_thrusts[i-1] doubleValue];
+        timinus1 = [_times[i-1] doubleValue];
     }
-    double dti = [[_times objectAtIndex:i] doubleValue];
-    double dfi = [[_thrusts objectAtIndex:i] doubleValue];
+    double dti = [_times[i] doubleValue];
+    double dfi = [_thrusts[i] doubleValue];
     
     double ftime = fiminus1 + ((time - timinus1)/(dti - timinus1)) * (dfi - fiminus1);
     return ftime;
@@ -81,15 +81,13 @@
         }
         NSMutableArray *textLines = [NSMutableArray arrayWithArray:[atmosphere componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\n\r"]]];
         while ([textLines count]) {
-            if ([(NSString *)[textLines objectAtIndex:0] characterAtIndex:0] != ';'){
-                NSArray *inputLine = [[textLines objectAtIndex:0] componentsSeparatedByCharactersInSet:
+            if ([(NSString *)textLines[0] characterAtIndex:0] != ';'){
+                NSArray *inputLine = [textLines[0] componentsSeparatedByCharactersInSet:
                                       [NSCharacterSet characterSetWithCharactersInString:@"\t"]];
-                NSDictionary *stratification = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                [NSNumber numberWithFloat:[[inputLine objectAtIndex:0] floatValue]], ALT_MSL_KEY,
-                                                [NSNumber numberWithFloat:[[inputLine objectAtIndex:1] floatValue]], PRESSURE_KEY,
-                                                [NSNumber numberWithFloat:[[inputLine objectAtIndex:2] floatValue]], RHO_RATIO_KEY,
-                                                [NSNumber numberWithFloat:[[inputLine objectAtIndex:1] floatValue]], MACH_ONE_KEY
-                                                , nil];
+                NSDictionary *stratification = @{ALT_MSL_KEY: @([inputLine[0] floatValue]),
+                                                PRESSURE_KEY: @([inputLine[1] floatValue]),
+                                                RHO_RATIO_KEY: @([inputLine[2] floatValue]),
+                                                MACH_ONE_KEY: @([inputLine[1] floatValue])};
                 [build addObject:stratification];
             }
             [textLines removeObjectAtIndex:0];
@@ -120,32 +118,31 @@
     NSInteger above = 1;
     NSInteger max = [self.stdAtmosphere count] - 1;
     float altMSL = altAGL + self.launchAltitude;
-    if (altMSL >= [[[self.stdAtmosphere lastObject] objectForKey:ALT_MSL_KEY] floatValue]){
+    if (altMSL >= [[self.stdAtmosphere lastObject][ALT_MSL_KEY] floatValue]){
         return [self.stdAtmosphere lastObject];
     }
     while (above <= max){
-        if (altMSL <= [[[self.stdAtmosphere objectAtIndex:above] objectForKey:ALT_MSL_KEY] floatValue]) break;
+        if (altMSL <= [(self.stdAtmosphere)[above][ALT_MSL_KEY] floatValue]) break;
         above += 1;
     }
     below = above - 1;
-    NSDictionary *aboveAtm = [self.stdAtmosphere objectAtIndex:above];
-    NSDictionary *belowAtm = [self.stdAtmosphere objectAtIndex:below];
-    float fraction = (altMSL - [[belowAtm objectForKey:ALT_MSL_KEY] floatValue]) / 
-                        ([[aboveAtm objectForKey:ALT_MSL_KEY] floatValue] - [[belowAtm objectForKey:ALT_MSL_KEY] floatValue]);
-    float temperature = fraction *([[aboveAtm objectForKey:TEMPERATURE_KEY] floatValue] - [[belowAtm objectForKey:TEMPERATURE_KEY] floatValue])
-        + [[belowAtm objectForKey:TEMPERATURE_KEY] floatValue];
-    float pressure = fraction *([[aboveAtm objectForKey:PRESSURE_KEY] floatValue] - [[belowAtm objectForKey:PRESSURE_KEY] floatValue])
-        + [[belowAtm objectForKey:PRESSURE_KEY] floatValue];
-    float rho_ratio = fraction *([[aboveAtm objectForKey:RHO_RATIO_KEY] floatValue] - [[belowAtm objectForKey:RHO_RATIO_KEY] floatValue])
-        + [[belowAtm objectForKey:RHO_RATIO_KEY] floatValue];
-    float mach_one = fraction *([[aboveAtm objectForKey:MACH_ONE_KEY] floatValue] - [[belowAtm objectForKey:MACH_ONE_KEY] floatValue])
-        + [[belowAtm objectForKey:MACH_ONE_KEY] floatValue];
-    return [NSDictionary dictionaryWithObjectsAndKeys:
-            [NSNumber numberWithFloat:altMSL], ALT_MSL_KEY,
-            [NSNumber numberWithFloat:temperature], TEMPERATURE_KEY,
-            [NSNumber numberWithFloat:pressure], PRESSURE_KEY,
-            [NSNumber numberWithFloat:rho_ratio], RHO_RATIO_KEY,
-            [NSNumber numberWithFloat:mach_one], MACH_ONE_KEY, nil];
+    NSDictionary *aboveAtm = (self.stdAtmosphere)[above];
+    NSDictionary *belowAtm = (self.stdAtmosphere)[below];
+    float fraction = (altMSL - [belowAtm[ALT_MSL_KEY] floatValue]) / 
+                        ([aboveAtm[ALT_MSL_KEY] floatValue] - [belowAtm[ALT_MSL_KEY] floatValue]);
+    float temperature = fraction *([aboveAtm[TEMPERATURE_KEY] floatValue] - [belowAtm[TEMPERATURE_KEY] floatValue])
+        + [belowAtm[TEMPERATURE_KEY] floatValue];
+    float pressure = fraction *([aboveAtm[PRESSURE_KEY] floatValue] - [belowAtm[PRESSURE_KEY] floatValue])
+        + [belowAtm[PRESSURE_KEY] floatValue];
+    float rho_ratio = fraction *([aboveAtm[RHO_RATIO_KEY] floatValue] - [belowAtm[RHO_RATIO_KEY] floatValue])
+        + [belowAtm[RHO_RATIO_KEY] floatValue];
+    float mach_one = fraction *([aboveAtm[MACH_ONE_KEY] floatValue] - [belowAtm[MACH_ONE_KEY] floatValue])
+        + [belowAtm[MACH_ONE_KEY] floatValue];
+    return @{ALT_MSL_KEY: @(altMSL),
+            TEMPERATURE_KEY: @(temperature),
+            PRESSURE_KEY: @(pressure),
+            RHO_RATIO_KEY: @(rho_ratio),
+            MACH_ONE_KEY: @(mach_one)};
 }
 
 - (float)launchAltitude{
@@ -161,10 +158,10 @@
     NSDictionary *atmosphereData = [self atmosphereDataAtAltitudeAGL:altAGL];
     double radius = [self.rocket.diameter doubleValue]/2;
     double area = _PI_ * radius * radius;
-    double rho = STANDARD_RHO * [[atmosphereData objectForKey:RHO_RATIO_KEY] floatValue];
+    double rho = STANDARD_RHO * [atmosphereData[RHO_RATIO_KEY] floatValue];
     double cd = [self.rocket.cd floatValue];
     double ccd; // "corrected cd" adjusted for transonic region
-    double mach = v / [[atmosphereData objectForKey:MACH_ONE_KEY] floatValue];
+    double mach = v / [atmosphereData[MACH_ONE_KEY] floatValue];
     _machNumber = mach;
     // this uses the same mach correction the wRASP uses
     if (mach < 0.9) {
@@ -338,20 +335,20 @@
     if (alt <= 0) return 0;
     NSInteger counter = 0;
     for (NSInteger i = 0; i < [self.flightProfile count]; i++){
-        NSArray *flightDataPoint = [_flightProfile objectAtIndex:i];
-        double altAtIndex = [[flightDataPoint objectAtIndex:ALT_INDEX] doubleValue];
+        NSArray *flightDataPoint = _flightProfile[i];
+        double altAtIndex = [flightDataPoint[ALT_INDEX] doubleValue];
         if (altAtIndex > alt){
             counter = i;
             break;
         }
     }
     if ((!counter) || (counter == [_flightProfile count] - 1)) return 0;
-    NSArray * p0 = [_flightProfile objectAtIndex:counter-1];
-    NSArray * p1 = [_flightProfile objectAtIndex:counter];
-    double v0 = [[p0 objectAtIndex:VEL_INDEX] doubleValue];
-    double v1 = [[p1 objectAtIndex:VEL_INDEX] doubleValue];
-    double d0 = [[p0 objectAtIndex:ALT_INDEX] doubleValue];
-    double d1 = [[p1 objectAtIndex:ALT_INDEX] doubleValue];
+    NSArray * p0 = _flightProfile[counter-1];
+    NSArray * p1 = _flightProfile[counter];
+    double v0 = [p0[VEL_INDEX] doubleValue];
+    double v1 = [p1[VEL_INDEX] doubleValue];
+    double d0 = [p0[ALT_INDEX] doubleValue];
+    double d1 = [p1[ALT_INDEX] doubleValue];
     double slope = (v1 - v0)/(d1 - d0);
     return (v0 + slope * (alt - d0));
 }
@@ -371,11 +368,11 @@
 }
 
 - (double)apogee{
-    return [[[self.flightProfile lastObject] objectAtIndex:ALT_INDEX] doubleValue];
+    return [[self.flightProfile lastObject][ALT_INDEX] doubleValue];
 }
 
 -(NSNumber *)apogeeAltitude{
-    return [[self.flightProfile lastObject] objectAtIndex:ALT_INDEX];
+    return [self.flightProfile lastObject][ALT_INDEX];
 }
 
 - (float)fastApogee{
@@ -392,7 +389,7 @@
 }
 
 - (double)burnoutToApogee{
-    return [[[self.flightProfile lastObject] objectAtIndex:TIME_INDEX] doubleValue] - [[self.motor.times lastObject]floatValue];
+    return [[self.flightProfile lastObject][TIME_INDEX] doubleValue] - [[self.motor.times lastObject]floatValue];
 }
 
 - (float)maximumVelocity{
@@ -469,14 +466,14 @@
     NSInteger dataIndex = 1;
     while (profileIndex < [self.flightProfile count]) {
         double stopTime = dataIndex++ * increment;
-        while ([[[self.flightProfile objectAtIndex:profileIndex] objectAtIndex:TIME_INDEX] doubleValue] < stopTime) {
+        while ([(self.flightProfile)[profileIndex][TIME_INDEX] doubleValue] < stopTime) {
             if (++profileIndex >= [_flightProfile count]){
                 [data addObject:[_flightProfile lastObject]];
                 return [NSArray arrayWithArray:data];           // increment and test, return out if we overflow the flightProfile
             }
         }
         // now the profileIndex points to the first time point after the requested time.  Close enough to graph well
-        [data addObject:[_flightProfile objectAtIndex:profileIndex]];
+        [data addObject:_flightProfile[profileIndex]];
     }
     return [data copy];
 }
