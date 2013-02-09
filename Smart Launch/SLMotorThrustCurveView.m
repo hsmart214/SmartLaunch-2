@@ -58,7 +58,7 @@
 
 - (CGFloat)vrange{
     if(_vrange==0.0){
-        CGFloat fmax = [self.dataSource motorThrustCurveViewDataValueRange:self];
+        CGFloat fmax = [self.dataSource motorThrustCurveViewDataValueRange:self] - [self.dataSource motorThrustCurveViewDataValueMinimumValue:self];
         int ex = floor(log10(fmax));
         double mant = fmax/pow(10.0, ex);
         _vrange = ceil(mant * 10.0)/10.0;
@@ -82,9 +82,10 @@
     if (!_dataSource) return;
     CGFloat tmax = [self.dataSource motorThrustCurveViewTimeValueRange:self];
     CGFloat fmax = [self.dataSource motorThrustCurveViewDataValueRange:self];
-    CGFloat graphWidth = self.frame.size.width * WIDTH_FRACTION;
-    CGFloat margin = (self.frame.size.width - graphWidth) / 2.0;
-    CGFloat graphHeight = self.frame.size.height - 2*margin;
+    CGFloat fmin = [self.dataSource motorThrustCurveViewDataValueMinimumValue:self];
+    CGFloat graphWidth = self.bounds.size.width * WIDTH_FRACTION;
+    CGFloat margin = (self.bounds.size.width - graphWidth) / 2.0;
+    CGFloat graphHeight = self.bounds.size.height - 2*margin;
     CGPoint origin = CGPointMake(margin, self.bounds.size.height - margin);
     CGFloat hscale = graphWidth/self.hrange;
     CGFloat vscale = graphHeight/self.vrange;
@@ -94,7 +95,7 @@
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     UIGraphicsPushContext(context);
-    CGContextSetLineWidth(context, 2.0);
+    CGContextSetLineWidth(context, 1.5);
     [[UIColor blackColor] setStroke];
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, origin.x, origin.y);
@@ -102,6 +103,17 @@
     CGContextMoveToPoint(context, origin.x, origin.y);
     CGContextAddLineToPoint(context, origin.x+graphWidth, origin.y);
     CGContextStrokePath(context);
+    
+    // If the fmin is not zero, draw an x axis line
+    
+    if (fmin != 0.0){
+        int ex = floor(log10(fmax - fmin));
+        double mant = -fmin/pow(10, ex);
+        CGFloat yvalue = origin.y - mant * vscale;
+        CGContextMoveToPoint(context, origin.x, yvalue);
+        CGContextAddLineToPoint(context, origin.x + graphWidth, yvalue);
+        CGContextStrokePath(context);
+    }
     
     // Draw the hash grid
     
@@ -136,8 +148,8 @@
     
     while (time < tmax) {
         time += 1/(ppp*hscale);
-        double thrust = [self.dataSource motorThrustCurveView:self dataValueForTimeIndex:time];
-        int ex = floor(log10(fmax));
+        double thrust = [self.dataSource motorThrustCurveView:self dataValueForTimeIndex:time] - fmin;
+        int ex = floor(log10(fmax - fmin));
         double mant = thrust/pow(10, ex);
         CGFloat yvalue = origin.y - mant * vscale;
         CGFloat xvalue = origin.x + time * hscale;

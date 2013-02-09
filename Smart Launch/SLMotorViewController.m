@@ -24,6 +24,10 @@
     return [self.motor.peakThrust floatValue];
 }
 
+-(CGFloat)motorThrustCurveViewDataValueMinimumValue:(SLMotorThrustCurveView *)sender{
+    return 0.0;
+}
+
 - (CGFloat)motorThrustCurveViewTimeValueRange:(SLMotorThrustCurveView *)sender{
     return [[self.motor.times lastObject] floatValue];
 }

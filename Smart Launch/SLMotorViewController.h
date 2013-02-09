@@ -12,7 +12,7 @@
 #import "SLMotorThrustCurveView.h"
 #import "SLSimulationDelegate.h"
 
-@interface SLMotorViewController : UIViewController
+@interface SLMotorViewController : UIViewController<SLMotorThrustCurveViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *motorManufacturer;
 @property (weak, nonatomic) IBOutlet UILabel *motorDiameter;

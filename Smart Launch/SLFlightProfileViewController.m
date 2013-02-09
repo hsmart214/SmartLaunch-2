@@ -67,6 +67,14 @@ enum SLFlightProfileGraphType {
     }
 }
 
+-(CGFloat)motorThrustCurveViewDataValueMinimumValue:(SLMotorThrustCurveView *)sender{
+    if ([self.graphTypeSegmentedControl selectedSegmentIndex] == SLFlightProfileGraphTypeAcceleration){
+        return [[SLUnitsConvertor displayUnitsOf:[self.dataSource maxDeceleration] forKey:ACCEL_UNIT_KEY] floatValue];
+    }else{
+        return 0.0;
+    }
+}
+
 -(CGFloat)motorThrustCurveViewTimeValueRange:(SLMotorThrustCurveView *)sender{
     return [[self.dataSource totalTime] floatValue];
 }
