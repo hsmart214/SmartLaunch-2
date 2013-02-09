@@ -68,6 +68,7 @@
 		4256931415F4893000F7BABC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4256931215F4893000F7BABC /* InfoPlist.strings */; };
 		4256931615F4893000F7BABC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931515F4893000F7BABC /* main.m */; };
 		4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931915F4893000F7BABC /* SLAppDelegate.m */; };
+		4264CA2416C61CF20092B932 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4264CA2316C61CF20092B932 /* Settings.bundle */; };
 		42A1B6191670599E004F1FA0 /* version.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42A1B6181670599E004F1FA0 /* version.txt */; };
 		42AEF2E216633603009F65AA /* Rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AEF2E016633603009F65AA /* Rocket.png */; };
 		42AEF2E316633603009F65AA /* Rocket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AEF2E116633603009F65AA /* Rocket@2x.png */; };
@@ -182,6 +183,7 @@
 		4256931715F4893000F7BABC /* Smart Launch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart Launch-Prefix.pch"; sourceTree = "<group>"; };
 		4256931815F4893000F7BABC /* SLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAppDelegate.h; sourceTree = "<group>"; };
 		4256931915F4893000F7BABC /* SLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAppDelegate.m; sourceTree = "<group>"; };
+		4264CA2316C61CF20092B932 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		42A1B6181670599E004F1FA0 /* version.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = version.txt; sourceTree = "<group>"; };
 		42AEF2E016633603009F65AA /* Rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rocket.png; sourceTree = SOURCE_ROOT; };
 		42AEF2E116633603009F65AA /* Rocket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -433,6 +435,7 @@
 				4256931915F4893000F7BABC /* SLAppDelegate.m */,
 				4256931215F4893000F7BABC /* InfoPlist.strings */,
 				4256931115F4893000F7BABC /* Smart Launch-Info.plist */,
+				4264CA2316C61CF20092B932 /* Settings.bundle */,
 				42D6AE8E16A2754F000EE1A8 /* SmartLaunch.entitlements */,
 			);
 			name = "Supporting Files";
@@ -544,6 +547,7 @@
 				42D6AE8A16A25242000EE1A8 /* DaVinci~iPad@2x.png in Resources */,
 				42D6AE8B16A25242000EE1A8 /* DaVinci~iPhone.png in Resources */,
 				42D6AE8C16A25242000EE1A8 /* DaVinci~iPhone@2x.png in Resources */,
+				4264CA2416C61CF20092B932 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,6 @@
 //
 //  SLUnitsTVC.m
-//  Snoopy
+//  Smart Launch
 //
 //  Created by J. Howard Smart on 7/4/12.
 //  Copyright (c) 2012 All rights reserved.
@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *altitudeControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *velocityControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *thrustControl;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *accelControl;
 
 @property (strong, nonatomic) NSDictionary *oldPrefs;
 
@@ -29,7 +30,7 @@
 }
 
 - (IBAction)defaultButtonPressed:(UIBarButtonItem *)sender {
-    NSString *msg = @"Reset Default Units?";
+    NSString *msg = NSLocalizedString(@"Reset Default Units?", nil);
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:msg delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles: @"Metric", @"Standard", nil];
     [actionSheet showFromToolbar:self.navigationController.toolbar];
 }
@@ -97,6 +98,13 @@
             break;
         case 1:
             newPrefs[THRUST_UNIT_KEY] = K_NEWTONS;
+    }
+    switch (self.accelControl.selectedSegmentIndex) {
+        case 0:
+            newPrefs[ACCEL_UNIT_KEY] = K_GRAVITIES;
+            break;
+        case 1:
+            newPrefs[ACCEL_UNIT_KEY] = K_M_PER_SEC_SQ;
     }
     [defaults setObject:newPrefs forKey:UNIT_PREFS_KEY];
     [defaults synchronize];

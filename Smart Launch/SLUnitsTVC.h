@@ -1,6 +1,6 @@
 //
 //  SLUnitsTVC.h
-//  Snoopy
+//  Smart Launch
 //
 //  Created by J. Howard Smart on 7/4/12.
 //  Copyright (c) 2012 All rights reserved.

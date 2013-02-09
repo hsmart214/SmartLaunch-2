@@ -104,7 +104,7 @@ enum LaunchDirection : NSUInteger {
 #define FAVORITE_ROCKETS_KEY @"SmartLaunch_Favorite_Rockets"
 #define UNIT_PREFS_KEY @"SmartLaunch_Unit_Preferences"
 #define INTERFACE_PREFS_KEY @"SmartLaunch_Interface_Preferences"
-#define LENGTH_UNIT_KEY @"SmartLaunch_Length_Unit"
+#define LENGTH_UNIT_KEY @"SmartLaunch_Mass_Unit"
 #define ALT_UNIT_KEY @"SmartLaunch_Altitude_Unit"
 #define DIAM_UNIT_KEY @"SmartLaunch_Diameter_Unit"
 #define TEMP_UNIT_KEY @"SmartLaunch_Temperature_Unit"
@@ -161,7 +161,7 @@ enum LaunchDirection : NSUInteger {
 #define K_KILOGRAMS @"kg"
 #define K_OUNCES @"oz"
 #define K_GRAMS @"g"
-#define K_GRAVITIES @"g"
+#define K_GRAVITIES @"G"
 #define K_M_PER_SEC_SQ @"m/s^2"
 #define K_MACH @"Mach"
     

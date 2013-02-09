@@ -1,6 +1,6 @@
 //
 //  SLPhotoAngleFinderDelegate.h
-//  Launch Smart
+//  Smart Launch
 //
 //  Created by J. HOWARD SMART on 7/30/12.
 //  Copyright (c) 2012 All rights reserved.

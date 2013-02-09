@@ -1,6 +1,6 @@
 //
 //  SLInformationTVC.m
-//  Launch Smart
+//  Smart Launch
 //
 //  Created by J. Howard Smart on 7/3/12.
 //  Copyright (c) 2012 All rights reserved.
