@@ -101,7 +101,7 @@ enum LaunchDirection : NSUInteger {
 #define MOTOR_FILE_VERSION_KEY @"SmartLaunch_Motor_File_Version"
 #define ALL_MOTORS_KEY @"SmartLaunch_All_Motors"
 #define LAST_MOTOR_SEARCH_KEY @"SmartLaunch_Last_Motor_Search"
-#define FAVORITE_ROCKETS_KEY @"SmartLaunch_Favorite_Rockets"
+#define FAVORITE_ROCKETS_KEY @"com.mySmartSoftware.SmartLaunch_Favorite_Rockets"
 #define UNIT_PREFS_KEY @"SmartLaunch_Unit_Preferences"
 #define INTERFACE_PREFS_KEY @"SmartLaunch_Interface_Preferences"
 #define LENGTH_UNIT_KEY @"SmartLaunch_Mass_Unit"

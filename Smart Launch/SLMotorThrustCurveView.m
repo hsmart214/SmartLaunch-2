@@ -117,12 +117,26 @@
         int ex = floor(log10(fmax - fmin));
         double mant = -fmin/pow(10, ex);
         CGFloat yvalue = origin.y - mant * vscale;
+        CGContextBeginPath(context);
         CGContextMoveToPoint(context, origin.x, yvalue);
         CGContextAddLineToPoint(context, origin.x + graphWidth, yvalue);
         CGContextStrokePath(context);
     }
     
-    // Here is a little cheat.  If fmax is < 3.0 
+    // Here is a little cheat.  If fmax is < 3.0 I will assume I am looking at a MACH curve (This will only
+    // not be true for a MicroMaxx motor!
+    // Draw a line at Mach One
+    
+    if (fmax < 3.0F && fmax > 0.99F){
+        int ex = floor(log10(fmax - fmin));
+        double mant = 1.0/pow(10, ex);
+        CGFloat yvalue = origin.y - mant * vscale;
+        CGContextBeginPath(context);
+        [[UIColor blueColor] setStroke];
+        CGContextMoveToPoint(context, origin.x, yvalue);
+        CGContextAddLineToPoint(context, origin.x + graphWidth, yvalue);
+        CGContextStrokePath(context);
+    }
     
     // Draw the hash grid
     
