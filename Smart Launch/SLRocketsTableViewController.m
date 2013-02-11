@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString *detailData;
 @property (nonatomic, strong) NSMutableArray *rocketArray;
 @property (nonatomic, strong) Rocket *selectedRocket;
+@property (nonatomic, strong) id iCloudObserver;
 
 @end
 
@@ -79,6 +80,26 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:animated];
+    self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+        NSArray *changedKeys = [[notification userInfo] objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
+        for (NSString *key in changedKeys) {
+            [defaults setObject:[store objectForKey:key] forKey:key];       // right now this can only be the favorite rockets dictionary
+        }
+        [defaults synchronize];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.rockets = [[defaults dictionaryForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
+            [self updateRocketArray];
+            [self.tableView reloadData];
+        });
+    }];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self.iCloudObserver];
+    self.iCloudObserver = nil;
 }
 
 - (void)didReceiveMemoryWarning{

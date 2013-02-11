@@ -364,6 +364,8 @@
 			children = (
 				4220A4A515F55CC60055EE35 /* MainStoryboard_iPhone.storyboard */,
 				4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */,
+				4220A4AA15F55CC60055EE35 /* SLTableViewController.h */,
+				4220A4AB15F55CC60055EE35 /* SLTableViewController.m */,
 				42E7317216BF66ED00F6D468 /* SLFlightProfileViewController.h */,
 				42E7317316BF66ED00F6D468 /* SLFlightProfileViewController.m */,
 				42BB53CB16A295310029C882 /* SLSavedFlightsTVC.h */,
@@ -379,8 +381,6 @@
 				4220A4A715F55CC60055EE35 /* SLModalPresenterDelegate.h */,
 				4220A4A815F55CC60055EE35 /* SLPhotoAngleFinderDelegate.h */,
 				4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */,
-				4220A4AA15F55CC60055EE35 /* SLTableViewController.h */,
-				4220A4AB15F55CC60055EE35 /* SLTableViewController.m */,
 				4220A4AC15F55CC60055EE35 /* SLInformationTVC.h */,
 				4220A4AD15F55CC60055EE35 /* SLInformationTVC.m */,
 				4240A07615F8341900D67F3E /* SLMotorPrefsTVC.h */,

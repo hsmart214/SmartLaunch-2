@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *cdEstimateField;
 @property (weak, nonatomic) IBOutlet UITextField *actualAltitudeField;
 @property (weak, nonatomic) IBOutlet UILabel *altUnitsLabel;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *refineCdButton;
+//@property (weak, nonatomic) IBOutlet UIBarButtonItem *refineCdButton;
 @property (weak, nonatomic) IBOutlet UIProgressView *calculationProgressIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *cdLabel;
 @property (weak, nonatomic) IBOutlet UILabel *windDirectionLabel;
@@ -38,7 +38,6 @@
 - (IBAction)saveFlightData:(UIBarButtonItem *)sender {
     float cd = [self.cdLabel.text floatValue];
     float alt = [self.actualAltitudeField.text floatValue];
-    self.rocket.cd = @(cd);
     NSMutableDictionary *newFlightData = [self.flightData mutableCopy];
     newFlightData[FLIGHT_BEST_CD] = @(cd);
     newFlightData[FLIGHT_ALTITUDE_KEY] = [SLUnitsConvertor metricStandardOf:@(alt) forKey:ALT_UNIT_KEY];
@@ -53,7 +52,7 @@
     rocketPlists[self.rocket.name] = [self.rocket rocketPropertyList];
     //put the dictionary back into the favorites store
     [defaults setObject:rocketPlists forKey:FAVORITE_ROCKETS_KEY];
-    [store setObject:rocketPlists forKey:FAVORITE_ROCKETS_KEY];
+    [store setDictionary:rocketPlists forKey:FAVORITE_ROCKETS_KEY];
     [defaults synchronize];
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -108,7 +107,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.calculationProgressIndicator setProgress: (float)(2.0 + x)/(NEWTON_RAPHSON_ITERATIONS) animated:YES];
                     self.cdLabel.text = [NSString stringWithFormat:@"%1.2f",newCd];
-                    self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [[SLUnitsConvertor displayUnitsOf:@(newGuessedAlt) forKey:LENGTH_UNIT_KEY] floatValue], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
+                    self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [[SLUnitsConvertor displayUnitsOf:@(newGuessedAlt) forKey:ALT_UNIT_KEY] floatValue], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
                 });
             }
         }
@@ -166,6 +165,9 @@
             [store setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
         }
         [defaults synchronize];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
     }];
 }
 

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "SLSimulationDelegate.h"
-#import "SLUnitsConvertor.h"
 
 @interface SLTableViewController : UITableViewController <SLSimulationDelegate, SLSimulationDataSource>
 

@@ -24,11 +24,14 @@
 
 +(Rocket *)rocketWithRocketDict:(NSDictionary *)rocketDict;
 
+// THIS is the designated initializer that the above class method uses to create a new Rocket*
+-(Rocket *)initWithProperties:(NSDictionary *)properties;
 -(Rocket *)copy;
 -(Rocket *)copyWithZone:(NSZone *)zone;
 -(void)addFlight:(NSDictionary *)flightData;
 -(void)clearFlights;
 
+// This is a convenience factory method that generates a Rocket * with generic properties
 +(Rocket *)defaultRocket;
 
 @end

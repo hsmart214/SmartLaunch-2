@@ -15,6 +15,7 @@
 #import "SLMotorSearchViewController.h"
 #import "SLSaveFlightDataTVC.h"
 #import "SLFlightProfileViewController.h"
+#import "SLUnitsConvertor.h"
 
 @interface SLTableViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *rocketCell;
@@ -35,11 +36,11 @@
 @property (strong, nonatomic) SLPhysicsModel *model;
 @property (strong, nonatomic) NSMutableDictionary *settings;
 @property (atomic) BOOL simRunning;
+@property (nonatomic, strong) id iCloudObserver;
 
 @end
 
 @implementation SLTableViewController
-
 
 - (Rocket *)rocket{
     if (!_rocket){
@@ -283,13 +284,9 @@
         [segue.destinationViewController setDataSource:self];
     }
     if ([[segue identifier] isEqualToString:@"saveFlightSegue"]){
-        NSMutableArray *flights = [self.rocket.recordedFlights mutableCopy];
         NSDictionary *flight = @{FLIGHT_MOTOR_KEY : self.motor.name,
-        FLIGHT_BEST_CD : self.rocket.cd,
-        FLIGHT_ALTITUDE_KEY : @([self.apogeeAltitudeLabel.text floatValue])
-        };
-        [flights addObject:flight];
-        self.rocket.recordedFlights = [flights copy];
+                                 FLIGHT_BEST_CD : self.rocket.cd,
+                                 FLIGHT_ALTITUDE_KEY : [SLUnitsConvertor metricStandardOf:@([self.apogeeAltitudeLabel.text floatValue]) forKey:ALT_UNIT_KEY]};
         [(SLSaveFlightDataTVC *)segue.destinationViewController setFlightData:flight];
         [(SLSaveFlightDataTVC *)segue.destinationViewController setPhysicsModel:self.model];
         [(SLSaveFlightDataTVC *)segue.destinationViewController setRocket:self.rocket];
@@ -305,11 +302,28 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO animated:animated];
+    if (!self.iCloudObserver){
+        self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+            NSArray *changedKeys = [[notification userInfo] objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
+            for (NSString *key in changedKeys) {
+                [defaults setObject:[store objectForKey:key] forKey:key];       // right now this can only be the favorite rockets dictionary
+            }
+            [defaults synchronize];
+        }];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self updateDisplay];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self.iCloudObserver];
+    self.iCloudObserver = nil;
 }
 
 - (void)viewDidLoad
@@ -319,12 +333,21 @@
     UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
     [backgroundView setImage:backgroundImage];
     self.tableView.backgroundView = backgroundView;
+    
+    self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+        NSArray *changedKeys = [[notification userInfo] objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
+        for (NSString *key in changedKeys) {
+            [defaults setObject:[store objectForKey:key] forKey:key];       // right now this can only be the favorite rockets dictionary
+        }
+        [defaults synchronize];
+    }];
+    [[NSUbiquitousKeyValueStore defaultStore] synchronize];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
-
-
 @end

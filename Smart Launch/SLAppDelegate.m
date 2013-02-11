@@ -16,19 +16,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
-        NSDictionary *rockets = [store dictionaryForKey:FAVORITE_ROCKETS_KEY];
-        if (!rockets){
-            rockets = [[NSUserDefaults standardUserDefaults] dictionaryForKey:FAVORITE_ROCKETS_KEY];
-            if (!rockets){
-                NSDictionary *rocket = [[Rocket defaultRocket] rocketPropertyList];
-                rockets = @{rocket[ROCKET_NAME_KEY] : rocket};
-            }
-            [store setDictionary:rockets forKey:FAVORITE_ROCKETS_KEY];
-            [store synchronize];
-        }
-    });
     return YES;
 }
 							

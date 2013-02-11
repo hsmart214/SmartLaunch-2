@@ -65,6 +65,7 @@
     self.mass = nil;
     self.kitName = nil;
     self.manufacturer = nil;
+    self.recordedFlights = nil;
 }
 
 -(NSDictionary *)rocketPropertyList{
