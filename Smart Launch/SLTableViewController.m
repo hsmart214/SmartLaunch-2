@@ -17,6 +17,8 @@
 #import "SLFlightProfileViewController.h"
 #import "SLUnitsConvertor.h"
 
+#define FLIGHT_PROFILE_ROW 5
+
 @interface SLTableViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *rocketCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *motorCell;
@@ -296,6 +298,21 @@
     }
 }
 
+#pragma mark - TableView dataSource Methods
+
+// This clumsy bit is necessary to keep from choosing the flight profile while the
+// profile is still being calculated.  Crashola!
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 0 && indexPath.row == FLIGHT_PROFILE_ROW){
+        if (self.simRunning){
+            return;
+        }else{
+            [self performSegueWithIdentifier:@"FlightProfileSegue" sender:self];
+        }
+    }
+}
 
 #pragma mark - View Life Cycle
 

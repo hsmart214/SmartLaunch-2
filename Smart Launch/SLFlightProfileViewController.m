@@ -35,7 +35,7 @@ enum SLFlightProfileGraphType {
 -(void)updateDisplay{
     self.rocketNameLabel.text = [self.dataSource rocketName];
     self.motorNameLabel.text = [self.dataSource motorName];
-    self.maxVelocityLabel.text = [NSString stringWithFormat:@"%1.0f",[[SLUnitsConvertor displayUnitsOf:[self.dataSource burnoutVelocity] forKey:VELOCITY_UNIT_KEY] floatValue]];
+    self.maxVelocityLabel.text = [NSString stringWithFormat:@"%1.0f",[[SLUnitsConvertor displayUnitsOf:[self.dataSource maxVelocity] forKey:VELOCITY_UNIT_KEY] floatValue]];
     self.apogeeLabel.text = [NSString stringWithFormat:@"%1.0f",[[SLUnitsConvertor displayUnitsOf:[self.dataSource apogeeAltitude] forKey:ALT_UNIT_KEY] floatValue]];
     self.coastTimeLabel.text = [NSString stringWithFormat:@"%1.1f",[[self.dataSource coastTime] floatValue]];
     NSArray *unitNames = @[VELOCITY_UNIT_KEY, ACCEL_UNIT_KEY, ALT_UNIT_KEY, MACH_UNIT_KEY];
@@ -57,7 +57,7 @@ enum SLFlightProfileGraphType {
 -(CGFloat)motorThrustCurveViewDataValueRange:(SLMotorThrustCurveView *)sender{
     switch ((enum SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
         case SLFlightProfileGraphTypeVelocity:
-            return [[SLUnitsConvertor displayUnitsOf:[self.dataSource burnoutVelocity] forKey:VELOCITY_UNIT_KEY] floatValue];
+            return [[SLUnitsConvertor displayUnitsOf:[self.dataSource maxVelocity] forKey:VELOCITY_UNIT_KEY] floatValue];
         case SLFlightProfileGraphTypeAcceleration:
             return [[SLUnitsConvertor displayUnitsOf:[self.dataSource maxAcceleration] forKey:ACCEL_UNIT_KEY] floatValue];
         case SLFlightProfileGraphTypeAltitude:

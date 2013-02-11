@@ -15,7 +15,7 @@
 @property (nonatomic) double travel;        // x component of the rocket's position
 @property (nonatomic) double velocity;      // magnitude of the rocket's velocity vector
 @property (nonatomic) float machNumber;
-@property (nonatomic) float maxVelocity;
+@property (nonatomic) float brnoutVelocity;
 @property (nonatomic) double timeIndex;
 @property (nonatomic, strong) NSMutableArray *flightProfile;
 @property (nonatomic, strong) NSArray *stdAtmosphere;
@@ -295,9 +295,9 @@
         NSNumber *mach = @(_machNumber);
         [_flightProfile addObject:@[time, alt, trav, vel, accel, mach]];
     }
-    //I will assume that the maximum velocity will be achieved at burnout
-    //It would be very unusual if this were not true, and if so it would not be far off
-    self.maxVelocity = [[_flightProfile lastObject][VEL_INDEX] floatValue];
+    // It turns out this is not very useful.
+    // If the motor thrust trails off at the end, which is common, then burnout velocity is much less than max velocity
+    self.brnoutVelocity = [[_flightProfile lastObject][VEL_INDEX] floatValue];
 }
 
 - (void)integrateBurnoutToApogee{
@@ -392,12 +392,19 @@
     return [[self.flightProfile lastObject][TIME_INDEX] doubleValue] - [[self.motor.times lastObject]floatValue];
 }
 
-- (float)maximumVelocity{
-    return self.maxVelocity;
-}
 
 -(NSNumber *)burnoutVelocity{
-    return @(self.maxVelocity);
+    return @(self.brnoutVelocity);
+}
+
+-(NSNumber *)maxVelocity{
+    float mxvel = 0.0;
+    for (NSArray *dataPoint in _flightProfile){
+        if ([dataPoint[VEL_INDEX] floatValue] > mxvel){
+            mxvel = [dataPoint[VEL_INDEX] floatValue];
+        }
+    }
+    return @(mxvel);
 }
 
 -(NSNumber *)maxAcceleration{
