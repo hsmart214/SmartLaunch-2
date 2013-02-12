@@ -16,6 +16,7 @@
 
 // These dataSource methods allow a customer of the model to ask details about the flight profile
 // without revealing internals, and without letting them muck with the model itself.
+// This class has really become bloated with these dataSource methods.  Oh well.  It is a singleton.
 
 @optional
 

@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 All rights reserved.
 //
 
-/* This controller needs to respond to iCloud updates because it holds the Rocket dictionary
- which may change externally */
 
 #import "SLRocketsTableViewController.h"
 

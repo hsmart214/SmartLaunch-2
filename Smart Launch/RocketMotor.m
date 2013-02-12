@@ -337,6 +337,17 @@ NSInteger sortingFunction(id md1, id md2, void *context){
 }
 
 +(NSArray *)everyMotor{
+    /* This method first tries to get the motor list from a cached file if it exists in the file system
+       If it does not exist, it reads the motors from the motors.txt file one by one and formats them into
+       motor dictionary plists, and stores them in the array that is eventually returned.  This operation
+       is not very performant, which is why the result is cached.  It only needs to be recreated if the motor
+       file version changes, which would happen when the motor file is updated from the website.
+     
+       It is also worth noting that the code for reading in the motors is not very forgiving of the format
+       of the motors.txt file.  Stray empty lines or trailing space will kill it.  I should probably work
+       on the error tolerance of it, but since I create the motors.txt file, I am responsible for making
+       sure the formatting is correct.  If it ain't broke...
+     */
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSInteger currentMotorsVersion = [defaults integerForKey:MOTOR_FILE_VERSION_KEY];
     NSBundle *mainBundle = [NSBundle mainBundle];

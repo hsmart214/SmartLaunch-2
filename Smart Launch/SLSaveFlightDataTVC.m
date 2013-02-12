@@ -6,9 +6,6 @@
 //  Copyright (c) 2013 J. HOWARD SMART. All rights reserved.
 //
 
-/* I think this controller needs to respond to iCloud updates because it holds a strong Rocket*
- which may change externally */
-
 #import "SLSaveFlightDataTVC.h"
 #import "SLUnitsConvertor.h"
 

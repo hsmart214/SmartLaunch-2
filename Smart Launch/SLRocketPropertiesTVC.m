@@ -10,7 +10,7 @@
  which may change externally.  This is the only place that an existing Rocket * can have
  its name changed.  The current code default behavior in this situation is to delete the
  old instance and save a new one under the new name key.  Upon cancellation, the old 
- instance is restored under the old name. */
+ instance is restored under the old name, by just leaving without making any changes. */
 
 #import "SLRocketPropertiesTVC.h"
 
@@ -225,6 +225,7 @@
         NSMutableDictionary *rocketFavorites = [[defaults dictionaryForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
         [rocketFavorites removeObjectForKey:self.oldRocket.name];
         [defaults setObject:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
+        // This line takes care of setting the whole dictionary - which has the deleted entry deleted plus the new entry
         [store setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
     }
     [self.delegate SLRocketPropertiesTVC: self savedRocket:self.rocket];

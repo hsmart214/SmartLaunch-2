@@ -6,9 +6,6 @@
 //  Copyright (c) 2012 All rights reserved.
 //
 
-/* I think this controller needs to respond to iCloud updates because it holds a strong Rocket*
-   which may change externally */
-
 #import "SLTableViewController.h"
 #import "SLPhysicsModel.h"
 #import "SLUnitsTVC.h"
