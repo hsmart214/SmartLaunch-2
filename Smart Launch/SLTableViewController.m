@@ -360,6 +360,10 @@
     [[NSUbiquitousKeyValueStore defaultStore] synchronize];
 }
 
+-(void)didReceiveMemoryWarning{
+    [self.model resetFlight];       // This will nil out the flight profile which is a big memory hog
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);

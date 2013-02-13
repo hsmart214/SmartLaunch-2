@@ -507,6 +507,8 @@
     return v;
 }
 
+
+
 -(void)dealloc{
     self.flightProfile = nil;
     self.stdAtmosphere = nil;

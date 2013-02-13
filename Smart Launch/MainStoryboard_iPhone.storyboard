@@ -1216,7 +1216,7 @@
                                 </segments>
                             </segmentedControl>
                             <pickerView contentMode="scaleToFill" id="7QI-te-Bke">
-                                <rect key="frame" x="20" y="92.5" width="280" height="216"/>
+                                <rect key="frame" x="20" y="92" width="280" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="LEc-O2-fBs">
@@ -1232,7 +1232,7 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Include:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="QA4-l8-ZaZ">
-                                <rect key="frame" x="9" y="412.5" width="60" height="21"/>
+                                <rect key="frame" x="9" y="412" width="60" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
