@@ -162,6 +162,10 @@
     [self updateDisplay];
 }
 
+-(void)dealloc{
+    self.oldPrefs = nil;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);

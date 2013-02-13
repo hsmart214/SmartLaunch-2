@@ -216,26 +216,10 @@
     [self saveSettings];
 }
 
-- (void)viewDidUnload
-{
-    [self.delegate sender:self didChangeSimSettings:self.settings withUpdate:YES];
-    self.delegate = nil;
-    [self setLaunchAngleLabel:nil];
-    [self setWindVelocityLabel:nil];
-    [self setWindVelocityUnitsLabel:nil];
-    [self setWindDirectionControl:nil];
-    [self setWindVelocityStepper:nil];
-    [self setLaunchGuideLengthLabel:nil];
-    [self setLaunchGuideLengthUnitsLabel:nil];
-    [self setLaunchGuideLengthStepper:nil];
-    [self setSiteAltitudeLabel:nil];
-    [self setSiteAltitudeUnitsLabel:nil];
-    [self setSiteAltitudeStepper:nil];
-    [self setGPSAltButton:nil];
+- (void)dealloc{
     self.locationManager = nil;
     self.settings = nil;
     self.launchGuideLengthFormatString = nil;
-    [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

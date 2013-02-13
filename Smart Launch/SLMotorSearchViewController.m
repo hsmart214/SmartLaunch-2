@@ -272,6 +272,13 @@ NSInteger sortFunction(id md1, id md2, void *context){
     self.preferredImpulseClasses = nil;
     self.preferredManufacturers = nil;
     self.preferredMotorDiameters = nil;
+    self.allMotors = nil;
+    self.manufacturerNames = nil;
+    self.rocketMotorMountDiameter = nil;
+    self.impulseClasses = nil;
+    self.motorDiameters = nil;
+    self.motorKeyPrefs = nil;
+    self.restrictedMotorDiamPrefs = nil;
 }
 
 - (void)didReceiveMemoryWarning{

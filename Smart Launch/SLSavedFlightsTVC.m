@@ -133,4 +133,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self.iCloudObserver];
     self.iCloudObserver = nil;
 }
+
+-(void)dealloc{
+    self.rocket = nil;
+    self.savedFlights = nil;
+    self.originalSavedFlights = nil;
+}
 @end

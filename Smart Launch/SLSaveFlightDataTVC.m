@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *cdEstimateField;
 @property (weak, nonatomic) IBOutlet UITextField *actualAltitudeField;
 @property (weak, nonatomic) IBOutlet UILabel *altUnitsLabel;
-//@property (weak, nonatomic) IBOutlet UIBarButtonItem *refineCdButton;
 @property (weak, nonatomic) IBOutlet UIProgressView *calculationProgressIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *cdLabel;
 @property (weak, nonatomic) IBOutlet UILabel *windDirectionLabel;
@@ -80,6 +79,7 @@
          spaced Cd values.
          */
         for (int x = 0; x < NEWTON_RAPHSON_ITERATIONS; x++){
+            [self.physicsModel resetFlight];
             guessedAlt = self.physicsModel.fastApogee;
             float altDifference = guessedAlt - actualAlt;
             if (fabsf(altDifference) < (actualAlt * NEWTON_RAPHSON_TOLERANCE)) {     // close enough to say we are done
@@ -91,6 +91,7 @@
                 float newCd = oldCd + epsilon;
                 tempRocket.cd = @(newCd);
                 self.physicsModel.rocket = tempRocket;
+                [self.physicsModel resetFlight];
                 newGuessedAlt = self.physicsModel.fastApogee;
                 float slope = (newGuessedAlt - guessedAlt)/epsilon;  // presumably always a negative slope
                 
@@ -172,6 +173,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self.iCloudObserver];
     self.iCloudObserver = nil;
     [super viewWillDisappear:animated];
+}
+
+-(void)dealloc{
+    self.flightData = nil;
+    self.rocket = nil;
 }
 
 #pragma mark - Table view delegate

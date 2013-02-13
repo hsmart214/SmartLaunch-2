@@ -268,4 +268,9 @@
     }
 }
 
+-(void)dealloc{
+    self.rocket = nil;
+    self.oldRocket = nil;
+}
+
 @end

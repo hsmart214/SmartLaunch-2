@@ -100,6 +100,13 @@
     self.iCloudObserver = nil;
 }
 
+-(void)dealloc{
+    self.rocketArray = nil;
+    self.rockets = nil;
+    self.selectedRocket = nil;
+    self.detailData = nil;
+}
+
 - (void)didReceiveMemoryWarning{
     self.rockets = nil;
     self.rocketArray = nil;

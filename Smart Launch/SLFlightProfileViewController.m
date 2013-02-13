@@ -20,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *altitudeUnitsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *velocityUnitsLabel;
 @property (weak, nonatomic) IBOutlet SLMotorThrustCurveView *graphView;
-@property (nonatomic, strong) NSArray *slicedFlightProfile;
 @end
 
 @implementation SLFlightProfileViewController
@@ -109,9 +108,4 @@ enum SLFlightProfileGraphType {
     
     [self updateDisplay];
 }
-
--(void)viewWillDisappear:(BOOL)animated{
-    
-}
-
 @end

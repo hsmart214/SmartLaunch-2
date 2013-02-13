@@ -67,7 +67,9 @@
     [self.thrustCurve setNeedsDisplay];
 }
 
-
+-(void)dealloc{
+    self.motor = nil;
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

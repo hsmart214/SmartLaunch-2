@@ -217,15 +217,13 @@
     [self updateDisplay];
 }
 
+-(void)dealloc{
+    self.launchGuideLengthFormatString = nil;
+}
+
 - (BOOL)shouldAutorotate{
     //If we are on an iPad, we will be inside a splitviewcontroller
     //return (self.splitViewController != nil);
     return YES;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 @end

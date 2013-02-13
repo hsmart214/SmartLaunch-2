@@ -93,4 +93,11 @@
     }
 }
 
+-(void)dealloc{
+    self.selectedMotor = nil;
+    self.selectedMotorDict = nil;
+    self.sectionKey = nil;
+    self.motors = nil;
+}
+
 @end

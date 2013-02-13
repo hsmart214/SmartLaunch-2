@@ -225,10 +225,7 @@
     [self.navigationController setToolbarHidden:YES animated:animated];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
+- (void)dealloc{
     self.accelerometer.delegate = nil;
     self.accelerometer = nil;
     self.cancelButton = nil;

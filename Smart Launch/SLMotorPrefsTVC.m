@@ -200,5 +200,8 @@
     return [buildDict copy];
 }
 
-
+-(void)dealloc{
+    self.motorPrefs = nil;
+    self.oldMotorPrefs = nil;
+}
 @end

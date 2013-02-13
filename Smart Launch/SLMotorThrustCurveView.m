@@ -182,5 +182,10 @@
     
 }
 
+-(void)dealloc{
+    self.verticalUnits = nil;
+    self.verticalUnitsFormat = nil;
+}
+
 @end
 
