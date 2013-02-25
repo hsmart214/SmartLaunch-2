@@ -267,8 +267,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
     [self motorDiameterRestrictionChanged:self.restrictMotorDiametersSegmentedControl];
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
+- (void)dealloc{
     self.preferredImpulseClasses = nil;
     self.preferredManufacturers = nil;
     self.preferredMotorDiameters = nil;

@@ -49,7 +49,7 @@ static SLUnitsConvertor *sUnitsConvertor;
                                VELOCITY_UNIT_KEY: K_METER_PER_SEC,
                                ALT_UNIT_KEY: K_METERS,
                                THRUST_UNIT_KEY: K_NEWTONS,
-                               ACCEL_UNIT_KEY: K_GRAVITIES,
+                               ACCEL_UNIT_KEY: K_M_PER_SEC_SQ,
                                MACH_UNIT_KEY: K_MACH};
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
@@ -114,9 +114,14 @@ static SLUnitsConvertor *sUnitsConvertor;
             return @([dimension floatValue] / FEET_PER_METER);
         }
     }
-    if ([dimKey isEqualToString:ACCEL_UNIT_KEY]){   //standard is GRAVITIES
-        if ([unitPrefs[dimKey] isEqualToString:K_M_PER_SEC_SQ]){
-            return @([dimension floatValue] / GRAV_ACCEL);
+    if ([dimKey isEqualToString:ACCEL_UNIT_KEY]){   //standard is METERS PER SEC^2
+        if ([unitPrefs[dimKey] isEqualToString:K_GRAVITIES]){
+            return @([dimension floatValue] * GRAV_ACCEL);
+        }
+    }
+    if ([dimKey isEqualToString:THRUST_UNIT_KEY]){   //standard is NEWTONS
+        if ([unitPrefs[dimKey] isEqualToString:K_POUNDS]){
+            return @([dimension floatValue] / NEWTONS_PER_POUND);
         }
     }
     return dimension;
@@ -133,7 +138,7 @@ static SLUnitsConvertor *sUnitsConvertor;
                                VELOCITY_UNIT_KEY: K_METER_PER_SEC,
                                ALT_UNIT_KEY: K_METERS,
                                THRUST_UNIT_KEY: K_NEWTONS,
-                               ACCEL_UNIT_KEY: K_GRAVITIES};
+                               ACCEL_UNIT_KEY: K_M_PER_SEC_SQ};
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     
@@ -199,12 +204,12 @@ static SLUnitsConvertor *sUnitsConvertor;
     }
     if ([dimKey isEqualToString:THRUST_UNIT_KEY]){ //standard is NEWTONS
         if ([unitPrefs[dimKey] isEqualToString:K_POUNDS]){
-            return @([dimension floatValue] * POUNDS_PER_KILOGRAM * GRAV_ACCEL);
+            return @([dimension floatValue] * NEWTONS_PER_POUND);
         }
     }
-    if ([dimKey isEqualToString:ACCEL_UNIT_KEY]){   //standard is GRAVITIES
-        if ([unitPrefs[dimKey] isEqualToString:K_M_PER_SEC_SQ]){
-            return @([dimension floatValue] * GRAV_ACCEL);
+    if ([dimKey isEqualToString:ACCEL_UNIT_KEY]){   //standard is METERS PER SEC^2
+        if ([unitPrefs[dimKey] isEqualToString:K_GRAVITIES]){
+            return @([dimension floatValue] / GRAV_ACCEL);
         }
     }
     return dimension;

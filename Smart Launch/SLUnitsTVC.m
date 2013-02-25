@@ -152,6 +152,11 @@
     }else{//must be newtons
         [self.thrustControl setSelectedSegmentIndex:1];
     }
+    if ([unitPrefs[ACCEL_UNIT_KEY] isEqualToString:K_GRAVITIES]) {
+        [self.accelControl setSelectedSegmentIndex:0];
+    }else{//must be meters/sec^2
+        [self.accelControl setSelectedSegmentIndex:1];
+    }
 }
 
 - (void)viewDidLoad

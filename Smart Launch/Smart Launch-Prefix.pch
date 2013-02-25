@@ -70,6 +70,7 @@ enum LaunchDirection : NSUInteger {
 #define DEGREES_PER_RADIAN 57.2957F
 #define POUNDS_PER_KILOGRAM 2.2046226F
 #define OUNCES_PER_KILOGRAM 35.2739616F
+#define NEWTONS_PER_POUND 4.448222F
 #define ABSOLUTE_ZERO_CELSIUS -272.15F
 #define STANDARD_RHO 1.22F                 //kg per m^3
     
@@ -93,6 +94,7 @@ enum LaunchDirection : NSUInteger {
 #define VEL_INDEX 3
 #define ACCEL_INDEX 4
 #define MACH_INDEX 5
+#define DRAG_INDEX 6
     
 #pragma mark String literal constants
     

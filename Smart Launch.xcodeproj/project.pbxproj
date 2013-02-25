@@ -93,6 +93,8 @@
 		42E5914916213D91003EF252 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E5914816213D91003EF252 /* Default-568h@2x.png */; };
 		42E5914C16213E1C003EF252 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E5914A16213DC7003EF252 /* Default@2x.png */; };
 		42E7317416BF66ED00F6D468 /* SLFlightProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7317316BF66ED00F6D468 /* SLFlightProfileViewController.m */; };
+		42F3E1E616CB7C0D00081288 /* 57icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F3E1E416CB7C0D00081288 /* 57icon.png */; };
+		42F3E1E716CB7C0D00081288 /* 114icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F3E1E516CB7C0D00081288 /* 114icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -214,6 +216,8 @@
 		42E5914A16213DC7003EF252 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		42E7317216BF66ED00F6D468 /* SLFlightProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFlightProfileViewController.h; sourceTree = "<group>"; };
 		42E7317316BF66ED00F6D468 /* SLFlightProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFlightProfileViewController.m; sourceTree = "<group>"; };
+		42F3E1E416CB7C0D00081288 /* 57icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57icon.png; sourceTree = "<group>"; };
+		42F3E1E516CB7C0D00081288 /* 114icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +297,8 @@
 		4220A53115F55DEF0055EE35 /* System Images */ = {
 			isa = PBXGroup;
 			children = (
+				42F3E1E416CB7C0D00081288 /* 57icon.png */,
+				42F3E1E516CB7C0D00081288 /* 114icon.png */,
 				42DA0810169A36DF00106B02 /* iTunesArtwork.png */,
 				42DA0811169A36DF00106B02 /* iTunesArtwork@2x.png */,
 				42DA080E169A365700106B02 /* Icon-72.png */,
@@ -544,6 +550,8 @@
 				42D6AE8A16A25242000EE1A8 /* DaVinci~iPad@2x.png in Resources */,
 				42D6AE8B16A25242000EE1A8 /* DaVinci~iPhone.png in Resources */,
 				42D6AE8C16A25242000EE1A8 /* DaVinci~iPhone@2x.png in Resources */,
+				42F3E1E616CB7C0D00081288 /* 57icon.png in Resources */,
+				42F3E1E716CB7C0D00081288 /* 114icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2049,13 +2049,14 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dGp-7O-YV2">
-                                <rect key="frame" x="20" y="411" width="280" height="30"/>
+                                <rect key="frame" x="11" y="411" width="299" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <segments>
                                     <segment title="Speed"/>
                                     <segment title="Accel"/>
                                     <segment title="Altitude"/>
                                     <segment title="Mach"/>
+                                    <segment title="Drag"/>
                                 </segments>
                                 <connections>
                                     <action selector="graphTypeChanged:" destination="uXJ-y6-YPH" eventType="valueChanged" id="yr8-kW-8vq"/>

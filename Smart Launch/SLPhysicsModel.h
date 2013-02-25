@@ -32,6 +32,7 @@
 -(NSNumber *)maxVelocity;
 -(NSNumber *)maxAcceleration;
 -(NSNumber *)maxDeceleration;
+-(NSNumber *)maxDrag;
 -(NSNumber *)coastTime;
 -(NSNumber *)apogeeAltitude;
 -(NSNumber *)maxMachNumber;

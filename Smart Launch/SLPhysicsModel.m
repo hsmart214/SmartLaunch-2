@@ -30,7 +30,7 @@
 @implementation SLPhysicsModel
 
 - (NSUInteger)version{
-    return 3;
+    return 4;
 }
 
 /* Going to break data encapsulation here for the sake of performance in the integration loops */
@@ -243,7 +243,8 @@
     while (totalDistanceTravelled < _launchGuideLength) {
         _timeIndex += 1.0/DIVS_DURING_BURN;
         double mass = [self.motor massAtTime:_timeIndex] + mRocket;
-        double a = [self thrustAtTime:_timeIndex]/mass - g - [self dragAtVelocity:_velocity andAltitude:_altitude]/mass;
+        double drag = [self dragAtVelocity:_velocity andAltitude:_altitude];
+        double a = [self thrustAtTime:_timeIndex]/mass - g - drag/mass;
         if (a > 0) {        //remember DIVS is in units of 1/sec
             distanceTravelled = (_velocity / DIVS_DURING_BURN) + (0.5 * a /(DIVS_DURING_BURN * DIVS_DURING_BURN));
             _altitude += distanceTravelled * cos(_launchGuideAngle);
@@ -258,7 +259,8 @@
         NSNumber *trav = @(_travel);
         NSNumber *accel = @(a);
         NSNumber *mach = @(_machNumber);
-        [self.flightProfile addObject:@[time, alt, trav, vel, accel, mach]];
+        NSNumber *drg = @(drag);
+        [self.flightProfile addObject:@[time, alt, trav, vel, accel, mach, drg]];
         totalDistanceTravelled += distanceTravelled;
         if (_timeIndex >= burnoutTime && _velocity <= 0.0) break;           // Just in case you don't get off the pad
     }
@@ -275,7 +277,8 @@
         _timeIndex += 1.0/DIVS_DURING_BURN;
         double g = GRAV_ACCEL * cos(_angle);
         double mass = [self.motor massAtTime:_timeIndex] + mRocket;
-        double acc = [self thrustAtTime:_timeIndex]/mass - [self dragAtVelocity:_velocity andAltitude:_altitude]/mass;
+        double drag = [self dragAtVelocity:_velocity andAltitude:_altitude];
+        double acc = [self thrustAtTime:_timeIndex]/mass - drag/mass;
         
         double y_accel = acc * cos(_angle) - GRAV_ACCEL;
         double x_accel = acc * sin(_angle);
@@ -293,7 +296,8 @@
         NSNumber *trav = @(_travel);
         NSNumber *accel = @(acc);
         NSNumber *mach = @(_machNumber);
-        [_flightProfile addObject:@[time, alt, trav, vel, accel, mach]];
+        NSNumber *drg = @(drag);
+        [_flightProfile addObject:@[time, alt, trav, vel, accel, mach, drg]];
     }
     // It turns out this is not very useful.
     // If the motor thrust trails off at the end, which is common, then burnout velocity is much less than max velocity
@@ -309,7 +313,8 @@
     while (deltaAlt > 0) {
         double g = GRAV_ACCEL * cos(_angle);
         _timeIndex += 1.0/DIVS_AFTER_BURNOUT;
-        double acc = - [self dragAtVelocity:_velocity andAltitude:_altitude]/mass;
+        double drag = [self dragAtVelocity:_velocity andAltitude:_altitude];
+        double acc = - drag/mass;
         double y_accel = acc * cos(_angle) - GRAV_ACCEL;
         double x_accel = acc * sin(_angle);
         double y_dist = _velocity * cos(_angle) / DIVS_AFTER_BURNOUT + (0.5 * y_accel * t_squared);
@@ -327,7 +332,8 @@
         NSNumber *trav = @(_travel);
         NSNumber *accel = @(acc);
         NSNumber *mach = @(_machNumber);
-        [self.flightProfile addObject:@[time, alt, trav, vel, accel, mach]];
+        NSNumber *drg = @(drag);
+        [self.flightProfile addObject:@[time, alt, trav, vel, accel, mach, drg]];
     }
 }
 
@@ -434,6 +440,15 @@
     return @(maxMach);
 }
 
+-(NSNumber *)maxDrag{
+    float maxDrag = 0.0;
+    for (NSArray *arr in _flightProfile){
+        float drag = [arr[DRAG_INDEX] floatValue];
+        if (drag > maxDrag) maxDrag = drag;
+    }
+    return @(maxDrag);
+}
+
 //These methods are for the plotting of the flight profile. They should run fast enough.  We shall see
 //It occurs to me that I should do binary search on the time to improve performance
 
@@ -468,7 +483,7 @@
     // since it will be 1/ the number of pixels in one second of displayed profile - on the order of 1/100
     // so for each point I will take the flightProfile info at the first point AFTER the incremented time
     NSMutableArray *data = [NSMutableArray array];
-    [data addObject:@[@0.0,@0.0,@0.0,@0.0,@0.0,@0.0]];
+    [data addObject:@[@0.0,@0.0,@0.0,@0.0,@0.0,@0.0,@0.0]];
     NSInteger profileIndex = 0;
     NSInteger dataIndex = 1;
     while (profileIndex < [self.flightProfile count]) {
