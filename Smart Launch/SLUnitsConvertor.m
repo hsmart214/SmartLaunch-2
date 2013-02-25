@@ -121,7 +121,7 @@ static SLUnitsConvertor *sUnitsConvertor;
     }
     if ([dimKey isEqualToString:THRUST_UNIT_KEY]){   //standard is NEWTONS
         if ([unitPrefs[dimKey] isEqualToString:K_POUNDS]){
-            return @([dimension floatValue] / NEWTONS_PER_POUND);
+            return @([dimension floatValue] * NEWTONS_PER_POUND);
         }
     }
     return dimension;
@@ -204,7 +204,7 @@ static SLUnitsConvertor *sUnitsConvertor;
     }
     if ([dimKey isEqualToString:THRUST_UNIT_KEY]){ //standard is NEWTONS
         if ([unitPrefs[dimKey] isEqualToString:K_POUNDS]){
-            return @([dimension floatValue] * NEWTONS_PER_POUND);
+            return @([dimension floatValue] / NEWTONS_PER_POUND);
         }
     }
     if ([dimKey isEqualToString:ACCEL_UNIT_KEY]){   //standard is METERS PER SEC^2
