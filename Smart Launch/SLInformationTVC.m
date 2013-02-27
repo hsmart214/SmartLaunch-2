@@ -54,7 +54,9 @@
         NSURL *motorFileWWWURL = [NSURL URLWithString:MOTORS_WWW_URL];
         NSURL *motorFileVersionWWWURL = [NSURL URLWithString:MOTORS_VERSION_WWW_URL];
         NSError *err = nil;
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         NSString *version = [NSString stringWithContentsOfURL:motorFileVersionWWWURL encoding:NSUTF8StringEncoding error:&err];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         if (err){
             NSLog(@"Error reading Motor version from mySmartSoftware.com");
             self.alert = [[UIAlertView alloc]initWithTitle:@"Motor List Update" message:@"Unable to contact website." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -73,7 +75,9 @@
             // get the new data from the website
             NSURL *dataURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
             NSURL *motorFileURL = [dataURL URLByAppendingPathComponent:MOTOR_DATA_FILENAME];
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
             NSString *allMotors = [NSString stringWithContentsOfURL:motorFileWWWURL encoding:NSUTF8StringEncoding error:&err];
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             if (err){
                 NSLog(@"Error reading Motor data file from mySmartSoftware.com");
             }else{
