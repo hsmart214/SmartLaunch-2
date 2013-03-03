@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SLPhysicsModel.h"
-#import "SLMotorThrustCurveView.h"
+#import "SLCurveGraphView.h"
 
-@interface SLFlightProfileViewController : UIViewController<SLMotorThrustCurveViewDataSource>
+@interface SLFlightProfileViewController : UIViewController<SLCurveGraphViewDataSource, SLCurveGraphViewDelegate>
 
 @property (nonatomic, weak) id<SLPhysicsModelDatasource> dataSource;
 @property (nonatomic, weak) id delegate;    // This dummy is unused - only to avoid awkward recoding of the prepare method

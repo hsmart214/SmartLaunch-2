@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "RocketMotor.h"
 #import "SLUnitsConvertor.h"
-#import "SLMotorThrustCurveView.h"
+#import "SLCurveGraphView.h"
 #import "SLSimulationDelegate.h"
 
-@interface SLMotorViewController : UIViewController<SLMotorThrustCurveViewDataSource>
+@interface SLMotorViewController : UIViewController<SLCurveGraphViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *motorManufacturer;
 @property (weak, nonatomic) IBOutlet UILabel *motorDiameter;
@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *propellantMass;
 @property (weak, nonatomic) IBOutlet UILabel *totalImpulse;
 @property (weak, nonatomic) IBOutlet UILabel *initialThrust;
-@property (weak, nonatomic) IBOutlet SLMotorThrustCurveView *thrustCurve;
+@property (weak, nonatomic) IBOutlet SLCurveGraphView *thrustCurve;
 
 @property (nonatomic, strong) RocketMotor *motor;
 @property (nonatomic, weak) id<SLSimulationDelegate> delegate;

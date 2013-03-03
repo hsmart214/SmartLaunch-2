@@ -8,7 +8,7 @@
 
 #import "SLMotorViewController.h"
 
-@interface SLMotorViewController () <SLMotorThrustCurveViewDataSource>
+@interface SLMotorViewController () <SLCurveGraphViewDataSource>
 
 @end
 
@@ -20,19 +20,19 @@
 
 #pragma mark SLMotorThrustCurveDataSource protocol methods
 
-- (CGFloat)motorThrustCurveViewDataValueRange: (SLMotorThrustCurveView *)sender{
+- (CGFloat)curveGraphViewDataValueRange: (SLCurveGraphView *)sender{
     return [self.motor.peakThrust floatValue];
 }
 
--(CGFloat)motorThrustCurveViewDataValueMinimumValue:(SLMotorThrustCurveView *)sender{
+-(CGFloat)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
     return 0.0;
 }
 
-- (CGFloat)motorThrustCurveViewTimeValueRange:(SLMotorThrustCurveView *)sender{
+- (CGFloat)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
     return [[self.motor.times lastObject] floatValue];
 }
 
-- (CGFloat)motorThrustCurveView:(SLMotorThrustCurveView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
+- (CGFloat)curveGraphView:(SLCurveGraphView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
     return [self.motor thrustAtTime:timeIndex];
 }
 

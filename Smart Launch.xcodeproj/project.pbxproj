@@ -41,7 +41,7 @@
 		4220A4D415F55CC60055EE35 /* SLMotorSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4B915F55CC60055EE35 /* SLMotorSearchViewController.m */; };
 		4220A4D515F55CC60055EE35 /* SLMotorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4BB15F55CC60055EE35 /* SLMotorTableViewController.m */; };
 		4220A4D615F55CC60055EE35 /* SLMotorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4BD15F55CC60055EE35 /* SLMotorViewController.m */; };
-		4220A4D715F55CC60055EE35 /* SLMotorThrustCurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4BF15F55CC60055EE35 /* SLMotorThrustCurveView.m */; };
+		4220A4D715F55CC60055EE35 /* SLCurveGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4BF15F55CC60055EE35 /* SLCurveGraphView.m */; };
 		4220A4D815F55CC60055EE35 /* SLRocketsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4C115F55CC60055EE35 /* SLRocketsTableViewController.m */; };
 		4220A4D915F55CC60055EE35 /* SLRocketPropertiesTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4C315F55CC60055EE35 /* SLRocketPropertiesTVC.m */; };
 		4220A4DA15F55CC60055EE35 /* SLUnitsConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4C515F55CC60055EE35 /* SLUnitsConvertor.m */; };
@@ -145,8 +145,8 @@
 		4220A4BB15F55CC60055EE35 /* SLMotorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMotorTableViewController.m; sourceTree = "<group>"; };
 		4220A4BC15F55CC60055EE35 /* SLMotorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMotorViewController.h; sourceTree = "<group>"; };
 		4220A4BD15F55CC60055EE35 /* SLMotorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMotorViewController.m; sourceTree = "<group>"; };
-		4220A4BE15F55CC60055EE35 /* SLMotorThrustCurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMotorThrustCurveView.h; sourceTree = "<group>"; };
-		4220A4BF15F55CC60055EE35 /* SLMotorThrustCurveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMotorThrustCurveView.m; sourceTree = "<group>"; };
+		4220A4BE15F55CC60055EE35 /* SLCurveGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCurveGraphView.h; sourceTree = "<group>"; };
+		4220A4BF15F55CC60055EE35 /* SLCurveGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLCurveGraphView.m; sourceTree = "<group>"; };
 		4220A4C015F55CC60055EE35 /* SLRocketsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRocketsTableViewController.h; sourceTree = "<group>"; };
 		4220A4C115F55CC60055EE35 /* SLRocketsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRocketsTableViewController.m; sourceTree = "<group>"; };
 		4220A4C215F55CC60055EE35 /* SLRocketPropertiesTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRocketPropertiesTVC.h; sourceTree = "<group>"; };
@@ -405,8 +405,8 @@
 				4220A4BB15F55CC60055EE35 /* SLMotorTableViewController.m */,
 				4220A4BC15F55CC60055EE35 /* SLMotorViewController.h */,
 				4220A4BD15F55CC60055EE35 /* SLMotorViewController.m */,
-				4220A4BE15F55CC60055EE35 /* SLMotorThrustCurveView.h */,
-				4220A4BF15F55CC60055EE35 /* SLMotorThrustCurveView.m */,
+				4220A4BE15F55CC60055EE35 /* SLCurveGraphView.h */,
+				4220A4BF15F55CC60055EE35 /* SLCurveGraphView.m */,
 				4220A4C015F55CC60055EE35 /* SLRocketsTableViewController.h */,
 				4220A4C115F55CC60055EE35 /* SLRocketsTableViewController.m */,
 				4220A4C215F55CC60055EE35 /* SLRocketPropertiesTVC.h */,
@@ -574,7 +574,7 @@
 				4220A4D415F55CC60055EE35 /* SLMotorSearchViewController.m in Sources */,
 				4220A4D515F55CC60055EE35 /* SLMotorTableViewController.m in Sources */,
 				4220A4D615F55CC60055EE35 /* SLMotorViewController.m in Sources */,
-				4220A4D715F55CC60055EE35 /* SLMotorThrustCurveView.m in Sources */,
+				4220A4D715F55CC60055EE35 /* SLCurveGraphView.m in Sources */,
 				4220A4D815F55CC60055EE35 /* SLRocketsTableViewController.m in Sources */,
 				4220A4D915F55CC60055EE35 /* SLRocketPropertiesTVC.m in Sources */,
 				4220A4DA15F55CC60055EE35 /* SLUnitsConvertor.m in Sources */,

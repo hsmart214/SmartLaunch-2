@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *graphTypeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UILabel *altitudeUnitsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *velocityUnitsLabel;
-@property (weak, nonatomic) IBOutlet SLMotorThrustCurveView *graphView;
+@property (weak, nonatomic) IBOutlet SLCurveGraphView *graphView;
 @end
 
 @implementation SLFlightProfileViewController
@@ -52,9 +52,9 @@ enum SLFlightProfileGraphType {
 }
 
 
-#pragma mark - SLMotorThrustCurveViewDataSource methods
+#pragma mark - SLCurveGraphViewDataSource methods
 
--(CGFloat)motorThrustCurveViewDataValueRange:(SLMotorThrustCurveView *)sender{
+-(CGFloat)curveGraphViewDataValueRange:(SLCurveGraphView *)sender{
     switch ((enum SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
         case SLFlightProfileGraphTypeVelocity:
             return [[SLUnitsConvertor displayUnitsOf:[self.dataSource maxVelocity] forKey:VELOCITY_UNIT_KEY] floatValue];
@@ -69,7 +69,7 @@ enum SLFlightProfileGraphType {
     }
 }
 
--(CGFloat)motorThrustCurveViewDataValueMinimumValue:(SLMotorThrustCurveView *)sender{
+-(CGFloat)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
     if ([self.graphTypeSegmentedControl selectedSegmentIndex] == SLFlightProfileGraphTypeAcceleration){
         return [[SLUnitsConvertor displayUnitsOf:[self.dataSource maxDeceleration] forKey:ACCEL_UNIT_KEY] floatValue];
     }else{
@@ -77,11 +77,11 @@ enum SLFlightProfileGraphType {
     }
 }
 
--(CGFloat)motorThrustCurveViewTimeValueRange:(SLMotorThrustCurveView *)sender{
+-(CGFloat)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
     return [[self.dataSource totalTime] floatValue];
 }
 
--(CGFloat)motorThrustCurveView:(SLMotorThrustCurveView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
+-(CGFloat)curveGraphView:(SLCurveGraphView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
     switch ((enum SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
         case SLFlightProfileGraphTypeVelocity:
             return [[SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: @(timeIndex) forKey:VEL_INDEX] forKey:VELOCITY_UNIT_KEY] floatValue];
@@ -94,6 +94,16 @@ enum SLFlightProfileGraphType {
         case SLFlightProfileGraphTypeDrag:
             return [[SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: @(timeIndex) forKey:DRAG_INDEX] forKey:THRUST_UNIT_KEY] floatValue];
     }
+}
+
+#pragma mark - SLCurveGraphViewDelegate methods
+
+-(NSUInteger)numberOfVerticalDivisions:(SLCurveGraphView *)sender{
+    return 5;
+}
+
+-(BOOL)shouldDisplayMachOneLine:(SLCurveGraphView *)sender{
+    return ((enum SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex] == SLFlightProfileGraphTypeMach);
 }
 
 #pragma mark - View Lifecycle
@@ -110,6 +120,7 @@ enum SLFlightProfileGraphType {
     self.velocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
     self.altitudeUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
     self.graphView.dataSource = self;
+    self.graphView.delegate = self;
     
     [self updateDisplay];
 }

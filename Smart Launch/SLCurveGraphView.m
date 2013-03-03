@@ -6,24 +6,30 @@
 //  Copyright (c) 2012 All rights reserved.
 //
 
-#import "SLMotorThrustCurveView.h"
+#import "SLCurveGraphView.h"
 
 #define WIDTH_FRACTION 0.8
 #define SEC_OFFSET 7
 
-@interface SLMotorThrustCurveView ()
+@interface SLCurveGraphView ()
 
 @property (nonatomic) CGFloat hrange;
 @property (nonatomic) CGFloat vrange;
 @property (nonatomic) CGFloat fullrange;
 @property (nonatomic, strong) NSString *verticalUnits;
 @property (nonatomic, strong) NSString *verticalUnitsFormat;
+@property (nonatomic) NSUInteger verticalDivisions;
 
 @end
 
-@implementation SLMotorThrustCurveView
+@implementation SLCurveGraphView
 
 - (void)setup{
+    if ([self.delegate respondsToSelector:@selector(numberOfVerticalDivisions:)]){
+        self.verticalDivisions = [self.delegate numberOfVerticalDivisions:self];
+    }else{
+        self.verticalDivisions = CURVEGRAPHVIEW_DEFAULT_VERTICAL_DIVISIONS;
+    }
     [self setNeedsDisplay];
 }
 
@@ -55,9 +61,13 @@
     return self;
 }
 
+-(void)awakeFromNib{
+    [self setup];
+}
+
 - (CGFloat)hrange{
     if (_hrange==0.0){
-        CGFloat btime = [self.dataSource motorThrustCurveViewTimeValueRange:self];
+        CGFloat btime = [self.dataSource curveGraphViewTimeValueRange:self];
         _hrange = ceil(btime);
     }
     return _hrange;
@@ -65,7 +75,7 @@
 
 - (CGFloat)vrange{
     if(_vrange==0.0){
-        CGFloat fmax = [self.dataSource motorThrustCurveViewDataValueRange:self] - [self.dataSource motorThrustCurveViewDataValueMinimumValue:self];
+        CGFloat fmax = [self.dataSource curveGraphViewDataValueRange:self] - [self.dataSource curveGraphViewDataValueMinimumValue:self];
         int ex = floor(log10(fmax));
         double mant = fmax/pow(10.0, ex);
         _vrange = ceil(mant * 10.0)/10.0;
@@ -87,9 +97,9 @@
 - (void)drawRect:(CGRect)rect
 {
     if (!_dataSource) return;
-    CGFloat tmax = [self.dataSource motorThrustCurveViewTimeValueRange:self];
-    CGFloat fmax = [self.dataSource motorThrustCurveViewDataValueRange:self];
-    CGFloat fmin = [self.dataSource motorThrustCurveViewDataValueMinimumValue:self];
+    CGFloat tmax = [self.dataSource curveGraphViewTimeValueRange:self];
+    CGFloat fmax = [self.dataSource curveGraphViewDataValueRange:self];
+    CGFloat fmin = [self.dataSource curveGraphViewDataValueMinimumValue:self];
     CGFloat graphWidth = self.bounds.size.width * WIDTH_FRACTION;
     CGFloat margin = (self.bounds.size.width - graphWidth) / 2.0;
     CGFloat graphHeight = self.bounds.size.height - 2*margin;
@@ -123,11 +133,11 @@
         CGContextStrokePath(context);
     }
     
-    // Here is a little cheat.  If fmax is < 3.0 I will assume I am looking at a MACH curve (This will only
-    // not be true for a MicroMaxx motor!
-    // Draw a line at Mach One
+    // If the delegate tells us to do so, draw a line at data value = 1.0
+    // Intended to be used for mach one.
     
-    if (fmax < 3.0F && fmax > 0.99F){
+    if ([self.delegate respondsToSelector:@selector(shouldDisplayMachOneLine:)] &&
+        [self.delegate shouldDisplayMachOneLine:self] && fmax >= 1.0){
         int ex = floor(log10(fmax - fmin));
         double mant = 1.0/pow(10, ex);
         CGFloat yvalue = origin.y - mant * vscale;
@@ -144,8 +154,8 @@
     CGContextSetLineWidth(context, 1.0);
     [[UIColor lightGrayColor] setStroke];
     
-    for (int i = 1; i < 6; i++) {
-        CGFloat yoffset = (self.vrange/6)*vscale;
+    for (int i = 1; i < self.verticalDivisions; i++) {
+        CGFloat yoffset = (self.vrange/self.verticalDivisions)*vscale;
         CGContextMoveToPoint(context, origin.x+1, origin.y-i*yoffset);
         CGContextAddLineToPoint(context, origin.x+graphWidth, origin.y-i*yoffset);
     }
@@ -158,20 +168,24 @@
     }
     CGContextStrokePath(context);
     
-    NSString *maxNewtons = [NSString stringWithFormat:self.verticalUnitsFormat,self.fullrange, self.verticalUnits];
+    NSString *maxValueNotation = [NSString stringWithFormat:self.verticalUnitsFormat,self.fullrange, self.verticalUnits];
     CGPoint maxNPoint = CGPointMake(10, 10);
-    [maxNewtons drawAtPoint:maxNPoint forWidth:80 withFont:[UIFont systemFontOfSize:10] fontSize:10 lineBreakMode:NSLineBreakByCharWrapping baselineAdjustment:UIBaselineAdjustmentNone];
+    [maxValueNotation drawAtPoint:maxNPoint forWidth:80 withFont:[UIFont systemFontOfSize:10] fontSize:10 lineBreakMode:NSLineBreakByCharWrapping baselineAdjustment:UIBaselineAdjustmentNone];
     
     CGContextSetLineWidth(context, 2.0);
     [[UIColor redColor] setStroke];
     CGContextBeginPath(context);
-    CGContextMoveToPoint(context, origin.x, origin.y);
+    // The next three lines correct the starting point if the graph's 0,0 origin is not in the lower left corner
+    int ex = floor(log10(fmax - fmin));
+    double mant = -fmin/pow(10, ex);
+    CGFloat yvalue = origin.y - mant * vscale;
+    CGContextMoveToPoint(context, origin.x, yvalue);
     
     CGFloat time = 0.0;
     
     while (time < tmax) {
         time += 1/(ppp*hscale);
-        double thrust = [self.dataSource motorThrustCurveView:self dataValueForTimeIndex:time] - fmin;
+        double thrust = [self.dataSource curveGraphView:self dataValueForTimeIndex:time] - fmin;
         int ex = floor(log10(fmax - fmin));
         double mant = thrust/pow(10, ex);
         CGFloat yvalue = origin.y - mant * vscale;
