@@ -43,7 +43,7 @@ enum LaunchDirection : NSUInteger {
 #define EVERY_MOTOR_CACHE_FILENAME @"everymotorcache.plist"
 #define MOTOR_DATA_FILENAME @"motors.txt"
 #define VERTICAL_ROCKET_PIC_NAME @"Rocket"
-#define CURVEGRAPHVIEW_DEFAULT_VERTICAL_DIVISIONS 10
+#define CURVEGRAPHVIEW_DEFAULT_VERTICAL_DIVISIONS 8
     
 #pragma mark Calculation constants
     

@@ -38,9 +38,9 @@
 - (BOOL)isValidRocket{
     BOOL valid = YES;
     valid = valid && ([self.nameField.text length] != 0);
-    valid = valid && ([self.massField.text length] != 0);
-    valid = valid && ([self.diamField.text length] != 0);
-    valid = valid && ([self.motorDiamLabel.text length] != 0);
+    valid = valid && ([self.massField.text floatValue] > 0.0);
+    valid = valid && ([self.diamField.text floatValue] > 0.0);
+    valid = valid && ([self.motorDiamLabel.text floatValue] > 0);
     valid = valid && ([self.cdField.text floatValue] > 0);
     return valid;
 }
@@ -81,16 +81,18 @@
     self.nameField.text = self.rocket.name;
     self.kitNameField.text = self.rocket.kitName;
     self.manField.text = self.rocket.manufacturer;
+    
     NSNumber *temp = [SLUnitsConvertor displayUnitsOf:self.rocket.mass forKey:MASS_UNIT_KEY];
-    self.massField.text = [NSString stringWithFormat:@"%2.2f", [temp floatValue]];
+    if  ([temp floatValue] > 0.0) self.massField.text = [NSString stringWithFormat:@"%2.2f", [temp floatValue]];
     temp = [SLUnitsConvertor displayUnitsOf:self.rocket.diameter forKey:DIAM_UNIT_KEY];
-    self.diamField.text = [NSString stringWithFormat:@"%2.2f", [temp floatValue]];
+    if  ([temp floatValue] > 0.0) self.diamField.text = [NSString stringWithFormat:@"%2.2f", [temp floatValue]];
     temp = [SLUnitsConvertor displayUnitsOf:self.rocket.length forKey:LENGTH_UNIT_KEY];
-    self.lenField.text = [NSString stringWithFormat:@"%2.2f", [temp floatValue]];
+    if  ([temp floatValue] > 0.0) self.lenField.text = [NSString stringWithFormat:@"%2.2f", [temp floatValue]];
     self.cdField.text = [NSString stringWithFormat:@"%2.2f", [self.rocket.cd floatValue]];
     self.motorDiamLabel.text = [NSString stringWithFormat:@"%d", [self.rocket.motorSize integerValue]];
     self.motorDiamStepper.value = [self.rocket.motorSize integerValue];
     [self calculateCd];
+    [self.saveButton setEnabled:[self isValidRocket]];
 }
 
 

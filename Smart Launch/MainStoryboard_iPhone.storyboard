@@ -543,7 +543,7 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Required" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="VzY-UN-hRW">
-                                                    <rect key="frame" x="97" y="6" width="153" height="31"/>
+                                                    <rect key="frame" x="97" y="6" width="160" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -554,7 +554,7 @@
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="mm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Stj-K4-p0F">
-                                                    <rect key="frame" x="258" y="11" width="44" height="21"/>
+                                                    <rect key="frame" x="258" y="11" width="40" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -578,8 +578,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Required" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="Ze8-im-Rny">
-                                                    <rect key="frame" x="97" y="6" width="152" height="31"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prepped, w/o Motor" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="Ze8-im-Rny">
+                                                    <rect key="frame" x="97" y="6" width="160" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -590,7 +590,7 @@
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="kg" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="7c6-l0-Rfn">
-                                                    <rect key="frame" x="257" y="11" width="44" height="21"/>
+                                                    <rect key="frame" x="257" y="11" width="40" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -615,7 +615,7 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Optional" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="Hp6-0h-CzA">
-                                                    <rect key="frame" x="81" y="6" width="167" height="31"/>
+                                                    <rect key="frame" x="97" y="6" width="160" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
@@ -626,7 +626,7 @@
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="m" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="CYX-8U-HLx">
-                                                    <rect key="frame" x="256" y="11" width="44" height="21"/>
+                                                    <rect key="frame" x="256" y="11" width="40" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1597,8 +1597,8 @@
                                                     <rect key="frame" x="20" y="16" width="280" height="163"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <mutableString key="text">Launch Smart 1.1
-©2012 My Smart Software
+                                                    <string key="text">Launch Smart 1.3.1
+©2012, 2013 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
 Simulation results have been made as accurate as possible without details of the modeled rocket's physical configuration.
@@ -1614,7 +1614,7 @@ Apogee, Quest, Loki, CTI, AMW, Gorilla, RATTworks and RoadRunner logos used with
 Aerotech™ logos used with permission of RCS.
 All company logos are the registered trademarks of the respective motor manufacturers. No official approval or sponsorship of the data in this application should be inferred.
 
-Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</mutableString>
+Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -2680,12 +2680,6 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <class className="SLAnimatedViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLAnimatedViewController.h"/>
             <relationships>
-                <relationship kind="action" name="handleRocketTiltPanGesture:" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="action" name="launchDirectionChanged:" candidateClass="UIButton"/>
-                <relationship kind="action" name="launchGuideLengthValueChanged:" candidateClass="UIStepper"/>
-                <relationship kind="action" name="pullValuesFromSimulation:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="pushValuesToSimulation:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="windVelocityChanged:" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="ffAoALabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ffVelocityLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ffVelocityUnitsLabel" candidateClass="UILabel"/>
@@ -2714,7 +2708,6 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <class className="SLFlightProfileViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLFlightProfileViewController.h"/>
             <relationships>
-                <relationship kind="action" name="graphTypeChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="altitudeUnitsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="apogeeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="coastTimeLabel" candidateClass="UILabel"/>
@@ -2729,7 +2722,6 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <class className="SLInformationTVC" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLInformationTVC.h"/>
             <relationships>
-                <relationship kind="action" name="userDidPressDone:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="doneButton" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="infoTextView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
@@ -2741,9 +2733,6 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <class className="SLLaunchAngleViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLLaunchAngleViewController.h"/>
             <relationships>
-                <relationship kind="action" name="angleSliderValueChanged:" candidateClass="UISlider"/>
-                <relationship kind="action" name="calibrateButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="motionButtonPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="angleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="angleSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="angleView" candidateClass="SLLaunchAngleView"/>
@@ -2755,18 +2744,12 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <class className="SLMotorPrefsTVC" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorPrefsTVC.h"/>
             <relationships>
-                <relationship kind="action" name="revertPrefs:"/>
-                <relationship kind="action" name="savePrefsAndReturn:"/>
-                <relationship kind="action" name="selectAllMotorKeys:"/>
-                <relationship kind="action" name="toggleHybrids:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="hybridButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
         <class className="SLMotorSearchViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorSearchViewController.h"/>
             <relationships>
-                <relationship kind="action" name="motorDiameterRestrictionChanged:" candidateClass="UISegmentedControl"/>
-                <relationship kind="action" name="search1ValueChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="restrictMotorDiametersSegmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="search1Control" candidateClass="UISegmentedControl"/>
@@ -2779,7 +2762,6 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <class className="SLMotorViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorViewController.h"/>
             <relationships>
-                <relationship kind="action" name="userChoseMotor:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="initialThrust" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="motorDiameter" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="motorLength" candidateClass="UILabel"/>
@@ -2796,13 +2778,6 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <class className="SLRocketPropertiesTVC" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLRocketPropertiesTVC.h"/>
             <relationships>
-                <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="motorDiameterChanged:" candidateClass="UIStepper"/>
-                <relationship kind="action" name="saveButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="textEditingDidBegin:" candidateClass="UITextField"/>
-                <relationship kind="action" name="textEditingDidEnd:" candidateClass="UITextField"/>
-                <relationship kind="action" name="textEditingDidEndOnExit:" candidateClass="UITextField"/>
-                <relationship kind="action" name="useCalculatedCd:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="calcCdButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="calculatedCdLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
@@ -2828,10 +2803,6 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <class className="SLSaveFlightDataTVC" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLSaveFlightDataTVC.h"/>
             <relationships>
-                <relationship kind="action" name="calculateNewCd:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="cancelFlightSaving:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="endTextEditing:" candidateClass="UITextField"/>
-                <relationship kind="action" name="saveFlightData:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="actualAltitudeField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="altUnitsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="altitudeLabel" candidateClass="UILabel"/>
@@ -2847,17 +2818,10 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         </class>
         <class className="SLSavedFlightsTVC" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLSavedFlightsTVC.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="revert:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="save:" candidateClass="UIBarButtonItem"/>
-            </relationships>
         </class>
         <class className="SLSimSettingsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLSimSettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="GPSAltitudeRequested:" candidateClass="UIButton"/>
-                <relationship kind="action" name="siteAltitudeChanged:" candidateClass="UIStepper"/>
                 <relationship kind="outlet" name="GPSAltButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="launchAngleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="launchGuideLengthLabel" candidateClass="UILabel"/>
@@ -2875,7 +2839,6 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <class className="SLTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="windDirectionDidChange:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="apogeeAltitudeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="apogeeAltitudeUnitsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="burnoutToApogeeLabel" candidateClass="UILabel"/>
@@ -2893,10 +2856,6 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <class className="SLUnitsTVC" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLUnitsTVC.h"/>
             <relationships>
-                <relationship kind="action" name="controlValueChanged:" candidateClass="UISegmentedControl"/>
-                <relationship kind="action" name="defaultButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="revertButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="saveButtonPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="accelControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="altitudeControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="diamControl" candidateClass="UISegmentedControl"/>
