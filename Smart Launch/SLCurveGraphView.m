@@ -42,7 +42,7 @@
 
 -(NSString *)verticalUnitsFormat{
     if (!_verticalUnitsFormat){
-        _verticalUnitsFormat = @"%1.0f";
+        _verticalUnitsFormat = @"%1.0f %@";
     }
     return _verticalUnitsFormat;
 }

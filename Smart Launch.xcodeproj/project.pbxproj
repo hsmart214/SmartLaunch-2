@@ -59,6 +59,7 @@
 		4220A50115F55D760055EE35 /* Vellum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4FD15F55D760055EE35 /* Vellum@2x.png */; };
 		4220A53D15F561CF0055EE35 /* Goblin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A53B15F561CF0055EE35 /* Goblin@2x.png */; };
 		4220A53E15F561CF0055EE35 /* Goblin.png in Resources */ = {isa = PBXBuildFile; fileRef = 4220A53C15F561CF0055EE35 /* Goblin.png */; };
+		42248D7C16EC416200ABB5D7 /* SLiPadDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42248D7B16EC416200ABB5D7 /* SLiPadDetailViewController.m */; };
 		4232060515F7124F0027A18E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4232060415F7124F0027A18E /* CoreLocation.framework */; };
 		4240A07815F8341900D67F3E /* SLMotorPrefsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4240A07715F8341900D67F3E /* SLMotorPrefsTVC.m */; };
 		4240EDC116990F1E008AB135 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */; };
@@ -170,6 +171,8 @@
 		4220A4FD15F55D760055EE35 /* Vellum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Vellum@2x.png"; sourceTree = "<group>"; };
 		4220A53B15F561CF0055EE35 /* Goblin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Goblin@2x.png"; sourceTree = "<group>"; };
 		4220A53C15F561CF0055EE35 /* Goblin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Goblin.png; sourceTree = "<group>"; };
+		42248D7A16EC416200ABB5D7 /* SLiPadDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLiPadDetailViewController.h; sourceTree = "<group>"; };
+		42248D7B16EC416200ABB5D7 /* SLiPadDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLiPadDetailViewController.m; sourceTree = "<group>"; };
 		4232060415F7124F0027A18E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4240A07615F8341900D67F3E /* SLMotorPrefsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMotorPrefsTVC.h; sourceTree = "<group>"; };
 		4240A07715F8341900D67F3E /* SLMotorPrefsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMotorPrefsTVC.m; sourceTree = "<group>"; };
@@ -333,6 +336,19 @@
 			name = "Rocket Images";
 			sourceTree = "<group>";
 		};
+		42248D7916EC384F00ABB5D7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4220A4C615F55CC60055EE35 /* Rocket.h */,
+				4220A4C715F55CC60055EE35 /* Rocket.m */,
+				4220A4C815F55CC60055EE35 /* RocketMotor.h */,
+				4220A4C915F55CC60055EE35 /* RocketMotor.m */,
+				4220A4CA15F55CC60055EE35 /* SLPhysicsModel.h */,
+				4220A4CB15F55CC60055EE35 /* SLPhysicsModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		425692FA15F4893000F7BABC = {
 			isa = PBXGroup;
 			children = (
@@ -368,8 +384,12 @@
 			children = (
 				4220A4A515F55CC60055EE35 /* MainStoryboard_iPhone.storyboard */,
 				4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */,
+				42248D7916EC384F00ABB5D7 /* Model */,
+				4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */,
 				4220A4AA15F55CC60055EE35 /* SLTableViewController.h */,
 				4220A4AB15F55CC60055EE35 /* SLTableViewController.m */,
+				42248D7A16EC416200ABB5D7 /* SLiPadDetailViewController.h */,
+				42248D7B16EC416200ABB5D7 /* SLiPadDetailViewController.m */,
 				42E7317216BF66ED00F6D468 /* SLFlightProfileViewController.h */,
 				42E7317316BF66ED00F6D468 /* SLFlightProfileViewController.m */,
 				42BB53CB16A295310029C882 /* SLSavedFlightsTVC.h */,
@@ -384,15 +404,12 @@
 				42D78094166295F1000C7D6C /* SLAnimatedViewController.m */,
 				4220A4A715F55CC60055EE35 /* SLModalPresenterDelegate.h */,
 				4220A4A815F55CC60055EE35 /* SLPhotoAngleFinderDelegate.h */,
-				4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */,
 				4220A4AC15F55CC60055EE35 /* SLInformationTVC.h */,
 				4220A4AD15F55CC60055EE35 /* SLInformationTVC.m */,
 				4240A07615F8341900D67F3E /* SLMotorPrefsTVC.h */,
 				4240A07715F8341900D67F3E /* SLMotorPrefsTVC.m */,
 				4220A4AE15F55CC60055EE35 /* SLSimSettingsViewController.h */,
 				4220A4AF15F55CC60055EE35 /* SLSimSettingsViewController.m */,
-				4220A4B015F55CC60055EE35 /* SLUnitsTVC.h */,
-				4220A4B115F55CC60055EE35 /* SLUnitsTVC.m */,
 				4220A4B215F55CC60055EE35 /* SLLaunchAngleViewController.h */,
 				4220A4B315F55CC60055EE35 /* SLLaunchAngleViewController.m */,
 				4220A4B415F55CC60055EE35 /* SLLaunchAngleView.h */,
@@ -411,14 +428,10 @@
 				4220A4C115F55CC60055EE35 /* SLRocketsTableViewController.m */,
 				4220A4C215F55CC60055EE35 /* SLRocketPropertiesTVC.h */,
 				4220A4C315F55CC60055EE35 /* SLRocketPropertiesTVC.m */,
+				4220A4B015F55CC60055EE35 /* SLUnitsTVC.h */,
+				4220A4B115F55CC60055EE35 /* SLUnitsTVC.m */,
 				4220A4C415F55CC60055EE35 /* SLUnitsConvertor.h */,
 				4220A4C515F55CC60055EE35 /* SLUnitsConvertor.m */,
-				4220A4C615F55CC60055EE35 /* Rocket.h */,
-				4220A4C715F55CC60055EE35 /* Rocket.m */,
-				4220A4C815F55CC60055EE35 /* RocketMotor.h */,
-				4220A4C915F55CC60055EE35 /* RocketMotor.m */,
-				4220A4CA15F55CC60055EE35 /* SLPhysicsModel.h */,
-				4220A4CB15F55CC60055EE35 /* SLPhysicsModel.m */,
 				4256931015F4893000F7BABC /* Supporting Files */,
 			);
 			path = "Smart Launch";
@@ -588,6 +601,7 @@
 				42BB53CD16A295310029C882 /* SLSavedFlightsTVC.m in Sources */,
 				42BB53D016A38C4E0029C882 /* SLSaveFlightDataTVC.m in Sources */,
 				42E7317416BF66ED00F6D468 /* SLFlightProfileViewController.m in Sources */,
+				42248D7C16EC416200ABB5D7 /* SLiPadDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,11 +686,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5298B6AC-D02E-46D4-A3D7-A8664B4832FE";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5298B6AC-D02E-46D4-A3D7-A8664B4832FE";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -688,9 +702,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -732,10 +746,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "App Store";

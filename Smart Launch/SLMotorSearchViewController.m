@@ -228,7 +228,6 @@ NSInteger sortFunction(id md1, id md2, void *context){
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
     UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];

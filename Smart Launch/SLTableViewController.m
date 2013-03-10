@@ -13,6 +13,7 @@
 #import "SLSaveFlightDataTVC.h"
 #import "SLFlightProfileViewController.h"
 #import "SLUnitsConvertor.h"
+#import "SLiPadDetailViewController.h"
 
 #define FLIGHT_PROFILE_ROW 5
 
@@ -225,9 +226,11 @@
                 self.burnoutToApogeeLabel.text = [NSString stringWithFormat:@"%1.1f", coastTime];
                 self.simRunning = NO;
                 [self.spinner stopAnimating];
+                if (self.splitViewController){
+                    [(SLiPadDetailViewController *)[self.splitViewController.viewControllers lastObject] updateDisplay];
+                }
             });
         });
-//        dispatch_release(queue);
     }
 }
 
@@ -358,14 +361,15 @@
         [defaults synchronize];
     }];
     [[NSUbiquitousKeyValueStore defaultStore] synchronize];
+    if (self.splitViewController){
+        [(SLiPadDetailViewController *)[self.splitViewController.viewControllers lastObject] setModel:self.model];
+        [(SLiPadDetailViewController *)[self.splitViewController.viewControllers lastObject] setSimDelegate:self];
+        [(SLiPadDetailViewController *)[self.splitViewController.viewControllers lastObject] setSimDataSource:self];
+    }
 }
 
 -(void)didReceiveMemoryWarning{
     [self.model resetFlight];       // This will nil out the flight profile which is a big memory hog
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
 @end

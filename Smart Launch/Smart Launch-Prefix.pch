@@ -34,6 +34,14 @@ enum LaunchDirection : NSUInteger {
     IntoWind = 2
     };
     
+enum SLFlightProfileGraphType {
+    SLFlightProfileGraphTypeVelocity,
+    SLFlightProfileGraphTypeAcceleration,
+    SLFlightProfileGraphTypeAltitude,
+    SLFlightProfileGraphTypeMach,
+    SLFlightProfileGraphTypeDrag
+    };
+    
 #define MOTORS_WWW_URL @"http://www.mysmartsoftware.com/data/motors.txt"
 #define MOTORS_VERSION_WWW_URL @"http://www.mysmartsoftware.com/data/version.txt"
 #define MOTOR_VERSION_FILENAME @"version"

@@ -24,14 +24,6 @@
 
 @implementation SLFlightProfileViewController
 
-enum SLFlightProfileGraphType {
-    SLFlightProfileGraphTypeVelocity,
-    SLFlightProfileGraphTypeAcceleration,
-    SLFlightProfileGraphTypeAltitude,
-    SLFlightProfileGraphTypeMach,
-    SLFlightProfileGraphTypeDrag
-};
-
 -(void)updateDisplay{
     self.rocketNameLabel.text = [self.dataSource rocketName];
     self.motorNameLabel.text = [self.dataSource motorName];

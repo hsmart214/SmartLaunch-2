@@ -57,6 +57,10 @@
     _length =         motorDict[MOTOR_LENGTH_KEY];
     NSString *delayList = motorDict[DELAYS_KEY];
     _delays = [delayList componentsSeparatedByString:@"-"];
+    if ([self.thrusts count] != [self.times count]){
+        NSLog(@"RocketMotor init with bad thrust curve data: %@",self.name);
+        return nil;
+    }
     [self calculateDerivedValues];
     return self;
 }
@@ -428,6 +432,10 @@ NSInteger sortingFunction(id md1, id md2, void *context){
     //NSLog(@"Loaded %d motors.",[_allMotors count]);
 
     return allMotors;
+}
+
+-(NSString *)description{
+    return self.name;
 }
 
 -(void)dealloc{
