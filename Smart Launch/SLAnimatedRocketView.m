@@ -47,8 +47,10 @@
     CGPoint orig = CGPointMake(self.goblin.bounds.size.width + X_INSET, self.goblin.bounds.size.height + Y_INSET);
     CGSize s = self.bounds.size;
     CGRect frame = CGRectMake(s.width - orig.x, s.height - orig.y, self.goblin.bounds.size.width, self.goblin.bounds.size.height);
-    [self.goblin setFrame:frame];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) frame = CGRectMake(s.width/2 - self.goblin.bounds.size.width/2, s.height - self.goblin.bounds.size.height, self.goblin.bounds.size.width, self.goblin.bounds.size.height);
     [self addSubview:self.goblin];
+    [self.goblin setFrame:frame];
+    [self setNeedsDisplay];
 }
 
 void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint fromPt, const CGPoint toPt, const bool ccwLoop){
@@ -125,7 +127,8 @@ void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint from
     //Draw the reciprocal of the rocket velocity vector
     //(the vector of air motion contributed by the rocket motion along the launch guide)
     CGContextRef context = UIGraphicsGetCurrentContext();
-    UIGraphicsPushContext(context);
+    CGContextSaveGState(context);
+    
 
     UIColor *color = [UIColor redColor];
     CGContextSetLineWidth(context, VECTOR_WIDTH);
@@ -144,7 +147,7 @@ void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint from
     drawVectorWithHead(context, color, wvTip, tip, ccwLoop);
     
     //Clean up
-    UIGraphicsPopContext();
+    CGContextRestoreGState(context);
 
 }
 

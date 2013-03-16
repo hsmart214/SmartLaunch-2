@@ -143,10 +143,10 @@
     if (self.view.window)[self updateDisplay];
 }
 
-- (void)sender:(id)sender didChangeSimSettings:(NSDictionary *)settings withUpdate:(BOOL)update{
+- (void)sender:(id)sender didChangeSimSettings:(NSDictionary *)settings withUpdate:(BOOL)shouldUpdate{
     self.settings = [settings mutableCopy];
     [self defaultStoreWithKey:SETTINGS_KEY andValue:self.settings];
-    if (update){
+    if (shouldUpdate){
         [self updateDisplay];
     }
 }
@@ -178,8 +178,7 @@
     self.rocketCell.detailTextLabel.text = [NSString stringWithFormat:@"%dmm", [self.rocket.motorSize intValue]];
     self.motorCell.textLabel.text = self.motor.name;
     self.motorCell.detailTextLabel.text =[NSString stringWithFormat:@"%1.1f Ns", [self.motor.totalImpulse floatValue]];
-    NSString *path = [[NSBundle mainBundle] pathForResource:self.motor.manufacturer ofType:@"png"];
-    UIImage *theImage = [UIImage imageWithContentsOfFile:path];
+    UIImage *theImage = [UIImage imageNamed:self.motor.manufacturer];
     self.motorCell.imageView.image = theImage;
     
     // In the following I let the SLUnitsConvertor class do all of the unit changing.  This controller is not even aware of the UNIT_PREFS settings
@@ -200,7 +199,7 @@
             self.model.rocket = self.rocket;
             self.model.launchGuideAngle = [(self.settings)[LAUNCH_ANGLE_KEY] floatValue];
             float len = [(self.settings)[LAUNCH_GUIDE_LENGTH_KEY] floatValue];
-            if (len == 0) len = 1.0;
+            if (len == 0) len = 1.0;  // defend against zero-divide errors
             self.model.launchGuideLength = len;
             self.model.windVelocity = [(self.settings)[WIND_VELOCITY_KEY] floatValue];
             self.model.LaunchGuideDirection = (enum LaunchDirection)[(self.settings)[WIND_DIRECTION_KEY] intValue];
@@ -227,7 +226,8 @@
                 self.simRunning = NO;
                 [self.spinner stopAnimating];
                 if (self.splitViewController){
-                    [(SLiPadDetailViewController *)[self.splitViewController.viewControllers lastObject] updateDisplay];
+                    UINavigationController *nav = (UINavigationController *)[self.splitViewController.viewControllers lastObject];
+                    [(SLiPadDetailViewController *)nav.viewControllers[0] updateDisplay];
                 }
             });
         });
@@ -346,11 +346,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
-    UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
-    [backgroundView setImage:backgroundImage];
-    self.tableView.backgroundView = backgroundView;
-    
+    if (!self.splitViewController){
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
+    }
     self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
@@ -362,9 +363,10 @@
     }];
     [[NSUbiquitousKeyValueStore defaultStore] synchronize];
     if (self.splitViewController){
-        [(SLiPadDetailViewController *)[self.splitViewController.viewControllers lastObject] setModel:self.model];
-        [(SLiPadDetailViewController *)[self.splitViewController.viewControllers lastObject] setSimDelegate:self];
-        [(SLiPadDetailViewController *)[self.splitViewController.viewControllers lastObject] setSimDataSource:self];
+        UINavigationController *nav = (UINavigationController *)[self.splitViewController.viewControllers lastObject];
+        [(SLiPadDetailViewController *)nav.viewControllers[0] setModel:self.model];
+        [(SLiPadDetailViewController *)nav.viewControllers[0] setSimDelegate:self];
+        [(SLiPadDetailViewController *)nav.viewControllers[0] setSimDataSource:self];
     }
 }
 

@@ -121,7 +121,7 @@
     if (altMSL >= [[self.stdAtmosphere lastObject][ALT_MSL_KEY] floatValue]){
         return [self.stdAtmosphere lastObject];
     }
-    while (above <= max){
+    while (above < max){
         if (altMSL <= [(self.stdAtmosphere)[above][ALT_MSL_KEY] floatValue]) break;
         above += 1;
     }

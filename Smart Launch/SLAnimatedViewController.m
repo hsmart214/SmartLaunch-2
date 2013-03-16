@@ -19,9 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *windVelocityUnitsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ffVelocityUnitsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *windVelocityLabel;
+@property (weak, nonatomic) IBOutlet UIStepper *windVelocityStepper;
 @property (weak, nonatomic) IBOutlet UILabel *ffVelocityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ffAoALabel;
-@property (weak, nonatomic) IBOutlet UISlider *windVelocitySlider;
 @property (weak, nonatomic) IBOutlet UILabel *launchGuideLengthUnitsLabel;
 @property (weak, nonatomic) IBOutlet UIStepper *launchGuideLengthStepper;
 @property (weak, nonatomic) IBOutlet UILabel *launchGuideLengthLabel;
@@ -41,15 +41,14 @@
 
 - (void)setDisplayLaunchAngle:(float)angle{
     if (angle == _displayLaunchAngle) return;
-    if (angle > MAX_LAUNCH_GUIDE_ANGLE) angle = MAX_LAUNCH_GUIDE_ANGLE;
     if (angle < 0) angle = 0;
+    if (angle > MAX_LAUNCH_GUIDE_ANGLE) angle = MAX_LAUNCH_GUIDE_ANGLE;
     _displayLaunchAngle = angle;
     self.displayFFVelocity = [self.dataSource quickFFVelocityAtAngle:_displayLaunchAngle andGuideLength:_displayLaunchGuideLength];
 }
-
-- (IBAction)windVelocityChanged:(UISlider *)sender {
+- (IBAction)windVelocityChanged:(UIStepper *)sender {
     NSNumber *wind = [SLUnitsConvertor displayUnitsOf:@(sender.value) forKey:VELOCITY_UNIT_KEY];
-    self.windVelocityLabel.text = [NSString stringWithFormat:@"%2.1f", [wind floatValue]];
+    self.windVelocityLabel.text = [NSString stringWithFormat:@"%2.0f", [wind floatValue]];
     self.displayWindVelocity = sender.value;
     [self updateDisplay];
 }
@@ -81,7 +80,7 @@
 - (IBAction)pushValuesToSimulation:(UIBarButtonItem *)sender{
     NSMutableDictionary *settings = [self.dataSource simulationSettings];
     settings[LAUNCH_ANGLE_KEY] = @(self.displayLaunchAngle);
-    settings[WIND_VELOCITY_KEY] = @(self.displayWindVelocity);
+    settings[WIND_VELOCITY_KEY] = [SLUnitsConvertor metricStandardOf:@(self.displayWindVelocity) forKey:VELOCITY_UNIT_KEY];
     settings[WIND_DIRECTION_KEY] = @(self.displayLaunchDirection);
     settings[LAUNCH_GUIDE_LENGTH_KEY] = [SLUnitsConvertor metricStandardOf:@(self.launchGuideLengthStepper.value) forKey:LENGTH_UNIT_KEY];
     [self.delegate sender:self didChangeSimSettings:settings withUpdate:NO];
@@ -105,7 +104,7 @@
 
 
 - (void)drawVectors{
-    float wind = self.displayWindVelocity;
+    float wind = [[SLUnitsConvertor metricStandardOf:@(self.displayWindVelocity) forKey:VELOCITY_UNIT_KEY] floatValue];
     float velocity = self.displayFFVelocity;
     float launchAngle = self.displayLaunchAngle;
     enum LaunchDirection dir = self.displayLaunchDirection;
@@ -128,19 +127,19 @@
     float AoA, alpha1, alpha2, opposite, adjacent;
     switch (self.displayLaunchDirection) {
         case CrossWind:
-            AoA = atanf(self.windVelocitySlider.value/self.displayFFVelocity);
+            AoA = atanf([[SLUnitsConvertor metricStandardOf:@(self.windVelocityStepper.value) forKey:VELOCITY_UNIT_KEY] floatValue] /self.displayFFVelocity);
             break;
             
         case WithWind:
             alpha1 = self.displayLaunchAngle;
-            opposite = self.displayFFVelocity*sin(alpha1)-self.windVelocitySlider.value;
+            opposite = self.displayFFVelocity*sin(alpha1)-[[SLUnitsConvertor metricStandardOf:@(self.windVelocityStepper.value) forKey:VELOCITY_UNIT_KEY] floatValue];
             adjacent = self.displayFFVelocity*cos(alpha1);
             alpha2 = atanf(opposite/adjacent);
             AoA = alpha1-alpha2;
             break;
         case IntoWind:
             alpha1 = self.displayLaunchAngle;
-            opposite = self.displayFFVelocity*sin(alpha1)+self.windVelocitySlider.value;
+            opposite = self.displayFFVelocity*sin(alpha1)+[[SLUnitsConvertor metricStandardOf:@(self.windVelocityStepper.value) forKey:VELOCITY_UNIT_KEY] floatValue];
             adjacent = self.displayFFVelocity*cos(alpha1);
             alpha2 = atanf(opposite/adjacent);
             AoA = alpha2-alpha1;
@@ -148,7 +147,7 @@
         default:
             break;
     }
-    if (self.windVelocitySlider.value == 0) AoA = 0.0;
+    if (self.windVelocityStepper.value == 0) AoA = 0.0;
     AoA *= DEGREES_PER_RADIAN;
     self.ffAoALabel.text = [NSString stringWithFormat:@"%2.1f",AoA];
     [self drawVectors];
@@ -158,10 +157,10 @@
     self.windVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
     NSNumber *velocity = [SLUnitsConvertor displayUnitsOf:[self.dataSource windVelocity] forKey:VELOCITY_UNIT_KEY];
     self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", [velocity floatValue]];
-    self.windVelocitySlider.value = [[self.dataSource windVelocity]floatValue]; //always kept metric
+    self.windVelocityStepper.value = [[SLUnitsConvertor displayUnitsOf:[self.dataSource windVelocity] forKey:VELOCITY_UNIT_KEY] floatValue];
     NSNumber *aoa = [self.dataSource freeFlightAoA];
     self.ffAoALabel.text = [NSString stringWithFormat:@"%1.1f", [aoa floatValue] * DEGREES_PER_RADIAN];
-    self.displayWindVelocity = self.windVelocitySlider.value;
+    self.displayWindVelocity = self.windVelocityStepper.value;
     self.displayLaunchAngle = [[self.dataSource launchAngle] floatValue];
     self.displayFFVelocity = [[self.dataSource freeFlightVelocity] floatValue];
     self.launchGuideLengthUnitsLabel.text = [SLUnitsConvertor displayStringForKey:LENGTH_UNIT_KEY];
@@ -196,7 +195,13 @@
         self.launchGuideLengthStepper.stepValue = 0.2;
         self.launchGuideLengthStepper.minimumValue = 0.2;
     }
-
+    if ([unitPrefs[VELOCITY_UNIT_KEY] isEqualToString:K_MILES_PER_HOUR]){
+        self.windVelocityStepper.maximumValue = 20;
+        self.windVelocityStepper.stepValue = 1.0;
+    }else{
+        self.windVelocityStepper.maximumValue = 9;
+        self.windVelocityStepper.stepValue = 0.5;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -219,11 +224,5 @@
 
 -(void)dealloc{
     self.launchGuideLengthFormatString = nil;
-}
-
-- (BOOL)shouldAutorotate{
-    //If we are on an iPad, we will be inside a splitviewcontroller
-    //return (self.splitViewController != nil);
-    return YES;
 }
 @end
