@@ -1709,7 +1709,6 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                     <navigationItem key="navigationItem" title="Launch Smart" id="osN-WE-ac2"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="doneButton" destination="CcT-ZX-zcy" id="eLW-rS-R57"/>
                         <outlet property="infoTextView" destination="l6g-Ka-VRk" id="6Se-SV-hcF"/>
                         <outlet property="spinner" destination="8Xw-ml-vKJ" id="FeH-Gn-rrr"/>
                     </connections>

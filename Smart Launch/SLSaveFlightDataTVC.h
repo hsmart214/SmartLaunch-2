@@ -13,7 +13,7 @@
 @interface SLSaveFlightDataTVC : UITableViewController
 //model
 @property (nonatomic, strong) NSDictionary *flightData;
-@property (nonatomic, strong) Rocket *rocket;
+@property (nonatomic, copy) Rocket *rocket;
 @property (nonatomic, weak) SLPhysicsModel *physicsModel;
 @property (nonatomic, weak) id delegate;            // this dummy delegate only exists to make the prepareForSegue code easier
 

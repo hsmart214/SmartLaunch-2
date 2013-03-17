@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet SLCurveGraphView *thrustCurveView;
 @property (weak, nonatomic) IBOutlet SLCurveGraphView *flightProfileView;
+@property (weak, nonatomic) IBOutlet UILabel *flightProfileGraphTitleLabel;
 @property (weak, nonatomic) IBOutlet SLAnimatedRocketView *rocketView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *graphTypeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIStepper *launchGuideLengthStepper;
@@ -137,6 +138,7 @@
 }
 
 -(void)updateGraphDisplay{
+    self.flightProfileGraphTitleLabel.text = [NSString stringWithFormat:@"Flight Profile - %@", [self.graphTypeSegmentedControl titleForSegmentAtIndex:[self.graphTypeSegmentedControl selectedSegmentIndex]]];
     self.motorNameLabel.text = [self.model.motor.manufacturer stringByAppendingString:[NSString stringWithFormat:@" %@", self.model.motor.name]];
     self.title = self.model.rocketName;
     [self.flightProfileView resetAxes];

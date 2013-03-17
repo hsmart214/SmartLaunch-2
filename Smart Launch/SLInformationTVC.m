@@ -10,7 +10,6 @@
 
 
 @interface SLInformationTVC ()<UIAlertViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *doneButton;
 @property (weak, nonatomic) IBOutlet UITextView *infoTextView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (nonatomic, strong) UIAlertView *alert;
@@ -27,6 +26,7 @@
 {
     [super viewDidLoad];
     [self.infoTextView flashScrollIndicators];
+    if (self.splitViewController) return;
     UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
     NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
     UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];

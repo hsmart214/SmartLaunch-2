@@ -126,22 +126,7 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self.tableView.delegate = self;
-    [self.GPSAltButton setTitle: NSLocalizedString(@"GPS Disabled", nil) forState:UIControlStateDisabled] ;
-    UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
-    NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
-    UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
-    [backgroundView setImage:backgroundImage];
-    self.tableView.backgroundView = backgroundView;
-    // set up the unit labels for the preferred units
-    
-    self.windVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
-    self.launchGuideLengthUnitsLabel.text = [SLUnitsConvertor displayStringForKey:LENGTH_UNIT_KEY];
-    self.siteAltitudeUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
-    
+-(void)setupUnits{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     
@@ -178,6 +163,28 @@
         self.launchGuideLengthStepper.stepValue = 0.2;
         self.launchGuideLengthStepper.minimumValue = 0.2;
     }
+
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.tableView.delegate = self;
+    [self.GPSAltButton setTitle: NSLocalizedString(@"GPS Disabled", nil) forState:UIControlStateDisabled];
+    if (!self.splitViewController){
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
+        UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
+    }
+    // set up the unit labels for the preferred units
+    
+    self.windVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
+    self.launchGuideLengthUnitsLabel.text = [SLUnitsConvertor displayStringForKey:LENGTH_UNIT_KEY];
+    self.siteAltitudeUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
+    
+    [self setupUnits];
     
     float launchAngle = [(self.settings)[LAUNCH_ANGLE_KEY] floatValue];
     self.launchAngleLabel.text = [NSString stringWithFormat:@"%1.1f", launchAngle * DEGREES_PER_RADIAN];
@@ -194,9 +201,7 @@
     self.siteAltitudeStepper.value = alt;
     
     // disable the GPS if location services denied
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
-        [self.GPSAltButton setEnabled:NO];
-    }
+    [self.GPSAltButton setEnabled:([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized)];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -208,7 +213,7 @@
     self.windVelocityStepper.value = [self.windVelocityLabel.text floatValue];
     NSNumber *metricValue = [SLUnitsConvertor metricStandardOf:@(self.windVelocityStepper.value) forKey:VELOCITY_UNIT_KEY];
     (self.settings)[WIND_VELOCITY_KEY] = metricValue;
-    (self.settings)[LAUNCH_TEMPERATURE_KEY] = metricValue;
+    //    (self.settings)[LAUNCH_TEMPERATURE_KEY] = metricValue;
     metricValue = [SLUnitsConvertor metricStandardOf:@(self.launchGuideLengthStepper.value) forKey:LENGTH_UNIT_KEY];
     (self.settings)[LAUNCH_GUIDE_LENGTH_KEY] = metricValue;
     metricValue = [SLUnitsConvertor metricStandardOf:@(self.siteAltitudeStepper.value) forKey:ALT_UNIT_KEY];

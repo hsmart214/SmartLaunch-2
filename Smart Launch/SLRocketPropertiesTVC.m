@@ -17,7 +17,21 @@
 #define DELETE_BUTTON_INDEX 2
 
 @interface SLRocketPropertiesTVC ()<UIScrollViewDelegate, UIActionSheetDelegate, UITableViewDelegate>
-
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UITextField *kitNameField;
+@property (weak, nonatomic) IBOutlet UITextField *manField;
+@property (weak, nonatomic) IBOutlet UITextField *massField;
+@property (weak, nonatomic) IBOutlet UITextField *diamField;
+@property (weak, nonatomic) IBOutlet UITextField *lenField;
+@property (weak, nonatomic) IBOutlet UITextField *cdField;
+@property (weak, nonatomic) IBOutlet UILabel *motorDiamLabel;
+// These labels set according to the units prefs
+@property (weak, nonatomic) IBOutlet UILabel *massUnitsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *diamUnitsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lenUnitsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *motorDiamUnitsLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) UIScrollView *scrollView;
 @property (nonatomic, weak) UITextField *activeField;
 @property (nonatomic, strong) Rocket *oldRocket;
@@ -199,7 +213,7 @@
     if (direction > 0){
         // increment motor size to next larger valid size
         for (int i=0; i < [self.validMotorDiameters count]; i++){
-            if ([(self.validMotorDiameters)[i]integerValue] == mmt){
+            if ([(self.validMotorDiameters)[i] integerValue] == mmt){
                 newSize = [(self.validMotorDiameters)[i+1] integerValue];
                 break;
             }
@@ -207,13 +221,13 @@
     }else{
         // decrement motor size to next smaller valid size
         for (int i=0; i < [self.validMotorDiameters count]; i++){
-            if ([(self.validMotorDiameters)[i]integerValue] == mmt){
+            if ([(self.validMotorDiameters)[i] integerValue] == mmt){
                 newSize = [(self.validMotorDiameters)[i-1] integerValue];
                 break;
             }
         }
     }
-    sender.value = newSize;
+    [sender setValue: newSize];
     self.motorDiamLabel.text = [NSString stringWithFormat:@"%d", newSize];
     [self updateRocket];
 }

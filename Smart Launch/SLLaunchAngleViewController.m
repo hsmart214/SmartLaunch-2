@@ -142,11 +142,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
-    UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
-    [backgroundView setImage:backgroundImage];
-    [self.view insertSubview:backgroundView atIndex:0];
+    if (!self.splitViewController){
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+        NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
+        UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
+        [backgroundView setImage:backgroundImage];
+        [self.view insertSubview:backgroundView atIndex:0];
+    }
     self.calibrateButton.enabled = NO;
     self.motionButton.title = @"Motion On";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

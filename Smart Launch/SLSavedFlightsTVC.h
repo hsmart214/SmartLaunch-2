@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Rocket.h"
+#import "SLSimulationDelegate.h"
 
 @protocol SLSavedFlightsDelegate <NSObject>
 
@@ -21,5 +22,6 @@
 //model
 @property (nonatomic, copy) Rocket* rocket;
 @property (nonatomic, weak) id<SLSavedFlightsDelegate> rocketDelegate;
+@property (nonatomic, weak) id<SLSimulationDelegate> simDelegate;
 
 @end

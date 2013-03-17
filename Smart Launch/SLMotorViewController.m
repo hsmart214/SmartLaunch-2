@@ -49,13 +49,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: @"Vellum" ofType:@"png"];
-    UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
-    [backgroundView setImage:backgroundImage];
-    [self.view insertSubview:backgroundView atIndex:0];
-    
+    if (!self.splitViewController){
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: @"Vellum" ofType:@"png"];
+        UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
+        [backgroundView setImage:backgroundImage];
+        [self.view insertSubview:backgroundView atIndex:0];
+    }
     self.motorManufacturer.text = self.motor.manufacturer;
     self.motorDiameter.text = [self.motor.diameter description];
     self.motorMass.text = [self.motor.loadedMass description];

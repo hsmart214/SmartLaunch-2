@@ -37,7 +37,7 @@
 
 - (IBAction)selectAllMotorKeys:(id)sender {
     // this leaves oldMotorPrefs alone so we can still revert
-    _motorPrefs = nil; // the getter for motorPrefs will re-initialize with all YES
+    self.motorPrefs = nil; // the getter for motorPrefs will re-initialize with all YES
     [self.tableView reloadData];
 }
 
@@ -98,11 +98,6 @@
     }
 
     [super viewWillAppear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Table view data source

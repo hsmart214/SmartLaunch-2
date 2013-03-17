@@ -277,6 +277,9 @@
     if ([[segue identifier] isEqualToString:@"settingsModalSegue"]){
         [[(UINavigationController *)segue.destinationViewController viewControllers][0] setDelegate:self];
     }
+    if ([[segue identifier] isEqualToString:@"settingsPushSegue"]){
+        [segue.destinationViewController setDelegate:self];
+    }
     if ([[segue identifier] isEqualToString:@"motorSelectorSegue"]){
         // this is part of the model for this destination VC, so we can set this
         [(SLMotorSearchViewController *)segue.destinationViewController setRocketMotorMountDiameter:self.rocket.motorSize];
@@ -288,7 +291,8 @@
     if ([[segue identifier] isEqualToString:@"saveFlightSegue"]){
         NSDictionary *flight = @{FLIGHT_MOTOR_KEY : self.motor.name,
                                  FLIGHT_BEST_CD : self.rocket.cd,
-                                 FLIGHT_ALTITUDE_KEY : [SLUnitsConvertor metricStandardOf:@([self.apogeeAltitudeLabel.text floatValue]) forKey:ALT_UNIT_KEY]};
+                                 FLIGHT_ALTITUDE_KEY : [SLUnitsConvertor metricStandardOf:@([self.apogeeAltitudeLabel.text floatValue]) forKey:ALT_UNIT_KEY],
+                                 FLIGHT_SETTINGS_KEY: self.settings};
         [(SLSaveFlightDataTVC *)segue.destinationViewController setFlightData:flight];
         [(SLSaveFlightDataTVC *)segue.destinationViewController setPhysicsModel:self.model];
         [(SLSaveFlightDataTVC *)segue.destinationViewController setRocket:self.rocket];

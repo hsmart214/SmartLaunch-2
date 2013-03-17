@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) NSMutableArray *savedFlights;
 @property (nonatomic, strong) NSArray *originalSavedFlights;
+@property (nonatomic) NSUInteger selectedFlightRow;
 @property (nonatomic, strong) id iCloudObserver;
 
 @end
@@ -26,6 +27,32 @@
         _savedFlights = [self.rocket.recordedFlights mutableCopy];
     }
     return _savedFlights;
+}
+
+/*
+    Here is what is in a "settings" dict:
+ settings = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+ @0.9, WIND_VELOCITY_KEY,             //2 MPH
+ @0.9144, LAUNCH_GUIDE_LENGTH_KEY,    //36 inches
+ @0.0, LAUNCH_ANGLE_KEY,
+ @33.0, LAUNCH_ALTITUDE_KEY,          //100 feet
+ nil];
+
+ */
+
+-(void)pushFlightData{
+    if (!self.splitViewController) return;
+    //Only do this next part on the iPad
+    NSDictionary *settings = self.savedFlights[self.selectedFlightRow][FLIGHT_SETTINGS_KEY];
+    if (!settings) {
+        // If the recorded flight does not include settings - it is from a previous version. Uncheck the row and do nothing
+        self.selectedFlightRow = -1;
+        [self.tableView reloadData];
+        return;
+    }
+    [self.simDelegate sender:self didChangeRocket:self.rocket];
+    [self.simDelegate sender:self didChangeRocketMotor:self.savedFlights[self.selectedFlightRow][FLIGHT_MOTOR_KEY]];
+    [self.simDelegate sender:self didChangeSimSettings:settings withUpdate:YES];
 }
 
 #pragma mark - Target action
@@ -68,7 +95,11 @@
     NSNumber *alt = self.savedFlights[indexPath.row][FLIGHT_ALTITUDE_KEY];
     alt = [SLUnitsConvertor displayUnitsOf:alt forKey:ALT_UNIT_KEY];
     cell.altitude.text = [NSString stringWithFormat:@"%1.0f", [alt floatValue]];
-    
+    if (self.selectedFlightRow == indexPath.row){
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    }else{
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    }
     return cell;
 }
 
@@ -92,11 +123,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (self.selectedFlightRow == indexPath.row) return;
+    self.selectedFlightRow = indexPath.row;
+    [tableView reloadData];
+    [self pushFlightData]; // on the iPad this will cause the selected flight to be displayed on screen
 }
 
 #pragma mark View life cycle
 
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    // this is a terrible hack, but I need to add a chain of delegates to get around it
+    self.simDelegate = self.navigationController.viewControllers[0];
+}
+
 -(void)viewWillAppear:(BOOL)animated{
+    self.selectedFlightRow = -1;
     [self.navigationController setToolbarHidden:NO animated:animated];
     self.originalSavedFlights = [self.savedFlights copy];
     
