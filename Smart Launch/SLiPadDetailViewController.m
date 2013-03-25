@@ -28,16 +28,32 @@
 @property (weak, nonatomic) IBOutlet UILabel *ffAoALabel;
 @property (weak, nonatomic) IBOutlet UILabel *ffVelocityUnitsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ffVelocityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *launchSiteAltLabel;
+@property (weak, nonatomic) IBOutlet UILabel *launchSiteAltUnitsLabel;
+@property (weak, nonatomic) IBOutlet UIStepper *siteAltitudeStepper;
 @property (nonatomic) float displayLaunchAngle;
 @property (nonatomic) enum LaunchDirection displayLaunchDirection;
 @property (nonatomic) float displayFFVelocity;
 @property (nonatomic) float displayWindVelocity;
 @property (nonatomic) float displayLaunchGuideLength;
+@property (nonatomic) float displayLaunchAltitude;
 @property (nonatomic, strong) NSString *launchGuideLengthFormatString;
 
 @end
 
 @implementation SLiPadDetailViewController
+
+- (IBAction)pullSimData:(UIButton *)sender {
+    [self updateDisplay];
+}
+
+- (IBAction)pushSimData:(UIButton *)sender {
+    NSDictionary *settings = @{LAUNCH_ANGLE_KEY: @(self.displayLaunchAngle),
+                               LAUNCH_GUIDE_LENGTH_KEY: @(self.displayLaunchGuideLength),
+                               WIND_VELOCITY_KEY: @(self.displayWindVelocity),
+                               LAUNCH_ALTITUDE_KEY: @(self.displayLaunchAltitude)};
+    [self.simDelegate sender:self didChangeSimSettings:settings withUpdate:YES];
+}
 
 -(void)updateDisplay{
     [self importSimValues];
@@ -61,7 +77,7 @@
     _displayLaunchAngle = angle;
     self.displayFFVelocity = [self.simDataSource quickFFVelocityAtAngle:_displayLaunchAngle andGuideLength:_displayLaunchGuideLength];
 }
-- (IBAction)windVelocityChanged:(UIStepper *)sender {
+- (IBAction)windVelocityChanged:(UIStepper *)sender { // Remember this stepper keeps values in display units, not metric
     self.windVelocityLabel.text = [NSString stringWithFormat:@"%2.0f", sender.value];
     self.displayWindVelocity = [[SLUnitsConvertor metricStandardOf:@(sender.value) forKey:VELOCITY_UNIT_KEY] floatValue];
     [self updateAoADisplay];
@@ -74,6 +90,11 @@
     [self updateAoADisplay];
 }
 
+- (IBAction)launchSiteAltitudeChanged:(UIStepper *)sender { // Remember this stepper keeps values in display units, not metric
+    self.displayLaunchAltitude = [[SLUnitsConvertor metricStandardOf:@(sender.value) forKey:ALT_UNIT_KEY] floatValue];
+    self.launchSiteAltLabel.text = [NSString stringWithFormat:@"%1.0f", sender.value];
+    [self updateAoADisplay];
+}
 
 - (IBAction)handleRocketTiltPanGesture:(UIPanGestureRecognizer *)gesture {
     if (self.displayLaunchDirection == CrossWind) return;       // The launch angle always appears vertical for crosswind calculations
@@ -217,18 +238,22 @@
 }
 
 -(BOOL)shouldDisplayMachOneLine:(SLCurveGraphView *)sender{
-    return ((enum SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex] == SLFlightProfileGraphTypeMach);
+    return ((sender == self.flightProfileView)&&(enum SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex] == SLFlightProfileGraphTypeMach);
 }
 
 
 #pragma mark - View Life Cycle
 
 - (void)importSimValues{
+    NSNumber *siteAlt = [SLUnitsConvertor displayUnitsOf:[self.simDataSource launchSiteAltitude] forKey:ALT_UNIT_KEY];
+    self.siteAltitudeStepper.value = [siteAlt doubleValue];
+    self.launchSiteAltLabel.text = [NSString stringWithFormat:@"%1.0f", [siteAlt floatValue]];
+    self.displayLaunchAltitude = [[self.simDataSource launchSiteAltitude] floatValue];
     NSNumber *velocity = [SLUnitsConvertor displayUnitsOf:[self.simDataSource windVelocity] forKey:VELOCITY_UNIT_KEY];
     self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", [velocity floatValue]];
     self.windVelocityStepper.value = [[SLUnitsConvertor displayUnitsOf:[self.simDataSource windVelocity] forKey:VELOCITY_UNIT_KEY] floatValue];
     NSNumber *aoa = [self.simDataSource freeFlightAoA];
-    self.ffAoALabel.text = [NSString stringWithFormat:@"%1.1f", [aoa floatValue] * DEGREES_PER_RADIAN];
+    self.ffAoALabel.text = [NSString stringWithFormat:@"%1.1f°", [aoa floatValue] * DEGREES_PER_RADIAN];
     self.displayWindVelocity = [[SLUnitsConvertor metricStandardOf:@(self.windVelocityStepper.value) forKey:VELOCITY_UNIT_KEY] floatValue];
     self.displayLaunchAngle = [[self.simDataSource launchAngle] floatValue];
     self.displayFFVelocity = [[self.simDataSource freeFlightVelocity] floatValue];
@@ -247,7 +272,14 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     
-    // For both steppers I am keeping the value in display units to avoid awkward rounding errors
+    // For all steppers I am keeping the value in display units to avoid awkward rounding errors
+    if ([unitPrefs[ALT_UNIT_KEY] isEqualToString:K_METERS]){
+        [self.siteAltitudeStepper setMaximumValue:4000];
+        self.siteAltitudeStepper.stepValue = 50;
+    }else{// must be feet
+        [self.siteAltitudeStepper setMaximumValue:10000];
+        self.siteAltitudeStepper.stepValue = 100;
+    }
     if ([unitPrefs[LENGTH_UNIT_KEY] isEqualToString:K_FEET]){
         self.launchGuideLengthFormatString = @"%1.1f";
         [self.launchGuideLengthStepper setMaximumValue:12];

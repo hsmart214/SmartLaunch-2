@@ -127,7 +127,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (!self.splitViewController) return;
+    if (self.splitViewController) return;
     UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
     UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
     [backgroundView setImage:backgroundImage];

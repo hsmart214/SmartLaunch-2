@@ -31,6 +31,7 @@
 -(NSNumber *)windVelocity;
 -(NSNumber *)launchAngle;
 -(NSNumber *)launchGuideLength;
+-(NSNumber *)launchSiteAltitude;
 -(enum LaunchDirection)launchGuideDirection;
 -(float)quickFFVelocityAtAngle:(float)angle andGuideLength:(float)length;
 

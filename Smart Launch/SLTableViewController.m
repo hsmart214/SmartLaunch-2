@@ -190,7 +190,7 @@
     [self.windDirectionButton setTitle:buttonNames[[(self.settings)[WIND_DIRECTION_KEY] intValue]] forState:UIControlStateNormal];
     self.ffVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
     self.apogeeAltitudeUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
-    if (self.view.window && !self.simRunning){
+    if ((self.view.window || self.splitViewController) && !self.simRunning){    // always run sim if we are on an iPad, unless it is already running
         self.simRunning = YES;
         [self.spinner startAnimating];
         dispatch_queue_t queue = dispatch_queue_create("simQueue", NULL);
@@ -260,6 +260,10 @@
     return self.settings[LAUNCH_GUIDE_LENGTH_KEY];
 }
 
+-(NSNumber *)launchSiteAltitude{
+    return self.settings[LAUNCH_ALTITUDE_KEY];
+}
+
 - (enum LaunchDirection)launchGuideDirection{
     return [self.settings[WIND_DIRECTION_KEY] integerValue];
 }
@@ -290,6 +294,7 @@
     }
     if ([[segue identifier] isEqualToString:@"saveFlightSegue"]){
         NSDictionary *flight = @{FLIGHT_MOTOR_KEY : self.motor.name,
+                                 FLIGHT_MOTOR_LONGNAME_KEY : [NSString stringWithFormat:@"%@ %@", self.motor.manufacturer, self.motor.name],
                                  FLIGHT_BEST_CD : self.rocket.cd,
                                  FLIGHT_ALTITUDE_KEY : [SLUnitsConvertor metricStandardOf:@([self.apogeeAltitudeLabel.text floatValue]) forKey:ALT_UNIT_KEY],
                                  FLIGHT_SETTINGS_KEY: self.settings};
@@ -350,6 +355,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    id unitPrefs = [self defaultFetchWithKey:UNIT_PREFS_KEY];
+    if (!unitPrefs) [SLUnitsTVC setStandardDefaults];
+    
     if (!self.splitViewController){
         UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
         UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
@@ -375,7 +384,7 @@
 }
 
 -(void)didReceiveMemoryWarning{
-    [self.model resetFlight];       // This will nil out the flight profile which is a big memory hog
+    //    [self.model resetFlight];       // This will nil out the flight profile which is a big memory hog
 }
 
 @end

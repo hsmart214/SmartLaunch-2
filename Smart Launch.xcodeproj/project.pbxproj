@@ -73,8 +73,6 @@
 		4256931615F4893000F7BABC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931515F4893000F7BABC /* main.m */; };
 		4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931915F4893000F7BABC /* SLAppDelegate.m */; };
 		42A1B6191670599E004F1FA0 /* version.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42A1B6181670599E004F1FA0 /* version.txt */; };
-		42AEF2E216633603009F65AA /* Rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AEF2E016633603009F65AA /* Rocket.png */; };
-		42AEF2E316633603009F65AA /* Rocket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AEF2E116633603009F65AA /* Rocket@2x.png */; };
 		42BB53C916A293D20029C882 /* SLFlightDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53C816A293D20029C882 /* SLFlightDataCell.m */; };
 		42BB53CD16A295310029C882 /* SLSavedFlightsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */; };
 		42BB53D016A38C4E0029C882 /* SLSaveFlightDataTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CF16A38C4D0029C882 /* SLSaveFlightDataTVC.m */; };
@@ -98,6 +96,10 @@
 		42E7317416BF66ED00F6D468 /* SLFlightProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7317316BF66ED00F6D468 /* SLFlightProfileViewController.m */; };
 		42F3E1E616CB7C0D00081288 /* 57icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F3E1E416CB7C0D00081288 /* 57icon.png */; };
 		42F3E1E716CB7C0D00081288 /* 114icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F3E1E516CB7C0D00081288 /* 114icon.png */; };
+		42F6ADAA16F6AD92002C471B /* Rocket~iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F6ADA616F6AD92002C471B /* Rocket~iPhone.png */; };
+		42F6ADAB16F6AD92002C471B /* Rocket~iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F6ADA716F6AD92002C471B /* Rocket~iPhone@2x.png */; };
+		42F6ADAC16F6AD92002C471B /* Rocket~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F6ADA816F6AD92002C471B /* Rocket~iPad.png */; };
+		42F6ADAD16F6AD92002C471B /* Rocket~iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F6ADA916F6AD92002C471B /* Rocket~iPad@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -192,8 +194,6 @@
 		4256931815F4893000F7BABC /* SLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAppDelegate.h; sourceTree = "<group>"; };
 		4256931915F4893000F7BABC /* SLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAppDelegate.m; sourceTree = "<group>"; };
 		42A1B6181670599E004F1FA0 /* version.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = version.txt; sourceTree = "<group>"; };
-		42AEF2E016633603009F65AA /* Rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rocket.png; sourceTree = SOURCE_ROOT; };
-		42AEF2E116633603009F65AA /* Rocket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket@2x.png"; sourceTree = SOURCE_ROOT; };
 		42BB53C716A293D20029C882 /* SLFlightDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFlightDataCell.h; sourceTree = "<group>"; };
 		42BB53C816A293D20029C882 /* SLFlightDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFlightDataCell.m; sourceTree = "<group>"; };
 		42BB53CB16A295310029C882 /* SLSavedFlightsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSavedFlightsTVC.h; sourceTree = "<group>"; };
@@ -225,6 +225,10 @@
 		42E7317316BF66ED00F6D468 /* SLFlightProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFlightProfileViewController.m; sourceTree = "<group>"; };
 		42F3E1E416CB7C0D00081288 /* 57icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57icon.png; sourceTree = "<group>"; };
 		42F3E1E516CB7C0D00081288 /* 114icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114icon.png; sourceTree = "<group>"; };
+		42F6ADA616F6AD92002C471B /* Rocket~iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket~iPhone.png"; sourceTree = "<group>"; };
+		42F6ADA716F6AD92002C471B /* Rocket~iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket~iPhone@2x.png"; sourceTree = "<group>"; };
+		42F6ADA816F6AD92002C471B /* Rocket~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket~iPad.png"; sourceTree = "<group>"; };
+		42F6ADA916F6AD92002C471B /* Rocket~iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket~iPad@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,8 +338,10 @@
 		4220A53F15F561E30055EE35 /* Rocket Images */ = {
 			isa = PBXGroup;
 			children = (
-				42AEF2E016633603009F65AA /* Rocket.png */,
-				42AEF2E116633603009F65AA /* Rocket@2x.png */,
+				42F6ADA616F6AD92002C471B /* Rocket~iPhone.png */,
+				42F6ADA716F6AD92002C471B /* Rocket~iPhone@2x.png */,
+				42F6ADA816F6AD92002C471B /* Rocket~iPad.png */,
+				42F6ADA916F6AD92002C471B /* Rocket~iPad@2x.png */,
 				4220A53B15F561CF0055EE35 /* Goblin@2x.png */,
 				4220A53C15F561CF0055EE35 /* Goblin.png */,
 			);
@@ -532,8 +538,6 @@
 				42DABC541617FD0100CA6C5E /* Viewfinder@2x.png in Resources */,
 				42E5914916213D91003EF252 /* Default-568h@2x.png in Resources */,
 				42E5914C16213E1C003EF252 /* Default@2x.png in Resources */,
-				42AEF2E216633603009F65AA /* Rocket.png in Resources */,
-				42AEF2E316633603009F65AA /* Rocket@2x.png in Resources */,
 				42A1B6191670599E004F1FA0 /* version.txt in Resources */,
 				421BB121167293FD00F29D95 /* Aerotech Hybrid.png in Resources */,
 				421BB122167293FD00F29D95 /* Aerotech RMS.png in Resources */,
@@ -573,6 +577,10 @@
 				4221648016F57CF8008E5A28 /* Default.png in Resources */,
 				4221648816F57EB1008E5A28 /* Default-Landscape@2x~ipad.png in Resources */,
 				4221648A16F57F1A008E5A28 /* Default-Landscape~ipad.png in Resources */,
+				42F6ADAA16F6AD92002C471B /* Rocket~iPhone.png in Resources */,
+				42F6ADAB16F6AD92002C471B /* Rocket~iPhone@2x.png in Resources */,
+				42F6ADAC16F6AD92002C471B /* Rocket~iPad.png in Resources */,
+				42F6ADAD16F6AD92002C471B /* Rocket~iPad@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

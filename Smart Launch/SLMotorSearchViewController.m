@@ -60,9 +60,14 @@ NSInteger sortFunction(id md1, id md2, void *context){
             _allMotors = [NSArray arrayWithContentsOfURL:motorFileURL];
             return _allMotors;
         }
-        NSMutableArray *build = [NSMutableArray array];
+        NSURL *allMotorsFileURL = [cacheURL URLByAppendingPathComponent:EVERY_MOTOR_CACHE_FILENAME];
+        NSURL *allMotorsHashFileURL = [cacheURL URLByAppendingPathComponent:EVERY_MOTOR_HASHTABLE_CACHE_FILENAME];
         
-        NSURL *motorsURL = [mainBundle URLForResource:@"motors" withExtension:@"txt"];
+        NSMutableArray *build = [NSMutableArray array];                     // this one is for the motors allowed by the preferences
+        NSMutableArray *allBuild = [NSMutableArray array];                  // this one is for ALL motors in the file
+        NSMutableDictionary *allDict = [NSMutableDictionary dictionary];    // this is a dictionary of all motors with the keys being MAN_NAME + NAME
+        
+        NSURL *motorsURL = [mainBundle URLForResource:MOTOR_DATA_FILENAME withExtension:nil];
         if (currentMotorsVersion > bundleMotorVersion){
             NSURL *docURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
             motorsURL = [docURL URLByAppendingPathComponent:MOTOR_DATA_FILENAME];
@@ -127,6 +132,12 @@ NSInteger sortFunction(id md1, id md2, void *context){
             //check to see if any of the keys are exluded by the user's preference
             // first add "mm" to the motor diameter string
             NSString *motorDiamKey = (NSString *)[motorData[MOTOR_DIAM_KEY] stringByAppendingString:@"mm"];
+            // add it to the array of ALL motors
+            [allBuild addObject:motorData];
+            // add it to the dictionary of ALL motors
+            NSString *key = [NSString stringWithFormat:@"%@ %@", motorData[MAN_KEY], motorData[NAME_KEY]];
+            allDict[key] = motorData;
+            // only add it to "build" if it is not excluded by the user preferences
             if ([(self.motorKeyPrefs)[motorData[MAN_KEY]] boolValue] &&
                 [(self.motorKeyPrefs)[motorData[IMPULSE_KEY]] boolValue] &&
                 [(self.motorKeyPrefs)[motorDiamKey] boolValue])
@@ -135,7 +146,12 @@ NSInteger sortFunction(id md1, id md2, void *context){
             }
         }
         _allMotors = [[NSArray arrayWithArray:build] sortedArrayUsingFunction:sortFunction context:NULL];
-        [_allMotors writeToURL:motorFileURL atomically:YES];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [_allMotors writeToURL:motorFileURL atomically:YES];
+            [allBuild writeToURL:allMotorsFileURL atomically:YES];
+            [allDict writeToURL:allMotorsHashFileURL atomically:YES];
+        });
+        
         //NSLog(@"Loaded %d motors.",[_allMotors count]);
     }
     return _allMotors;

@@ -10,6 +10,7 @@
 #import "SLSavedFlightsTVC.h"
 #import "SLFlightDataCell.h"
 #import "SLUnitsConvertor.h"
+#import "RocketMotor.h"
 
 @interface SLSavedFlightsTVC ()
 
@@ -50,9 +51,42 @@
         [self.tableView reloadData];
         return;
     }
+    NSString *motorName = self.savedFlights[self.selectedFlightRow][FLIGHT_MOTOR_LONGNAME_KEY];
+    RocketMotor *motor = [self motorNamed:motorName];
+    if (!motor) return;
+    
     [self.simDelegate sender:self didChangeRocket:self.rocket];
-    [self.simDelegate sender:self didChangeRocketMotor:self.savedFlights[self.selectedFlightRow][FLIGHT_MOTOR_KEY]];
+    [self.simDelegate sender:self didChangeRocketMotor:motor];
     [self.simDelegate sender:self didChangeSimSettings:settings withUpdate:YES];
+}
+
+-(RocketMotor *)motorNamed:(NSString *)name{
+    if (!name) return nil; // this would mean the flight was saved in a previous version so the full name was not saved
+
+    NSDictionary *allMotorsDictionary;
+    NSArray *allMotors;
+    NSDictionary *motorDict;
+    NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *motorHashFileURL = [cacheURL URLByAppendingPathComponent:EVERY_MOTOR_HASHTABLE_CACHE_FILENAME];
+    NSURL *motorFileURL = [cacheURL URLByAppendingPathComponent:EVERY_MOTOR_CACHE_FILENAME];
+    if ([[NSFileManager defaultManager]fileExistsAtPath:[motorHashFileURL path]]){
+        allMotorsDictionary = [NSDictionary dictionaryWithContentsOfURL:motorHashFileURL];
+        motorDict = allMotorsDictionary[name];
+    // that would be fairly fast, on the other hand this will be slow
+    // but this should only happen if they have not regenerated their caches since their upgrade
+    }else if ([[NSFileManager defaultManager]fileExistsAtPath:[motorFileURL path]]){
+        allMotors = [NSArray arrayWithContentsOfURL:motorFileURL];
+        for (NSDictionary *dict in allMotors){
+            NSString *motorName = [NSString stringWithFormat:@"%@ %@", dict[MAN_KEY], dict[NAME_KEY]];
+            if ([motorName isEqualToString:name]){
+                motorDict = dict;
+                break;
+            }
+        }
+    }else{
+        return nil; // this is if there are no cache files at all.  Carry on like nothing happened.
+    }
+    return [RocketMotor motorWithMotorDict:motorDict];
 }
 
 #pragma mark - Target action
