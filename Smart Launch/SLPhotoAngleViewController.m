@@ -59,12 +59,16 @@
     
     //Now that they are filtered we can use the results to display the launch angle
     //The disabled lines add the third dimension and result in some unhappy display problems.  Hmm...
-    
-    CGFloat xyAngle = atan(self.xAccel/self.yAccel) - self.xyCalibrationAngle;
+    CGFloat xyAngle;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){   //iPad
+        xyAngle = atan(self.yAccel/self.xAccel) - self.yxCalibrationAngle;
+        if (self.xAccel > 0) xyAngle = -xyAngle;
+    }else{    // iPhone
+        xyAngle = atan(self.xAccel/self.yAccel) - self.xyCalibrationAngle;
+    }
     //    CGFloat yzAngle = atan(self.zAccel/self.yAccel) - self.yzCalibrationAngle;
-    CGFloat angle = xyAngle * DEGREES_PER_RADIAN;
+    CGFloat angle = xyAngle;
     //    CGFloat angle = atanf(sqrtf(tanf(xyAngle)*tanf(xyAngle)+tanf(yzAngle)*tanf(yzAngle)));
-    //    if (self.xAccel > 0) angle = -angle;
     self.angleLabel.text = [NSString stringWithFormat:@"%1.1f°", fabsf(angle)];
     if (fabsf(angle)/DEGREES_PER_RADIAN > MAX_LAUNCH_GUIDE_ANGLE){
         [self.warningView setHidden:NO];
@@ -118,8 +122,10 @@
     if (!_angleView){
         _angleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
         UIImageView * viewFinderView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-        NSString *viewFinderFileName = [[NSBundle mainBundle] pathForResource: VIEW_FINDER_IMAGE_FILENAME ofType:@"png"];
-        UIImage * viewFinderImage = [[UIImage alloc] initWithContentsOfFile:viewFinderFileName];
+//        NSString *viewFinderFileName = [[NSBundle mainBundle] pathForResource: VIEW_FINDER_IMAGE_FILENAME ofType:@"png"];
+//        UIImage * viewFinderImage = [[UIImage alloc] initWithContentsOfFile:viewFinderFileName];
+        UIImage * viewFinderImage = [UIImage imageNamed:VIEW_FINDER_IMAGE_FILENAME];
+
         [viewFinderView setImage:viewFinderImage];
         [_angleView addSubview:self.warningView];
         [self.warningView setHidden:YES];
@@ -138,12 +144,12 @@
         
         //make the accept button image
         
-        NSString *acceptFilename = [[NSBundle mainBundle] pathForResource: ACCEPT_BUTTON_FILENAME ofType:@"png"];
-        UIImage *acceptButtonImage = [[UIImage alloc] initWithContentsOfFile:acceptFilename];
-        NSString *acceptSelectedFilename = [[NSBundle mainBundle] pathForResource: ACCEPT_SELECTED_FILENAME ofType:@"png"];
-        UIImage *acceptSelectedImage = [[UIImage alloc] initWithContentsOfFile:acceptSelectedFilename];
+        //NSString *acceptFilename = [[NSBundle mainBundle] pathForResource: ACCEPT_BUTTON_FILENAME ofType:@"png"];
+        UIImage *acceptButtonImage = [UIImage imageNamed:ACCEPT_BUTTON_FILENAME];
+        //NSString *acceptSelectedFilename = [[NSBundle mainBundle] pathForResource: ACCEPT_SELECTED_FILENAME ofType:@"png"];
+        UIImage *acceptSelectedImage = [UIImage imageNamed:ACCEPT_SELECTED_FILENAME];
         
-        CGRect buttonFrame = CGRectMake(self.view.frame.size.width/2 + BUTTON_HEIGHT/4, self.view.frame.size.height - BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT);
+        CGRect buttonFrame = CGRectMake(self.view.bounds.size.width/2 + BUTTON_HEIGHT/4, self.view.bounds.size.height - BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT);
         self.acceptButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.acceptButton setFrame:buttonFrame];
         [self.acceptButton setTitle:@"Accept" forState:UIControlStateNormal];
@@ -156,12 +162,12 @@
         
         //make the cancel button image
         
-        NSString *cancelFilename = [[NSBundle mainBundle] pathForResource: CANCEL_BUTTON_FILENAME ofType:@"png"];
-        UIImage *cancelButtonImage = [[UIImage alloc] initWithContentsOfFile:cancelFilename];
-        NSString *cancelSelectedFilename = [[NSBundle mainBundle] pathForResource: CANCEL_SELECTED_FILENAME ofType:@"png"];
-        UIImage *cancelSelectedImage = [[UIImage alloc] initWithContentsOfFile:cancelSelectedFilename];
+        //NSString *cancelFilename = [[NSBundle mainBundle] pathForResource: CANCEL_BUTTON_FILENAME ofType:@"png"];
+        UIImage *cancelButtonImage = [UIImage imageNamed:CANCEL_BUTTON_FILENAME];
+        //NSString *cancelSelectedFilename = [[NSBundle mainBundle] pathForResource: CANCEL_SELECTED_FILENAME ofType:@"png"];
+        UIImage *cancelSelectedImage = [UIImage imageNamed:CANCEL_SELECTED_FILENAME];
 
-        buttonFrame = CGRectMake(self.view.frame.size.width/2 - BUTTON_WIDTH - BUTTON_HEIGHT/4, self.view.frame.size.height - BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT);
+        buttonFrame = CGRectMake(self.view.bounds.size.width/2 - BUTTON_WIDTH - BUTTON_HEIGHT/4, self.view.bounds.size.height - BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT);
         self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.cancelButton setFrame:buttonFrame];
         [self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
@@ -181,11 +187,11 @@
 - (UIImageView *)warningView{
     if (!_warningView){
         CGFloat x, y;
-        x = self.view.frame.size.width/2 - ANGLE_WARNING_SIZE/2;
-        y = self.view.frame.size.height/2 - ANGLE_WARNING_SIZE/2 + 5;
+        x = self.view.bounds.size.width/2 - ANGLE_WARNING_SIZE/2;
+        y = self.view.bounds.size.height/2 - ANGLE_WARNING_SIZE/2 + 5;
         _warningView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, ANGLE_WARNING_SIZE, ANGLE_WARNING_SIZE)];
-        NSString *warningFileName = [[NSBundle mainBundle] pathForResource: ANGLE_WARNING_IMAGE_FILENAME ofType:@"png"];
-        UIImage *warningImage = [[UIImage alloc] initWithContentsOfFile:warningFileName];
+        //NSString *warningFileName = [[NSBundle mainBundle] pathForResource: ANGLE_WARNING_IMAGE_FILENAME ofType:@"png"];
+        UIImage *warningImage = [UIImage imageNamed:ANGLE_WARNING_IMAGE_FILENAME];
         [_warningView setImage:warningImage];
     }
     return _warningView;
@@ -235,10 +241,4 @@
     self.warningView = nil;
 
 }
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 @end

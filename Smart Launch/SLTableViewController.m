@@ -115,7 +115,7 @@
 #pragma mark - Sim delegate methods
 
 - (void)sender:(id)sender didChangeLaunchAngle:(NSNumber *)launchAngle{  // launch angle in radians
-    [self.settings setValue:launchAngle forKey:LAUNCH_ANGLE_KEY];
+    self.settings[LAUNCH_ANGLE_KEY] = launchAngle;
     [self defaultStoreWithKey:SETTINGS_KEY andValue:self.settings];
     self.launchAngleLabel.text = [NSString stringWithFormat:@"%1.1f", [launchAngle floatValue] * DEGREES_PER_RADIAN];
     if (self.view.window)[self updateDisplay];
@@ -382,9 +382,4 @@
         [(SLiPadDetailViewController *)nav.viewControllers[0] setSimDataSource:self];
     }
 }
-
--(void)didReceiveMemoryWarning{
-    //    [self.model resetFlight];       // This will nil out the flight profile which is a big memory hog
-}
-
 @end

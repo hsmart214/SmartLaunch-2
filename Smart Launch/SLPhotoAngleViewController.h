@@ -14,6 +14,7 @@
 
 @property (nonatomic, weak) id <SLSimulationDelegate> delegate;
 @property (nonatomic) CGFloat xyCalibrationAngle;
+@property (nonatomic) CGFloat yxCalibrationAngle;
 @property (nonatomic) CGFloat yzCalibrationAngle;
 
 @end

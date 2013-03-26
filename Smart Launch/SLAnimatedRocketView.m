@@ -12,6 +12,7 @@
 #define X_INSET 130.0
 #define Y_INSET 100.0
 #define TOP_BUFFER 50.0
+#define IPAD_COMPENSATION 40.0
 #define VECTOR_WIDTH 3.0
 #define VECTOR_HEAD 10.0
 
@@ -95,6 +96,8 @@ void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint from
     CGFloat scale;
     CGFloat xAvail = self.bounds.size.width - X_INSET;
     CGFloat yAvail = self.bounds.size.height - TOP_BUFFER - self.goblin.bounds.size.height;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) yAvail += IPAD_COMPENSATION;
+    
     float rhoriz = rv * sinf(-_launchAngle);
     float xExtent;
     if (wv > 0){

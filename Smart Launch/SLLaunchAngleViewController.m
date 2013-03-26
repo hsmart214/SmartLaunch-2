@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *motionButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *calibrateButton;
 @property (nonatomic) CGFloat xyCalibrationAngle;
+@property (nonatomic) CGFloat yxCalibrationAngle;   // for iPad landscape users
 @property (nonatomic) CGFloat yzCalibrationAngle;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 
@@ -36,6 +37,7 @@
 #pragma mark - Constant declarations
 
 #define XY_CAL_KEY @"com.smartsoftware.launchsafe.xyCalibrationValue"
+#define YX_CAL_KEY @"com.smartsoftware.launchsafe.yxCalibrationValue"
 #define YZ_CAL_KEY @"com.smartsoftware.launchsafe.yzCalibrationValue"
 
 - (UIAccelerometer *)accelerometer{
@@ -63,11 +65,17 @@
     //Now that they are filtered we can use the results to display the launch angle
     //The disabled lines add the third dimension and result in some unhappy display problems.  Hmm...
     
-    CGFloat xyAngle = atan(self.xAccel/self.yAccel) - self.xyCalibrationAngle;
+    CGFloat xyAngle;
+    if (self.splitViewController){   //iPad
+        xyAngle = atan(self.yAccel/self.xAccel) - self.yxCalibrationAngle;
+        if (self.xAccel > 0) xyAngle = -xyAngle;
+    }else{    // iPhone
+        xyAngle = atan(self.xAccel/self.yAccel) - self.xyCalibrationAngle;
+    }
     //    CGFloat yzAngle = atan(self.zAccel/self.yAccel) - self.yzCalibrationAngle;
     CGFloat angle = xyAngle;
     //    CGFloat angle = atanf(sqrtf(tanf(xyAngle)*tanf(xyAngle)+tanf(yzAngle)*tanf(yzAngle)));
-    //    if (self.xAccel > 0) angle = -angle;
+    
     self.angleLabel.text = [NSString stringWithFormat:@"%1.1f", fabsf(angle * DEGREES_PER_RADIAN)];
     if (fabsf(angle - self.angleSlider.value) > TOLERANCE){
         self.angleSlider.value = angle;
@@ -115,16 +123,20 @@
 
 - (IBAction)calibrateButtonPressed:(UIBarButtonItem *)sender {
     self.xyCalibrationAngle = atanf(self.xAccel/self.yAccel);
+    self.yxCalibrationAngle = atanf(self.yAccel/self.xAccel);
     self.yzCalibrationAngle = atanf(self.zAccel/self.yAccel);
-    NSNumber *xyCalibration = @(self.xyCalibrationAngle);
-    NSNumber *yzCalibration = @(self.yzCalibrationAngle);
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
-    settings[XY_CAL_KEY] = xyCalibration;
-    settings[YZ_CAL_KEY] = yzCalibration;
+    settings[XY_CAL_KEY] = @(self.xyCalibrationAngle);
+    settings[YX_CAL_KEY] = @(self.yxCalibrationAngle);
+    settings[YZ_CAL_KEY] = @(self.yzCalibrationAngle);
     [defaults setObject:settings forKey:SETTINGS_KEY];
     [defaults synchronize];
+    
+}
+
+- (IBAction)cameraButtonPressed:(UIBarButtonItem*)sender{
     
 }
 
@@ -132,6 +144,7 @@
     if ([segue.identifier isEqualToString:@"PhotoAngleSegue"]){
         [segue.destinationViewController setDelegate:self.delegate];
         [(SLPhotoAngleViewController *)segue.destinationViewController setXyCalibrationAngle: self.xyCalibrationAngle];
+        [(SLPhotoAngleViewController *)segue.destinationViewController setYxCalibrationAngle: self.yxCalibrationAngle];
         [(SLPhotoAngleViewController *)segue.destinationViewController setYzCalibrationAngle: self.yzCalibrationAngle];
         [self stopMotionUpdates];
     }
@@ -144,8 +157,7 @@
     [super viewDidLoad];
     if (!self.splitViewController){
         UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-        NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
-        UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
         [backgroundView setImage:backgroundImage];
         [self.view insertSubview:backgroundView atIndex:0];
     }
@@ -154,14 +166,16 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *settings = [defaults objectForKey:SETTINGS_KEY];
     self.xyCalibrationAngle = [settings[XY_CAL_KEY] floatValue];
+    self.yxCalibrationAngle = [settings[YX_CAL_KEY] floatValue];
     self.yzCalibrationAngle = [settings[YZ_CAL_KEY] floatValue];
     float launchAngle = [settings[LAUNCH_ANGLE_KEY] floatValue];
     self.angleLabel.text = [NSString stringWithFormat:@"%1.1f", launchAngle * DEGREES_PER_RADIAN];
     [self.angleSlider setValue: launchAngle animated:YES];
     self.angleView.dataSource = self;
     
-    // check to see if the device has a camera.  If not, remove the camera button from the toolbar
-    if (![[UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera] containsObject:(NSString *)kUTTypeImage]){
+    // check to see if the device has a camera.  If not, or if it is an iPad remove the camera button from the toolbar
+    // maybe some day I will figure out how to present the camera in the master view controller's space
+    if (![[UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera] containsObject:(NSString *)kUTTypeImage] || self.splitViewController){
         NSMutableArray *buttons = [self.toolbarItems mutableCopy];
         [buttons removeObject:self.cameraButton];
         [self setToolbarItems:buttons animated:YES];
@@ -175,20 +189,9 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *settings = [[defaults objectForKey:SETTINGS_KEY] mutableCopy];
-    settings[LAUNCH_ANGLE_KEY] = @(fabsf(self.angleSlider.value));
-    [defaults setObject:settings forKey:SETTINGS_KEY];
     [self.delegate sender:self didChangeLaunchAngle:@(fabsf(self.angleSlider.value))];
-    [defaults synchronize];
     self.accelerometer.delegate = nil;
     self.accelerometer = nil;
     [super viewWillDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // We have to keep upright for the accelerometer to work
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 @end
