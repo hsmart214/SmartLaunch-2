@@ -11,7 +11,7 @@
 #import "SLRocketPropertiesTVC.h"
 #import "SLSimulationDelegate.h"
 
-@interface SLRocketsTableViewController : UITableViewController <SLRocketsTVCDelegate>
+@interface SLRocketsTableViewController : UITableViewController <SLRocketPropertiesTVCDelegate>
 
 @property (weak, nonatomic) id<SLSimulationDelegate> delegate;
 

@@ -47,9 +47,8 @@
     self.displayFFVelocity = [self.dataSource quickFFVelocityAtAngle:_displayLaunchAngle andGuideLength:_displayLaunchGuideLength];
 }
 - (IBAction)windVelocityChanged:(UIStepper *)sender {
-    NSNumber *wind = [SLUnitsConvertor displayUnitsOf:@(sender.value) forKey:VELOCITY_UNIT_KEY];
-    self.windVelocityLabel.text = [NSString stringWithFormat:@"%2.0f", [wind floatValue]];
-    self.displayWindVelocity = sender.value;
+    self.windVelocityLabel.text = [NSString stringWithFormat:@"%2.0f", sender.value];
+    self.displayWindVelocity = [[SLUnitsConvertor metricStandardOf:@(sender.value) forKey:VELOCITY_UNIT_KEY] floatValue];
     [self updateDisplay];
 }
 
@@ -78,11 +77,10 @@
 }
 
 - (IBAction)pushValuesToSimulation:(UIBarButtonItem *)sender{
-    NSMutableDictionary *settings = [self.dataSource simulationSettings];
+    NSMutableDictionary *settings = [[self.dataSource simulationSettings] mutableCopy];
     settings[LAUNCH_ANGLE_KEY] = @(self.displayLaunchAngle);
-    settings[WIND_VELOCITY_KEY] = [SLUnitsConvertor metricStandardOf:@(self.displayWindVelocity) forKey:VELOCITY_UNIT_KEY];
-    settings[WIND_DIRECTION_KEY] = @(self.displayLaunchDirection);
-    settings[LAUNCH_GUIDE_LENGTH_KEY] = [SLUnitsConvertor metricStandardOf:@(self.launchGuideLengthStepper.value) forKey:LENGTH_UNIT_KEY];
+    settings[LAUNCH_GUIDE_LENGTH_KEY] = @(self.displayLaunchGuideLength);
+    settings[WIND_VELOCITY_KEY] = @(self.displayWindVelocity);
     [self.delegate sender:self didChangeSimSettings:settings withUpdate:NO];
 }
 
@@ -154,19 +152,17 @@
 }
 
 - (void)importSimValues{
-    self.windVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
     NSNumber *velocity = [SLUnitsConvertor displayUnitsOf:[self.dataSource windVelocity] forKey:VELOCITY_UNIT_KEY];
-    self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", [velocity floatValue]];
+    self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.0f", [velocity floatValue]];
     self.windVelocityStepper.value = [[SLUnitsConvertor displayUnitsOf:[self.dataSource windVelocity] forKey:VELOCITY_UNIT_KEY] floatValue];
     NSNumber *aoa = [self.dataSource freeFlightAoA];
     self.ffAoALabel.text = [NSString stringWithFormat:@"%1.1f", [aoa floatValue] * DEGREES_PER_RADIAN];
-    self.displayWindVelocity = self.windVelocityStepper.value;
+    self.displayWindVelocity = [[SLUnitsConvertor metricStandardOf:@(self.windVelocityStepper.value) forKey:VELOCITY_UNIT_KEY] floatValue];
     self.displayLaunchAngle = [[self.dataSource launchAngle] floatValue];
     self.displayFFVelocity = [[self.dataSource freeFlightVelocity] floatValue];
-    self.launchGuideLengthUnitsLabel.text = [SLUnitsConvertor displayStringForKey:LENGTH_UNIT_KEY];
     self.displayLaunchGuideLength = [[self.dataSource launchGuideLength]floatValue];
     NSNumber *displayLength = [SLUnitsConvertor displayUnitsOf:[self.dataSource launchGuideLength] forKey:LENGTH_UNIT_KEY];
-    self.launchGuideLengthLabel.text = [NSString stringWithFormat:@"%2.1f", [displayLength floatValue]];
+    self.launchGuideLengthLabel.text = [NSString stringWithFormat:@"%2.0f", [displayLength floatValue]];
     self.launchGuideLengthStepper.value = [[SLUnitsConvertor displayUnitsOf:[self.dataSource launchGuideLength] forKey:LENGTH_UNIT_KEY] floatValue];
     self.displayLaunchDirection = [self.dataSource launchGuideDirection];
     NSArray *buttonNames = @[@"With Wind", @"CrossWind", @"Into Wind"];
@@ -175,6 +171,9 @@
 }
 
 - (void)setUpUnits{
+    self.windVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
+    self.launchGuideLengthUnitsLabel.text = [SLUnitsConvertor displayStringForKey:LENGTH_UNIT_KEY];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *unitPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
 

@@ -129,7 +129,7 @@
     }
 }
 
-#pragma mark - LSRViewControllerDelegate methods
+#pragma mark - SLRocketPropertiesTVCDelegate methods
 
 - (void)SLRocketPropertiesTVC:(SLRocketPropertiesTVC *)sender savedRocket:(Rocket *)rocket{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

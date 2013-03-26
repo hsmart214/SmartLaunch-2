@@ -14,7 +14,7 @@
 
 @class SLRocketPropertiesTVC;
 
-@protocol SLRocketsTVCDelegate
+@protocol SLRocketPropertiesTVCDelegate
 @optional
 - (void)SLRocketPropertiesTVC:(SLRocketPropertiesTVC *)sender 
                 savedRocket:(Rocket *)rocket;
@@ -29,5 +29,5 @@
 #pragma mark Model
 @property (nonatomic, copy) Rocket *rocket;
 
-@property (nonatomic, weak) id <SLRocketsTVCDelegate> delegate;
+@property (nonatomic, weak) id <SLRocketPropertiesTVCDelegate> delegate;
 @end

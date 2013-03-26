@@ -61,6 +61,8 @@
     tempRocket.cd = @(initialGuess);
     self.physicsModel.rocket = tempRocket;
     
+    float actualAlt = [self.actualAltitudeField.text floatValue];
+    actualAlt = [[SLUnitsConvertor metricStandardOf:@(actualAlt) forKey:ALT_UNIT_KEY] floatValue];
     //need to do this in a separate thread
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -68,8 +70,6 @@
             [self.calculationProgressIndicator setProgress: prog animated:YES];
         });
         float bestGuess = -1.0; // nonsense value is a flag for unused variable;
-        float actualAlt = [self.actualAltitudeField.text floatValue];
-        actualAlt = [[SLUnitsConvertor metricStandardOf:@(actualAlt) forKey:ALT_UNIT_KEY] floatValue];
         float epsilon = NEWTON_RAPHSON_EPSILON;
         float guessedAlt, newGuessedAlt;
         /*
@@ -122,6 +122,19 @@
     });
 }
 
+#pragma mark - UITextFieldDelegate methods
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    [textField resignFirstResponder];
+    [self calculateNewCd:nil];
+    return YES;
+}
+
 #pragma mark - View Life Cycle
 
 - (void)viewDidLoad
@@ -145,6 +158,8 @@
     self.cdLabel.text = [NSString stringWithFormat:@"%1.2f",[self.rocket.cd floatValue]];
     self.altUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
     self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [[SLUnitsConvertor displayUnitsOf:@(self.physicsModel.fastApogee) forKey:ALT_UNIT_KEY] floatValue], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
+    self.cdEstimateField.delegate = self;
+    self.actualAltitudeField.delegate = self;
     
     //This is my first ever attempt at registering for a notification.  And I'm using a BLOCK!  I must be nuts.
     self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){

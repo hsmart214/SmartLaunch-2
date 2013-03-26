@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *windVelocityUnitsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *windVelocityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *motorNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalImpulseLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ffAoALabel;
 @property (weak, nonatomic) IBOutlet UILabel *ffVelocityUnitsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ffVelocityLabel;
@@ -48,10 +49,11 @@
 }
 
 - (IBAction)pushSimData:(UIButton *)sender {
-    NSDictionary *settings = @{LAUNCH_ANGLE_KEY: @(self.displayLaunchAngle),
-                               LAUNCH_GUIDE_LENGTH_KEY: @(self.displayLaunchGuideLength),
-                               WIND_VELOCITY_KEY: @(self.displayWindVelocity),
-                               LAUNCH_ALTITUDE_KEY: @(self.displayLaunchAltitude)};
+    NSMutableDictionary *settings = [[self.simDataSource simulationSettings] mutableCopy];
+    settings[LAUNCH_ANGLE_KEY] = @(self.displayLaunchAngle);
+    settings[LAUNCH_GUIDE_LENGTH_KEY] = @(self.displayLaunchGuideLength);
+    settings[WIND_VELOCITY_KEY] = @(self.displayWindVelocity);
+    settings[LAUNCH_ALTITUDE_KEY] = @(self.displayLaunchAltitude);
     [self.simDelegate sender:self didChangeSimSettings:settings withUpdate:YES];
 }
 
@@ -161,6 +163,7 @@
 -(void)updateGraphDisplay{
     self.flightProfileGraphTitleLabel.text = [NSString stringWithFormat:@"Flight Profile - %@", [self.graphTypeSegmentedControl titleForSegmentAtIndex:[self.graphTypeSegmentedControl selectedSegmentIndex]]];
     self.motorNameLabel.text = [self.model.motor.manufacturer stringByAppendingString:[NSString stringWithFormat:@" %@", self.model.motor.name]];
+    self.totalImpulseLabel.text = [NSString stringWithFormat:@"Total Impulse: %1.0f Newton-sec", [self.model.motor.totalImpulse floatValue]];
     self.title = self.model.rocketName;
     [self.flightProfileView resetAxes];
     [self.thrustCurveView resetAxes];
@@ -250,7 +253,7 @@
     self.launchSiteAltLabel.text = [NSString stringWithFormat:@"%1.0f", [siteAlt floatValue]];
     self.displayLaunchAltitude = [[self.simDataSource launchSiteAltitude] floatValue];
     NSNumber *velocity = [SLUnitsConvertor displayUnitsOf:[self.simDataSource windVelocity] forKey:VELOCITY_UNIT_KEY];
-    self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", [velocity floatValue]];
+    self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.0f", [velocity floatValue]];
     self.windVelocityStepper.value = [[SLUnitsConvertor displayUnitsOf:[self.simDataSource windVelocity] forKey:VELOCITY_UNIT_KEY] floatValue];
     NSNumber *aoa = [self.simDataSource freeFlightAoA];
     self.ffAoALabel.text = [NSString stringWithFormat:@"%1.1f°", [aoa floatValue] * DEGREES_PER_RADIAN];
@@ -259,7 +262,7 @@
     self.displayFFVelocity = [[self.simDataSource freeFlightVelocity] floatValue];
     self.displayLaunchGuideLength = [[self.simDataSource launchGuideLength]floatValue];
     NSNumber *displayLength = [SLUnitsConvertor displayUnitsOf:[self.simDataSource launchGuideLength] forKey:LENGTH_UNIT_KEY];
-    self.launchGuideLengthLabel.text = [NSString stringWithFormat:@"%2.1f", [displayLength floatValue]];
+    self.launchGuideLengthLabel.text = [NSString stringWithFormat:@"%2.0f", [displayLength floatValue]];
     self.launchGuideLengthStepper.value = [[SLUnitsConvertor displayUnitsOf:[self.simDataSource launchGuideLength] forKey:LENGTH_UNIT_KEY] floatValue];
     self.displayLaunchDirection = [self.simDataSource launchGuideDirection];
 }

@@ -1047,6 +1047,11 @@
                                     <action selector="pullSimData:" destination="AaG-jO-CMK" eventType="touchUpInside" id="SrW-mY-5Yt"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Total impulse: 10000 Newton-sec" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAX-NJ-Zo1">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.66850831170000002" green="0.83010032479999996" blue="0.91079400509999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1073,7 +1078,6 @@
                             <constraint firstItem="cdg-He-bg0" firstAttribute="baseline" secondItem="tJB-xD-S3H" secondAttribute="baseline" type="default" id="MoR-nG-yfs"/>
                             <constraint firstItem="dv6-Ll-yK0" firstAttribute="leading" secondItem="fEJ-91-xGH" secondAttribute="leading" type="default" id="NPu-2k-tmA"/>
                             <constraint firstItem="GdB-x3-nzn" firstAttribute="top" secondItem="N5f-8v-ojQ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ONv-o3-r4j"/>
-                            <constraint firstItem="fEJ-91-xGH" firstAttribute="leading" secondItem="cse-RY-3ny" secondAttribute="leading" type="default" id="PNr-fZ-Pt3"/>
                             <constraint firstItem="Bil-Aj-rQ6" firstAttribute="baseline" secondItem="dph-TO-knY" secondAttribute="baseline" type="default" id="QJE-CV-tOi"/>
                             <constraint firstItem="cdg-He-bg0" firstAttribute="leading" secondItem="Qm4-SJ-8Ld" secondAttribute="leading" type="default" id="QMl-Av-jsC"/>
                             <constraint firstItem="Kby-Ls-vyx" firstAttribute="top" secondItem="0sr-fV-3bF" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="SND-pY-25S"/>
@@ -1090,6 +1094,7 @@
                             <constraint firstItem="qQd-et-F1F" firstAttribute="leading" secondItem="mSh-aG-hfR" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="cvG-bn-6BV"/>
                             <constraint firstItem="eSw-ys-gEr" firstAttribute="top" secondItem="Tkh-mW-LMf" secondAttribute="top" constant="11" id="dDG-h0-HUC"/>
                             <constraint firstItem="5WD-fu-xOt" firstAttribute="top" secondItem="Kby-Ls-vyx" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="dQJ-Z5-OFo"/>
+                            <constraint firstItem="eSw-ys-gEr" firstAttribute="centerX" secondItem="Kby-Ls-vyx" secondAttribute="centerX" type="default" id="dtT-KN-8qq"/>
                             <constraint firstItem="cdg-He-bg0" firstAttribute="leading" secondItem="FuF-Oa-iHz" secondAttribute="leading" type="default" id="fVG-Ks-geC"/>
                             <constraint firstItem="FuF-Oa-iHz" firstAttribute="top" secondItem="8T3-qa-yi2" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="fgC-nG-mTb"/>
                             <constraint firstAttribute="trailing" secondItem="cse-RY-3ny" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="gH9-ng-b9O"/>
@@ -1097,17 +1102,19 @@
                             <constraint firstItem="16m-wu-vWr" firstAttribute="top" secondItem="fEJ-91-xGH" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="hRu-dT-oTV"/>
                             <constraint firstItem="zZC-Xt-PgI" firstAttribute="leading" secondItem="cdg-He-bg0" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="hc9-Ma-ViL"/>
                             <constraint firstAttribute="bottom" secondItem="GdB-x3-nzn" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="hsn-xL-GyO"/>
-                            <constraint firstItem="0sr-fV-3bF" firstAttribute="centerX" secondItem="Kby-Ls-vyx" secondAttribute="centerX" type="default" id="inX-bo-pmX"/>
                             <constraint firstAttribute="trailing" secondItem="Kby-Ls-vyx" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="j2b-Et-FFU"/>
                             <constraint firstItem="cse-RY-3ny" firstAttribute="top" secondItem="16m-wu-vWr" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="j5l-f9-8hM"/>
                             <constraint firstItem="ByD-Ri-JhW" firstAttribute="leading" secondItem="Tkh-mW-LMf" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="jFk-Om-fGj"/>
                             <constraint firstItem="mSh-aG-hfR" firstAttribute="leading" secondItem="Tkh-mW-LMf" secondAttribute="leading" constant="78" type="user" id="jjb-5S-VFq"/>
+                            <constraint firstItem="LAX-NJ-Zo1" firstAttribute="top" secondItem="5WD-fu-xOt" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="kew-0j-fF1"/>
                             <constraint firstAttribute="trailing" secondItem="fEJ-91-xGH" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="kgd-lU-lG5"/>
                             <constraint firstItem="Han-KX-oUy" firstAttribute="leading" secondItem="rLC-91-4a6" secondAttribute="leading" type="default" id="kjt-5U-xp4"/>
+                            <constraint firstItem="LAX-NJ-Zo1" firstAttribute="centerX" secondItem="5WD-fu-xOt" secondAttribute="centerX" type="default" id="knk-Qu-Mhi"/>
                             <constraint firstItem="7kB-BN-TqQ" firstAttribute="top" secondItem="FuF-Oa-iHz" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="krY-1O-ftV"/>
                             <constraint firstItem="mQB-MN-Hj7" firstAttribute="top" secondItem="2Lu-5S-eWh" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="kw3-ek-nqI"/>
                             <constraint firstItem="Bil-Aj-rQ6" firstAttribute="leading" secondItem="dph-TO-knY" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="mYA-QJ-0DT"/>
                             <constraint firstItem="7kB-BN-TqQ" firstAttribute="baseline" secondItem="rLC-91-4a6" secondAttribute="baseline" type="default" id="n1N-1k-Vf7"/>
+                            <constraint firstItem="LAX-NJ-Zo1" firstAttribute="centerX" secondItem="cse-RY-3ny" secondAttribute="centerX" type="default" id="oar-vA-Q3i"/>
                             <constraint firstItem="7xn-4E-9YY" firstAttribute="leading" secondItem="Tkh-mW-LMf" secondAttribute="leading" constant="221" type="user" id="pgb-ho-JOf"/>
                             <constraint firstItem="N5f-8v-ojQ" firstAttribute="top" secondItem="rLC-91-4a6" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="tG2-eV-uQU"/>
                             <constraint firstItem="Han-KX-oUy" firstAttribute="top" secondItem="ByD-Ri-JhW" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="tTy-z4-36O"/>
@@ -1139,6 +1146,7 @@
                         <outlet property="rocketView" destination="ByD-Ri-JhW" id="sDf-Qc-YN9"/>
                         <outlet property="siteAltitudeStepper" destination="FuF-Oa-iHz" id="i9g-fa-Tt1"/>
                         <outlet property="thrustCurveView" destination="Kby-Ls-vyx" id="gZb-rH-RB9"/>
+                        <outlet property="totalImpulseLabel" destination="LAX-NJ-Zo1" id="CvW-d1-j5E"/>
                         <outlet property="windVelocityLabel" destination="cdg-He-bg0" id="GFs-TT-eXm"/>
                         <outlet property="windVelocityStepper" destination="Qm4-SJ-8Ld" id="kb3-R2-HKN"/>
                         <outlet property="windVelocityUnitsLabel" destination="zZC-Xt-PgI" id="Sfc-9F-E5c"/>
@@ -1274,7 +1282,7 @@
                                                         <constraint firstAttribute="width" constant="90" id="7oM-ml-gNb"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ft" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZI-WT-sMl">
                                                     <constraints>
@@ -1316,7 +1324,7 @@
                                                         <constraint firstAttribute="width" constant="90" id="nqD-g4-qZu"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1526,8 +1534,8 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Required (unique)" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OkN-P0-F5n">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="226" id="FqQ-id-Hw5"/>
                                                         <constraint firstAttribute="height" constant="31" id="Kow-p2-RFz"/>
+                                                        <constraint firstAttribute="width" constant="206" id="jOd-0H-e1Q"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -1541,9 +1549,9 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="H61-iS-kLn" firstAttribute="centerY" secondItem="r6a-lH-Sbc" secondAttribute="centerY" type="default" id="M0P-J7-i4i"/>
                                             <constraint firstItem="H61-iS-kLn" firstAttribute="centerY" secondItem="OkN-P0-F5n" secondAttribute="centerY" type="default" id="Rj1-Qy-5cP"/>
                                             <constraint firstItem="OkN-P0-F5n" firstAttribute="leading" secondItem="H61-iS-kLn" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Z1O-sC-6ef"/>
-                                            <constraint firstItem="OkN-P0-F5n" firstAttribute="centerY" secondItem="r6a-lH-Sbc" secondAttribute="centerY" type="default" id="ZSm-8N-LK2"/>
                                             <constraint firstItem="H61-iS-kLn" firstAttribute="leading" secondItem="r6a-lH-Sbc" secondAttribute="leading" constant="30" id="jt1-Ye-v5a"/>
                                         </constraints>
                                     </tableViewCell>
@@ -1565,7 +1573,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Optional" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="o2e-e7-xbd">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="31" id="FD3-oJ-eGW"/>
-                                                        <constraint firstAttribute="width" constant="192" id="ReM-lQ-dAT"/>
+                                                        <constraint firstAttribute="width" constant="172" id="t4p-vh-Wij"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -1597,7 +1605,7 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Optional" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="b9q-YP-3CC">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="170" id="Jx2-2r-KeE"/>
+                                                        <constraint firstAttribute="width" constant="150" id="H4K-8z-HM4"/>
                                                         <constraint firstAttribute="height" constant="31" id="q4R-wS-3yy"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2196,14 +2204,7 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                             </tableViewSection>
                         </sections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="dhe-br-Fqq"/>
-                        <barButtonItem systemItem="done" id="fqb-kk-aZS">
-                            <connections>
-                                <action selector="userDidPressDone:" destination="6Pq-RF-CaO" id="j6l-oY-kK5"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Launch Smart" id="Hgj-8U-brq"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -2641,214 +2642,6 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <image name="Apogee.png" width="210" height="86"/>
         <image name="Goblin.png" width="210" height="86"/>
     </resources>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SLAnimatedRocketView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLAnimatedRocketView.h"/>
-        </class>
-        <class className="SLCurveGraphView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLCurveGraphView.h"/>
-        </class>
-        <class className="SLFlightDataCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLFlightDataCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="altitude" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="altitudeUnitsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cd" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="motorName" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SLInformationTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLInformationTVC.h"/>
-            <relationships>
-                <relationship kind="action" name="userDidPressDone:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="infoTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-        <class className="SLLaunchAngleView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLLaunchAngleView.h"/>
-        </class>
-        <class className="SLLaunchAngleViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLLaunchAngleViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="angleSliderValueChanged:" candidateClass="UISlider"/>
-                <relationship kind="action" name="calibrateButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="cameraButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="motionButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="angleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="angleSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="angleView" candidateClass="SLLaunchAngleView"/>
-                <relationship kind="outlet" name="calibrateButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="cameraButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="motionButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="SLMotorPrefsTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorPrefsTVC.h"/>
-            <relationships>
-                <relationship kind="action" name="revertPrefs:"/>
-                <relationship kind="action" name="savePrefsAndReturn:"/>
-                <relationship kind="action" name="selectAllMotorKeys:"/>
-                <relationship kind="action" name="toggleHybrids:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="hybridButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="SLMotorSearchViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorSearchViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="motorDiameterRestrictionChanged:" candidateClass="UISegmentedControl"/>
-                <relationship kind="action" name="search1ValueChanged:" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="restrictMotorDiametersSegmentedControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="search1Control" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="search2Control" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="SLMotorTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorTableViewController.h"/>
-        </class>
-        <class className="SLMotorViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="userChoseMotor:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="initialThrust" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="motorDiameter" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="motorLength" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="motorManufacturer" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="motorMass" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="propellantMass" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="thrustCurve" candidateClass="SLCurveGraphView"/>
-                <relationship kind="outlet" name="totalImpulse" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SLPhotoAngleViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLPhotoAngleViewController.h"/>
-        </class>
-        <class className="SLRocketPropertiesTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLRocketPropertiesTVC.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="motorDiameterChanged:" candidateClass="UIStepper"/>
-                <relationship kind="action" name="saveButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="textEditingDidBegin:" candidateClass="UITextField"/>
-                <relationship kind="action" name="textEditingDidEnd:" candidateClass="UITextField"/>
-                <relationship kind="action" name="textEditingDidEndOnExit:" candidateClass="UITextField"/>
-                <relationship kind="action" name="useCalculatedCd:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="calcCdButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="calculatedCdLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="cdField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="diamField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="diamUnitsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="kitNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="lenField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="lenUnitsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="manField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="massField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="massUnitsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="motorDiamLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="motorDiamStepper" candidateClass="UIStepper"/>
-                <relationship kind="outlet" name="motorDiamUnitsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="SLRocketsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLRocketsTableViewController.h"/>
-        </class>
-        <class className="SLSaveFlightDataTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLSaveFlightDataTVC.h"/>
-            <relationships>
-                <relationship kind="action" name="calculateNewCd:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="cancelFlightSaving:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="endTextEditing:" candidateClass="UITextField"/>
-                <relationship kind="action" name="saveFlightData:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="actualAltitudeField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="altUnitsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="altitudeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="calculationProgressIndicator" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="cdEstimateField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="cdLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="launchAngleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="motorManufacturerLogo" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="motorName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="rocketName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="windDirectionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SLSavedFlightsTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLSavedFlightsTVC.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="revert:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="save:" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="SLTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="windDirectionDidChange:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="apogeeAltitudeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="apogeeAltitudeUnitsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="burnoutToApogeeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="ffAngleOfAttackLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="ffVelocityLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="ffVelocityUnitsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="launchAngleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="motorCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="rocketCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="thrustToWeightLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="windDirectionButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="SLUnitsTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLUnitsTVC.h"/>
-            <relationships>
-                <relationship kind="action" name="controlValueChanged:" candidateClass="UISegmentedControl"/>
-                <relationship kind="action" name="defaultButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="revertButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="saveButtonPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="accelControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="altitudeControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="diamControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="lengthControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="massControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="tempControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="thrustControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="velocityControl" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="SLiPadDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLiPadDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="handleRocketTiltPanGesture:" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="action" name="launchSiteAltitudeChanged:" candidateClass="UIStepper"/>
-                <relationship kind="action" name="pullSimData:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="ffAoALabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="ffVelocityLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="ffVelocityUnitsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="flightProfileGraphTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="flightProfileView" candidateClass="SLCurveGraphView"/>
-                <relationship kind="outlet" name="graphTypeSegmentedControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="launchGuideLengthLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="launchGuideLengthStepper" candidateClass="UIStepper"/>
-                <relationship kind="outlet" name="launchGuideLengthUnitsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="launchSiteAltLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="launchSiteAltUnitsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="motorNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="rocketView" candidateClass="SLAnimatedRocketView"/>
-                <relationship kind="outlet" name="siteAltitudeStepper" candidateClass="UIStepper"/>
-                <relationship kind="outlet" name="thrustCurveView" candidateClass="SLCurveGraphView"/>
-                <relationship kind="outlet" name="windVelocityLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="windVelocityStepper" candidateClass="UIStepper"/>
-                <relationship kind="outlet" name="windVelocityUnitsLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

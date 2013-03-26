@@ -97,6 +97,8 @@
                      @0.9144, LAUNCH_GUIDE_LENGTH_KEY,    //36 inches
                      @0.0, LAUNCH_ANGLE_KEY,
                      @33.0, LAUNCH_ALTITUDE_KEY,          //100 feet
+                     [self.rocket rocketPropertyList], SELECTED_ROCKET_KEY,
+                     [self.motor motorDict], SELECTED_MOTOR_KEY,
                      nil];
         [self defaultStoreWithKey:SETTINGS_KEY andValue:_settings];
         // If this is the first run we also need to set the standard defaults

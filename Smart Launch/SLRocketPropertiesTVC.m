@@ -199,7 +199,7 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [textField resignFirstResponder];
+    [self textEditingDidEnd:textField];
     return YES;
 }
 
@@ -236,15 +236,9 @@
 
 - (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
     if (self.oldRocket.name && ![self.rocket.name isEqualToString:self.oldRocket.name]){
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
-        NSMutableDictionary *rocketFavorites = [[defaults dictionaryForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
-        [rocketFavorites removeObjectForKey:self.oldRocket.name];
-        [defaults setObject:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
-        // This line takes care of setting the whole dictionary - which has the deleted entry deleted plus the new entry
-        [store setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
+        [self.delegate SLRocketPropertiesTVC:self deletedRocket:self.oldRocket];
     }
-    [self.delegate SLRocketPropertiesTVC: self savedRocket:self.rocket];
+    [self.delegate SLRocketPropertiesTVC:self savedRocket:self.rocket];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
