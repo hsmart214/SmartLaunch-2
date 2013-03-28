@@ -1053,7 +1053,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.66850831170000002" green="0.83010032479999996" blue="0.91079400509999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.73981148610000003" green="0.84736153400000003" blue="0.91079400509999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fEJ-91-xGH" firstAttribute="centerX" secondItem="5WD-fu-xOt" secondAttribute="centerX" type="user" id="0gL-un-3LC"/>
                             <constraint firstItem="8T3-qa-yi2" firstAttribute="leading" secondItem="FuF-Oa-iHz" secondAttribute="leading" type="default" id="21Z-Kr-Sjg"/>
@@ -1114,7 +1114,6 @@
                             <constraint firstItem="mQB-MN-Hj7" firstAttribute="top" secondItem="2Lu-5S-eWh" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="kw3-ek-nqI"/>
                             <constraint firstItem="Bil-Aj-rQ6" firstAttribute="leading" secondItem="dph-TO-knY" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="mYA-QJ-0DT"/>
                             <constraint firstItem="7kB-BN-TqQ" firstAttribute="baseline" secondItem="rLC-91-4a6" secondAttribute="baseline" type="default" id="n1N-1k-Vf7"/>
-                            <constraint firstItem="LAX-NJ-Zo1" firstAttribute="centerX" secondItem="cse-RY-3ny" secondAttribute="centerX" type="default" id="oar-vA-Q3i"/>
                             <constraint firstItem="7xn-4E-9YY" firstAttribute="leading" secondItem="Tkh-mW-LMf" secondAttribute="leading" constant="221" type="user" id="pgb-ho-JOf"/>
                             <constraint firstItem="N5f-8v-ojQ" firstAttribute="top" secondItem="rLC-91-4a6" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="tG2-eV-uQU"/>
                             <constraint firstItem="Han-KX-oUy" firstAttribute="top" secondItem="ByD-Ri-JhW" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="tTy-z4-36O"/>
@@ -2642,6 +2641,193 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <image name="Apogee.png" width="210" height="86"/>
         <image name="Goblin.png" width="210" height="86"/>
     </resources>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SLAnimatedRocketView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLAnimatedRocketView.h"/>
+        </class>
+        <class className="SLCurveGraphView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLCurveGraphView.h"/>
+        </class>
+        <class className="SLFlightDataCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLFlightDataCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="altitude" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="altitudeUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cd" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorName" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SLInformationTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLInformationTVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="infoTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="SLLaunchAngleView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLLaunchAngleView.h"/>
+        </class>
+        <class className="SLLaunchAngleViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLLaunchAngleViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="angleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="angleSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="angleView" candidateClass="SLLaunchAngleView"/>
+                <relationship kind="outlet" name="calibrateButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="cameraButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="motionButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="SLMotorPrefsTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorPrefsTVC.h"/>
+            <relationships>
+                <relationship kind="action" name="revertPrefs:"/>
+                <relationship kind="action" name="savePrefsAndReturn:"/>
+                <relationship kind="action" name="selectAllMotorKeys:"/>
+                <relationship kind="action" name="toggleHybrids:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="hybridButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="SLMotorSearchViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorSearchViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="restrictMotorDiametersSegmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="search1Control" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="search2Control" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="SLMotorTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorTableViewController.h"/>
+        </class>
+        <class className="SLMotorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="initialThrust" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorDiameter" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorLength" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorManufacturer" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorMass" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="propellantMass" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="thrustCurve" candidateClass="SLCurveGraphView"/>
+                <relationship kind="outlet" name="totalImpulse" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SLPhotoAngleViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLPhotoAngleViewController.h"/>
+        </class>
+        <class className="SLRocketPropertiesTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLRocketPropertiesTVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="calcCdButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="calculatedCdLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="cdField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="diamField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="diamUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="kitNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lenField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lenUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="manField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="massField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="massUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorDiamLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorDiamStepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="motorDiamUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="SLRocketsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLRocketsTableViewController.h"/>
+        </class>
+        <class className="SLSaveFlightDataTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLSaveFlightDataTVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="actualAltitudeField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="altUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="altitudeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="calculationProgressIndicator" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="cdEstimateField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="cdLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="launchAngleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorManufacturerLogo" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="motorName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rocketName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="windDirectionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SLSavedFlightsTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLSavedFlightsTVC.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="revert:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="save:" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="SLTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="windDirectionDidChange:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="apogeeAltitudeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="apogeeAltitudeUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="burnoutToApogeeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ffAngleOfAttackLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ffVelocityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ffVelocityUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="launchAngleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="rocketCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="thrustToWeightLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="windDirectionButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SLUnitsTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLUnitsTVC.h"/>
+            <relationships>
+                <relationship kind="action" name="controlValueChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="defaultButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="revertButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="saveButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="accelControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="altitudeControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="diamControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="lengthControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="massControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="tempControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="thrustControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="velocityControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="SLiPadDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLiPadDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="ffAoALabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ffVelocityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ffVelocityUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="flightProfileGraphTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="flightProfileView" candidateClass="SLCurveGraphView"/>
+                <relationship kind="outlet" name="graphTypeSegmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="launchGuideLengthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="launchGuideLengthStepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="launchGuideLengthUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="launchSiteAltLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="launchSiteAltUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rocketView" candidateClass="SLAnimatedRocketView"/>
+                <relationship kind="outlet" name="siteAltitudeStepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="thrustCurveView" candidateClass="SLCurveGraphView"/>
+                <relationship kind="outlet" name="totalImpulseLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="windVelocityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="windVelocityStepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="windVelocityUnitsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
