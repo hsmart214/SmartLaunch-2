@@ -26,7 +26,10 @@
 {
     [super viewDidLoad];
     [self.infoTextView flashScrollIndicators];
-    if (self.splitViewController) return;
+    if (self.splitViewController){
+        self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        return;
+    }
     UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
     NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
     UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
@@ -108,6 +111,8 @@
     });
 }
 
+#pragma mark - Table View Controller Delegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 2){
@@ -116,7 +121,31 @@
     }
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return [SLCustomUI headerHeight];
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    NSString *headerText;
+    if (section == 0){
+        headerText = NSLocalizedString(@"Information", nil);
+    }else{  // must be last section - there are only two
+        headerText = NSLocalizedString(@"Settings", nil);
+    }
+    UILabel *headerLabel = [[UILabel alloc] init];
+    [headerLabel setTextColor:[SLCustomUI headerTextColor]];
+    [headerLabel setBackgroundColor:self.tableView.backgroundColor];
+    [headerLabel setTextAlignment:NSTextAlignmentCenter];
+    [headerLabel setText:headerText];
+    [headerLabel setFont:[UIFont boldSystemFontOfSize:17.0]];
+    
+    return headerLabel;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue destinationViewController] respondsToSelector:@selector(setDelegate:)]){
+        [[segue destinationViewController] performSelector:@selector(setDelegate:) withObject:self.delegate];
+    }
 }
 
 #pragma mark - SLModalPresenterDelegate method

@@ -109,11 +109,12 @@
     [self.saveButton setEnabled:[self isValidRocket]];
 }
 
+#pragma mark - View Life Cycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView.delegate = self;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
     if (!_rocket){
         _rocket = [[Rocket alloc] init];
         self.motorDiamStepper.value = [self.motorDiamStepper minimumValue];

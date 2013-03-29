@@ -58,6 +58,7 @@
 }
 
 -(void)updateDisplay{
+    [self setUpUnits];
     [self importSimValues];
     [self updateGraphDisplay];
     [self updateAoADisplay];

@@ -142,7 +142,7 @@
         double mant = 1.0/pow(10, ex);
         CGFloat yvalue = origin.y - mant * vscale;
         CGContextBeginPath(context);
-        [[UIColor blueColor] setStroke];
+        [[SLCustomUI machLineColor] setStroke];
         CGContextMoveToPoint(context, origin.x, yvalue);
         CGContextAddLineToPoint(context, origin.x + graphWidth, yvalue);
         CGContextStrokePath(context);
@@ -163,17 +163,23 @@
         CGContextMoveToPoint(context, origin.x+i*hscale, origin.y-1);
         CGContextAddLineToPoint(context, origin.x+i*hscale, margin);
         NSString *sec = [NSString stringWithFormat:@"%d", i];
+        NSAttributedString *attSec = [[NSAttributedString alloc] initWithString:sec attributes:@{
+                                                                NSForegroundColorAttributeName:[SLCustomUI graphTextColor],
+                                                                           NSFontAttributeName:[UIFont systemFontOfSize:10]}];
         CGPoint secPt = CGPointMake(origin.x+i*hscale-3, origin.y+SEC_OFFSET);
-        [sec drawAtPoint:secPt forWidth:20 withFont:[UIFont systemFontOfSize:10] fontSize:10 lineBreakMode:NSLineBreakByCharWrapping baselineAdjustment:UIBaselineAdjustmentNone];
+        [attSec drawAtPoint:secPt];
+        
     }
     CGContextStrokePath(context);
     
     NSString *maxValueNotation = [NSString stringWithFormat:self.verticalUnitsFormat,self.fullrange, self.verticalUnits];
+    NSMutableAttributedString *notation = [[NSMutableAttributedString alloc] initWithString:maxValueNotation attributes:@{
+                                                             NSForegroundColorAttributeName:[SLCustomUI graphTextColor],
+                                                                        NSFontAttributeName:[UIFont boldSystemFontOfSize:10]}];
     CGPoint maxNPoint = CGPointMake(10, 10);
-    [maxValueNotation drawAtPoint:maxNPoint forWidth:80 withFont:[UIFont systemFontOfSize:10] fontSize:10 lineBreakMode:NSLineBreakByCharWrapping baselineAdjustment:UIBaselineAdjustmentNone];
-    
+    [notation drawAtPoint:maxNPoint];
     CGContextSetLineWidth(context, 2.0);
-    [[UIColor redColor] setStroke];
+    [[SLCustomUI curveGraphCurveColor] setStroke];
     CGContextBeginPath(context);
     // The next three lines correct the starting point if the graph's 0,0 origin is not in the lower left corner
     int ex = floor(log10(fmax - fmin));

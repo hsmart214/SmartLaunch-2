@@ -55,6 +55,8 @@
         UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
         [backgroundView setImage:backgroundImage];
         [self.view insertSubview:backgroundView atIndex:0];
+    }else{
+        self.view.backgroundColor = [SLCustomUI iPadBackgroundColor];
     }
     self.motorManufacturer.text = self.motor.manufacturer;
     self.motorDiameter.text = [self.motor.diameter description];

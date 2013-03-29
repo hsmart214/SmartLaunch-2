@@ -160,6 +160,8 @@
         UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
         [backgroundView setImage:backgroundImage];
         [self.view insertSubview:backgroundView atIndex:0];
+    }else{
+        self.view.backgroundColor = [SLCustomUI iPadBackgroundColor];
     }
     self.calibrateButton.enabled = NO;
     self.motionButton.title = @"Motion On";

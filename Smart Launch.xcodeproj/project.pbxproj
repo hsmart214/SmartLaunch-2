@@ -64,6 +64,7 @@
 		4221648A16F57F1A008E5A28 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4221648916F57F1A008E5A28 /* Default-Landscape~ipad.png */; };
 		42248D7C16EC416200ABB5D7 /* SLiPadDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42248D7B16EC416200ABB5D7 /* SLiPadDetailViewController.m */; };
 		4232060515F7124F0027A18E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4232060415F7124F0027A18E /* CoreLocation.framework */; };
+		423D16E317053FE80007ED61 /* SLCustomUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 423D16E217053FE80007ED61 /* SLCustomUI.m */; };
 		4240A07815F8341900D67F3E /* SLMotorPrefsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4240A07715F8341900D67F3E /* SLMotorPrefsTVC.m */; };
 		4240EDC116990F1E008AB135 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */; };
 		4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930915F4893000F7BABC /* UIKit.framework */; };
@@ -180,6 +181,8 @@
 		42248D7A16EC416200ABB5D7 /* SLiPadDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLiPadDetailViewController.h; sourceTree = "<group>"; };
 		42248D7B16EC416200ABB5D7 /* SLiPadDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLiPadDetailViewController.m; sourceTree = "<group>"; };
 		4232060415F7124F0027A18E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		423D16E117053FE80007ED61 /* SLCustomUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCustomUI.h; sourceTree = "<group>"; };
+		423D16E217053FE80007ED61 /* SLCustomUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLCustomUI.m; sourceTree = "<group>"; };
 		4240A07615F8341900D67F3E /* SLMotorPrefsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMotorPrefsTVC.h; sourceTree = "<group>"; };
 		4240A07715F8341900D67F3E /* SLMotorPrefsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMotorPrefsTVC.m; sourceTree = "<group>"; };
 		4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
@@ -444,6 +447,8 @@
 				4220A4B115F55CC60055EE35 /* SLUnitsTVC.m */,
 				4220A4C415F55CC60055EE35 /* SLUnitsConvertor.h */,
 				4220A4C515F55CC60055EE35 /* SLUnitsConvertor.m */,
+				423D16E117053FE80007ED61 /* SLCustomUI.h */,
+				423D16E217053FE80007ED61 /* SLCustomUI.m */,
 				4256931015F4893000F7BABC /* Supporting Files */,
 			);
 			path = "Smart Launch";
@@ -618,6 +623,7 @@
 				42BB53D016A38C4E0029C882 /* SLSaveFlightDataTVC.m in Sources */,
 				42E7317416BF66ED00F6D468 /* SLFlightProfileViewController.m in Sources */,
 				42248D7C16EC416200ABB5D7 /* SLiPadDetailViewController.m in Sources */,
+				423D16E317053FE80007ED61 /* SLCustomUI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

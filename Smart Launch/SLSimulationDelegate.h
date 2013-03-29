@@ -17,6 +17,7 @@
 -(void)sender:(id)sender didChangeLaunchAngle:(NSNumber *)launchAngle;
 -(void)sender:(id)sender didChangeRocket:(Rocket *)rocket;
 -(void)sender:(id)sender didChangeRocketMotor:(RocketMotor *)motor;
+-(void)didChangeUnitPrefs:(id)sender;
 -(void)dismissModalViewController;
 
 @end

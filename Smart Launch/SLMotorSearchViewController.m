@@ -250,6 +250,8 @@ NSInteger sortFunction(id md1, id md2, void *context){
         UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
         [backgroundView setImage:backgroundImage];
         [self.view insertSubview:backgroundView atIndex:0];
+    }else{
+        self.view.backgroundColor = [SLCustomUI iPadBackgroundColor];
     }
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;

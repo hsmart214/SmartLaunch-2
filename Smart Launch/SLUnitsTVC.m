@@ -26,6 +26,8 @@
 @implementation SLUnitsTVC
 
 - (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
+    
+    [self.delegate didChangeUnitPrefs:self];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -162,6 +164,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.oldPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     [self updateDisplay];
@@ -181,6 +184,29 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return [SLCustomUI headerHeight];
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    NSString *headerText;
+    if (section == 0){
+        headerText = NSLocalizedString(@"Rocket", nil);
+    }else{  // must be last section - there are only three
+        headerText = NSLocalizedString(@"Simulation", nil);
+    }
+    UILabel *headerLabel = [[UILabel alloc] init];
+    [headerLabel setTextColor:[SLCustomUI headerTextColor]];
+    [headerLabel setBackgroundColor:self.tableView.backgroundColor];
+    [headerLabel setTextAlignment:NSTextAlignmentCenter];
+    [headerLabel setText:headerText];
+    [headerLabel setFont:[UIFont boldSystemFontOfSize:17.0]];
+    
+    
+    return headerLabel;
+}
+
 
 #pragma mark - UIActionSheetDelegate method
 

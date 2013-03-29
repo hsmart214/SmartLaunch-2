@@ -82,6 +82,12 @@
 
 #pragma mark - View Lifecycle
 
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+    }
+}
 
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setToolbarHidden:NO animated:animated];
@@ -164,6 +170,33 @@
     return cell;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return [SLCustomUI headerHeight];
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    NSString *headerText;
+    switch (section) {
+        case 0:
+            headerText = NSLocalizedString(@"Motor Manufacturers", nil);
+            break;
+        case 1:
+            headerText = NSLocalizedString(@"Motor Diameters", nil);
+            break;
+        case 2:
+            headerText = NSLocalizedString(@"Impulse Classes", nil);
+        default:
+            break;
+    }
+    UILabel *headerLabel = [[UILabel alloc] init];
+    [headerLabel setTextColor:[SLCustomUI headerTextColor]];
+    [headerLabel setBackgroundColor:self.tableView.backgroundColor];
+    [headerLabel setTextAlignment:NSTextAlignmentCenter];
+    [headerLabel setText:headerText];
+    [headerLabel setFont:[UIFont boldSystemFontOfSize:17.0]];
+    
+    return headerLabel;
+}
 
 #pragma mark - Table view delegate
 

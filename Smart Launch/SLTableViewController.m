@@ -153,6 +153,13 @@
     }
 }
 
+-(void)didChangeUnitPrefs:(id)sender{
+    if (self.splitViewController){
+        UINavigationController *nav = (UINavigationController *)[self.splitViewController.viewControllers lastObject];
+        [(SLiPadDetailViewController *)nav.viewControllers[0] updateDisplay];
+    }
+}
+
 #pragma mark - Smart Launch
 
 - (IBAction)windDirectionDidChange:(UIButton *)sender {
@@ -325,6 +332,31 @@
     }
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 0) return 0.0;
+    return [SLCustomUI headerHeight];
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section == 0) return nil;
+    NSString *headerText;
+    if (section == 1){
+        headerText = NSLocalizedString(@"Simulation Results", nil);
+    }else{  // must be last section - there are only three
+        headerText = NSLocalizedString(@"Smart Launch", nil);
+    }
+    UILabel *headerLabel = [[UILabel alloc] init];
+    [headerLabel setTextColor:[SLCustomUI headerTextColor]];
+    [headerLabel setBackgroundColor:self.tableView.backgroundColor];
+    [headerLabel setTextAlignment:NSTextAlignmentCenter];
+    [headerLabel setText:headerText];
+    [headerLabel setFont:[UIFont boldSystemFontOfSize:17.0]];
+    
+    
+    return headerLabel;
+}
+
+
 #pragma mark - View Life Cycle
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -366,6 +398,8 @@
         UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
         [backgroundView setImage:backgroundImage];
         self.tableView.backgroundView = backgroundView;
+    }else{
+        self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
     }
     self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

@@ -71,6 +71,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
     [self updateRocketArray];
     [self.tableView reloadData];
 }

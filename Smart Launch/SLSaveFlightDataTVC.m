@@ -54,7 +54,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)calculateNewCd:(UIBarButtonItem *)sender {
+- (IBAction)calculateNewCd:(id)sender {
     if ([self.actualAltitudeField.text floatValue] == 0.0) return;
     float initialGuess = [self.cdEstimateField.text floatValue];
     __block Rocket *tempRocket = [self.rocket copyWithZone:nil];
@@ -140,7 +140,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (self.splitViewController) return;
+    if (self.splitViewController){
+        self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        return;
+    }
     UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
     UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
     [backgroundView setImage:backgroundImage];
@@ -201,6 +204,27 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return [SLCustomUI headerHeight];
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    NSString *footerText;
+    if (section == 0){
+        footerText = NSLocalizedString(@"Refining the Cd may take a few sec.", nil);
+    }else{  // must be last section - there are only two
+        footerText = NSLocalizedString(@"New Estimate Results", nil);
+    }
+    UILabel *footerLabel = [[UILabel alloc] init];
+    [footerLabel setTextColor:[SLCustomUI headerTextColor]];
+    [footerLabel setBackgroundColor:self.tableView.backgroundColor];
+    [footerLabel setTextAlignment:NSTextAlignmentCenter];
+    [footerLabel setText:footerText];
+    [footerLabel setFont:[UIFont boldSystemFontOfSize:17.0]];
+    
+    return footerLabel;
 }
 
 #pragma mark - UITextField delegate

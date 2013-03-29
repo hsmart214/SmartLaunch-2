@@ -133,7 +133,7 @@ void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint from
     CGContextSaveGState(context);
     
 
-    UIColor *color = [UIColor redColor];
+    UIColor *color = [SLCustomUI thrustVectorColor];
     CGContextSetLineWidth(context, VECTOR_WIDTH);
     CGContextSetLineJoin(context, kCGLineJoinMiter);
     if (self.launchAngle == 0.0) ccwLoop = false;    // only for this vector, so we have to reset this for the others below
@@ -141,12 +141,12 @@ void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint from
     
     //Draw the wind velocity vector ================================================
     ccwLoop = self.windVelocity < 0.0;
-    color = [UIColor blueColor];
+    color = [SLCustomUI windVectorColor];
     drawVectorWithHead(context, color, wvTip, rvTip, ccwLoop);
     
     //Draw the angle of attack vector ===============================================
     ccwLoop = !ccwLoop;
-    color = [UIColor purpleColor];
+    color = [SLCustomUI AoAVectorColor];
     drawVectorWithHead(context, color, wvTip, tip, ccwLoop);
     
     //Clean up

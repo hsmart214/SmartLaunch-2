@@ -12,6 +12,8 @@
 
 @interface SLUnitsTVC : UITableViewController<UIActionSheetDelegate>
 
+@property (nonatomic, weak) id<SLSimulationDelegate> delegate;
+
 + (void)setStandardDefaults;
 
 @end
