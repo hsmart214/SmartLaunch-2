@@ -1579,18 +1579,18 @@
         <scene sceneID="fRc-Mg-dkV">
             <objects>
                 <tableViewController id="hPd-e5-ij0" customClass="SLInformationTVC" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CcT-ZX-zcy">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="CcT-ZX-zcy">
                         <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Information" id="Jnl-rV-ADI">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="197" id="cXC-cw-KTY">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="197"/>
+                                        <rect key="frame" x="0.0" y="46" width="320" height="199"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
+                                            <rect key="frame" x="10" y="1" width="300" height="196"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="l6g-Ka-VRk">
@@ -1631,14 +1631,14 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                             <tableViewSection headerTitle="Settings" id="qqO-DG-cSd">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="mSM-27-t7c" style="IBUITableViewCellStyleDefault" id="Fth-F6-AHK">
-                                        <rect key="frame" x="0.0" y="241" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="291" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Units of Measurement" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mSM-27-t7c">
-                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <rect key="frame" x="10" y="0.0" width="260" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1652,14 +1652,14 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Muo-ci-vct" style="IBUITableViewCellStyleDefault" id="2BK-3Z-fcc">
-                                        <rect key="frame" x="0.0" y="285" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="336" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Motor Preferences" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Muo-ci-vct">
-                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <rect key="frame" x="10" y="0.0" width="260" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1673,14 +1673,14 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Tlv-cV-akt" style="IBUITableViewCellStyleDefault" id="b0B-D8-KS7">
-                                        <rect key="frame" x="0.0" y="329" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="380" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Check for New Motors" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tlv-cV-akt">
-                                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1721,18 +1721,18 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <scene sceneID="uMR-4z-ReG">
             <objects>
                 <tableViewController id="Biw-b4-lIz" customClass="SLUnitsTVC" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="U0W-qX-gSI">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="U0W-qX-gSI">
                         <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Rocket" id="BEx-VP-kCg">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="9yf-7u-ro2">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Diameter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Udl-Th-jv6">
@@ -1743,7 +1743,7 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dlb-gN-Wdf">
-                                                    <rect key="frame" x="132" y="7" width="168" height="30"/>
+                                                    <rect key="frame" x="112" y="7" width="168" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
                                                         <segment title="Inches"/>
@@ -1758,10 +1758,10 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="gbP-NZ-l9B">
-                                        <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="91" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Length" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="U01-Pn-DSJ">
@@ -1772,7 +1772,7 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="qpx-UI-Uyl">
-                                                    <rect key="frame" x="132" y="7" width="168" height="30"/>
+                                                    <rect key="frame" x="112" y="7" width="168" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
                                                         <segment title="Inches"/>
@@ -1788,10 +1788,10 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Q82-wv-MAo">
-                                        <rect key="frame" x="0.0" y="110" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="135" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Mass" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="rUv-Vb-ExM">
@@ -1802,7 +1802,7 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="nXS-Z7-fLL">
-                                                    <rect key="frame" x="132" y="7" width="168" height="30"/>
+                                                    <rect key="frame" x="112" y="7" width="168" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
                                                         <segment title="oz"/>
@@ -1821,69 +1821,11 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                             </tableViewSection>
                             <tableViewSection headerTitle="Simulation" id="kTl-9K-3MG">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="me6-Xg-De4">
-                                        <rect key="frame" x="0.0" y="176" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Temperature" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="rjF-cj-pUc">
-                                                    <rect key="frame" x="20" y="11" width="98" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="PCc-18-7s1">
-                                                    <rect key="frame" x="132" y="7" width="168" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <segments>
-                                                        <segment title="°F"/>
-                                                        <segment title="°C"/>
-                                                    </segments>
-                                                    <connections>
-                                                        <action selector="controlValueChanged:" destination="Biw-b4-lIz" eventType="valueChanged" id="k7H-cm-uOp"/>
-                                                    </connections>
-                                                </segmentedControl>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Sg3-W0-1Xo">
-                                        <rect key="frame" x="0.0" y="220" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Altitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="oZ2-N7-SAG">
-                                                    <rect key="frame" x="20" y="11" width="92" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="urG-Qb-6gK">
-                                                    <rect key="frame" x="132" y="7" width="168" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <segments>
-                                                        <segment title="Feet"/>
-                                                        <segment title="Meters"/>
-                                                    </segments>
-                                                    <connections>
-                                                        <action selector="controlValueChanged:" destination="Biw-b4-lIz" eventType="valueChanged" id="mdK-G7-z5I"/>
-                                                    </connections>
-                                                </segmentedControl>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="7yZ-cp-73e">
-                                        <rect key="frame" x="0.0" y="264" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="226" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Velocity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="tnZ-Co-Qoo">
@@ -1894,7 +1836,7 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="R9z-e9-HLm">
-                                                    <rect key="frame" x="132" y="7" width="168" height="30"/>
+                                                    <rect key="frame" x="112" y="7" width="168" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
                                                         <segment title="MPH"/>
@@ -1908,11 +1850,40 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fBN-H1-qb3">
-                                        <rect key="frame" x="0.0" y="308" width="320" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Sg3-W0-1Xo">
+                                        <rect key="frame" x="0.0" y="271" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Altitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="oZ2-N7-SAG">
+                                                    <rect key="frame" x="20" y="11" width="92" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="urG-Qb-6gK">
+                                                    <rect key="frame" x="112" y="7" width="168" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <segments>
+                                                        <segment title="Feet"/>
+                                                        <segment title="Meters"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="controlValueChanged:" destination="Biw-b4-lIz" eventType="valueChanged" id="mdK-G7-z5I"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fBN-H1-qb3">
+                                        <rect key="frame" x="0.0" y="315" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Thrust" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Y3T-il-r5r">
@@ -1923,7 +1894,7 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="MDB-Xq-4Kl">
-                                                    <rect key="frame" x="132" y="7" width="168" height="30"/>
+                                                    <rect key="frame" x="112" y="7" width="168" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
                                                         <segment title="Pounds"/>
@@ -1938,10 +1909,10 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="39V-DY-LxR">
-                                        <rect key="frame" x="0.0" y="352" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="359" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Acceleration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="cY6-WY-Iua">
@@ -1952,7 +1923,7 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="jef-JB-IjP">
-                                                    <rect key="frame" x="132" y="7" width="168" height="30"/>
+                                                    <rect key="frame" x="112" y="7" width="168" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
                                                         <segment title="Gravities"/>
@@ -1962,8 +1933,8 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                                         <action selector="controlValueChanged:" destination="Biw-b4-lIz" eventType="valueChanged" id="jrM-5y-Sjp"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Acceleration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="pxg-I0-oqM">
-                                                    <rect key="frame" x="20" y="11" width="104" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Accel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="pxg-I0-oqM">
+                                                    <rect key="frame" x="20" y="11" width="84" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2008,7 +1979,6 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                         <outlet property="diamControl" destination="dlb-gN-Wdf" id="1Qi-qk-aVA"/>
                         <outlet property="lengthControl" destination="qpx-UI-Uyl" id="0kZ-JQ-3nr"/>
                         <outlet property="massControl" destination="nXS-Z7-fLL" id="klR-KJ-aBn"/>
-                        <outlet property="tempControl" destination="PCc-18-7s1" id="fr1-zk-d4u"/>
                         <outlet property="thrustControl" destination="MDB-Xq-4Kl" id="kmb-Kp-9n6"/>
                         <outlet property="velocityControl" destination="R9z-e9-HLm" id="nc1-nc-lBc"/>
                     </connections>
@@ -2670,6 +2640,244 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <image name="Apogee.png" width="210" height="86"/>
         <image name="Goblin.png" width="210" height="86"/>
     </resources>
+    <classes>
+        <class className="SLAnimatedRocketView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLAnimatedRocketView.h"/>
+        </class>
+        <class className="SLAnimatedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLAnimatedViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="handleRocketTiltPanGesture:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="action" name="launchDirectionChanged:" candidateClass="UIButton"/>
+                <relationship kind="action" name="launchGuideLengthValueChanged:" candidateClass="UIStepper"/>
+                <relationship kind="action" name="pullValuesFromSimulation:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="pushValuesToSimulation:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="windVelocityChanged:" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="ffAoALabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ffVelocityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ffVelocityUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="launchDirectionButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="launchGuideLengthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="launchGuideLengthStepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="launchGuideLengthUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rocketView" candidateClass="SLAnimatedRocketView"/>
+                <relationship kind="outlet" name="windVelocityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="windVelocityStepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="windVelocityUnitsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SLCurveGraphView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLCurveGraphView.h"/>
+        </class>
+        <class className="SLFlightDataCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLFlightDataCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="altitude" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="altitudeUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cd" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorName" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SLFlightProfileViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLFlightProfileViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="graphTypeChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="altitudeUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="apogeeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="coastTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="graphTypeSegmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="graphView" candidateClass="SLCurveGraphView"/>
+                <relationship kind="outlet" name="maxVelocityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rocketNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="velocityUnitsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SLInformationTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLInformationTVC.h"/>
+            <relationships>
+                <relationship kind="action" name="userDidPressDone:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="infoTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="SLLaunchAngleView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLLaunchAngleView.h"/>
+        </class>
+        <class className="SLLaunchAngleViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLLaunchAngleViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="angleSliderValueChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="calibrateButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="cameraButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="motionButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="angleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="angleSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="angleView" candidateClass="SLLaunchAngleView"/>
+                <relationship kind="outlet" name="calibrateButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="cameraButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="motionButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="SLMotorPrefsTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorPrefsTVC.h"/>
+            <relationships>
+                <relationship kind="action" name="revertPrefs:"/>
+                <relationship kind="action" name="savePrefsAndReturn:"/>
+                <relationship kind="action" name="selectAllMotorKeys:"/>
+                <relationship kind="action" name="toggleHybrids:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="hybridButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="SLMotorSearchViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorSearchViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="motorDiameterRestrictionChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="search1ValueChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="restrictMotorDiametersSegmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="search1Control" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="search2Control" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="SLMotorTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorTableViewController.h"/>
+        </class>
+        <class className="SLMotorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMotorViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="userChoseMotor:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="initialThrust" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorDiameter" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorLength" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorManufacturer" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorMass" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="propellantMass" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="thrustCurve" candidateClass="SLCurveGraphView"/>
+                <relationship kind="outlet" name="totalImpulse" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SLPhotoAngleViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLPhotoAngleViewController.h"/>
+        </class>
+        <class className="SLRocketPropertiesTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLRocketPropertiesTVC.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="motorDiameterChanged:" candidateClass="UIStepper"/>
+                <relationship kind="action" name="saveButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="textEditingDidBegin:" candidateClass="UITextField"/>
+                <relationship kind="action" name="textEditingDidEnd:" candidateClass="UITextField"/>
+                <relationship kind="action" name="textEditingDidEndOnExit:" candidateClass="UITextField"/>
+                <relationship kind="action" name="useCalculatedCd:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="calcCdButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="calculatedCdLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="cdField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="diamField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="diamUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="kitNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lenField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lenUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="manField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="massField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="massUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorDiamLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorDiamStepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="motorDiamUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="SLRocketsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLRocketsTableViewController.h"/>
+        </class>
+        <class className="SLSaveFlightDataTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLSaveFlightDataTVC.h"/>
+            <relationships>
+                <relationship kind="action" name="calculateNewCd:"/>
+                <relationship kind="action" name="cancelFlightSaving:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="endTextEditing:" candidateClass="UITextField"/>
+                <relationship kind="action" name="saveFlightData:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="actualAltitudeField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="altUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="altitudeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="calculationProgressIndicator" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="cdEstimateField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="cdLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="launchAngleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorManufacturerLogo" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="motorName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rocketName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="windDirectionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SLSavedFlightsTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLSavedFlightsTVC.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="revert:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="save:" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="SLSimSettingsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLSimSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="GPSAltitudeRequested:" candidateClass="UIButton"/>
+                <relationship kind="action" name="launchGuideLengthChanged:" candidateClass="UIStepper"/>
+                <relationship kind="action" name="siteAltitudeChanged:" candidateClass="UIStepper"/>
+                <relationship kind="action" name="windDirectionChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="windVelocityChanged:" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="GPSAltButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="launchAngleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="launchGuideLengthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="launchGuideLengthStepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="launchGuideLengthUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="siteAltitudeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="siteAltitudeStepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="siteAltitudeUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="windDirectionControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="windVelocityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="windVelocityStepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="windVelocityUnitsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SLTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="windDirectionDidChange:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="apogeeAltitudeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="apogeeAltitudeUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="burnoutToApogeeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ffAngleOfAttackLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ffVelocityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ffVelocityUnitsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="launchAngleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="motorCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="rocketCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="thrustToWeightLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="windDirectionButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SLUnitsTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLUnitsTVC.h"/>
+            <relationships>
+                <relationship kind="action" name="controlValueChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="defaultButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="revertButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="saveButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="accelControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="altitudeControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="diamControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="lengthControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="massControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="tempControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="thrustControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="velocityControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

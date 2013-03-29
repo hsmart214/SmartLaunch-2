@@ -398,6 +398,7 @@
         UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
         [backgroundView setImage:backgroundImage];
         self.tableView.backgroundView = backgroundView;
+        self.tableView.backgroundColor = [UIColor clearColor];
     }else{
         self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
     }

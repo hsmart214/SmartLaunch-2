@@ -69,8 +69,8 @@
     //    CGFloat yzAngle = atan(self.zAccel/self.yAccel) - self.yzCalibrationAngle;
     CGFloat angle = xyAngle;
     //    CGFloat angle = atanf(sqrtf(tanf(xyAngle)*tanf(xyAngle)+tanf(yzAngle)*tanf(yzAngle)));
-    self.angleLabel.text = [NSString stringWithFormat:@"%1.1f°", fabsf(angle)];
-    if (fabsf(angle)/DEGREES_PER_RADIAN > MAX_LAUNCH_GUIDE_ANGLE){
+    self.angleLabel.text = [NSString stringWithFormat:@"%1.1f°", fabsf(angle) * DEGREES_PER_RADIAN];
+    if (fabsf(angle) > MAX_LAUNCH_GUIDE_ANGLE){
         [self.warningView setHidden:NO];
         [self.acceptButton setHidden:YES];
     }else{
