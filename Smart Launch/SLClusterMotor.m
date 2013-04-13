@@ -41,7 +41,7 @@
     for (NSDictionary *clusterDict in self.motors) {
         RocketMotor *clusterMotor = clusterDict[CLUSTER_MOTOR_KEY];
         float startTime = [clusterDict[CLUSTER_START_DELAY_KEY] floatValue];
-        if ([clusterMotor isEqual:motor] && (fabsf([delay floatValue]-startTime) < DELAY_TOLERANCE)){
+        if ([clusterMotor isEqual:motor] && (fabsf([delay floatValue] - startTime) < DELAY_TOLERANCE)){
             [newMotors removeObject:clusterDict];
             found = YES;
             self.motors = [newMotors copy];
@@ -79,6 +79,19 @@
 
 #pragma mark - Override superclass methods
 
+-(NSString *)impulseClass{
+    return [RocketMotor impulseClassForTotalImpulse:self.totalImpulse];
+}
+
+-(NSNumber *)propellantMass{
+    float totalMass = 0.0;
+    for (NSDictionary *clusterDict in self.motors){
+        RocketMotor *motor = clusterDict[CLUSTER_MOTOR_KEY];
+        totalMass += [motor.propellantMass floatValue];
+    }
+    return @(totalMass);
+}
+
 -(NSNumber *)loadedMass{
     float totalMass = 0.0;
     for (NSDictionary *clusterDict in self.motors){
@@ -115,12 +128,28 @@
     return @(impulse);
 }
 
--(void)dealloc{
-    _motors = nil;
+-(NSString *)description{
+    if (self.name) return self.name;
+    return [NSString stringWithFormat:@"%d %@", [self.motors count], NSLocalizedString(@"motor cluster", @"Like '5 motor cluster'")];
 }
 
--(NSString *)description{
-    return self.clusterName;
+-(NSString *)manufacturer{
+    //the reason I am returning the manufacturer of the first motor is so that we can see a
+    //manufacturer logo on screen (they are looked up based on this name)
+    if ([self.motors count]){
+        return [self.motors[0][CLUSTER_MOTOR_KEY] manufacturer];
+    }
+    return nil;
+}
+
+-(NSNumber *)length{
+    float maxLength = 0.0;
+    for (NSDictionary *clusterDict in self.motors){
+        RocketMotor *motor = clusterDict[CLUSTER_MOTOR_KEY];
+        if ([[motor length] floatValue] > maxLength)
+            maxLength = [[motor length] floatValue];
+    }
+    return @(maxLength);
 }
 
 #pragma mark - Override and nil out methods which do not make sense for a cluster
@@ -129,6 +158,16 @@
     return nil;
 }
 
+-(NSNumber *)diameter{
+    return nil;
+}
 
+-(NSArray *)delays{
+    return nil;
+}
+
+-(void)dealloc{
+    _motors = nil;
+}
 
 @end

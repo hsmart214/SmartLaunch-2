@@ -160,6 +160,29 @@
             @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O"];
 }
 
++ (NSArray *)impulseLimits{
+    NSArray *iClasses = [RocketMotor impulseClasses];
+    NSMutableArray *limits = [NSMutableArray array];
+    float limit = FIRST_IMPULSE_CLASS_LIMIT;
+    for (int i = 0; i < [iClasses count]; i++){
+        [limits addObject:@(limit)];
+        limit *= 2.0;
+    }
+    return [limits copy];
+}
+
++ (NSString *)impulseClassForTotalImpulse:(NSNumber *)totalImpulse{
+    NSArray *iClasses = [RocketMotor impulseClasses];
+    NSArray *iLimits = [RocketMotor impulseLimits];
+    for (int i = 0; i < [iLimits count]; i++){
+        float lim = [iLimits[i] floatValue];
+        if (lim > [totalImpulse floatValue]){
+            return iClasses[i];
+        }
+    }
+    return @"P+";
+}
+
 + (NSArray *)motorDiameters{
     return @[@"6mm", @"13mm", @"18mm", @"24mm", @"29mm",
             @"38mm", @"54mm", @"75mm", @"98mm", @"150mm"];

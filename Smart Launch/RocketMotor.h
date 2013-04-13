@@ -37,6 +37,7 @@
 + (NSArray *)manufacturerNames;
 + (NSArray *)hybridManufacturerNames;
 + (NSArray *)impulseClasses;
++ (NSString *)impulseClassForTotalImpulse:(NSNumber *)totalImpulse;
 + (NSArray *)motorDiameters;
 + (RocketMotor *)defaultMotor;  // in the first release this will be the 24mm Estes D12
 + (NSArray *)everyMotor;

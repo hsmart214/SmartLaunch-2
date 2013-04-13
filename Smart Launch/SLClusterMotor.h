@@ -16,7 +16,7 @@
 @interface SLClusterMotor : RocketMotor
 
 @property (nonatomic, strong, readonly) NSArray *motors;  //array of NSDictionary
-@property (nonatomic, strong) NSString *clusterName;      //a name set by the user to identify this cluster arrangement
+@property (nonatomic, strong, readwrite) NSString *name;  //for this subclass I need to allow the name to be changed
 
 -(void)addClusterMotor:(RocketMotor *)motor withStartDelay:(NSNumber *)delay;
 //the next method removes the first motor in the array which "isEqual" to the passed in motor, AND whose start time

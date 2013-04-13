@@ -57,6 +57,8 @@ enum SLFlightProfileGraphType {
     
 #pragma mark Calculation constants
     
+#define FIRST_IMPULSE_CLASS_LIMIT 0.3125
+    
 #define NEWTON_RAPHSON_ITERATIONS 4
 #define NEWTON_RAPHSON_EPSILON 0.01F             //added to Cd to be used for getting the slope between the two Cd's
 #define NEWTON_RAPHSON_TOLERANCE 0.02F           //if we are within this fraction of the actual altitude, we stop early
