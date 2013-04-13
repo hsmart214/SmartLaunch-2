@@ -101,6 +101,7 @@
 		42F3E1E716CB7C0D00081288 /* 114icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F3E1E516CB7C0D00081288 /* 114icon.png */; };
 		42F6ADAA16F6AD92002C471B /* Rocket~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F6ADA616F6AD92002C471B /* Rocket~iphone.png */; };
 		42F6ADAB16F6AD92002C471B /* Rocket~iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F6ADA716F6AD92002C471B /* Rocket~iphone@2x.png */; };
+		42F83D981719066F005FAA0C /* SLClusterMotor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83D971719066F005FAA0C /* SLClusterMotor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -232,6 +233,8 @@
 		42F3E1E516CB7C0D00081288 /* 114icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114icon.png; sourceTree = "<group>"; };
 		42F6ADA616F6AD92002C471B /* Rocket~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket~iphone.png"; sourceTree = "<group>"; };
 		42F6ADA716F6AD92002C471B /* Rocket~iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket~iphone@2x.png"; sourceTree = "<group>"; };
+		42F83D961719066F005FAA0C /* SLClusterMotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterMotor.h; sourceTree = "<group>"; };
+		42F83D971719066F005FAA0C /* SLClusterMotor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,6 +361,8 @@
 				4220A4C715F55CC60055EE35 /* Rocket.m */,
 				4220A4C815F55CC60055EE35 /* RocketMotor.h */,
 				4220A4C915F55CC60055EE35 /* RocketMotor.m */,
+				42F83D961719066F005FAA0C /* SLClusterMotor.h */,
+				42F83D971719066F005FAA0C /* SLClusterMotor.m */,
 				4220A4CA15F55CC60055EE35 /* SLPhysicsModel.h */,
 				4220A4CB15F55CC60055EE35 /* SLPhysicsModel.m */,
 			);
@@ -624,6 +629,7 @@
 				42E7317416BF66ED00F6D468 /* SLFlightProfileViewController.m in Sources */,
 				42248D7C16EC416200ABB5D7 /* SLiPadDetailViewController.m in Sources */,
 				423D16E317053FE80007ED61 /* SLCustomUI.m in Sources */,
+				42F83D981719066F005FAA0C /* SLClusterMotor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

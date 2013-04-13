@@ -439,6 +439,11 @@ NSInteger sortingFunction(id md1, id md2, void *context){
     return [NSString stringWithFormat:@"%@ %@",self.manufacturer, self.name];
 }
 
+-(BOOL)isEqual:(id)object{
+    return ([object isKindOfClass:[self class]] &&
+            [[(RocketMotor *)object name] isEqualToString:self.name]);
+}
+
 -(void)dealloc{
     _mass = nil;
     _propellantMass = nil;
