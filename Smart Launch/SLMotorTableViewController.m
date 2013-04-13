@@ -100,4 +100,8 @@
     self.motors = nil;
 }
 
+-(NSString *)description{
+    return @"MotorTVC";
+}
+
 @end

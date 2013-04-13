@@ -284,4 +284,8 @@
     self.oldRocket = nil;
 }
 
+-(NSString *)description{
+    return @"RocketPropertiesTVC";
+}
+
 @end

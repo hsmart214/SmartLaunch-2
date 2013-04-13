@@ -116,4 +116,9 @@
     
     [self updateDisplay];
 }
+
+-(NSString *)description{
+    return @"FlightProfileViewController";
+}
+
 @end

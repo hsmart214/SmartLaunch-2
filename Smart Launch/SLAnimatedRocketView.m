@@ -154,9 +154,12 @@ void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint from
 
 }
 
-
 - (void)dealloc{
     self.goblin = nil;
+}
+
+-(NSString *)description{
+    return @"AnimatedRocketView";
 }
 
 @end

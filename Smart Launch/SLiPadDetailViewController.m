@@ -325,12 +325,8 @@
     [self setUpUnits];
 }
 
-//-(void)viewDidLoad{
-//    [super viewDidLoad];
-//    UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-//    UIImage * backgroundImage = [UIImage imageNamed:@"DaVinci"];
-//    [backgroundView setImage:backgroundImage];
-//    [self.view insertSubview:backgroundView atIndex:0];
-//}
+-(NSString *)description{
+    return @"iPad DetailViewController";
+}
 
 @end

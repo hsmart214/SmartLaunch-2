@@ -227,9 +227,8 @@
     self.launchGuideLengthFormatString = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+-(NSString *)description{
+    return @"SimSettingsViewController";
 }
 
 @end

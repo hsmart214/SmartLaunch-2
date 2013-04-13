@@ -232,4 +232,9 @@
     self.motorPrefs = nil;
     self.oldMotorPrefs = nil;
 }
+
+-(NSString *)description{
+    return @"MotorPrefsTVC";
+}
+
 @end

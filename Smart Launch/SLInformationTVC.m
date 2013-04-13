@@ -181,4 +181,8 @@
     self.alert = nil;
 }
 
+-(NSString *)description{
+    return @"InformationTVC";
+}
+
 @end

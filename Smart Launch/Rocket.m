@@ -99,4 +99,8 @@
 
     return [[Rocket alloc] initWithProperties:goblinProperties];
 }
+
+-(NSString *)description{
+    return [NSString stringWithFormat:@"Rocket: %@", self.name];
+}
 @end

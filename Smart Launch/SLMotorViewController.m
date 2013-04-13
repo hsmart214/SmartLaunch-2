@@ -73,9 +73,8 @@
     self.motor = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+-(NSString *)description{
+    return [NSString stringWithFormat:@"Motor view controller for %@", self.motor];
 }
 
 @end

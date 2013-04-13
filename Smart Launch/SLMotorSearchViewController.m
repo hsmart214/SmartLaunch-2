@@ -597,4 +597,8 @@ NSInteger sortFunction(id md1, id md2, void *context){
     }
 }
 
+-(NSString *)description{
+    return @"MotorSearchViewController";
+}
+
 @end

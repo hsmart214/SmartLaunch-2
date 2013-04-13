@@ -419,4 +419,9 @@
         [(SLiPadDetailViewController *)nav.viewControllers[0] setSimDataSource:self];
     }
 }
+
+-(NSString *)description{
+    return @"Smart Launch HD TVC";
+}
+
 @end

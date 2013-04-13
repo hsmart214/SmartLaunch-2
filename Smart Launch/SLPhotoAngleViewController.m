@@ -241,4 +241,9 @@
     self.warningView = nil;
 
 }
+
+-(NSString *)description{
+    return @"PhotoAngleViewController";
+}
+
 @end

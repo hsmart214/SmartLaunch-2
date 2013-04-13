@@ -214,4 +214,8 @@
     [self performSegueWithIdentifier:@"editRocketSegue" sender:self];
 }
 
+-(NSString *)description{
+    return @"RocketsTVC";
+}
+
 @end

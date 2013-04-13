@@ -196,4 +196,9 @@
     self.accelerometer = nil;
     [super viewWillDisappear:animated];
 }
+
+-(NSString *)description{
+    return @"LaunchAngleViewController";
+}
+
 @end

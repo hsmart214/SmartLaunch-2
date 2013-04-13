@@ -436,7 +436,7 @@ NSInteger sortingFunction(id md1, id md2, void *context){
 }
 
 -(NSString *)description{
-    return self.name;
+    return [NSString stringWithFormat:@"%@ %@",self.manufacturer, self.name];
 }
 
 -(void)dealloc{

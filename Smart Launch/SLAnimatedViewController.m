@@ -224,4 +224,9 @@
 -(void)dealloc{
     self.launchGuideLengthFormatString = nil;
 }
+
+-(NSString *)description{
+    return @"AnimatedViewController";
+}
+
 @end

@@ -207,5 +207,9 @@
     self.verticalUnitsFormat = nil;
 }
 
+-(NSString *)description{
+    return [NSString stringWithFormat:@"%@ curve graph", self.verticalUnits];
+}
+
 @end
 

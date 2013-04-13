@@ -48,5 +48,8 @@
     UIGraphicsPopContext();
 }
 
+-(NSString *)description{
+    return @"LaunchAngleView";
+}
 
 @end

@@ -40,10 +40,17 @@
 #pragma mark - Angle Vector Colors
 
 +(UIColor *)windVectorColor{
-    return [UIColor lightGrayColor];
-}
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        return [UIColor colorWithRed:204.0/256 green:235.0/256 blue:1.0 alpha:1.0];
+    }else{
+        return [UIColor purpleColor];
+    }}
 +(UIColor *)thrustVectorColor{
-    return [UIColor orangeColor];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        return [UIColor colorWithRed:149.0/256 green:188.0/256 blue:1.0 alpha:1.0];
+    }else{
+        return [UIColor blueColor];
+    }
 }
 +(UIColor *)AoAVectorColor{
     return [UIColor redColor];
@@ -53,7 +60,7 @@
 
 +(UIColor *)graphTextColor{
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
-        return [UIColor lightTextColor];
+        return [UIColor whiteColor];
     }else{
         return [UIColor darkTextColor];
     }

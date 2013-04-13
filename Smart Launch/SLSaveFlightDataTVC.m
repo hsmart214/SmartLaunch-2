@@ -233,4 +233,8 @@
     [sender resignFirstResponder];
 }
 
+-(NSString *)description{
+    return [NSString stringWithFormat:@"SaveFlightDataTCV for rocket: %@ and motor %@", self.rocket, self.flightData[FLIGHT_MOTOR_LONGNAME_KEY]];
+}
+
 @end

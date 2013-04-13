@@ -218,4 +218,9 @@
     self.savedFlights = nil;
     self.originalSavedFlights = nil;
 }
+
+-(NSString *)description{
+    return @"SavedFlightsTVC";
+}
+
 @end
