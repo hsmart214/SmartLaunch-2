@@ -73,8 +73,6 @@
 		4256931415F4893000F7BABC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4256931215F4893000F7BABC /* InfoPlist.strings */; };
 		4256931615F4893000F7BABC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931515F4893000F7BABC /* main.m */; };
 		4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931915F4893000F7BABC /* SLAppDelegate.m */; };
-		425E26E01706C29F000F83A9 /* Rocket~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 425E26DE1706C29E000F83A9 /* Rocket~ipad.png */; };
-		425E26E11706C29F000F83A9 /* Rocket~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 425E26DF1706C29E000F83A9 /* Rocket~ipad@2x.png */; };
 		42A1B6191670599E004F1FA0 /* version.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42A1B6181670599E004F1FA0 /* version.txt */; };
 		42BB53C916A293D20029C882 /* SLFlightDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53C816A293D20029C882 /* SLFlightDataCell.m */; };
 		42BB53CD16A295310029C882 /* SLSavedFlightsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */; };
@@ -99,9 +97,11 @@
 		42E7317416BF66ED00F6D468 /* SLFlightProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7317316BF66ED00F6D468 /* SLFlightProfileViewController.m */; };
 		42F3E1E616CB7C0D00081288 /* 57icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F3E1E416CB7C0D00081288 /* 57icon.png */; };
 		42F3E1E716CB7C0D00081288 /* 114icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F3E1E516CB7C0D00081288 /* 114icon.png */; };
-		42F6ADAA16F6AD92002C471B /* Rocket~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F6ADA616F6AD92002C471B /* Rocket~iphone.png */; };
-		42F6ADAB16F6AD92002C471B /* Rocket~iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F6ADA716F6AD92002C471B /* Rocket~iphone@2x.png */; };
 		42F83D981719066F005FAA0C /* SLClusterMotor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83D971719066F005FAA0C /* SLClusterMotor.m */; };
+		42F83D9D17191E7A005FAA0C /* Rocket~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83D9917191E7A005FAA0C /* Rocket~ipad.png */; };
+		42F83D9E17191E7A005FAA0C /* Rocket~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83D9A17191E7A005FAA0C /* Rocket~ipad@2x.png */; };
+		42F83D9F17191E7A005FAA0C /* Rocket~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83D9B17191E7A005FAA0C /* Rocket~iphone.png */; };
+		42F83DA017191E7A005FAA0C /* Rocket~iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83D9C17191E7A005FAA0C /* Rocket~iphone@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -197,8 +197,6 @@
 		4256931715F4893000F7BABC /* Smart Launch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart Launch-Prefix.pch"; sourceTree = "<group>"; };
 		4256931815F4893000F7BABC /* SLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAppDelegate.h; sourceTree = "<group>"; };
 		4256931915F4893000F7BABC /* SLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAppDelegate.m; sourceTree = "<group>"; };
-		425E26DE1706C29E000F83A9 /* Rocket~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket~ipad.png"; sourceTree = "<group>"; };
-		425E26DF1706C29E000F83A9 /* Rocket~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket~ipad@2x.png"; sourceTree = "<group>"; };
 		42A1B6181670599E004F1FA0 /* version.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = version.txt; sourceTree = "<group>"; };
 		42BB53C716A293D20029C882 /* SLFlightDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFlightDataCell.h; sourceTree = "<group>"; };
 		42BB53C816A293D20029C882 /* SLFlightDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFlightDataCell.m; sourceTree = "<group>"; };
@@ -231,10 +229,12 @@
 		42E7317316BF66ED00F6D468 /* SLFlightProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFlightProfileViewController.m; sourceTree = "<group>"; };
 		42F3E1E416CB7C0D00081288 /* 57icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57icon.png; sourceTree = "<group>"; };
 		42F3E1E516CB7C0D00081288 /* 114icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114icon.png; sourceTree = "<group>"; };
-		42F6ADA616F6AD92002C471B /* Rocket~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket~iphone.png"; sourceTree = "<group>"; };
-		42F6ADA716F6AD92002C471B /* Rocket~iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket~iphone@2x.png"; sourceTree = "<group>"; };
 		42F83D961719066F005FAA0C /* SLClusterMotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterMotor.h; sourceTree = "<group>"; };
 		42F83D971719066F005FAA0C /* SLClusterMotor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotor.m; sourceTree = "<group>"; };
+		42F83D9917191E7A005FAA0C /* Rocket~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket~ipad.png"; sourceTree = "<group>"; };
+		42F83D9A17191E7A005FAA0C /* Rocket~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket~ipad@2x.png"; sourceTree = "<group>"; };
+		42F83D9B17191E7A005FAA0C /* Rocket~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket~iphone.png"; sourceTree = "<group>"; };
+		42F83D9C17191E7A005FAA0C /* Rocket~iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket~iphone@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,10 +344,10 @@
 		4220A53F15F561E30055EE35 /* Rocket Images */ = {
 			isa = PBXGroup;
 			children = (
-				42F6ADA616F6AD92002C471B /* Rocket~iphone.png */,
-				42F6ADA716F6AD92002C471B /* Rocket~iphone@2x.png */,
-				425E26DE1706C29E000F83A9 /* Rocket~ipad.png */,
-				425E26DF1706C29E000F83A9 /* Rocket~ipad@2x.png */,
+				42F83D9917191E7A005FAA0C /* Rocket~ipad.png */,
+				42F83D9A17191E7A005FAA0C /* Rocket~ipad@2x.png */,
+				42F83D9B17191E7A005FAA0C /* Rocket~iphone.png */,
+				42F83D9C17191E7A005FAA0C /* Rocket~iphone@2x.png */,
 				4220A53B15F561CF0055EE35 /* Goblin@2x.png */,
 				4220A53C15F561CF0055EE35 /* Goblin.png */,
 			);
@@ -587,10 +587,10 @@
 				4221648016F57CF8008E5A28 /* Default.png in Resources */,
 				4221648816F57EB1008E5A28 /* Default-Landscape@2x~ipad.png in Resources */,
 				4221648A16F57F1A008E5A28 /* Default-Landscape~ipad.png in Resources */,
-				42F6ADAA16F6AD92002C471B /* Rocket~iphone.png in Resources */,
-				42F6ADAB16F6AD92002C471B /* Rocket~iphone@2x.png in Resources */,
-				425E26E01706C29F000F83A9 /* Rocket~ipad.png in Resources */,
-				425E26E11706C29F000F83A9 /* Rocket~ipad@2x.png in Resources */,
+				42F83D9D17191E7A005FAA0C /* Rocket~ipad.png in Resources */,
+				42F83D9E17191E7A005FAA0C /* Rocket~ipad@2x.png in Resources */,
+				42F83D9F17191E7A005FAA0C /* Rocket~iphone.png in Resources */,
+				42F83DA017191E7A005FAA0C /* Rocket~iphone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
