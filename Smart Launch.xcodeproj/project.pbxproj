@@ -10,7 +10,7 @@
 		421437221601ADEE0020AA1D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 421437211601ADEE0020AA1D /* MobileCoreServices.framework */; };
 		421BB121167293FD00F29D95 /* Aerotech Hybrid.png in Resources */ = {isa = PBXBuildFile; fileRef = 421BB10B167293FD00F29D95 /* Aerotech Hybrid.png */; };
 		421BB122167293FD00F29D95 /* Aerotech RMS.png in Resources */ = {isa = PBXBuildFile; fileRef = 421BB10C167293FD00F29D95 /* Aerotech RMS.png */; };
-		421BB123167293FD00F29D95 /* Aerotech.png in Resources */ = {isa = PBXBuildFile; fileRef = 421BB10D167293FD00F29D95 /* Aerotech.png */; };
+		421BB123167293FD00F29D95 /* Aerotech SU.png in Resources */ = {isa = PBXBuildFile; fileRef = 421BB10D167293FD00F29D95 /* Aerotech SU.png */; };
 		421BB124167293FD00F29D95 /* AMW Pro-X.png in Resources */ = {isa = PBXBuildFile; fileRef = 421BB10E167293FD00F29D95 /* AMW Pro-X.png */; };
 		421BB125167293FD00F29D95 /* Animal Motor Works.png in Resources */ = {isa = PBXBuildFile; fileRef = 421BB10F167293FD00F29D95 /* Animal Motor Works.png */; };
 		421BB126167293FD00F29D95 /* Apogee.png in Resources */ = {isa = PBXBuildFile; fileRef = 421BB110167293FD00F29D95 /* Apogee.png */; };
@@ -102,13 +102,19 @@
 		42F83DA617191F04005FAA0C /* Rocket~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83DA217191F03005FAA0C /* Rocket~ipad@2x.png */; };
 		42F83DA717191F04005FAA0C /* Rocket~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83DA317191F04005FAA0C /* Rocket~iphone.png */; };
 		42F83DA817191F04005FAA0C /* Rocket~iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83DA417191F04005FAA0C /* Rocket~iphone@2x.png */; };
+		42F83DAF171B5D43005FAA0C /* Cluster2.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83DA9171B5D42005FAA0C /* Cluster2.png */; };
+		42F83DB0171B5D43005FAA0C /* Cluster3.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83DAA171B5D42005FAA0C /* Cluster3.png */; };
+		42F83DB1171B5D43005FAA0C /* Cluster4.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83DAB171B5D42005FAA0C /* Cluster4.png */; };
+		42F83DB2171B5D43005FAA0C /* Cluster5.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83DAC171B5D42005FAA0C /* Cluster5.png */; };
+		42F83DB3171B5D43005FAA0C /* Cluster6.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83DAD171B5D42005FAA0C /* Cluster6.png */; };
+		42F83DB4171B5D43005FAA0C /* Cluster7.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83DAE171B5D42005FAA0C /* Cluster7.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		421437211601ADEE0020AA1D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		421BB10B167293FD00F29D95 /* Aerotech Hybrid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Aerotech Hybrid.png"; sourceTree = "<group>"; };
 		421BB10C167293FD00F29D95 /* Aerotech RMS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Aerotech RMS.png"; sourceTree = "<group>"; };
-		421BB10D167293FD00F29D95 /* Aerotech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Aerotech.png; sourceTree = "<group>"; };
+		421BB10D167293FD00F29D95 /* Aerotech SU.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Aerotech SU.png"; sourceTree = "<group>"; };
 		421BB10E167293FD00F29D95 /* AMW Pro-X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMW Pro-X.png"; sourceTree = "<group>"; };
 		421BB10F167293FD00F29D95 /* Animal Motor Works.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Animal Motor Works.png"; sourceTree = "<group>"; };
 		421BB110167293FD00F29D95 /* Apogee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Apogee.png; sourceTree = "<group>"; };
@@ -235,6 +241,12 @@
 		42F83DA217191F03005FAA0C /* Rocket~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Rocket~ipad@2x.png"; path = "../Rocket~ipad@2x.png"; sourceTree = "<group>"; };
 		42F83DA317191F04005FAA0C /* Rocket~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Rocket~iphone.png"; path = "../Rocket~iphone.png"; sourceTree = "<group>"; };
 		42F83DA417191F04005FAA0C /* Rocket~iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Rocket~iphone@2x.png"; path = "../Rocket~iphone@2x.png"; sourceTree = "<group>"; };
+		42F83DA9171B5D42005FAA0C /* Cluster2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cluster2.png; sourceTree = "<group>"; };
+		42F83DAA171B5D42005FAA0C /* Cluster3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cluster3.png; sourceTree = "<group>"; };
+		42F83DAB171B5D42005FAA0C /* Cluster4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cluster4.png; sourceTree = "<group>"; };
+		42F83DAC171B5D42005FAA0C /* Cluster5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cluster5.png; sourceTree = "<group>"; };
+		42F83DAD171B5D42005FAA0C /* Cluster6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cluster6.png; sourceTree = "<group>"; };
+		42F83DAE171B5D42005FAA0C /* Cluster7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cluster7.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,7 +271,7 @@
 			children = (
 				421BB10B167293FD00F29D95 /* Aerotech Hybrid.png */,
 				421BB10C167293FD00F29D95 /* Aerotech RMS.png */,
-				421BB10D167293FD00F29D95 /* Aerotech.png */,
+				421BB10D167293FD00F29D95 /* Aerotech SU.png */,
 				421BB10E167293FD00F29D95 /* AMW Pro-X.png */,
 				421BB10F167293FD00F29D95 /* Animal Motor Works.png */,
 				421BB110167293FD00F29D95 /* Apogee.png */,
@@ -462,6 +474,7 @@
 		4256931015F4893000F7BABC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				42F83DB5171B5D71005FAA0C /* Cluster Images */,
 				421BB10A167293FD00F29D95 /* Company name/Logo pngs */,
 				4220A53F15F561E30055EE35 /* Rocket Images */,
 				4220A52F15F55DAB0055EE35 /* Backgrounds */,
@@ -477,6 +490,19 @@
 				42D6AE8E16A2754F000EE1A8 /* SmartLaunch.entitlements */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		42F83DB5171B5D71005FAA0C /* Cluster Images */ = {
+			isa = PBXGroup;
+			children = (
+				42F83DA9171B5D42005FAA0C /* Cluster2.png */,
+				42F83DAA171B5D42005FAA0C /* Cluster3.png */,
+				42F83DAB171B5D42005FAA0C /* Cluster4.png */,
+				42F83DAC171B5D42005FAA0C /* Cluster5.png */,
+				42F83DAD171B5D42005FAA0C /* Cluster6.png */,
+				42F83DAE171B5D42005FAA0C /* Cluster7.png */,
+			);
+			name = "Cluster Images";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -551,7 +577,7 @@
 				42A1B6191670599E004F1FA0 /* version.txt in Resources */,
 				421BB121167293FD00F29D95 /* Aerotech Hybrid.png in Resources */,
 				421BB122167293FD00F29D95 /* Aerotech RMS.png in Resources */,
-				421BB123167293FD00F29D95 /* Aerotech.png in Resources */,
+				421BB123167293FD00F29D95 /* Aerotech SU.png in Resources */,
 				421BB124167293FD00F29D95 /* AMW Pro-X.png in Resources */,
 				421BB125167293FD00F29D95 /* Animal Motor Works.png in Resources */,
 				421BB126167293FD00F29D95 /* Apogee.png in Resources */,
@@ -591,6 +617,12 @@
 				42F83DA617191F04005FAA0C /* Rocket~ipad@2x.png in Resources */,
 				42F83DA717191F04005FAA0C /* Rocket~iphone.png in Resources */,
 				42F83DA817191F04005FAA0C /* Rocket~iphone@2x.png in Resources */,
+				42F83DAF171B5D43005FAA0C /* Cluster2.png in Resources */,
+				42F83DB0171B5D43005FAA0C /* Cluster3.png in Resources */,
+				42F83DB1171B5D43005FAA0C /* Cluster4.png in Resources */,
+				42F83DB2171B5D43005FAA0C /* Cluster5.png in Resources */,
+				42F83DB3171B5D43005FAA0C /* Cluster6.png in Resources */,
+				42F83DB4171B5D43005FAA0C /* Cluster7.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

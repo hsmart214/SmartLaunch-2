@@ -102,7 +102,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
             [motorData setValue:chunks[3] forKey:DELAYS_KEY];
             [motorData setValue:chunks[4] forKey:PROP_MASS_KEY];
             [motorData setValue:chunks[5] forKey:MOTOR_MASS_KEY];
-            [motorData setValue:(self.manufacturerNames)[chunks[6]] forKey:MAN_KEY];
+            [motorData setValue:([RocketMotor manufacturerDict])[chunks[6]] forKey:MAN_KEY];
             // figure out the impulse class from the motor name in the header line
             
             NSString *mname = chunks[0];
@@ -157,33 +157,33 @@ NSInteger sortFunction(id md1, id md2, void *context){
     return _allMotors;
 }
 
-- (NSDictionary *)manufacturerNames{
-    if (!_manufacturerNames){
-        _manufacturerNames = @{@"AMW_ProX": @"AMW Pro-X",
-                              @"A-RMS": @"Aerotech RMS",
-                              @"A": @"Aerotech",
-                              @"ATH": @"Aerotech Hybrid",
-                              @"AMW": @"Animal Motor Works",
-                              @"Apogee": @"Apogee",
-                              @"CTI": @"Cesaroni",
-                              @"Contrail_Rockets": @"Contrail Rockets",
-                              @"Ellis": @"Ellis Mountain",
-                              @"Estes": @"Estes",
-                              @"Gorilla_Rocket_Motors": @"Gorilla Rocket Motors",
-                              @"HT": @"Hypertek",
-                              @"KA": @"Kosdon by Aerotech",
-                              @"KOS-TRM": @"Kosdon",
-                              @"Loki": @"Loki Research",
-                              @"PML": @"Public Missiles Ltd",
-                              @"Propul": @"Propulsion Polymers",
-                              @"Q": @"Quest",
-                              @"RATT": @"RATTworks", 
-                              @"RR": @"RoadRunner",
-                              @"SkyRip": @"Sky Ripper",
-                              @"WCoast": @"West Coast Hybrids"};
-    }
-    return _manufacturerNames;
-}
+//- (NSDictionary *)manufacturerNames{
+//    if (!_manufacturerNames){
+//        _manufacturerNames = @{@"AMW_ProX": @"AMW Pro-X",
+//                              @"A-RMS": @"Aerotech RMS",
+//                              @"A": @"Aerotech",
+//                              @"ATH": @"Aerotech Hybrid",
+//                              @"AMW": @"Animal Motor Works",
+//                              @"Apogee": @"Apogee",
+//                              @"CTI": @"Cesaroni",
+//                              @"Contrail_Rockets": @"Contrail Rockets",
+//                              @"Ellis": @"Ellis Mountain",
+//                              @"Estes": @"Estes",
+//                              @"Gorilla_Rocket_Motors": @"Gorilla Rocket Motors",
+//                              @"HT": @"Hypertek",
+//                              @"KA": @"Kosdon by Aerotech",
+//                              @"KOS-TRM": @"Kosdon",
+//                              @"Loki": @"Loki Research",
+//                              @"PML": @"Public Missiles Ltd",
+//                              @"Propul": @"Propulsion Polymers",
+//                              @"Q": @"Quest",
+//                              @"RATT": @"RATTworks", 
+//                              @"RR": @"RoadRunner",
+//                              @"SkyRip": @"Sky Ripper",
+//                              @"WCoast": @"West Coast Hybrids"};
+//    }
+//    return _manufacturerNames;
+//}
 
 - (NSArray *)impulseClasses{
     return [RocketMotor impulseClasses];
@@ -291,7 +291,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
     self.preferredManufacturers = nil;
     self.preferredMotorDiameters = nil;
     self.allMotors = nil;
-    self.manufacturerNames = nil;
+    //    self.manufacturerNames = nil;
     self.rocketMotorMountDiameter = nil;
     self.impulseClasses = nil;
     self.motorDiameters = nil;

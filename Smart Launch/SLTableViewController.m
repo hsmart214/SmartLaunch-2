@@ -14,12 +14,13 @@
 #import "SLFlightProfileViewController.h"
 #import "SLUnitsConvertor.h"
 #import "SLiPadDetailViewController.h"
+#import "SLClusterMotor.h"
 
 #define FLIGHT_PROFILE_ROW 5
 
 @interface SLTableViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *rocketCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *motorCell;
+//@property (weak, nonatomic) IBOutlet UITableViewCell *motorCell;
 @property (weak, nonatomic) IBOutlet UIButton *windDirectionButton;
 @property (weak, nonatomic) IBOutlet UILabel *launchAngleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ffAngleOfAttackLabel;
@@ -30,6 +31,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *apogeeAltitudeUnitsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *thrustToWeightLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (weak, nonatomic) IBOutlet UIImageView *manufacturerLogoView;
+@property (weak, nonatomic) IBOutlet UILabel *motorDetailDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *motorNameLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *clusterSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *clusterCountLabel;
 
 @property (strong, nonatomic) Rocket *rocket;
 @property (strong, nonatomic) RocketMotor *motor;
@@ -138,10 +144,10 @@
     [self.settings setValue:[motor motorDict] forKey:SELECTED_MOTOR_KEY];
     [self defaultStoreWithKey:SELECTED_MOTOR_KEY andValue:[motor motorDict]];
     [self defaultStoreWithKey:SETTINGS_KEY andValue:self.settings];
-    self.motorCell.textLabel.text = motor.name;
-    self.motorCell.detailTextLabel.text = [NSString stringWithFormat:@"%1.1f", [motor.totalImpulse floatValue]];
+    self.motorNameLabel.text = motor.name;
+    self.motorDetailDescriptionLabel.text = [NSString stringWithFormat:@"%1.1f N-sec", [motor.totalImpulse floatValue]];
     UIImage *theImage = [UIImage imageNamed:motor.manufacturer];
-    self.motorCell.imageView.image = theImage;
+    self.manufacturerLogoView.image = theImage;
     if (self.view.window)[self updateDisplay];
 }
 
@@ -185,10 +191,17 @@
     self.thrustToWeightLabel.text = [NSString stringWithFormat:@"%1.1f : 1", ([[self.motor peakThrust] floatValue])/(([self.rocket.mass floatValue] + [self.motor.loadedMass floatValue])*(GRAV_ACCEL))];
     self.rocketCell.textLabel.text = self.rocket.name;
     self.rocketCell.detailTextLabel.text = [NSString stringWithFormat:@"%dmm", [self.rocket.motorSize intValue]];
-    self.motorCell.textLabel.text = self.motor.name;
-    self.motorCell.detailTextLabel.text =[NSString stringWithFormat:@"%1.1f Ns", [self.motor.totalImpulse floatValue]];
+    self.motorNameLabel.text = self.motor.name;
+    self.motorDetailDescriptionLabel.text =[NSString stringWithFormat:@"%1.1f Ns", [self.motor.totalImpulse floatValue]];
     UIImage *theImage = [UIImage imageNamed:self.motor.manufacturer];
-    self.motorCell.imageView.image = theImage;
+    self.manufacturerLogoView.image = theImage;
+    if ([self.motor isKindOfClass:[SLClusterMotor class]]){
+        [self.clusterSwitch setOn:YES animated:YES];
+        self.clusterCountLabel.text = [NSString stringWithFormat:@"%d", [((SLClusterMotor *)self.motor).motors count]];
+    }else{
+        [self.clusterSwitch setOn:NO animated:YES];
+        self.clusterCountLabel.text = nil;
+    }
     
     // In the following I let the SLUnitsConvertor class do all of the unit changing.  This controller is not even aware of the UNIT_PREFS settings
 

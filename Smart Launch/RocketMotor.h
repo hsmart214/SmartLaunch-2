@@ -33,8 +33,11 @@
 - (CGFloat)thrustAtTime:(CGFloat)time;
 - (CGFloat)massAtTime:(CGFloat)time;
 
+- (float)fractionOfImpulseClass;
+
 + (RocketMotor *)motorWithMotorDict: (NSDictionary *)motorDict;
 + (NSArray *)manufacturerNames;
++ (NSDictionary *)manufacturerDict;
 + (NSArray *)hybridManufacturerNames;
 + (NSArray *)impulseClasses;
 + (NSString *)impulseClassForTotalImpulse:(NSNumber *)totalImpulse;

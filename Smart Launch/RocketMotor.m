@@ -30,6 +30,15 @@
     return self.calcTotalImpulse;
 }
 
+-(float)fractionOfImpulseClass{
+    int classIndex = 0;
+    float impulse = [self.totalImpulse floatValue];
+    while (impulse < [[RocketMotor impulseLimits][classIndex] floatValue]) {
+        classIndex++;
+    }   //now the classIndex points to the class ABOVE our class
+    return impulse/[[RocketMotor impulseLimits][classIndex] floatValue];
+}
+
 -(void)calculateDerivedValues{
     // curve starts at (0,0) which is NOT included in the arrays
     // use trapezoidal approximation to the area-under-the-curve
@@ -122,7 +131,7 @@
 + (NSArray *)manufacturerNames{
     return @[@"AMW Pro-X",
             @"Aerotech RMS",
-            @"Aerotech",
+            @"Aerotech SU",
             @"Aerotech Hybrid",
             @"Animal Motor Works",
             @"Apogee",
@@ -157,7 +166,7 @@
 
 + (NSArray *)impulseClasses{
     return @[@"1/8A", @"1/4A", @"1/2A", @"A", @"B", @"C", @"D",
-            @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O"];
+            @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q"];
 }
 
 + (NSArray *)impulseLimits{
@@ -180,7 +189,7 @@
             return iClasses[i];
         }
     }
-    return @"P+";
+    return [[[RocketMotor impulseClasses] lastObject] stringByAppendingString:@"+"];
 }
 
 + (NSArray *)motorDiameters{
@@ -329,7 +338,7 @@
 +(NSDictionary *)manufacturerDict{
     return @{@"AMW_ProX": @"AMW Pro-X",
             @"A-RMS": @"Aerotech RMS",
-            @"A": @"Aerotech",
+            @"A": @"Aerotech SU",
             @"ATH": @"Aerotech Hybrid",
             @"AMW": @"Animal Motor Works",
             @"Apogee": @"Apogee",
