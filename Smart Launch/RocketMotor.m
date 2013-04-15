@@ -35,8 +35,18 @@
     float impulse = [self.totalImpulse floatValue];
     while (impulse < [[RocketMotor impulseLimits][classIndex] floatValue]) {
         classIndex++;
+        if (classIndex == [[RocketMotor impulseClasses] count]) return 1.0;  // protects against overflow
     }   //now the classIndex points to the class ABOVE our class
     return impulse/[[RocketMotor impulseLimits][classIndex] floatValue];
+}
+
+-(NSString *)nextImpulseClass{
+    for (int i = 0; i < [[RocketMotor impulseClasses] count]-1; i++) {
+        if ([self.impulseClass isEqualToString:[RocketMotor impulseClasses][i]]){
+            return [RocketMotor impulseClasses][i+1];
+        }
+    }
+    return [[[RocketMotor impulseClasses] lastObject] stringByAppendingString:@"+"];;
 }
 
 -(void)calculateDerivedValues{

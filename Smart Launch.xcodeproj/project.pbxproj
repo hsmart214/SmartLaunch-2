@@ -108,6 +108,9 @@
 		42F83DB2171B5D43005FAA0C /* Cluster5.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83DAC171B5D42005FAA0C /* Cluster5.png */; };
 		42F83DB3171B5D43005FAA0C /* Cluster6.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83DAD171B5D42005FAA0C /* Cluster6.png */; };
 		42F83DB4171B5D43005FAA0C /* Cluster7.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F83DAE171B5D42005FAA0C /* Cluster7.png */; };
+		42F83DB8171B6EAB005FAA0C /* SLClusterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83DB7171B6EAB005FAA0C /* SLClusterTableViewController.m */; };
+		42F83DBB171B6ED3005FAA0C /* SLClusterMotorBuildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83DBA171B6ED2005FAA0C /* SLClusterMotorBuildViewController.m */; };
+		42F83DBE171B6EFC005FAA0C /* SLClusterMotorMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83DBD171B6EFB005FAA0C /* SLClusterMotorMemberCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -247,6 +250,12 @@
 		42F83DAC171B5D42005FAA0C /* Cluster5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cluster5.png; sourceTree = "<group>"; };
 		42F83DAD171B5D42005FAA0C /* Cluster6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cluster6.png; sourceTree = "<group>"; };
 		42F83DAE171B5D42005FAA0C /* Cluster7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cluster7.png; sourceTree = "<group>"; };
+		42F83DB6171B6EAA005FAA0C /* SLClusterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterTableViewController.h; sourceTree = "<group>"; };
+		42F83DB7171B6EAB005FAA0C /* SLClusterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterTableViewController.m; sourceTree = "<group>"; };
+		42F83DB9171B6ED2005FAA0C /* SLClusterMotorBuildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterMotorBuildViewController.h; sourceTree = "<group>"; };
+		42F83DBA171B6ED2005FAA0C /* SLClusterMotorBuildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotorBuildViewController.m; sourceTree = "<group>"; };
+		42F83DBC171B6EFA005FAA0C /* SLClusterMotorMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterMotorMemberCell.h; sourceTree = "<group>"; };
+		42F83DBD171B6EFB005FAA0C /* SLClusterMotorMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotorMemberCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,6 +463,12 @@
 				4220A4BB15F55CC60055EE35 /* SLMotorTableViewController.m */,
 				4220A4BC15F55CC60055EE35 /* SLMotorViewController.h */,
 				4220A4BD15F55CC60055EE35 /* SLMotorViewController.m */,
+				42F83DB6171B6EAA005FAA0C /* SLClusterTableViewController.h */,
+				42F83DB7171B6EAB005FAA0C /* SLClusterTableViewController.m */,
+				42F83DB9171B6ED2005FAA0C /* SLClusterMotorBuildViewController.h */,
+				42F83DBA171B6ED2005FAA0C /* SLClusterMotorBuildViewController.m */,
+				42F83DBC171B6EFA005FAA0C /* SLClusterMotorMemberCell.h */,
+				42F83DBD171B6EFB005FAA0C /* SLClusterMotorMemberCell.m */,
 				4220A4BE15F55CC60055EE35 /* SLCurveGraphView.h */,
 				4220A4BF15F55CC60055EE35 /* SLCurveGraphView.m */,
 				4220A4C015F55CC60055EE35 /* SLRocketsTableViewController.h */,
@@ -662,6 +677,9 @@
 				42248D7C16EC416200ABB5D7 /* SLiPadDetailViewController.m in Sources */,
 				423D16E317053FE80007ED61 /* SLCustomUI.m in Sources */,
 				42F83D981719066F005FAA0C /* SLClusterMotor.m in Sources */,
+				42F83DB8171B6EAB005FAA0C /* SLClusterTableViewController.m in Sources */,
+				42F83DBB171B6ED3005FAA0C /* SLClusterMotorBuildViewController.m in Sources */,
+				42F83DBE171B6EFC005FAA0C /* SLClusterMotorMemberCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

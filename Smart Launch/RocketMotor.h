@@ -32,6 +32,7 @@
 
 - (CGFloat)thrustAtTime:(CGFloat)time;
 - (CGFloat)massAtTime:(CGFloat)time;
+- (NSString *)nextImpulseClass;
 
 - (float)fractionOfImpulseClass;
 

@@ -118,6 +118,7 @@ enum SLFlightProfileGraphType {
 #define ALL_MOTORS_KEY @"SmartLaunch_All_Motors"
 #define LAST_MOTOR_SEARCH_KEY @"SmartLaunch_Last_Motor_Search"
 #define FAVORITE_ROCKETS_KEY @"com.mySmartSoftware.SmartLaunch_Favorite_Rockets"
+#define FAVORITE_CLUSTERS_KEY @"com.mySmartSoftware.SmartLaunch_Favorite_Clusters"
 #define UNIT_PREFS_KEY @"SmartLaunch_Unit_Preferences"
 #define INTERFACE_PREFS_KEY @"SmartLaunch_Interface_Preferences"
 #define LENGTH_UNIT_KEY @"SmartLaunch_Length_Unit"
