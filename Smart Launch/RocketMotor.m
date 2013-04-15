@@ -134,7 +134,7 @@
 
 +(RocketMotor *)motorWithMotorDict:(NSDictionary *)motorDict{
     if (!motorDict) return nil;
-    RocketMotor *motor = [[RocketMotor alloc] initWithMotorDict:(NSDictionary *)motorDict];
+    RocketMotor *motor = [[RocketMotor alloc] initWithMotorDict:motorDict];
     return motor;
 }
 

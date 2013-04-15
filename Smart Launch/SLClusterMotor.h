@@ -17,10 +17,15 @@
 
 @property (nonatomic, strong, readonly) NSArray *motors;  //array of NSDictionary
 @property (nonatomic, strong, readwrite) NSString *name;  //for this subclass I need to allow the name to be changed
+@property (readonly) float totalBurnLength;
+@property (readonly) float timeToFirstBurnout;
 
 -(void)addClusterMotor:(RocketMotor *)motor withStartDelay:(NSNumber *)delay;
-//the next method removes the first motor in the array which "isEqual" to the passed in motor, AND whose start time
-//is within a tolerance of the passed in start delay
--(BOOL)removeClusterMotor:(RocketMotor *)motor atStartDelay:(NSNumber *)delay;  //the return value indicates success
+-(void)replaceMotorAtIndex:(NSUInteger)index withMotor:(RocketMotor *)motor;
+-(void)changeDelayTo:(float)delay forMotorAtIndex:(NSUInteger)index;
+-(void)removeClusterMotorAtIndex:(NSUInteger)index;
 
+-(NSArray *)clusterArray;
+
++(SLClusterMotor *)clusterMotorWithClusterArray:(NSArray *)clusterArray;
 @end

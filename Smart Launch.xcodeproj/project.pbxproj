@@ -111,6 +111,7 @@
 		42F83DB8171B6EAB005FAA0C /* SLClusterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83DB7171B6EAB005FAA0C /* SLClusterTableViewController.m */; };
 		42F83DBB171B6ED3005FAA0C /* SLClusterMotorBuildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83DBA171B6ED2005FAA0C /* SLClusterMotorBuildViewController.m */; };
 		42F83DBE171B6EFC005FAA0C /* SLClusterMotorMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83DBD171B6EFB005FAA0C /* SLClusterMotorMemberCell.m */; };
+		42F83DC1171BBCE1005FAA0C /* SLClusterDelayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83DC0171BBCE0005FAA0C /* SLClusterDelayViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -256,6 +257,8 @@
 		42F83DBA171B6ED2005FAA0C /* SLClusterMotorBuildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotorBuildViewController.m; sourceTree = "<group>"; };
 		42F83DBC171B6EFA005FAA0C /* SLClusterMotorMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterMotorMemberCell.h; sourceTree = "<group>"; };
 		42F83DBD171B6EFB005FAA0C /* SLClusterMotorMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotorMemberCell.m; sourceTree = "<group>"; };
+		42F83DBF171BBCE0005FAA0C /* SLClusterDelayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterDelayViewController.h; sourceTree = "<group>"; };
+		42F83DC0171BBCE0005FAA0C /* SLClusterDelayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterDelayViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,6 +472,8 @@
 				42F83DBA171B6ED2005FAA0C /* SLClusterMotorBuildViewController.m */,
 				42F83DBC171B6EFA005FAA0C /* SLClusterMotorMemberCell.h */,
 				42F83DBD171B6EFB005FAA0C /* SLClusterMotorMemberCell.m */,
+				42F83DBF171BBCE0005FAA0C /* SLClusterDelayViewController.h */,
+				42F83DC0171BBCE0005FAA0C /* SLClusterDelayViewController.m */,
 				4220A4BE15F55CC60055EE35 /* SLCurveGraphView.h */,
 				4220A4BF15F55CC60055EE35 /* SLCurveGraphView.m */,
 				4220A4C015F55CC60055EE35 /* SLRocketsTableViewController.h */,
@@ -680,6 +685,7 @@
 				42F83DB8171B6EAB005FAA0C /* SLClusterTableViewController.m in Sources */,
 				42F83DBB171B6ED3005FAA0C /* SLClusterMotorBuildViewController.m in Sources */,
 				42F83DBE171B6EFC005FAA0C /* SLClusterMotorMemberCell.m in Sources */,
+				42F83DC1171BBCE1005FAA0C /* SLClusterDelayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

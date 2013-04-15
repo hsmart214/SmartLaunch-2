@@ -469,7 +469,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="WCr-oj-TZS" kind="push" id="2zK-6i-r3d"/>
+                                    <segue destination="WCr-oj-TZS" kind="push" identifier="ClusterBuildSegue" id="2zK-6i-r3d"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -480,7 +480,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="xUr-Q7-ZVE">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mb6-J1-lfb"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mb6-J1-lfb">
+                            <connections>
+                                <action selector="createNewCluster:" destination="tVc-AY-bfJ" id="dBC-Qc-W0p"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
@@ -525,6 +529,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="WFU-0M-lp7" kind="push" id="229-FG-Nkz"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClusterDelayCell" textLabel="pWq-Hx-qFA" detailTextLabel="IUB-2R-xFl" style="IBUITableViewCellStyleValue1" id="4qp-tp-znS">
                                 <rect key="frame" x="0.0" y="91" width="320" height="45"/>
@@ -550,6 +557,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="cdm-u7-epl" kind="push" identifier="DelaySegue" id="pF3-WQ-iZ6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -559,12 +569,110 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="PHF-9I-CR6">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="h6m-k6-omC"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="h6m-k6-omC">
+                            <connections>
+                                <action selector="addNewMotor:" destination="WCr-oj-TZS" id="Tdu-DC-wWg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7X-Em-eMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2033" y="1015"/>
+        </scene>
+        <!--Cluster Delay View Controller-->
+        <scene sceneID="s9c-Np-LZk">
+            <objects>
+                <viewController id="cdm-u7-epl" customClass="SLClusterDelayViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wJL-Jr-uUc">
+                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Wu2-x1-wdV">
+                                <rect key="frame" x="20" y="208" width="280" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="From Launch"/>
+                                    <segment title="From Burnout"/>
+                                </segments>
+                                <connections>
+                                    <action selector="delayBasisChanged:" destination="cdm-u7-epl" eventType="valueChanged" id="sIt-k9-UZg"/>
+                                </connections>
+                            </segmentedControl>
+                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="0.10000000000000001" id="ksr-g6-rCN">
+                                <rect key="frame" x="20" y="123" width="94" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <action selector="delayTimeChanged:" destination="cdm-u7-epl" eventType="valueChanged" id="gm4-qE-oSW"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6.7 Ns" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lO9-as-5PD">
+                                <rect key="frame" x="156" y="49" width="144" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="D10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wbb-dl-ajg">
+                                <rect key="frame" x="156" y="20" width="144" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Apogee.png" id="gwu-0j-Eon">
+                                <rect key="frame" x="20" y="20" width="105" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Ignition Delay" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PI9-D2-ufg">
+                                <rect key="frame" x="196" y="78" width="104" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.0 sec" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="29I-FF-dXT">
+                                <rect key="frame" x="156" y="112" width="144" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Time to first burnout:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hvo-Z4-coJ">
+                                <rect key="frame" x="20" y="179" width="156" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.7 sec" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mhl-nU-B1Y">
+                                <rect key="frame" x="184" y="179" width="116" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" id="SNu-wP-vud" customClass="SLCurveGraphView">
+                                <rect key="frame" x="20" y="259" width="280" height="179"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1qg-xa-lFG"/>
+                    <connections>
+                        <outlet property="burnoutTimeLabel" destination="mhl-nU-B1Y" id="Mvr-a4-YSr"/>
+                        <outlet property="delayTimeLabel" destination="29I-FF-dXT" id="rhq-lD-7XZ"/>
+                        <outlet property="manufacturerLogo" destination="gwu-0j-Eon" id="sE3-8T-df3"/>
+                        <outlet property="motorImpulseLabel" destination="lO9-as-5PD" id="kFO-vF-4H5"/>
+                        <outlet property="motorNameLabel" destination="wbb-dl-ajg" id="FUr-4v-mJM"/>
+                        <outlet property="thrustCurveGraphView" destination="SNu-wP-vud" id="K4D-Ld-C1R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kk5-pN-w9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2478" y="1017"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GV9-un-eTz">
@@ -2807,5 +2915,6 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
     <inferredMetricsTieBreakers>
         <segue reference="eYh-Tw-iw8"/>
         <segue reference="oTj-Xa-4mD"/>
+        <segue reference="229-FG-Nkz"/>
     </inferredMetricsTieBreakers>
 </document>

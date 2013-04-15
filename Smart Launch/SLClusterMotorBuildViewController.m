@@ -7,115 +7,84 @@
 //
 
 #import "SLClusterMotorBuildViewController.h"
+#import "RocketMotor.h"
 
 @interface SLClusterMotorBuildViewController ()
+
+@property (nonatomic) NSUInteger selectedMotorIndex;
 
 @end
 
 @implementation SLClusterMotorBuildViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+-(SLClusterMotor *)clusterMotor{
+    if (!_clusterMotor){
+        _clusterMotor = (SLClusterMotor *)[SLClusterMotor defaultMotor];
     }
-    return self;
+    return _clusterMotor;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+- (IBAction)addNewMotor:(UIBarButtonItem *)sender {
+    if ([self.clusterMotor.motors count] >= 7) return;
+    RocketMotor *newMotor = [self.clusterMotor.motors lastObject][CLUSTER_MOTOR_KEY];
+    NSNumber *delay = [self.clusterMotor.motors lastObject][CLUSTER_START_DELAY_KEY];
+    [self.clusterMotor addClusterMotor:newMotor withStartDelay:delay];
+    [self.tableView reloadData];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - SLSimulationDelegate method
+
+-(void)sender:(id)sender didChangeRocketMotor:(RocketMotor *)motor{
+    [self.clusterMotor replaceMotorAtIndex:self.selectedMotorIndex withMotor:motor];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return [self.clusterMotor.motors count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    NSString *cellIdentifier;
+    UITableViewCell *cell;
+    NSUInteger motorIndex = indexPath.section / 2;  // this is integer division, just to be clear
+    NSDictionary *motorEntry = self.clusterMotor.motors[motorIndex];
+    RocketMotor *motor = motorEntry[CLUSTER_MOTOR_KEY];
+    float delay = [motorEntry[CLUSTER_START_DELAY_KEY] floatValue];
+    UIImage *image = [UIImage imageNamed:motor.manufacturer];
+    switch (indexPath.row % 2) {
+        case 0:
+            cellIdentifier = @"ClusterMemberCell";
+            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            cell.textLabel.text = [motor description];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%1.1f Ns", [motor.totalImpulse floatValue]];
+            cell.imageView.image = image;
+            break;
+        case 1:
+            cellIdentifier = @"ClusterDelayCell";
+            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            cell.textLabel.text = [NSString stringWithFormat:@"Delay %1.1f sec", delay];
+            break;
+    }
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Segue
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    self.selectedMotorIndex = [self.tableView indexPathForCell:sender].section / 2;
 }
 
 @end

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SLClusterMotor.h"
 
-@interface SLClusterTableViewController : UITableViewController
+@protocol SLClusterListDelegate <NSObject>
+
+-(void)changedClusterMotor:(SLClusterMotor *)clusterMotor sender:(id)sender;
+
+@end
+
+@interface SLClusterTableViewController : UITableViewController<SLClusterListDelegate>
 
 @end

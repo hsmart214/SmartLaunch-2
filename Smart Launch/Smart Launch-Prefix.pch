@@ -195,6 +195,13 @@ enum SLFlightProfileGraphType {
 #define MOTOR_DIAM_KEY @"motorDiameter"
 #define MOTOR_LENGTH_KEY @"motorLength"
     
+    //constants for the ClusterMotor subclass
+    
+#define CLUSTER_MOTOR_KEY @"com.mySmartSoftware.clusterMotorKey"
+#define CLUSTER_START_DELAY_KEY @"com.mySmartSoftware.clusterStartDelayKey"
+#define CLUSTER_MOTORDICT_KEY @"com.mySmartSoftware.clusterMotorDictKey"
+
+    
     //constants for the Rocket class
     
 #define ROCKET_NAME_KEY @"RocketName"

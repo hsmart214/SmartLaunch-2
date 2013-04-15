@@ -7,7 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SLClusterTableViewController.h"
+#import "SLClusterMotor.h"
+#import "SLSimulationDelegate.h"
 
-@interface SLClusterMotorBuildViewController : UITableViewController
+@protocol SLClusterBuildDelegate <NSObject>
+
+-(void)changeDelayTimeTo:(NSNumber *)delay sender:(id)sender;
+
+@end
+
+@protocol SLClusterBuildDatasource <NSObject>
+
+-(SLClusterMotor *)clusterSoFar;
+
+@end
+
+@interface SLClusterMotorBuildViewController : UITableViewController<SLSimulationDelegate>
+
+@property (nonatomic, weak) id<SLClusterListDelegate> delegate;
+@property (nonatomic, strong) SLClusterMotor *clusterMotor;
 
 @end
