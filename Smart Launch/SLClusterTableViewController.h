@@ -17,4 +17,6 @@
 
 @interface SLClusterTableViewController : UITableViewController<SLClusterListDelegate>
 
+@property (nonatomic, weak) id delegate;
+
 @end

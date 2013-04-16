@@ -29,7 +29,7 @@
 }
 
 -(void)addClusterMotor:(RocketMotor *)motor withStartDelay:(NSNumber *)delay{
-    NSDictionary *newMotorEntry = @{CLUSTER_MOTOR_KEY: [motor copy],
+    NSDictionary *newMotorEntry = @{CLUSTER_MOTOR_KEY: motor,
                                     CLUSTER_START_DELAY_KEY: delay};
     [self.privateMotors addObject:newMotorEntry];
 }
@@ -201,7 +201,7 @@
 }
 
 +(SLClusterMotor *)defaultMotor{
-    NSDictionary *dict = @{CLUSTER_MOTOR_KEY: [[RocketMotor defaultMotor] motorDict],
+    NSDictionary *dict = @{CLUSTER_MOTORDICT_KEY: [[RocketMotor defaultMotor] motorDict],
                            CLUSTER_START_DELAY_KEY: @0.0};
     return [SLClusterMotor clusterMotorWithClusterArray:@[dict]];
 }

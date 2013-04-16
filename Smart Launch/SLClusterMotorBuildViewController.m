@@ -11,7 +11,7 @@
 
 @interface SLClusterMotorBuildViewController ()
 
-@property (nonatomic) NSUInteger selectedMotorIndex;
+@property (nonatomic, readwrite) NSUInteger selectedMotorIndex;
 
 @end
 
@@ -81,10 +81,25 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark - delegate/datasource methods
+
+-(void)changeDelayTimeTo:(float)delay sender:(id)sender{
+    [self.clusterMotor changeDelayTo:delay forMotorAtIndex:self.selectedMotorIndex];
+}
+
+-(float)timeToFirstBurnout{
+    return [self.clusterSoFar timeToFirstBurnout];
+}
+
+-(SLClusterMotor *)clusterSoFar{
+    return self.clusterMotor;
+}
+
 #pragma mark - Segue
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     self.selectedMotorIndex = [self.tableView indexPathForCell:sender].section / 2;
+    
 }
 
 @end

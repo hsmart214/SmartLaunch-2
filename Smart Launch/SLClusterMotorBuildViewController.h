@@ -13,17 +13,20 @@
 
 @protocol SLClusterBuildDelegate <NSObject>
 
--(void)changeDelayTimeTo:(NSNumber *)delay sender:(id)sender;
+-(void)changeDelayTimeTo:(float)delay sender:(id)sender;
 
 @end
 
 @protocol SLClusterBuildDatasource <NSObject>
 
+@property (nonatomic, readonly) NSUInteger selectedMotorIndex;
+
 -(SLClusterMotor *)clusterSoFar;
+-(float)timeToFirstBurnout;
 
 @end
 
-@interface SLClusterMotorBuildViewController : UITableViewController<SLSimulationDelegate>
+@interface SLClusterMotorBuildViewController : UITableViewController<SLSimulationDelegate, SLClusterBuildDelegate, SLClusterBuildDatasource>
 
 @property (nonatomic, weak) id<SLClusterListDelegate> delegate;
 @property (nonatomic, strong) SLClusterMotor *clusterMotor;

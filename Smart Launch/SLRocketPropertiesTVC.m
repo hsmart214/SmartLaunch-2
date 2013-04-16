@@ -39,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *calculatedCdLabel;
 @property (weak, nonatomic) IBOutlet UIStepper *motorDiamStepper;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *calcCdButton;
+@property (weak, nonatomic) IBOutlet UISwitch *clusterSwitch;
 @property (nonatomic, strong) id iCloudObserver;
 
 @end
@@ -71,6 +72,7 @@
                           @(fabsf([self.lenField.text floatValue])) forKey:LENGTH_UNIT_KEY];
     self.rocket.cd = @(fabsf([self.cdField.text floatValue]));
     NSInteger motorDiam = [self.motorDiamLabel.text integerValue];
+    if ([self.clusterSwitch isOn]) motorDiam *= -1;
     self.rocket.motorSize = @(motorDiam);
     [self.saveButton setEnabled:[self isValidRocket]];
 }
@@ -122,6 +124,7 @@
         _rocket.motorSize = @6;
     }else {
         self.oldRocket = [self.rocket copy];    // in case we need to delete this Rocket* later
+        if (self.rocket.motorSize < 0) [self.clusterSwitch setOn:YES animated:YES];
     }
     self.nameField.delegate = self;
     self.kitNameField.delegate = self;
@@ -205,7 +208,7 @@
 }
 
 
-#pragma mark - UIStepper method
+#pragma mark - Interface methods
 
 - (IBAction)motorDiameterChanged:(UIStepper *)sender {
     NSInteger mmt = [self.motorDiamLabel.text integerValue];
@@ -232,8 +235,6 @@
     self.motorDiamLabel.text = [NSString stringWithFormat:@"%d", newSize];
     [self updateRocket];
 }
-
-#pragma mark - Save/Delete/Cancel actions
 
 - (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
     if (self.oldRocket.name && ![self.rocket.name isEqualToString:self.oldRocket.name]){

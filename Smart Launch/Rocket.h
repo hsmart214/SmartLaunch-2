@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSNumber * length;        //meters float
 @property (nonatomic, strong) NSNumber * diameter;      //meters float
 @property (nonatomic, strong) NSNumber * cd;            //dimensionless float
-@property (nonatomic, strong) NSNumber * motorSize;     //this one is an integer number of millimeters
+@property (nonatomic, strong) NSNumber * motorSize;     //this one is an integer number of millimeters, negative for cluster (just the largest one)
 @property (nonatomic, strong) NSNumber * mass;          //kilograms float
 @property (nonatomic, strong) NSString * kitName;       //manufacturer's name for the kit
 @property (nonatomic, strong) NSString * manufacturer;  //company that made the kit (if any)

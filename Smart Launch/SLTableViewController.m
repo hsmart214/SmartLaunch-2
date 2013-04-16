@@ -17,6 +17,7 @@
 #import "SLClusterMotor.h"
 
 #define FLIGHT_PROFILE_ROW 5
+#define MOTOR_SELECTION_ROW 1
 
 @interface SLTableViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *rocketCell;
@@ -341,6 +342,13 @@
             return;
         }else{
             [self performSegueWithIdentifier:@"FlightProfileSegue" sender:self];
+        }
+    }
+    if (indexPath.section == 0 && indexPath.row == MOTOR_SELECTION_ROW){
+        if ([self.clusterSwitch isOn]){
+            [self performSegueWithIdentifier:@"ClusterSelectSegue" sender:self];
+        }else{
+            [self performSegueWithIdentifier:@"motorSelectorSegue" sender:self];
         }
     }
 }
