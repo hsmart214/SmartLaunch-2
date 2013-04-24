@@ -27,15 +27,16 @@
 - (IBAction)addNewMotor:(UIBarButtonItem *)sender {
     if ([self.clusterMotor.motors count] >= 7) return;
     RocketMotor *newMotor = [self.clusterMotor.motors lastObject][CLUSTER_MOTOR_KEY];
-    NSNumber *delay = [self.clusterMotor.motors lastObject][CLUSTER_START_DELAY_KEY];
-    [self.clusterMotor addClusterMotor:newMotor withStartDelay:delay];
+    float delay = [[self.clusterMotor.motors lastObject][CLUSTER_START_DELAY_KEY] floatValue];
+    [self.clusterMotor addMotor:newMotor withStartDelay:delay];
+    
     [self.tableView reloadData];
 }
 
 #pragma mark - SLSimulationDelegate method
 
 -(void)sender:(id)sender didChangeRocketMotor:(RocketMotor *)motor{
-    [self.clusterMotor replaceMotorAtIndex:self.selectedMotorIndex withMotor:motor];
+    [self.clusterMotor replaceMotorAtIndex:self.selectedMotorIndex withMotor:motor andStartDelay:motor.startDelay];
 }
 
 #pragma mark - Table view data source
@@ -64,7 +65,7 @@
             cellIdentifier = @"ClusterMemberCell";
             cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
             cell.textLabel.text = [motor description];
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%1.1f Ns", [motor.totalImpulse floatValue]];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%1.1f Ns", motor.totalImpulse];
             cell.imageView.image = image;
             break;
         case 1:

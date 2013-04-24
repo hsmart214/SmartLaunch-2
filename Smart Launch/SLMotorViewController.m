@@ -14,25 +14,21 @@
 
 @implementation SLMotorViewController 
 
-- (void)drawThrustCurve{
-    
-}
-
 #pragma mark SLMotorThrustCurveDataSource protocol methods
 
-- (CGFloat)curveGraphViewDataValueRange: (SLCurveGraphView *)sender{
-    return [self.motor.peakThrust floatValue];
+- (float)curveGraphViewDataValueRange: (SLCurveGraphView *)sender{
+    return self.motor.peakThrust;
 }
 
--(CGFloat)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
+-(float)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
     return 0.0;
 }
 
-- (CGFloat)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
+- (float)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
     return [[self.motor.times lastObject] floatValue];
 }
 
-- (CGFloat)curveGraphView:(SLCurveGraphView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
+- (float)curveGraphView:(SLCurveGraphView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
     return [self.motor thrustAtTime:timeIndex];
 }
 
@@ -59,12 +55,12 @@
         self.view.backgroundColor = [SLCustomUI iPadBackgroundColor];
     }
     self.motorManufacturer.text = self.motor.manufacturer;
-    self.motorDiameter.text = [self.motor.diameter description];
-    self.motorMass.text = [self.motor.loadedMass description];
-    self.propellantMass.text = [self.motor.propellantMass description];
-    self.motorLength.text = [self.motor.length description];
-    self.totalImpulse.text = [NSString stringWithFormat:@"%1.1f N-sec", [self.motor.totalImpulse floatValue]];
-    self.initialThrust.text = [NSString stringWithFormat:@"%1.2f N", [self.motor.peakThrust floatValue]];
+    self.motorDiameter.text = [NSString stringWithFormat:@"%d", self.motor.diameter];
+    self.motorMass.text = [@(self.motor.loadedMass) description];
+    self.propellantMass.text = [@(self.motor.propellantMass) description];
+    self.motorLength.text = [@(self.motor.length) description];
+    self.totalImpulse.text = [NSString stringWithFormat:@"%1.1f N-sec", self.motor.totalImpulse];
+    self.initialThrust.text = [NSString stringWithFormat:@"%1.2f N", self.motor.peakThrust];
     self.thrustCurve.dataSource = self;
     [self.thrustCurve setNeedsDisplay];
 }

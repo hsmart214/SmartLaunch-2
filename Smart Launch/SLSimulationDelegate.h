@@ -27,13 +27,13 @@
 @optional
 
 -(NSMutableDictionary *)simulationSettings;
--(NSNumber *)freeFlightVelocity;
--(NSNumber *)freeFlightAoA;
--(NSNumber *)windVelocity;
--(NSNumber *)launchAngle;
--(NSNumber *)launchGuideLength;
--(NSNumber *)launchSiteAltitude;
--(enum LaunchDirection)launchGuideDirection;
+-(float)freeFlightVelocity;
+-(float)freeFlightAoA;
+-(float)windVelocity;
+-(float)launchAngle;
+-(float)launchGuideLength;
+-(float)launchSiteAltitude;
+-(LaunchDirection)launchGuideDirection;
 -(float)quickFFVelocityAtAngle:(float)angle andGuideLength:(float)length;
 
 @end

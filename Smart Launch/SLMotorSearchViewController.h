@@ -10,6 +10,12 @@
 #import "RocketMotor.h"
 #import "SLSimulationDelegate.h"
 
+@protocol SLMotorPickerDatasource <NSObject>
+
+-(NSUInteger)motorSizeRequested;
+
+@end
+
 @interface SLMotorSearchViewController: UIViewController
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *search1Control;
@@ -18,6 +24,7 @@
 @property (strong, nonatomic) NSDictionary *manufacturerNames;
 @property (strong, nonatomic) NSArray *allMotors;
 @property (weak, nonatomic) id<SLSimulationDelegate> delegate;
-@property (nonatomic, strong) NSNumber *rocketMotorMountDiameter;
+@property (weak, nonatomic) id<SLMotorPickerDatasource> dataSource;
+//@property (nonatomic, strong) NSNumber *rocketMotorMountDiameter;
 
 @end

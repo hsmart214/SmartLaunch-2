@@ -15,6 +15,7 @@
 #import "SLRocketPropertiesTVC.h"
 
 #define DELETE_BUTTON_INDEX 2
+#define CLUSTER_SELECTOR_ROW 6
 
 @interface SLRocketPropertiesTVC ()<UIScrollViewDelegate, UIActionSheetDelegate, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -40,6 +41,7 @@
 @property (weak, nonatomic) IBOutlet UIStepper *motorDiamStepper;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *calcCdButton;
 @property (weak, nonatomic) IBOutlet UISwitch *clusterSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *clusterLabel;
 @property (nonatomic, strong) id iCloudObserver;
 
 @end
@@ -64,16 +66,13 @@
     self.rocket.name = self.nameField.text;
     self.rocket.kitName = self.kitNameField.text;
     self.rocket.manufacturer = self.manField.text;
-    self.rocket.mass = [SLUnitsConvertor metricStandardOf:
-                        @(fabsf([self.massField.text floatValue])) forKey:MASS_UNIT_KEY];
-    self.rocket.diameter = [SLUnitsConvertor metricStandardOf:
-                            @(fabsf([self.diamField.text floatValue])) forKey:DIAM_UNIT_KEY];
-    self.rocket.length = [SLUnitsConvertor metricStandardOf:
-                          @(fabsf([self.lenField.text floatValue])) forKey:LENGTH_UNIT_KEY];
-    self.rocket.cd = @(fabsf([self.cdField.text floatValue]));
+    self.rocket.mass = [SLUnitsConvertor metricStandardOf:fabsf([self.massField.text floatValue]) forKey:MASS_UNIT_KEY];
+    self.rocket.diameter = [SLUnitsConvertor metricStandardOf:fabsf([self.diamField.text floatValue]) forKey:DIAM_UNIT_KEY];
+    self.rocket.length = [SLUnitsConvertor metricStandardOf:fabsf([self.lenField.text floatValue]) forKey:LENGTH_UNIT_KEY];
+    self.rocket.cd = fabsf([self.cdField.text floatValue]);
     NSInteger motorDiam = [self.motorDiamLabel.text integerValue];
     if ([self.clusterSwitch isOn]) motorDiam *= -1;
-    self.rocket.motorSize = @(motorDiam);
+    self.rocket.motorSize = motorDiam;
     [self.saveButton setEnabled:[self isValidRocket]];
 }
 
@@ -98,15 +97,15 @@
     self.kitNameField.text = self.rocket.kitName;
     self.manField.text = self.rocket.manufacturer;
     
-    NSNumber *temp = [SLUnitsConvertor displayUnitsOf:self.rocket.mass forKey:MASS_UNIT_KEY];
-    if  ([temp floatValue] > 0.0) self.massField.text = [NSString stringWithFormat:@"%2.2f", [temp floatValue]];
+    float temp = [SLUnitsConvertor displayUnitsOf:self.rocket.mass forKey:MASS_UNIT_KEY];
+    if  (temp > 0.0) self.massField.text = [NSString stringWithFormat:@"%2.2f", temp];
     temp = [SLUnitsConvertor displayUnitsOf:self.rocket.diameter forKey:DIAM_UNIT_KEY];
-    if  ([temp floatValue] > 0.0) self.diamField.text = [NSString stringWithFormat:@"%2.2f", [temp floatValue]];
+    if  (temp > 0.0) self.diamField.text = [NSString stringWithFormat:@"%2.2f", temp];
     temp = [SLUnitsConvertor displayUnitsOf:self.rocket.length forKey:LENGTH_UNIT_KEY];
-    if  ([temp floatValue] > 0.0) self.lenField.text = [NSString stringWithFormat:@"%2.2f", [temp floatValue]];
-    self.cdField.text = [NSString stringWithFormat:@"%2.2f", [self.rocket.cd floatValue]];
-    self.motorDiamLabel.text = [NSString stringWithFormat:@"%d", [self.rocket.motorSize integerValue]];
-    self.motorDiamStepper.value = [self.rocket.motorSize integerValue];
+    if  (temp > 0.0) self.lenField.text = [NSString stringWithFormat:@"%2.2f", temp];
+    self.cdField.text = [NSString stringWithFormat:@"%2.2f", self.rocket.cd];
+    self.motorDiamLabel.text = [NSString stringWithFormat:@"%d", self.rocket.motorSize];
+    self.motorDiamStepper.value = self.rocket.motorSize;
     [self calculateCd];
     [self.saveButton setEnabled:[self isValidRocket]];
 }
@@ -121,10 +120,24 @@
         _rocket = [[Rocket alloc] init];
         self.motorDiamStepper.value = [self.motorDiamStepper minimumValue];
         self.motorDiamLabel.text = [NSString stringWithFormat:@"%1.0f", self.motorDiamStepper.value];
-        _rocket.motorSize = @6;
+        _rocket.motorSize = 6;
     }else {
         self.oldRocket = [self.rocket copy];    // in case we need to delete this Rocket* later
-        if (self.rocket.motorSize < 0) [self.clusterSwitch setOn:YES animated:YES];
+        if (self.rocket.motorConfig != SLMotorConfigurationSingleMotor) {
+            [self.clusterSwitch setOn:YES animated:YES];
+            [self.motorDiamStepper setHidden:YES];
+            [self.motorDiamLabel setHidden:YES];
+            [self.motorDiamUnitsLabel setHidden:YES];
+            [self.clusterLabel setHidden:NO];
+            [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:CLUSTER_SELECTOR_ROW inSection:0]] setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        }else{
+            [self.clusterSwitch setOn:NO animated:YES];
+            [self.motorDiamStepper setHidden:NO];
+            [self.motorDiamLabel setHidden:NO];
+            [self.motorDiamUnitsLabel setHidden:NO];
+            [self.clusterLabel setHidden:YES];
+            [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:CLUSTER_SELECTOR_ROW inSection:0]] setAccessoryType:UITableViewCellAccessoryNone];
+        }
     }
     self.nameField.delegate = self;
     self.kitNameField.delegate = self;
@@ -173,17 +186,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self.iCloudObserver];
     self.iCloudObserver = nil;
 }
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return NO;
-        //        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return NO;
-    }
-}
-
 
 #pragma mark - UITextFieldDelegate methods
 

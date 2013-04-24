@@ -17,21 +17,22 @@
 // The class only deals with kg-m-s metric values, conversion being a view controller job.
 
 @property (nonatomic, readonly) NSString *name;
-@property (nonatomic, readonly) NSNumber *loadedMass;
-@property (nonatomic, readonly) NSNumber *propellantMass;
-@property (nonatomic, readonly) NSNumber *totalImpulse;
-@property (nonatomic, readonly) NSNumber *peakThrust;
+@property (nonatomic, readonly) float loadedMass;
+@property (nonatomic, readonly) float propellantMass;
+@property (nonatomic, readonly) float totalImpulse;
+@property (nonatomic, readonly) float peakThrust;
 @property (nonatomic, readonly) NSString *impulseClass;
-@property (nonatomic, readonly) NSNumber *diameter;
-@property (nonatomic, readonly) NSNumber *length;
+@property (nonatomic, readonly) NSUInteger diameter;
+@property (nonatomic, readonly) float length;
 @property (nonatomic, readonly) NSString *manufacturer;
 @property (nonatomic, readonly) NSArray *delays;              // These are kept as an array of NSString* (may be "P")
 @property (nonatomic, readonly) NSArray *times;
 @property (nonatomic, readonly) NSArray *thrusts;
+@property (nonatomic) float startDelay;
 
 
-- (CGFloat)thrustAtTime:(CGFloat)time;
-- (CGFloat)massAtTime:(CGFloat)time;
+- (float)thrustAtTime:(float)time;
+- (float)massAtTime:(float)time;
 - (NSString *)nextImpulseClass;
 
 - (float)fractionOfImpulseClass;
@@ -41,7 +42,7 @@
 + (NSDictionary *)manufacturerDict;
 + (NSArray *)hybridManufacturerNames;
 + (NSArray *)impulseClasses;
-+ (NSString *)impulseClassForTotalImpulse:(NSNumber *)totalImpulse;
++ (NSString *)impulseClassForTotalImpulse:(float)totalImpulse;
 + (NSArray *)motorDiameters;
 + (RocketMotor *)defaultMotor;  // in the first release this will be the 24mm Estes D12
 + (NSArray *)everyMotor;

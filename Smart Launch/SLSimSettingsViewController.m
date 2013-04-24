@@ -92,10 +92,9 @@
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     if (abs(howRecent) < 15.0)
     {
-        NSNumber *altGPSmeters = @(newLocation.altitude);
-        NSNumber *altGPSforDisplay = [SLUnitsConvertor displayUnitsOf:altGPSmeters forKey:ALT_MSL_KEY];
-        self.siteAltitudeLabel.text = [NSString stringWithFormat:@"%1.0f",[altGPSforDisplay floatValue]];
-        self.siteAltitudeStepper.value = [altGPSforDisplay floatValue];
+        float altGPSforDisplay = [SLUnitsConvertor displayUnitsOf:newLocation.altitude forKey:ALT_MSL_KEY];
+        self.siteAltitudeLabel.text = [NSString stringWithFormat:@"%1.0f",altGPSforDisplay];
+        self.siteAltitudeStepper.value = altGPSforDisplay;
         [self.locationManager stopUpdatingLocation];
     }
     // else skip the event and process the next one.
@@ -188,20 +187,21 @@
     
     float launchAngle = [(self.settings)[LAUNCH_ANGLE_KEY] floatValue];
     self.launchAngleLabel.text = [NSString stringWithFormat:@"%1.1f", launchAngle * DEGREES_PER_RADIAN];
-    float windVelocity = [[SLUnitsConvertor displayUnitsOf: (self.settings)[WIND_VELOCITY_KEY]forKey:VELOCITY_UNIT_KEY] floatValue];
+    float windVelocity = [SLUnitsConvertor displayUnitsOf: [(self.settings)[WIND_VELOCITY_KEY] floatValue] forKey:VELOCITY_UNIT_KEY];
     self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", windVelocity];
     self.windVelocityStepper.value = windVelocity;
-    float guideLength = [[SLUnitsConvertor displayUnitsOf:(self.settings)[LAUNCH_GUIDE_LENGTH_KEY] forKey:LENGTH_UNIT_KEY] floatValue];
+    float guideLength = [SLUnitsConvertor displayUnitsOf:[(self.settings)[LAUNCH_GUIDE_LENGTH_KEY] floatValue] forKey:LENGTH_UNIT_KEY];
     if (guideLength < self.launchGuideLengthStepper.minimumValue) guideLength = self.launchGuideLengthStepper.minimumValue;
     self.launchGuideLengthLabel.text = [NSString stringWithFormat:self.launchGuideLengthFormatString, guideLength];
     self.launchGuideLengthStepper.value = guideLength;
-    float altitude = [[SLUnitsConvertor displayUnitsOf:(self.settings)[LAUNCH_ALTITUDE_KEY] forKey:ALT_UNIT_KEY] floatValue];
+    float altitude = [SLUnitsConvertor displayUnitsOf:[(self.settings)[LAUNCH_ALTITUDE_KEY] floatValue] forKey:ALT_UNIT_KEY];
     float alt = floorf(altitude/self.siteAltitudeStepper.stepValue) * self.siteAltitudeStepper.stepValue;
     self.siteAltitudeLabel.text = [NSString stringWithFormat:@"%1.0f", alt];
     self.siteAltitudeStepper.value = alt;
     
     // disable the GPS if location services denied
-    [self.GPSAltButton setEnabled:([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized)];
+    [self.GPSAltButton setEnabled:([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized
+                                   || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -211,13 +211,12 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     self.windVelocityStepper.value = [self.windVelocityLabel.text floatValue];
-    NSNumber *metricValue = [SLUnitsConvertor metricStandardOf:@(self.windVelocityStepper.value) forKey:VELOCITY_UNIT_KEY];
-    (self.settings)[WIND_VELOCITY_KEY] = metricValue;
-    //    (self.settings)[LAUNCH_TEMPERATURE_KEY] = metricValue;
-    metricValue = [SLUnitsConvertor metricStandardOf:@(self.launchGuideLengthStepper.value) forKey:LENGTH_UNIT_KEY];
-    (self.settings)[LAUNCH_GUIDE_LENGTH_KEY] = metricValue;
-    metricValue = [SLUnitsConvertor metricStandardOf:@(self.siteAltitudeStepper.value) forKey:ALT_UNIT_KEY];
-    (self.settings)[LAUNCH_ALTITUDE_KEY] = metricValue;
+    float metricValue = [SLUnitsConvertor metricStandardOf:self.windVelocityStepper.value forKey:VELOCITY_UNIT_KEY];
+    (self.settings)[WIND_VELOCITY_KEY] = @(metricValue);
+    metricValue = [SLUnitsConvertor metricStandardOf:self.launchGuideLengthStepper.value forKey:LENGTH_UNIT_KEY];
+    (self.settings)[LAUNCH_GUIDE_LENGTH_KEY] = @(metricValue);
+    metricValue = [SLUnitsConvertor metricStandardOf:self.siteAltitudeStepper.value forKey:ALT_UNIT_KEY];
+    (self.settings)[LAUNCH_ALTITUDE_KEY] = @(metricValue);
     [self saveSettings];
 }
 

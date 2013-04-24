@@ -9,7 +9,7 @@
 #import "SLMotorTableViewController.h"
 #import "SLMotorSearchViewController.h"
 #import "SLMotorViewController.h"
-#import "RocketMotor.h"
+#import "SLClusterMotor.h"
 
 //#define CELL_VIEW_HEIGHT 86
 //#define CELL_VIEW_WIDTH 140
@@ -69,14 +69,14 @@
 {
     self.selectedMotorDict = (self.motors)[indexPath.section][indexPath.row];
     self.selectedMotor = [RocketMotor motorWithMotorDict:self.selectedMotorDict];
-    [self.delegate sender:self didChangeRocketMotor:self.selectedMotor];
+    [self.delegate sender:self didChangeRocketMotor:[SLClusterMotor clusterMotorWithRocketMotor:self.selectedMotor]];
     [[self navigationController] popToRootViewControllerAnimated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
     self.selectedMotorDict = (self.motors)[indexPath.section][indexPath.row];
     self.selectedMotor = [RocketMotor motorWithMotorDict:self.selectedMotorDict];
-    [self.delegate sender:self didChangeRocketMotor:self.selectedMotor];
+    [self.delegate sender:self didChangeRocketMotor:[SLClusterMotor clusterMotorWithRocketMotor:self.selectedMotor]];
     [self performSegueWithIdentifier:@"motorDetailSegue" sender:self];
 }
 

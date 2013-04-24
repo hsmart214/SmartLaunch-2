@@ -10,29 +10,29 @@
 
 @interface RocketMotor()
 
-@property (nonatomic, strong) NSNumber *mass;
-@property (nonatomic, strong) NSNumber *calcTotalImpulse;
-@property (nonatomic, strong) NSNumber *calcPeakThrust;
+@property (nonatomic) float mass;
+@property (nonatomic) float calcTotalImpulse;
+@property (nonatomic) float calcPeakThrust;
 
 @end
 
 @implementation RocketMotor
 
--(NSNumber *)loadedMass{
+-(float)loadedMass{
     return self.mass;
 }
 
--(NSNumber *)peakThrust{
+-(float)peakThrust{
     return self.calcPeakThrust;
 }
 
--(NSNumber *)totalImpulse{
+-(float)totalImpulse{
     return self.calcTotalImpulse;
 }
 
 -(float)fractionOfImpulseClass{
     int classIndex = 0;
-    float impulse = [self.totalImpulse floatValue];
+    float impulse = self.totalImpulse;
     while (impulse < [[RocketMotor impulseLimits][classIndex] floatValue]) {
         classIndex++;
         if (classIndex == [[RocketMotor impulseClasses] count]) return 1.0;  // protects against overflow
@@ -53,33 +53,34 @@
     // curve starts at (0,0) which is NOT included in the arrays
     // use trapezoidal approximation to the area-under-the-curve
     double impulse = 0.5 * [(self.thrusts)[0] floatValue] * [(self.times)[0] floatValue];
-    self.calcPeakThrust = (self.thrusts)[0];
+    self.calcPeakThrust = [self.thrusts[0] floatValue];
     for (NSInteger i = 1; i < [self.times count]; i++) {
-        if ([(self.thrusts)[i] floatValue] > [self.calcPeakThrust floatValue]) self.calcPeakThrust = (self.thrusts)[i]; // defines the first local maximum of the thrust curve.  Unlikely to have a second maximum
+        if ([(self.thrusts)[i] floatValue] > self.calcPeakThrust) self.calcPeakThrust = [self.thrusts[i] floatValue]; // defines the first local maximum of the thrust curve.  Unlikely to have a second maximum (haha)
         double deltaT = [(self.times)[i] floatValue] - [(self.times)[i-1] floatValue];
         double fiminus1 = [(self.thrusts)[i-1] floatValue];
         double deltaF = [(self.thrusts)[i] floatValue] - fiminus1;
         impulse += 0.5 * deltaF * deltaT + fiminus1 * deltaT;
     }
-    self.calcTotalImpulse = @(impulse);
+    self.calcTotalImpulse = impulse;
 }
 
 -(RocketMotor *)initWithMotorDict:(NSDictionary *)motorDict{
-    self.mass =           motorDict[MOTOR_MASS_KEY];
-    _propellantMass = motorDict[PROP_MASS_KEY];
+    _mass =       [motorDict[MOTOR_MASS_KEY] floatValue];
+    _propellantMass = [motorDict[PROP_MASS_KEY] floatValue];
     _times =          motorDict[TIME_KEY];
     _thrusts =        motorDict[THRUST_KEY];
     _name =           motorDict[NAME_KEY];
     _manufacturer =   motorDict[MAN_KEY];
     _impulseClass =   motorDict[IMPULSE_KEY];
-    _diameter =       motorDict[MOTOR_DIAM_KEY];
-    _length =         motorDict[MOTOR_LENGTH_KEY];
+    _diameter =       [motorDict[MOTOR_DIAM_KEY] integerValue];
+    _length =         [motorDict[MOTOR_LENGTH_KEY] floatValue];
     NSString *delayList = motorDict[DELAYS_KEY];
     _delays = [delayList componentsSeparatedByString:@"-"];
     if ([self.thrusts count] != [self.times count]){
         NSLog(@"RocketMotor init with bad thrust curve data: %@",self.name);
         return nil;
     }
+    _startDelay = [motorDict[CLUSTER_START_DELAY_KEY] floatValue];  // will be zero if the key does not exist (this is correct)
     [self calculateDerivedValues];
     return self;
 }
@@ -92,20 +93,22 @@
             delayString = [NSString stringWithFormat:@"%@-%@", delayString, (self.delays)[i]];
         }
     }
-    return @{MOTOR_MASS_KEY: self.mass,
-            PROP_MASS_KEY: self.propellantMass,
+    return @{MOTOR_MASS_KEY: @(self.mass),
+            PROP_MASS_KEY: @(self.propellantMass),
             TIME_KEY: self.times,
             THRUST_KEY: self.thrusts,
             NAME_KEY: self.name,
             MAN_KEY: self.manufacturer,
             IMPULSE_KEY: self.impulseClass, 
-            MOTOR_DIAM_KEY: self.diameter,
-            MOTOR_LENGTH_KEY: self.length,
-            DELAYS_KEY: delayString};
+            MOTOR_DIAM_KEY: @(self.diameter),
+            MOTOR_LENGTH_KEY: @(self.length),
+            DELAYS_KEY: delayString,
+            CLUSTER_START_DELAY_KEY: @(self.startDelay)};
 }
 
--(CGFloat)thrustAtTime:(CGFloat)time{
-    if ((time == 0.0) || (time >= [[_times lastObject] floatValue])) return 0.0;
+-(float)thrustAtTime:(float)time{
+    time = time - self.startDelay;
+    if ((time <= 0.0) || (time >= [[_times lastObject] floatValue])) return 0.0;
     NSInteger i = 0;
     while ([_times[i] floatValue] < time) {
         i++;
@@ -123,10 +126,11 @@
     return ftime;
 }
 
--(CGFloat)massAtTime:(CGFloat)time{
+-(float)massAtTime:(float)time{
+    time = time - self.startDelay;
     double percentOfBurn = time / [[_times lastObject] floatValue];
     if (percentOfBurn > 1.0) percentOfBurn = 1.0;
-    return [_mass floatValue] - percentOfBurn * [_propellantMass floatValue];
+    return self.mass - percentOfBurn * self.propellantMass;
 }
 
 #pragma mark - RocketMotor Class methods
@@ -190,12 +194,12 @@
     return [limits copy];
 }
 
-+ (NSString *)impulseClassForTotalImpulse:(NSNumber *)totalImpulse{
++ (NSString *)impulseClassForTotalImpulse:(float)totalImpulse{
     NSArray *iClasses = [RocketMotor impulseClasses];
     NSArray *iLimits = [RocketMotor impulseLimits];
     for (int i = 0; i < [iLimits count]; i++){
         float lim = [iLimits[i] floatValue];
-        if (lim > [totalImpulse floatValue]){
+        if (lim > totalImpulse){
             return iClasses[i];
         }
     }
@@ -333,8 +337,8 @@
     //D10 18 70 3-5-7 0.0098 0.0259 Apogee
 
     NSDictionary *apogeeD10 = @{NAME_KEY: @"D10",
-        MOTOR_DIAM_KEY: @18.0,
-        MOTOR_LENGTH_KEY: @70.0,
+        MOTOR_DIAM_KEY: @(18),
+        MOTOR_LENGTH_KEY: @(70.0),
         DELAYS_KEY: @"3-5-7",
         PROP_MASS_KEY: @0.0098,
         MOTOR_MASS_KEY: @0.0259,
@@ -487,17 +491,11 @@ NSInteger sortingFunction(id md1, id md2, void *context){
 }
 
 -(void)dealloc{
-    _mass = nil;
-    _propellantMass = nil;
     _times = nil;
     _thrusts = nil;
     _name = nil;
     _manufacturer = nil;
     _impulseClass = nil;
-    _diameter = nil;
-    _length = nil;
     _delays = nil;
-    _calcPeakThrust = nil;
-    _calcTotalImpulse = nil;
 }
 @end

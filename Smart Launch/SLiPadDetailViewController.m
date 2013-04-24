@@ -33,7 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *launchSiteAltUnitsLabel;
 @property (weak, nonatomic) IBOutlet UIStepper *siteAltitudeStepper;
 @property (nonatomic) float displayLaunchAngle;
-@property (nonatomic) enum LaunchDirection displayLaunchDirection;
+@property (nonatomic) LaunchDirection displayLaunchDirection;
 @property (nonatomic) float displayFFVelocity;
 @property (nonatomic) float displayWindVelocity;
 @property (nonatomic) float displayLaunchGuideLength;
@@ -82,19 +82,19 @@
 }
 - (IBAction)windVelocityChanged:(UIStepper *)sender { // Remember this stepper keeps values in display units, not metric
     self.windVelocityLabel.text = [NSString stringWithFormat:@"%2.0f", sender.value];
-    self.displayWindVelocity = [[SLUnitsConvertor metricStandardOf:@(sender.value) forKey:VELOCITY_UNIT_KEY] floatValue];
+    self.displayWindVelocity = [SLUnitsConvertor metricStandardOf:sender.value forKey:VELOCITY_UNIT_KEY];
     [self updateAoADisplay];
 }
 
 - (IBAction)launchGuideLengthValueChanged:(UIStepper *)sender { // Remember this stepper keeps values in display units, not metric
-    self.displayLaunchGuideLength = [[SLUnitsConvertor metricStandardOf:@((float)sender.value) forKey:LENGTH_UNIT_KEY] floatValue];
+    self.displayLaunchGuideLength = [SLUnitsConvertor metricStandardOf:(float)sender.value forKey:LENGTH_UNIT_KEY];
     self.launchGuideLengthLabel.text = [NSString stringWithFormat:self.launchGuideLengthFormatString, sender.value];
     self.displayFFVelocity = [self.simDataSource quickFFVelocityAtAngle:_displayLaunchAngle andGuideLength:_displayLaunchGuideLength];
     [self updateAoADisplay];
 }
 
 - (IBAction)launchSiteAltitudeChanged:(UIStepper *)sender { // Remember this stepper keeps values in display units, not metric
-    self.displayLaunchAltitude = [[SLUnitsConvertor metricStandardOf:@(sender.value) forKey:ALT_UNIT_KEY] floatValue];
+    self.displayLaunchAltitude = [SLUnitsConvertor metricStandardOf:sender.value forKey:ALT_UNIT_KEY];
     self.launchSiteAltLabel.text = [NSString stringWithFormat:@"%1.0f", sender.value];
     [self updateAoADisplay];
 }
@@ -114,26 +114,25 @@
 
 -(void)updateAoADisplay{
     self.ffVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
-    NSNumber *vel = @(self.displayFFVelocity);
-    NSNumber *velocity = [SLUnitsConvertor displayUnitsOf:vel forKey:VELOCITY_UNIT_KEY];
-    self.ffVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", [velocity floatValue]];
+    float velocity = [SLUnitsConvertor displayUnitsOf:self.displayFFVelocity forKey:VELOCITY_UNIT_KEY];
+    self.ffVelocityLabel.text = [NSString stringWithFormat:@"%1.1f", velocity];
     
     float AoA, alpha1, alpha2, opposite, adjacent;
     switch (self.displayLaunchDirection) {
         case CrossWind:
-            AoA = atanf([[SLUnitsConvertor metricStandardOf:@(self.windVelocityStepper.value) forKey:VELOCITY_UNIT_KEY] floatValue] /self.displayFFVelocity);
+            AoA = atanf([SLUnitsConvertor metricStandardOf:self.windVelocityStepper.value forKey:VELOCITY_UNIT_KEY] /self.displayFFVelocity);
             break;
             
         case WithWind:
             alpha1 = self.displayLaunchAngle;
-            opposite = self.displayFFVelocity*sin(alpha1)-[[SLUnitsConvertor metricStandardOf:@(self.windVelocityStepper.value) forKey:VELOCITY_UNIT_KEY] floatValue];
+            opposite = self.displayFFVelocity*sin(alpha1)-[SLUnitsConvertor metricStandardOf:self.windVelocityStepper.value forKey:VELOCITY_UNIT_KEY];
             adjacent = self.displayFFVelocity*cos(alpha1);
             alpha2 = atanf(opposite/adjacent);
             AoA = alpha1-alpha2;
             break;
         case IntoWind:
             alpha1 = self.displayLaunchAngle;
-            opposite = self.displayFFVelocity*sin(alpha1)+[[SLUnitsConvertor metricStandardOf:@(self.windVelocityStepper.value) forKey:VELOCITY_UNIT_KEY] floatValue];
+            opposite = self.displayFFVelocity*sin(alpha1)+[SLUnitsConvertor metricStandardOf:self.windVelocityStepper.value forKey:VELOCITY_UNIT_KEY];
             adjacent = self.displayFFVelocity*cos(alpha1);
             alpha2 = atanf(opposite/adjacent);
             AoA = alpha2-alpha1;
@@ -148,10 +147,10 @@
 }
 
 -(void)drawVectors{
-    float wind = [[SLUnitsConvertor metricStandardOf:@(self.displayWindVelocity) forKey:VELOCITY_UNIT_KEY] floatValue];
+    float wind = [SLUnitsConvertor metricStandardOf:self.displayWindVelocity forKey:VELOCITY_UNIT_KEY];
     float velocity = self.displayFFVelocity;
     float launchAngle = self.displayLaunchAngle;
-    enum LaunchDirection dir = self.displayLaunchDirection;
+    LaunchDirection dir = self.displayLaunchDirection;
     if (dir == CrossWind) launchAngle = 0.0;           // crosswind the AoA is the same as upright
     
     [self.rocketView tiltRocketToAngle:launchAngle];   // in the model the launch angle is always positive
@@ -163,8 +162,8 @@
 
 -(void)updateGraphDisplay{
     self.flightProfileGraphTitleLabel.text = [NSString stringWithFormat:@"Flight Profile - %@", [self.graphTypeSegmentedControl titleForSegmentAtIndex:[self.graphTypeSegmentedControl selectedSegmentIndex]]];
-    self.motorNameLabel.text = [self.model.motor.manufacturer stringByAppendingString:[NSString stringWithFormat:@" %@", self.model.motor.name]];
-    self.totalImpulseLabel.text = [NSString stringWithFormat:@"Total Impulse: %1.0f Newton-sec", [self.model.motor.totalImpulse floatValue]];
+    self.motorNameLabel.text = [self.model.rocket.clusterMotor.manufacturer stringByAppendingString:[NSString stringWithFormat:@" %@", self.dataSource.motorDescription]];
+    self.totalImpulseLabel.text = [NSString stringWithFormat:@"Total Impulse: %1.0f Newton-sec", self.model.rocket.clusterMotor.totalImpulse];
     self.title = self.model.rocketName;
     [self.flightProfileView resetAxes];
     [self.thrustCurveView resetAxes];
@@ -180,58 +179,59 @@
 
 #pragma mark - SLCurveGraphViewDataSource methods
 
--(CGFloat)curveGraphViewDataValueRange:(SLCurveGraphView *)sender{
+-(float)curveGraphViewDataValueRange:(SLCurveGraphView *)sender{
     if (sender == self.flightProfileView){
-        switch ((enum SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
+        switch ((SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
             case SLFlightProfileGraphTypeVelocity:
-                return [[SLUnitsConvertor displayUnitsOf:[self.dataSource maxVelocity] forKey:VELOCITY_UNIT_KEY] floatValue];
+                return [SLUnitsConvertor displayUnitsOf:[self.dataSource maxVelocity] forKey:VELOCITY_UNIT_KEY];
             case SLFlightProfileGraphTypeAcceleration:
-                return [[SLUnitsConvertor displayUnitsOf:[self.dataSource maxAcceleration] forKey:ACCEL_UNIT_KEY] floatValue];
+                return [SLUnitsConvertor displayUnitsOf:[self.dataSource maxAcceleration] forKey:ACCEL_UNIT_KEY];
             case SLFlightProfileGraphTypeAltitude:
-                return [[SLUnitsConvertor displayUnitsOf:[self.dataSource apogeeAltitude] forKey:ALT_UNIT_KEY] floatValue];
+                return [SLUnitsConvertor displayUnitsOf:[self.dataSource apogeeAltitude] forKey:ALT_UNIT_KEY];
             case SLFlightProfileGraphTypeMach:
-                return [[self.dataSource maxMachNumber] floatValue];
+                return [self.dataSource maxMachNumber];
             case SLFlightProfileGraphTypeDrag:
-                return [[SLUnitsConvertor displayUnitsOf:[self.dataSource maxDrag] forKey:THRUST_UNIT_KEY] floatValue];
+                return [SLUnitsConvertor displayUnitsOf:[self.dataSource maxDrag] forKey:THRUST_UNIT_KEY];
         }
     }else{ //must be thrust curve
-        return [[SLUnitsConvertor displayUnitsOf:self.model.motor.peakThrust forKey:THRUST_UNIT_KEY] floatValue];
+        return [SLUnitsConvertor displayUnitsOf:self.model.rocket.clusterMotor.peakThrust forKey:THRUST_UNIT_KEY];
     }
 }
 
--(CGFloat)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
+-(float)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
+    // always zero unless we are looking at the acceleration curve
     if (sender == self.thrustCurveView) return 0.0;
     if ([self.graphTypeSegmentedControl selectedSegmentIndex] == SLFlightProfileGraphTypeAcceleration){
-        return [[SLUnitsConvertor displayUnitsOf:[self.dataSource maxDeceleration] forKey:ACCEL_UNIT_KEY] floatValue];
+        return [SLUnitsConvertor displayUnitsOf:[self.dataSource maxDeceleration] forKey:ACCEL_UNIT_KEY];
     }else{
         return 0.0;
     }
 }
 
--(CGFloat)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
+-(float)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
     if (sender == self.flightProfileView){
-        return [[self.dataSource totalTime] floatValue];
-    }else{
-        return [[self.model.motor.times lastObject] floatValue];
+        return [self.dataSource totalTime];
+    }else{// must be a thrust curve
+        return self.model.rocket.burnoutTime;
     }
 }
 
--(CGFloat)curveGraphView:(SLCurveGraphView *)sender dataValueForTimeIndex:(CGFloat)timeIndex{
+-(float)curveGraphView:(SLCurveGraphView *)sender dataValueForTimeIndex:(CGFloat)timeIndex{
     if (sender == self.flightProfileView){
-        switch ((enum SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
+        switch ((SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
             case SLFlightProfileGraphTypeVelocity:
-                return [[SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: @(timeIndex) forKey:VEL_INDEX] forKey:VELOCITY_UNIT_KEY] floatValue];
+                return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:VEL_INDEX] forKey:VELOCITY_UNIT_KEY];
             case SLFlightProfileGraphTypeAcceleration:
-                return [[SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: @(timeIndex) forKey:ACCEL_INDEX] forKey:ACCEL_UNIT_KEY] floatValue];
+                return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:ACCEL_INDEX] forKey:ACCEL_UNIT_KEY];
             case SLFlightProfileGraphTypeAltitude:
-                return [[SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: @(timeIndex) forKey:ALT_INDEX] forKey:ALT_UNIT_KEY] floatValue];
+                return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:ALT_INDEX] forKey:ALT_UNIT_KEY];
             case SLFlightProfileGraphTypeMach:
-                return [[self.dataSource dataAtTime: @(timeIndex) forKey:MACH_INDEX] floatValue];
+                return [self.dataSource dataAtTime: timeIndex forKey:MACH_INDEX];
             case SLFlightProfileGraphTypeDrag:
-                return [[SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: @(timeIndex) forKey:DRAG_INDEX] forKey:THRUST_UNIT_KEY] floatValue];
+                return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:DRAG_INDEX] forKey:THRUST_UNIT_KEY];
         }
     }else{ //must be thrust curve
-        return [[SLUnitsConvertor displayUnitsOf:@([self.model.motor thrustAtTime:timeIndex]) forKey:THRUST_UNIT_KEY] floatValue];
+        return [SLUnitsConvertor displayUnitsOf:[self.model.rocket.clusterMotor thrustAtTime:timeIndex] forKey:THRUST_UNIT_KEY];
     }
 }
 
@@ -242,29 +242,29 @@
 }
 
 -(BOOL)shouldDisplayMachOneLine:(SLCurveGraphView *)sender{
-    return ((sender == self.flightProfileView)&&(enum SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex] == SLFlightProfileGraphTypeMach);
+    return ((sender == self.flightProfileView)&&(SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex] == SLFlightProfileGraphTypeMach);
 }
 
 
 #pragma mark - View Life Cycle
 
 - (void)importSimValues{
-    NSNumber *siteAlt = [SLUnitsConvertor displayUnitsOf:[self.simDataSource launchSiteAltitude] forKey:ALT_UNIT_KEY];
-    self.siteAltitudeStepper.value = [siteAlt doubleValue];
-    self.launchSiteAltLabel.text = [NSString stringWithFormat:@"%1.0f", [siteAlt floatValue]];
-    self.displayLaunchAltitude = [[self.simDataSource launchSiteAltitude] floatValue];
-    NSNumber *velocity = [SLUnitsConvertor displayUnitsOf:[self.simDataSource windVelocity] forKey:VELOCITY_UNIT_KEY];
-    self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.0f", [velocity floatValue]];
-    self.windVelocityStepper.value = [[SLUnitsConvertor displayUnitsOf:[self.simDataSource windVelocity] forKey:VELOCITY_UNIT_KEY] floatValue];
-    NSNumber *aoa = [self.simDataSource freeFlightAoA];
-    self.ffAoALabel.text = [NSString stringWithFormat:@"%1.1f°", [aoa floatValue] * DEGREES_PER_RADIAN];
-    self.displayWindVelocity = [[SLUnitsConvertor metricStandardOf:@(self.windVelocityStepper.value) forKey:VELOCITY_UNIT_KEY] floatValue];
-    self.displayLaunchAngle = [[self.simDataSource launchAngle] floatValue];
-    self.displayFFVelocity = [[self.simDataSource freeFlightVelocity] floatValue];
-    self.displayLaunchGuideLength = [[self.simDataSource launchGuideLength]floatValue];
-    NSNumber *displayLength = [SLUnitsConvertor displayUnitsOf:[self.simDataSource launchGuideLength] forKey:LENGTH_UNIT_KEY];
-    self.launchGuideLengthLabel.text = [NSString stringWithFormat:@"%2.0f", [displayLength floatValue]];
-    self.launchGuideLengthStepper.value = [[SLUnitsConvertor displayUnitsOf:[self.simDataSource launchGuideLength] forKey:LENGTH_UNIT_KEY] floatValue];
+    float siteAlt = [SLUnitsConvertor displayUnitsOf:[self.simDataSource launchSiteAltitude] forKey:ALT_UNIT_KEY];
+    self.siteAltitudeStepper.value = siteAlt;
+    self.launchSiteAltLabel.text = [NSString stringWithFormat:@"%1.0f", siteAlt];
+    self.displayLaunchAltitude = siteAlt;
+    float velocity = [SLUnitsConvertor displayUnitsOf:[self.simDataSource windVelocity] forKey:VELOCITY_UNIT_KEY];
+    self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.0f", velocity];
+    self.windVelocityStepper.value = [SLUnitsConvertor displayUnitsOf:[self.simDataSource windVelocity] forKey:VELOCITY_UNIT_KEY];
+    float aoa = [self.simDataSource freeFlightAoA];
+    self.ffAoALabel.text = [NSString stringWithFormat:@"%1.1f°", aoa * DEGREES_PER_RADIAN];
+    self.displayWindVelocity = [SLUnitsConvertor metricStandardOf:self.windVelocityStepper.value forKey:VELOCITY_UNIT_KEY];
+    self.displayLaunchAngle = [self.simDataSource launchAngle];
+    self.displayFFVelocity = [self.simDataSource freeFlightVelocity];
+    self.displayLaunchGuideLength = [self.simDataSource launchGuideLength];
+    float displayLength = [SLUnitsConvertor displayUnitsOf:[self.simDataSource launchGuideLength] forKey:LENGTH_UNIT_KEY];
+    self.launchGuideLengthLabel.text = [NSString stringWithFormat:@"%2.0f", displayLength];
+    self.launchGuideLengthStepper.value = [SLUnitsConvertor displayUnitsOf:[self.simDataSource launchGuideLength] forKey:LENGTH_UNIT_KEY];
     self.displayLaunchDirection = [self.simDataSource launchGuideDirection];
 }
 

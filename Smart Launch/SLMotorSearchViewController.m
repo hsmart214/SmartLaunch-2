@@ -145,52 +145,27 @@ NSInteger sortFunction(id md1, id md2, void *context){
                 [build addObject:motorData]; // if not excluded, add it to the growing list off allMotors
             }
         }
-        _allMotors = [[NSArray arrayWithArray:build] sortedArrayUsingFunction:sortFunction context:NULL];
+        //        _allMotors = [[NSArray arrayWithArray:build] sortedArrayUsingFunction:sortFunction context:NULL];
+        // here we go with my first sort using a block comparator
+        _allMotors = [[NSArray arrayWithArray:build] sortedArrayUsingComparator:^NSComparisonResult(id md1, id md2){
+            NSString *first = ((NSDictionary *)md1)[NAME_KEY];
+            NSString *second = ((NSDictionary *)md2)[NAME_KEY];
+            if ([first characterAtIndex:0] > [second characterAtIndex:0]) return NSOrderedDescending;
+            if ([first characterAtIndex:0] < [second characterAtIndex:0]) return NSOrderedAscending;
+            // at this point we know the impulse class is the SAME, so sort by the average thrust
+            NSInteger thrust1 = [[first substringFromIndex:1] integerValue];
+            NSInteger thrust2 = [[second substringFromIndex:1] integerValue];
+            if (thrust1 > thrust2) return NSOrderedDescending;
+            if (thrust1 < thrust2) return NSOrderedAscending;
+            return NSOrderedSame;
+        }];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [_allMotors writeToURL:motorFileURL atomically:YES];
             [allBuild writeToURL:allMotorsFileURL atomically:YES];
             [allDict writeToURL:allMotorsHashFileURL atomically:YES];
         });
-        
-        //NSLog(@"Loaded %d motors.",[_allMotors count]);
     }
     return _allMotors;
-}
-
-//- (NSDictionary *)manufacturerNames{
-//    if (!_manufacturerNames){
-//        _manufacturerNames = @{@"AMW_ProX": @"AMW Pro-X",
-//                              @"A-RMS": @"Aerotech RMS",
-//                              @"A": @"Aerotech",
-//                              @"ATH": @"Aerotech Hybrid",
-//                              @"AMW": @"Animal Motor Works",
-//                              @"Apogee": @"Apogee",
-//                              @"CTI": @"Cesaroni",
-//                              @"Contrail_Rockets": @"Contrail Rockets",
-//                              @"Ellis": @"Ellis Mountain",
-//                              @"Estes": @"Estes",
-//                              @"Gorilla_Rocket_Motors": @"Gorilla Rocket Motors",
-//                              @"HT": @"Hypertek",
-//                              @"KA": @"Kosdon by Aerotech",
-//                              @"KOS-TRM": @"Kosdon",
-//                              @"Loki": @"Loki Research",
-//                              @"PML": @"Public Missiles Ltd",
-//                              @"Propul": @"Propulsion Polymers",
-//                              @"Q": @"Quest",
-//                              @"RATT": @"RATTworks", 
-//                              @"RR": @"RoadRunner",
-//                              @"SkyRip": @"Sky Ripper",
-//                              @"WCoast": @"West Coast Hybrids"};
-//    }
-//    return _manufacturerNames;
-//}
-
-- (NSArray *)impulseClasses{
-    return [RocketMotor impulseClasses];
-}
-
-- (NSArray  *)motorDiameters{
-    return [RocketMotor motorDiameters];
 }
 
 - (NSArray *)preferredManufacturers{
@@ -291,8 +266,6 @@ NSInteger sortFunction(id md1, id md2, void *context){
     self.preferredManufacturers = nil;
     self.preferredMotorDiameters = nil;
     self.allMotors = nil;
-    //    self.manufacturerNames = nil;
-    self.rocketMotorMountDiameter = nil;
     self.impulseClasses = nil;
     self.motorDiameters = nil;
     self.motorKeyPrefs = nil;
@@ -362,7 +335,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
         // this is the one that *does* change the settings to accomodate the current MMT size
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSMutableDictionary *motorPrefs = [self.motorKeyPrefs mutableCopy];
-        NSString *motorMM = [NSString stringWithFormat:@"%@mm", [self.rocketMotorMountDiameter description]];
+        NSString *motorMM = [NSString stringWithFormat:@"%dmm", [self.dataSource motorSizeRequested]];
         motorPrefs[motorMM] = @YES;
         [defaults setObject:motorPrefs forKey:MOTOR_PREFS_KEY];
         [defaults synchronize];
@@ -383,7 +356,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
 }
 
 - (IBAction)motorDiameterRestrictionChanged:(UISegmentedControl *)sender {
-    NSString *currMMT = [[self.rocketMotorMountDiameter description] stringByAppendingString:@"mm"];
+    NSString *currMMT = [NSString stringWithFormat:@"%dmm", [self.dataSource motorSizeRequested]];
     NSString *prevDiam = @"6mm";
     switch (sender.selectedSegmentIndex) {
         case 0:
@@ -392,14 +365,14 @@ NSInteger sortFunction(id md1, id md2, void *context){
             return;
         case 1:
             // motor mount size or less
-            if ([self.rocketMotorMountDiameter intValue] == 6){
+            if ([self.dataSource motorSizeRequested] == 6){
                 self.restrictedMotorDiamPrefs = @[@"6mm"];
                 [self.pickerView reloadAllComponents];
                 return;
             }
 
             for (NSString *diam in [RocketMotor motorDiameters]){
-                if ([diam intValue] == [self.rocketMotorMountDiameter intValue]){
+                if ([diam intValue] == [self.dataSource motorSizeRequested]){
                     self.restrictedMotorDiamPrefs = @[prevDiam, diam];
                     if ([prevDiam isEqualToString:diam]) self.restrictedMotorDiamPrefs = @[diam];
                     [self.pickerView reloadAllComponents];

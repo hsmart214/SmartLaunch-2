@@ -36,7 +36,7 @@
     float alt = [self.actualAltitudeField.text floatValue];
     NSMutableDictionary *newFlightData = [self.flightData mutableCopy];
     newFlightData[FLIGHT_BEST_CD] = @(cd);
-    newFlightData[FLIGHT_ALTITUDE_KEY] = [SLUnitsConvertor metricStandardOf:@(alt) forKey:ALT_UNIT_KEY];
+    newFlightData[FLIGHT_ALTITUDE_KEY] = @([SLUnitsConvertor metricStandardOf:alt forKey:ALT_UNIT_KEY]);
     //fetch the default rockets
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
@@ -57,12 +57,12 @@
 - (IBAction)calculateNewCd:(id)sender {
     if ([self.actualAltitudeField.text floatValue] == 0.0) return;
     float initialGuess = [self.cdEstimateField.text floatValue];
-    __block Rocket *tempRocket = [self.rocket copyWithZone:nil];
-    tempRocket.cd = @(initialGuess);
+    __block Rocket *tempRocket = [self.rocket copy];
+    tempRocket.cd = initialGuess;
     self.physicsModel.rocket = tempRocket;
     
     float actualAlt = [self.actualAltitudeField.text floatValue];
-    actualAlt = [[SLUnitsConvertor metricStandardOf:@(actualAlt) forKey:ALT_UNIT_KEY] floatValue];
+    actualAlt = [SLUnitsConvertor metricStandardOf:actualAlt forKey:ALT_UNIT_KEY];
     //need to do this in a separate thread
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -83,13 +83,13 @@
             guessedAlt = self.physicsModel.fastApogee;
             float altDifference = guessedAlt - actualAlt;
             if (fabsf(altDifference) < (actualAlt * NEWTON_RAPHSON_TOLERANCE)) {     // close enough to say we are done
-                bestGuess = [self.physicsModel.rocket.cd floatValue];
+                bestGuess = [self.physicsModel.rocket cdAtTime:0.0];
                 newGuessedAlt = guessedAlt;
             } else {
                 // calculate the "derivative"
-                float oldCd = [tempRocket.cd floatValue];
+                float oldCd = tempRocket.cd;
                 float newCd = oldCd + epsilon;
-                tempRocket.cd = @(newCd);
+                tempRocket.cd = newCd;
                 self.physicsModel.rocket = tempRocket;
                 [self.physicsModel resetFlight];
                 newGuessedAlt = self.physicsModel.fastApogee;
@@ -99,23 +99,23 @@
                 newCd = oldCd - altDifference/slope;
                 
                 // get ready for the next iteration
-                tempRocket.cd = @(newCd);
+                tempRocket.cd = newCd;
                 self.physicsModel.rocket = tempRocket;
                 epsilon /= NEWTON_RAPHSON_EPSILON_SCALING_FACTOR;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.calculationProgressIndicator setProgress: (float)(2.0 + x)/(NEWTON_RAPHSON_ITERATIONS) animated:YES];
                     self.cdLabel.text = [NSString stringWithFormat:@"%1.2f",newCd];
-                    self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [[SLUnitsConvertor displayUnitsOf:@(newGuessedAlt) forKey:ALT_UNIT_KEY] floatValue], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
+                    self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [SLUnitsConvertor displayUnitsOf:newGuessedAlt forKey:ALT_UNIT_KEY], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
                 });
             }
         }
         if (bestGuess < 0){ // we did not short-circuit
-            bestGuess = [tempRocket.cd floatValue];
+            bestGuess = tempRocket.cd;
         }
         // put the new best guess into the display
         dispatch_async(dispatch_get_main_queue(), ^{
             self.cdLabel.text = [NSString stringWithFormat:@"%1.2f",bestGuess];
-            self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [[SLUnitsConvertor displayUnitsOf:@(newGuessedAlt) forKey:ALT_UNIT_KEY] floatValue], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
+            self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [SLUnitsConvertor displayUnitsOf:newGuessedAlt forKey:ALT_UNIT_KEY], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
             [self.calculationProgressIndicator setProgress:0.0 animated:YES];
         });
         self.physicsModel.rocket = self.rocket;
@@ -154,13 +154,13 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setToolbarHidden:NO animated:animated];
     
-    self.cdEstimateField.text = [NSString stringWithFormat:@"%1.2f",[self.rocket.cd floatValue]];
+    self.cdEstimateField.text = [NSString stringWithFormat:@"%1.2f", self.rocket.cd];
     self.rocketName.text = self.rocket.name;
-    self.motorName.text = self.physicsModel.motor.name;
-    self.motorManufacturerLogo.image = [UIImage imageNamed:self.physicsModel.motor.manufacturer];
-    self.cdLabel.text = [NSString stringWithFormat:@"%1.2f",[self.rocket.cd floatValue]];
+    self.motorName.text = [self.physicsModel.rocket.clusterMotor description];
+    self.motorManufacturerLogo.image = [UIImage imageNamed:self.physicsModel.rocket.clusterMotor.manufacturer];
+    self.cdLabel.text = [NSString stringWithFormat:@"%1.2f", self.rocket.cd];
     self.altUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
-    self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [[SLUnitsConvertor displayUnitsOf:@(self.physicsModel.fastApogee) forKey:ALT_UNIT_KEY] floatValue], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
+    self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [SLUnitsConvertor displayUnitsOf:self.physicsModel.fastApogee forKey:ALT_UNIT_KEY], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
     self.cdEstimateField.delegate = self;
     self.actualAltitudeField.delegate = self;
     

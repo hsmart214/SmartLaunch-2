@@ -18,26 +18,23 @@
 // without revealing internals, and without letting them muck with the model itself.
 // This class has really become bloated with these dataSource methods.  Oh well.  It is a singleton.
 
-@optional
-
 - (NSArray *)flightDataWithTimeIncrement: (float)increment;
     // a constructed array of time, altitude, velocity, acceleration - NSArray of NSArray
     // for use in graphing the flightProfile
 
 - (float)quickFFVelocityAtLaunchAngle:(float)angle andGuideLength:(float)length;
 -(NSString *)rocketName;
--(NSString *)motorName;
--(NSString *)motorManufacturerName;
--(NSNumber *)burnoutVelocity;
--(NSNumber *)maxVelocity;
--(NSNumber *)maxAcceleration;
--(NSNumber *)maxDeceleration;
--(NSNumber *)maxDrag;
--(NSNumber *)coastTime;
--(NSNumber *)apogeeAltitude;
--(NSNumber *)maxMachNumber;
--(NSNumber *)totalTime;
--(NSNumber *)dataAtTime:(NSNumber *)timeIndex forKey:(NSInteger)dataIndex;
+-(float)burnoutVelocity;
+-(float)maxVelocity;
+-(float)maxAcceleration;
+-(float)maxDeceleration;
+-(float)maxDrag;
+-(float)coastTime;
+-(float)apogeeAltitude;
+-(float)maxMachNumber;
+-(float)totalTime;
+-(float)dataAtTime:(float)timeIndex forKey:(NSInteger)dataIndex;
+-(NSString *)motorDescription;
 
 @end
 
@@ -48,26 +45,25 @@
 @property (nonatomic) float launchGuideAngle;
 @property (nonatomic) enum LaunchDirection LaunchGuideDirection;
 @property (nonatomic) float windVelocity;
-@property (nonatomic, strong) RocketMotor *motor;
-@property (nonatomic, strong) Rocket *rocket;
+@property (nonatomic, weak) Rocket *rocket;
 @property (nonatomic) float launchAltitude;
-@property (nonatomic, readonly) NSUInteger version;
+@property (nonatomic, readonly) float version;
 
 
 /* The first public method returns the velocity that the rocket will attain at the end of the launch guide */
 
-- (double) velocityAtEndOfLaunchGuide;
+- (float) velocityAtEndOfLaunchGuide;
 
 /* This will give the resulting angle of attack of the rocket in the air mass at when it leaves the launch guide */
 
 - (float) freeFlightAngleOfAttack;          // AOA when the rocket leaves the launch guide - RADIANS
 
-- (double)velocityAtAltitude:(double)alt;   // from the profile, returns the velocity (METERS/SEC) at a given altitude (METERS)
+- (float)velocityAtAltitude:(float)alt;   // from the profile, returns the velocity (METERS/SEC) at a given altitude (METERS)
 
 - (void)resetFlight;                        // reset the flight profile
 
-- (double)apogee;                           // maximum altitude in METERS
+- (float)apogee;                           // maximum altitude in METERS
 - (float)fastApogee;                        // to be used in the estimations for calculating the best Cd
 
-- (double)burnoutToApogee;                  // SECONDS from burnout to apogee - the ideal motor delay
+- (float)burnoutToApogee;                  // SECONDS from burnout to apogee - the ideal motor delay
 @end

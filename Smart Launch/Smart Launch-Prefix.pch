@@ -24,24 +24,35 @@
 //
 
 
+/* This key-value pair can be inserted into any dictionary where future versions might add or remove features */
+
+#define SMART_LAUNCH_VERSION_KEY @"com.mySmartSoftware.SmartLaunch_Version"
+#define SMART_LAUNCH_VERSION 1.5
 
 /* The LaunchDirection constants will be used in the calculation of the angle of attack
  This will tell us how to add the rocket velocity and wind vectors
  */
 
-enum LaunchDirection : NSUInteger {
+typedef enum LaunchDirection : NSUInteger {
     WithWind = 0,
     CrossWind = 1,
     IntoWind = 2
-    };
-    
-enum SLFlightProfileGraphType {
+    } LaunchDirection;
+        
+typedef enum {
     SLFlightProfileGraphTypeVelocity,
     SLFlightProfileGraphTypeAcceleration,
     SLFlightProfileGraphTypeAltitude,
     SLFlightProfileGraphTypeMach,
     SLFlightProfileGraphTypeDrag
-    };
+    } SLFlightProfileGraphType;
+        
+typedef enum {
+    SLMotorConfigurationSingleMotor, SLMotorConfigurationDual, SLMotorConfigurationTriangle, SLMotorConfigurationInlineThree,
+    SLMotorConfigurationDiamond, SLMotorConfigurationThreeAroundOne, SLMotorConfigurationFourAroundOne, SLMotorConfigurationPentagon,
+    SLMotorConfigurationHexagon, SLMotorConfigurationSixAroundOne
+    } SLMotorConfiguration;
+
     
 #define MOTORS_WWW_URL @"http://www.mysmartsoftware.com/data/motors.txt"
 #define MOTORS_VERSION_WWW_URL @"http://www.mysmartsoftware.com/data/version.txt"
@@ -194,6 +205,8 @@ enum SLFlightProfileGraphType {
 #define TIME_KEY @"timeArray"
 #define MOTOR_DIAM_KEY @"motorDiameter"
 #define MOTOR_LENGTH_KEY @"motorLength"
+#define MOTOR_DEFAULT_DIAMETER 24
+#define MOTOR_COUNT_KEY @"motorCountKey"
     
     //constants for the ClusterMotor subclass
     
@@ -209,10 +222,12 @@ enum SLFlightProfileGraphType {
 #define ROCKET_DIAM_KEY @"RocketDiameter"
 #define ROCKET_CD_KEY @"RocketCD"
 #define ROCKET_MOTORSIZE_KEY @"RocketMotorSize"
+#define ROCKET_MOTORSIZES_ARRAY_KEY @"RocketMotorSizesArrayKey"
 #define ROCKET_MASS_KEY @"RocketMass"
 #define ROCKET_KITNAME_KEY @"RocketKitName"
 #define ROCKET_MAN_KEY @"RocketManufacturer"
 #define ROCKET_RECORDED_FLIGHTS_KEY @"RecordedFlightsKey"
+#define ROCKET_MOTOR_CONFIG_KEY @"RocketMotorConfigurationKey"
     
     //keys for a recordedFlight NSDictonary*
 

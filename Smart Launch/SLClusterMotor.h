@@ -10,8 +10,8 @@
 
 //This subclass of RocketMotor will represent a cluster of RocketMotors as a single thrust source for the physics model.
 //Any number of motors can be added and we will trust the rocketeer to make sure they are balanced.
-//Each motor can have a delayed ignition which can be an offset from ignition or burnout of a previous motor.
-//Thus we store an array of dictionaries, each has a RocketMotor and an NSNumber start delay in seconds (from zero).
+//Each motor can have a delayed ignition which will be stored as an offset from ignition of the first motor.
+//Thus we store an array of dictionaries, each has a RocketMotor and an NSNumber start delay in seconds.
 
 @interface SLClusterMotor : RocketMotor
 
@@ -20,12 +20,15 @@
 @property (readonly) float totalBurnLength;
 @property (readonly) float timeToFirstBurnout;
 
--(void)addClusterMotor:(RocketMotor *)motor withStartDelay:(NSNumber *)delay;
--(void)replaceMotorAtIndex:(NSUInteger)index withMotor:(RocketMotor *)motor;
+-(void)addMotor:(RocketMotor *)motor withStartDelay:(float)delay;
+-(void)replaceMotorAtIndex:(NSUInteger)index withMotor:(RocketMotor *)motor andStartDelay:(float)delay;
 -(void)changeDelayTo:(float)delay forMotorAtIndex:(NSUInteger)index;
 -(void)removeClusterMotorAtIndex:(NSUInteger)index;
 
--(NSArray *)clusterArray;
+-(NSArray *)clusterPlistArray;
 
-+(SLClusterMotor *)clusterMotorWithClusterArray:(NSArray *)clusterArray;
++(SLClusterMotor *)clusterMotorWithMotorDictArray:(NSArray *)motorDictArray;        // this is specifically to restore from iCloud/userdefaults
++(SLClusterMotor *)clusterMotorWithRocketMotorArray:(NSArray *)motorArray;          // this one assumes that the motors already have startDelays set
++(SLClusterMotor *)clusterMotorWithRocketMotor:(RocketMotor *)motor;                // convenience method to make a cluster out of a single motor
+
 @end

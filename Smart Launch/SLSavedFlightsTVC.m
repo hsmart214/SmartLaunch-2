@@ -128,9 +128,9 @@
     cell.motorName.text = self.savedFlights[indexPath.row][FLIGHT_MOTOR_KEY];
     cell.cd.text = [NSString stringWithFormat:@"%1.2f", [self.savedFlights[indexPath.row][FLIGHT_BEST_CD] floatValue]];
     cell.altitudeUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
-    NSNumber *alt = self.savedFlights[indexPath.row][FLIGHT_ALTITUDE_KEY];
+    float alt = [self.savedFlights[indexPath.row][FLIGHT_ALTITUDE_KEY] floatValue];
     alt = [SLUnitsConvertor displayUnitsOf:alt forKey:ALT_UNIT_KEY];
-    cell.altitude.text = [NSString stringWithFormat:@"%1.0f", [alt floatValue]];
+    cell.altitude.text = [NSString stringWithFormat:@"%1.0f", alt];
     if (self.selectedFlightRow == indexPath.row){
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
     }else{

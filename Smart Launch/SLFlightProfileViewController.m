@@ -26,10 +26,10 @@
 
 -(void)updateDisplay{
     self.rocketNameLabel.text = [self.dataSource rocketName];
-    self.motorNameLabel.text = [self.dataSource motorName];
-    self.maxVelocityLabel.text = [NSString stringWithFormat:@"%1.0f",[[SLUnitsConvertor displayUnitsOf:[self.dataSource maxVelocity] forKey:VELOCITY_UNIT_KEY] floatValue]];
-    self.apogeeLabel.text = [NSString stringWithFormat:@"%1.0f",[[SLUnitsConvertor displayUnitsOf:[self.dataSource apogeeAltitude] forKey:ALT_UNIT_KEY] floatValue]];
-    self.coastTimeLabel.text = [NSString stringWithFormat:@"%1.1f",[[self.dataSource coastTime] floatValue]];
+    self.motorNameLabel.text = [self.dataSource motorDescription];
+    self.maxVelocityLabel.text = [NSString stringWithFormat:@"%1.0f",[SLUnitsConvertor displayUnitsOf:[self.dataSource maxVelocity] forKey:VELOCITY_UNIT_KEY]];
+    self.apogeeLabel.text = [NSString stringWithFormat:@"%1.0f",[SLUnitsConvertor displayUnitsOf:[self.dataSource apogeeAltitude] forKey:ALT_UNIT_KEY]];
+    self.coastTimeLabel.text = [NSString stringWithFormat:@"%1.1f",[self.dataSource coastTime]];
     NSArray *unitNames = @[VELOCITY_UNIT_KEY, ACCEL_UNIT_KEY, ALT_UNIT_KEY, MACH_UNIT_KEY, THRUST_UNIT_KEY];
     NSArray *formatStrings = @[@"%1.0f",@"%1.0f",@"%1.0f",@"%1.1f", @"%1.0f"];
     NSUInteger index = [self.graphTypeSegmentedControl selectedSegmentIndex];
@@ -47,44 +47,44 @@
 #pragma mark - SLCurveGraphViewDataSource methods
 
 -(CGFloat)curveGraphViewDataValueRange:(SLCurveGraphView *)sender{
-    switch ((enum SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
+    switch ((SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
         case SLFlightProfileGraphTypeVelocity:
-            return [[SLUnitsConvertor displayUnitsOf:[self.dataSource maxVelocity] forKey:VELOCITY_UNIT_KEY] floatValue];
+            return [SLUnitsConvertor displayUnitsOf:[self.dataSource maxVelocity] forKey:VELOCITY_UNIT_KEY];
         case SLFlightProfileGraphTypeAcceleration:
-            return [[SLUnitsConvertor displayUnitsOf:[self.dataSource maxAcceleration] forKey:ACCEL_UNIT_KEY] floatValue];
+            return [SLUnitsConvertor displayUnitsOf:[self.dataSource maxAcceleration] forKey:ACCEL_UNIT_KEY];
         case SLFlightProfileGraphTypeAltitude:
-            return [[SLUnitsConvertor displayUnitsOf:[self.dataSource apogeeAltitude] forKey:ALT_UNIT_KEY] floatValue];
+            return [SLUnitsConvertor displayUnitsOf:[self.dataSource apogeeAltitude] forKey:ALT_UNIT_KEY];
         case SLFlightProfileGraphTypeMach:
-            return [[self.dataSource maxMachNumber] floatValue];
+            return [self.dataSource maxMachNumber];
         case SLFlightProfileGraphTypeDrag:
-            return [[SLUnitsConvertor displayUnitsOf:[self.dataSource maxDrag] forKey:THRUST_UNIT_KEY] floatValue];
+            return [SLUnitsConvertor displayUnitsOf:[self.dataSource maxDrag] forKey:THRUST_UNIT_KEY];
     }
 }
 
--(CGFloat)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
+-(float)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
     if ([self.graphTypeSegmentedControl selectedSegmentIndex] == SLFlightProfileGraphTypeAcceleration){
-        return [[SLUnitsConvertor displayUnitsOf:[self.dataSource maxDeceleration] forKey:ACCEL_UNIT_KEY] floatValue];
+        return [SLUnitsConvertor displayUnitsOf:[self.dataSource maxDeceleration] forKey:ACCEL_UNIT_KEY];
     }else{
         return 0.0;
     }
 }
 
--(CGFloat)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
-    return [[self.dataSource totalTime] floatValue];
+-(float)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
+    return [self.dataSource totalTime];
 }
 
--(CGFloat)curveGraphView:(SLCurveGraphView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
-    switch ((enum SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
+-(float)curveGraphView:(SLCurveGraphView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
+    switch ((SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
         case SLFlightProfileGraphTypeVelocity:
-            return [[SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: @(timeIndex) forKey:VEL_INDEX] forKey:VELOCITY_UNIT_KEY] floatValue];
+            return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:VEL_INDEX] forKey:VELOCITY_UNIT_KEY];
         case SLFlightProfileGraphTypeAcceleration:
-            return [[SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: @(timeIndex) forKey:ACCEL_INDEX] forKey:ACCEL_UNIT_KEY] floatValue];
+            return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:ACCEL_INDEX] forKey:ACCEL_UNIT_KEY];
         case SLFlightProfileGraphTypeAltitude:
-            return [[SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: @(timeIndex) forKey:ALT_INDEX] forKey:ALT_UNIT_KEY] floatValue];
+            return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:ALT_INDEX] forKey:ALT_UNIT_KEY];
         case SLFlightProfileGraphTypeMach:
-            return [[self.dataSource dataAtTime: @(timeIndex) forKey:MACH_INDEX] floatValue];
+            return [self.dataSource dataAtTime: timeIndex forKey:MACH_INDEX];
         case SLFlightProfileGraphTypeDrag:
-            return [[SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: @(timeIndex) forKey:DRAG_INDEX] forKey:THRUST_UNIT_KEY] floatValue];
+            return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:DRAG_INDEX] forKey:THRUST_UNIT_KEY];
     }
 }
 
@@ -95,7 +95,7 @@
 }
 
 -(BOOL)shouldDisplayMachOneLine:(SLCurveGraphView *)sender{
-    return ((enum SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex] == SLFlightProfileGraphTypeMach);
+    return ((SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex] == SLFlightProfileGraphTypeMach);
 }
 
 #pragma mark - View Lifecycle

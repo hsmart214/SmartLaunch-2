@@ -48,19 +48,19 @@
 
 #pragma mark - SLCurveGraphViewDataSource methods
 
--(CGFloat)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
+-(float)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
     return [self.clusterMotor totalBurnLength];
 }
 
--(CGFloat)curveGraphViewDataValueRange:(SLCurveGraphView *)sender{
-    return [[self.clusterMotor peakThrust] floatValue];
+-(float)curveGraphViewDataValueRange:(SLCurveGraphView *)sender{
+    return [self.clusterMotor peakThrust];
 }
 
--(CGFloat)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
+-(float)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
     return 0.0;
 }
 
--(CGFloat)curveGraphView:(SLCurveGraphView *)sender dataValueForTimeIndex:(CGFloat)timeIndex{
+-(float)curveGraphView:(SLCurveGraphView *)sender dataValueForTimeIndex:(CGFloat)timeIndex{
     return [self.clusterMotor thrustAtTime:timeIndex];
 }
 
@@ -73,7 +73,7 @@
     self.delayTimeFromLaunch = [self.clusterMotor.motors[[self.datasource selectedMotorIndex]][CLUSTER_START_DELAY_KEY] floatValue];
     self.manufacturerLogo.image = [UIImage imageNamed:self.motor.manufacturer];
     self.motorNameLabel.text = [self.motor description];
-    self.motorImpulseLabel.text = [NSString stringWithFormat:@"%1.1f N-sec", [self.motor.totalImpulse floatValue]];
+    self.motorImpulseLabel.text = [NSString stringWithFormat:@"%1.1f N-sec", self.motor.totalImpulse];
     self.thrustCurveGraphView.dataSource = self;
     [self updateView];
 }

@@ -1806,22 +1806,55 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cluster Motor Mount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hPC-Qe-rNg">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="208" id="rmf-Mr-EcJ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="W5F-Rb-Cz3" firstAttribute="top" secondItem="7Ra-Op-qKi" secondAttribute="top" constant="8" id="Bkx-BC-Uh8"/>
+                                            <constraint firstItem="W5F-Rb-Cz3" firstAttribute="centerY" secondItem="VCm-t6-n84" secondAttribute="centerY" type="default" id="2BI-56-Etk"/>
+                                            <constraint firstItem="hPC-Qe-rNg" firstAttribute="leading" secondItem="7Ra-Op-qKi" secondAttribute="leading" constant="30" type="user" id="7CF-6U-KFt"/>
+                                            <constraint firstItem="044-qS-cqC" firstAttribute="leading" secondItem="hPC-Qe-rNg" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="8w8-39-d0a"/>
                                             <constraint firstAttribute="trailing" secondItem="1CL-5q-H0G" secondAttribute="trailing" constant="62" id="FI3-tJ-797"/>
-                                            <constraint firstItem="W5F-Rb-Cz3" firstAttribute="leading" secondItem="7Ra-Op-qKi" secondAttribute="leading" constant="30" id="N49-su-vbw"/>
-                                            <constraint firstItem="W5F-Rb-Cz3" firstAttribute="centerY" secondItem="VCm-t6-n84" secondAttribute="centerY" type="default" id="VK3-nk-9rE"/>
+                                            <constraint firstItem="VCm-t6-n84" firstAttribute="baseline" secondItem="hPC-Qe-rNg" secondAttribute="baseline" type="default" id="GgE-rf-W0i"/>
+                                            <constraint firstItem="1CL-5q-H0G" firstAttribute="baseline" secondItem="VCm-t6-n84" secondAttribute="baseline" type="default" id="MIT-DD-0tU"/>
+                                            <constraint firstItem="W5F-Rb-Cz3" firstAttribute="leading" secondItem="7Ra-Op-qKi" secondAttribute="leading" constant="30" type="user" id="N49-su-vbw"/>
+                                            <constraint firstAttribute="centerY" secondItem="hPC-Qe-rNg" secondAttribute="centerY" type="user" id="bGr-CB-atN"/>
                                             <constraint firstItem="VCm-t6-n84" firstAttribute="leading" secondItem="W5F-Rb-Cz3" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="eh1-oj-UO9"/>
-                                            <constraint firstItem="VCm-t6-n84" firstAttribute="baseline" secondItem="1CL-5q-H0G" secondAttribute="baseline" type="default" id="rhi-Km-bAV"/>
                                             <constraint firstItem="1CL-5q-H0G" firstAttribute="baseline" secondItem="044-qS-cqC" secondAttribute="baseline" type="default" id="vUH-pf-aRt"/>
-                                            <constraint firstAttribute="trailing" secondItem="044-qS-cqC" secondAttribute="trailing" constant="30" id="w5P-w3-qoi"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="R40-0M-V0Y">
+                                        <rect key="frame" x="0.0" y="319" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cluster Motor?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1ui-28-FiC">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lR2-YI-LRu"/>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="lR2-YI-LRu" secondAttribute="trailing" constant="30" id="Byu-Wr-PfI"/>
+                                            <constraint firstItem="lR2-YI-LRu" firstAttribute="centerY" secondItem="1ui-28-FiC" secondAttribute="centerY" type="default" id="M5d-ZO-ixn"/>
+                                            <constraint firstItem="1ui-28-FiC" firstAttribute="leading" secondItem="R40-0M-V0Y" secondAttribute="leading" constant="30" id="Ny6-uP-YwF"/>
+                                            <constraint firstItem="lR2-YI-LRu" firstAttribute="top" secondItem="R40-0M-V0Y" secondAttribute="top" constant="8" id="dzB-TN-wCp"/>
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="xOc-vR-uW2">
-                                        <rect key="frame" x="0.0" y="319" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="363" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -1874,7 +1907,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="913-5j-fDD">
-                                        <rect key="frame" x="0.0" y="363" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="407" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -1930,6 +1963,8 @@
                         <outlet property="calculatedCdLabel" destination="8AV-pM-aji" id="LuD-5M-Htp"/>
                         <outlet property="cancelButton" destination="RXL-R4-oHa" id="WBd-mF-xcd"/>
                         <outlet property="cdField" destination="Iop-gL-D6m" id="hlI-QG-qAD"/>
+                        <outlet property="clusterLabel" destination="hPC-Qe-rNg" id="jPP-md-78X"/>
+                        <outlet property="clusterSwitch" destination="lR2-YI-LRu" id="bb0-HU-iEI"/>
                         <outlet property="diamField" destination="arT-wo-Ka7" id="A7w-sh-6BU"/>
                         <outlet property="diamUnitsLabel" destination="3jE-wZ-p5T" id="P7W-Od-AfZ"/>
                         <outlet property="kitNameField" destination="o2e-e7-xbd" id="F8R-kY-V3S"/>
@@ -2140,7 +2175,7 @@
                                                         <constraint firstAttribute="height" constant="307" id="BbZ-m5-LDW"/>
                                                         <constraint firstAttribute="width" constant="260" id="yUn-9F-hex"/>
                                                     </constraints>
-                                                    <mutableString key="text">Smart Launch HD 1.5
+                                                    <string key="text">Smart Launch HD 1.5
 ©2012, 2013 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
@@ -2157,7 +2192,7 @@ Apogee, Quest, Loki, CTI, AMW, Gorilla, RATTworks and RoadRunner logos used with
 Aerotech™ logos used with permission of RCS.
 All company logos are the registered trademarks of the respective motor manufacturers. No official approval or sponsorship of the data in this application should be inferred.
 
-Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</mutableString>
+Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>

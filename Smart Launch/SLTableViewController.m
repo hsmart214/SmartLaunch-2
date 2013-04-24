@@ -19,7 +19,7 @@
 #define FLIGHT_PROFILE_ROW 5
 #define MOTOR_SELECTION_ROW 1
 
-@interface SLTableViewController ()
+@interface SLTableViewController ()<SLMotorPickerDatasource>
 @property (weak, nonatomic) IBOutlet UITableViewCell *rocketCell;
 //@property (weak, nonatomic) IBOutlet UITableViewCell *motorCell;
 @property (weak, nonatomic) IBOutlet UIButton *windDirectionButton;
@@ -39,7 +39,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *clusterCountLabel;
 
 @property (strong, nonatomic) Rocket *rocket;
-@property (strong, nonatomic) RocketMotor *motor;
+//@property (strong, nonatomic) RocketMotor *motor;
 @property (strong, nonatomic) SLPhysicsModel *model;
 @property (strong, nonatomic) NSMutableDictionary *settings;
 @property (atomic) BOOL simRunning;
@@ -65,21 +65,21 @@
     return _rocket;
 }
 
-- (RocketMotor *)motor{
-    if (!_motor){
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSDictionary *motorDict = [defaults objectForKey:SELECTED_MOTOR_KEY];
-        if (motorDict){
-            _motor = [RocketMotor motorWithMotorDict:motorDict];
-        }else{
-            // no selected motor.  this should only happen on the first start-up
-            _motor = [RocketMotor defaultMotor];
-            [defaults setObject:[_motor motorDict] forKey:SELECTED_MOTOR_KEY];
-            [defaults synchronize];
-        }
-    }
-    return _motor;
-}
+//- (RocketMotor *)motor{
+//    if (!_motor){
+//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//        NSDictionary *motorDict = [defaults objectForKey:SELECTED_MOTOR_KEY];
+//        if (motorDict){
+//            _motor = [RocketMotor motorWithMotorDict:motorDict];
+//        }else{
+//            // no selected motor.  this should only happen on the first start-up
+//            _motor = [RocketMotor defaultMotor];
+//            [defaults setObject:[_motor motorDict] forKey:SELECTED_MOTOR_KEY];
+//            [defaults synchronize];
+//        }
+//    }
+//    return _motor;
+//}
 
 - (void)defaultStoreWithKey:(NSString *)key
                    andValue:(id)value{
@@ -105,7 +105,7 @@
                      @0.0, LAUNCH_ANGLE_KEY,
                      @33.0, LAUNCH_ALTITUDE_KEY,          //100 feet
                      [self.rocket rocketPropertyList], SELECTED_ROCKET_KEY,
-                     [self.motor motorDict], SELECTED_MOTOR_KEY,
+//                     [self.motor motorDict], SELECTED_MOTOR_KEY,
                      nil];
         [self defaultStoreWithKey:SETTINGS_KEY andValue:_settings];
         // If this is the first run we also need to set the standard defaults
@@ -136,17 +136,17 @@
     [self defaultStoreWithKey:SELECTED_ROCKET_KEY andValue:[rocket rocketPropertyList]];
     [self defaultStoreWithKey:SETTINGS_KEY andValue:self.settings];
     self.rocketCell.textLabel.text = rocket.name;
-    self.rocketCell.detailTextLabel.text = [NSString stringWithFormat:@"%dmm", [rocket.motorSize intValue]];
+    self.rocketCell.detailTextLabel.text = [rocket.manufacturer description];
     if (self.view.window)[self updateDisplay];
 }
 
-- (void)sender:(id)sender didChangeRocketMotor:(RocketMotor *)motor{
-    self.motor = motor;
-    [self.settings setValue:[motor motorDict] forKey:SELECTED_MOTOR_KEY];
-    [self defaultStoreWithKey:SELECTED_MOTOR_KEY andValue:[motor motorDict]];
+- (void)sender:(id)sender didChangeRocketMotor:(SLClusterMotor *)motor{
+    [self.rocket replaceMotorsWithMotorDictArray:motor.clusterPlistArray];
+    [self.settings setValue:motor.motors forKey:SELECTED_MOTOR_KEY];
+    [self defaultStoreWithKey:SELECTED_MOTOR_KEY andValue:motor.motors];
     [self defaultStoreWithKey:SETTINGS_KEY andValue:self.settings];
-    self.motorNameLabel.text = motor.name;
-    self.motorDetailDescriptionLabel.text = [NSString stringWithFormat:@"%1.1f N-sec", [motor.totalImpulse floatValue]];
+    self.motorNameLabel.text = [motor description];
+    self.motorDetailDescriptionLabel.text = [NSString stringWithFormat:@"%1.1f N-sec", [motor totalImpulse]];
     UIImage *theImage = [UIImage imageNamed:motor.manufacturer];
     self.manufacturerLogoView.image = theImage;
     if (self.view.window)[self updateDisplay];
@@ -189,20 +189,13 @@
 }
 
 - (void)updateDisplay{
-    self.thrustToWeightLabel.text = [NSString stringWithFormat:@"%1.1f : 1", ([[self.motor peakThrust] floatValue])/(([self.rocket.mass floatValue] + [self.motor.loadedMass floatValue])*(GRAV_ACCEL))];
+    self.thrustToWeightLabel.text = [NSString stringWithFormat:@"%1.1f : 1", ([self.rocket.clusterMotor peakThrust])/(([self.rocket massAtTime:0.0])*(GRAV_ACCEL))];
     self.rocketCell.textLabel.text = self.rocket.name;
-    self.rocketCell.detailTextLabel.text = [NSString stringWithFormat:@"%dmm", [self.rocket.motorSize intValue]];
-    self.motorNameLabel.text = self.motor.name;
-    self.motorDetailDescriptionLabel.text =[NSString stringWithFormat:@"%1.1f Ns", [self.motor.totalImpulse floatValue]];
-    UIImage *theImage = [UIImage imageNamed:self.motor.manufacturer];
+    //self.rocketCell.detailTextLabel.text = [NSString stringWithFormat:@"%dmm",[self.rocket.motorSizes[0] integerValue]];
+    self.motorNameLabel.text = [self.rocket.clusterMotor description];
+    self.motorDetailDescriptionLabel.text =[NSString stringWithFormat:@"%1.1f Ns", [self.rocket.clusterMotor totalImpulse]];
+    UIImage *theImage = [UIImage imageNamed:self.rocket.clusterMotor.manufacturer];
     self.manufacturerLogoView.image = theImage;
-    if ([self.motor isKindOfClass:[SLClusterMotor class]]){
-        [self.clusterSwitch setOn:YES animated:YES];
-        self.clusterCountLabel.text = [NSString stringWithFormat:@"%d", [((SLClusterMotor *)self.motor).motors count]];
-    }else{
-        [self.clusterSwitch setOn:NO animated:YES];
-        self.clusterCountLabel.text = nil;
-    }
     
     // In the following I let the SLUnitsConvertor class do all of the unit changing.  This controller is not even aware of the UNIT_PREFS settings
 
@@ -218,14 +211,13 @@
         [self.spinner startAnimating];
         dispatch_queue_t queue = dispatch_queue_create("simQueue", NULL);
         dispatch_async(queue, ^{
-            self.model.motor = self.motor;
             self.model.rocket = self.rocket;
             self.model.launchGuideAngle = [(self.settings)[LAUNCH_ANGLE_KEY] floatValue];
             float len = [(self.settings)[LAUNCH_GUIDE_LENGTH_KEY] floatValue];
             if (len == 0) len = 1.0;  // defend against zero-divide errors
             self.model.launchGuideLength = len;
             self.model.windVelocity = [(self.settings)[WIND_VELOCITY_KEY] floatValue];
-            self.model.LaunchGuideDirection = (enum LaunchDirection)[(self.settings)[WIND_DIRECTION_KEY] intValue];
+            self.model.LaunchGuideDirection = (LaunchDirection)[(self.settings)[WIND_DIRECTION_KEY] intValue];
             self.model.launchAltitude = [(self.settings)[LAUNCH_ALTITUDE_KEY] floatValue];
             [self.model resetFlight];
             
@@ -238,8 +230,8 @@
             
             // convert the two results that might be in different units
             
-            double velocityInPreferredUnits = [[SLUnitsConvertor displayUnitsOf:@(ffVelocity) forKey:VELOCITY_UNIT_KEY] doubleValue];
-            double apogeeInPreferredUnits = [[SLUnitsConvertor displayUnitsOf:@(apogee) forKey:ALT_UNIT_KEY] doubleValue];
+            float velocityInPreferredUnits = [SLUnitsConvertor displayUnitsOf:ffVelocity forKey:VELOCITY_UNIT_KEY];
+            float apogeeInPreferredUnits = [SLUnitsConvertor displayUnitsOf:apogee forKey:ALT_UNIT_KEY];
             dispatch_async(dispatch_get_main_queue(), ^{
                 // display the result, all in user-defined units
                 self.ffAngleOfAttackLabel.text = [NSString stringWithFormat:@"%1.1f", aoa];
@@ -257,37 +249,44 @@
     }
 }
 
+#pragma mark - SLMotorPickerDatasource method
+
+-(NSUInteger)motorSizeRequested{
+    // if there is more than one, this will return the first one, which should be the central one
+    return [self.rocket.motorSizes[0] integerValue];
+}
+
 #pragma mark - SLSimulationDataSource methods
 
 - (NSMutableDictionary *)simulationSettings{
     return [self.settings mutableCopy];
 }
 
-- (NSNumber *)freeFlightVelocity{
-    return @([self.model velocityAtEndOfLaunchGuide]);
+- (float)freeFlightVelocity{
+    return [self.model velocityAtEndOfLaunchGuide];
 }
 
-- (NSNumber *)freeFlightAoA{
-    return @([self.model freeFlightAngleOfAttack]);
+- (float)freeFlightAoA{
+    return [self.model freeFlightAngleOfAttack];
 }
 
-- (NSNumber *)windVelocity{
-    return self.settings[WIND_VELOCITY_KEY];
+- (float)windVelocity{
+    return [self.settings[WIND_VELOCITY_KEY] floatValue];
 }
 
-- (NSNumber *)launchAngle{
-    return self.settings[LAUNCH_ANGLE_KEY];
+- (float)launchAngle{
+    return [self.settings[LAUNCH_ANGLE_KEY] floatValue];
 }
 
-- (NSNumber *)launchGuideLength{
-    return self.settings[LAUNCH_GUIDE_LENGTH_KEY];
+- (float)launchGuideLength{
+    return [self.settings[LAUNCH_GUIDE_LENGTH_KEY] floatValue];
 }
 
--(NSNumber *)launchSiteAltitude{
-    return self.settings[LAUNCH_ALTITUDE_KEY];
+-(float)launchSiteAltitude{
+    return [self.settings[LAUNCH_ALTITUDE_KEY] floatValue];
 }
 
-- (enum LaunchDirection)launchGuideDirection{
+- (LaunchDirection)launchGuideDirection{
     return [self.settings[WIND_DIRECTION_KEY] integerValue];
 }
 
@@ -309,17 +308,17 @@
     }
     if ([[segue identifier] isEqualToString:@"motorSelectorSegue"]){
         // this is part of the model for this destination VC, so we can set this
-        [(SLMotorSearchViewController *)segue.destinationViewController setRocketMotorMountDiameter:self.rocket.motorSize];
+        [(SLMotorSearchViewController *)segue.destinationViewController setDataSource:self];
     }
     if ([[segue identifier] isEqualToString:@"AnimationSegue"]){
         [segue.destinationViewController setDelegate:self];
         [segue.destinationViewController setDataSource:self];
     }
     if ([[segue identifier] isEqualToString:@"saveFlightSegue"]){
-        NSDictionary *flight = @{FLIGHT_MOTOR_KEY : self.motor.name,
-                                 FLIGHT_MOTOR_LONGNAME_KEY : [NSString stringWithFormat:@"%@ %@", self.motor.manufacturer, self.motor.name],
-                                 FLIGHT_BEST_CD : self.rocket.cd,
-                                 FLIGHT_ALTITUDE_KEY : [SLUnitsConvertor metricStandardOf:@([self.apogeeAltitudeLabel.text floatValue]) forKey:ALT_UNIT_KEY],
+        NSDictionary *flight = @{FLIGHT_MOTOR_KEY : self.rocket.clusterMotor.name,
+                                 FLIGHT_MOTOR_LONGNAME_KEY : [NSString stringWithFormat:@"%@ %@", self.rocket.clusterMotor.manufacturer, self.rocket.clusterMotor.name],
+                                 FLIGHT_BEST_CD : @(self.rocket.cd),
+                                 FLIGHT_ALTITUDE_KEY : @([SLUnitsConvertor metricStandardOf:[self.apogeeAltitudeLabel.text floatValue] forKey:ALT_UNIT_KEY]),
                                  FLIGHT_SETTINGS_KEY: self.settings};
         [(SLSaveFlightDataTVC *)segue.destinationViewController setFlightData:flight];
         [(SLSaveFlightDataTVC *)segue.destinationViewController setPhysicsModel:self.model];

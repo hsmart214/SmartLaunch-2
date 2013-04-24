@@ -18,9 +18,9 @@
 
 +(void)setDefaultUnit:(NSString *)unit forKey:(NSString *)key;
 
-+(NSNumber *)metricStandardOf:(NSNumber *)dimension forKey:(NSString *)dimKey;
++(float)metricStandardOf:(float)dimension forKey:(NSString *)dimKey;
 
-+(NSNumber *)displayUnitsOf:(NSNumber *)dimension forKey:(NSString *)dimKey;
++(float)displayUnitsOf:(float)dimension forKey:(NSString *)dimKey;
 
 +(NSString *)displayStringForKey:(NSString *)dimKey;
 
