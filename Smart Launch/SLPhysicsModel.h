@@ -56,7 +56,7 @@
 
 /* This will give the resulting angle of attack of the rocket in the air mass at when it leaves the launch guide */
 
-- (float) freeFlightAngleOfAttack;          // AOA when the rocket leaves the launch guide - RADIANS
+- (float)freeFlightAngleOfAttack;          // AOA when the rocket leaves the launch guide - RADIANS
 
 - (float)velocityAtAltitude:(float)alt;   // from the profile, returns the velocity (METERS/SEC) at a given altitude (METERS)
 

@@ -222,7 +222,6 @@ typedef enum {
 #define ROCKET_DIAM_KEY @"RocketDiameter"
 #define ROCKET_CD_KEY @"RocketCD"
 #define ROCKET_MOTORSIZE_KEY @"RocketMotorSize"
-#define ROCKET_MOTORSIZES_ARRAY_KEY @"RocketMotorSizesArrayKey"
 #define ROCKET_MASS_KEY @"RocketMass"
 #define ROCKET_KITNAME_KEY @"RocketKitName"
 #define ROCKET_MAN_KEY @"RocketManufacturer"

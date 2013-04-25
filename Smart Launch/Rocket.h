@@ -28,27 +28,23 @@
 @property (nonatomic) float diameter;      //meters float
 @property (nonatomic) float cd;            //dimensionless float
 @property (nonatomic) NSUInteger motorSize;     //this one is an integer number of millimeters (just the largest, central one - compatibility)
-@property (nonatomic, strong) NSMutableArray *motorSizes;      //list of motor mount sizes (int NSNumbers) by convention list central motor first (if any) v1.5+
 @property (nonatomic) float mass;          //kilograms float
 @property (nonatomic) float massWithMotors;
 @property (nonatomic, strong) NSString * kitName;       //manufacturer's name for the kit
 @property (nonatomic, strong) NSString * manufacturer;  //company that made the kit (if any)
 @property (nonatomic, strong) NSArray *recordedFlights; //array of NSDictionary* plists of flight information
-@property (nonatomic) SLMotorConfiguration motorConfig;        //only available in v1.5 or later - may indicate single motor mount (default)
+@property (nonatomic) NSArray *motorConfig;        //only available in v1.5 or later - may indicate single motor mount (default)
 @property (nonatomic, readonly) float version;
-@property (nonatomic, strong, readonly) NSArray *motors;    // array of RocketMotor *
 @property (nonatomic, readonly) SLClusterMotor *clusterMotor;
 
 -(NSDictionary *)rocketPropertyList;
--(NSUInteger)minimumNumberOfMotors;
 
-// methods to modify the motor array
+// methods to modify the motor cluster
 
--(void)addMotor:(RocketMotor *)motor withStartDelay:(float)delay;
--(void)replaceMotorAtIndex:(NSUInteger)index withMotor:(RocketMotor *)motor andStartDelay:(float)delay;
--(void)changeDelayTo:(float)delay forMotorAtIndex:(NSUInteger)index;
--(void)removeClusterMotorAtIndex:(NSUInteger)index;
--(void)replaceMotorsWithMotorDictArray:(NSArray *)motorDicts;
+-(void)replaceMotorForGroupAtIndex:(NSUInteger)index withMotor:(RocketMotor *)motor andStartDelay:(float)delay;
+-(void)changeDelayTo:(float)delay forMotorGroupAtIndex:(NSUInteger)index;
+-(void)removeMotorGroupAtIndex:(NSUInteger)index;
+-(void)replaceMotorsWithClusterMotor:(SLClusterMotor *)clusterMotor;
 
 +(Rocket *)rocketWithRocketDict:(NSDictionary *)rocketDict;
 

@@ -33,11 +33,12 @@
 -(float)fractionOfImpulseClass{
     int classIndex = 0;
     float impulse = self.totalImpulse;
-    while (impulse < [[RocketMotor impulseLimits][classIndex] floatValue]) {
+    if (impulse < [[RocketMotor impulseLimits][classIndex] floatValue]) return impulse/[[RocketMotor impulseLimits][classIndex] floatValue];
+    while (impulse > [[RocketMotor impulseLimits][classIndex] floatValue]) {
         classIndex++;
         if (classIndex == [[RocketMotor impulseClasses] count]) return 1.0;  // protects against overflow
     }   //now the classIndex points to the class ABOVE our class
-    return impulse/[[RocketMotor impulseLimits][classIndex] floatValue];
+    return impulse/[[RocketMotor impulseLimits][classIndex-1] floatValue];   // this won't underflow because of the third line
 }
 
 -(NSString *)nextImpulseClass{
@@ -476,7 +477,6 @@ NSInteger sortingFunction(id md1, id md2, void *context){
     }
     NSArray *allMotors = [[NSArray arrayWithArray:build] sortedArrayUsingFunction:sortingFunction context:NULL];
     [allMotors writeToURL:motorFileURL atomically:YES];
-    //NSLog(@"Loaded %d motors.",[_allMotors count]);
 
     return allMotors;
 }

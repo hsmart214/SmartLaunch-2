@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIStepper *thridGroupStepper;
 
 @property (nonatomic, strong) NSMutableArray *workingConfiguration;
+@property (nonatomic, strong) NSArray *oldConfiguration;
 
 @end
 
@@ -142,6 +143,11 @@
         index--;    // this is because the stepper value is one above the index in the array
         self.thirdGroupSizeLabel.text = [RocketMotor motorDiameters][index];
     }
+    [self updateDisplay];
+}
+
+- (IBAction)revertToOldConfiguration:(UIBarButtonItem *)sender {
+    self.workingConfiguration = [self.oldConfiguration mutableCopy];
     [self updateDisplay];
 }
 
@@ -272,6 +278,7 @@
     }
     NSArray *motorConfig = [self.datasource currentMotorConfiguration];
     if (motorConfig) self.workingConfiguration = [motorConfig mutableCopy];
+    self.oldConfiguration = motorConfig;
     [self updateDisplay];
 }
 

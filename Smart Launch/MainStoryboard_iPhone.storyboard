@@ -1034,6 +1034,7 @@
                         <outlet property="manField" destination="TyM-5M-pOF" id="uar-Hx-3Ae"/>
                         <outlet property="massField" destination="Ze8-im-Rny" id="lbG-78-36L"/>
                         <outlet property="massUnitsLabel" destination="7c6-l0-Rfn" id="zhK-Ic-bTr"/>
+                        <outlet property="motorConfigLabel" destination="zPA-D9-A8g" id="3e9-yy-6kX"/>
                         <outlet property="nameField" destination="zuO-C6-ztX" id="Hey-kP-e0j"/>
                         <outlet property="saveButton" destination="ND6-vG-fTm" id="6wd-Gy-IwX"/>
                     </connections>
@@ -1255,7 +1256,16 @@
                             <outlet property="delegate" destination="3N5-Wf-79E" id="aNS-aN-SYb"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="cdB-PP-1E4"/>
+                        <barButtonItem title="Revert" id="hxe-tm-UR8">
+                            <connections>
+                                <action selector="revertToOldConfiguration:" destination="3N5-Wf-79E" id="iDi-f4-nNI"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Motor Configuration" id="pGk-Nx-eMY"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="centralLabel" destination="i0C-1V-NQx" id="57z-nz-3yL"/>
                         <outlet property="centralStepper" destination="xjH-sg-Szf" id="taF-Lv-gL3"/>

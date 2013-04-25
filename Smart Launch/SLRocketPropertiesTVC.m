@@ -13,11 +13,12 @@
  instance is restored under the old name, by just leaving without making any changes. */
 
 #import "SLRocketPropertiesTVC.h"
+#import "SLMotorConfigurationTVC.h"
 
 #define DELETE_BUTTON_INDEX 2
 #define CLUSTER_SELECTOR_ROW 6
 
-@interface SLRocketPropertiesTVC ()<UIScrollViewDelegate, UIActionSheetDelegate, UITableViewDelegate>
+@interface SLRocketPropertiesTVC ()<UIScrollViewDelegate, UIActionSheetDelegate, UITableViewDelegate, SLMotorConfigurationDataSource, SLMotorConfigurationDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *kitNameField;
 @property (weak, nonatomic) IBOutlet UITextField *manField;
@@ -42,7 +43,9 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *calcCdButton;
 @property (weak, nonatomic) IBOutlet UISwitch *clusterSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *clusterLabel;
+@property (weak, nonatomic) IBOutlet UILabel *motorConfigLabel;
 @property (nonatomic, strong) id iCloudObserver;
+@property (nonatomic, strong) NSArray *motorConfiguration;
 
 @end
 
@@ -57,8 +60,9 @@
     valid = valid && ([self.nameField.text length] != 0);
     valid = valid && ([self.massField.text floatValue] > 0.0);
     valid = valid && ([self.diamField.text floatValue] > 0.0);
-    valid = valid && ([self.motorDiamLabel.text floatValue] > 0);
+    //    valid = valid && ([self.motorDiamLabel.text floatValue] > 0);
     valid = valid && ([self.cdField.text floatValue] > 0);
+    valid = valid && [self.motorConfiguration count];
     return valid;
 }
 
@@ -272,6 +276,16 @@
     [self calculateCd];
 }
 
+#pragma mark - SLMotorConfiguration Datasource and Delegate methods
+
+-(NSArray *)currentMotorConfiguration{
+    return self.motorConfiguration;
+}
+
+-(void)SLMotorConfigurationTVC:(SLMotorConfigurationTVC *)sender didChangeMotorConfiguration:(NSArray *)configuration{
+    self.motorConfiguration = configuration;
+}
+
 #pragma mark - prepareForSegue
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -279,6 +293,11 @@
         //pass on the model for the next table view controller
         [(SLSavedFlightsTVC *)segue.destinationViewController setRocket:self.rocket];
         [(SLSavedFlightsTVC *)segue.destinationViewController setRocketDelegate:self];
+    }
+    if ([segue.identifier isEqualToString:@"motorConfigurationSegue"]){
+        //become the destinations delegate and datasource
+        [(SLMotorConfigurationTVC *)segue.destinationViewController setDelegate:self];
+        [(SLMotorConfigurationTVC *)segue.destinationViewController setDatasource:self];
     }
 }
 

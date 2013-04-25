@@ -41,7 +41,7 @@
 //    }
 //}
 
-- (void)setRocket:(id) rocket{
+- (void)setRocket:(Rocket *)rocket{
     _rocket = rocket;
     [self resetFlight];
 }
