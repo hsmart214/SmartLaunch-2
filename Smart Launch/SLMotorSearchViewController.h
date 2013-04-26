@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSArray *allMotors;
 @property (weak, nonatomic) id<SLSimulationDelegate> delegate;
 @property (weak, nonatomic) id<SLMotorPickerDatasource> dataSource;
+@property (weak, nonatomic) UIViewController *popBackController;
 //@property (nonatomic, strong) NSNumber *rocketMotorMountDiameter;
 
 @end

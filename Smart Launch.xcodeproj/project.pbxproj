@@ -73,6 +73,7 @@
 		4256931415F4893000F7BABC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4256931215F4893000F7BABC /* InfoPlist.strings */; };
 		4256931615F4893000F7BABC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931515F4893000F7BABC /* main.m */; };
 		4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931915F4893000F7BABC /* SLAppDelegate.m */; };
+		42742BB8172A4824007229E9 /* SLClusterMotorFirstGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42742BB7172A4824007229E9 /* SLClusterMotorFirstGroupCell.m */; };
 		42A1B6191670599E004F1FA0 /* version.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42A1B6181670599E004F1FA0 /* version.txt */; };
 		42BB53C916A293D20029C882 /* SLFlightDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53C816A293D20029C882 /* SLFlightDataCell.m */; };
 		42BB53CD16A295310029C882 /* SLSavedFlightsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */; };
@@ -111,7 +112,6 @@
 		42F83DB8171B6EAB005FAA0C /* SLClusterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83DB7171B6EAB005FAA0C /* SLClusterTableViewController.m */; };
 		42F83DBB171B6ED3005FAA0C /* SLClusterMotorBuildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83DBA171B6ED2005FAA0C /* SLClusterMotorBuildViewController.m */; };
 		42F83DBE171B6EFC005FAA0C /* SLClusterMotorMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83DBD171B6EFB005FAA0C /* SLClusterMotorMemberCell.m */; };
-		42F83DC1171BBCE1005FAA0C /* SLClusterDelayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83DC0171BBCE0005FAA0C /* SLClusterDelayViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -207,6 +207,9 @@
 		4256931715F4893000F7BABC /* Smart Launch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart Launch-Prefix.pch"; sourceTree = "<group>"; };
 		4256931815F4893000F7BABC /* SLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAppDelegate.h; sourceTree = "<group>"; };
 		4256931915F4893000F7BABC /* SLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAppDelegate.m; sourceTree = "<group>"; };
+		42742BB5172A3C68007229E9 /* SLClusterBuildDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterBuildDelegate.h; sourceTree = "<group>"; };
+		42742BB6172A4824007229E9 /* SLClusterMotorFirstGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterMotorFirstGroupCell.h; sourceTree = "<group>"; };
+		42742BB7172A4824007229E9 /* SLClusterMotorFirstGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotorFirstGroupCell.m; sourceTree = "<group>"; };
 		42A1B6181670599E004F1FA0 /* version.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = version.txt; sourceTree = "<group>"; };
 		42BB53C716A293D20029C882 /* SLFlightDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFlightDataCell.h; sourceTree = "<group>"; };
 		42BB53C816A293D20029C882 /* SLFlightDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFlightDataCell.m; sourceTree = "<group>"; };
@@ -257,8 +260,6 @@
 		42F83DBA171B6ED2005FAA0C /* SLClusterMotorBuildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotorBuildViewController.m; sourceTree = "<group>"; };
 		42F83DBC171B6EFA005FAA0C /* SLClusterMotorMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterMotorMemberCell.h; sourceTree = "<group>"; };
 		42F83DBD171B6EFB005FAA0C /* SLClusterMotorMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotorMemberCell.m; sourceTree = "<group>"; };
-		42F83DBF171BBCE0005FAA0C /* SLClusterDelayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterDelayViewController.h; sourceTree = "<group>"; };
-		42F83DC0171BBCE0005FAA0C /* SLClusterDelayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterDelayViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,6 +429,7 @@
 				4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */,
 				42248D7916EC384F00ABB5D7 /* Model */,
 				4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */,
+				42742BB5172A3C68007229E9 /* SLClusterBuildDelegate.h */,
 				4220A4AA15F55CC60055EE35 /* SLTableViewController.h */,
 				4220A4AB15F55CC60055EE35 /* SLTableViewController.m */,
 				42248D7A16EC416200ABB5D7 /* SLiPadDetailViewController.h */,
@@ -468,10 +470,10 @@
 				42F83DB7171B6EAB005FAA0C /* SLClusterTableViewController.m */,
 				42F83DB9171B6ED2005FAA0C /* SLClusterMotorBuildViewController.h */,
 				42F83DBA171B6ED2005FAA0C /* SLClusterMotorBuildViewController.m */,
+				42742BB6172A4824007229E9 /* SLClusterMotorFirstGroupCell.h */,
+				42742BB7172A4824007229E9 /* SLClusterMotorFirstGroupCell.m */,
 				42F83DBC171B6EFA005FAA0C /* SLClusterMotorMemberCell.h */,
 				42F83DBD171B6EFB005FAA0C /* SLClusterMotorMemberCell.m */,
-				42F83DBF171BBCE0005FAA0C /* SLClusterDelayViewController.h */,
-				42F83DC0171BBCE0005FAA0C /* SLClusterDelayViewController.m */,
 				4220A4BE15F55CC60055EE35 /* SLCurveGraphView.h */,
 				4220A4BF15F55CC60055EE35 /* SLCurveGraphView.m */,
 				4220A4C015F55CC60055EE35 /* SLRocketsTableViewController.h */,
@@ -684,8 +686,8 @@
 				42F83DB8171B6EAB005FAA0C /* SLClusterTableViewController.m in Sources */,
 				42F83DBB171B6ED3005FAA0C /* SLClusterMotorBuildViewController.m in Sources */,
 				42F83DBE171B6EFC005FAA0C /* SLClusterMotorMemberCell.m in Sources */,
-				42F83DC1171BBCE1005FAA0C /* SLClusterDelayViewController.m in Sources */,
 				42CEE10417277F440060424F /* SLMotorConfigurationTVC.m in Sources */,
+				42742BB8172A4824007229E9 /* SLClusterMotorFirstGroupCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

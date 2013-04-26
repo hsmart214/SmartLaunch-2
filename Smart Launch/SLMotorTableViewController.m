@@ -71,7 +71,7 @@
     self.selectedMotor = [RocketMotor motorWithMotorDict:self.selectedMotorDict];
     [self.delegate sender:self didChangeRocketMotor:@[@{MOTOR_COUNT_KEY: @1,
           MOTOR_PLIST_KEY: [self.selectedMotor motorDict]}]];
-    [[self navigationController] popToRootViewControllerAnimated:YES];
+    [self.navigationController popToViewController:self.popBackViewController animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
@@ -86,6 +86,7 @@
     if ([segue.identifier isEqualToString:@"motorDetailSegue"]){
         [(SLMotorViewController *)segue.destinationViewController setMotor:self.selectedMotor];
         [(SLMotorViewController *)segue.destinationViewController setDelegate:self.delegate];
+        [(SLMotorViewController *)segue.destinationViewController setPopBackViewController:self.popBackViewController];
         [segue.destinationViewController setTitle:self.selectedMotor.name];
     }
 }

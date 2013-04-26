@@ -14,12 +14,12 @@
 #import "SLFlightProfileViewController.h"
 #import "SLUnitsConvertor.h"
 #import "SLiPadDetailViewController.h"
-#import "SLClusterMotor.h"
+#import "SLClusterMotorBuildViewController.h"
 
 #define FLIGHT_PROFILE_ROW 5
 #define MOTOR_SELECTION_ROW 1
 
-@interface SLTableViewController ()<SLMotorPickerDatasource>
+@interface SLTableViewController ()<SLMotorPickerDatasource, SLClusterListDelegate>
 @property (weak, nonatomic) IBOutlet UITableViewCell *rocketCell;
 //@property (weak, nonatomic) IBOutlet UITableViewCell *motorCell;
 @property (weak, nonatomic) IBOutlet UIButton *windDirectionButton;
@@ -163,6 +163,10 @@
         UINavigationController *nav = (UINavigationController *)[self.splitViewController.viewControllers lastObject];
         [(SLiPadDetailViewController *)nav.viewControllers[0] updateDisplay];
     }
+}
+
+-(void)changedClusterMotor:(NSArray *)clusterPlist sender:(id)sender{
+    [self.rocket replaceMotorLoadOutWithLoadOut:clusterPlist];
 }
 
 #pragma mark - Smart Launch
@@ -331,6 +335,11 @@
     }
     if ([[segue identifier] isEqualToString:@"FlightProfileSegue"]){
         [(SLFlightProfileViewController *)segue.destinationViewController setDataSource:self.model];
+    }
+    if ([[segue identifier] isEqualToString:@"clusterBuildSegue"]){
+        [(SLClusterMotorBuildViewController *)segue.destinationViewController setDelegate:self];
+        [(SLClusterMotorBuildViewController *)segue.destinationViewController setMotorConfiguration:self.rocket.motorConfig];
+        [(SLClusterMotorBuildViewController *)segue.destinationViewController setMotorLoadoutPlist:self.rocket.motorLoadoutPlist];
     }
 }
 

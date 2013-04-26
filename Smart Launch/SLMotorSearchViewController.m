@@ -567,6 +567,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
             [sortedResults addObject:searchResult];
         }
         [(SLMotorTableViewController *)segue.destinationViewController setMotors:sortedResults];
+        [(SLMotorTableViewController *)segue.destinationViewController setPopBackViewController:self.popBackController];
     }
 }
 

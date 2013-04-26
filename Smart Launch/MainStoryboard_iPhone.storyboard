@@ -401,8 +401,8 @@
                         <outlet property="thrustToWeightLabel" destination="ZaG-DN-paM" id="Jvg-cK-mTt"/>
                         <outlet property="windDirectionButton" destination="nxu-FO-G1l" id="BEV-DQ-w73"/>
                         <segue destination="uXJ-y6-YPH" kind="push" identifier="FlightProfileSegue" id="UUm-kO-vJZ"/>
-                        <segue destination="tVc-AY-bfJ" kind="push" identifier="ClusterSelectSegue" id="Ydu-Jf-js3"/>
                         <segue destination="WFU-0M-lp7" kind="push" identifier="motorSelectorSegue" id="Z7C-8k-JQV"/>
+                        <segue destination="WCr-oj-TZS" kind="push" identifier="clusterBuildSegue" id="tcc-vG-eyZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qQ-Ry-Ebi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -418,37 +418,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClusterMotorCell" textLabel="qV7-TH-Sme" detailTextLabel="S3f-Z3-XAw" imageView="d5d-pa-W84" style="IBUITableViewCellStyleValue1" id="GpI-IB-yfd">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClusterMotorCell" textLabel="qV7-TH-Sme" detailTextLabel="S3f-Z3-XAw" style="IBUITableViewCellStyleValue1" id="GpI-IB-yfd">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="2 G80's" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qV7-TH-Sme">
-                                            <rect key="frame" x="115" y="11" width="60" height="21"/>
+                                            <rect key="frame" x="10" y="11" width="60" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="90% H" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="S3f-Z3-XAw">
-                                            <rect key="frame" x="225" y="11" width="52" height="21"/>
+                                            <rect key="frame" x="258" y="11" width="52" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Cluster2.png" id="d5d-pa-W84">
-                                            <rect key="frame" x="0.0" y="0.0" width="105" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <connections>
-                                    <segue destination="WCr-oj-TZS" kind="push" identifier="ClusterBuildSegue" id="2zK-6i-r3d"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -457,86 +450,156 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="xUr-Q7-ZVE">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mb6-J1-lfb">
-                            <connections>
-                                <action selector="createNewCluster:" destination="tVc-AY-bfJ" id="dBC-Qc-W0p"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="xUr-Q7-ZVE"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j6q-sb-Ejs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1607" y="1019"/>
+            <point key="canvasLocation" x="2313" y="984"/>
         </scene>
         <!--Cluster Motor Build View Controller-->
         <scene sceneID="EVU-KP-7E0">
             <objects>
                 <tableViewController id="WCr-oj-TZS" customClass="SLClusterMotorBuildViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fa1-yh-Eux">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="173" sectionHeaderHeight="10" sectionFooterHeight="10" id="fa1-yh-Eux">
                         <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClusterMemberCell" textLabel="gOk-sa-Abu" detailTextLabel="oAx-cN-X7d" imageView="Hjx-7S-1hC" style="IBUITableViewCellStyleValue1" id="jcI-g6-oPF">
-                                <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClusterFirstCell" rowHeight="80" id="jcI-g6-oPF" customClass="SLClusterMotorFirstGroupCell">
+                                <rect key="frame" x="0.0" y="46" width="320" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <rect key="frame" x="10" y="1" width="267" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="D10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gOk-sa-Abu">
-                                            <rect key="frame" x="115" y="11" width="32" height="21"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="6.7 Ns" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oAx-cN-X7d">
-                                            <rect key="frame" x="220" y="11" width="50" height="21"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Apogee.png" id="Hjx-7S-1hC">
-                                            <rect key="frame" x="0.0" y="0.0" width="105" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Apogee.png" id="LS6-5q-vtH">
+                                            <rect key="frame" x="0.0" y="21" width="105" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="x 1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dGP-mc-Sw5">
+                                            <rect key="frame" x="209" y="27" width="38" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="D10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7cT-Bm-iYd">
+                                            <rect key="frame" x="119" y="21" width="91" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6.7 Ns" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cnv-pY-Rn4">
+                                            <rect key="frame" x="119" y="43" width="91" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.33619411500000002" green="0.47843140360000003" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Initial Motor Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w38-u0-muz">
+                                            <rect key="frame" x="20" y="0.0" width="190" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="38mm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EQo-B3-EiZ">
+                                            <rect key="frame" x="209" y="3" width="58" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="WFU-0M-lp7" kind="push" id="229-FG-Nkz"/>
+                                    <outlet property="imageView" destination="LS6-5q-vtH" id="Kq7-uh-wWd"/>
+                                    <outlet property="motorCountTextLabel" destination="dGP-mc-Sw5" id="Cgt-ga-6NU"/>
+                                    <outlet property="motorDetailTextLabel" destination="Cnv-pY-Rn4" id="Aby-9B-i5Y"/>
+                                    <outlet property="motorDiameterTextLabel" destination="EQo-B3-EiZ" id="f53-Bd-xbe"/>
+                                    <outlet property="motorNameLabel" destination="7cT-Bm-iYd" id="6Sw-8R-Mko"/>
+                                    <segue destination="WFU-0M-lp7" kind="push" identifier="clusterMemberMotorSearch" id="229-FG-Nkz"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClusterDelayCell" textLabel="pWq-Hx-qFA" detailTextLabel="IUB-2R-xFl" style="IBUITableViewCellStyleValue1" id="4qp-tp-znS">
-                                <rect key="frame" x="0.0" y="91" width="320" height="45"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClusterMemberCell" rowHeight="173" id="byP-px-iUJ" customClass="SLClusterMotorMemberCell">
+                                <rect key="frame" x="0.0" y="127" width="320" height="174"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                    <rect key="frame" x="10" y="0.0" width="267" height="172"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Delay 0 sec" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pWq-Hx-qFA">
-                                            <rect key="frame" x="10" y="11" width="93" height="21"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Apogee.png" id="lwK-Tc-wVc">
+                                            <rect key="frame" x="0.0" y="0.0" width="105" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="x 2" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pKD-ox-ANZ">
+                                            <rect key="frame" x="209" y="17" width="38" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="from launch" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IUB-2R-xFl">
-                                            <rect key="frame" x="181" y="11" width="89" height="21"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="D10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zrb-tF-1gO">
+                                            <rect key="frame" x="119" y="0.0" width="109" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6.7 Ns" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dsS-gW-i5x">
+                                            <rect key="frame" x="119" y="22" width="109" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.33619411500000002" green="0.47843140360000003" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Ignition Delay 0.0 sec" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rha-cd-wMV">
+                                            <rect key="frame" x="20" y="51" width="247" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="0.10000000000000001" id="aJO-Aw-44z">
+                                            <rect key="frame" x="96" y="88" width="94" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <connections>
+                                                <action selector="delayTimeChanged:" destination="byP-px-iUJ" eventType="valueChanged" id="Aj2-8i-cOD"/>
+                                            </connections>
+                                        </stepper>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="mts-p7-A7i">
+                                            <rect key="frame" x="20" y="123" width="247" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="From Launch"/>
+                                                <segment title="From Burnout"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="delayBasisChanged:" destination="byP-px-iUJ" eventType="valueChanged" id="c2A-cr-X0h"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="29mm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KTw-7r-gNw">
+                                            <rect key="frame" x="209" y="2" width="58" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="cdm-u7-epl" kind="push" identifier="DelaySegue" id="pF3-WQ-iZ6"/>
+                                    <outlet property="delayBasisSelector" destination="mts-p7-A7i" id="NFm-6r-qNo"/>
+                                    <outlet property="delayTextLabel" destination="rha-cd-wMV" id="zRs-pr-n8J"/>
+                                    <outlet property="delayTimeStepper" destination="aJO-Aw-44z" id="Rx6-yT-Irm"/>
+                                    <outlet property="imageView" destination="lwK-Tc-wVc" id="GLw-H8-sGx"/>
+                                    <outlet property="motorCountTextLabel" destination="pKD-ox-ANZ" id="dhb-Zc-ZKe"/>
+                                    <outlet property="motorDetailTextLabel" destination="dsS-gW-i5x" id="e7i-ii-rCJ"/>
+                                    <outlet property="motorDiameterTextLabel" destination="KTw-7r-gNw" id="TeB-Xx-PX9"/>
+                                    <outlet property="motorNameLabel" destination="zrb-tF-1gO" id="vZf-F0-G2i"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -546,111 +609,20 @@
                             <outlet property="delegate" destination="WCr-oj-TZS" id="LYN-3r-Jfr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="PHF-9I-CR6">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="h6m-k6-omC">
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="7iL-Wb-J84"/>
+                        <barButtonItem title="Saved Clusters" id="ylm-mb-Awb">
                             <connections>
-                                <action selector="addNewMotor:" destination="WCr-oj-TZS" id="Tdu-DC-wWg"/>
+                                <segue destination="tVc-AY-bfJ" kind="push" id="zAG-po-X3S"/>
                             </connections>
                         </barButtonItem>
-                    </navigationItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="PHF-9I-CR6"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7X-Em-eMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2033" y="1015"/>
-        </scene>
-        <!--Cluster Delay View Controller-->
-        <scene sceneID="s9c-Np-LZk">
-            <objects>
-                <viewController id="cdm-u7-epl" customClass="SLClusterDelayViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wJL-Jr-uUc">
-                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Wu2-x1-wdV">
-                                <rect key="frame" x="20" y="208" width="280" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="From Launch"/>
-                                    <segment title="From Burnout"/>
-                                </segments>
-                                <connections>
-                                    <action selector="delayBasisChanged:" destination="cdm-u7-epl" eventType="valueChanged" id="sIt-k9-UZg"/>
-                                </connections>
-                            </segmentedControl>
-                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="0.10000000000000001" id="ksr-g6-rCN">
-                                <rect key="frame" x="20" y="123" width="94" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <action selector="delayTimeChanged:" destination="cdm-u7-epl" eventType="valueChanged" id="gm4-qE-oSW"/>
-                                </connections>
-                            </stepper>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6.7 Ns" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lO9-as-5PD">
-                                <rect key="frame" x="156" y="49" width="144" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="D10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wbb-dl-ajg">
-                                <rect key="frame" x="156" y="20" width="144" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Apogee.png" id="gwu-0j-Eon">
-                                <rect key="frame" x="20" y="20" width="105" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Ignition Delay" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PI9-D2-ufg">
-                                <rect key="frame" x="196" y="78" width="104" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.0 sec" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="29I-FF-dXT">
-                                <rect key="frame" x="156" y="112" width="144" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Time to first burnout:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hvo-Z4-coJ">
-                                <rect key="frame" x="20" y="179" width="156" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.7 sec" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mhl-nU-B1Y">
-                                <rect key="frame" x="184" y="179" width="116" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" id="SNu-wP-vud" customClass="SLCurveGraphView">
-                                <rect key="frame" x="20" y="259" width="280" height="179"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="1qg-xa-lFG"/>
-                    <connections>
-                        <outlet property="burnoutTimeLabel" destination="mhl-nU-B1Y" id="Mvr-a4-YSr"/>
-                        <outlet property="delayTimeLabel" destination="29I-FF-dXT" id="rhq-lD-7XZ"/>
-                        <outlet property="manufacturerLogo" destination="gwu-0j-Eon" id="sE3-8T-df3"/>
-                        <outlet property="motorImpulseLabel" destination="lO9-as-5PD" id="kFO-vF-4H5"/>
-                        <outlet property="motorNameLabel" destination="wbb-dl-ajg" id="FUr-4v-mJM"/>
-                        <outlet property="thrustCurveGraphView" destination="SNu-wP-vud" id="K4D-Ld-C1R"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kk5-pN-w9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2478" y="1017"/>
+            <point key="canvasLocation" x="1866" y="984"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GV9-un-eTz">
@@ -3114,7 +3086,6 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
     </scenes>
     <resources>
         <image name="Apogee.png" width="210" height="86"/>
-        <image name="Cluster2.png" width="210" height="86"/>
         <image name="Goblin.png" width="210" height="86"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -3123,8 +3094,8 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Z7C-8k-JQV"/>
         <segue reference="eYh-Tw-iw8"/>
         <segue reference="oTj-Xa-4mD"/>
+        <segue reference="229-FG-Nkz"/>
     </inferredMetricsTieBreakers>
 </document>

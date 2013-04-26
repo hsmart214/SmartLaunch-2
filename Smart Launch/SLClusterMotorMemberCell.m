@@ -10,20 +10,18 @@
 
 @implementation SLClusterMotorMemberCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+- (IBAction)delayTimeChanged:(UIStepper *)sender {
+    self.delayTextLabel.text = [NSString stringWithFormat:@"Ignition Delay %1.1f sec", [sender value]];
+    [self updateStartDelay];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
+- (IBAction)delayBasisChanged:(UISegmentedControl *)sender {
+    [self updateStartDelay];
+}
 
-    // Configure the view for the selected state
+-(void)updateStartDelay{
+    float time = [self.delayTimeStepper value];
+    [self.delegate SLClusterMotorMemberCell:self didChangeStartDelay:time fromBurnout:(BOOL)self.delayBasisSelector.selectedSegmentIndex];
 }
 
 @end

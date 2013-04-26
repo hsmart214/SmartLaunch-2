@@ -14,5 +14,6 @@
 @property (copy, nonatomic) NSArray *motors;
 @property (strong, nonatomic) NSString *sectionKey;
 @property (weak, nonatomic) id<SLSimulationDelegate> delegate;
+@property (weak, nonatomic) UIViewController *popBackViewController;
 
 @end

@@ -8,8 +8,11 @@
 
 #import "SLClusterMotorBuildViewController.h"
 #import "RocketMotor.h"
+#import "SLMotorSearchViewController.h"
+#import "SLSimulationDelegate.h"
+#import "SLClusterMotorMemberCell.h"
 
-@interface SLClusterMotorBuildViewController ()
+@interface SLClusterMotorBuildViewController ()<SLMotorPickerDatasource, SLSimulationDelegate, SLMotorGroupDelegate>
 
 @property (nonatomic, readwrite) NSUInteger selectedMotorIndex;
 
@@ -17,79 +20,94 @@
 
 @implementation SLClusterMotorBuildViewController
 
-- (IBAction)addNewMotor:(UIBarButtonItem *)sender {
-    
-    [self.tableView reloadData];
-}
-
 #pragma mark - SLSimulationDelegate method
 
--(void)sender:(id)sender didChangeRocketMotor:(RocketMotor *)motor{
+-(void)sender:(id)sender didChangeRocketMotor:(NSArray *)motor{
+    if (![motor count]) return;
+    NSMutableDictionary *dict = motor[0];
+    dict[MOTOR_COUNT_KEY] = self.motorConfiguration[self.selectedMotorIndex][MOTOR_COUNT_KEY];
+}
+
+-(NSUInteger)motorSizeRequested{
+    return [self.motorConfiguration[self.selectedMotorIndex][MOTOR_DIAM_KEY] integerValue];
+}
+
+-(void)SLClusterMotorMemberCell:(SLClusterMotorMemberCell *)sender didChangeStartDelay:(float)time fromBurnout:(BOOL)fromBurnout{
     
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return [self.clusterMotor.motors count];
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return [self.motorConfiguration count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *cellIdentifier;
-    UITableViewCell *cell;
-    NSUInteger motorIndex = indexPath.section / 2;  // this is integer division, just to be clear
-    NSDictionary *motorEntry = self.clusterMotor.motors[motorIndex];
-    RocketMotor *motor = motorEntry[CLUSTER_MOTOR_KEY];
-    float delay = [motorEntry[CLUSTER_START_DELAY_KEY] floatValue];
-    UIImage *image = [UIImage imageNamed:motor.manufacturer];
-    switch (indexPath.row % 2) {
-        case 0:
-            cellIdentifier = @"ClusterMemberCell";
-            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-            cell.textLabel.text = [motor description];
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%1.1f Ns", motor.totalImpulse];
-            cell.imageView.image = image;
-            break;
-        case 1:
-            cellIdentifier = @"ClusterDelayCell";
-            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-            cell.textLabel.text = [NSString stringWithFormat:@"Delay %1.1f sec", delay];
-            break;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0){
+        SLClusterMotorFirstGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ClusterFirstCell"];
+        cell.motorDiameterTextLabel.text = [NSString stringWithFormat:@"%dmm", [self.motorConfiguration[0][MOTOR_DIAM_KEY] integerValue]];
+        if (self.motorLoadoutPlist) {
+            NSDictionary *motorDict = self.motorLoadoutPlist[0][MOTOR_PLIST_KEY];
+            RocketMotor *motor = [RocketMotor motorWithMotorDict:motorDict];
+            NSString *manName = motor.manufacturer;
+            cell.imageView.image = [UIImage imageNamed:manName];
+            cell.motorNameLabel.text = motor.name;
+            cell.motorDetailTextLabel.text = [NSString stringWithFormat:@"%1.1f Ns", [motor totalImpulse]];
+        }else{
+            cell.imageView.image = nil;
+            cell.motorNameLabel.text = NSLocalizedString(@"No Motor Selected", @"No Motor Selected");
+            cell.motorDetailTextLabel.text = @"";
+            cell.motorCountTextLabel = [NSString stringWithFormat:@"x %d", [self.motorConfiguration[0][MOTOR_COUNT_KEY] integerValue]];
+        }
+        return cell;
+    }else{  // must be another row (1, 2, or 3)
+        SLClusterMotorMemberCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ClusterMemberCell"];
+        cell.motorDiameterTextLabel.text = [NSString stringWithFormat:@"%dmm", [self.motorConfiguration[indexPath.row][MOTOR_DIAM_KEY] integerValue]];
+        cell.delegate = self;
+        cell.motorCountTextLabel = [NSString stringWithFormat:@"x %d", [self.motorConfiguration[indexPath.row][MOTOR_COUNT_KEY] integerValue]];
+        [cell.delayBasisSelector setSelectedSegmentIndex:0];
+
+        // need to check for the existence of motors in the loadout
+        if ([self.motorLoadoutPlist count] > indexPath.row){
+            // we have at least this many loaded groups, so we can load the info
+            NSDictionary *motorDict = self.motorLoadoutPlist[indexPath.row][MOTOR_PLIST_KEY];
+            RocketMotor *motor = [RocketMotor motorWithMotorDict:motorDict];
+            NSString *manName = motor.manufacturer;
+            cell.imageView.image = [UIImage imageNamed:manName];
+            cell.motorNameLabel.text = motor.name;
+            cell.motorDetailTextLabel.text = [NSString stringWithFormat:@"%1.1f Ns", [motor totalImpulse]];
+            cell.delayTextLabel.text = [NSString stringWithFormat:@"Ignition Delay %1.1f sec", motor.startDelay];
+            [cell.delayTimeStepper setValue:motor.startDelay];
+        }else{
+            // load up the empty row so the user can fill it if they like
+            cell.imageView.image = nil;
+            cell.motorNameLabel.text = NSLocalizedString(@"No Motor Selected", @"No Motor Selected");
+            cell.motorDetailTextLabel.text = @"";
+            cell.delayTextLabel.text = @"Ignition Delay 0.0 sec";
+            [cell.delayTimeStepper setValue:0.0];
+        }
+        return cell;
     }
-    return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-#pragma mark - delegate/datasource methods
-
--(void)changeDelayTimeTo:(float)delay sender:(id)sender{
-    [self.clusterMotor changeDelayTo:delay forMotorAtIndex:self.selectedMotorIndex];
-}
-
--(float)timeToFirstBurnout{
-    return [self.clusterSoFar timeToFirstBurnout];
-}
-
--(SLClusterMotor *)clusterSoFar{
-    return self.clusterMotor;
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    self.selectedMotorIndex = indexPath.row;
+    [self performSegueWithIdentifier:@"clusterMemberMotorSearch" sender:indexPath];
 }
 
 #pragma mark - Segue
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    self.selectedMotorIndex = [self.tableView indexPathForCell:sender].section / 2;
-    
+    if ([segue.identifier isEqualToString:@"clusterMemberMotorSearch"]) {
+        [(SLMotorSearchViewController *)segue.destinationViewController setDataSource:self];
+        [(SLMotorSearchViewController *)segue.destinationViewController setDelegate:self];
+        [(SLMotorSearchViewController *)segue.destinationViewController setPopBackController:self];
+    }
 }
 
 @end

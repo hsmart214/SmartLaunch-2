@@ -346,11 +346,11 @@ float burrnoutTime, burrnoutMass;
     self.kitName = rocketProperties[ROCKET_KITNAME_KEY];
     self.manufacturer = rocketProperties[ROCKET_MAN_KEY];
     self.recordedFlights = rocketProperties[ROCKET_RECORDED_FLIGHTS_KEY];
-    if (self.version >= 1.5){
-        self.motorConfig = rocketProperties[ROCKET_MOTOR_CONFIG_KEY];
-    }else{
+    
+    self.motorConfig = rocketProperties[ROCKET_MOTOR_CONFIG_KEY];
+    if (![self.motorConfig isKindOfClass:[NSArray class]]) {
         self.motorConfig = @[@{MOTOR_COUNT_KEY: @1,
-                             MOTOR_DIAM_KEY: @(self.motorSize)}];
+                               MOTOR_DIAM_KEY: @(self.motorSize)}];
     }
     return self;
 }

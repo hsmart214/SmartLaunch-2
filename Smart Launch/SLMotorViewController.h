@@ -25,4 +25,6 @@
 
 @property (nonatomic, strong) RocketMotor *motor;
 @property (nonatomic, weak) id<SLSimulationDelegate> delegate;
+@property (weak, nonatomic) UIViewController *popBackViewController;
+
 @end

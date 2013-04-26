@@ -37,7 +37,7 @@
 - (IBAction)userChoseMotor:(UIBarButtonItem *)sender {
     [self.delegate sender:self didChangeRocketMotor:@[@{MOTOR_COUNT_KEY: @1,
           MOTOR_PLIST_KEY: [self.motor motorDict]}]];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToViewController:self.popBackViewController animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

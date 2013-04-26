@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SLSimulationDelegate.h"
-#import "SLClusterMotorBuildViewController.h"
+#import "SLClusterBuildDelegate.h"
 
 @protocol SLClusterListDelegate <NSObject>
 

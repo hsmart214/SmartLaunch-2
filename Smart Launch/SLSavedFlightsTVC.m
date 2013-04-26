@@ -54,11 +54,11 @@
     //NSString *motorName = self.savedFlights[self.selectedFlightRow][FLIGHT_MOTOR_LONGNAME_KEY];
     //RocketMotor *motor = [self motorNamed:motorName];
     NSDictionary *motorDict = settings[SELECTED_MOTOR_KEY];
-    RocketMotor *motor = [RocketMotor motorWithMotorDict:motorDict];
-    if (!motor) return;
+    if (!motorDict) return;
     
     [self.simDelegate sender:self didChangeRocket:self.rocket];
-    [self.simDelegate sender:self didChangeRocketMotor:motor];
+    [self.simDelegate sender:self didChangeRocketMotor:@[@{MOTOR_COUNT_KEY: @1,
+             MOTOR_PLIST_KEY: motorDict}]];
     [self.simDelegate sender:self didChangeSimSettings:settings withUpdate:YES];
 }
 

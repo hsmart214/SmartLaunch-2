@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SLClusterMotorFirstGroupCell.h"
 
-@interface SLClusterMotorMemberCell : UITableViewCell
+@class SLClusterMotorMemberCell;
+
+@protocol SLMotorGroupDelegate <NSObject>
+
+-(void)SLClusterMotorMemberCell:(SLClusterMotorMemberCell *)sender didChangeStartDelay:(float)time fromBurnout:(BOOL)fromBurnout;
+
+@end
+
+@interface SLClusterMotorMemberCell : SLClusterMotorFirstGroupCell
+
+@property (weak, nonatomic) IBOutlet UILabel *delayTextLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *delayBasisSelector;
+@property (weak, nonatomic) IBOutlet UIStepper *delayTimeStepper;
+@property (weak, nonatomic) id<SLMotorGroupDelegate>delegate;
 
 @end
