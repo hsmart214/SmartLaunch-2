@@ -18,6 +18,8 @@
 - (float)areaAtTime:(float)time;        // meters^2
 - (float)burnoutTime;
 - (float)burnoutMass;
+- (float)peakThrust;
+@property (nonatomic, readonly) NSArray *burnoutTimes;
 
 @end
 
@@ -35,16 +37,22 @@
 @property (nonatomic, strong) NSArray *recordedFlights; //array of NSDictionary* plists of flight information
 @property (nonatomic) NSArray *motorConfig;        //only available in v1.5 or later - may indicate single motor mount (default)
 @property (nonatomic, readonly) float version;
-@property (nonatomic, readonly) SLClusterMotor *clusterMotor;
+@property (readonly) NSString *motorManufacturer;
+@property (readonly) NSString *impulseClass;
+@property (readonly) NSArray *motors;
+@property (readonly) NSString *motorDescription;
 
 -(NSDictionary *)rocketPropertyList;
+-(NSArray *)motorLoadoutPlist;
+-(float)totalImpulse;
 
 // methods to modify the motor cluster
 
 -(void)replaceMotorForGroupAtIndex:(NSUInteger)index withMotor:(RocketMotor *)motor andStartDelay:(float)delay;
 -(void)changeDelayTo:(float)delay forMotorGroupAtIndex:(NSUInteger)index;
 -(void)removeMotorGroupAtIndex:(NSUInteger)index;
--(void)replaceMotorsWithClusterMotor:(SLClusterMotor *)clusterMotor;
+/* this takes an array of NSDictionary * of the form {MOTOR_COUNT_KEY: int, MOTOR_PLIST_KEY: motorDict} one for each group */
+-(void)replaceMotorLoadOutWithLoadOut:(NSArray *)motorLoadOut;
 
 +(Rocket *)rocketWithRocketDict:(NSDictionary *)rocketDict;
 

@@ -11,24 +11,24 @@
 #import "SLClusterMotor.h"
 #import "SLSimulationDelegate.h"
 
-@protocol SLClusterBuildDelegate <NSObject>
+@protocol  SLClusterBuildDelegate <NSObject>
 
--(void)changeDelayTimeTo:(float)delay sender:(id)sender;
+-(void)changeDelayTimeTo:(float)delay forGroupAtIndex:(NSUInteger)index;
 
 @end
 
 @protocol SLClusterBuildDatasource <NSObject>
 
-@property (nonatomic, readonly) NSUInteger selectedMotorIndex;
+@property (nonatomic, readonly) NSUInteger selectedGroupIndex;
+@property (nonatomic, strong) NSArray *motorConfiguration;      // array of NSDictionary * {count, diam}
 
--(SLClusterMotor *)clusterSoFar;
--(float)timeToFirstBurnout;
+-(NSArray *)burnoutTimes;
 
 @end
 
-@interface SLClusterMotorBuildViewController : UITableViewController<SLSimulationDelegate, SLClusterBuildDelegate, SLClusterBuildDatasource>
+@interface SLClusterMotorBuildViewController : UITableViewController<SLSimulationDelegate>
 
 @property (nonatomic, weak) id<SLClusterListDelegate> delegate;
-@property (nonatomic, strong) SLClusterMotor *clusterMotor;
+@property (nonatomic, strong) NSArray *motorLoadoutPlist;           // array of NSDictionary * {count, motorDict}
 
 @end

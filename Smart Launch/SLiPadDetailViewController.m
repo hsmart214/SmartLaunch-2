@@ -162,8 +162,8 @@
 
 -(void)updateGraphDisplay{
     self.flightProfileGraphTitleLabel.text = [NSString stringWithFormat:@"Flight Profile - %@", [self.graphTypeSegmentedControl titleForSegmentAtIndex:[self.graphTypeSegmentedControl selectedSegmentIndex]]];
-    self.motorNameLabel.text = [self.model.rocket.clusterMotor.manufacturer stringByAppendingString:[NSString stringWithFormat:@" %@", self.dataSource.motorDescription]];
-    self.totalImpulseLabel.text = [NSString stringWithFormat:@"Total Impulse: %1.0f Newton-sec", self.model.rocket.clusterMotor.totalImpulse];
+    self.motorNameLabel.text = [[self.model.rocket motorManufacturer] stringByAppendingString:[NSString stringWithFormat:@" %@", self.dataSource.motorDescription]];
+    self.totalImpulseLabel.text = [NSString stringWithFormat:@"Total Impulse: %1.0f Newton-sec", [self.model.rocket totalImpulse]];
     self.title = self.model.rocketName;
     [self.flightProfileView resetAxes];
     [self.thrustCurveView resetAxes];
@@ -194,7 +194,7 @@
                 return [SLUnitsConvertor displayUnitsOf:[self.dataSource maxDrag] forKey:THRUST_UNIT_KEY];
         }
     }else{ //must be thrust curve
-        return [SLUnitsConvertor displayUnitsOf:self.model.rocket.clusterMotor.peakThrust forKey:THRUST_UNIT_KEY];
+        return [SLUnitsConvertor displayUnitsOf:[self.model.rocket peakThrust] forKey:THRUST_UNIT_KEY];
     }
 }
 
@@ -231,7 +231,7 @@
                 return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:DRAG_INDEX] forKey:THRUST_UNIT_KEY];
         }
     }else{ //must be thrust curve
-        return [SLUnitsConvertor displayUnitsOf:[self.model.rocket.clusterMotor thrustAtTime:timeIndex] forKey:THRUST_UNIT_KEY];
+        return [SLUnitsConvertor displayUnitsOf:[self.model.rocket thrustAtTime:timeIndex] forKey:THRUST_UNIT_KEY];
     }
 }
 

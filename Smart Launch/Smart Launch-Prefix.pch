@@ -207,6 +207,7 @@ typedef enum {
 #define MOTOR_LENGTH_KEY @"motorLength"
 #define MOTOR_DEFAULT_DIAMETER 24
 #define MOTOR_COUNT_KEY @"motorCountKey"
+#define MOTOR_PLIST_KEY @"motorDictPlistKey"
     
     //constants for the ClusterMotor subclass
     

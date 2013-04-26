@@ -17,18 +17,7 @@
 
 @implementation SLClusterMotorBuildViewController
 
--(SLClusterMotor *)clusterMotor{
-    if (!_clusterMotor){
-        _clusterMotor = (SLClusterMotor *)[SLClusterMotor defaultMotor];
-    }
-    return _clusterMotor;
-}
-
 - (IBAction)addNewMotor:(UIBarButtonItem *)sender {
-    if ([self.clusterMotor.motors count] >= 7) return;
-    RocketMotor *newMotor = [self.clusterMotor.motors lastObject][CLUSTER_MOTOR_KEY];
-    float delay = [[self.clusterMotor.motors lastObject][CLUSTER_START_DELAY_KEY] floatValue];
-    [self.clusterMotor addMotor:newMotor withStartDelay:delay];
     
     [self.tableView reloadData];
 }
@@ -36,7 +25,7 @@
 #pragma mark - SLSimulationDelegate method
 
 -(void)sender:(id)sender didChangeRocketMotor:(RocketMotor *)motor{
-    [self.clusterMotor replaceMotorAtIndex:self.selectedMotorIndex withMotor:motor andStartDelay:motor.startDelay];
+    
 }
 
 #pragma mark - Table view data source

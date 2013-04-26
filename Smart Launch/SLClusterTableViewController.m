@@ -75,7 +75,7 @@
         if ([sender isKindOfClass:[UITableViewCell class]]){
             NSInteger i = [self.tableView indexPathForCell:sender].row;
             dest.title = [self.clusters[i] description];
-            dest.clusterMotor = self.clusters[i];
+            //dest.clusterMotor = self.clusters[i];
         }else{
             dest.title = @"New Cluster";
         }

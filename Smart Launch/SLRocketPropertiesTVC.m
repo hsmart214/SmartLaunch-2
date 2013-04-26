@@ -127,21 +127,6 @@
         _rocket.motorSize = 6;
     }else {
         self.oldRocket = [self.rocket copy];    // in case we need to delete this Rocket* later
-        if (self.rocket.motorConfig != SLMotorConfigurationSingleMotor) {
-            [self.clusterSwitch setOn:YES animated:YES];
-            [self.motorDiamStepper setHidden:YES];
-            [self.motorDiamLabel setHidden:YES];
-            [self.motorDiamUnitsLabel setHidden:YES];
-            [self.clusterLabel setHidden:NO];
-            [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:CLUSTER_SELECTOR_ROW inSection:0]] setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-        }else{
-            [self.clusterSwitch setOn:NO animated:YES];
-            [self.motorDiamStepper setHidden:NO];
-            [self.motorDiamLabel setHidden:NO];
-            [self.motorDiamUnitsLabel setHidden:NO];
-            [self.clusterLabel setHidden:YES];
-            [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:CLUSTER_SELECTOR_ROW inSection:0]] setAccessoryType:UITableViewCellAccessoryNone];
-        }
     }
     self.nameField.delegate = self;
     self.kitNameField.delegate = self;

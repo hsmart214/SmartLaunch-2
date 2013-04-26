@@ -35,8 +35,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *manufacturerLogoView;
 @property (weak, nonatomic) IBOutlet UILabel *motorDetailDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *motorNameLabel;
-@property (weak, nonatomic) IBOutlet UISwitch *clusterSwitch;
-@property (weak, nonatomic) IBOutlet UILabel *clusterCountLabel;
 
 @property (strong, nonatomic) Rocket *rocket;
 //@property (strong, nonatomic) RocketMotor *motor;
@@ -140,14 +138,14 @@
     if (self.view.window)[self updateDisplay];
 }
 
-- (void)sender:(id)sender didChangeRocketMotor:(SLClusterMotor *)motor{
-    [self.rocket replaceMotorsWithMotorDictArray:motor.clusterPlistArray];
-    [self.settings setValue:motor.motors forKey:SELECTED_MOTOR_KEY];
-    [self defaultStoreWithKey:SELECTED_MOTOR_KEY andValue:motor.motors];
+- (void)sender:(id)sender didChangeRocketMotor:(NSArray *)motorPlist{
+    [self.rocket replaceMotorLoadOutWithLoadOut:motorPlist];
+    [self.settings setValue:motorPlist forKey:SELECTED_MOTOR_KEY];
+    [self defaultStoreWithKey:SELECTED_MOTOR_KEY andValue:motorPlist];
     [self defaultStoreWithKey:SETTINGS_KEY andValue:self.settings];
-    self.motorNameLabel.text = [motor description];
-    self.motorDetailDescriptionLabel.text = [NSString stringWithFormat:@"%1.1f N-sec", [motor totalImpulse]];
-    UIImage *theImage = [UIImage imageNamed:motor.manufacturer];
+    self.motorNameLabel.text = motorPlist[0][MOTOR_PLIST_KEY][NAME_KEY];
+    self.motorDetailDescriptionLabel.text = [NSString stringWithFormat:@"%1.1f N-sec", [self.rocket totalImpulse]];
+    UIImage *theImage = [UIImage imageNamed:self.rocket.motorManufacturer];
     self.manufacturerLogoView.image = theImage;
     if (self.view.window)[self updateDisplay];
 }
@@ -189,12 +187,18 @@
 }
 
 - (void)updateDisplay{
-    self.thrustToWeightLabel.text = [NSString stringWithFormat:@"%1.1f : 1", ([self.rocket.clusterMotor peakThrust])/(([self.rocket massAtTime:0.0])*(GRAV_ACCEL))];
+    self.thrustToWeightLabel.text = [NSString stringWithFormat:@"%1.1f : 1", ([self.rocket peakThrust])/(([self.rocket massAtTime:0.0])*(GRAV_ACCEL))];
     self.rocketCell.textLabel.text = self.rocket.name;
-    //self.rocketCell.detailTextLabel.text = [NSString stringWithFormat:@"%dmm",[self.rocket.motorSizes[0] integerValue]];
-    self.motorNameLabel.text = [self.rocket.clusterMotor description];
-    self.motorDetailDescriptionLabel.text =[NSString stringWithFormat:@"%1.1f Ns", [self.rocket.clusterMotor totalImpulse]];
-    UIImage *theImage = [UIImage imageNamed:self.rocket.clusterMotor.manufacturer];
+    self.rocketCell.detailTextLabel.text = [NSString stringWithFormat:@"%dmm", self.rocket.motorSize];
+    self.motorNameLabel.text = [self.rocket description];
+    NSString *motorDescription;
+    if ([self.rocket.motors count] == 1) {
+        motorDescription = [self.rocket.motors[0] description];
+    }else{
+        motorDescription = [NSLocalizedString(@"Complex ", @"that is, a complex motor") stringByAppendingString:self.rocket.impulseClass];
+    }
+    self.motorDetailDescriptionLabel.text =[NSString stringWithFormat:@"%1.1f Ns", [self.rocket totalImpulse]];
+    UIImage *theImage = [UIImage imageNamed:self.rocket.motorManufacturer];
     self.manufacturerLogoView.image = theImage;
     
     // In the following I let the SLUnitsConvertor class do all of the unit changing.  This controller is not even aware of the UNIT_PREFS settings
@@ -253,7 +257,7 @@
 
 -(NSUInteger)motorSizeRequested{
     // if there is more than one, this will return the first one, which should be the central one
-    return [self.rocket.motorSizes[0] integerValue];
+    return self.rocket.motorSize;
 }
 
 #pragma mark - SLSimulationDataSource methods
@@ -315,11 +319,12 @@
         [segue.destinationViewController setDataSource:self];
     }
     if ([[segue identifier] isEqualToString:@"saveFlightSegue"]){
-        NSDictionary *flight = @{FLIGHT_MOTOR_KEY : self.rocket.clusterMotor.name,
-                                 FLIGHT_MOTOR_LONGNAME_KEY : [NSString stringWithFormat:@"%@ %@", self.rocket.clusterMotor.manufacturer, self.rocket.clusterMotor.name],
+        NSDictionary *flight = @{MOTOR_PLIST_KEY : [self.rocket motorLoadoutPlist] ,
+                                 FLIGHT_MOTOR_LONGNAME_KEY : [NSString stringWithFormat:@"%@ %@", self.rocket.motorManufacturer, self.rocket.motorDescription],
                                  FLIGHT_BEST_CD : @(self.rocket.cd),
                                  FLIGHT_ALTITUDE_KEY : @([SLUnitsConvertor metricStandardOf:[self.apogeeAltitudeLabel.text floatValue] forKey:ALT_UNIT_KEY]),
-                                 FLIGHT_SETTINGS_KEY: self.settings};
+                                 FLIGHT_SETTINGS_KEY: self.settings,
+                                 SMART_LAUNCH_VERSION_KEY: @(SMART_LAUNCH_VERSION)};
         [(SLSaveFlightDataTVC *)segue.destinationViewController setFlightData:flight];
         [(SLSaveFlightDataTVC *)segue.destinationViewController setPhysicsModel:self.model];
         [(SLSaveFlightDataTVC *)segue.destinationViewController setRocket:self.rocket];
@@ -341,13 +346,6 @@
             return;
         }else{
             [self performSegueWithIdentifier:@"FlightProfileSegue" sender:self];
-        }
-    }
-    if (indexPath.section == 0 && indexPath.row == MOTOR_SELECTION_ROW){
-        if ([self.clusterSwitch isOn]){
-            [self performSegueWithIdentifier:@"ClusterSelectSegue" sender:self];
-        }else{
-            [self performSegueWithIdentifier:@"motorSelectorSegue" sender:self];
         }
     }
 }

@@ -7,16 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SLClusterMotor.h"
+#import "SLSimulationDelegate.h"
+#import "SLClusterMotorBuildViewController.h"
 
 @protocol SLClusterListDelegate <NSObject>
 
--(void)changedClusterMotor:(SLClusterMotor *)clusterMotor sender:(id)sender;
+-(void)changedClusterMotor:(NSArray *)clusterPlist sender:(id)sender;
 
 @end
 
 @interface SLClusterTableViewController : UITableViewController<SLClusterListDelegate>
 
-@property (nonatomic, weak) id delegate;
+@property (nonatomic, weak) id<SLSimulationDelegate, SLClusterBuildDelegate, SLClusterBuildDatasource> delegate;
 
 @end

@@ -69,14 +69,16 @@
 {
     self.selectedMotorDict = (self.motors)[indexPath.section][indexPath.row];
     self.selectedMotor = [RocketMotor motorWithMotorDict:self.selectedMotorDict];
-    [self.delegate sender:self didChangeRocketMotor:[SLClusterMotor clusterMotorWithRocketMotor:self.selectedMotor]];
+    [self.delegate sender:self didChangeRocketMotor:@[@{MOTOR_COUNT_KEY: @1,
+          MOTOR_PLIST_KEY: [self.selectedMotor motorDict]}]];
     [[self navigationController] popToRootViewControllerAnimated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
     self.selectedMotorDict = (self.motors)[indexPath.section][indexPath.row];
     self.selectedMotor = [RocketMotor motorWithMotorDict:self.selectedMotorDict];
-    [self.delegate sender:self didChangeRocketMotor:[SLClusterMotor clusterMotorWithRocketMotor:self.selectedMotor]];
+    [self.delegate sender:self didChangeRocketMotor:@[@{MOTOR_COUNT_KEY: @1,
+          MOTOR_PLIST_KEY: [self.selectedMotor motorDict]}]];
     [self performSegueWithIdentifier:@"motorDetailSegue" sender:self];
 }
 

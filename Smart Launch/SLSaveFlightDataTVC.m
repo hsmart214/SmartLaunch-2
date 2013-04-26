@@ -156,8 +156,8 @@
     
     self.cdEstimateField.text = [NSString stringWithFormat:@"%1.2f", self.rocket.cd];
     self.rocketName.text = self.rocket.name;
-    self.motorName.text = [self.physicsModel.rocket.clusterMotor description];
-    self.motorManufacturerLogo.image = [UIImage imageNamed:self.physicsModel.rocket.clusterMotor.manufacturer];
+    self.motorName.text = [self.physicsModel.rocket motorDescription];
+    self.motorManufacturerLogo.image = [UIImage imageNamed:self.physicsModel.rocket.motorManufacturer];
     self.cdLabel.text = [NSString stringWithFormat:@"%1.2f", self.rocket.cd];
     self.altUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
     self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [SLUnitsConvertor displayUnitsOf:self.physicsModel.fastApogee forKey:ALT_UNIT_KEY], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];

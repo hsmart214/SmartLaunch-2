@@ -16,7 +16,7 @@
 -(void)sender:(id)sender didChangeSimSettings:(NSDictionary *)settings withUpdate:(BOOL) update;
 -(void)sender:(id)sender didChangeLaunchAngle:(NSNumber *)launchAngle;
 -(void)sender:(id)sender didChangeRocket:(Rocket *)rocket;
--(void)sender:(id)sender didChangeRocketMotor:(RocketMotor *)motor;
+-(void)sender:(id)sender didChangeRocketMotor:(NSArray *)motorPlist;
 -(void)didChangeUnitPrefs:(id)sender;
 -(void)dismissModalViewController;
 

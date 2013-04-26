@@ -358,7 +358,7 @@
 }
 
 -(NSString *)motorDescription{
-    return [self.rocket.clusterMotor description];
+    return [self.rocket motorDescription];
 }
 
 - (float)apogee{

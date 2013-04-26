@@ -32,8 +32,11 @@
     return [self.motor thrustAtTime:timeIndex];
 }
 
+#pragma mark - SLSimulationDelegate method
+
 - (IBAction)userChoseMotor:(UIBarButtonItem *)sender {
-    [self.delegate sender:self didChangeRocketMotor:self.motor];
+    [self.delegate sender:self didChangeRocketMotor:@[@{MOTOR_COUNT_KEY: @1,
+          MOTOR_PLIST_KEY: [self.motor motorDict]}]];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
