@@ -10,14 +10,10 @@
 #import "SLSimulationDelegate.h"
 #import "SLClusterBuildDelegate.h"
 
-@protocol SLClusterListDelegate <NSObject>
+@interface SLClusterTableViewController : UITableViewController
 
--(void)changedClusterMotor:(NSArray *)clusterPlist sender:(id)sender;
-
-@end
-
-@interface SLClusterTableViewController : UITableViewController<SLClusterListDelegate>
-
-@property (nonatomic, weak) id<SLSimulationDelegate, SLClusterBuildDelegate, SLClusterBuildDatasource> delegate;
+@property (nonatomic, weak) id<SLClusterBuildDelegate, SLSimulationDelegate> clusterDelegate;
+@property (nonatomic, weak) id<SLClusterBuildDatasource> clusterDatasource;
+@property (nonatomic, weak) NSArray *motorLoadouts;
 
 @end

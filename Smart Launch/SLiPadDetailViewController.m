@@ -101,6 +101,7 @@
 
 - (IBAction)handleRocketTiltPanGesture:(UIPanGestureRecognizer *)gesture {
     if (self.displayLaunchDirection == CrossWind) return;       // The launch angle always appears vertical for crosswind calculations
+    if ([[self.model.rocket motors] count] == 0) return;        // Don't try this if there are no motors loaded
     if ((gesture.state == UIGestureRecognizerStateChanged) ||
         (gesture.state == UIGestureRecognizerStateEnded)) {
         CGPoint movement = [gesture translationInView:self.rocketView];
@@ -156,13 +157,13 @@
     [self.rocketView tiltRocketToAngle:launchAngle];   // in the model the launch angle is always positive
     
     if (dir == IntoWind) wind = -wind;                 // this is how we display the opposite wind direction
-    
-    [self.rocketView UpdateVectorsWithRocketVelocity:velocity andWindVelocity:wind];
+    // don't show the vectors if there is no thrust at all - looks weird
+    if ([self.model.rocket.motors count]) [self.rocketView UpdateVectorsWithRocketVelocity:velocity andWindVelocity:wind];
 }
 
 -(void)updateGraphDisplay{
     self.flightProfileGraphTitleLabel.text = [NSString stringWithFormat:@"Flight Profile - %@", [self.graphTypeSegmentedControl titleForSegmentAtIndex:[self.graphTypeSegmentedControl selectedSegmentIndex]]];
-    self.motorNameLabel.text = [[self.model.rocket motorManufacturer] stringByAppendingString:[NSString stringWithFormat:@" %@", self.dataSource.motorDescription]];
+    self.motorNameLabel.text = self.dataSource.motorDescription;
     self.totalImpulseLabel.text = [NSString stringWithFormat:@"Total Impulse: %1.0f Newton-sec", [self.model.rocket totalImpulse]];
     self.title = self.model.rocketName;
     [self.flightProfileView resetAxes];
@@ -194,7 +195,7 @@
                 return [SLUnitsConvertor displayUnitsOf:[self.dataSource maxDrag] forKey:THRUST_UNIT_KEY];
         }
     }else{ //must be thrust curve
-        return [SLUnitsConvertor displayUnitsOf:[self.model.rocket peakThrust] forKey:THRUST_UNIT_KEY];
+        return [SLUnitsConvertor displayUnitsOf:[self.model.rocket maximumThrust] forKey:THRUST_UNIT_KEY];
     }
 }
 
@@ -212,7 +213,7 @@
     if (sender == self.flightProfileView){
         return [self.dataSource totalTime];
     }else{// must be a thrust curve
-        return self.model.rocket.burnoutTime;
+        return [self.model.rocket burnoutTime];
     }
 }
 

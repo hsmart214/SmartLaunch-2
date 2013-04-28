@@ -16,12 +16,13 @@
 @property (nonatomic, strong) NSMutableArray *internalMotorsByGroup;        // array of NSArray *s of RocketMotor *, one array per group
 @property (nonatomic) float *thrusts;
 @property (nonatomic) NSUInteger thrustCount;
-@property (nonatomic, strong) NSMutableArray *previousLoadOuts;
 @property (nonatomic, strong, readwrite) NSArray *burnoutTimes;
 
 @end
 
 @implementation Rocket
+
+@synthesize previousLoadOuts = _previousLoadOuts;
 
 float burrnoutTime, burrnoutMass;
 
@@ -54,14 +55,19 @@ float burrnoutTime, burrnoutMass;
 -(NSArray *)motorLoadoutPlist{
     NSMutableArray *groups = [[NSMutableArray alloc] init];
     for (NSArray *group in self.internalMotorsByGroup) {
-        NSDictionary *dict = @{MOTOR_COUNT_KEY: @([group count]),
-                               MOTOR_PLIST_KEY: [group[0] motorDict]};
-        [groups addObject:dict];
+        if (![group count]) {
+            [groups addObject:@{}];
+        }else{
+            NSDictionary *dict = @{MOTOR_COUNT_KEY: @([group count]),
+                                   MOTOR_PLIST_KEY: [group[0] motorDict]};
+            [groups addObject:dict];
+        }
     }
     return [groups copy];;
 }
 
 -(void)updateMotorsFromGroups{
+    [self.internalMotors removeAllObjects];
     for (NSArray *group in self.internalMotorsByGroup) {
         [self.internalMotors addObjectsFromArray:group];
     }
@@ -70,12 +76,13 @@ float burrnoutTime, burrnoutMass;
 }
     
 -(void)removeMotorGroupAtIndex:(NSUInteger)index{
-    [self.internalMotorsByGroup removeObjectAtIndex:index];
+    [self.internalMotorsByGroup replaceObjectAtIndex:index withObject:@[]];
     [self updateMotorsFromGroups];
 }
 
 -(void)changeDelayTo:(float)delay forMotorGroupAtIndex:(NSUInteger)index{
     NSArray *group = self.internalMotorsByGroup[index];
+    if (![group count]) return;
     [group enumerateObjectsUsingBlock:^(RocketMotor *motor, NSUInteger idx, BOOL *stop){
         motor.startDelay = delay;
     }];
@@ -98,15 +105,39 @@ float burrnoutTime, burrnoutMass;
 -(void)replaceMotorLoadOutWithLoadOut:(NSArray *)motorLoadOut{
     [self.internalMotorsByGroup removeAllObjects];
     for (NSDictionary *groupDict in motorLoadOut) {
-        int count = [groupDict[MOTOR_COUNT_KEY] integerValue];
-        NSMutableArray *build = [[NSMutableArray alloc] init];
-        for (int i = 0; i < count; i++){
-            NSDictionary *motorDict = groupDict[MOTOR_PLIST_KEY];
-            [build addObject:[RocketMotor motorWithMotorDict:motorDict]];
+        if ([groupDict count]){
+            int count = [groupDict[MOTOR_COUNT_KEY] integerValue];
+            NSMutableArray *build = [[NSMutableArray alloc] init];
+            for (int i = 0; i < count; i++){
+                NSDictionary *motorDict = groupDict[MOTOR_PLIST_KEY];
+                [build addObject:[RocketMotor motorWithMotorDict:motorDict]];
+            }
+            [self.internalMotorsByGroup addObject:[build copy]];
+        }else{
+            [self.internalMotorsByGroup addObject:@[]];
         }
-        [self.internalMotorsByGroup addObject:build];
     }
     [self updateMotorsFromGroups];
+}
+
+-(NSArray *)previousLoadOuts{
+    // cache the result
+    if (!_previousLoadOuts){
+        NSMutableArray *arr = [NSMutableArray array];
+        for (NSDictionary *flightDict in self.recordedFlights) {
+            id motorObject = flightDict[FLIGHT_SETTINGS_KEY][SELECTED_MOTOR_KEY];
+            if ([motorObject isKindOfClass:[NSDictionary class]]){
+                // It is a single motor
+                [arr addObject:@[@{MOTOR_COUNT_KEY: @1,
+                                   MOTOR_PLIST_KEY: motorObject}]];
+            }else if([motorObject isKindOfClass:[NSArray class]]){
+                // It is a cluster plist array
+                [arr addObject:motorObject];
+            }
+        }
+        _previousLoadOuts = [arr copy];
+    }
+    return _previousLoadOuts;
 }
 
 -(NSArray *)motors{
@@ -116,6 +147,11 @@ float burrnoutTime, burrnoutMass;
 -(NSUInteger)motorSize{
     if ([self.motorConfig count]) return [self.motorConfig[0][MOTOR_DIAM_KEY] integerValue];
     return MOTOR_DEFAULT_DIAMETER;
+}
+
+-(BOOL)hasClusterMount{
+    if (!_motorConfig) return NO;
+    return ([self.motorConfig count] > 1 || [self.motorConfig[0][MOTOR_COUNT_KEY] integerValue] > 1);
 }
 
 //- (NSUInteger)minimumNumberOfMotors{
@@ -169,6 +205,7 @@ float burrnoutTime, burrnoutMass;
 
 - (void)clearFlights{
     self.recordedFlights = nil;
+    _previousLoadOuts = nil;
 }
 
 - (void)addFlight:(NSDictionary *)flightData{
@@ -176,6 +213,7 @@ float burrnoutTime, burrnoutMass;
     if (!newFlights) newFlights = [NSMutableArray array];
     [newFlights addObject:flightData];
     self.recordedFlights = [newFlights copy];
+    _previousLoadOuts = nil;                    // this will force it to be recalculated lazily
 }
 
 #pragma mark - SLRocketPhysicsDatasource methods
@@ -208,7 +246,7 @@ float burrnoutTime, burrnoutMass;
     float timeIndex = 0.0;
     while (timeIndex < TIME_STOP) {
         float thrust = [self thrustAtTime:timeIndex];
-        if (thrust > peak){
+        if (thrust >= peak){
             peak = thrust;
             timeIndex += TIME_SLICE;
         }else{
@@ -218,7 +256,24 @@ float burrnoutTime, burrnoutMass;
     return peak;
 }
 
+-(float)maximumThrust{
+    //this time we run through the entire thrust curve, but a little more coarsely
+#undef TIME_SLICE
+#define TIME_SLICE 0.01
+    float peak = 0.0;
+    float timeIndex = 0.0;
+    while (timeIndex < [self burnoutTime]) {
+        float thrust = [self thrustAtTime:timeIndex];
+        if (thrust >= peak){
+            peak = thrust;
+        }
+        timeIndex += TIME_SLICE;
+    }
+    return peak;
+}
+
 -(NSString *)motorDescription{
+    if (![self.internalMotors count]) return NSLocalizedString(@"No Motor Selected", @"No motor selected");
     if ([self.internalMotors count] == 1) return [self.internalMotors[0] description];
     return [NSString stringWithFormat:@"%d %@", [self.internalMotors count], NSLocalizedString(@"motor cluster", @"Like '5 motor cluster'")];
 }
@@ -241,7 +296,6 @@ float burrnoutTime, burrnoutMass;
     return maxLength;
 }
 
-
 -(float)totalImpulse{
     float impulse = 0.0;
     for (RocketMotor *motor in self.internalMotors){
@@ -252,9 +306,8 @@ float burrnoutTime, burrnoutMass;
 
 -(float)massAtTime:(float)time{
     float motorMass = 0.0;
-    for (NSArray *group in self.internalMotorsByGroup) {
-        RocketMotor *motor = group[0];
-        motorMass += [group count] * [motor massAtTime:time]; 
+    for (RocketMotor *motor in self.internalMotors){
+        motorMass += [motor massAtTime:time];
     }
     return self.mass + motorMass;
 }
@@ -268,8 +321,10 @@ float burrnoutTime, burrnoutMass;
 -(float)thrustAtTime:(float)time{
     float thrust = 0.0;
     for (NSArray *group in self.internalMotorsByGroup) {
-        RocketMotor *motor = group[0];
-        thrust += [group count] * [motor thrustAtTime:time];
+        if ([group count]) {
+            RocketMotor *motor = group[0];
+            thrust += [group count] * [motor thrustAtTime:time];
+        }
     }
     return thrust;
 }
@@ -368,6 +423,9 @@ float burrnoutTime, burrnoutMass;
     self.recordedFlights = nil;
     self.motorConfig = nil;
     free(self.thrusts);
+    self.internalMotorsByGroup = nil;
+    self.internalMotors = nil;
+    self.burnoutTimes = nil;
 }
 
 -(NSDictionary *)rocketPropertyList{

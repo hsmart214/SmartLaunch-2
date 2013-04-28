@@ -29,6 +29,7 @@
 @property (nonatomic, readonly) NSArray *times;
 @property (nonatomic, readonly) NSArray *thrusts;
 @property (nonatomic) float startDelay;
+@property (nonatomic, readonly)float burnoutTime;   // this takes into account the startDelay
 
 
 - (float)thrustAtTime:(float)time;
@@ -42,6 +43,7 @@
 + (NSDictionary *)manufacturerDict;
 + (NSArray *)hybridManufacturerNames;
 + (NSArray *)impulseClasses;
++ (NSArray *)impulseLimits;
 + (NSString *)impulseClassForTotalImpulse:(float)totalImpulse;
 + (NSArray *)motorDiameters;
 + (RocketMotor *)defaultMotor;  // in the first release this will be the 24mm Estes D12

@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *cdLabel;
 @property (weak, nonatomic) IBOutlet UILabel *windDirectionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *altitudeLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (strong, nonatomic) id iCloudObserver;
 
 @end
@@ -54,10 +55,13 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+
 - (IBAction)calculateNewCd:(id)sender {
     if ([self.actualAltitudeField.text floatValue] == 0.0) return;
     float initialGuess = [self.cdEstimateField.text floatValue];
     __block Rocket *tempRocket = [self.rocket copy];
+    [tempRocket replaceMotorLoadOutWithLoadOut:self.physicsModel.rocket.motorLoadoutPlist];
     tempRocket.cd = initialGuess;
     self.physicsModel.rocket = tempRocket;
     
@@ -163,6 +167,7 @@
     self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [SLUnitsConvertor displayUnitsOf:self.physicsModel.fastApogee forKey:ALT_UNIT_KEY], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
     self.cdEstimateField.delegate = self;
     self.actualAltitudeField.delegate = self;
+    if (![self.physicsModel.rocket.motors count]) [self.saveButton setEnabled:NO];
     
     //This is my first ever attempt at registering for a notification.  And I'm using a BLOCK!  I must be nuts.
     self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){

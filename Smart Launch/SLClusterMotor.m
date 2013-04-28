@@ -7,197 +7,130 @@
 //
 
 #import "SLClusterMotor.h"
+#import "RocketMotor.h"
 
 
 @interface SLClusterMotor()
 
-@property (nonatomic, strong) NSMutableArray *privateMotors;    // array of RocketMotor * with startDelays (copies of motors added)
+@property (nonatomic, strong) NSArray *motorLoadout;
+@property (nonatomic, strong) NSMutableArray *motors;    // array of RocketMotor * with startDelays
+@property (nonatomic, strong) NSString *fractionalImpulseDisplay;
 
 @end
 
 @implementation SLClusterMotor
 
--(NSArray *)motors{
-    return [self.privateMotors copy];
+-(NSUInteger)motorCount{
+    return [self.motors count];
 }
 
--(NSMutableArray *)privateMotors{
-    if (!_privateMotors){
-        _privateMotors = [NSMutableArray array];
+-(NSMutableArray *)motors{
+    if (!_motors){
+        _motors = [NSMutableArray array];
     }
-    return _privateMotors;
+    return _motors;
 }
 
--(void)replaceClusterMotorsWithMotors:(NSArray *)motors{
-    [self.privateMotors removeAllObjects];
-    // perform a deep copy of the passed in list
-    for (RocketMotor *motor in motors) {
-        [self.privateMotors addObject:[motor copy]];
+-(float)propellantMass{
+    float totalMass = 0.0;
+    for (RocketMotor *motor in self.motors){
+        totalMass += motor.propellantMass;
     }
-    
+    return totalMass;
 }
 
--(float)timeToFirstBurnout{
-    float time = 0.0;
-    float burnout = self.totalBurnLength;
-    while (time < burnout) {
-        time += 0.02;
-        if (![self thrustAtTime:time]) break;
+-(float)totalImpulse{
+    float impulse = 0.0;
+    for (RocketMotor *motor in self.motors){
+        impulse += motor.totalImpulse;
     }
-    return time;
+    return impulse;
 }
 
-#pragma mark - Override superclass methods
-
--(float)thrustAtTime:(float)time{
-    if ([self.privateMotors count] == 1) return [self.privateMotors[0] thrustAtTime:time];
-    float thrust = 0.0;
-    for (RocketMotor *motor in self.privateMotors){
-        thrust += [motor thrustAtTime:time];    // the RocketMotor instance method already adjusts for startDelay
+-(float)totalBurnLength{
+    float burntime = 0.0;
+    for (RocketMotor *motor in self.motors) {
+        if (motor.burnoutTime > burntime) burntime = motor.burnoutTime;
     }
-    return thrust;
-}
-
--(float)massAtTime:(float)time{
-    if ([self.privateMotors count] == 1) return [self.privateMotors[0] massAtTime:time];
-    float mass = 0.0;
-    for (RocketMotor *motor in self.privateMotors){
-        mass += [motor massAtTime:time];        // the RocketMotor instance method already adjusts for startDelay
-    }
-    return mass;
+    return burntime;
 }
 
 -(NSString *)impulseClass{
     return [RocketMotor impulseClassForTotalImpulse:self.totalImpulse];
 }
 
--(float)propellantMass{
-    float totalMass = 0.0;
-    for (RocketMotor *motor in self.privateMotors){
-        totalMass += motor.propellantMass;
-    }
-    return totalMass;
+-(float)fractionOfImpulseClass{
+    int classIndex = 0;
+    float impulse = self.totalImpulse;
+    if (impulse < [[RocketMotor impulseLimits][classIndex] floatValue]) return impulse/[[RocketMotor impulseLimits][classIndex] floatValue];
+    while (impulse > [[RocketMotor impulseLimits][classIndex] floatValue]) {
+        classIndex++;
+        if (classIndex == [[RocketMotor impulseClasses] count]) return 1.0;  // protects against overflow
+    }   //now the classIndex points to the class ABOVE our class
+    float prevLimit = [[RocketMotor impulseLimits][classIndex-1] floatValue];
+    return (impulse - prevLimit)/prevLimit;   // this won't underflow because of the third line
 }
 
--(float)loadedMass{
-    float totalMass = 0.0;
-    for (RocketMotor *motor in self.privateMotors){
-        totalMass += motor.loadedMass;
+
+-(NSString *)fractionalImpulseClass{
+    if (!_fractionalImpulseDisplay){
+        _fractionalImpulseDisplay = [NSString stringWithFormat:@"%1.0f%% %@", [self fractionOfImpulseClass] * 100, self.impulseClass];
     }
-    return totalMass;
+    return self.fractionalImpulseDisplay;
 }
 
--(float)peakThrust{
-#define TIME_STOP 0.5
-#define TIME_SLICE 0.002
-    //I am going to run a little coarsely through the first 500 msec of thrust to find the peak of the combined thrust.
-    float peak = 0.0;
-    float timeIndex = 0.0;
-    while (timeIndex < TIME_STOP) {
-        float thrust = [self thrustAtTime:timeIndex];
-        if (thrust > peak){
-            peak = thrust;
-            timeIndex += TIME_SLICE;
-        }else{
-            break;
+-(NSString *)longDescription{
+    NSString *disp = @"";
+    if ([self.motorLoadout count]){
+        NSDictionary *dict = self.motorLoadout[0];
+        NSUInteger count = [dict[MOTOR_COUNT_KEY] integerValue];
+        NSDictionary *motorDict = dict[MOTOR_PLIST_KEY];
+        disp = [NSString stringWithFormat:@"%d %@'s", count, motorDict[NAME_KEY]];
+    }
+    if ([self.motorLoadout count] > 1){
+        for (int i = 1; i < [self.motorLoadout count]; i++) {
+            NSDictionary *dict = self.motorLoadout[i];
+            NSUInteger count = [dict[MOTOR_COUNT_KEY] integerValue];
+            NSDictionary *motorDict = dict[MOTOR_PLIST_KEY];
+            disp = [disp stringByAppendingString:[NSString stringWithFormat:@", %d %@'s", count, motorDict[NAME_KEY]]];
         }
     }
-    return peak;
-}
-
--(float)totalImpulse{
-    float impulse = 0.0;
-    for (RocketMotor *motor in self.privateMotors){
-        impulse += motor.totalImpulse;
-    }
-    return impulse;
+    return disp;
 }
 
 -(NSString *)description{
-    if (self.name) return self.name;
-    return [NSString stringWithFormat:@"%d %@", [self.privateMotors count], NSLocalizedString(@"motor cluster", @"Like '5 motor cluster'")];
+    return [NSString stringWithFormat:@"%@, %d motors", self.fractionalImpulseClass, [self.motors count]];
 }
 
--(NSString *)manufacturer{
-    //the reason I am returning the manufacturer of the first motor is so that we can see a
-    //manufacturer logo on screen (they are looked up based on this name)
-    if ([self.privateMotors count]){
-        return [(RocketMotor *)(self.privateMotors[0]) manufacturer];
-    }
-    return nil;
-}
 
--(float)length{
-    float maxLength = 0.0;
-    for (RocketMotor *motor in self.privateMotors){
-        if (motor.length > maxLength)
-            maxLength = motor.length;
-    }
-    return maxLength;
-}
-
--(NSArray *)clusterPlistArray{
-    //this for saving in the user defaults and iCloud - this will include the startDelays
-    NSMutableArray *array = [NSMutableArray array];
-    for (RocketMotor *motor in self.privateMotors){
-        NSDictionary *motorDict = [motor motorDict];
-        [array addObject:motorDict];
-    }
-    return [array copy];
-}
 
 // this is the actual designated intializer
 
--(SLClusterMotor *)initWithMotorDictArray:(NSArray *)motorDictArray{
+-(id)initWithMotorLoadout:(NSArray *)motorLoadout{
     if (self){
-        for (NSDictionary *motorDict in motorDictArray){
+        self.motorLoadout = motorLoadout;
+        for (NSDictionary *motorGroup in motorLoadout){
+            NSDictionary *motorDict = motorGroup[MOTOR_PLIST_KEY];
+            NSUInteger count = [motorGroup[MOTOR_COUNT_KEY] integerValue];
             RocketMotor *motor = [RocketMotor motorWithMotorDict:motorDict];
-            [self.privateMotors addObject:motor];
+            for (int i = 0; i < count; i++){
+                [self.motors addObject:motor];
+            }
         }
     }
     return self;
 }
 
-+(SLClusterMotor *)clusterMotorWithMotorDictArray:(NSArray *)motorDictArray{
-    if (!motorDictArray) return nil;
-    return [[SLClusterMotor alloc] initWithMotorDictArray:motorDictArray];
+-(id)copyWithZone:(NSZone *)zone{
+    return [self copy];
 }
 
-+(SLClusterMotor *)clusterMotorWithRocketMotorArray:(NSArray *)motorArray{
-    NSMutableArray *motorDicts = [NSMutableArray array];
-    for (RocketMotor *motor in motorArray) {
-        [motorDicts addObject:[motor motorDict]];
-    }
-    return [[SLClusterMotor alloc] initWithMotorDictArray:motorDicts];
-}
-
-+(SLClusterMotor *)clusterMotorWithRocketMotor:(RocketMotor *)motor{
-    // creates and returns a new SLClusterMotor with a single motor and zero start delay (as all single motors must have)
-    if (![motor isKindOfClass:[RocketMotor class]]) return nil;     //notice that this also accounts for a nil motor passed in
-    motor.startDelay = 0.0;
-    return [[SLClusterMotor alloc] initWithMotorDictArray:@[[motor motorDict]]];
-}
-
-+(SLClusterMotor *)defaultMotor{
-    return [[SLClusterMotor alloc] initWithMotorDictArray:@[[[RocketMotor defaultMotor] motorDict]]];
-}
-
-#pragma mark - Override and nil out methods which do not make sense for a cluster
-
--(NSDictionary *)motorDict{ // replaced by the method clusterPlistArray
-    return nil;
-}
-
--(NSUInteger)diameter{
-    return 0;
-}
-
--(NSArray *)delays{
-    return nil;
+-(id)copy{
+    return self;
 }
 
 -(void)dealloc{
-    _privateMotors = nil;
+    _motors = nil;
 }
 
 @end

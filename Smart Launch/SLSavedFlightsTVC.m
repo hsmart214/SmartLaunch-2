@@ -11,6 +11,7 @@
 #import "SLFlightDataCell.h"
 #import "SLUnitsConvertor.h"
 #import "RocketMotor.h"
+#import "SLClusterMotor.h"
 
 @interface SLSavedFlightsTVC ()
 
@@ -37,6 +38,7 @@
  @0.9144, LAUNCH_GUIDE_LENGTH_KEY,    //36 inches
  @0.0, LAUNCH_ANGLE_KEY,
  @33.0, LAUNCH_ALTITUDE_KEY,          //100 feet
+ @motorLoadoutPlist, SELECTED_MOTOR_KEY,
  nil];
 
  */
@@ -51,45 +53,18 @@
         [self.tableView reloadData];
         return;
     }
-    //NSString *motorName = self.savedFlights[self.selectedFlightRow][FLIGHT_MOTOR_LONGNAME_KEY];
-    //RocketMotor *motor = [self motorNamed:motorName];
-    NSDictionary *motorDict = settings[SELECTED_MOTOR_KEY];
-    if (!motorDict) return;
-    
     [self.simDelegate sender:self didChangeRocket:self.rocket];
-    [self.simDelegate sender:self didChangeRocketMotor:@[@{MOTOR_COUNT_KEY: @1,
-             MOTOR_PLIST_KEY: motorDict}]];
+    id motorObject = settings[SELECTED_MOTOR_KEY];
+    if ([motorObject isKindOfClass:[NSDictionary class]]){
+        // It is a single motor
+        [self.simDelegate sender:self didChangeRocketMotor:@[@{MOTOR_COUNT_KEY: @1,
+             MOTOR_PLIST_KEY: motorObject}]];
+    }else if([motorObject isKindOfClass:[NSArray class]]){
+        // It is a cluster plist array
+        [self.simDelegate sender:self didChangeRocketMotor: motorObject];
+    }
     [self.simDelegate sender:self didChangeSimSettings:settings withUpdate:YES];
 }
-
-//-(RocketMotor *)motorNamed:(NSString *)name{
-//    if (!name) return nil; // this would mean the flight was saved in a previous version so the full name was not saved
-//
-//    NSDictionary *allMotorsDictionary;
-//    NSArray *allMotors;
-//    NSDictionary *motorDict;
-//    NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
-//    NSURL *motorHashFileURL = [cacheURL URLByAppendingPathComponent:EVERY_MOTOR_HASHTABLE_CACHE_FILENAME];
-//    NSURL *motorFileURL = [cacheURL URLByAppendingPathComponent:EVERY_MOTOR_CACHE_FILENAME];
-//    if ([[NSFileManager defaultManager]fileExistsAtPath:[motorHashFileURL path]]){
-//        allMotorsDictionary = [NSDictionary dictionaryWithContentsOfURL:motorHashFileURL];
-//        motorDict = allMotorsDictionary[name];
-//    // that would be fairly fast, on the other hand this will be slow
-//    // but this should only happen if they have not regenerated their caches since their upgrade
-//    }else if ([[NSFileManager defaultManager]fileExistsAtPath:[motorFileURL path]]){
-//        allMotors = [NSArray arrayWithContentsOfURL:motorFileURL];
-//        for (NSDictionary *dict in allMotors){
-//            NSString *motorName = [NSString stringWithFormat:@"%@ %@", dict[MAN_KEY], dict[NAME_KEY]];
-//            if ([motorName isEqualToString:name]){
-//                motorDict = dict;
-//                break;
-//            }
-//        }
-//    }else{
-//        return nil; // this is if there are no cache files at all.  Carry on like nothing happened.
-//    }
-//    return [RocketMotor motorWithMotorDict:motorDict];
-//}
 
 #pragma mark - Target action
 
@@ -120,15 +95,32 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SLFlightDataCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SavedFlightCell" forIndexPath:indexPath];
-    
-    if (!cell){
-        cell = [[SLFlightDataCell alloc] init];
+    // find out if the saved record is an old one - pre-clusters
+    // the settings has a complete motorPlist stashed away in it in SELECTED_MOTOR_KEY
+    // if the version is 1.5 or higher, this will be an NSArray rather than a motorDict
+    // versions 1.4 and previous did not have a SMART_LAUNCH_VERSION_KEY key at all, so it will be nil
+    NSDictionary *flight = self.savedFlights[indexPath.row];
+    NSString *motorName;
+    if (flight[SMART_LAUNCH_VERSION_KEY]){
+        NSUInteger totalMotors = 0;
+        for (NSDictionary *dict in flight[FLIGHT_SETTINGS_KEY][SELECTED_MOTOR_KEY]) {
+            totalMotors += [dict[MOTOR_COUNT_KEY] integerValue];
+        }
+        if (totalMotors == 1) {
+            motorName = flight[MOTOR_PLIST_KEY][0][MOTOR_PLIST_KEY][NAME_KEY];
+        }else{
+            // must be a cluster - no flight can be saved with 0 motors!
+            SLClusterMotor *cMotor = [[SLClusterMotor alloc] initWithMotorLoadout:flight[MOTOR_PLIST_KEY]];
+            motorName = [cMotor description];
+        }
+        
+    }else{
+        motorName = flight[FLIGHT_MOTOR_KEY];
     }
-    
-    cell.motorName.text = self.savedFlights[indexPath.row][FLIGHT_MOTOR_KEY];
-    cell.cd.text = [NSString stringWithFormat:@"%1.2f", [self.savedFlights[indexPath.row][FLIGHT_BEST_CD] floatValue]];
+    cell.motorName.text = motorName;
+    cell.cd.text = [NSString stringWithFormat:@"%1.2f", [flight[FLIGHT_BEST_CD] floatValue]];
     cell.altitudeUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
-    float alt = [self.savedFlights[indexPath.row][FLIGHT_ALTITUDE_KEY] floatValue];
+    float alt = [flight[FLIGHT_ALTITUDE_KEY] floatValue];
     alt = [SLUnitsConvertor displayUnitsOf:alt forKey:ALT_UNIT_KEY];
     cell.altitude.text = [NSString stringWithFormat:@"%1.0f", alt];
     if (self.selectedFlightRow == indexPath.row){

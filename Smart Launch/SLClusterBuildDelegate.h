@@ -11,6 +11,8 @@
 @protocol SLClusterBuildDelegate <NSObject>
 
 -(void)changeDelayTimeTo:(float)delay forGroupAtIndex:(NSUInteger)index;
+-(void)replaceMotorLoadoutPlist:(NSArray *)motorLoadoutPlist;
+-(void)deleteSavedMotorLoadoutAtIndex:(NSUInteger)index;
 
 @end
 
@@ -18,8 +20,7 @@
 
 @property (nonatomic, readonly) NSUInteger selectedGroupIndex;
 @property (nonatomic, strong) NSArray *motorConfiguration;      // array of NSDictionary * {count, diam}
-
--(NSArray *)burnoutTimes;
+@property (nonatomic, strong) NSArray *savedMotorLoadoutPlists;
 
 @end
 

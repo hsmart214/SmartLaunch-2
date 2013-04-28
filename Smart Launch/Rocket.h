@@ -19,6 +19,7 @@
 - (float)burnoutTime;
 - (float)burnoutMass;
 - (float)peakThrust;
+- (float)maximumThrust;
 @property (nonatomic, readonly) NSArray *burnoutTimes;
 
 @end
@@ -35,12 +36,14 @@
 @property (nonatomic, strong) NSString * kitName;       //manufacturer's name for the kit
 @property (nonatomic, strong) NSString * manufacturer;  //company that made the kit (if any)
 @property (nonatomic, strong) NSArray *recordedFlights; //array of NSDictionary* plists of flight information
-@property (nonatomic) NSArray *motorConfig;        //only available in v1.5 or later - may indicate single motor mount (default)
+@property (nonatomic, strong) NSArray *motorConfig;        //only available in v1.5 or later - may indicate single motor mount (default)
 @property (nonatomic, readonly) float version;
-@property (readonly) NSString *motorManufacturer;
-@property (readonly) NSString *impulseClass;
-@property (readonly) NSArray *motors;
-@property (readonly) NSString *motorDescription;
+@property (nonatomic, readonly) NSString *motorManufacturer;
+@property (nonatomic, readonly) NSString *impulseClass;
+@property (nonatomic, readonly) NSArray *motors;
+@property (nonatomic, readonly) NSString *motorDescription;
+@property (nonatomic, readonly) BOOL hasClusterMount;
+@property (nonatomic, strong, readonly) NSArray *previousLoadOuts;
 
 -(NSDictionary *)rocketPropertyList;
 -(NSArray *)motorLoadoutPlist;

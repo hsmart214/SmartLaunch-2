@@ -19,9 +19,9 @@
 #define FLIGHT_PROFILE_ROW 5
 #define MOTOR_SELECTION_ROW 1
 
-@interface SLTableViewController ()<SLMotorPickerDatasource, SLClusterListDelegate>
+@interface SLTableViewController ()<SLMotorPickerDatasource>
 @property (weak, nonatomic) IBOutlet UITableViewCell *rocketCell;
-//@property (weak, nonatomic) IBOutlet UITableViewCell *motorCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *motorCell;
 @property (weak, nonatomic) IBOutlet UIButton *windDirectionButton;
 @property (weak, nonatomic) IBOutlet UILabel *launchAngleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ffAngleOfAttackLabel;
@@ -37,7 +37,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *motorNameLabel;
 
 @property (strong, nonatomic) Rocket *rocket;
-//@property (strong, nonatomic) RocketMotor *motor;
 @property (strong, nonatomic) SLPhysicsModel *model;
 @property (strong, nonatomic) NSMutableDictionary *settings;
 @property (atomic) BOOL simRunning;
@@ -63,22 +62,6 @@
     return _rocket;
 }
 
-//- (RocketMotor *)motor{
-//    if (!_motor){
-//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//        NSDictionary *motorDict = [defaults objectForKey:SELECTED_MOTOR_KEY];
-//        if (motorDict){
-//            _motor = [RocketMotor motorWithMotorDict:motorDict];
-//        }else{
-//            // no selected motor.  this should only happen on the first start-up
-//            _motor = [RocketMotor defaultMotor];
-//            [defaults setObject:[_motor motorDict] forKey:SELECTED_MOTOR_KEY];
-//            [defaults synchronize];
-//        }
-//    }
-//    return _motor;
-//}
-
 - (void)defaultStoreWithKey:(NSString *)key
                    andValue:(id)value{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -103,7 +86,7 @@
                      @0.0, LAUNCH_ANGLE_KEY,
                      @33.0, LAUNCH_ALTITUDE_KEY,          //100 feet
                      [self.rocket rocketPropertyList], SELECTED_ROCKET_KEY,
-//                     [self.motor motorDict], SELECTED_MOTOR_KEY,
+                     [self.rocket motorLoadoutPlist], SELECTED_MOTOR_KEY,
                      nil];
         [self defaultStoreWithKey:SETTINGS_KEY andValue:_settings];
         // If this is the first run we also need to set the standard defaults
@@ -165,8 +148,8 @@
     }
 }
 
--(void)changedClusterMotor:(NSArray *)clusterPlist sender:(id)sender{
-    [self.rocket replaceMotorLoadOutWithLoadOut:clusterPlist];
+-(BOOL)shouldAllowSimulationUpdates{
+    return !self.simRunning;
 }
 
 #pragma mark - Smart Launch
@@ -194,13 +177,7 @@
     self.thrustToWeightLabel.text = [NSString stringWithFormat:@"%1.1f : 1", ([self.rocket peakThrust])/(([self.rocket massAtTime:0.0])*(GRAV_ACCEL))];
     self.rocketCell.textLabel.text = self.rocket.name;
     self.rocketCell.detailTextLabel.text = [NSString stringWithFormat:@"%dmm", self.rocket.motorSize];
-    self.motorNameLabel.text = [self.rocket description];
-    NSString *motorDescription;
-    if ([self.rocket.motors count] == 1) {
-        motorDescription = [self.rocket.motors[0] description];
-    }else{
-        motorDescription = [NSLocalizedString(@"Complex ", @"that is, a complex motor") stringByAppendingString:self.rocket.impulseClass];
-    }
+    self.motorNameLabel.text = [self.rocket motorDescription];
     self.motorDetailDescriptionLabel.text =[NSString stringWithFormat:@"%1.1f Ns", [self.rocket totalImpulse]];
     UIImage *theImage = [UIImage imageNamed:self.rocket.motorManufacturer];
     self.manufacturerLogoView.image = theImage;
@@ -317,6 +294,7 @@
     if ([[segue identifier] isEqualToString:@"motorSelectorSegue"]){
         // this is part of the model for this destination VC, so we can set this
         [(SLMotorSearchViewController *)segue.destinationViewController setDataSource:self];
+        [(SLMotorSearchViewController *)segue.destinationViewController setPopBackController:self];
     }
     if ([[segue identifier] isEqualToString:@"AnimationSegue"]){
         [segue.destinationViewController setDelegate:self];
@@ -337,9 +315,11 @@
         [(SLFlightProfileViewController *)segue.destinationViewController setDataSource:self.model];
     }
     if ([[segue identifier] isEqualToString:@"clusterBuildSegue"]){
-        [(SLClusterMotorBuildViewController *)segue.destinationViewController setDelegate:self];
+        [(SLClusterMotorBuildViewController *)segue.destinationViewController setSimDelegate:self];
+        [(SLClusterMotorBuildViewController *)segue.destinationViewController setSimDatasource:self];
         [(SLClusterMotorBuildViewController *)segue.destinationViewController setMotorConfiguration:self.rocket.motorConfig];
-        [(SLClusterMotorBuildViewController *)segue.destinationViewController setMotorLoadoutPlist:self.rocket.motorLoadoutPlist];
+        [(SLClusterMotorBuildViewController *)segue.destinationViewController setMotorLoadoutPlist:[self.rocket motorLoadoutPlist]];
+        [(SLClusterMotorBuildViewController *)segue.destinationViewController setSavedMotorLoadoutPlists:[self.rocket previousLoadOuts]];
     }
 }
 
@@ -355,6 +335,13 @@
             return;
         }else{
             [self performSegueWithIdentifier:@"FlightProfileSegue" sender:self];
+        }
+    }
+    if (indexPath.section == 0 && indexPath.row == MOTOR_SELECTION_ROW){
+        if (self.rocket.hasClusterMount){
+            [self performSegueWithIdentifier:@"clusterBuildSegue" sender:self];
+        }else{
+            [self performSegueWithIdentifier:@"motorSelectorSegue" sender:self];
         }
     }
 }

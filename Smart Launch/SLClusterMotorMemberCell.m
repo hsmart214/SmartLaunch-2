@@ -11,17 +11,20 @@
 @implementation SLClusterMotorMemberCell
 
 - (IBAction)delayTimeChanged:(UIStepper *)sender {
-    self.delayTextLabel.text = [NSString stringWithFormat:@"Ignition Delay %1.1f sec", [sender value]];
-    [self updateStartDelay];
+    if ([self.delegate allowsSimulationUpdates]){
+        self.delayTextLabel.text = [NSString stringWithFormat:@"Delay %1.1f sec", [sender value]];
+        self.oldStartDelayValue = sender.value;
+        [self.delegate SLClusterMotorMemberCell:self didChangeStartDelay:[self.delayTimeStepper value]];
+        [self updateStartDelay];
+    }else{
+        [sender setValue: self.oldStartDelayValue];
+    }
 }
 
-- (IBAction)delayBasisChanged:(UISegmentedControl *)sender {
-    [self updateStartDelay];
-}
 
 -(void)updateStartDelay{
     float time = [self.delayTimeStepper value];
-    [self.delegate SLClusterMotorMemberCell:self didChangeStartDelay:time fromBurnout:(BOOL)self.delayBasisSelector.selectedSegmentIndex];
+    [self.delegate SLClusterMotorMemberCell:self didChangeStartDelay:time];
 }
 
 @end

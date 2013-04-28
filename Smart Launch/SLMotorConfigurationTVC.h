@@ -24,7 +24,7 @@
 
 @interface SLMotorConfigurationTVC : UITableViewController
 
-@property (nonatomic, weak) id<SLMotorConfigurationDelegate> delegate;
-@property (nonatomic, weak) id<SLMotorConfigurationDataSource> datasource;
+@property (nonatomic, weak) id<SLMotorConfigurationDelegate> configDelegate;
+@property (nonatomic, weak) id<SLMotorConfigurationDataSource> configDatasource;
 
 @end

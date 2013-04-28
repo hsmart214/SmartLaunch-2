@@ -11,10 +11,15 @@
 #import "SLClusterMotor.h"
 #import "SLSimulationDelegate.h"
 
-@interface SLClusterMotorBuildViewController : UITableViewController<SLSimulationDelegate>
+@interface SLClusterMotorBuildViewController : UITableViewController<SLSimulationDelegate, SLClusterBuildDelegate, SLClusterBuildDatasource>
 
-@property (nonatomic, weak) id<SLClusterListDelegate> delegate;
+@property (nonatomic, weak) id delegate;
+@property (nonatomic, weak) id<SLSimulationDelegate> simDelegate;
+@property (nonatomic, weak) id<SLSimulationDataSource>simDatasource;
 @property (nonatomic, strong) NSArray *motorLoadoutPlist;           // array of NSDictionary * {count, motorDict}
-@property (nonatomic, strong)NSArray *motorConfiguration;
+@property (nonatomic, strong) NSArray *motorConfiguration;          // array of NSDictionary * {count, motor diameter}
+@property (nonatomic, strong) NSArray *savedMotorLoadoutPlists;
+
+@property (nonatomic) NSUInteger selectedGroupIndex;
 
 @end

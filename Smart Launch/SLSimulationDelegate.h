@@ -19,6 +19,7 @@
 -(void)sender:(id)sender didChangeRocketMotor:(NSArray *)motorPlist;
 -(void)didChangeUnitPrefs:(id)sender;
 -(void)dismissModalViewController;
+-(BOOL)shouldAllowSimulationUpdates;
 
 @end
 

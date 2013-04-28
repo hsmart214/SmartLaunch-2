@@ -16,7 +16,6 @@
 #import "SLMotorConfigurationTVC.h"
 
 #define DELETE_BUTTON_INDEX 2
-#define CLUSTER_SELECTOR_ROW 6
 
 @interface SLRocketPropertiesTVC ()<UIScrollViewDelegate, UIActionSheetDelegate, UITableViewDelegate, SLMotorConfigurationDataSource, SLMotorConfigurationDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -26,12 +25,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *diamField;
 @property (weak, nonatomic) IBOutlet UITextField *lenField;
 @property (weak, nonatomic) IBOutlet UITextField *cdField;
-@property (weak, nonatomic) IBOutlet UILabel *motorDiamLabel;
 // These labels set according to the units prefs
 @property (weak, nonatomic) IBOutlet UILabel *massUnitsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *diamUnitsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lenUnitsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *motorDiamUnitsLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) UIScrollView *scrollView;
@@ -39,10 +36,7 @@
 @property (nonatomic, strong) Rocket *oldRocket;
 @property (nonatomic, strong, readonly) NSArray *validMotorDiameters;
 @property (weak, nonatomic) IBOutlet UILabel *calculatedCdLabel;
-@property (weak, nonatomic) IBOutlet UIStepper *motorDiamStepper;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *calcCdButton;
-@property (weak, nonatomic) IBOutlet UISwitch *clusterSwitch;
-@property (weak, nonatomic) IBOutlet UILabel *clusterLabel;
 @property (weak, nonatomic) IBOutlet UILabel *motorConfigLabel;
 @property (nonatomic, strong) id iCloudObserver;
 @property (nonatomic, strong) NSArray *motorConfiguration;
@@ -51,9 +45,9 @@
 
 @implementation SLRocketPropertiesTVC
 
-- (NSArray *)validMotorDiameters{
-    return @[@6, @13, @18, @24, @29, @38, @54, @66, @75, @98, @150];
-}
+//- (NSArray *)validMotorDiameters{
+//    return @[@6, @13, @18, @24, @29, @38, @54, @66, @75, @98, @150];
+//}
 
 - (BOOL)isValidRocket{
     BOOL valid = YES;
@@ -74,9 +68,7 @@
     self.rocket.diameter = [SLUnitsConvertor metricStandardOf:fabsf([self.diamField.text floatValue]) forKey:DIAM_UNIT_KEY];
     self.rocket.length = [SLUnitsConvertor metricStandardOf:fabsf([self.lenField.text floatValue]) forKey:LENGTH_UNIT_KEY];
     self.rocket.cd = fabsf([self.cdField.text floatValue]);
-    NSInteger motorDiam = [self.motorDiamLabel.text integerValue];
-    if ([self.clusterSwitch isOn]) motorDiam *= -1;
-    self.rocket.motorSize = motorDiam;
+    self.rocket.motorConfig = self.motorConfiguration;
     [self.saveButton setEnabled:[self isValidRocket]];
 }
 
@@ -108,8 +100,20 @@
     temp = [SLUnitsConvertor displayUnitsOf:self.rocket.length forKey:LENGTH_UNIT_KEY];
     if  (temp > 0.0) self.lenField.text = [NSString stringWithFormat:@"%2.2f", temp];
     self.cdField.text = [NSString stringWithFormat:@"%2.2f", self.rocket.cd];
-    self.motorDiamLabel.text = [NSString stringWithFormat:@"%d", self.rocket.motorSize];
-    self.motorDiamStepper.value = self.rocket.motorSize;
+    self.motorConfiguration = self.rocket.motorConfig;
+    if ([self.motorConfiguration count]) {
+        NSUInteger motorTotalCount = 0;
+        for (NSDictionary *dict in self.motorConfiguration) {
+            motorTotalCount += [dict[MOTOR_COUNT_KEY] integerValue];
+        }
+        if (motorTotalCount == 1){
+            NSUInteger motorSize = [self.motorConfiguration[0][MOTOR_DIAM_KEY] integerValue];
+            self.motorConfigLabel.text = [NSString stringWithFormat:@"%d mm", motorSize];
+        }else{
+            self.motorConfigLabel.text = [NSString stringWithFormat:@"%d motors", motorTotalCount];
+        }
+        
+    }
     [self calculateCd];
     [self.saveButton setEnabled:[self isValidRocket]];
 }
@@ -122,8 +126,6 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
     if (!_rocket){
         _rocket = [[Rocket alloc] init];
-        self.motorDiamStepper.value = [self.motorDiamStepper minimumValue];
-        self.motorDiamLabel.text = [NSString stringWithFormat:@"%1.0f", self.motorDiamStepper.value];
         _rocket.motorSize = 6;
     }else {
         self.oldRocket = [self.rocket copy];    // in case we need to delete this Rocket* later
@@ -141,7 +143,6 @@
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO animated:animated];
     // set up the unit labels based on user preferences
-    self.motorDiamUnitsLabel.text = [SLUnitsConvertor displayStringForKey:MOTOR_SIZE_UNIT_KEY];
     self.massUnitsLabel.text = [SLUnitsConvertor displayStringForKey:MASS_UNIT_KEY];
     self.lenUnitsLabel.text = [SLUnitsConvertor displayStringForKey:LENGTH_UNIT_KEY];
     self.diamUnitsLabel.text = [SLUnitsConvertor displayStringForKey:DIAM_UNIT_KEY];
@@ -201,32 +202,6 @@
 
 #pragma mark - Interface methods
 
-- (IBAction)motorDiameterChanged:(UIStepper *)sender {
-    NSInteger mmt = [self.motorDiamLabel.text integerValue];
-    float direction = sender.value - mmt;
-    NSInteger newSize = 0;
-    if (direction > 0){
-        // increment motor size to next larger valid size
-        for (int i=0; i < [self.validMotorDiameters count]; i++){
-            if ([(self.validMotorDiameters)[i] integerValue] == mmt){
-                newSize = [(self.validMotorDiameters)[i+1] integerValue];
-                break;
-            }
-        }
-    }else{
-        // decrement motor size to next smaller valid size
-        for (int i=0; i < [self.validMotorDiameters count]; i++){
-            if ([(self.validMotorDiameters)[i] integerValue] == mmt){
-                newSize = [(self.validMotorDiameters)[i-1] integerValue];
-                break;
-            }
-        }
-    }
-    [sender setValue: newSize];
-    self.motorDiamLabel.text = [NSString stringWithFormat:@"%d", newSize];
-    [self updateRocket];
-}
-
 - (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
     if (self.oldRocket.name && ![self.rocket.name isEqualToString:self.oldRocket.name]){
         [self.delegate SLRocketPropertiesTVC:self deletedRocket:self.oldRocket];
@@ -269,6 +244,7 @@
 
 -(void)SLMotorConfigurationTVC:(SLMotorConfigurationTVC *)sender didChangeMotorConfiguration:(NSArray *)configuration{
     self.motorConfiguration = configuration;
+    [self updateRocket];
 }
 
 #pragma mark - prepareForSegue
@@ -281,8 +257,8 @@
     }
     if ([segue.identifier isEqualToString:@"motorConfigurationSegue"]){
         //become the destinations delegate and datasource
-        [(SLMotorConfigurationTVC *)segue.destinationViewController setDelegate:self];
-        [(SLMotorConfigurationTVC *)segue.destinationViewController setDatasource:self];
+        [(SLMotorConfigurationTVC *)segue.destinationViewController setConfigDelegate:self];
+        [(SLMotorConfigurationTVC *)segue.destinationViewController setConfigDatasource:self];
     }
 }
 

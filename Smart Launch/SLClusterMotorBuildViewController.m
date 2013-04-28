@@ -12,28 +12,115 @@
 #import "SLSimulationDelegate.h"
 #import "SLClusterMotorMemberCell.h"
 
-@interface SLClusterMotorBuildViewController ()<SLMotorPickerDatasource, SLSimulationDelegate, SLMotorGroupDelegate>
-
-@property (nonatomic, readwrite) NSUInteger selectedMotorIndex;
+@interface SLClusterMotorBuildViewController ()<SLMotorPickerDatasource, SLMotorGroupDelegate>
 
 @end
 
 @implementation SLClusterMotorBuildViewController
 
+@synthesize selectedGroupIndex = _selectedGroupIndex;
+@synthesize motorConfiguration = _motorConfiguration;
+@synthesize savedMotorLoadoutPlists = _savedMotorLoadoutPlists;
+@synthesize motorLoadoutPlist = _motorLoadoutPlist;
+
+-(NSArray *)motorLoadoutPlist{
+    if (!_motorLoadoutPlist) {
+        {NSMutableArray *arr = [NSMutableArray array];
+            for (int i = 0; i < [self.motorConfiguration count]; i++) {
+                [arr addObject:@{MOTOR_COUNT_KEY: self.motorConfiguration[i][MOTOR_COUNT_KEY]}];
+            }
+            _motorLoadoutPlist = [arr copy];
+        }
+    }
+    return _motorLoadoutPlist;
+}
+
+-(void)setMotorLoadoutPlist:(NSArray *)motorLoadoutPlist{
+    _motorLoadoutPlist = motorLoadoutPlist;
+    int diff = [self.motorConfiguration count] - [motorLoadoutPlist count];
+    if (diff > 0){
+        NSMutableArray *arr = [motorLoadoutPlist mutableCopy];
+        for (int i = 0; i < diff; i++){
+            [arr addObject:@{}];
+        }
+        _motorLoadoutPlist = [arr copy];
+    }
+}
+
+#pragma mark - SLClusterBuildDelegate/Datasource methods
+
+-(void)changeDelayTimeTo:(float)delay forGroupAtIndex:(NSUInteger)index{
+    NSMutableDictionary *motorDict = [self.motorLoadoutPlist[index][MOTOR_PLIST_KEY] mutableCopy];
+    NSNumber *count = self.motorLoadoutPlist[index][MOTOR_COUNT_KEY];
+    motorDict[CLUSTER_START_DELAY_KEY] = @(delay);
+    NSMutableArray *arr = [self.motorLoadoutPlist mutableCopy];
+    [arr replaceObjectAtIndex:index withObject:@{MOTOR_COUNT_KEY: count,
+                                                 MOTOR_PLIST_KEY: motorDict}];
+    self.motorLoadoutPlist = [arr copy];
+    [self.tableView reloadData];
+    if (self.splitViewController){
+        [self.simDelegate sender:self didChangeRocketMotor:self.motorLoadoutPlist];
+        NSDictionary *settings = [self.simDatasource simulationSettings];
+        [self.simDelegate sender:self didChangeSimSettings:settings withUpdate:YES];
+    }
+}
+
+-(void)replaceMotorLoadoutPlist:(NSArray *)motorLoadoutPlist{
+    self.motorLoadoutPlist = motorLoadoutPlist;
+    [self.simDelegate sender:self didChangeRocketMotor:self.motorLoadoutPlist];
+}
+
+-(void)deleteSavedMotorLoadoutAtIndex:(NSUInteger)index{
+    NSMutableArray *arr = [self.savedMotorLoadoutPlists mutableCopy];
+    [arr removeObjectAtIndex:index];
+    self.savedMotorLoadoutPlists = [arr copy];
+}
+
+
 #pragma mark - SLSimulationDelegate method
 
 -(void)sender:(id)sender didChangeRocketMotor:(NSArray *)motor{
     if (![motor count]) return;
-    NSMutableDictionary *dict = motor[0];
-    dict[MOTOR_COUNT_KEY] = self.motorConfiguration[self.selectedMotorIndex][MOTOR_COUNT_KEY];
+    NSMutableDictionary *dict = [motor[0] mutableCopy];
+    dict[MOTOR_COUNT_KEY] = self.motorConfiguration[self.selectedGroupIndex][MOTOR_COUNT_KEY];
+    NSMutableArray *arr = [self.motorLoadoutPlist mutableCopy];
+    if (!self.selectedGroupIndex && ![arr count]){
+        [arr addObject:dict];
+    }else{
+        [arr replaceObjectAtIndex:self.selectedGroupIndex withObject:dict];
+    }
+    self.motorLoadoutPlist = [arr copy];
+    [self.tableView reloadData];
+    if (self.splitViewController){
+        [self.simDelegate sender:self didChangeRocketMotor:self.motorLoadoutPlist];
+        NSDictionary *settings = [self.simDatasource simulationSettings];
+        [self.simDelegate sender:self didChangeSimSettings:settings withUpdate:YES];
+    }
 }
 
 -(NSUInteger)motorSizeRequested{
-    return [self.motorConfiguration[self.selectedMotorIndex][MOTOR_DIAM_KEY] integerValue];
+    return [self.motorConfiguration[self.selectedGroupIndex][MOTOR_DIAM_KEY] integerValue];
 }
 
--(void)SLClusterMotorMemberCell:(SLClusterMotorMemberCell *)sender didChangeStartDelay:(float)time fromBurnout:(BOOL)fromBurnout{
-    
+-(void)SLClusterMotorMemberCell:(SLClusterMotorMemberCell *)sender didChangeStartDelay:(float)time{
+    NSUInteger row = [self.tableView indexPathForCell:sender].row;
+    RocketMotor *motor = [RocketMotor motorWithMotorDict:self.motorLoadoutPlist[row][MOTOR_PLIST_KEY]];
+    motor.startDelay = time;
+    NSMutableArray *arr = [self.motorLoadoutPlist mutableCopy];
+    NSNumber *count = self.motorLoadoutPlist[row][MOTOR_COUNT_KEY];
+    [arr replaceObjectAtIndex:row withObject:@{MOTOR_COUNT_KEY: count,
+                                              MOTOR_PLIST_KEY: [motor motorDict]}];
+    self.motorLoadoutPlist = [arr copy];
+    [self.tableView reloadData];
+    if (self.splitViewController){
+        [self.simDelegate sender:self didChangeRocketMotor:self.motorLoadoutPlist];
+        NSDictionary *settings = [self.simDatasource simulationSettings];
+        [self.simDelegate sender:self didChangeSimSettings:settings withUpdate:YES];
+    }
+}
+
+-(BOOL)allowsSimulationUpdates{
+    return [self.delegate shouldAllowSimulationUpdates];
 }
 
 #pragma mark - Table view data source
@@ -44,51 +131,39 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0){
-        SLClusterMotorFirstGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ClusterFirstCell"];
-        cell.motorDiameterTextLabel.text = [NSString stringWithFormat:@"%dmm", [self.motorConfiguration[0][MOTOR_DIAM_KEY] integerValue]];
-        if (self.motorLoadoutPlist) {
-            NSDictionary *motorDict = self.motorLoadoutPlist[0][MOTOR_PLIST_KEY];
-            RocketMotor *motor = [RocketMotor motorWithMotorDict:motorDict];
-            NSString *manName = motor.manufacturer;
-            cell.imageView.image = [UIImage imageNamed:manName];
-            cell.motorNameLabel.text = motor.name;
-            cell.motorDetailTextLabel.text = [NSString stringWithFormat:@"%1.1f Ns", [motor totalImpulse]];
-        }else{
-            cell.imageView.image = nil;
-            cell.motorNameLabel.text = NSLocalizedString(@"No Motor Selected", @"No Motor Selected");
-            cell.motorDetailTextLabel.text = @"";
-            cell.motorCountTextLabel = [NSString stringWithFormat:@"x %d", [self.motorConfiguration[0][MOTOR_COUNT_KEY] integerValue]];
-        }
-        return cell;
-    }else{  // must be another row (1, 2, or 3)
-        SLClusterMotorMemberCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ClusterMemberCell"];
-        cell.motorDiameterTextLabel.text = [NSString stringWithFormat:@"%dmm", [self.motorConfiguration[indexPath.row][MOTOR_DIAM_KEY] integerValue]];
-        cell.delegate = self;
-        cell.motorCountTextLabel = [NSString stringWithFormat:@"x %d", [self.motorConfiguration[indexPath.row][MOTOR_COUNT_KEY] integerValue]];
-        [cell.delayBasisSelector setSelectedSegmentIndex:0];
+    SLClusterMotorMemberCell *cell = [tableView dequeueReusableCellWithIdentifier:@"clusterMemberCell"];
+    cell.motorMountSizeLabel.text = [NSString stringWithFormat:@"%dmm", [self.motorConfiguration[indexPath.row][MOTOR_DIAM_KEY] integerValue]];
+    cell.motorCountTextLabel.text = [NSString stringWithFormat:@"x %d", [self.motorConfiguration[indexPath.row][MOTOR_COUNT_KEY] integerValue]];
+    cell.delegate = self;
 
-        // need to check for the existence of motors in the loadout
-        if ([self.motorLoadoutPlist count] > indexPath.row){
-            // we have at least this many loaded groups, so we can load the info
-            NSDictionary *motorDict = self.motorLoadoutPlist[indexPath.row][MOTOR_PLIST_KEY];
-            RocketMotor *motor = [RocketMotor motorWithMotorDict:motorDict];
-            NSString *manName = motor.manufacturer;
-            cell.imageView.image = [UIImage imageNamed:manName];
-            cell.motorNameLabel.text = motor.name;
-            cell.motorDetailTextLabel.text = [NSString stringWithFormat:@"%1.1f Ns", [motor totalImpulse]];
-            cell.delayTextLabel.text = [NSString stringWithFormat:@"Ignition Delay %1.1f sec", motor.startDelay];
-            [cell.delayTimeStepper setValue:motor.startDelay];
-        }else{
-            // load up the empty row so the user can fill it if they like
-            cell.imageView.image = nil;
-            cell.motorNameLabel.text = NSLocalizedString(@"No Motor Selected", @"No Motor Selected");
-            cell.motorDetailTextLabel.text = @"";
-            cell.delayTextLabel.text = @"Ignition Delay 0.0 sec";
-            [cell.delayTimeStepper setValue:0.0];
-        }
-        return cell;
+    // need to check for the existence of motors in the loadout
+    if (self.motorLoadoutPlist[indexPath.row][MOTOR_PLIST_KEY]){
+        // we have at least this many loaded groups, so we can load the info
+        NSDictionary *motorDict = self.motorLoadoutPlist[indexPath.row][MOTOR_PLIST_KEY];
+        RocketMotor *motor = [RocketMotor motorWithMotorDict:motorDict];
+        NSString *manName = [motor manufacturer];
+        cell.manufacturerLogoImageView.image = [UIImage imageNamed:manName];
+        cell.motorNameLabel.text = motor.name;
+        cell.motorDetailTextLabel.text = [NSString stringWithFormat:@"%1.1f Ns", [motor totalImpulse]];
+        cell.delayTextLabel.text = [NSString stringWithFormat:@"Delay %1.1f sec", motor.startDelay];
+        [cell.delayTimeStepper setValue:motor.startDelay];
+        cell.oldStartDelayValue = motor.startDelay;
+        [cell.delayTimeStepper setEnabled:YES];
+        float btime = [[motor.times lastObject] floatValue];
+        cell.burnTimeTextLabel.text = [NSString stringWithFormat:@"Burn Length %1.1f sec", btime];
+        cell.burnoutTimeTextLabel.text = [NSString stringWithFormat:@"Burnout Time %1.1f sec", btime + motor.startDelay];
+    }else{
+        // load up the empty row so the user can fill it if they like
+        cell.manufacturerLogoImageView.image = nil;
+        cell.motorNameLabel.text = NSLocalizedString(@"No Motor", @"No Motor Selected");
+        cell.motorDetailTextLabel.text = @"";
+        cell.delayTextLabel.text = @"Delay 0.0 sec";
+        [cell.delayTimeStepper setValue:0.0];
+        cell.oldStartDelayValue = 0.0;
+        [cell.delayTimeStepper setEnabled:NO];
     }
+    return cell;
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -96,7 +171,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
-    self.selectedMotorIndex = indexPath.row;
+    self.selectedGroupIndex = indexPath.row;
     [self performSegueWithIdentifier:@"clusterMemberMotorSearch" sender:indexPath];
 }
 
@@ -108,6 +183,34 @@
         [(SLMotorSearchViewController *)segue.destinationViewController setDelegate:self];
         [(SLMotorSearchViewController *)segue.destinationViewController setPopBackController:self];
     }
+    if ([segue.identifier isEqualToString:@"savedClusterSegue"]){
+        [(SLClusterTableViewController *)segue.destinationViewController setClusterDelegate:self];
+        [(SLClusterTableViewController *)segue.destinationViewController setClusterDatasource:self];
+        [(SLClusterTableViewController *)segue.destinationViewController setMotorLoadouts:self.savedMotorLoadoutPlists];
+    }
+}
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    if (!self.splitViewController){
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
+        self.tableView.backgroundColor = [UIColor clearColor];
+    }else{
+        self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:NO animated:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.simDelegate sender:self didChangeRocketMotor:self.motorLoadoutPlist];
 }
 
 @end

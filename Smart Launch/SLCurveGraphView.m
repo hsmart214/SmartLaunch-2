@@ -10,6 +10,7 @@
 
 #define WIDTH_FRACTION 0.8
 #define SEC_OFFSET 7
+#define MAX_HORIZ_DIVS 20
 
 @interface SLCurveGraphView ()
 
@@ -19,6 +20,7 @@
 @property (nonatomic, strong) NSString *verticalUnits;
 @property (nonatomic, strong) NSString *verticalUnitsFormat;
 @property (nonatomic) NSUInteger verticalDivisions;
+@property (nonatomic) CGFloat hStepSize;                // if the time range is too big, reduce the number of grid lines
 
 @end
 
@@ -69,6 +71,11 @@
     if (_hrange==0.0){
         CGFloat btime = [self.dataSource curveGraphViewTimeValueRange:self];
         _hrange = ceil(btime);
+        if (btime <= MAX_HORIZ_DIVS) {
+            self.hStepSize = 1.0;
+        }else{
+            self.hStepSize = 2.0;
+        }
     }
     return _hrange;
 }
@@ -159,7 +166,7 @@
         CGContextMoveToPoint(context, origin.x+1, origin.y-i*yoffset);
         CGContextAddLineToPoint(context, origin.x+graphWidth, origin.y-i*yoffset);
     }
-    for (int i = 1; i <= floor(self.hrange); i++){
+    for (int i = self.hStepSize; i <= floor(self.hrange); i += self.hStepSize){
         CGContextMoveToPoint(context, origin.x+i*hscale, origin.y-1);
         CGContextAddLineToPoint(context, origin.x+i*hscale, margin);
         NSString *sec = [NSString stringWithFormat:@"%d", i];

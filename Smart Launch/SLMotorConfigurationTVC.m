@@ -166,19 +166,48 @@
         [array addObject:@{MOTOR_COUNT_KEY: @1,
           MOTOR_DIAM_KEY: @([self.centralLabel.text integerValue])}];
     }
-    if ([self.firstGroupSizeLabel.text integerValue]){
+    if ([self.firstGroupCount selectedSegmentIndex]){
         [array addObject:@{MOTOR_COUNT_KEY: @(self.firstGroupCount.selectedSegmentIndex + 1),
                           MOTOR_DIAM_KEY: @([self.firstGroupSizeLabel.text integerValue])}];
     }
-    if ([self.secondGroupSizeLabel.text integerValue]){
+    if ([self.secondGroupCount selectedSegmentIndex]){
         [array addObject:@{MOTOR_COUNT_KEY: @(self.secondGroupCount.selectedSegmentIndex + 1),
           MOTOR_DIAM_KEY: @([self.secondGroupSizeLabel.text integerValue])}];
     }
-    if ([self.thirdGroupSizeLabel.text integerValue]){
+    if ([self.thirdGroupCount selectedSegmentIndex]){
         [array addObject:@{MOTOR_COUNT_KEY: @(self.thirdGroupCount.selectedSegmentIndex + 1),
           MOTOR_DIAM_KEY: @([self.thirdGroupSizeLabel.text integerValue])}];
     }
     self.workingConfiguration = array;
+}
+
+-(void)setUpControls{
+    if ([self.workingConfiguration count]) {
+        NSDictionary *configDict = self.workingConfiguration[0];
+        self.centralLabel.text = [NSString stringWithFormat:@"%dmm", [configDict[MOTOR_DIAM_KEY] integerValue]];
+        [self.centralStepper setValue:[configDict[MOTOR_COUNT_KEY] integerValue]];
+        if ([self.workingConfiguration count] > 1) {
+            configDict = self.workingConfiguration[1];
+            NSUInteger motorCount = [configDict[MOTOR_COUNT_KEY] integerValue];
+            [self.firstGroupCount setSelectedSegmentIndex:motorCount - 1];
+            self.firstGroupSizeLabel.text = [NSString stringWithFormat:@"%dmm", [configDict[MOTOR_DIAM_KEY] integerValue]];
+            [self.firstGroupStepper setValue:motorCount];
+        }
+        if ([self.workingConfiguration count] > 2) {
+            configDict = self.workingConfiguration[2];
+            NSUInteger motorCount = [configDict[MOTOR_COUNT_KEY] integerValue];
+            [self.secondGroupCount setSelectedSegmentIndex:motorCount - 1];
+            self.secondGroupSizeLabel.text = [NSString stringWithFormat:@"%d mm", [configDict[MOTOR_DIAM_KEY] integerValue]];
+            [self.secondGroupStepper setValue:motorCount];
+        }
+        if ([self.workingConfiguration count] > 3) {
+            configDict = self.workingConfiguration[3];
+            NSUInteger motorCount = [configDict[MOTOR_COUNT_KEY] integerValue];
+            [self.thirdGroupCount setSelectedSegmentIndex:motorCount - 1];
+            self.thirdGroupSizeLabel.text = [NSString stringWithFormat:@"%dmm", [configDict[MOTOR_DIAM_KEY] integerValue]];
+            [self.thridGroupStepper setValue:motorCount];
+        }
+    }
 }
 
 -(void)updateDisplay{
@@ -268,7 +297,36 @@
     if (!self.thirdGroupCount.selectedSegmentIndex) [self.thridGroupStepper setEnabled:NO];
 }
 
+#pragma mark - UITableView delegate methods
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return [SLCustomUI headerHeight];
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    NSString *headerText;
+    if (section == 0){
+        headerText = NSLocalizedString(@"Central Motor (if any)", @"Central Motor (if any)");
+    }else{  // must be last section - there are only three
+        headerText = NSLocalizedString(@"Motor Groups (2 or 3 motors each)", @"Motor Groups (2 or 3 motors each)");
+    }
+    UILabel *headerLabel = [[UILabel alloc] init];
+    [headerLabel setTextColor:[SLCustomUI headerTextColor]];
+    [headerLabel setBackgroundColor:self.tableView.backgroundColor];
+    [headerLabel setTextAlignment:NSTextAlignmentCenter];
+    [headerLabel setText:headerText];
+    [headerLabel setFont:[UIFont boldSystemFontOfSize:17.0]];
+    
+    return headerLabel;
+}
+
 #pragma mark - View Life Cycle
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self setUpControls];
+    [self updateDisplay];
+}
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -276,15 +334,14 @@
         [stepper setMaximumValue:(double)[[RocketMotor motorDiameters] count]];
         [stepper setStepValue:1.0];
     }
-    NSArray *motorConfig = [self.datasource currentMotorConfiguration];
+    NSArray *motorConfig = [self.configDatasource currentMotorConfiguration];
     if (motorConfig) self.workingConfiguration = [motorConfig mutableCopy];
     self.oldConfiguration = motorConfig;
-    [self updateDisplay];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.delegate SLMotorConfigurationTVC:self didChangeMotorConfiguration:[self.workingConfiguration copy]];
+    [self.configDelegate SLMotorConfigurationTVC:self didChangeMotorConfiguration:[self.workingConfiguration copy]];
 }
 
 @end;
