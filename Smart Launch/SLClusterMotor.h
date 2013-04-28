@@ -17,6 +17,7 @@
 @property (nonatomic, readonly)NSString *fractionalImpulseClass;
 @property (nonatomic, readonly)NSString *longDescription;
 @property (nonatomic, readonly)NSUInteger motorCount;
+@property (nonatomic, readonly)NSString *firstMotorName;
 
 -(id)initWithMotorLoadout:(NSArray *)motorLoadout;
 

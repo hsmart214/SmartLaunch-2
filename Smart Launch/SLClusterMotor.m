@@ -20,6 +20,12 @@
 
 @implementation SLClusterMotor
 
+-(NSString *)firstMotorName{
+    if (![self.motors count]) return nil;
+    RocketMotor *motor = self.motors[0];
+    return motor.name;
+}
+
 -(NSUInteger)motorCount{
     return [self.motors count];
 }
@@ -85,7 +91,8 @@
         NSDictionary *dict = self.motorLoadout[0];
         NSUInteger count = [dict[MOTOR_COUNT_KEY] integerValue];
         NSDictionary *motorDict = dict[MOTOR_PLIST_KEY];
-        disp = [NSString stringWithFormat:@"%d %@'s", count, motorDict[NAME_KEY]];
+        disp = [NSString stringWithFormat:@"%d %@", count, motorDict[NAME_KEY]];
+        if (count > 1) disp = [disp stringByAppendingString:@"'s"];
     }
     if ([self.motorLoadout count] > 1){
         for (int i = 1; i < [self.motorLoadout count]; i++) {
@@ -99,7 +106,18 @@
 }
 
 -(NSString *)description{
-    return [NSString stringWithFormat:@"%@, %d motors", self.fractionalImpulseClass, [self.motors count]];
+    if (!self.motorCount) return @"No Motors";
+    NSString *descr;
+    for (NSDictionary *dict in self.motorLoadout) {
+        NSDictionary *motorDict = dict[MOTOR_PLIST_KEY];
+        if (!descr){
+            descr = [NSString stringWithFormat:@"%d %@", [dict[MOTOR_COUNT_KEY] integerValue], motorDict[NAME_KEY]];
+            if ([dict[MOTOR_COUNT_KEY] integerValue] > 1) descr = [descr stringByAppendingString:@"'s"];
+        }else{
+            descr = [descr stringByAppendingString:[NSString stringWithFormat:@", %d %@'s", [dict[MOTOR_COUNT_KEY] integerValue], motorDict[NAME_KEY]]];
+        }
+    }
+    return descr;
 }
 
 

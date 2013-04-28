@@ -23,11 +23,15 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ClusterMotorCell" forIndexPath:indexPath];
     SLClusterMotor *cluster = [[SLClusterMotor alloc] initWithMotorLoadout:self.motorLoadouts[indexPath.row]];
-    cell.textLabel.text = [cluster description];
+    if (cluster.motorCount == 1){
+        cell.textLabel.text = cluster.firstMotorName;
+    }else{
+        cell.textLabel.text = [cluster description];
+    }
     cell.detailTextLabel.text = cluster.fractionalImpulseClass;
-    NSString *digit = [NSString stringWithFormat:@"%d", cluster.motorCount];
-    NSString *fileName = [@"Cluster" stringByAppendingString:digit];
-    cell.imageView.image = [UIImage imageNamed:fileName];
+//    NSString *digit = [NSString stringWithFormat:@"%d", cluster.motorCount];
+//    NSString *fileName = [@"Cluster" stringByAppendingString:digit];
+//    cell.imageView.image = [UIImage imageNamed:fileName];
     return cell;
 }
 
