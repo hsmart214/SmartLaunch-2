@@ -330,6 +330,15 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    if (!self.splitViewController){
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
+        self.tableView.backgroundColor = [UIColor clearColor];
+    }else{
+        self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+    }
     for (UIStepper *stepper in self.sizeSteppers) {
         [stepper setMaximumValue:(double)[[RocketMotor motorDiameters] count]];
         [stepper setStepValue:1.0];
