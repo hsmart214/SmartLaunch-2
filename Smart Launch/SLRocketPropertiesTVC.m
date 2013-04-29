@@ -34,7 +34,6 @@
 @property (weak, nonatomic) UIScrollView *scrollView;
 @property (nonatomic, weak) UITextField *activeField;
 @property (nonatomic, strong) Rocket *oldRocket;
-@property (nonatomic, strong, readonly) NSArray *validMotorDiameters;
 @property (weak, nonatomic) IBOutlet UILabel *calculatedCdLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *calcCdButton;
 @property (weak, nonatomic) IBOutlet UILabel *motorConfigLabel;
@@ -44,10 +43,6 @@
 @end
 
 @implementation SLRocketPropertiesTVC
-
-//- (NSArray *)validMotorDiameters{
-//    return @[@6, @13, @18, @24, @29, @38, @54, @66, @75, @98, @150];
-//}
 
 - (BOOL)isValidRocket{
     BOOL valid = YES;
@@ -265,6 +260,8 @@
 -(void)dealloc{
     self.rocket = nil;
     self.oldRocket = nil;
+    self.motorConfiguration = nil;
+    self.iCloudObserver = nil;
 }
 
 -(NSString *)description{

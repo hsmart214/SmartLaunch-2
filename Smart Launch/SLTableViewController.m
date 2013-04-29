@@ -15,11 +15,12 @@
 #import "SLUnitsConvertor.h"
 #import "SLiPadDetailViewController.h"
 #import "SLClusterMotorBuildViewController.h"
+#import "SLRocketPropertiesTVC.h"
 
 #define FLIGHT_PROFILE_ROW 5
 #define MOTOR_SELECTION_ROW 1
 
-@interface SLTableViewController ()<SLMotorPickerDatasource>
+@interface SLTableViewController ()<SLMotorPickerDatasource, SLRocketPropertiesTVCDelegate>
 @property (weak, nonatomic) IBOutlet UITableViewCell *rocketCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *motorCell;
 @property (weak, nonatomic) IBOutlet UIButton *windDirectionButton;
@@ -152,6 +153,30 @@
     return !self.simRunning;
 }
 
+#pragma mark - SLRocketPropertiesTVCDelegate
+
+- (void)SLRocketPropertiesTVC:(SLRocketPropertiesTVC *)sender savedRocket:(Rocket *)rocket{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+    NSMutableDictionary *rocketFavorites = [[defaults objectForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
+    if (!rocketFavorites) rocketFavorites = [NSMutableDictionary dictionary];
+    rocketFavorites[rocket.name] = rocket.rocketPropertyList;
+    [defaults setObject:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
+    [store setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
+    [defaults synchronize];
+}
+
+- (void)SLRocketPropertiesTVC:(SLRocketPropertiesTVC *)sender deletedRocket:(Rocket *)rocket{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+    NSMutableDictionary *rocketFavorites = [[defaults objectForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
+    if (!rocketFavorites||[rocketFavorites count]==0) return;
+    [rocketFavorites removeObjectForKey:rocket.name];
+    [defaults setObject:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
+    [store setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
+    [defaults synchronize];
+}
+
 #pragma mark - Smart Launch
 
 - (IBAction)windDirectionDidChange:(UIButton *)sender {
@@ -194,8 +219,7 @@
     if ((self.view.window || self.splitViewController) && !self.simRunning){    // always run sim if we are on an iPad, unless it is already running
         self.simRunning = YES;
         [self.spinner startAnimating];
-        dispatch_queue_t queue = dispatch_queue_create("simQueue", NULL);
-        dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             self.model.rocket = self.rocket;
             self.model.launchGuideAngle = [(self.settings)[LAUNCH_ANGLE_KEY] floatValue];
             float len = [(self.settings)[LAUNCH_GUIDE_LENGTH_KEY] floatValue];
@@ -264,7 +288,9 @@
 }
 
 - (float)launchGuideLength{
-    return [self.settings[LAUNCH_GUIDE_LENGTH_KEY] floatValue];
+    float length = [self.settings[LAUNCH_GUIDE_LENGTH_KEY] floatValue];
+    if (length < MIN_LAUNCH_GUIDE_LENGTH) length = MIN_LAUNCH_GUIDE_LENGTH;
+    return length;
 }
 
 -(float)launchSiteAltitude{
@@ -321,6 +347,9 @@
         [(SLClusterMotorBuildViewController *)segue.destinationViewController setMotorLoadoutPlist:[self.rocket motorLoadoutPlist]];
         [(SLClusterMotorBuildViewController *)segue.destinationViewController setSavedMotorLoadoutPlists:[self.rocket previousLoadOuts]];
     }
+    if ([segue.identifier isEqualToString:@"RocketDirectEditSegue"]){
+        [(SLRocketPropertiesTVC *)segue.destinationViewController setRocket:self.rocket];
+    }
 }
 
 #pragma mark - TableView dataSource Methods
@@ -370,6 +399,11 @@
     return headerLabel;
 }
 
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0){
+        [self performSegueWithIdentifier:@"RocketDirectEditSegue" sender:self];
+    }
+}
 
 #pragma mark - View Life Cycle
 

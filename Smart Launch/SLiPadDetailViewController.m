@@ -18,10 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *flightProfileGraphTitleLabel;
 @property (weak, nonatomic) IBOutlet SLAnimatedRocketView *rocketView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *graphTypeSegmentedControl;
-@property (weak, nonatomic) IBOutlet UIStepper *launchGuideLengthStepper;
 @property (weak, nonatomic) IBOutlet UILabel *launchGuideLengthUnitsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *launchGuideLengthLabel;
-@property (weak, nonatomic) IBOutlet UIStepper *windVelocityStepper;
 @property (weak, nonatomic) IBOutlet UILabel *windVelocityUnitsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *windVelocityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *motorNameLabel;
@@ -31,10 +29,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *ffVelocityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *launchSiteAltLabel;
 @property (weak, nonatomic) IBOutlet UILabel *launchSiteAltUnitsLabel;
-@property (weak, nonatomic) IBOutlet UIStepper *siteAltitudeStepper;
+@property (weak, nonatomic) IBOutlet UIStepper *siteAltitudeStepper;        // all of the steppers keep values in DISPLAY units not metric!
+@property (weak, nonatomic) IBOutlet UIStepper *launchGuideLengthStepper;
+@property (weak, nonatomic) IBOutlet UIStepper *windVelocityStepper;
+
 @property (nonatomic) float displayLaunchAngle;
 @property (nonatomic) LaunchDirection displayLaunchDirection;
-@property (nonatomic) float displayFFVelocity;
+@property (nonatomic) float displayFFVelocity;          // all of the "display" properties keep their values in metric units, not DISPLAY units!
 @property (nonatomic) float displayWindVelocity;
 @property (nonatomic) float displayLaunchGuideLength;
 @property (nonatomic) float displayLaunchAltitude;
@@ -45,7 +46,9 @@
 @implementation SLiPadDetailViewController
 
 - (IBAction)pullSimData:(UIButton *)sender {
-    [self updateDisplay];
+    if ([self.simDelegate shouldAllowSimulationUpdates]){
+        [self updateDisplay];
+    }
 }
 
 - (IBAction)pushSimData:(UIButton *)sender {
@@ -94,7 +97,7 @@
 }
 
 - (IBAction)launchSiteAltitudeChanged:(UIStepper *)sender { // Remember this stepper keeps values in display units, not metric
-    self.displayLaunchAltitude = [SLUnitsConvertor metricStandardOf:sender.value forKey:ALT_UNIT_KEY];
+    self.displayLaunchAltitude = [SLUnitsConvertor metricStandardOf:(float)sender.value forKey:ALT_UNIT_KEY];
     self.launchSiteAltLabel.text = [NSString stringWithFormat:@"%1.0f", sender.value];
     [self updateAoADisplay];
 }
@@ -253,7 +256,7 @@
     float siteAlt = [SLUnitsConvertor displayUnitsOf:[self.simDataSource launchSiteAltitude] forKey:ALT_UNIT_KEY];
     self.siteAltitudeStepper.value = siteAlt;
     self.launchSiteAltLabel.text = [NSString stringWithFormat:@"%1.0f", siteAlt];
-    self.displayLaunchAltitude = siteAlt;
+    self.displayLaunchAltitude = [self.simDataSource launchSiteAltitude];
     float velocity = [SLUnitsConvertor displayUnitsOf:[self.simDataSource windVelocity] forKey:VELOCITY_UNIT_KEY];
     self.windVelocityLabel.text = [NSString stringWithFormat:@"%1.0f", velocity];
     self.windVelocityStepper.value = [SLUnitsConvertor displayUnitsOf:[self.simDataSource windVelocity] forKey:VELOCITY_UNIT_KEY];
@@ -289,22 +292,25 @@
         self.launchGuideLengthFormatString = @"%1.1f";
         [self.launchGuideLengthStepper setMaximumValue:12];
         self.launchGuideLengthStepper.stepValue = 0.5;
-        self.launchGuideLengthStepper.minimumValue = 0.5;
+        self.launchGuideLengthStepper.minimumValue = 1.0;
     }else if ([unitPrefs[LENGTH_UNIT_KEY] isEqualToString:K_INCHES]){
         self.launchGuideLengthFormatString = @"%1.0f";
         [self.launchGuideLengthStepper setMaximumValue:240];
         self.launchGuideLengthStepper.stepValue = 2.0;
-        self.launchGuideLengthStepper.minimumValue = 4.0;
+        self.launchGuideLengthStepper.minimumValue = 12.0;
     }else{//must be meters
         self.launchGuideLengthFormatString = @"%1.1f";
         [self.launchGuideLengthStepper setMaximumValue:5];
         self.launchGuideLengthStepper.stepValue = 0.2;
-        self.launchGuideLengthStepper.minimumValue = 0.2;
+        self.launchGuideLengthStepper.minimumValue = 0.4;
     }
     if ([unitPrefs[VELOCITY_UNIT_KEY] isEqualToString:K_MILES_PER_HOUR]){
         self.windVelocityStepper.maximumValue = 20;
         self.windVelocityStepper.stepValue = 1.0;
-    }else{//meters per second
+    }else if([unitPrefs[VELOCITY_UNIT_KEY] isEqualToString:K_KPH]){
+        self.windVelocityStepper.maximumValue = 32;
+        self.windVelocityStepper.stepValue = 1.0;
+    }else{
         self.windVelocityStepper.maximumValue = 9;
         self.windVelocityStepper.stepValue = 0.5;
     }

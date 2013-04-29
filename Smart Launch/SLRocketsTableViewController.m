@@ -106,6 +106,7 @@
     self.rockets = nil;
     self.selectedRocket = nil;
     self.detailData = nil;
+    self.iCloudObserver = nil;
 }
 
 - (void)didReceiveMemoryWarning{

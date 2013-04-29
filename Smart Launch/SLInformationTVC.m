@@ -185,4 +185,8 @@
     return @"InformationTVC";
 }
 
+-(void)dealloc{
+    self.alert = nil;
+}
+
 @end

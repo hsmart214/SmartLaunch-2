@@ -16,11 +16,11 @@
                         <sections>
                             <tableViewSection id="ri0-PN-VAx">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="KgR-Q9-D1D" detailTextLabel="iCK-1f-buG" imageView="XtA-pq-iql" style="IBUITableViewCellStyleValue1" id="G5y-J9-mPG">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="KgR-Q9-D1D" detailTextLabel="iCK-1f-buG" imageView="XtA-pq-iql" style="IBUITableViewCellStyleValue1" id="G5y-J9-mPG">
                                         <rect key="frame" x="0.0" y="10" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="267" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Goblin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" id="KgR-Q9-D1D">
@@ -31,7 +31,7 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="24 mm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iCK-1f-buG">
-                                                    <rect key="frame" x="218" y="11" width="52" height="21"/>
+                                                    <rect key="frame" x="205" y="11" width="52" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -404,6 +404,7 @@
                         <segue destination="uXJ-y6-YPH" kind="push" identifier="FlightProfileSegue" id="UUm-kO-vJZ"/>
                         <segue destination="WFU-0M-lp7" kind="push" identifier="motorSelectorSegue" id="Z7C-8k-JQV"/>
                         <segue destination="WCr-oj-TZS" kind="push" identifier="clusterBuildSegue" id="tcc-vG-eyZ"/>
+                        <segue destination="zQV-Vm-7Uj" kind="push" identifier="RocketDirectEditSegue" id="mfH-nG-IFM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qQ-Ry-Ebi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2240,6 +2241,7 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                                     <segments>
                                                         <segment title="MPH"/>
                                                         <segment title="M/Sec"/>
+                                                        <segment title="km/hr"/>
                                                     </segments>
                                                     <connections>
                                                         <action selector="controlValueChanged:" destination="Biw-b4-lIz" eventType="valueChanged" id="YVq-gf-dUa"/>
@@ -3045,8 +3047,8 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="n9j-0b-zsG"/>
+        <segue reference="mfH-nG-IFM"/>
+        <segue reference="Z7C-8k-JQV"/>
         <segue reference="eYh-Tw-iw8"/>
-        <segue reference="oTj-Xa-4mD"/>
     </inferredMetricsTieBreakers>
 </document>

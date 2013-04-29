@@ -353,4 +353,10 @@
     [self.configDelegate SLMotorConfigurationTVC:self didChangeMotorConfiguration:[self.workingConfiguration copy]];
 }
 
+-(void)dealloc{
+    self.workingConfiguration = nil;
+    self.oldConfiguration = nil;
+    self.sizeSteppers = nil;
+}
+
 @end;

@@ -93,6 +93,9 @@
             break;
         case 1:
             newPrefs[VELOCITY_UNIT_KEY] = K_METER_PER_SEC;
+            break;
+        case 2:
+            newPrefs[VELOCITY_UNIT_KEY] = K_KPH;
     }
     switch (self.thrustControl.selectedSegmentIndex) {
         case 0:
@@ -146,8 +149,10 @@
     }
     if ([unitPrefs[VELOCITY_UNIT_KEY] isEqualToString:K_MILES_PER_HOUR]){
         [self.velocityControl setSelectedSegmentIndex:0];
-    }else{//must be meters/sec
+    }else if ([unitPrefs[VELOCITY_UNIT_KEY] isEqualToString:K_METER_PER_SEC]){
         [self.velocityControl setSelectedSegmentIndex:1];
+    }else{// must be km/hr
+        [self.velocityControl setSelectedSegmentIndex:2];
     }
     if ([unitPrefs[THRUST_UNIT_KEY] isEqualToString:K_POUNDS]) {
         [self.thrustControl setSelectedSegmentIndex:0];
@@ -266,4 +271,5 @@
 -(NSString *)description{
     return @"UnitsTVC";
 }
+
 @end

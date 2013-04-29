@@ -136,15 +136,15 @@
         [self.siteAltitudeStepper setMaximumValue:10000];
         self.siteAltitudeStepper.stepValue = 100;
     }
-    if ([unitPrefs[VELOCITY_UNIT_KEY] isEqualToString:K_METER_PER_SEC]){
-        [self.windVelocityStepper setMaximumValue:8.95];
-        self.windVelocityStepper.stepValue = 0.5;
-    }else if ([unitPrefs[VELOCITY_UNIT_KEY] isEqualToString:K_FEET_PER_SEC]){
-        [self.windVelocityStepper setMaximumValue:30];
-        self.windVelocityStepper.stepValue = 2.0;
-    }else{// must be MPH
-        [self.windVelocityStepper setMaximumValue:20];
+    if ([unitPrefs[VELOCITY_UNIT_KEY] isEqualToString:K_MILES_PER_HOUR]){
+        self.windVelocityStepper.maximumValue = 20;
         self.windVelocityStepper.stepValue = 1.0;
+    }else if([unitPrefs[VELOCITY_UNIT_KEY] isEqualToString:K_KPH]){
+        self.windVelocityStepper.maximumValue = 32;
+        self.windVelocityStepper.stepValue = 1.0;
+    }else{
+        self.windVelocityStepper.maximumValue = 9;
+        self.windVelocityStepper.stepValue = 0.5;
     }
     if ([unitPrefs[LENGTH_UNIT_KEY] isEqualToString:K_FEET]){
         self.launchGuideLengthFormatString = @"%1.1f";

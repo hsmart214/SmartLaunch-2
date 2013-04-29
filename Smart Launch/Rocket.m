@@ -14,9 +14,9 @@
 @property (nonatomic, readwrite) float version;
 @property (nonatomic, strong, readwrite) NSMutableArray *internalMotors;    // array of RocketMotor *
 @property (nonatomic, strong) NSMutableArray *internalMotorsByGroup;        // array of NSArray *s of RocketMotor *, one array per group
-@property (nonatomic) float *thrusts;
-@property (nonatomic) NSUInteger thrustCount;
-@property (nonatomic, strong, readwrite) NSArray *burnoutTimes;
+//@property (nonatomic) float *thrusts;
+//@property (nonatomic) NSUInteger thrustCount;
+//@property (nonatomic, strong, readwrite) NSArray *burnoutTimes;
 
 @end
 
@@ -28,15 +28,15 @@ float burrnoutTime, burrnoutMass;
 
 // motor array modification methods
 
--(void)adjustThrustData{
-    if (_thrusts) free(_thrusts);
-    int count = floor(self.burnoutTime * DIVS_DURING_BURN) + 1;
-    self.thrustCount = count;
-    self.thrusts = malloc(count * sizeof(float));
-    for (int i = 0; i < count; i++){
-        self.thrusts[i] = [self thrustAtTime:((float)i)/DIVS_DURING_BURN];
-    }
-}
+//-(void)adjustThrustData{
+//    if (_thrusts) free(_thrusts);
+//    int count = floor(self.burnoutTime * DIVS_DURING_BURN) + 1;
+//    self.thrustCount = count;
+//    self.thrusts = malloc(count * sizeof(float));
+//    for (int i = 0; i < count; i++){
+//        self.thrusts[i] = [self thrustAtTime:((float)i)/DIVS_DURING_BURN];
+//    }
+//}
 
 -(NSMutableArray *)internalMotors{
     if (!_internalMotors){
@@ -340,29 +340,29 @@ float burrnoutTime, burrnoutMass;
     return burrnoutTime = time;
 }
 
--(NSArray *)burnoutTimes{
-#undef TIME_SLICE
-#define TIME_SLICE 0.05
-    if (!_burnoutTimes){
-        NSMutableArray *bTimes = [[NSMutableArray alloc] init];
-        // run through the entire burn and include every time the thrust goes to zero
-        float t = 0.0;
-        BOOL coasting = NO;
-        while (t < self.burnoutTime) {
-            t += TIME_SLICE;
-            if ([self thrustAtTime:t] == 0.0){
-                if (!coasting) [bTimes addObject:@(t)];
-                coasting = YES;
-            }else{
-                coasting = NO;
-            }
-        }
-        [bTimes addObject:@([self burnoutTime])];
-        
-        _burnoutTimes = [bTimes copy];
-    }
-    return _burnoutTimes;
-}
+//-(NSArray *)burnoutTimes{
+//#undef TIME_SLICE
+//#define TIME_SLICE 0.05
+//    if (!_burnoutTimes){
+//        NSMutableArray *bTimes = [[NSMutableArray alloc] init];
+//        // run through the entire burn and include every time the thrust goes to zero
+//        float t = 0.0;
+//        BOOL coasting = NO;
+//        while (t < self.burnoutTime) {
+//            t += TIME_SLICE;
+//            if ([self thrustAtTime:t] == 0.0){
+//                if (!coasting) [bTimes addObject:@(t)];
+//                coasting = YES;
+//            }else{
+//                coasting = NO;
+//            }
+//        }
+//        [bTimes addObject:@([self burnoutTime])];
+//        
+//        _burnoutTimes = [bTimes copy];
+//    }
+//    return _burnoutTimes;
+//}
 
 -(float)cdAtTime:(float)time{
     return self.cd;
@@ -422,10 +422,10 @@ float burrnoutTime, burrnoutMass;
     self.manufacturer = nil;
     self.recordedFlights = nil;
     self.motorConfig = nil;
-    free(self.thrusts);
+    //    free(self.thrusts);
     self.internalMotorsByGroup = nil;
     self.internalMotors = nil;
-    self.burnoutTimes = nil;
+    //    self.burnoutTimes = nil;
 }
 
 -(NSDictionary *)rocketPropertyList{

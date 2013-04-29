@@ -213,4 +213,10 @@
     [self.simDelegate sender:self didChangeRocketMotor:self.motorLoadoutPlist];
 }
 
+-(void)dealloc{
+    self.motorConfiguration = nil;
+    self.motorLoadoutPlist = nil;
+    self.savedMotorLoadoutPlists = nil;
+}
+
 @end

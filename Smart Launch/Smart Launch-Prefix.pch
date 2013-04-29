@@ -80,6 +80,7 @@ typedef enum {
     
 #define MAX_LAUNCH_GUIDE_ANGLE 0.349066F    //20 degrees in radians
 #define DEFAULT_LAUNCH_GUIDE_LENGTH 1.83F   //6 feet in meters
+#define MIN_LAUNCH_GUIDE_LENGTH 0.3         // about one foot
 #define DEFAULT_CD 0.75F                    //the typical Cd of a 3FNC/4FNC small model rocket
 #define GRAV_ACCEL 9.80665F
 #define _PI_ 3.14159265359F
@@ -97,6 +98,7 @@ typedef enum {
 #define NEWTONS_PER_POUND 4.448222F
 #define ABSOLUTE_ZERO_CELSIUS -272.15F
 #define STANDARD_RHO 1.22F                 //kg per m^3
+#define KPH_TO_M_PER_SEC 0.2777778F
     
     /* All calculations done in kilogram-meter-second metric measurements, and radians
      The maximum allowed launch guide angle is set by the Model Rocketry Safety Code and High Power Rocketry Safety Code
@@ -191,6 +193,7 @@ typedef enum {
 #define K_GRAMS @"g"
 #define K_GRAVITIES @"G"
 #define K_M_PER_SEC_SQ @"m/s^2"
+#define K_KPH @"km/hr"
 #define K_MACH @"Mach"
     
     //constants for the RocketMotor class

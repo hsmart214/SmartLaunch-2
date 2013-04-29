@@ -201,4 +201,9 @@
     return @"LaunchAngleViewController";
 }
 
+-(void)dealloc{
+    self.accelerometer.delegate = nil;
+    self.accelerometer = nil;
+}
+
 @end

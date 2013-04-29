@@ -10,16 +10,16 @@
 
 @implementation SLUnitsConvertor
 
-static SLUnitsConvertor *sUnitsConvertor;
+//static SLUnitsConvertor *sUnitsConvertor;
 
-+(void)initialize{
-    NSAssert(self == [SLUnitsConvertor class], @"SLUnitsConvertor is not meant to be subclassed");
-    sUnitsConvertor = [SLUnitsConvertor new];
-}
+//+(void)initialize{
+//    NSAssert(self == [SLUnitsConvertor class], @"SLUnitsConvertor is not meant to be subclassed");
+//    sUnitsConvertor = [SLUnitsConvertor new];
+//}
 
-+(SLUnitsConvertor *)sharedUnitsConvertor{
-    return sUnitsConvertor;
-}
+//+(SLUnitsConvertor *)sharedUnitsConvertor{
+//    return sUnitsConvertor;
+//}
 
 +(NSString *)defaultUnitForKey:(NSString *)key{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -105,8 +105,10 @@ static SLUnitsConvertor *sUnitsConvertor;
     if ([dimKey isEqualToString:VELOCITY_UNIT_KEY]){    //standard is METERS / SEC
         if ([unitPrefs[dimKey]isEqualToString:K_MILES_PER_HOUR]){
             return dimension * MPH_TO_M_PER_SEC;
-        }else{// must be FEET PER SEC
+        }else if([unitPrefs[dimKey]isEqualToString:K_FEET_PER_SEC]){
             return dimension / FEET_PER_METER;
+        }else if ([unitPrefs[dimKey]isEqualToString:K_KPH]){
+            return dimension * KPH_TO_M_PER_SEC;
         }
     }
     if ([dimKey isEqualToString:ALT_UNIT_KEY]){    //standard is METERS
@@ -195,6 +197,8 @@ static SLUnitsConvertor *sUnitsConvertor;
             return dimension / MPH_TO_M_PER_SEC;
         }else if ([unitPrefs[dimKey] isEqualToString:K_FEET_PER_SEC]){
             return dimension * FEET_PER_METER;
+        }else if ([unitPrefs[dimKey] isEqualToString:K_KPH]){
+            return dimension / KPH_TO_M_PER_SEC;
         }
     }
     if ([dimKey isEqualToString:ALT_UNIT_KEY]){ //standard is METERS
@@ -233,6 +237,7 @@ static SLUnitsConvertor *sUnitsConvertor;
                                     K_OUNCES: @"oz",
                                     K_POUNDS: @"lbs",
                                     K_M_PER_SEC_SQ: @"m/s^2",
+                                    K_KPH: @"km/hr",
                                     K_GRAVITIES: @"g",
                                     K_MACH: @""};
     NSString *preferredUnit = [SLUnitsConvertor defaultUnitForKey:dimKey];

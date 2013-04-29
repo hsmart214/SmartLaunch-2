@@ -12,7 +12,7 @@
 
 // SLUnitsConvertor is a actually only meant to be accessed through its class methods.  You should not need to create a singleton instance - there are no instance variables
 
-+(SLUnitsConvertor *)sharedUnitsConvertor;
+//+(SLUnitsConvertor *)sharedUnitsConvertor;
 
 +(NSString *)defaultUnitForKey:(NSString *)key;
 

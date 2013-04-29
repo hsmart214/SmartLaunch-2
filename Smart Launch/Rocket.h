@@ -20,7 +20,7 @@
 - (float)burnoutMass;
 - (float)peakThrust;
 - (float)maximumThrust;
-@property (nonatomic, readonly) NSArray *burnoutTimes;
+//@property (nonatomic, readonly) NSArray *burnoutTimes;
 
 @end
 
