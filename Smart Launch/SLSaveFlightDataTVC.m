@@ -170,6 +170,8 @@
     if (![self.physicsModel.rocket.motors count]) [self.saveButton setEnabled:NO];
     
     //This is my first ever attempt at registering for a notification.  And I'm using a BLOCK!  I must be nuts.
+    __weak SLSaveFlightDataTVC *myWeakSelf = self;
+
     self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
@@ -177,18 +179,18 @@
         for (NSString *key in changedKeys) {
             [defaults setObject:[store objectForKey:key] forKey:key];       // right now this can only be the favorite rockets dictionary
         }
-        Rocket *possiblyChangedRocket = [defaults dictionaryForKey:FAVORITE_ROCKETS_KEY][self.rocket.name];
+        Rocket *possiblyChangedRocket = [defaults dictionaryForKey:FAVORITE_ROCKETS_KEY][myWeakSelf.rocket.name];
         if (possiblyChangedRocket){
-            self.rocket = possiblyChangedRocket;
+            myWeakSelf.rocket = possiblyChangedRocket;
         }else{ // somebody deleted or renamed the current rocket, so we will put it back in under the current name to avoid confusion
             NSMutableDictionary *rocketFavorites = [[defaults dictionaryForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
-            rocketFavorites[self.rocket.name] = self.rocket;
+            rocketFavorites[myWeakSelf.rocket.name] = myWeakSelf.rocket;
             [defaults setObject:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
             [store setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
         }
         [defaults synchronize];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
+            [myWeakSelf.tableView reloadData];
         });
     }];
 }

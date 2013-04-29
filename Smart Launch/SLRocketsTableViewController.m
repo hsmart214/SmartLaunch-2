@@ -79,6 +79,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:animated];
+    
+    __weak SLRocketsTableViewController *myWeakSelf = self;
+
     self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
@@ -88,9 +91,9 @@
         }
         [defaults synchronize];
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.rockets = [[defaults dictionaryForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
-            [self updateRocketArray];
-            [self.tableView reloadData];
+            myWeakSelf.rockets = [[defaults dictionaryForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
+            [myWeakSelf updateRocketArray];
+            [myWeakSelf.tableView reloadData];
         });
     }];
 }

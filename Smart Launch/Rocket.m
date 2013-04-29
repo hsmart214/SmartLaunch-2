@@ -401,7 +401,7 @@ float burrnoutTime, burrnoutMass;
     self.kitName = rocketProperties[ROCKET_KITNAME_KEY];
     self.manufacturer = rocketProperties[ROCKET_MAN_KEY];
     self.recordedFlights = rocketProperties[ROCKET_RECORDED_FLIGHTS_KEY];
-    
+    [self replaceMotorLoadOutWithLoadOut:rocketProperties[ROCKET_LAST_LOADOUT_KEY]];
     self.motorConfig = rocketProperties[ROCKET_MOTOR_CONFIG_KEY];
     if (![self.motorConfig isKindOfClass:[NSArray class]]) {
         self.motorConfig = @[@{MOTOR_COUNT_KEY: @1,
@@ -440,6 +440,7 @@ float burrnoutTime, burrnoutMass;
     if (self.kitName) rocketProperties[ROCKET_KITNAME_KEY] = self.kitName;
     if (self.manufacturer) rocketProperties[ROCKET_MAN_KEY] = self.manufacturer;
     if (self.recordedFlights) rocketProperties[ROCKET_RECORDED_FLIGHTS_KEY] = self.recordedFlights;
+    if ([self motorLoadoutPlist]) rocketProperties[ROCKET_LAST_LOADOUT_KEY] = [self motorLoadoutPlist];
     rocketProperties[SMART_LAUNCH_VERSION_KEY] = @(SMART_LAUNCH_VERSION);   // always save under the current version
     return rocketProperties;
 }

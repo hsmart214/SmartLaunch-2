@@ -231,7 +231,7 @@ typedef enum {
 #define ROCKET_MAN_KEY @"RocketManufacturer"
 #define ROCKET_RECORDED_FLIGHTS_KEY @"RecordedFlightsKey"
 #define ROCKET_MOTOR_CONFIG_KEY @"RocketMotorConfigurationKey"
-#define ROCKET_PREVIOUS_LOADOUTS_KEY @"RocketPreviousLoadoutsKey"
+#define ROCKET_LAST_LOADOUT_KEY @"RocketLastLoadoutKey"
     
     //keys for a recordedFlight NSDictonary*
 

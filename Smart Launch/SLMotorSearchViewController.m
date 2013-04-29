@@ -159,8 +159,9 @@ NSInteger sortFunction(id md1, id md2, void *context){
             if (thrust1 < thrust2) return NSOrderedAscending;
             return NSOrderedSame;
         }];
+        NSArray *writeArray = _allMotors;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [_allMotors writeToURL:motorFileURL atomically:YES];
+            [writeArray writeToURL:motorFileURL atomically:YES];
             [allBuild writeToURL:allMotorsFileURL atomically:YES];
             [allDict writeToURL:allMotorsHashFileURL atomically:YES];
         });

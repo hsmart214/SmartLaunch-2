@@ -171,6 +171,8 @@
     [self.navigationController setToolbarHidden:NO animated:animated];
     self.originalSavedFlights = [self.savedFlights copy];
     
+    __weak SLSavedFlightsTVC *myWeakSelf = self;
+
     self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification
                                                                             object:nil
                                                                              queue:nil
@@ -182,18 +184,18 @@
         for (NSString *key in changedKeys) {
             [defaults setObject:[store objectForKey:key] forKey:key];       // right now this can only be the favorite rockets dictionary
         }
-        NSDictionary *possiblyChangedRocket = [defaults dictionaryForKey:FAVORITE_ROCKETS_KEY][self.rocket.name];
+        NSDictionary *possiblyChangedRocket = [defaults dictionaryForKey:FAVORITE_ROCKETS_KEY][myWeakSelf.rocket.name];
         if (possiblyChangedRocket){
-            self.rocket = [Rocket rocketWithRocketDict:possiblyChangedRocket];
+            myWeakSelf.rocket = [Rocket rocketWithRocketDict:possiblyChangedRocket];
         }else{// somebody on another device deleted this rocket, so we will put it right back in!
             NSMutableDictionary *savedRockets = [[defaults dictionaryForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
-            savedRockets[self.rocket.name] = [self.rocket rocketPropertyList];
+            savedRockets[myWeakSelf.rocket.name] = [myWeakSelf.rocket rocketPropertyList];
             [defaults setObject:savedRockets forKey:FAVORITE_ROCKETS_KEY];
             [store setDictionary:savedRockets forKey:FAVORITE_ROCKETS_KEY];
         }
-        self.savedFlights = [self.rocket.recordedFlights mutableCopy];
+        myWeakSelf.savedFlights = [myWeakSelf.rocket.recordedFlights mutableCopy];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
+            [myWeakSelf.tableView reloadData];
         });
         [defaults synchronize];
     }];

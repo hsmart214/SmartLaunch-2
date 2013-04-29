@@ -119,19 +119,23 @@
     [self defaultStoreWithKey:SETTINGS_KEY andValue:self.settings];
     self.rocketCell.textLabel.text = rocket.name;
     self.rocketCell.detailTextLabel.text = [rocket.manufacturer description];
+    NSArray *motorPlist = [self.rocket motorLoadoutPlist];
+    [self.settings setValue:motorPlist forKey:SELECTED_MOTOR_KEY];
+    [self defaultStoreWithKey:SELECTED_MOTOR_KEY andValue:motorPlist];
+    if ([motorPlist count]) self.motorNameLabel.text = motorPlist[0][MOTOR_PLIST_KEY][NAME_KEY];
+    self.motorDetailDescriptionLabel.text = [NSString stringWithFormat:@"%1.1f N-sec", [self.rocket totalImpulse]];
+    UIImage *theImage = [UIImage imageNamed:self.rocket.motorManufacturer];
+    self.manufacturerLogoView.image = theImage;
+    
+    // update the "last used" motor in the rocket list and in the cloud
+    [self SLRocketPropertiesTVC:(id)self savedRocket:self.rocket];
+    
     if (self.view.window)[self updateDisplay];
 }
 
 - (void)sender:(id)sender didChangeRocketMotor:(NSArray *)motorPlist{
     [self.rocket replaceMotorLoadOutWithLoadOut:motorPlist];
-    [self.settings setValue:motorPlist forKey:SELECTED_MOTOR_KEY];
-    [self defaultStoreWithKey:SELECTED_MOTOR_KEY andValue:motorPlist];
-    [self defaultStoreWithKey:SETTINGS_KEY andValue:self.settings];
-    self.motorNameLabel.text = motorPlist[0][MOTOR_PLIST_KEY][NAME_KEY];
-    self.motorDetailDescriptionLabel.text = [NSString stringWithFormat:@"%1.1f N-sec", [self.rocket totalImpulse]];
-    UIImage *theImage = [UIImage imageNamed:self.rocket.motorManufacturer];
-    self.manufacturerLogoView.image = theImage;
-    if (self.view.window)[self updateDisplay];
+    [self sender:self didChangeRocket:self.rocket];
 }
 
 - (void)sender:(id)sender didChangeSimSettings:(NSDictionary *)settings withUpdate:(BOOL)shouldUpdate{
