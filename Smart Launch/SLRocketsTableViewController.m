@@ -71,7 +71,15 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+    if (!self.splitViewController){
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
+        self.tableView.backgroundColor = [UIColor clearColor];
+    }else{
+        self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+    }
     [self updateRocketArray];
     [self.tableView reloadData];
 }
