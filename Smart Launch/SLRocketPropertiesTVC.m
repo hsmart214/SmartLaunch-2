@@ -105,7 +105,7 @@
             NSUInteger motorSize = [self.motorConfiguration[0][MOTOR_DIAM_KEY] integerValue];
             self.motorConfigLabel.text = [NSString stringWithFormat:@"%d mm", motorSize];
         }else{
-            self.motorConfigLabel.text = [NSString stringWithFormat:@"%d motors", motorTotalCount];
+            self.motorConfigLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d motors", @"%d motors") , motorTotalCount];
         }
         
     }

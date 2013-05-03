@@ -12,7 +12,7 @@
 
 - (IBAction)delayTimeChanged:(UIStepper *)sender {
     if ([self.delegate allowsSimulationUpdates]){
-        self.delayTextLabel.text = [NSString stringWithFormat:@"Delay %1.1f sec", [sender value]];
+        self.delayTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Delay %1.1f sec", @"Delay %1.1f sec"), [sender value]];
         self.oldStartDelayValue = sender.value;
         [self.delegate SLClusterMotorMemberCell:self didChangeStartDelay:[self.delayTimeStepper value]];
         [self updateStartDelay];

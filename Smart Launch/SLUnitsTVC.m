@@ -32,8 +32,13 @@
 }
 
 - (IBAction)defaultButtonPressed:(UIBarButtonItem *)sender {
-    NSString *msg = NSLocalizedString(@"Reset Default Units?", nil);
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:msg delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles: @"Metric", @"Standard", nil];
+    NSString *msg = NSLocalizedString(@"Reset Default Units?", @"Reset Default Units?");
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:msg
+                                                             delegate:self
+                                                    cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") 
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:NSLocalizedString(@"Metric", @"Metric"),
+                                                        NSLocalizedString(@"Standard", @"Standard"), nil];
     [actionSheet showFromToolbar:self.navigationController.toolbar];
 }
 - (IBAction)revertButtonPressed:(UIBarButtonItem *)sender {
@@ -197,9 +202,9 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     NSString *headerText;
     if (section == 0){
-        headerText = NSLocalizedString(@"Rocket", nil);
+        headerText = NSLocalizedString(@"Rocket", @"Rocket");
     }else{  // must be last section - there are only three
-        headerText = NSLocalizedString(@"Simulation", nil);
+        headerText = NSLocalizedString(@"Simulation", @"Simulation");
     }
     UILabel *headerLabel = [[UILabel alloc] init];
     [headerLabel setTextColor:[SLCustomUI headerTextColor]];

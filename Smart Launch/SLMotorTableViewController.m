@@ -46,7 +46,7 @@
     NSDictionary *motorDict = (self.motors)[indexPath.section][indexPath.row];
     
     cell.textLabel.text = motorDict[NAME_KEY];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Propellant %5.0f g",[motorDict[PROP_MASS_KEY] floatValue] * 1000];
+    cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Propellant %5.0f g", @"Propellant %5.0f g") ,[motorDict[PROP_MASS_KEY] floatValue] * 1000];
 //    NSString *path = [[NSBundle mainBundle] pathForResource:[motorDict objectForKey:MAN_KEY] ofType:@"png"];
 //    UIImage *theImage = [UIImage imageWithContentsOfFile:path];
     //this way the image is cached automatically.  Should make scrolling faster.

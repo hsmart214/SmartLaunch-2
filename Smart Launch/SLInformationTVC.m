@@ -62,7 +62,11 @@
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         if (err){
             NSLog(@"Error reading Motor version from mySmartSoftware.com");
-            self.alert = [[UIAlertView alloc]initWithTitle:@"Motor List Update" message:@"Unable to contact website." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            self.alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Motor List Update", @"Motor List Update")
+                                                   message:NSLocalizedString(@"Unable to contact website.", @"Unable to contact website.") 
+                                                  delegate:self
+                                         cancelButtonTitle:NSLocalizedString(@"OK", @"OK") 
+                                         otherButtonTitles: nil];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.alert show];
             });
@@ -93,14 +97,22 @@
                 }else{
                     [defaults setInteger:versionNumber forKey:MOTOR_FILE_VERSION_KEY];
                     [defaults synchronize];
-                    self.alert = [[UIAlertView alloc]initWithTitle:@"Motor List Update" message:@"Your motor list has been updated." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    self.alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Motor List Update", @"Motor List Update")
+                                                           message:NSLocalizedString(@"Your motor list has been updated.", @"Your motor list has been updated.")
+                                                          delegate:self
+                                                 cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
+                                                 otherButtonTitles: nil];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.alert show];
                     });
                 }
             }
         }else{
-            self.alert = [[UIAlertView alloc]initWithTitle:@"Motor List Update" message:@"Your motor list is current." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            self.alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Motor List Update", @"Motor List Update")
+                                                   message:NSLocalizedString(@"Your motor list is current.", @"Your motor list is current.")
+                                                  delegate:self
+                                         cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
+                                         otherButtonTitles: nil];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.alert show];
             });
@@ -128,9 +140,9 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     NSString *headerText;
     if (section == 0){
-        headerText = NSLocalizedString(@"Information", nil);
+        headerText = NSLocalizedString(@"Information", @"Information");
     }else{  // must be last section - there are only two
-        headerText = NSLocalizedString(@"Settings", nil);
+        headerText = NSLocalizedString(@"Settings", @"Settings");
     }
     UILabel *headerLabel = [[UILabel alloc] init];
     [headerLabel setTextColor:[SLCustomUI headerTextColor]];

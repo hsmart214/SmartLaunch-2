@@ -49,10 +49,10 @@
 - (IBAction)toggleHybrids:(UIBarButtonItem *)sender {
     if (self.showingHybrids){
         // we should hide, so hide the motor manufacturers,and change the button name to "show"
-        [self.hybridButton setTitle:@"Show Hybrids"];
+        [self.hybridButton setTitle:NSLocalizedString(@"Show Hybrids", @"Show Hybrids")];
     }else{
         // we should stop hiding them, change the button back to "Hide"
-        [self.hybridButton setTitle:@"Hide Hybrids"];
+        [self.hybridButton setTitle:NSLocalizedString(@"Hide Hybrids", @"Hide Hybrids")];
     }
     BOOL newState = !self.showingHybrids;
     for (NSString *man in [RocketMotor hybridManufacturerNames]){
@@ -98,9 +98,9 @@
     self.oldMotorPrefs = [self.motorPrefs copy];
     self.showingHybrids = [defaults boolForKey:SHOWING_HYBRIDS_KEY];
     if (self.showingHybrids){
-        [self.hybridButton setTitle:@"Hide Hybrids"];
+        [self.hybridButton setTitle:NSLocalizedString(@"Hide Hybrids", @"Hide Hybrids")];
     }else{
-        [self.hybridButton setTitle:@"Show Hybrids"];
+        [self.hybridButton setTitle:NSLocalizedString(@"Show Hybrids", @"Show Hybrids")];
     }
 
     [super viewWillAppear:animated];
@@ -116,11 +116,11 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     switch (section) {
         case 0:
-            return NSLocalizedString(@"Motor Manufacturers", nil);
+            return NSLocalizedString(@"Motor Manufacturers", @"Motor Manufacturers");
         case 1:
-            return NSLocalizedString(@"Motor Diameters", nil);
+            return NSLocalizedString(@"Motor Diameters", @"Motor Diameters");
         case 2:
-            return NSLocalizedString(@"Impulse Classes", nil);
+            return NSLocalizedString(@"Impulse Classes", @"Impulse Classes");
         default:
             return @"You should not see this";
     }
@@ -178,13 +178,13 @@
     NSString *headerText;
     switch (section) {
         case 0:
-            headerText = NSLocalizedString(@"Motor Manufacturers", nil);
+            headerText = NSLocalizedString(@"Motor Manufacturers", @"Motor Manufacturers");
             break;
         case 1:
-            headerText = NSLocalizedString(@"Motor Diameters", nil);
+            headerText = NSLocalizedString(@"Motor Diameters", @"Motor Diameters");
             break;
         case 2:
-            headerText = NSLocalizedString(@"Impulse Classes", nil);
+            headerText = NSLocalizedString(@"Impulse Classes", @"Impulse Classes");
         default:
             break;
     }

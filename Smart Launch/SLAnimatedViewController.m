@@ -85,7 +85,9 @@
 }
 
 - (IBAction)launchDirectionChanged:(UIButton *)sender {
-    NSArray *buttonNames = @[@"With Wind", @"CrossWind", @"Into Wind"];
+    NSArray *buttonNames = @[NSLocalizedString(@"With Wind", @"With Wind") ,
+                             NSLocalizedString(@"CrossWind", @"CrossWind"),
+                             NSLocalizedString(@"Into Wind", @"Into Wind")];
     NSInteger dir;
     for (dir = 0; dir < 3; dir++) {
         if ([sender.currentTitle isEqualToString:buttonNames[dir]]){
@@ -163,7 +165,9 @@
     self.launchGuideLengthLabel.text = [NSString stringWithFormat:@"%2.0f", displayLength];
     self.launchGuideLengthStepper.value = [SLUnitsConvertor displayUnitsOf:[self.dataSource launchGuideLength] forKey:LENGTH_UNIT_KEY];
     self.displayLaunchDirection = [self.dataSource launchGuideDirection];
-    NSArray *buttonNames = @[@"With Wind", @"CrossWind", @"Into Wind"];
+    NSArray *buttonNames = @[NSLocalizedString(@"With Wind", @"With Wind") ,
+                             NSLocalizedString(@"CrossWind", @"CrossWind"),
+                             NSLocalizedString(@"Into Wind", @"Into Wind")];
     [self.launchDirectionButton setTitle:buttonNames[self.displayLaunchDirection] forState:UIControlStateNormal];
     [self updateDisplay];
 }

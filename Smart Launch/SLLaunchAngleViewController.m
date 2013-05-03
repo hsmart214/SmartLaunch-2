@@ -108,15 +108,15 @@
 }
 
 - (IBAction)motionButtonPressed:(UIBarButtonItem *)sender {
-    if ([sender.title isEqualToString:@"Motion On"]){
+    if ([sender.title isEqualToString:NSLocalizedString(@"Motion On", @"Motion On")]){
         self.angleSlider.enabled = NO;
         [self startMotionUpdates];
-        sender.title = @"Motion Off";
+        sender.title = NSLocalizedString(@"Motion Off", @"Motion Off");
         self.calibrateButton.enabled = YES;
     }else{
         self.angleSlider.enabled = YES;
         [self stopMotionUpdates];
-        sender.title = @"Motion On";
+        sender.title = NSLocalizedString(@"Motion On", @"Motion On");
         self.calibrateButton.enabled = NO;
     }
 }
@@ -164,7 +164,7 @@
         self.view.backgroundColor = [SLCustomUI iPadBackgroundColor];
     }
     self.calibrateButton.enabled = NO;
-    self.motionButton.title = @"Motion On";
+    self.motionButton.title = NSLocalizedString(@"Motion On", @"Motion On");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *settings = [defaults objectForKey:SETTINGS_KEY];
     self.xyCalibrationAngle = [settings[XY_CAL_KEY] floatValue];

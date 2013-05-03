@@ -222,8 +222,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
     [super viewDidLoad];
     if (!self.splitViewController){
         UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
-        UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
         [backgroundView setImage:backgroundImage];
         [self.view insertSubview:backgroundView atIndex:0];
     }else{
@@ -387,8 +386,12 @@ NSInteger sortFunction(id md1, id md2, void *context){
             // motor mount exact match only
             self.restrictedMotorDiamPrefs = @[currMMT];
             if (![self preferredMotorDiametersContainsDiameter:currMMT]){
-                NSString *sheetTitle = [NSString stringWithFormat:@"Would you like to show the %@ motors?", currMMT];
-                UIActionSheet *diameterSheet = [[UIActionSheet alloc] initWithTitle:sheetTitle delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes, show this size." otherButtonTitles: nil];
+                NSString *sheetTitle = [NSString stringWithFormat:NSLocalizedString(@"Would you like to show the %@ motors?", @"Shown when a hidden motor type is forced") , currMMT];
+                UIActionSheet *diameterSheet = [[UIActionSheet alloc] initWithTitle:sheetTitle
+                                                                           delegate:self
+                                                                  cancelButtonTitle:NSLocalizedString(@"No", @"No")
+                                                             destructiveButtonTitle:NSLocalizedString(@"Yes, show this size.", @"Yes, show this size.") 
+                                                                  otherButtonTitles: nil];
                 [diameterSheet showFromToolbar:self.navigationController.toolbar];
             }
         default:

@@ -220,9 +220,9 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     NSString *footerText;
     if (section == 0){
-        footerText = NSLocalizedString(@"Refining the Cd may take a few sec.", nil);
+        footerText = NSLocalizedString(@"Refining the Cd may take a few sec.", @"Refining the Cd may take a few sec. (header)");
     }else{  // must be last section - there are only two
-        footerText = NSLocalizedString(@"New Estimate Results", nil);
+        footerText = NSLocalizedString(@"New Estimate Results", @"New Estimate Results (header)");
     }
     UILabel *footerLabel = [[UILabel alloc] init];
     [footerLabel setTextColor:[SLCustomUI headerTextColor]];

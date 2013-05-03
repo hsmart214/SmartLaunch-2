@@ -118,7 +118,7 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"launchAngleSegue"]){
-        [[segue destinationViewController] setTitle:@"Launch Angle"];
+        [[segue destinationViewController] setTitle:NSLocalizedString(@"Launch Angle", @"Launch Angle")];
         [[segue destinationViewController] setDelegate:self];
     }
 }
@@ -169,11 +169,10 @@
 {
     [super viewDidLoad];
     self.tableView.delegate = self;
-    [self.GPSAltButton setTitle: NSLocalizedString(@"GPS Disabled", nil) forState:UIControlStateDisabled];
+    [self.GPSAltButton setTitle: NSLocalizedString(@"GPS Disabled", @"GPS Disabled") forState:UIControlStateDisabled];
     if (!self.splitViewController){
         UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
-        NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
-        UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
         [backgroundView setImage:backgroundImage];
         self.tableView.backgroundView = backgroundView;
     }

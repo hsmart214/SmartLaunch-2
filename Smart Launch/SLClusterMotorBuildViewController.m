@@ -145,19 +145,19 @@
         cell.manufacturerLogoImageView.image = [UIImage imageNamed:manName];
         cell.motorNameLabel.text = motor.name;
         cell.motorDetailTextLabel.text = [NSString stringWithFormat:@"%1.1f Ns", [motor totalImpulse]];
-        cell.delayTextLabel.text = [NSString stringWithFormat:@"Delay %1.1f sec", motor.startDelay];
+        cell.delayTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Delay %1.1f sec", @"Delay %1.1f sec") , motor.startDelay];
         [cell.delayTimeStepper setValue:motor.startDelay];
         cell.oldStartDelayValue = motor.startDelay;
         [cell.delayTimeStepper setEnabled:YES];
         float btime = [[motor.times lastObject] floatValue];
-        cell.burnTimeTextLabel.text = [NSString stringWithFormat:@"Burn Length %1.1f sec", btime];
-        cell.burnoutTimeTextLabel.text = [NSString stringWithFormat:@"Burnout Time %1.1f sec", btime + motor.startDelay];
+        cell.burnTimeTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Burn Length %1.1f sec", @"Burn Length %1.1f sec") , btime];
+        cell.burnoutTimeTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Burnout Time %1.1f sec", @"Burnout Time %1.1f sec") , btime + motor.startDelay];
     }else{
         // load up the empty row so the user can fill it if they like
         cell.manufacturerLogoImageView.image = nil;
         cell.motorNameLabel.text = NSLocalizedString(@"No Motor", @"No Motor Selected");
         cell.motorDetailTextLabel.text = @"";
-        cell.delayTextLabel.text = @"Delay 0.0 sec";
+        cell.delayTextLabel.text = NSLocalizedString(@"Delay 0.0 sec", @"Delay 0.0 sec") ;
         [cell.delayTimeStepper setValue:0.0];
         cell.oldStartDelayValue = 0.0;
         [cell.delayTimeStepper setEnabled:NO];

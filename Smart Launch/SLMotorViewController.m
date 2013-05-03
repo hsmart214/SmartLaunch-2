@@ -50,8 +50,7 @@
     [super viewDidLoad];
     if (!self.splitViewController){
         UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: @"Vellum" ofType:@"png"];
-        UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
         [backgroundView setImage:backgroundImage];
         [self.view insertSubview:backgroundView atIndex:0];
     }else{

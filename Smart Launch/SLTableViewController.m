@@ -187,9 +187,9 @@
     if (self.simRunning) return; // this is to keep from showing sim results not consistent with sim settings
     // otherwise you could change wind direction in the middle of a sim run, but the sim would not run again to account for the change
     
-    NSArray *buttonNames = @[@"With Wind",
-                            @"CrossWind",
-                            @"Into Wind"];
+    NSArray *buttonNames = @[NSLocalizedString(@"With Wind", @"With Wind") ,
+                            NSLocalizedString(@"CrossWind", @"CrossWind"),
+                            NSLocalizedString(@"Into Wind", @"Into Wind")];
     NSInteger dir;
     for (dir = 0; dir < 3; dir++) {
         if ([sender.currentTitle isEqualToString:buttonNames[dir]]){
@@ -214,9 +214,9 @@
     // In the following I let the SLUnitsConvertor class do all of the unit changing.  This controller is not even aware of the UNIT_PREFS settings
 
     self.launchAngleLabel.text = [NSString stringWithFormat:@"%1.1f",[(self.settings)[LAUNCH_ANGLE_KEY] floatValue] * DEGREES_PER_RADIAN];
-    NSArray *buttonNames = @[@"With Wind",
-                            @"CrossWind",
-                            @"Into Wind"];
+    NSArray *buttonNames = @[NSLocalizedString(@"With Wind", @"With Wind") ,
+                             NSLocalizedString(@"CrossWind", @"CrossWind"),
+                             NSLocalizedString(@"Into Wind", @"Into Wind")];
     [self.windDirectionButton setTitle:buttonNames[[(self.settings)[WIND_DIRECTION_KEY] intValue]] forState:UIControlStateNormal];
     self.ffVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
     self.apogeeAltitudeUnitsLabel.text = [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY];
@@ -388,9 +388,9 @@
     if (section == 0) return nil;
     NSString *headerText;
     if (section == 1){
-        headerText = NSLocalizedString(@"Simulation Results", nil);
+        headerText = NSLocalizedString(@"Simulation Results", @"Simulation Results (header)");
     }else{  // must be last section - there are only three
-        headerText = NSLocalizedString(@"Smart Launch", nil);
+        headerText = NSLocalizedString(@"Smart Launch", @"Smart Launch (header)");
     }
     UILabel *headerLabel = [[UILabel alloc] init];
     [headerLabel setTextColor:[SLCustomUI headerTextColor]];

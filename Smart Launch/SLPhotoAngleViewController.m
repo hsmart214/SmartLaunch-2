@@ -152,7 +152,8 @@
         CGRect buttonFrame = CGRectMake(self.view.bounds.size.width/2 + BUTTON_HEIGHT/4, self.view.bounds.size.height - BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT);
         self.acceptButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.acceptButton setFrame:buttonFrame];
-        [self.acceptButton setTitle:@"Accept" forState:UIControlStateNormal];
+        [self.acceptButton setTitle:NSLocalizedString(@"Accept", @"Accept") 
+                           forState:UIControlStateNormal];
         [self.acceptButton addTarget:self action:@selector(acceptAngle) forControlEvents:UIControlEventTouchUpInside];
         [self.acceptButton setHidden:NO];
         [self.acceptButton setUserInteractionEnabled:YES];
@@ -170,7 +171,8 @@
         buttonFrame = CGRectMake(self.view.bounds.size.width/2 - BUTTON_WIDTH - BUTTON_HEIGHT/4, self.view.bounds.size.height - BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT);
         self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.cancelButton setFrame:buttonFrame];
-        [self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+        [self.cancelButton setTitle:NSLocalizedString(@"Cancel", @"Cancel") 
+                           forState:UIControlStateNormal];
         [self.cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
         [self.cancelButton setHidden:NO];
         [self.cancelButton setUserInteractionEnabled:YES];

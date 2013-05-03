@@ -138,7 +138,7 @@
     }
     if ([[segue identifier] isEqualToString:@"addRocketSegue"]){
         [(SLRocketPropertiesTVC *)[segue destinationViewController] setDelegate: self];
-        [[segue destinationViewController] setTitle:@"New Rocket"];
+        [[segue destinationViewController] setTitle:NSLocalizedString(@"New Rocket", @"New Rocket (title)")];
     }
 }
 

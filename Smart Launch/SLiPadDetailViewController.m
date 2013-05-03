@@ -165,9 +165,9 @@
 }
 
 -(void)updateGraphDisplay{
-    self.flightProfileGraphTitleLabel.text = [NSString stringWithFormat:@"Flight Profile - %@", [self.graphTypeSegmentedControl titleForSegmentAtIndex:[self.graphTypeSegmentedControl selectedSegmentIndex]]];
+    self.flightProfileGraphTitleLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Flight Profile - %@", @"Flight Profile - %@") , [self.graphTypeSegmentedControl titleForSegmentAtIndex:[self.graphTypeSegmentedControl selectedSegmentIndex]]];
     self.motorNameLabel.text = self.dataSource.motorDescription;
-    self.totalImpulseLabel.text = [NSString stringWithFormat:@"Total Impulse: %1.0f Newton-sec", [self.model.rocket totalImpulse]];
+    self.totalImpulseLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Total Impulse: %1.0f Newton-sec", @"Total Impulse: %1.0f Newton-sec") , [self.model.rocket totalImpulse]];
     self.title = self.model.rocketName;
     [self.flightProfileView resetAxes];
     [self.thrustCurveView resetAxes];
