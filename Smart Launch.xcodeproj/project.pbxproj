@@ -30,7 +30,6 @@
 		421BB134167293FD00F29D95 /* RoadRunner.png in Resources */ = {isa = PBXBuildFile; fileRef = 421BB11E167293FD00F29D95 /* RoadRunner.png */; };
 		421BB135167293FD00F29D95 /* Sky Ripper.png in Resources */ = {isa = PBXBuildFile; fileRef = 421BB11F167293FD00F29D95 /* Sky Ripper.png */; };
 		421BB136167293FD00F29D95 /* West Coast Hybrids.png in Resources */ = {isa = PBXBuildFile; fileRef = 421BB120167293FD00F29D95 /* West Coast Hybrids.png */; };
-		4220A4CC15F55CC60055EE35 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4A515F55CC60055EE35 /* MainStoryboard_iPhone.storyboard */; };
 		4220A4CD15F55CC60055EE35 /* SLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AB15F55CC60055EE35 /* SLTableViewController.m */; };
 		4220A4CE15F55CC60055EE35 /* SLInformationTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AD15F55CC60055EE35 /* SLInformationTVC.m */; };
 		4220A4CF15F55CC60055EE35 /* SLSimSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AF15F55CC60055EE35 /* SLSimSettingsViewController.m */; };
@@ -64,6 +63,7 @@
 		4221648A16F57F1A008E5A28 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4221648916F57F1A008E5A28 /* Default-Landscape~ipad.png */; };
 		42248D7C16EC416200ABB5D7 /* SLiPadDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42248D7B16EC416200ABB5D7 /* SLiPadDetailViewController.m */; };
 		4232060515F7124F0027A18E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4232060415F7124F0027A18E /* CoreLocation.framework */; };
+		42397204173378B300262A6B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42397206173378B300262A6B /* MainStoryboard_iPhone.storyboard */; };
 		423D16E317053FE80007ED61 /* SLCustomUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 423D16E217053FE80007ED61 /* SLCustomUI.m */; };
 		4240A07815F8341900D67F3E /* SLMotorPrefsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4240A07715F8341900D67F3E /* SLMotorPrefsTVC.m */; };
 		4240EDC116990F1E008AB135 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */; };
@@ -78,6 +78,7 @@
 		42BB53C916A293D20029C882 /* SLFlightDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53C816A293D20029C882 /* SLFlightDataCell.m */; };
 		42BB53CD16A295310029C882 /* SLSavedFlightsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */; };
 		42BB53D016A38C4E0029C882 /* SLSaveFlightDataTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CF16A38C4D0029C882 /* SLSaveFlightDataTVC.m */; };
+		42BD6CC617377CCE00E19B50 /* SLClusterMotorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BD6CC517377CCE00E19B50 /* SLClusterMotorViewController.m */; };
 		42CEE10417277F440060424F /* SLMotorConfigurationTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CEE10317277F440060424F /* SLMotorConfigurationTVC.m */; };
 		42D6AE8916A25242000EE1A8 /* DaVinci~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D6AE8516A25242000EE1A8 /* DaVinci~iPad.png */; };
 		42D6AE8A16A25242000EE1A8 /* DaVinci~iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D6AE8616A25242000EE1A8 /* DaVinci~iPad@2x.png */; };
@@ -138,7 +139,6 @@
 		421BB11E167293FD00F29D95 /* RoadRunner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RoadRunner.png; sourceTree = "<group>"; };
 		421BB11F167293FD00F29D95 /* Sky Ripper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sky Ripper.png"; sourceTree = "<group>"; };
 		421BB120167293FD00F29D95 /* West Coast Hybrids.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "West Coast Hybrids.png"; sourceTree = "<group>"; };
-		4220A4A515F55CC60055EE35 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		4220A4A715F55CC60055EE35 /* SLModalPresenterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLModalPresenterDelegate.h; sourceTree = "<group>"; };
 		4220A4A815F55CC60055EE35 /* SLPhotoAngleFinderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPhotoAngleFinderDelegate.h; sourceTree = "<group>"; };
 		4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSimulationDelegate.h; sourceTree = "<group>"; };
@@ -192,6 +192,9 @@
 		42248D7A16EC416200ABB5D7 /* SLiPadDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLiPadDetailViewController.h; sourceTree = "<group>"; };
 		42248D7B16EC416200ABB5D7 /* SLiPadDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLiPadDetailViewController.m; sourceTree = "<group>"; };
 		4232060415F7124F0027A18E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		423972031733789B00262A6B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		42397205173378B300262A6B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = de; path = de.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		42397207173378F900262A6B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		423D16E117053FE80007ED61 /* SLCustomUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCustomUI.h; sourceTree = "<group>"; };
 		423D16E217053FE80007ED61 /* SLCustomUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLCustomUI.m; sourceTree = "<group>"; };
 		4240A07615F8341900D67F3E /* SLMotorPrefsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMotorPrefsTVC.h; sourceTree = "<group>"; };
@@ -217,6 +220,8 @@
 		42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSavedFlightsTVC.m; sourceTree = "<group>"; };
 		42BB53CE16A38C4D0029C882 /* SLSaveFlightDataTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSaveFlightDataTVC.h; sourceTree = "<group>"; };
 		42BB53CF16A38C4D0029C882 /* SLSaveFlightDataTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSaveFlightDataTVC.m; sourceTree = "<group>"; };
+		42BD6CC417377CCE00E19B50 /* SLClusterMotorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterMotorViewController.h; sourceTree = "<group>"; };
+		42BD6CC517377CCE00E19B50 /* SLClusterMotorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotorViewController.m; sourceTree = "<group>"; };
 		42CEE10217277F440060424F /* SLMotorConfigurationTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMotorConfigurationTVC.h; sourceTree = "<group>"; };
 		42CEE10317277F440060424F /* SLMotorConfigurationTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMotorConfigurationTVC.m; sourceTree = "<group>"; };
 		42D6AE8516A25242000EE1A8 /* DaVinci~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DaVinci~iPad.png"; sourceTree = "<group>"; };
@@ -427,7 +432,7 @@
 		4256930F15F4893000F7BABC /* Smart Launch */ = {
 			isa = PBXGroup;
 			children = (
-				4220A4A515F55CC60055EE35 /* MainStoryboard_iPhone.storyboard */,
+				42397206173378B300262A6B /* MainStoryboard_iPhone.storyboard */,
 				4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */,
 				42248D7916EC384F00ABB5D7 /* Model */,
 				4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */,
@@ -468,6 +473,8 @@
 				4220A4BB15F55CC60055EE35 /* SLMotorTableViewController.m */,
 				4220A4BC15F55CC60055EE35 /* SLMotorViewController.h */,
 				4220A4BD15F55CC60055EE35 /* SLMotorViewController.m */,
+				42BD6CC417377CCE00E19B50 /* SLClusterMotorViewController.h */,
+				42BD6CC517377CCE00E19B50 /* SLClusterMotorViewController.m */,
 				42F83DB6171B6EAA005FAA0C /* SLClusterTableViewController.h */,
 				42F83DB7171B6EAB005FAA0C /* SLClusterTableViewController.m */,
 				42F83DB9171B6ED2005FAA0C /* SLClusterMotorBuildViewController.h */,
@@ -581,7 +588,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4256931415F4893000F7BABC /* InfoPlist.strings in Resources */,
-				4220A4CC15F55CC60055EE35 /* MainStoryboard_iPhone.storyboard in Resources */,
+				42397204173378B300262A6B /* MainStoryboard_iPhone.storyboard in Resources */,
 				4220A4EA15F55D120055EE35 /* CancelButtonSelected.png in Resources */,
 				4220A4EB15F55D120055EE35 /* CancelButton.png in Resources */,
 				4220A4EC15F55D120055EE35 /* AcceptButton.png in Resources */,
@@ -689,16 +696,27 @@
 				42F83DBE171B6EFC005FAA0C /* SLClusterMotorMemberCell.m in Sources */,
 				42CEE10417277F440060424F /* SLMotorConfigurationTVC.m in Sources */,
 				42742BBB172AE37D007229E9 /* SLClusterMotor.m in Sources */,
+				42BD6CC617377CCE00E19B50 /* SLClusterMotorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		42397206173378B300262A6B /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42397205173378B300262A6B /* de */,
+				42397207173378F900262A6B /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
 		4256931215F4893000F7BABC /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				4256931315F4893000F7BABC /* en */,
+				423972031733789B00262A6B /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

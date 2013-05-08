@@ -80,9 +80,13 @@
 #pragma mark - SLSimulationDelegate method
 
 -(void)sender:(id)sender didChangeRocketMotor:(NSArray *)motor{
-    if (![motor count]) return;
-    NSMutableDictionary *dict = [motor[0] mutableCopy];
-    dict[MOTOR_COUNT_KEY] = self.motorConfiguration[self.selectedGroupIndex][MOTOR_COUNT_KEY];
+    NSMutableDictionary *dict;
+    if (![motor count]) {
+        dict = [NSMutableDictionary dictionary];
+    }else{
+        dict = [motor[0] mutableCopy];
+        dict[MOTOR_COUNT_KEY] = self.motorConfiguration[self.selectedGroupIndex][MOTOR_COUNT_KEY];
+    }
     NSMutableArray *arr = [self.motorLoadoutPlist mutableCopy];
     if (!self.selectedGroupIndex && ![arr count]){
         [arr addObject:dict];
@@ -95,7 +99,7 @@
         [self.simDelegate sender:self didChangeRocketMotor:self.motorLoadoutPlist];
         NSDictionary *settings = [self.simDatasource simulationSettings];
         [self.simDelegate sender:self didChangeSimSettings:settings withUpdate:YES];
-    }
+        }
 }
 
 -(NSUInteger)motorSizeRequested{

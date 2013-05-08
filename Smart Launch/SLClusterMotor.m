@@ -26,6 +26,12 @@
     return motor.name;
 }
 
+-(NSString *)firstMotorManufacturer{
+    if (![self.motors count]) return nil;
+    RocketMotor *motor = self.motors[0];
+    return motor.manufacturer;
+}
+
 -(NSUInteger)motorCount{
     return [self.motors count];
 }
@@ -45,6 +51,21 @@
     return totalMass;
 }
 
+-(float)mass{
+    float totalMass = 0.0;
+    for (RocketMotor *motor in self.motors){
+        totalMass += motor.loadedMass;
+    }
+    return totalMass;
+}
+
+-(NSUInteger)diameter{
+    // returns the diameter of the first group
+    NSUInteger diam = 0;
+    if ([self.motors count]) diam = [self.motors[0] diameter];
+    return diam;
+}
+
 -(float)totalImpulse{
     float impulse = 0.0;
     for (RocketMotor *motor in self.motors){
@@ -59,6 +80,41 @@
         if (motor.burnoutTime > burntime) burntime = motor.burnoutTime;
     }
     return burntime;
+}
+
+-(float)thrustAtTime:(float)time{
+    float thrust = 0.0;
+    for (RocketMotor *motor in self.motors){
+        thrust += [motor thrustAtTime:time];
+    }
+    return thrust;
+}
+
+-(float)peakInitialThrust{
+    float thrust, oldThrust, time;
+    time = 1.0/DIVS_DURING_BURN;
+    thrust = [self thrustAtTime:time];
+    oldThrust = thrust;
+    while (thrust >= oldThrust) {
+        time += 1.0/DIVS_DURING_BURN;
+        oldThrust = thrust;
+        thrust = [self thrustAtTime:time];
+    }
+    return oldThrust;
+}
+
+-(float)truePeakThrust{
+    float thrust, peakThrust, time, brnoutime;
+    time = 1.0/DIVS_FOR_RAPID_CALC;
+    thrust = [self thrustAtTime:time];
+    peakThrust = thrust;
+    brnoutime = self.totalBurnLength;
+    while (time < brnoutime) {
+        time += 1.0/DIVS_FOR_RAPID_CALC;
+        if (thrust > peakThrust) peakThrust = thrust;
+        thrust = [self thrustAtTime:time];
+    }
+    return peakThrust;
 }
 
 -(NSString *)impulseClass{
@@ -79,6 +135,7 @@
 
 
 -(NSString *)fractionalImpulseClass{
+    
     if (!_fractionalImpulseDisplay){
         _fractionalImpulseDisplay = [NSString stringWithFormat:@"%1.0f%% %@", [self fractionOfImpulseClass] * 100, self.impulseClass];
     }

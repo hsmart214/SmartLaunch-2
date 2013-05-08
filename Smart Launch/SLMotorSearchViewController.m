@@ -350,6 +350,11 @@ NSInteger sortFunction(id md1, id md2, void *context){
 
 #pragma mark - Target Action methods
 
+- (IBAction)didUnloadMotor:(id)sender {
+    [self.delegate sender:self didChangeRocketMotor:@[]];
+    [self.navigationController popToViewController:self.popBackController animated:YES];
+}
+
 - (IBAction)search1ValueChanged:(UISegmentedControl *)sender {
     [self motorDiameterRestrictionChanged:self.restrictMotorDiametersSegmentedControl];
     [self.pickerView reloadAllComponents];

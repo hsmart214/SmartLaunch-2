@@ -16,6 +16,7 @@
 #import "SLiPadDetailViewController.h"
 #import "SLClusterMotorBuildViewController.h"
 #import "SLRocketPropertiesTVC.h"
+#import "SLClusterMotorViewController.h"
 
 #define FLIGHT_PROFILE_ROW 5
 #define MOTOR_SELECTION_ROW 1
@@ -353,6 +354,13 @@
     }
     if ([segue.identifier isEqualToString:@"RocketDirectEditSegue"]){
         [(SLRocketPropertiesTVC *)segue.destinationViewController setRocket:self.rocket];
+        [(SLRocketPropertiesTVC *)segue.destinationViewController setTitle:self.rocket.name];
+        [(SLRocketPropertiesTVC *)segue.destinationViewController setDelegate:self];
+    }
+    if ([segue.identifier isEqualToString:@"ClusterThrustViewSegue"]){
+        [(SLClusterMotorViewController *)segue.destinationViewController setMotorLoadoutPlist:self.rocket.motorLoadoutPlist];
+        [(SLClusterMotorViewController *)segue.destinationViewController setDelegate:self];
+        [(SLClusterMotorViewController *)segue.destinationViewController setPopBackViewController:self];
     }
 }
 
@@ -406,6 +414,10 @@
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0){
         [self performSegueWithIdentifier:@"RocketDirectEditSegue" sender:self];
+    }
+    if (indexPath.row == 1){
+        if ([self.rocket.motors count] == 0) return;
+        [self performSegueWithIdentifier:@"ClusterThrustViewSegue" sender:self];
     }
 }
 
