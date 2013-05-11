@@ -287,7 +287,7 @@ float burrnoutTime, burrnoutMass;
     return nil;
 }
 
--(float)length{
+-(float)motorLength{
     float maxLength = 0.0;
     for (RocketMotor *motor in self.internalMotors){
         if (motor.length > maxLength)

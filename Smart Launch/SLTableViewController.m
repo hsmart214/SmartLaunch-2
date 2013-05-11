@@ -165,10 +165,11 @@
     NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
     NSMutableDictionary *rocketFavorites = [[defaults objectForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
     if (!rocketFavorites) rocketFavorites = [NSMutableDictionary dictionary];
-    rocketFavorites[rocket.name] = rocket.rocketPropertyList;
+    rocketFavorites[rocket.name] = [rocket rocketPropertyList];
     [defaults setObject:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
     [store setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
     [defaults synchronize];
+    self.rocket = rocket;
 }
 
 - (void)SLRocketPropertiesTVC:(SLRocketPropertiesTVC *)sender deletedRocket:(Rocket *)rocket{

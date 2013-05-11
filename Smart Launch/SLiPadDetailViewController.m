@@ -24,9 +24,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *windVelocityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *motorNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalImpulseLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fractionalImpulseLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ffAoALabel;
 @property (weak, nonatomic) IBOutlet UILabel *ffVelocityUnitsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ffVelocityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *launchAngleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *launchSiteAltLabel;
 @property (weak, nonatomic) IBOutlet UILabel *launchSiteAltUnitsLabel;
 @property (weak, nonatomic) IBOutlet UIStepper *siteAltitudeStepper;        // all of the steppers keep values in DISPLAY units not metric!
@@ -148,6 +150,7 @@
     AoA *= DEGREES_PER_RADIAN;
     self.ffAoALabel.text = [NSString stringWithFormat:@"%1.1f°",AoA];
     [self drawVectors];
+    self.launchAngleLabel.text = [NSLocalizedString(@"Launch Angle: ", @"Launch Angle: ") stringByAppendingString:[NSString stringWithFormat:@"%1.1f°",self.displayLaunchAngle * DEGREES_PER_RADIAN]];
 }
 
 -(void)drawVectors{
@@ -168,6 +171,8 @@
     self.flightProfileGraphTitleLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Flight Profile - %@", @"Flight Profile - %@") , [self.graphTypeSegmentedControl titleForSegmentAtIndex:[self.graphTypeSegmentedControl selectedSegmentIndex]]];
     self.motorNameLabel.text = self.dataSource.motorDescription;
     self.totalImpulseLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Total Impulse: %1.0f Newton-sec", @"Total Impulse: %1.0f Newton-sec") , [self.model.rocket totalImpulse]];
+    SLClusterMotor *tempMotor = [[SLClusterMotor alloc] initWithMotorLoadout:self.model.rocket.motorLoadoutPlist];
+    self.fractionalImpulseLabel.text = [[tempMotor fractionalImpulseClass] stringByAppendingString:NSLocalizedString(@" Impulse", " Impulse - note the leading space")];
     self.title = self.model.rocketName;
     [self.flightProfileView resetAxes];
     [self.thrustCurveView resetAxes];
@@ -336,4 +341,10 @@
     return @"iPad DetailViewController";
 }
 
+- (void)viewDidUnload {
+    [self setFractionalImpulseLabel:nil];
+    [self setLaunchAngleLabel:nil];
+    [self setLaunchAngleLabel:nil];
+    [super viewDidUnload];
+}
 @end

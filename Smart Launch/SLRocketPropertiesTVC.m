@@ -56,14 +56,18 @@
 }
 
 - (void)updateRocket{
-    self.rocket.name = self.nameField.text;
-    self.rocket.kitName = self.kitNameField.text;
-    self.rocket.manufacturer = self.manField.text;
-    self.rocket.mass = [SLUnitsConvertor metricStandardOf:fabsf([self.massField.text floatValue]) forKey:MASS_UNIT_KEY];
-    self.rocket.diameter = [SLUnitsConvertor metricStandardOf:fabsf([self.diamField.text floatValue]) forKey:DIAM_UNIT_KEY];
-    self.rocket.length = [SLUnitsConvertor metricStandardOf:fabsf([self.lenField.text floatValue]) forKey:LENGTH_UNIT_KEY];
-    self.rocket.cd = fabsf([self.cdField.text floatValue]);
-    self.rocket.motorConfig = self.motorConfiguration;
+    NSMutableDictionary *dict = [[self.rocket rocketPropertyList] mutableCopy];
+    dict[ROCKET_NAME_KEY] = self.nameField.text;
+    dict[ROCKET_KITNAME_KEY] = self.kitNameField.text;
+    dict[ROCKET_MAN_KEY] = self.manField.text;
+    dict[ROCKET_MASS_KEY] = @([SLUnitsConvertor metricStandardOf:fabsf([self.massField.text floatValue]) forKey:MASS_UNIT_KEY]);
+    dict[ROCKET_DIAM_KEY] = @([SLUnitsConvertor metricStandardOf:fabs([self.diamField.text floatValue]) forKey:DIAM_UNIT_KEY]);
+    dict[ROCKET_LENGTH_KEY] = @([SLUnitsConvertor metricStandardOf:fabs([self.lenField.text floatValue]) forKey:LENGTH_UNIT_KEY]);
+    dict[ROCKET_CD_KEY] = @(fabs([self.cdField.text floatValue]));
+    dict[ROCKET_MOTOR_CONFIG_KEY] = self.motorConfiguration;
+    dict[SMART_LAUNCH_VERSION_KEY] = @(SMART_LAUNCH_VERSION);
+    self.rocket = nil;
+    self.rocket = [Rocket rocketWithRocketDict:dict];
     [self.saveButton setEnabled:[self isValidRocket]];
 }
 
