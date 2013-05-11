@@ -111,7 +111,7 @@
         }else{
             self.motorConfigLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d motors", @"%d motors") , motorTotalCount];
         }
-        
+        self.rocket.motorSize = [self.motorConfiguration[0][MOTOR_DIAM_KEY] integerValue];
     }
     [self calculateCd];
     [self.saveButton setEnabled:[self isValidRocket]];

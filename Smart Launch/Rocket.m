@@ -146,7 +146,7 @@ float burrnoutTime, burrnoutMass;
 
 -(NSUInteger)motorSize{
     if ([self.motorConfig count]) return [self.motorConfig[0][MOTOR_DIAM_KEY] integerValue];
-    return MOTOR_DEFAULT_DIAMETER;
+    return self.motorSize;
 }
 
 -(BOOL)hasClusterMount{

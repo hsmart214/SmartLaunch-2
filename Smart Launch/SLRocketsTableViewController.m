@@ -24,6 +24,9 @@
 - (void)updateRocketArray{
     if ([self.rocketArray count]) [self.rocketArray removeAllObjects];
     NSArray *temp = [self.rockets allValues];
+    temp = [temp sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *r1, NSDictionary *r2){
+        return [r1[ROCKET_NAME_KEY] compare:r2[ROCKET_NAME_KEY]];
+    }];
     for (NSDictionary *rocketPList in temp){
         [self.rocketArray addObject:[Rocket rocketWithRocketDict:rocketPList]];
     }

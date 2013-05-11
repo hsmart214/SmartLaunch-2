@@ -209,7 +209,9 @@
     self.rocketCell.textLabel.text = self.rocket.name;
     self.rocketCell.detailTextLabel.text = [NSString stringWithFormat:@"%dmm", self.rocket.motorSize];
     self.motorNameLabel.text = [self.rocket motorDescription];
-    self.motorDetailDescriptionLabel.text =[NSString stringWithFormat:@"%1.1f Ns", [self.rocket totalImpulse]];
+    SLClusterMotor *cMotor = [[SLClusterMotor alloc] initWithMotorLoadout:self.rocket.motorLoadoutPlist];
+    self.motorDetailDescriptionLabel.text = [cMotor fractionalImpulseClass];
+    //    self.motorDetailDescriptionLabel.text =[NSString stringWithFormat:@"%1.1f Ns", [self.rocket totalImpulse]];
     UIImage *theImage = [UIImage imageNamed:self.rocket.motorManufacturer];
     self.manufacturerLogoView.image = theImage;
     

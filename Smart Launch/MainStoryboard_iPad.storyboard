@@ -912,6 +912,11 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
+                        <barButtonItem title="Auto Update: ON" id="ipv-p9-TX1">
+                            <connections>
+                                <action selector="toggleAutoUpdate:" destination="UcW-Eg-XbB" id="bDQ-y8-vSl"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="WPy-y4-mbW"/>
                         <barButtonItem title="Saved Clusters" id="P8v-Fh-xti">
                             <connections>
@@ -923,6 +928,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="autoUpdateBarButton" destination="ipv-p9-TX1" id="jqf-yr-j6T"/>
                         <segue destination="FKU-rk-hEo" kind="push" identifier="clusterMemberMotorSearch" id="mi2-wW-OMb"/>
                     </connections>
                 </tableViewController>
@@ -3179,6 +3185,6 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="ufW-2b-KLU"/>
-        <segue reference="s7M-Af-1nP"/>
+        <segue reference="mi2-wW-OMb"/>
     </inferredMetricsTieBreakers>
 </document>

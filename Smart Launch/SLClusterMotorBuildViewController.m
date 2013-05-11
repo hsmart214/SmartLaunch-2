@@ -14,6 +14,9 @@
 
 @interface SLClusterMotorBuildViewController ()<SLMotorPickerDatasource, SLMotorGroupDelegate>
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *autoUpdateBarButton;
+@property (nonatomic) BOOL shouldUpdateContinuously;
+
 @end
 
 @implementation SLClusterMotorBuildViewController
@@ -33,6 +36,18 @@
         }
     }
     return _motorLoadoutPlist;
+}
+
+- (IBAction)toggleAutoUpdate:(UIBarButtonItem *)sender {
+    self.shouldUpdateContinuously = !self.shouldUpdateContinuously;
+    if (self.shouldUpdateContinuously){
+        [sender setTitle:NSLocalizedString(@"Auto Update: ON", @"text for interface auto-update toggle ON")];
+        [self.simDelegate sender:self didChangeRocketMotor:self.motorLoadoutPlist];
+        NSDictionary *settings = [self.simDatasource simulationSettings];
+        [self.simDelegate sender:self didChangeSimSettings:settings withUpdate:YES];
+    }else{
+        [sender setTitle:NSLocalizedString(@"Auto Update: OFF", @"text for interface auto-update toggle OFF")];
+    }
 }
 
 -(void)setMotorLoadoutPlist:(NSArray *)motorLoadoutPlist{
@@ -58,7 +73,7 @@
                                                  MOTOR_PLIST_KEY: motorDict}];
     self.motorLoadoutPlist = [arr copy];
     [self.tableView reloadData];
-    if (self.splitViewController){
+    if (self.splitViewController && self.shouldUpdateContinuously){
         [self.simDelegate sender:self didChangeRocketMotor:self.motorLoadoutPlist];
         NSDictionary *settings = [self.simDatasource simulationSettings];
         [self.simDelegate sender:self didChangeSimSettings:settings withUpdate:YES];
@@ -116,7 +131,7 @@
                                               MOTOR_PLIST_KEY: [motor motorDict]}];
     self.motorLoadoutPlist = [arr copy];
     [self.tableView reloadData];
-    if (self.splitViewController){
+    if (self.splitViewController && self.shouldUpdateContinuously){
         [self.simDelegate sender:self didChangeRocketMotor:self.motorLoadoutPlist];
         NSDictionary *settings = [self.simDatasource simulationSettings];
         [self.simDelegate sender:self didChangeSimSettings:settings withUpdate:YES];
@@ -205,6 +220,10 @@
     }else{
         self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
     }
+    if (self.autoUpdateBarButton){
+        [self.autoUpdateBarButton setTitle:NSLocalizedString(@"Auto Update: ON", @"text for interface auto-update toggle ON")];
+        self.shouldUpdateContinuously = YES;
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -223,4 +242,8 @@
     self.savedMotorLoadoutPlists = nil;
 }
 
+- (void)viewDidUnload {
+    [self setAutoUpdateBarButton:nil];
+    [super viewDidUnload];
+}
 @end
