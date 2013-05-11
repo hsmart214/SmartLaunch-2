@@ -56,6 +56,7 @@
     self.propellantMass.text = [NSString stringWithFormat:@"%1.2f kg", self.clusterMotor.propellantMass];
     self.totalImpulse.text = [NSString stringWithFormat:@"%1.1f N-sec", self.clusterMotor.totalImpulse];
     self.initialThrust.text = [NSString stringWithFormat:@"%1.1f N", self.clusterMotor.peakInitialThrust];
+    self.fractionalImpulse.text = [self.clusterMotor fractionalImpulseClass];
     self.thrustCurve.dataSource = self;
     [self listMotors];
     [self.thrustCurve setNeedsDisplay];
@@ -68,6 +69,7 @@
 
 - (void)viewDidUnload {
     [self setMotorListTextView:nil];
+    [self setFractionalImpulse:nil];
     [super viewDidUnload];
 }
 @end

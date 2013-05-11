@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *motorMass;
 @property (weak, nonatomic) IBOutlet UILabel *propellantMass;
 @property (weak, nonatomic) IBOutlet UILabel *totalImpulse;
+@property (weak, nonatomic) IBOutlet UILabel *fractionalImpulse;
 @property (weak, nonatomic) IBOutlet UILabel *initialThrust;
 @property (weak, nonatomic) IBOutlet SLCurveGraphView *thrustCurve;
 @property (weak, nonatomic) IBOutlet UITextView *motorListTextView;
