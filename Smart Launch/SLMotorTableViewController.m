@@ -11,9 +11,6 @@
 #import "SLMotorViewController.h"
 #import "SLClusterMotor.h"
 
-//#define CELL_VIEW_HEIGHT 86
-//#define CELL_VIEW_WIDTH 140
-
 @interface SLMotorTableViewController ()
 @property (nonatomic, strong) NSDictionary *selectedMotorDict;
 @property (nonatomic, strong) RocketMotor *selectedMotor;

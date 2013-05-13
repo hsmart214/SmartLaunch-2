@@ -52,6 +52,9 @@
     [store setDictionary:rocketPlists forKey:FAVORITE_ROCKETS_KEY];
     [defaults synchronize];
     
+    [self.delegate sender:self didChangeRocket:self.rocket];
+    //[self.delegate SLRocketPropertiesTVC:(id)self savedRocket:self.rocket];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

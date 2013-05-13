@@ -335,11 +335,15 @@
         [segue.destinationViewController setDataSource:self];
     }
     if ([[segue identifier] isEqualToString:@"saveFlightSegue"]){
+        NSMutableDictionary *flightSettings = [self.settings mutableCopy];
+        [flightSettings removeObjectForKey:SELECTED_ROCKET_KEY];
+        if (self.settings[SELECTED_MOTOR_KEY]) flightSettings[SELECTED_ROCKET_KEY] = self.settings[SELECTED_MOTOR_KEY];
+  
         NSDictionary *flight = @{MOTOR_PLIST_KEY : [self.rocket motorLoadoutPlist] ,
                                  FLIGHT_MOTOR_LONGNAME_KEY : [NSString stringWithFormat:@"%@ %@", self.rocket.motorManufacturer, self.rocket.motorDescription],
                                  FLIGHT_BEST_CD : @(self.rocket.cd),
                                  FLIGHT_ALTITUDE_KEY : @([SLUnitsConvertor metricStandardOf:[self.apogeeAltitudeLabel.text floatValue] forKey:ALT_UNIT_KEY]),
-                                 FLIGHT_SETTINGS_KEY: self.settings,
+                                 FLIGHT_SETTINGS_KEY: flightSettings,
                                  SMART_LAUNCH_VERSION_KEY: @(SMART_LAUNCH_VERSION)};
         [(SLSaveFlightDataTVC *)segue.destinationViewController setFlightData:flight];
         [(SLSaveFlightDataTVC *)segue.destinationViewController setPhysicsModel:self.model];

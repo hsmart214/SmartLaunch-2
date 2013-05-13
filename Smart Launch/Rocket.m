@@ -145,8 +145,14 @@ float burrnoutTime, burrnoutMass;
 }
 
 -(NSUInteger)motorSize{
-    if ([self.motorConfig count]) return [self.motorConfig[0][MOTOR_DIAM_KEY] integerValue];
-    return self.motorSize;
+    if (!_motorSize) {
+        if ([self.motorConfig count]) {
+            _motorSize = [self.motorConfig[0][MOTOR_DIAM_KEY] integerValue];
+        }else{
+            _motorSize = MOTOR_DEFAULT_DIAMETER;
+        }
+    }
+    return _motorSize;
 }
 
 -(BOOL)hasClusterMount{
@@ -274,7 +280,7 @@ float burrnoutTime, burrnoutMass;
 
 -(NSString *)motorDescription{
     if (![self.internalMotors count]) return NSLocalizedString(@"No Motor Selected", @"No motor selected");
-    if ([self.internalMotors count] == 1) return [self.internalMotors[0] description];
+    if ([self.internalMotors count] == 1) return [self.internalMotors[0] name];
     return [NSString stringWithFormat:@"%d %@", [self.internalMotors count], NSLocalizedString(@"motor cluster", @"Like '5 motor cluster'")];
 }
 

@@ -187,12 +187,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
--(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
     self.selectedGroupIndex = indexPath.row;
     [self performSegueWithIdentifier:@"clusterMemberMotorSearch" sender:indexPath];
 }
+
+//-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+//    
+//}
 
 #pragma mark - Segue
 

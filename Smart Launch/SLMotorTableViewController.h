@@ -12,7 +12,7 @@
 @interface SLMotorTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (copy, nonatomic) NSArray *motors;
-@property (strong, nonatomic) NSString *sectionKey;
+@property (copy, nonatomic) NSString *sectionKey;
 @property (weak, nonatomic) id<SLSimulationDelegate> delegate;
 @property (weak, nonatomic) UIViewController *popBackViewController;
 

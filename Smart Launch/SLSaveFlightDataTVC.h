@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Rocket.h"
 #import "SLPhysicsModel.h"
+#import "SLRocketPropertiesTVC.h"
 
 @interface SLSaveFlightDataTVC : UITableViewController
 //model
 @property (nonatomic, strong) NSDictionary *flightData;
 @property (nonatomic, copy) Rocket *rocket;
 @property (nonatomic, weak) SLPhysicsModel *physicsModel;
-@property (nonatomic, weak) id delegate;            // this dummy delegate only exists to make the prepareForSegue code easier
+@property (nonatomic, weak) id<SLSimulationDelegate> delegate;
 
 @end

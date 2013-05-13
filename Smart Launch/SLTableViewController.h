@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SLSimulationDelegate.h"
+#import "SLRocketPropertiesTVC.h"
 
 @interface SLTableViewController : UITableViewController <SLSimulationDelegate, SLSimulationDataSource>
 

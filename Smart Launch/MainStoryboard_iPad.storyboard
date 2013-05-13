@@ -797,11 +797,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.051336497379999999" green="0.11811725269999999" blue="0.32854352679999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="clusterMemberCell" rowHeight="157" id="qcw-z9-2e1" customClass="SLClusterMotorMemberCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="clusterMemberCell" rowHeight="157" id="qcw-z9-2e1" customClass="SLClusterMotorMemberCell">
                                 <rect key="frame" x="0.0" y="34" width="320" height="159"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="267" height="156"/>
+                                    <rect key="frame" x="10" y="1" width="280" height="156"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Apogee.png" translatesAutoresizingMaskIntoConstraints="NO" id="sAo-Nb-aYe">
@@ -876,9 +876,9 @@
                                     <constraint firstItem="hKf-6R-LdP" firstAttribute="leading" secondItem="UtX-1c-lpI" secondAttribute="leading" type="default" id="0VW-4n-pzQ"/>
                                     <constraint firstItem="cgk-Hd-eQo" firstAttribute="trailing" secondItem="mGC-6R-Krh" secondAttribute="trailing" type="default" id="8wb-bJ-mJQ"/>
                                     <constraint firstItem="UtX-1c-lpI" firstAttribute="centerX" secondItem="mGC-6R-Krh" secondAttribute="centerX" type="default" id="9TL-cB-d3n"/>
-                                    <constraint firstItem="4WX-Wg-AmJ" firstAttribute="top" secondItem="sAo-Nb-aYe" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ErV-pa-65y"/>
-                                    <constraint firstItem="UtX-1c-lpI" firstAttribute="top" secondItem="qcw-z9-2e1" secondAttribute="top" type="user" id="J7Q-5V-h0l"/>
-                                    <constraint firstItem="sAo-Nb-aYe" firstAttribute="bottom" secondItem="hKf-6R-LdP" secondAttribute="bottom" type="default" id="VEb-K8-JyX"/>
+                                    <constraint firstItem="sAo-Nb-aYe" firstAttribute="top" secondItem="qcw-z9-2e1" secondAttribute="top" constant="1" id="GO4-xH-EVu"/>
+                                    <constraint firstItem="sAo-Nb-aYe" firstAttribute="bottom" secondItem="hKf-6R-LdP" secondAttribute="bottom" type="default" id="HnT-Cm-XWo"/>
+                                    <constraint firstItem="p0m-Le-rjO" firstAttribute="centerY" secondItem="UtX-1c-lpI" secondAttribute="centerY" type="default" id="Wny-Vh-iqg"/>
                                     <constraint firstItem="p0m-Le-rjO" firstAttribute="trailing" secondItem="Zql-xD-TbQ" secondAttribute="trailing" type="default" id="anZ-OX-LbJ"/>
                                     <constraint firstItem="cgk-Hd-eQo" firstAttribute="centerY" secondItem="4WX-Wg-AmJ" secondAttribute="centerY" type="default" id="bTw-op-Hoc"/>
                                     <constraint firstItem="Zql-xD-TbQ" firstAttribute="top" secondItem="qcw-z9-2e1" secondAttribute="top" constant="18" id="cRc-Da-Vl4"/>
@@ -888,10 +888,10 @@
                                     <constraint firstItem="mkL-xu-zve" firstAttribute="top" secondItem="mGC-6R-Krh" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="kWM-Vc-FCB"/>
                                     <constraint firstItem="mGC-6R-Krh" firstAttribute="leading" secondItem="qcw-z9-2e1" secondAttribute="leading" constant="89" id="kab-oj-VE3"/>
                                     <constraint firstItem="4WX-Wg-AmJ" firstAttribute="leading" secondItem="qcw-z9-2e1" secondAttribute="leading" constant="30" id="njy-zz-2fL"/>
-                                    <constraint firstItem="sAo-Nb-aYe" firstAttribute="top" secondItem="qcw-z9-2e1" secondAttribute="top" constant="1" type="user" id="q9m-Oj-skL"/>
+                                    <constraint firstItem="sAo-Nb-aYe" firstAttribute="top" secondItem="UtX-1c-lpI" secondAttribute="top" type="default" id="oMQ-Tb-B7i"/>
                                     <constraint firstItem="sAo-Nb-aYe" firstAttribute="leading" secondItem="qcw-z9-2e1" secondAttribute="leading" constant="10" id="sX0-dt-4YG"/>
                                     <constraint firstAttribute="trailing" secondItem="p0m-Le-rjO" secondAttribute="trailing" constant="43" id="tBg-9I-TNi"/>
-                                    <constraint firstItem="p0m-Le-rjO" firstAttribute="top" secondItem="sAo-Nb-aYe" secondAttribute="top" type="default" id="y8J-sO-eKZ"/>
+                                    <constraint firstItem="4WX-Wg-AmJ" firstAttribute="top" secondItem="sAo-Nb-aYe" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="uR9-xX-tdv"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="burnTimeTextLabel" destination="mGC-6R-Krh" id="CFI-jy-nRc"/>
@@ -945,7 +945,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.051336497379999999" green="0.11811725269999999" blue="0.32854352679999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClusterMotorCell" textLabel="WZz-o7-3y2" detailTextLabel="ffU-Ef-Hkt" style="IBUITableViewCellStyleValue1" id="5Oq-6A-QAZ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClusterMotorCell" textLabel="WZz-o7-3y2" detailTextLabel="ffU-Ef-Hkt" style="IBUITableViewCellStyleSubtitle" id="5Oq-6A-QAZ">
                                 <rect key="frame" x="0.0" y="34" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -953,13 +953,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZz-o7-3y2">
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffU-Ef-Hkt">
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffU-Ef-Hkt">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                     </subviews>
@@ -2644,7 +2644,7 @@
                                                         <constraint firstAttribute="height" constant="307" id="BbZ-m5-LDW"/>
                                                         <constraint firstAttribute="width" constant="260" id="yUn-9F-hex"/>
                                                     </constraints>
-                                                    <string key="text">Smart Launch HD 1.5
+                                                    <string key="text">Smart Launch HD 2.0.1
 ©2012, 2013 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
