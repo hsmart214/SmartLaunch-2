@@ -191,7 +191,8 @@
     if ([detailInfo isKindOfClass:[NSString class]]){
         cell.detailTextLabel.text = detailInfo;
     } else {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%1.2f m", [detailInfo floatValue]];
+        //cell.detailTextLabel.text = [NSString stringWithFormat:@"%1.2f m", [detailInfo floatValue]];
+        cell.detailTextLabel.text = nil;
     }
     return cell;
 }

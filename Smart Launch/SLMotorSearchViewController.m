@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSArray *preferredImpulseClasses;
 @property (nonatomic, strong) NSArray *preferredMotorDiameters;
 @property (nonatomic, strong) NSArray *restrictedMotorDiamPrefs;
+@property (nonatomic) NSUInteger allMotorCount;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *restrictMotorDiametersSegmentedControl;
 @end
@@ -147,7 +148,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
         }
         //        _allMotors = [[NSArray arrayWithArray:build] sortedArrayUsingFunction:sortFunction context:NULL];
         // here we go with my first sort using a block comparator
-        _allMotors = [[NSArray arrayWithArray:build] sortedArrayUsingComparator:^NSComparisonResult(id md1, id md2){
+        _allMotors = [build sortedArrayUsingComparator:^NSComparisonResult(id md1, id md2){
             NSString *first = ((NSDictionary *)md1)[NAME_KEY];
             NSString *second = ((NSDictionary *)md2)[NAME_KEY];
             if ([first characterAtIndex:0] > [second characterAtIndex:0]) return NSOrderedDescending;
@@ -210,7 +211,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
 - (BOOL)preferredMotorDiametersContainsDiameter:(NSString *)diamStringWithMM{
     BOOL contained = NO;
     for (NSString *diam in self.preferredMotorDiameters){
-        contained = contained || [diam isEqualToString:diamStringWithMM];
+        contained = [diam isEqualToString:diamStringWithMM];
         if (contained) break;
     }
     return contained;
@@ -221,6 +222,13 @@ NSInteger sortFunction(id md1, id md2, void *context){
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Here I have added an asynchronous call out to pre-load the allMotors array.  The allMotorCount will flag whether this has completed.
+    __weak SLMotorSearchViewController *myWeakSelf = self;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        myWeakSelf.allMotorCount = [myWeakSelf.allMotors count];
+    });
+    
     if (!self.splitViewController){
         UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
