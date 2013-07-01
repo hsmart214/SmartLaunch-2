@@ -341,10 +341,4 @@
     return @"iPad DetailViewController";
 }
 
-- (void)viewDidUnload {
-    [self setFractionalImpulseLabel:nil];
-    [self setLaunchAngleLabel:nil];
-    [self setLaunchAngleLabel:nil];
-    [super viewDidUnload];
-}
 @end

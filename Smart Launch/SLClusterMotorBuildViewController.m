@@ -243,8 +243,4 @@
     self.savedMotorLoadoutPlists = nil;
 }
 
-- (void)viewDidUnload {
-    [self setAutoUpdateBarButton:nil];
-    [super viewDidUnload];
-}
 @end

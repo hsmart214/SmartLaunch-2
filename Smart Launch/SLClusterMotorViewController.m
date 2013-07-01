@@ -67,9 +67,4 @@
     self.clusterMotor = nil;
 }
 
-- (void)viewDidUnload {
-    [self setMotorListTextView:nil];
-    [self setFractionalImpulse:nil];
-    [super viewDidUnload];
-}
 @end

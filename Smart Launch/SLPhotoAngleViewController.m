@@ -22,10 +22,12 @@
 
 @interface SLPhotoAngleViewController ()
 
-@property (nonatomic, strong) UIAccelerometer *accelerometer;
-@property (nonatomic) UIAccelerationValue xAccel;
-@property (nonatomic) UIAccelerationValue yAccel;
-@property (nonatomic) UIAccelerationValue zAccel;
+@property (nonatomic, strong) CMMotionManager *motionManager;
+@property (nonatomic) CMAccelerometerData *accelerometerData;
+@property (nonatomic, strong) NSOperationQueue *motionQueue;
+@property (nonatomic) double xAccel;
+@property (nonatomic) double yAccel;
+@property (nonatomic) double zAccel;
 @property (nonatomic, strong) UIView *angleView;
 @property (nonatomic, strong) UIImageView *warningView;
 @property (nonatomic, strong) UILabel *angleLabel;
@@ -36,20 +38,14 @@
 
 @implementation SLPhotoAngleViewController
 
-- (UIAccelerometer *)accelerometer{
-    if (!_accelerometer){
-        _accelerometer = [UIAccelerometer sharedAccelerometer];
-    }
-    return _accelerometer;
-}
-
 #pragma mark - UIAccelerometer delegate
 
 //Filtering constants
 #define UPDATE_INTERVAL 0.1
 #define FILTER_CONSTANT 0.08 //smaller number gives smoother, slower response
 
-- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)accel{
+- (void)setAccelerometerData:(CMAccelerometerData *)accelerometerData{
+    CMAcceleration accel = accelerometerData.acceleration;
     
     //Low-pass filter for accelerometer measurements
     CGFloat alpha  = FILTER_CONSTANT;
@@ -80,13 +76,21 @@
 }
 
 - (void)startMotionUpdates{
-    NSTimeInterval updateInterval = UPDATE_INTERVAL;
-    [self.accelerometer setDelegate:self];
-    [self.accelerometer setUpdateInterval:updateInterval];
+    __weak SLPhotoAngleViewController *myWeakSelf = self;
+    [self.motionManager setDeviceMotionUpdateInterval:UPDATE_INTERVAL];
+    [self.motionManager startAccelerometerUpdatesToQueue:self.motionQueue withHandler:^(CMAccelerometerData *data, NSError *err){
+        if (!err){
+            myWeakSelf.accelerometerData = data;
+        }
+        else{
+            [myWeakSelf stopMotionUpdates];
+            [myWeakSelf.navigationController popViewControllerAnimated:YES];
+        }
+    }];
 }
 
 - (void)stopMotionUpdates{
-    self.accelerometer.delegate=nil;
+    [self.motionManager stopAccelerometerUpdates];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -208,13 +212,13 @@
     }
     NSNumber *angle = @(radians);
     [self.delegate sender:self didChangeLaunchAngle:angle];
-    self.accelerometer.delegate = nil;
+    [self.motionManager stopAccelerometerUpdates];
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)cancel{
-    self.accelerometer.delegate = nil;
+    [self.motionManager stopAccelerometerUpdates];
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -234,8 +238,7 @@
 }
 
 - (void)dealloc{
-    self.accelerometer.delegate = nil;
-    self.accelerometer = nil;
+    [self.motionManager stopAccelerometerUpdates];
     self.cancelButton = nil;
     self.acceptButton = nil;
     self.angleView = nil;

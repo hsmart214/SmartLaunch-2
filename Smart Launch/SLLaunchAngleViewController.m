@@ -19,10 +19,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *angleLabel;
 @property (nonatomic, weak) IBOutlet SLLaunchAngleView *angleView;
 @property (weak, nonatomic) IBOutlet UISlider *angleSlider;
-@property (nonatomic, strong) UIAccelerometer *accelerometer;
-@property (nonatomic) UIAccelerationValue xAccel;
-@property (nonatomic) UIAccelerationValue yAccel;
-@property (nonatomic) UIAccelerationValue zAccel;
+@property (nonatomic, strong) CMMotionManager *motionManager;
+@property (nonatomic, strong) NSOperationQueue *motionQueue;
+@property (nonatomic) CMAccelerometerData *accelerometerData;
+@property (nonatomic) double xAccel;
+@property (nonatomic) double yAccel;
+@property (nonatomic) double zAccel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *motionButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *calibrateButton;
 @property (nonatomic) CGFloat xyCalibrationAngle;
@@ -40,21 +42,13 @@
 #define YX_CAL_KEY @"com.smartsoftware.launchsafe.yxCalibrationValue"
 #define YZ_CAL_KEY @"com.smartsoftware.launchsafe.yzCalibrationValue"
 
-- (UIAccelerometer *)accelerometer{
-    if (!_accelerometer){
-        _accelerometer = [UIAccelerometer sharedAccelerometer];
-    }
-    return _accelerometer;
-}
-
-
-#pragma mark - UIAccelerometer delegate
 
 //Filtering constants
 #define UPDATE_INTERVAL 0.05
 #define FILTER_CONSTANT 0.1 //smaller number gives smoother, slower response
 
-- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)accel{
+- (void)setAccelerometerData:(CMAccelerometerData *)accelerometerData{
+    CMAcceleration accel = accelerometerData.acceleration;
     
     //Low-pass filter for accelerometer measurements
     CGFloat alpha  = FILTER_CONSTANT;
@@ -83,14 +77,30 @@
     }
 }
 
+- (NSOperationQueue *)motionQueue{
+    if (!_motionQueue){
+        _motionQueue = [[NSOperationQueue alloc] init];
+    }
+    return _motionQueue;
+}
+
 - (void)startMotionUpdates{
-    NSTimeInterval updateInterval = UPDATE_INTERVAL;
-    [self.accelerometer setDelegate:self];
-    [self.accelerometer setUpdateInterval:updateInterval];
+    __weak SLLaunchAngleViewController *myWeakSelf = self;
+    [self.motionManager setDeviceMotionUpdateInterval:UPDATE_INTERVAL];
+    [self.motionManager startAccelerometerUpdatesToQueue:self.motionQueue withHandler:^(CMAccelerometerData *data, NSError *err){
+        if (!err){
+            myWeakSelf.accelerometerData = data;
+        }
+        else{
+            [myWeakSelf stopMotionUpdates];
+            [myWeakSelf.motionButton setTitle:NSLocalizedString(@"Motion On", @"Motion On")];
+            myWeakSelf.calibrateButton.enabled = NO;
+        }
+    }];
 }
 
 - (void)stopMotionUpdates{
-    self.accelerometer.delegate=nil;
+    [self.motionManager stopAccelerometerUpdates];
 }
 
 #pragma mark SLLaunchAngleViewDataSource method
@@ -192,8 +202,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [self.delegate sender:self didChangeLaunchAngle:@(fabsf(self.angleSlider.value))];
-    self.accelerometer.delegate = nil;
-    self.accelerometer = nil;
+    [self.motionManager stopAccelerometerUpdates];
     [super viewWillDisappear:animated];
 }
 
@@ -202,8 +211,7 @@
 }
 
 -(void)dealloc{
-    self.accelerometer.delegate = nil;
-    self.accelerometer = nil;
+    [self.motionManager stopAccelerometerUpdates];
 }
 
 @end

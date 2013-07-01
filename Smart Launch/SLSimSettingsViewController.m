@@ -86,8 +86,9 @@
 
 #pragma mark - CLLocationManagerDelegate methods
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     // If it's a relatively recent event, turn off updates to save power
+    CLLocation *newLocation = [locations lastObject];
     NSDate* eventDate = newLocation.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     if (abs(howRecent) < 15.0)

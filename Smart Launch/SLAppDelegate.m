@@ -14,6 +14,18 @@
 
 @implementation SLAppDelegate
 
+static CMMotionManager* sMotionManager;
+
+- (CMMotionManager *)sharedMotionManager{
+    if (!sMotionManager){
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            sMotionManager = [[CMMotionManager alloc] init];
+        });
+    }
+    return sMotionManager;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     return YES;

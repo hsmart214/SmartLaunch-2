@@ -287,11 +287,6 @@ NSInteger sortFunction(id md1, id md2, void *context){
 }
 
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 #pragma mark - UIPickerView Delegate and Datasource methods
 
 

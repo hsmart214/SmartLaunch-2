@@ -128,9 +128,6 @@
     self.rocketArray = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 #pragma mark - Seque action
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
