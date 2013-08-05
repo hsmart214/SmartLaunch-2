@@ -75,6 +75,7 @@
 		4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931915F4893000F7BABC /* SLAppDelegate.m */; };
 		42742BBB172AE37D007229E9 /* SLClusterMotor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42742BBA172AE37D007229E9 /* SLClusterMotor.m */; };
 		42A1B6191670599E004F1FA0 /* version.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42A1B6181670599E004F1FA0 /* version.txt */; };
+		42AF9C86178E6E45000D588B /* Storyboard_iPhone_iOS7.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42AF9C85178E6E45000D588B /* Storyboard_iPhone_iOS7.storyboard */; };
 		42BB53C916A293D20029C882 /* SLFlightDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53C816A293D20029C882 /* SLFlightDataCell.m */; };
 		42BB53CD16A295310029C882 /* SLSavedFlightsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */; };
 		42BB53D016A38C4E0029C882 /* SLSaveFlightDataTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CF16A38C4D0029C882 /* SLSaveFlightDataTVC.m */; };
@@ -212,6 +213,7 @@
 		42742BB9172AE37C007229E9 /* SLClusterMotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterMotor.h; sourceTree = "<group>"; };
 		42742BBA172AE37D007229E9 /* SLClusterMotor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotor.m; sourceTree = "<group>"; };
 		42A1B6181670599E004F1FA0 /* version.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = version.txt; sourceTree = "<group>"; };
+		42AF9C85178E6E45000D588B /* Storyboard_iPhone_iOS7.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard_iPhone_iOS7.storyboard; sourceTree = "<group>"; };
 		42BB53C716A293D20029C882 /* SLFlightDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFlightDataCell.h; sourceTree = "<group>"; };
 		42BB53C816A293D20029C882 /* SLFlightDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFlightDataCell.m; sourceTree = "<group>"; };
 		42BB53CB16A295310029C882 /* SLSavedFlightsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSavedFlightsTVC.h; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				42397206173378B300262A6B /* MainStoryboard_iPhone.storyboard */,
+				42AF9C85178E6E45000D588B /* Storyboard_iPhone_iOS7.storyboard */,
 				4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */,
 				42248D7916EC384F00ABB5D7 /* Model */,
 				4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */,
@@ -627,6 +630,7 @@
 				421BB136167293FD00F29D95 /* West Coast Hybrids.png in Resources */,
 				4240EDC116990F1E008AB135 /* MainStoryboard_iPad.storyboard in Resources */,
 				42DA0808169A364000106B02 /* Icon@2x.png in Resources */,
+				42AF9C86178E6E45000D588B /* Storyboard_iPhone_iOS7.storyboard in Resources */,
 				42DA080B169A364700106B02 /* Icon.png in Resources */,
 				42DA080D169A365200106B02 /* Icon-72@2x.png in Resources */,
 				42DA080F169A365700106B02 /* Icon-72.png in Resources */,

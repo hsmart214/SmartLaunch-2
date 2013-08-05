@@ -11,6 +11,7 @@
 #import "CoreMotion/CoreMotion.h"
 #import "SLPhotoAngleViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "SLAppDelegate.h"
 
 #define TOLERANCE 0.001
 
@@ -35,6 +36,14 @@
 @end
 
 @implementation SLLaunchAngleViewController
+
+- (CMMotionManager *)motionManager{
+    if (!_motionManager){
+        _motionManager = [(SLAppDelegate *)[[UIApplication sharedApplication] delegate] sharedMotionManager];
+    }
+    return _motionManager;
+}
+
 
 #pragma mark - Constant declarations
 

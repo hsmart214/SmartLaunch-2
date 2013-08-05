@@ -8,6 +8,7 @@
 
 #import "SLPhotoAngleViewController.h"
 #import "CoreMotion/CoreMotion.h"
+#import "SLAppDelegate.h"
 
 #define VIEW_FINDER_IMAGE_FILENAME @"Viewfinder"
 #define ANGLE_WARNING_IMAGE_FILENAME @"AngleWarning"
@@ -37,6 +38,13 @@
 @end
 
 @implementation SLPhotoAngleViewController
+
+- (CMMotionManager *)motionManager{
+    if (!_motionManager){
+        _motionManager = [(SLAppDelegate *)[[UIApplication sharedApplication] delegate] sharedMotionManager];
+    }
+    return _motionManager;
+}
 
 #pragma mark - UIAccelerometer delegate
 
