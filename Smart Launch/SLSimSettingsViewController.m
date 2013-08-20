@@ -115,6 +115,30 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 0) return 0.0;
+    return [SLCustomUI headerHeight];
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    NSString *headerText;
+    if (section == 0){
+        headerText = NSLocalizedString(@"Simulation Settings", @"Simulation Settings (header)");
+    }else{  // there should be only one
+        return nil;
+    }
+    UILabel *headerLabel = [[UILabel alloc] init];
+    [headerLabel setTextColor:[SLCustomUI headerTextColor]];
+    [headerLabel setBackgroundColor:self.tableView.backgroundColor];
+    [headerLabel setTextAlignment:NSTextAlignmentCenter];
+    [headerLabel setText:headerText];
+    [headerLabel setFont:[UIFont boldSystemFontOfSize:17.0]];
+    
+    
+    return headerLabel;
+}
+
+
 #pragma mark - Segue
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

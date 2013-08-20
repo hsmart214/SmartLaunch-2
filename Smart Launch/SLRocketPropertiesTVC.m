@@ -118,7 +118,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+    }else{ // iPhone or iPod
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
+        self.tableView.backgroundColor = [UIColor clearColor];
+    }
     if (!_rocket){
         _rocket = [[Rocket alloc] init];
         _rocket.motorSize = 6;

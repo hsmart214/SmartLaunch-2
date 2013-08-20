@@ -23,11 +23,12 @@
     return [SLCustomUI headerHeight];
 }
 +(UIColor *)headerTextColor{
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
-        return [UIColor whiteColor];
-    }else{
-        return [UIColor darkTextColor];
-    }
+    return [UIColor whiteColor];
+//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+//        return [UIColor whiteColor];
+//    }else{
+//        return [UIColor darkTextColor];
+//    }
 }
 +(UIColor *)footerTextColor{
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){

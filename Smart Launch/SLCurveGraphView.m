@@ -83,6 +83,7 @@
 - (CGFloat)vrange{
     if(_vrange==0.0){
         CGFloat fmax = [self.dataSource curveGraphViewDataValueRange:self] - [self.dataSource curveGraphViewDataValueMinimumValue:self];
+        if (fmax == 0.0) return 0.0;
         int ex = floor(log10(fmax));
         double mant = fmax/pow(10.0, ex);
         _vrange = ceil(mant * 10.0)/10.0;
@@ -112,7 +113,7 @@
     CGFloat graphHeight = self.bounds.size.height - 2*margin;
     CGPoint origin = CGPointMake(margin, self.bounds.size.height - margin);
     CGFloat hscale = graphWidth/self.hrange;
-    CGFloat vscale = graphHeight/self.vrange;
+    CGFloat vscale = (self.vrange == 0.0) ? 0.0 : graphHeight/self.vrange;
     CGFloat ppp = [UIScreen mainScreen].scale;              //ratio of pixels per point on the screen (usually 1.0, but 2.0 for retina display)
     
     // Draw the axes

@@ -74,8 +74,10 @@
 		4256931615F4893000F7BABC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931515F4893000F7BABC /* main.m */; };
 		4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931915F4893000F7BABC /* SLAppDelegate.m */; };
 		42742BBB172AE37D007229E9 /* SLClusterMotor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42742BBA172AE37D007229E9 /* SLClusterMotor.m */; };
+		428443D817C29D1F009BEF92 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 428443D717C29D1F009BEF92 /* Images.xcassets */; };
+		428443DB17C2A4F2009BEF92 /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 428443D917C2A4F2009BEF92 /* Green.png */; };
+		428443DC17C2A4F2009BEF92 /* Blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 428443DA17C2A4F2009BEF92 /* Blue.png */; };
 		42A1B6191670599E004F1FA0 /* version.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42A1B6181670599E004F1FA0 /* version.txt */; };
-		42AF9C86178E6E45000D588B /* Storyboard_iPhone_iOS7.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42AF9C85178E6E45000D588B /* Storyboard_iPhone_iOS7.storyboard */; };
 		42BB53C916A293D20029C882 /* SLFlightDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53C816A293D20029C882 /* SLFlightDataCell.m */; };
 		42BB53CD16A295310029C882 /* SLSavedFlightsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */; };
 		42BB53D016A38C4E0029C882 /* SLSaveFlightDataTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CF16A38C4D0029C882 /* SLSaveFlightDataTVC.m */; };
@@ -212,8 +214,10 @@
 		42742BB5172A3C68007229E9 /* SLClusterBuildDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterBuildDelegate.h; sourceTree = "<group>"; };
 		42742BB9172AE37C007229E9 /* SLClusterMotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterMotor.h; sourceTree = "<group>"; };
 		42742BBA172AE37D007229E9 /* SLClusterMotor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotor.m; sourceTree = "<group>"; };
+		428443D717C29D1F009BEF92 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SmartLaunch/Images.xcassets; sourceTree = "<group>"; };
+		428443D917C2A4F2009BEF92 /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
+		428443DA17C2A4F2009BEF92 /* Blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blue.png; sourceTree = "<group>"; };
 		42A1B6181670599E004F1FA0 /* version.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = version.txt; sourceTree = "<group>"; };
-		42AF9C85178E6E45000D588B /* Storyboard_iPhone_iOS7.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard_iPhone_iOS7.storyboard; sourceTree = "<group>"; };
 		42BB53C716A293D20029C882 /* SLFlightDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFlightDataCell.h; sourceTree = "<group>"; };
 		42BB53C816A293D20029C882 /* SLFlightDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFlightDataCell.m; sourceTree = "<group>"; };
 		42BB53CB16A295310029C882 /* SLSavedFlightsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSavedFlightsTVC.h; sourceTree = "<group>"; };
@@ -317,6 +321,8 @@
 		4220A52F15F55DAB0055EE35 /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				428443D917C2A4F2009BEF92 /* Green.png */,
+				428443DA17C2A4F2009BEF92 /* Blue.png */,
 				42D6AE8516A25242000EE1A8 /* DaVinci~iPad.png */,
 				42D6AE8616A25242000EE1A8 /* DaVinci~iPad@2x.png */,
 				42D6AE8716A25242000EE1A8 /* DaVinci~iPhone.png */,
@@ -402,6 +408,7 @@
 		425692FA15F4893000F7BABC = {
 			isa = PBXGroup;
 			children = (
+				428443D717C29D1F009BEF92 /* Images.xcassets */,
 				4256930F15F4893000F7BABC /* Smart Launch */,
 				4256930815F4893000F7BABC /* Frameworks */,
 				4256930615F4893000F7BABC /* Products */,
@@ -433,7 +440,6 @@
 			isa = PBXGroup;
 			children = (
 				42397206173378B300262A6B /* MainStoryboard_iPhone.storyboard */,
-				42AF9C85178E6E45000D588B /* Storyboard_iPhone_iOS7.storyboard */,
 				4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */,
 				42248D7916EC384F00ABB5D7 /* Model */,
 				4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */,
@@ -564,6 +570,11 @@
 				CLASSPREFIX = SL;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "J. HOWARD SMART";
+				TargetAttributes = {
+					4256930415F4893000F7BABC = {
+						DevelopmentTeam = TY3543425A;
+					};
+				};
 			};
 			buildConfigurationList = 425692FF15F4893000F7BABC /* Build configuration list for PBXProject "Smart Launch" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -621,6 +632,7 @@
 				421BB12D167293FD00F29D95 /* Kosdon by Aerotech.png in Resources */,
 				421BB12E167293FD00F29D95 /* Kosdon.png in Resources */,
 				421BB12F167293FD00F29D95 /* Loki Research.png in Resources */,
+				428443DB17C2A4F2009BEF92 /* Green.png in Resources */,
 				421BB130167293FD00F29D95 /* Propulsion Polymers.png in Resources */,
 				421BB131167293FD00F29D95 /* Public Missiles Ltd.png in Resources */,
 				421BB132167293FD00F29D95 /* Quest.png in Resources */,
@@ -630,9 +642,9 @@
 				421BB136167293FD00F29D95 /* West Coast Hybrids.png in Resources */,
 				4240EDC116990F1E008AB135 /* MainStoryboard_iPad.storyboard in Resources */,
 				42DA0808169A364000106B02 /* Icon@2x.png in Resources */,
-				42AF9C86178E6E45000D588B /* Storyboard_iPhone_iOS7.storyboard in Resources */,
 				42DA080B169A364700106B02 /* Icon.png in Resources */,
 				42DA080D169A365200106B02 /* Icon-72@2x.png in Resources */,
+				428443D817C29D1F009BEF92 /* Images.xcassets in Resources */,
 				42DA080F169A365700106B02 /* Icon-72.png in Resources */,
 				42DA0812169A36DF00106B02 /* iTunesArtwork.png in Resources */,
 				42DA0813169A36DF00106B02 /* iTunesArtwork@2x.png in Resources */,
@@ -650,6 +662,7 @@
 				42F83DA717191F04005FAA0C /* Rocket~iphone.png in Resources */,
 				42F83DA817191F04005FAA0C /* Rocket~iphone@2x.png in Resources */,
 				42F83DAF171B5D43005FAA0C /* Cluster2.png in Resources */,
+				428443DC17C2A4F2009BEF92 /* Blue.png in Resources */,
 				42F83DB0171B5D43005FAA0C /* Cluster3.png in Resources */,
 				42F83DB1171B5D43005FAA0C /* Cluster4.png in Resources */,
 				42F83DB2171B5D43005FAA0C /* Cluster5.png in Resources */,
@@ -802,15 +815,17 @@
 		4256932415F4893000F7BABC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = SmartLaunch.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Howard SMART (TKF9Q29368)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Howard SMART (TKF9Q29368)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5298B6AC-D02E-46D4-A3D7-A8664B4832FE";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5298B6AC-D02E-46D4-A3D7-A8664B4832FE";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -820,12 +835,17 @@
 		4256932515F4893000F7BABC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = SmartLaunch.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
@@ -871,13 +891,17 @@
 		42F71FB1162148CE008C44B2 /* App Store */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = SmartLaunch.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

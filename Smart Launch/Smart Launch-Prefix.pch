@@ -58,7 +58,7 @@ typedef enum {
 #define MOTORS_VERSION_WWW_URL @"http://www.mysmartsoftware.com/data/version.txt"
 #define MOTOR_VERSION_FILENAME @"version"
     
-#define BACKGROUND_IMAGE_FILENAME @"Vellum"
+#define BACKGROUND_IMAGE_FILENAME @"Green"
 #define MOTOR_CACHE_FILENAME @"motorcache.plist"
 #define EVERY_MOTOR_CACHE_FILENAME @"everymotorcache.plist"
 #define EVERY_MOTOR_HASHTABLE_CACHE_FILENAME @"everymotorhashcache.plist"
