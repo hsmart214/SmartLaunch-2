@@ -28,7 +28,7 @@ static CMMotionManager* sMotionManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window.tintColor = [UIColor colorWithRed:0.0 green:0.317 blue:0.072 alpha:1.0];
+    //self.window.tintColor = [UIColor colorWithRed:0.0 green:0.317 blue:0.072 alpha:1.0];
     return YES;
 }
 							

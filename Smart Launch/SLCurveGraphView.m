@@ -112,7 +112,7 @@
     CGFloat margin = (self.bounds.size.width - graphWidth) / 2.0;
     CGFloat graphHeight = self.bounds.size.height - 2*margin;
     CGPoint origin = CGPointMake(margin, self.bounds.size.height - margin);
-    CGFloat hscale = graphWidth/self.hrange;
+    CGFloat hscale = self.hrange == 0.0 ? 0.0 : graphWidth/self.hrange;
     CGFloat vscale = (self.vrange == 0.0) ? 0.0 : graphHeight/self.vrange;
     CGFloat ppp = [UIScreen mainScreen].scale;              //ratio of pixels per point on the screen (usually 1.0, but 2.0 for retina display)
     
@@ -146,7 +146,7 @@
     
     if ([self.delegate respondsToSelector:@selector(shouldDisplayMachOneLine:)] &&
         [self.delegate shouldDisplayMachOneLine:self] && fmax >= 1.0){
-        int ex = floor(log10(fmax - fmin));
+        int ex = fmax - fmin == 0.0 ? 0.0 : floor(log10(fmax - fmin));
         double mant = 1.0/pow(10, ex);
         CGFloat yvalue = origin.y - mant * vscale;
         CGContextBeginPath(context);
@@ -200,7 +200,7 @@
     while (time < tmax) {
         time += 1/(ppp*hscale);
         double thrust = [self.dataSource curveGraphView:self dataValueForTimeIndex:time] - fmin;
-        int ex = floor(log10(fmax - fmin));
+        int ex = fmax - fmin == 0.0 ? 0.0 : floor(log10(fmax - fmin));
         double mant = thrust/pow(10, ex);
         CGFloat yvalue = origin.y - mant * vscale;
         CGFloat xvalue = origin.x + time * hscale;

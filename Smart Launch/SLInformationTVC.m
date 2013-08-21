@@ -43,6 +43,11 @@
     [self.navigationController setToolbarHidden:NO animated:animated];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.infoTextView flashScrollIndicators];
+}
+
 - (void)requestNewMotorList{
     [self.spinner startAnimating];
     dispatch_queue_t myQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);

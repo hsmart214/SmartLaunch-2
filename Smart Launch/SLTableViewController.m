@@ -471,7 +471,13 @@
         self.tableView.backgroundView = backgroundView;
         self.tableView.backgroundColor = [UIColor clearColor];
     }else{
-        self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        //self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        //trying out the same bacjground for both systems
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
+        self.tableView.backgroundColor = [UIColor clearColor];
     }
     self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

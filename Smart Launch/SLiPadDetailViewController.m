@@ -321,6 +321,15 @@
     }
 }
 
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    UIImage *image = [UIImage imageNamed:BACKGROUND_FOR_IPAD_DETAIL_VC];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    [self.view insertSubview:imageView atIndex:0];
+    [imageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view]" options:NSLayoutFormatAlignAllCenterX metrics:nil views:@{@"view":imageView}]];
+    [imageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[view]" options:NSLayoutFormatAlignAllCenterY metrics:nil views:@{@"view":imageView}]];
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self.rocketView startFresh];

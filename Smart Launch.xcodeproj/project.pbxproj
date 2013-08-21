@@ -67,6 +67,7 @@
 		423D16E317053FE80007ED61 /* SLCustomUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 423D16E217053FE80007ED61 /* SLCustomUI.m */; };
 		4240A07815F8341900D67F3E /* SLMotorPrefsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4240A07715F8341900D67F3E /* SLMotorPrefsTVC.m */; };
 		4240EDC116990F1E008AB135 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */; };
+		424DD86517C48FBC002D52AF /* GreenDetail~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 424DD86417C48FBC002D52AF /* GreenDetail~ipad@2x.png */; };
 		4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930915F4893000F7BABC /* UIKit.framework */; };
 		4256930C15F4893000F7BABC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930B15F4893000F7BABC /* Foundation.framework */; };
 		4256930E15F4893000F7BABC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256930D15F4893000F7BABC /* CoreGraphics.framework */; };
@@ -201,6 +202,7 @@
 		4240A07615F8341900D67F3E /* SLMotorPrefsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMotorPrefsTVC.h; sourceTree = "<group>"; };
 		4240A07715F8341900D67F3E /* SLMotorPrefsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMotorPrefsTVC.m; sourceTree = "<group>"; };
 		4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		424DD86417C48FBC002D52AF /* GreenDetail~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GreenDetail~ipad@2x.png"; sourceTree = "<group>"; };
 		4256930515F4893000F7BABC /* SmartLaunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartLaunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4256930915F4893000F7BABC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4256930B15F4893000F7BABC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -321,6 +323,7 @@
 		4220A52F15F55DAB0055EE35 /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				424DD86417C48FBC002D52AF /* GreenDetail~ipad@2x.png */,
 				428443D917C2A4F2009BEF92 /* Green.png */,
 				428443DA17C2A4F2009BEF92 /* Blue.png */,
 				42D6AE8516A25242000EE1A8 /* DaVinci~iPad.png */,
@@ -600,6 +603,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4256931415F4893000F7BABC /* InfoPlist.strings in Resources */,
+				424DD86517C48FBC002D52AF /* GreenDetail~ipad@2x.png in Resources */,
 				42397204173378B300262A6B /* MainStoryboard_iPhone.storyboard in Resources */,
 				4220A4EA15F55D120055EE35 /* CancelButtonSelected.png in Resources */,
 				4220A4EB15F55D120055EE35 /* CancelButton.png in Resources */,
