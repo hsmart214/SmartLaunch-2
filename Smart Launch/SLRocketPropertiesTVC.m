@@ -130,7 +130,7 @@
         UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
         [backgroundView setImage:backgroundImage];
         self.tableView.backgroundView = backgroundView;
-        self.tableView.backgroundColor = [UIColor clearColor];
+        //self.tableView.backgroundColor = [UIColor clearColor];
     }
     if (!_rocket){
         _rocket = [[Rocket alloc] init];

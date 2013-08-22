@@ -91,6 +91,12 @@
         [backgroundView setImage:backgroundImage];
         self.tableView.backgroundView = backgroundView;
         self.tableView.backgroundColor = [UIColor clearColor];
+    }else{
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
+        self.tableView.backgroundColor = [UIColor clearColor];
     }
 }
 
@@ -195,7 +201,7 @@
     }
     UILabel *headerLabel = [[UILabel alloc] init];
     [headerLabel setTextColor:[SLCustomUI headerTextColor]];
-    [headerLabel setBackgroundColor:self.tableView.backgroundColor];
+    [headerLabel setBackgroundColor:[UIColor clearColor]];
     [headerLabel setTextAlignment:NSTextAlignmentCenter];
     [headerLabel setText:headerText];
     [headerLabel setFont:[UIFont boldSystemFontOfSize:17.0]];

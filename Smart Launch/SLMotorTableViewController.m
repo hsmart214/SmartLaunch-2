@@ -10,6 +10,7 @@
 #import "SLMotorSearchViewController.h"
 #import "SLMotorViewController.h"
 #import "SLClusterMotor.h"
+#import "SLCustomUI.h"
 
 @interface SLMotorTableViewController ()
 @property (nonatomic, strong) NSDictionary *selectedMotorDict;
@@ -24,6 +25,24 @@
 }
 
 #pragma mark - Table view data source
+
+-(CGFloat)tableView:(UITableView *)tableView{
+    return [SLCustomUI headerHeight];
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    NSString *headerText = [self tableView:self.tableView titleForHeaderInSection:section];
+    UILabel *headerLabel = [[UILabel alloc] init];
+    [headerLabel setTextColor:[SLCustomUI headerTextColor]];
+    [headerLabel setBackgroundColor:[UIColor clearColor]];
+    [headerLabel setTextAlignment:NSTextAlignmentCenter];
+    [headerLabel setText:headerText];
+    [headerLabel setFont:[UIFont boldSystemFontOfSize:17.0]];
+    
+    
+    return headerLabel;
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {    
@@ -95,6 +114,11 @@
     if (self.splitViewController){
         UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_FOR_IPAD_MASTER_VC];
+        [backgroundView setImage:backgroundImage];
+        [self.tableView setBackgroundView:backgroundView];
+    }else{
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
         [backgroundView setImage:backgroundImage];
         [self.tableView setBackgroundView:backgroundView];
     }

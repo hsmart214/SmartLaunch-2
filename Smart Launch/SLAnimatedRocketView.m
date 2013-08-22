@@ -96,7 +96,11 @@ void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint from
     CGFloat scale;
     CGFloat xAvail = self.bounds.size.width - X_INSET;
     CGFloat yAvail = self.bounds.size.height - TOP_BUFFER - self.goblin.bounds.size.height;
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) yAvail += IPAD_COMPENSATION;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        yAvail += IPAD_COMPENSATION;
+    }else{ // this became necessary in iOS 7 when the background view went up under the nav bar
+        yAvail -= IPAD_COMPENSATION;
+    }
     
     float rhoriz = rv * sinf(-_launchAngle);
     float xExtent;
