@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 J. HOWARD SMART. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @protocol SLClusterBuildDelegate <NSObject>
 

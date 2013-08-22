@@ -1,11 +1,12 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "scale" : "1x"
+      "idiom" : "ipad",
+      "scale" : "1x",
+      "filename" : "GreenMaster.png"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "ipad",
       "scale" : "2x",
       "filename" : "GreenMaster~iPad@2x.png"
     }

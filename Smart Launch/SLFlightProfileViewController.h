@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 J. HOWARD SMART. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "SLPhysicsModel.h"
 #import "SLCurveGraphView.h"
 

@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 All rights reserved.
 //
 
+@import CoreMotion;
 #import "SLPhotoAngleViewController.h"
-#import "CoreMotion/CoreMotion.h"
 #import "SLAppDelegate.h"
 
 #define VIEW_FINDER_IMAGE_FILENAME @"Viewfinder"

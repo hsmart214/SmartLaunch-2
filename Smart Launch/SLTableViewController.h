@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "SLRocketPropertiesTVC.h"
 
 @interface SLTableViewController : UITableViewController <SLSimulationDelegate, SLSimulationDataSource>

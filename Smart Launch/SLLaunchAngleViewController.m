@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 All rights reserved.
 //
 
+@import MobileCoreServices;
+@import CoreMotion;
 #import "SLLaunchAngleViewController.h"
 #import "SLLaunchAngleView.h"
-#import "CoreMotion/CoreMotion.h"
 #import "SLPhotoAngleViewController.h"
-#import <MobileCoreServices/MobileCoreServices.h>
 #import "SLAppDelegate.h"
 
 #define TOLERANCE 0.001

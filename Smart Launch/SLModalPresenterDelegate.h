@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @protocol SLModalPresenterDelegate <NSObject>
 

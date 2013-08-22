@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
+@import QuartzCore;
 #import "SLAnimatedViewController.h"
 #import "SLUnitsConvertor.h"
 #import "SLAnimatedRocketView.h"

@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+@import CoreLocation;
 #import "SLSimulationDelegate.h"
 #import "SLUnitsConvertor.h"
-#import <CoreLocation/CoreLocation.h>
 
 
 @interface SLSimSettingsViewController : UITableViewController <SLSimulationDelegate>

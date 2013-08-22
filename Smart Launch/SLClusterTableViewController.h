@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 J. HOWARD SMART. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "SLSimulationDelegate.h"
 #import "SLClusterBuildDelegate.h"
 

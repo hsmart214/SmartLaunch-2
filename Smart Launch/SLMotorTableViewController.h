@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "SLSimulationDelegate.h"
 
 @interface SLMotorTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>

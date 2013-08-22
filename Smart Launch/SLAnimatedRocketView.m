@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 All rights reserved.
 //
 
+@import QuartzCore;
 #import "SLAnimatedRocketView.h"
-#import <QuartzCore/QuartzCore.h>
 
 #define X_INSET 130.0
 #define Y_INSET 100.0

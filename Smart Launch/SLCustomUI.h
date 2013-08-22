@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 J. HOWARD SMART. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+@import UIKit;
+@import Foundation;
 
 @interface SLCustomUI : NSObject
 
