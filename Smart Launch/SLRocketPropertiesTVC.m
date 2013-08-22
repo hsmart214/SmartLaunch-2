@@ -78,7 +78,7 @@
     [self.calcCdButton setEnabled:(total != 0.0)];
 }
 
-- (IBAction)useCalculatedCd:(UIBarButtonItem *)sender {
+- (IBAction)useCalculatedCd:(id)sender {
     self.cdField.text = self.calculatedCdLabel.text;
     [self updateRocket];
 }
@@ -119,7 +119,12 @@
 {
     [super viewDidLoad];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        //self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_FOR_IPAD_MASTER_VC];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
+        self.tableView.backgroundColor = [UIColor clearColor];
     }else{ // iPhone or iPod
         UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
         UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];

@@ -27,15 +27,19 @@
     [super viewDidLoad];
     [self.infoTextView flashScrollIndicators];
     if (self.splitViewController){
-        self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
-        return;
+        //self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_FOR_IPAD_MASTER_VC];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
+        self.tableView.backgroundColor = [UIColor clearColor];
+    }else{
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
+        self.tableView.backgroundColor = [UIColor clearColor];
     }
-    UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
-    NSString *backgroundFileName = [[NSBundle mainBundle] pathForResource: BACKGROUND_IMAGE_FILENAME ofType:@"png"];
-    UIImage * backgroundImage = [[UIImage alloc] initWithContentsOfFile:backgroundFileName];
-    [backgroundView setImage:backgroundImage];
-    self.tableView.backgroundView = backgroundView;
-
 }
 
 - (void)viewWillAppear:(BOOL)animated{

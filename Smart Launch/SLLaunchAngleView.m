@@ -7,6 +7,7 @@
 //
 
 #import "SLLaunchAngleView.h"
+#import "SLCustomUI.h"
 
 #define TOLERANCE 0.001
 
@@ -41,7 +42,7 @@
     CGContextStrokePath(context);
     CGContextBeginPath(context);
     CGContextSetLineWidth(context, 3.0);
-    [[UIColor greenColor] setStroke];
+    [[SLCustomUI angleNeedleColor] setStroke];
     CGContextMoveToPoint(context, origin.x, origin.y);
     CGContextAddLineToPoint(context, origin.x + self.point.x * mult, origin.y - self.point.y * mult);
     CGContextStrokePath(context);

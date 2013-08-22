@@ -174,7 +174,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        //self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_FOR_IPAD_MASTER_VC];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
+        self.tableView.backgroundColor = [UIColor clearColor];
+    }
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.oldPrefs = [defaults objectForKey:UNIT_PREFS_KEY];
     [self updateDisplay];

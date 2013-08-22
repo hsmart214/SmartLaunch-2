@@ -165,7 +165,12 @@
     // this is a terrible hack, but I need to add a chain of delegates to get around it
     self.simDelegate = self.navigationController.viewControllers[0];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        //self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_FOR_IPAD_MASTER_VC];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
+        self.tableView.backgroundColor = [UIColor clearColor];
     }else{ // iPhone or iPod
         UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
         UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];

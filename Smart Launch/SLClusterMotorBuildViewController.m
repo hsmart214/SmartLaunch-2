@@ -219,7 +219,12 @@
         self.tableView.backgroundView = backgroundView;
         self.tableView.backgroundColor = [UIColor clearColor];
     }else{
-        self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        //self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_FOR_IPAD_MASTER_VC];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
+        self.tableView.backgroundColor = [UIColor clearColor];
     }
     if (self.autoUpdateBarButton){
         [self.autoUpdateBarButton setTitle:NSLocalizedString(@"Auto Update: ON", @"text for interface auto-update toggle ON")];

@@ -235,7 +235,11 @@ NSInteger sortFunction(id md1, id md2, void *context){
         [backgroundView setImage:backgroundImage];
         [self.view insertSubview:backgroundView atIndex:0];
     }else{
-        self.view.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        //self.view.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_FOR_IPAD_MASTER_VC];
+        [backgroundView setImage:backgroundImage];
+        [self.view insertSubview:backgroundView atIndex:0];
     }
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;

@@ -147,14 +147,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (self.splitViewController){
-        self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
-        return;
+    if (self.splitViewController){//iPad
+        //self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_FOR_IPAD_MASTER_VC];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
+    }else{//iPhone
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
+        [backgroundView setImage:backgroundImage];
+        self.tableView.backgroundView = backgroundView;
     }
-    UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
-    UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
-    [backgroundView setImage:backgroundImage];
-    self.tableView.backgroundView = backgroundView;
 }
 
 

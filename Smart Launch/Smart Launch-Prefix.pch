@@ -60,6 +60,7 @@ typedef enum {
     
 #define BACKGROUND_IMAGE_FILENAME @"Green"
 #define BACKGROUND_FOR_IPAD_DETAIL_VC @"GreenDetail"
+#define BACKGROUND_FOR_IPAD_MASTER_VC @"GreenMaster"
 #define MOTOR_CACHE_FILENAME @"motorcache.plist"
 #define EVERY_MOTOR_CACHE_FILENAME @"everymotorcache.plist"
 #define EVERY_MOTOR_HASHTABLE_CACHE_FILENAME @"everymotorhashcache.plist"

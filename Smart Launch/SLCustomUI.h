@@ -23,6 +23,8 @@
 
 +(UIColor *)graphTextColor;
 +(UIColor *)curveGraphCurveColor;
++(UIColor *)curveGraphBackgroundColor;
 +(UIColor *)machLineColor;
++(UIColor *)angleNeedleColor;
 
 @end

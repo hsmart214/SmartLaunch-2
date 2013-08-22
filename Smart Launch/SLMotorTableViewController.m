@@ -20,7 +20,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setToolbarHidden:YES animated:animated];
+    [self.navigationController setToolbarHidden:NO animated:animated];
 }
 
 #pragma mark - Table view data source
@@ -85,6 +85,18 @@
         [(SLMotorViewController *)segue.destinationViewController setDelegate:self.delegate];
         [(SLMotorViewController *)segue.destinationViewController setPopBackViewController:self.popBackViewController];
         [segue.destinationViewController setTitle:self.selectedMotor.name];
+    }
+}
+
+#pragma mark - View life cycle
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    if (self.splitViewController){
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_FOR_IPAD_MASTER_VC];
+        [backgroundView setImage:backgroundImage];
+        [self.tableView setBackgroundView:backgroundView];
     }
 }
 

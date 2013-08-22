@@ -57,6 +57,10 @@
     return [UIColor redColor];
 }
 
++(UIColor *)angleNeedleColor{
+    return [UIColor colorWithRed:0.0 green:0.78 blue:.072 alpha:1.0];
+}
+
 #pragma mark - SLGraphView interface colors
 
 +(UIColor *)graphTextColor{
@@ -72,6 +76,10 @@
     }else{
         return [UIColor redColor];
     }
+}
+
++(UIColor *)curveGraphBackgroundColor{
+    return [UIColor colorWithRed:1.0/256.0 green:156.0/256.0 blue:170.0/256.0 alpha:0.1];
 }
 
 +(UIColor *)machLineColor{

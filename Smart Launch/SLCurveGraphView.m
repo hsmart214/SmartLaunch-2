@@ -7,6 +7,7 @@
 //
 
 #import "SLCurveGraphView.h"
+#import "SLCustomUI.h"
 
 #define WIDTH_FRACTION 0.8
 #define SEC_OFFSET 7
@@ -32,6 +33,7 @@
     }else{
         self.verticalDivisions = CURVEGRAPHVIEW_DEFAULT_VERTICAL_DIVISIONS;
     }
+    //self.backgroundColor = [SLCustomUI curveGraphBackgroundColor];
     [self setNeedsDisplay];
 }
 

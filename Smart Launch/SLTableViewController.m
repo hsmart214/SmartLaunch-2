@@ -470,11 +470,11 @@
         [backgroundView setImage:backgroundImage];
         self.tableView.backgroundView = backgroundView;
         self.tableView.backgroundColor = [UIColor clearColor];
-    }else{
+    }else{// we are on an iPad
         //self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
         //trying out the same bacjground for both systems
         UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
-        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_FOR_IPAD_MASTER_VC];
         [backgroundView setImage:backgroundImage];
         self.tableView.backgroundView = backgroundView;
         self.tableView.backgroundColor = [UIColor clearColor];
