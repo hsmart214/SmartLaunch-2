@@ -53,8 +53,8 @@
 
 
 //Filtering constants
-#define UPDATE_INTERVAL 0.05
-#define FILTER_CONSTANT 0.1 //smaller number gives smoother, slower response
+#define UPDATE_INTERVAL 0.1
+#define FILTER_CONSTANT 0.05 //smaller number gives smoother, slower response
 
 - (void)setAccelerometerData:(CMAccelerometerData *)accelerometerData{
     CMAcceleration accel = accelerometerData.acceleration;
@@ -79,10 +79,18 @@
     CGFloat angle = xyAngle;
     //    CGFloat angle = atanf(sqrtf(tanf(xyAngle)*tanf(xyAngle)+tanf(yzAngle)*tanf(yzAngle)));
     
-    self.angleLabel.text = [NSString stringWithFormat:@"%1.1f", fabsf(angle * DEGREES_PER_RADIAN)];
-    if (fabsf(angle - self.angleSlider.value) > TOLERANCE){
+    NSString *angleString = [NSString stringWithFormat:@"%1.1f", fabs(angle * DEGREES_PER_RADIAN)];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.angleLabel setText:angleString];
+    });
+    
+    if (fabs(angle - self.angleSlider.value) > TOLERANCE){
         self.angleSlider.value = angle;
-        [self.angleView setNeedsDisplay];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.angleSlider.value = angle;
+            [self.angleView setNeedsDisplay];
+        });
+        
     }
 }
 

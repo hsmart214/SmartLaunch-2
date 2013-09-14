@@ -212,7 +212,13 @@
     SLClusterMotor *cMotor = [[SLClusterMotor alloc] initWithMotorLoadout:self.rocket.motorLoadoutPlist];
     self.motorDetailDescriptionLabel.text = [cMotor fractionalImpulseClass];
     //    self.motorDetailDescriptionLabel.text =[NSString stringWithFormat:@"%1.1f Ns", [self.rocket totalImpulse]];
-    UIImage *theImage = [UIImage imageNamed:self.rocket.motorManufacturer];
+    UIImage *theImage;
+    if (self.rocket.motorManufacturer){
+        theImage = [UIImage imageNamed:self.rocket.motorManufacturer];
+    }else{
+        theImage = nil;
+    }
+    
     self.manufacturerLogoView.image = theImage;
     
     // In the following I let the SLUnitsConvertor class do all of the unit changing.  This controller is not even aware of the UNIT_PREFS settings
