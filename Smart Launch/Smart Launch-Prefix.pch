@@ -20,7 +20,7 @@
 /* This key-value pair can be inserted into any dictionary where future versions might add or remove features */
 
 #define SMART_LAUNCH_VERSION_KEY @"com.mySmartSoftware.SmartLaunch_Version"
-#define SMART_LAUNCH_VERSION 2.01
+#define SMART_LAUNCH_VERSION 2.1
 
 /* The LaunchDirection constants will be used in the calculation of the angle of attack
  This will tell us how to add the rocket velocity and wind vectors
@@ -50,6 +50,8 @@ typedef enum {
 #define MOTORS_WWW_URL @"http://www.mysmartsoftware.com/data/motors.txt"
 #define MOTORS_VERSION_WWW_URL @"http://www.mysmartsoftware.com/data/version.txt"
 #define MOTOR_VERSION_FILENAME @"version"
+#define KIT_PLIST_FILENAME @"kitArray"
+#define MANUFACTURED_KITS_KEY @"RocketKitArray"
     
 #define BACKGROUND_IMAGE_FILENAME @"Green"
 #define BACKGROUND_FOR_IPAD_DETAIL_VC @"GreenDetail"
@@ -58,7 +60,7 @@ typedef enum {
 #define EVERY_MOTOR_CACHE_FILENAME @"everymotorcache.plist"
 #define EVERY_MOTOR_HASHTABLE_CACHE_FILENAME @"everymotorhashcache.plist"
 #define MOTOR_DATA_FILENAME @"motors.txt"
-#define VERTICAL_ROCKET_PIC_NAME @"Rocket"
+#define VERTICAL_ROCKET_PIC_NAME @"Patriot"
 #define CURVEGRAPHVIEW_DEFAULT_VERTICAL_DIVISIONS 8
     
 #pragma mark Calculation constants

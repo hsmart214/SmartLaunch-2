@@ -9,7 +9,7 @@
 /* This controller needs to respond to iCloud updates because it holds a strong Rocket*
  which may change externally.  This is the only place that an existing Rocket * can have
  its name changed.  The current code default behavior in this situation is to delete the
- old instance and save a new one under the new name key.  Upon cancellation, the old 
+ old instance and save a new one under the new name key.  Upon cancellation, the old
  instance is restored under the old name, by just leaving without making any changes. */
 
 #import "SLRocketPropertiesTVC.h"
@@ -179,7 +179,7 @@
             [myWeakSelf updateDisplay];
         });
     }];
-
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -242,7 +242,7 @@
     [defaults setObject:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
     [[NSUbiquitousKeyValueStore defaultStore] setDictionary:rocketFavorites forKey:FAVORITE_ROCKETS_KEY];
     [defaults synchronize];
-
+    
     [self calculateCd];
 }
 
@@ -257,6 +257,25 @@
     [self updateRocket];
 }
 
+#pragma mark - SLKitTVCDelegate method
+
+-(void)SLKitTVC:(id)sender didChooseCommercialKit:(NSDictionary *)kitDict{
+    // kitDict is actually a partial rocketPropertyList with all the correct keys
+    NSString *name = self.nameField.text;
+    self.rocket = [Rocket rocketWithRocketDict:kitDict];
+    self.rocket.name = name;
+    self.motorConfiguration = self.rocket.motorConfig;
+    // No need to do anything but update the model.  Views will update in viewWillAppear
+    
+    //    self.rocket.kitName = kitDict[ROCKET_KITNAME_KEY];
+    //    self.rocket.manufacturer = kitDict[ROCKET_MAN_KEY];
+    //    self.rocket.mass = [kitDict[ROCKET_MASS_KEY] floatValue];
+    //    self.rocket.diameter = [kitDict[ROCKET_DIAM_KEY] floatValue];
+    //    self.rocket.length = [kitDict[ROCKET_LENGTH_KEY] floatValue];
+    //    self.rocket.cd = [kitDict[ROCKET_CD_KEY] floatValue];
+    //    self.rocket.motorConfig = kitDict[ROCKET_MOTOR_CONFIG_KEY];
+}
+
 #pragma mark - prepareForSegue
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -269,6 +288,9 @@
         //become the destinations delegate and datasource
         [(SLMotorConfigurationTVC *)segue.destinationViewController setConfigDelegate:self];
         [(SLMotorConfigurationTVC *)segue.destinationViewController setConfigDatasource:self];
+    }
+    if ([segue.identifier isEqualToString:@"kitSegue"]){
+        [(SLKitsTVC *)segue.destinationViewController setDelegate:self];
     }
 }
 

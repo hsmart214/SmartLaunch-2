@@ -125,8 +125,7 @@
     [self defaultStoreWithKey:SELECTED_MOTOR_KEY andValue:motorPlist];
     if ([motorPlist count]) self.motorNameLabel.text = motorPlist[0][MOTOR_PLIST_KEY][NAME_KEY];
     self.motorDetailDescriptionLabel.text = [NSString stringWithFormat:@"%1.1f N-sec", [self.rocket totalImpulse]];
-    UIImage *theImage = [UIImage imageNamed:self.rocket.motorManufacturer];
-    self.manufacturerLogoView.image = theImage;
+    if (self.rocket.motorManufacturer) self.manufacturerLogoView.image  = [UIImage imageNamed:self.rocket.motorManufacturer];
     
     // update the "last used" motor in the rocket list and in the cloud
     [self SLRocketPropertiesTVC:(id)self savedRocket:self.rocket];

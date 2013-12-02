@@ -56,6 +56,10 @@
 		4257FE5417DDA8BF004A5021 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE4417DDA8BF004A5021 /* iTunesArtwork.png */; };
 		4257FE5517DDA8BF004A5021 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE4517DDA8BF004A5021 /* iTunesArtwork@2x.png */; };
 		42742BBB172AE37D007229E9 /* SLClusterMotor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42742BBA172AE37D007229E9 /* SLClusterMotor.m */; };
+		4292C554181F58D800C4C732 /* SLKitsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C54E181F58D800C4C732 /* SLKitsTVC.m */; };
+		4292C555181F58D800C4C732 /* SLKitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C550181F58D800C4C732 /* SLKitCell.m */; };
+		4292C556181F58D800C4C732 /* SLCommercialKitInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C552181F58D800C4C732 /* SLCommercialKitInfoViewController.m */; };
+		4292C558181F595300C4C732 /* kitArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4292C557181F595300C4C732 /* kitArray.plist */; };
 		42A1B6191670599E004F1FA0 /* version.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42A1B6181670599E004F1FA0 /* version.txt */; };
 		42BB53C916A293D20029C882 /* SLFlightDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53C816A293D20029C882 /* SLFlightDataCell.m */; };
 		42BB53CD16A295310029C882 /* SLSavedFlightsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */; };
@@ -151,6 +155,13 @@
 		42742BB5172A3C68007229E9 /* SLClusterBuildDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterBuildDelegate.h; sourceTree = "<group>"; };
 		42742BB9172AE37C007229E9 /* SLClusterMotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterMotor.h; sourceTree = "<group>"; };
 		42742BBA172AE37D007229E9 /* SLClusterMotor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotor.m; sourceTree = "<group>"; };
+		4292C54E181F58D800C4C732 /* SLKitsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKitsTVC.m; sourceTree = "<group>"; };
+		4292C54F181F58D800C4C732 /* SLKitsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKitsTVC.h; sourceTree = "<group>"; };
+		4292C550181F58D800C4C732 /* SLKitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKitCell.m; sourceTree = "<group>"; };
+		4292C551181F58D800C4C732 /* SLKitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKitCell.h; sourceTree = "<group>"; };
+		4292C552181F58D800C4C732 /* SLCommercialKitInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLCommercialKitInfoViewController.m; sourceTree = "<group>"; };
+		4292C553181F58D800C4C732 /* SLCommercialKitInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCommercialKitInfoViewController.h; sourceTree = "<group>"; };
+		4292C557181F595300C4C732 /* kitArray.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = kitArray.plist; sourceTree = "<group>"; };
 		42A1B6181670599E004F1FA0 /* version.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = version.txt; sourceTree = "<group>"; };
 		42BB53C716A293D20029C882 /* SLFlightDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFlightDataCell.h; sourceTree = "<group>"; };
 		42BB53C816A293D20029C882 /* SLFlightDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFlightDataCell.m; sourceTree = "<group>"; };
@@ -202,6 +213,7 @@
 				4257FE3517DDA8BF004A5021 /* App Icon New */,
 				4220A4E815F55D120055EE35 /* atmosphere.txt */,
 				4220A4E915F55D120055EE35 /* motors.txt */,
+				4292C557181F595300C4C732 /* kitArray.plist */,
 				42A1B6181670599E004F1FA0 /* version.txt */,
 			);
 			name = "Data Files";
@@ -311,6 +323,12 @@
 				4220A4C115F55CC60055EE35 /* SLRocketsTableViewController.m */,
 				4220A4C215F55CC60055EE35 /* SLRocketPropertiesTVC.h */,
 				4220A4C315F55CC60055EE35 /* SLRocketPropertiesTVC.m */,
+				4292C54F181F58D800C4C732 /* SLKitsTVC.h */,
+				4292C54E181F58D800C4C732 /* SLKitsTVC.m */,
+				4292C551181F58D800C4C732 /* SLKitCell.h */,
+				4292C550181F58D800C4C732 /* SLKitCell.m */,
+				4292C552181F58D800C4C732 /* SLCommercialKitInfoViewController.m */,
+				4292C553181F58D800C4C732 /* SLCommercialKitInfoViewController.h */,
 				42CEE10217277F440060424F /* SLMotorConfigurationTVC.h */,
 				42CEE10317277F440060424F /* SLMotorConfigurationTVC.m */,
 				4220A4B015F55CC60055EE35 /* SLUnitsTVC.h */,
@@ -427,6 +445,7 @@
 				42397204173378B300262A6B /* MainStoryboard_iPhone.storyboard in Resources */,
 				4220A4F415F55D120055EE35 /* atmosphere.txt in Resources */,
 				4257FE5417DDA8BF004A5021 /* iTunesArtwork.png in Resources */,
+				4292C558181F595300C4C732 /* kitArray.plist in Resources */,
 				4220A4F515F55D120055EE35 /* motors.txt in Resources */,
 				4257FE4817DDA8BF004A5021 /* AppIcon50x50.png in Resources */,
 				4257FE5317DDA8BF004A5021 /* Icon-Small-29@2x.png in Resources */,
@@ -466,6 +485,7 @@
 				4220A4D515F55CC60055EE35 /* SLMotorTableViewController.m in Sources */,
 				4220A4D615F55CC60055EE35 /* SLMotorViewController.m in Sources */,
 				4220A4D715F55CC60055EE35 /* SLCurveGraphView.m in Sources */,
+				4292C555181F58D800C4C732 /* SLKitCell.m in Sources */,
 				4220A4D815F55CC60055EE35 /* SLRocketsTableViewController.m in Sources */,
 				4220A4D915F55CC60055EE35 /* SLRocketPropertiesTVC.m in Sources */,
 				4220A4DA15F55CC60055EE35 /* SLUnitsConvertor.m in Sources */,
@@ -483,9 +503,11 @@
 				423D16E317053FE80007ED61 /* SLCustomUI.m in Sources */,
 				42F83DB8171B6EAB005FAA0C /* SLClusterTableViewController.m in Sources */,
 				42F83DBB171B6ED3005FAA0C /* SLClusterMotorBuildViewController.m in Sources */,
+				4292C556181F58D800C4C732 /* SLCommercialKitInfoViewController.m in Sources */,
 				42F83DBE171B6EFC005FAA0C /* SLClusterMotorMemberCell.m in Sources */,
 				42CEE10417277F440060424F /* SLMotorConfigurationTVC.m in Sources */,
 				42742BBB172AE37D007229E9 /* SLClusterMotor.m in Sources */,
+				4292C554181F58D800C4C732 /* SLKitsTVC.m in Sources */,
 				42BD6CC617377CCE00E19B50 /* SLClusterMotorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

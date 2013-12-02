@@ -98,7 +98,7 @@
 }
 
 // each element of this mutable array will be a point of the profile
-// which will itself be an NSArray* (not mutable) consisting of four NSNumber*s - [time, altitude, velocity, accel]
+// which will itself be an NSArray* (not mutable) consisting of seven NSNumber*s - [time, alt, trav, vel, accel, mach, drg]
 - (NSMutableArray *)flightProfile{
     if (!_flightProfile){
         _flightProfile = [NSMutableArray array];

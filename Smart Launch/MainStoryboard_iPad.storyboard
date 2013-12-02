@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="mi5-oc-GQ5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5023" systemVersion="13A3017" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="mi5-oc-GQ5">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Table View Controller - Smart Launch HD-->
@@ -1032,9 +1032,6 @@
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-0.34906598925590515" maxValue="0.34906598925590515" translatesAutoresizingMaskIntoConstraints="NO" id="QGV-Ea-Sty">
                                 <rect key="frame" x="78" y="648" width="164" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="7jw-eW-nKX"/>
-                                </constraints>
                                 <color key="minimumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="maximumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1052,13 +1049,15 @@
                         <constraints>
                             <constraint firstItem="w7Y-qf-Xef" firstAttribute="leading" secondItem="4lJ-sJ-zKZ" secondAttribute="leading" constant="20" symbolic="YES" id="9j3-nE-mNZ"/>
                             <constraint firstItem="Pff-Z5-HvS" firstAttribute="top" secondItem="w7Y-qf-Xef" secondAttribute="bottom" constant="240" id="H0g-Vu-sXP"/>
-                            <constraint firstItem="Pff-Z5-HvS" firstAttribute="top" secondItem="QGV-Ea-Sty" secondAttribute="bottom" constant="127" id="KKX-KB-gjO"/>
-                            <constraint firstItem="w7Y-qf-Xef" firstAttribute="centerX" secondItem="QGV-Ea-Sty" secondAttribute="centerX" id="Kdv-gh-nTi"/>
                             <constraint firstItem="yX4-Ok-nn5" firstAttribute="top" secondItem="VUU-Xs-aqA" secondAttribute="bottom" constant="20" id="Lsq-vy-CxZ"/>
+                            <constraint firstItem="QGV-Ea-Sty" firstAttribute="leading" secondItem="4lJ-sJ-zKZ" secondAttribute="leading" constant="80" id="Npd-jR-M7F"/>
                             <constraint firstItem="Ped-a2-s1J" firstAttribute="top" secondItem="VUU-Xs-aqA" secondAttribute="bottom" constant="20" id="Wky-3v-bKW"/>
                             <constraint firstItem="yX4-Ok-nn5" firstAttribute="leading" secondItem="Ped-a2-s1J" secondAttribute="trailing" constant="8" symbolic="YES" id="XNs-fN-duM"/>
+                            <constraint firstItem="QGV-Ea-Sty" firstAttribute="top" secondItem="w7Y-qf-Xef" secondAttribute="bottom" constant="80" id="YMM-n1-pPd"/>
                             <constraint firstItem="w7Y-qf-Xef" firstAttribute="top" secondItem="VUU-Xs-aqA" secondAttribute="bottom" constant="91" id="cK8-rT-cpU"/>
                             <constraint firstAttribute="centerX" secondItem="w7Y-qf-Xef" secondAttribute="centerX" id="jKe-cj-Bas"/>
+                            <constraint firstItem="Pff-Z5-HvS" firstAttribute="top" secondItem="QGV-Ea-Sty" secondAttribute="bottom" constant="127" id="ldZ-dE-CFD"/>
+                            <constraint firstItem="QGV-Ea-Sty" firstAttribute="centerX" secondItem="w7Y-qf-Xef" secondAttribute="centerX" id="tyA-db-ipf"/>
                             <constraint firstAttribute="centerX" secondItem="Ped-a2-s1J" secondAttribute="centerX" constant="15" id="zLF-Me-QIo"/>
                         </constraints>
                     </view>
@@ -2180,6 +2179,31 @@
                                             <segue destination="fK3-jW-wyk" kind="push" identifier="savedFlightsSegue" id="6wK-Q6-eM6"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="jGj-Ws-VNO">
+                                        <rect key="frame" x="0.0" y="559" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jGj-Ws-VNO" id="eHM-vK-vym">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Commercial Kits" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ieb-De-lp8">
+                                                    <rect key="frame" x="30" y="10" width="127" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="Ieb-De-lp8" secondAttribute="centerY" constant="1" id="25g-a6-gH1"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="Ieb-De-lp8" firstAttribute="leading" secondItem="jGj-Ws-VNO" secondAttribute="leading" constant="30" id="c5q-pI-Jro"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="yZR-cG-xuX" kind="push" identifier="kitSegue" id="L0s-of-oOD"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -2223,6 +2247,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gri-rh-WRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1063" y="-2120"/>
+        </scene>
+        <!--KitsTVC-->
+        <scene sceneID="OWc-eL-mdS">
+            <objects>
+                <tableViewController id="yZR-cG-xuX" customClass="SLKitsTVC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="T4o-lj-Pij">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="kitCell" id="dLH-bl-2ZR" customClass="SLKitCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dLH-bl-2ZR" id="jOh-dF-GXd">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Momba" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="6Nl-ZS-nIw">
+                                            <rect key="frame" x="20" y="2" width="223" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2.6 inch" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXc-sl-FsE">
+                                            <rect key="frame" x="20" y="20" width="144" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.39 kg" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubv-xv-i8g">
+                                            <rect key="frame" x="238" y="2" width="62" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="29 mm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rr2-dY-nlu">
+                                            <rect key="frame" x="251" y="25" width="49" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Motor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9q-dQ-6e1">
+                                            <rect key="frame" x="207" y="25" width="36" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="diameterLabel" destination="cXc-sl-FsE" id="2Gr-6m-QHg"/>
+                                    <outlet property="massLabel" destination="ubv-xv-i8g" id="8Vs-ga-CSm"/>
+                                    <outlet property="motorSizeLabel" destination="rr2-dY-nlu" id="1mY-co-tLk"/>
+                                    <outlet property="nameLabel" destination="6Nl-ZS-nIw" id="txS-yM-1uL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yZR-cG-xuX" id="Bsa-ZG-94z"/>
+                            <outlet property="delegate" destination="yZR-cG-xuX" id="YGt-0i-8O5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ewG-py-p9k"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZnB-AL-QNW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1084" y="-3072"/>
         </scene>
         <!--Motor ConfigurationTVC - Motor Configuration-->
         <scene sceneID="TJP-ri-wTd">
@@ -2689,7 +2781,7 @@
                                                 <textView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9J-Tz-DOT">
                                                     <rect key="frame" x="30" y="22" width="260" height="307"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Smart Launch HD 2.0.2
+                                                    <mutableString key="text">Smart Launch HD 2.1
 ©2012, 2013 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
@@ -2706,7 +2798,7 @@ Apogee, Quest, Loki, CTI, AMW, Gorilla, RATTworks and RoadRunner logos used with
 Aerotech™ logos used with permission of RCS.
 All company logos are the registered trademarks of the respective motor manufacturers. No official approval or sponsorship of the data in this application should be inferred.
 
-Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</string>
+Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</mutableString>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>

@@ -10,6 +10,7 @@
 #import "Rocket.h"
 #import "SLUnitsConvertor.h"
 #import "SLSavedFlightsTVC.h"
+#import "SLKitsTVC.h"
 
 
 @class SLRocketPropertiesTVC;
