@@ -1029,8 +1029,21 @@
                 <viewController id="RWj-eq-Zl1" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rd4-BR-P4W">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="hW3-bW-YsN">
+                                <rect key="frame" x="0.0" y="344" width="320" height="224"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">The kit data provided here is only approximate.  Everyone builds rockets differently, and in particular your liftoff mass will likely be different from the mass listed here. The drag coefficient is only a place-holder, and I advise you to replace it as soon as you have a real altitude to have the simulation calculate a Cd for you.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="rd4-BR-P4W" id="8VE-ja-Mjw"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rgl-pO-uVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2213,7 +2226,7 @@ Estes E9 x2</string>
                                                     <rect key="frame" x="20" y="16" width="280" height="173"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <mutableString key="text">Smart Launch HD 2.1
+                                                    <string key="text">Smart Launch HD 2.1
 ©2012, 2013 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
@@ -2230,7 +2243,7 @@ Apogee, Quest, Loki, CTI, AMW, Gorilla, RATTworks and RoadRunner logos used with
 Aerotech™ logos used with permission of RCS.
 All company logos are the registered trademarks of the respective motor manufacturers. No official approval or sponsorship of the data in this application should be inferred.
 
-Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</mutableString>
+Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>

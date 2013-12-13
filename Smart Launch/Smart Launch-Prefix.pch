@@ -61,6 +61,7 @@ typedef enum {
 #define EVERY_MOTOR_HASHTABLE_CACHE_FILENAME @"everymotorhashcache.plist"
 #define MOTOR_DATA_FILENAME @"motors.txt"
 #define VERTICAL_ROCKET_PIC_NAME @"Patriot"
+#define AVATAR_HORIZONTAL_SUFFIX @"_horiz"
 #define CURVEGRAPHVIEW_DEFAULT_VERTICAL_DIVISIONS 8
     
 #pragma mark Calculation constants
@@ -230,6 +231,7 @@ typedef enum {
 #define ROCKET_RECORDED_FLIGHTS_KEY @"RecordedFlightsKey"
 #define ROCKET_MOTOR_CONFIG_KEY @"RocketMotorConfigurationKey"
 #define ROCKET_LAST_LOADOUT_KEY @"RocketLastLoadoutKey"
+#define ROCKET_AVATAR_KEY @"RocketAvatarFilenameKey"
     
     //keys for a recordedFlight NSDictonary*
 

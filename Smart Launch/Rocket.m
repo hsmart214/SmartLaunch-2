@@ -459,6 +459,7 @@ float burrnoutTime, burrnoutMass;
 +(Rocket *)defaultRocket{
     NSDictionary *goblinProperties = @{ROCKET_NAME_KEY: @"Goblin",
                                       ROCKET_KITNAME_KEY: @"Goblin",
+                                      ROCKET_AVATAR_KEY: @"Goblin",
                                       ROCKET_MAN_KEY: @"Estes",
                                       ROCKET_DIAM_KEY: @0.033655f,
                                       ROCKET_LENGTH_KEY: @0.36322f,

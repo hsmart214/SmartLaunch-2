@@ -391,7 +391,7 @@
         }
     }
     if (indexPath.section == 0 && indexPath.row == MOTOR_SELECTION_ROW){
-        if (self.rocket.hasClusterMount){
+        if ([self.rocket hasClusterMount]){
             [self performSegueWithIdentifier:@"clusterBuildSegue" sender:self];
         }else{
             [self performSegueWithIdentifier:@"motorSelectorSegue" sender:self];
