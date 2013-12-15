@@ -474,6 +474,7 @@ float burrnoutTime, burrnoutMass;
 }
 
 -(NSString *)description{
-    return [NSString stringWithFormat:@"Rocket: %@", self.name];
+    //return [NSString stringWithFormat:@"Rocket: %@", self.name];
+    return self.name;
 }
 @end

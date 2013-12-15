@@ -350,7 +350,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="b5d-Cv-D1S"/>
                         <barButtonItem title="Save/Refine Cd" id="yDz-vf-qa0">
                             <connections>
-                                <segue destination="uCi-7J-K7Z" kind="push" identifier="saveFlightSegue" id="hKg-fH-Ilr"/>
+                                <segue destination="d8G-sU-28y" kind="modal" identifier="saveFlightSegue" id="hKg-fH-Ilr"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -661,7 +661,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igu-Zb-QVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1866" y="-1279"/>
+            <point key="canvasLocation" x="2392" y="-1279"/>
         </scene>
         <!--Rocket PropertiesTVC - New Rocket-->
         <scene sceneID="tBl-0D-U09">
@@ -1048,7 +1048,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rgl-pO-uVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2318" y="-1325"/>
+            <point key="canvasLocation" x="2844" y="-1325"/>
         </scene>
         <!--Motor ConfigurationTVC - Motor Configuration-->
         <scene sceneID="cOG-kn-ges">
@@ -1286,7 +1286,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5XI-cW-LgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2769" y="-1279"/>
+            <point key="canvasLocation" x="3295" y="-1279"/>
         </scene>
         <!--Saved FlightsTVC - Saved Flights-->
         <scene sceneID="uht-L5-kLV">
@@ -1592,7 +1592,7 @@ Estes E9 x2</string>
                                                     <rect key="frame" x="132" y="11" width="100" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.21605412269999999" green="0.58714975459999996" blue="0.92915675949999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -1671,6 +1671,7 @@ Estes E9 x2</string>
                                                 <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" id="XGe-zE-6Z8">
                                                     <rect key="frame" x="75" y="17" width="150" height="2"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                                    <color key="progressTintColor" red="0.0" green="0.33588047450000003" blue="0.085452782850000006" alpha="1" colorSpace="calibratedRGB"/>
                                                 </progressView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1724,18 +1725,21 @@ Estes E9 x2</string>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems>
                         <barButtonItem systemItem="cancel" id="pU5-mi-VxH">
+                            <color key="tintColor" red="0.0" green="0.33588047450000003" blue="0.085452782850000006" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelFlightSaving:" destination="uCi-7J-K7Z" id="PXL-Zz-cvK"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="k2W-0f-U64"/>
                         <barButtonItem title="Refine Cd" id="g1A-bc-J6W">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="calculateNewCd:" destination="uCi-7J-K7Z" id="Tpk-Km-Tgz"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Gdq-9X-sEt"/>
                         <barButtonItem systemItem="save" id="E0g-SV-iRQ">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveFlightData:" destination="uCi-7J-K7Z" id="SUR-wQ-YyD"/>
                             </connections>
@@ -1743,6 +1747,20 @@ Estes E9 x2</string>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Save Flight Data" id="sE9-Rm-Tya"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="EIa-O6-mwe">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <attributedString key="attributedTitle">
+                            <fragment content="Refining Cd">
+                                <attributes>
+                                    <font key="NSFont" metaFont="toolTip"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <connections>
+                            <action selector="refreshPulled:" destination="uCi-7J-K7Z" eventType="valueChanged" id="6r2-9b-qZB"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <outlet property="actualAltitudeField" destination="CdZ-mY-m6E" id="fGF-yL-RUG"/>
                         <outlet property="altUnitsLabel" destination="97N-MR-Arh" id="H2C-cs-ubk"/>
@@ -1760,7 +1778,7 @@ Estes E9 x2</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fk4-Zb-Afh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="919" y="-626"/>
+            <point key="canvasLocation" x="1396" y="-1317"/>
         </scene>
         <!--Rockets Table View Controller - Rockets-->
         <scene sceneID="uk1-7V-zG1">
@@ -2226,7 +2244,7 @@ Estes E9 x2</string>
                                                     <rect key="frame" x="20" y="16" width="280" height="173"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <string key="text">Smart Launch HD 2.1
+                                                    <mutableString key="text">Smart Launch HD 2.0.3
 ©2012, 2013 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
@@ -2243,7 +2261,7 @@ Apogee, Quest, Loki, CTI, AMW, Gorilla, RATTworks and RoadRunner logos used with
 Aerotech™ logos used with permission of RCS.
 All company logos are the registered trademarks of the respective motor manufacturers. No official approval or sponsorship of the data in this application should be inferred.
 
-Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</string>
+Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</mutableString>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -2701,8 +2719,8 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="G80T" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cjo-Wa-I82">
-                                <rect key="frame" x="121" y="103" width="179" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="G80T" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cjo-Wa-I82">
+                                <rect key="frame" x="121" y="103" width="129" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3257,6 +3275,24 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSx-PB-xhN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1409" y="1942"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hHz-WE-NYD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d8G-sU-28y" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9WN-9u-fRC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uCi-7J-K7Z" kind="relationship" relationship="rootViewController" id="7HK-tX-Sja"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DFd-Zn-XnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="968" y="-1317"/>
         </scene>
     </scenes>
     <resources>

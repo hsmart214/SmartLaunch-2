@@ -28,8 +28,13 @@
 
 @implementation SLSaveFlightDataTVC
 
+- (IBAction)refreshPulled:(UIRefreshControl *)sender {
+    [self calculateNewCd:sender];
+}
+
 - (IBAction)cancelFlightSaving:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)saveFlightData:(UIBarButtonItem *)sender {
@@ -55,13 +60,21 @@
     [self.delegate sender:self didChangeRocket:self.rocket];
     //[self.delegate SLRocketPropertiesTVC:(id)self savedRocket:self.rocket];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.delegate dismissModalViewController];
 }
 
 
 
 - (IBAction)calculateNewCd:(id)sender {
-    if ([self.actualAltitudeField.text floatValue] == 0.0) return;
+    if ([self.actualAltitudeField.text floatValue] == 0.0) {
+        [self.refreshControl endRefreshing];
+        return;
+    }
+    if (![self.refreshControl isRefreshing]) {
+        [self.refreshControl beginRefreshing];
+    }
     float initialGuess = [self.cdEstimateField.text floatValue];
     __block Rocket *tempRocket = [self.rocket copy];
     [tempRocket replaceMotorLoadOutWithLoadOut:self.physicsModel.rocket.motorLoadoutPlist];
@@ -124,6 +137,7 @@
             self.cdLabel.text = [NSString stringWithFormat:@"%1.2f",bestGuess];
             self.altitudeLabel.text = [NSString stringWithFormat:@"%1.0f %@", [SLUnitsConvertor displayUnitsOf:newGuessedAlt forKey:ALT_UNIT_KEY], [SLUnitsConvertor displayStringForKey:ALT_UNIT_KEY]];
             [self.calculationProgressIndicator setProgress:0.0 animated:YES];
+            [self.refreshControl endRefreshing];
         });
         self.physicsModel.rocket = self.rocket;
     });
@@ -199,6 +213,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [myWeakSelf.tableView reloadData];
         });
+        //[myWeakSelf.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }];
 }
 

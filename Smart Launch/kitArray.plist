@@ -1221,7 +1221,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>0.1959999948740005</real>
+				<real>0.19561704</real>
 				<key>RocketMotorSize</key>
 				<integer>24</integer>
 			</dict>
@@ -1237,7 +1237,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>0.3152999877929688</real>
+				<real>0.33799223</real>
 				<key>RocketMotorSize</key>
 				<integer>29</integer>
 			</dict>
@@ -1269,7 +1269,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>0</real>
+				<real>2.9305</real>
 				<key>RocketMotorSize</key>
 				<integer>54</integer>
 			</dict>
@@ -1285,7 +1285,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>3.779999971389771</real>
+				<real>5.39987809</real>
 				<key>RocketMotorSize</key>
 				<integer>75</integer>
 			</dict>
@@ -1301,7 +1301,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>8.652000427246094</real>
+				<real>9.05611</real>
 				<key>RocketMotorSize</key>
 				<integer>98</integer>
 			</dict>
@@ -1317,7 +1317,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>0.5669999718666077</real>
+				<real>0.60856</real>
 				<key>RocketMotorSize</key>
 				<integer>29</integer>
 			</dict>
@@ -1333,7 +1333,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>0.3849999904632568</real>
+				<real>0.3856</real>
 				<key>RocketMotorSize</key>
 				<integer>29</integer>
 			</dict>
@@ -1349,7 +1349,23 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>1.600000023841858</real>
+				<real>1.37102</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+			</dict>
+			<dict>
+				<key>RocketCD</key>
+				<real>0.5</real>
+				<key>RocketDiameter</key>
+				<real>0.05715</real>
+				<key>RocketKitName</key>
+				<string>Darkstar</string>
+				<key>RocketLength</key>
+				<real>1.4843125</real>
+				<key>RocketManufacturer</key>
+				<string>Wildman</string>
+				<key>RocketMass</key>
+				<real>1.60075128</real>
 				<key>RocketMotorSize</key>
 				<integer>38</integer>
 			</dict>
@@ -1365,7 +1381,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>0</real>
+				<real>4.81065</real>
 				<key>RocketMotorSize</key>
 				<integer>54</integer>
 			</dict>
@@ -1381,7 +1397,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>6.269999980926514</real>
+				<real>6.270595</real>
 				<key>RocketMotorSize</key>
 				<integer>75</integer>
 			</dict>
@@ -1397,7 +1413,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>0</real>
+				<real>15.42312</real>
 				<key>RocketMotorSize</key>
 				<integer>98</integer>
 			</dict>
@@ -1429,7 +1445,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>0.3330000042915344</real>
+				<real>0.52019392</real>
 				<key>RocketMotorSize</key>
 				<integer>29</integer>
 			</dict>
@@ -1445,7 +1461,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>5.659999847412109</real>
+				<real>5.6624557</real>
 				<key>RocketMotorSize</key>
 				<integer>54</integer>
 			</dict>
@@ -1461,7 +1477,23 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>1.485999941825867</real>
+				<real>3.2656</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+			</dict>
+			<dict>
+				<key>RocketCD</key>
+				<real>0.5</real>
+				<key>RocketDiameter</key>
+				<real>0.130174994468689</real>
+				<key>RocketKitName</key>
+				<string>Gizmo DD</string>
+				<key>RocketLength</key>
+				<real>1.24333</real>
+				<key>RocketManufacturer</key>
+				<string>Wildman</string>
+				<key>RocketMass</key>
+				<real>5.51481303</real>
 				<key>RocketMotorSize</key>
 				<integer>54</integer>
 			</dict>
@@ -1477,7 +1509,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>6.85699987411499</real>
+				<real>8.04777</real>
 				<key>RocketMotorSize</key>
 				<integer>98</integer>
 			</dict>
@@ -1493,7 +1525,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>0</real>
+				<real>12.5540839</real>
 				<key>RocketMotorSize</key>
 				<integer>98</integer>
 			</dict>
@@ -1509,7 +1541,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>3.441999912261963</real>
+				<real>3.0078587</real>
 				<key>RocketMotorSize</key>
 				<integer>54</integer>
 			</dict>
@@ -1525,7 +1557,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>3.410000085830688</real>
+				<real>5.92204519</real>
 				<key>RocketMotorSize</key>
 				<integer>75</integer>
 			</dict>
@@ -1541,7 +1573,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>5.900000095367432</real>
+				<real>9.50224534</real>
 				<key>RocketMotorSize</key>
 				<integer>98</integer>
 			</dict>
@@ -1557,7 +1589,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>0.6230000257492065</real>
+				<real>0.32441244</real>
 				<key>RocketMotorSize</key>
 				<integer>29</integer>
 			</dict>
@@ -1569,13 +1601,45 @@
 				<key>RocketKitName</key>
 				<string>Jart 5</string>
 				<key>RocketLength</key>
-				<real>0</real>
+				<real>1.21229</real>
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>0</real>
+				<real>3.24712103</real>
 				<key>RocketMotorSize</key>
 				<integer>54</integer>
+			</dict>
+			<dict>
+				<key>RocketCD</key>
+				<real>0.5</real>
+				<key>RocketDiameter</key>
+				<real>0.130174994468689</real>
+				<key>RocketKitName</key>
+				<string>Jart 5 DD</string>
+				<key>RocketLength</key>
+				<real>1.61869</real>
+				<key>RocketManufacturer</key>
+				<string>Wildman</string>
+				<key>RocketMass</key>
+				<real>5.4963</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+			</dict>
+			<dict>
+				<key>RocketCD</key>
+				<real>0.5</real>
+				<key>RocketDiameter</key>
+				<real>0.203327</real>
+				<key>RocketKitName</key>
+				<string>Jumbo Jart</string>
+				<key>RocketLength</key>
+				<real>2.6964</real>
+				<key>RocketManufacturer</key>
+				<string>Wildman</string>
+				<key>RocketMass</key>
+				<real>12.8758</real>
+				<key>RocketMotorSize</key>
+				<integer>75</integer>
 			</dict>
 			<dict>
 				<key>RocketCD</key>
@@ -1589,9 +1653,41 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>1.684000015258789</real>
+				<real>1.68430528</real>
 				<key>RocketMotorSize</key>
 				<integer>38</integer>
+			</dict>
+			<dict>
+				<key>RocketCD</key>
+				<real>0.5</real>
+				<key>RocketDiameter</key>
+				<real>0.13081</real>
+				<key>RocketKitName</key>
+				<string>Shape Shifter 5</string>
+				<key>RocketLength</key>
+				<real>2.548128</real>
+				<key>RocketManufacturer</key>
+				<string>Wildman</string>
+				<key>RocketMass</key>
+				<real>9.84203215</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+			</dict>
+			<dict>
+				<key>RocketCD</key>
+				<real>0.5</real>
+				<key>RocketDiameter</key>
+				<real>0.056642</real>
+				<key>RocketKitName</key>
+				<string>Shreader</string>
+				<key>RocketLength</key>
+				<real>1.47955</real>
+				<key>RocketManufacturer</key>
+				<string>Wildman</string>
+				<key>RocketMass</key>
+				<real>1.59898506</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
 			</dict>
 			<dict>
 				<key>RocketCD</key>
@@ -1605,7 +1701,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>1.41700005531311</real>
+				<real>1.37563009</real>
 				<key>RocketMotorSize</key>
 				<integer>38</integer>
 			</dict>
@@ -1621,9 +1717,25 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>4.412000179290771</real>
+				<real>4.64130355</real>
 				<key>RocketMotorSize</key>
 				<integer>54</integer>
+			</dict>
+			<dict>
+				<key>RocketCD</key>
+				<real>0.5</real>
+				<key>RocketDiameter</key>
+				<real>0.103187501430512</real>
+				<key>RocketKitName</key>
+				<string>Vindicator Extreme</string>
+				<key>RocketLength</key>
+				<real>2.54848106</real>
+				<key>RocketManufacturer</key>
+				<string>Wildman</string>
+				<key>RocketMass</key>
+				<real>5.33261418</real>
+				<key>RocketMotorSize</key>
+				<integer>75</integer>
 			</dict>
 			<dict>
 				<key>RocketCD</key>
@@ -1637,7 +1749,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>1.521999955177307</real>
+				<real>1.6723046</real>
 				<key>RocketMotorSize</key>
 				<integer>38</integer>
 			</dict>
@@ -1653,7 +1765,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>1.429999947547913</real>
+				<real>1.39871573</real>
 				<key>RocketMotorSize</key>
 				<integer>38</integer>
 			</dict>
@@ -1669,7 +1781,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>5.363999843597412</real>
+				<real>5.62343152</real>
 				<key>RocketMotorSize</key>
 				<integer>75</integer>
 			</dict>
@@ -1685,7 +1797,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>0.3869999945163727</real>
+				<real>0.44266153</real>
 				<key>RocketMotorSize</key>
 				<integer>29</integer>
 			</dict>
@@ -1701,7 +1813,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>1.723000049591064</real>
+				<real>1.72342868</real>
 				<key>RocketMotorSize</key>
 				<integer>38</integer>
 			</dict>
@@ -1717,7 +1829,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>2.230000019073486</real>
+				<real>2.08231509</real>
 				<key>RocketMotorSize</key>
 				<integer>54</integer>
 			</dict>
@@ -1733,7 +1845,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>3.861999988555908</real>
+				<real>12.3674</real>
 				<key>RocketMotorSize</key>
 				<integer>54</integer>
 			</dict>
@@ -1749,7 +1861,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>5.784999847412109</real>
+				<real>5.78499984741211</real>
 				<key>RocketMotorSize</key>
 				<integer>75</integer>
 			</dict>

@@ -43,6 +43,7 @@
 @property (strong, nonatomic) NSMutableDictionary *settings;
 @property (atomic) BOOL simRunning;
 @property (nonatomic, strong) id iCloudObserver;
+@property (nonatomic, weak) UIPopoverController *popover;
 
 @end
 
@@ -155,6 +156,11 @@
 
 -(BOOL)shouldAllowSimulationUpdates{
     return !self.simRunning;
+}
+
+- (void)dismissModalViewController{
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.popover dismissPopoverAnimated:YES];
 }
 
 #pragma mark - SLRocketPropertiesTVCDelegate
@@ -318,9 +324,7 @@
     return [self.model quickFFVelocityAtLaunchAngle:angle andGuideLength:length];
 }
 
-- (void)dismissModalViewController{
-    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
-}
+#pragma mark - Prepare For Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     [segue.destinationViewController setDelegate:self];
@@ -350,9 +354,16 @@
                                  FLIGHT_ALTITUDE_KEY : @([SLUnitsConvertor metricStandardOf:[self.apogeeAltitudeLabel.text floatValue] forKey:ALT_UNIT_KEY]),
                                  FLIGHT_SETTINGS_KEY: flightSettings,
                                  SMART_LAUNCH_VERSION_KEY: @(SMART_LAUNCH_VERSION)};
-        [(SLSaveFlightDataTVC *)segue.destinationViewController setFlightData:flight];
-        [(SLSaveFlightDataTVC *)segue.destinationViewController setPhysicsModel:self.model];
-        [(SLSaveFlightDataTVC *)segue.destinationViewController setRocket:self.rocket];
+        SLSaveFlightDataTVC *dest;
+        if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]){
+            dest = (SLSaveFlightDataTVC *)([segue.destinationViewController viewControllers][0]);
+        }else{
+            dest = (SLSaveFlightDataTVC *)segue.destinationViewController;
+            self.popover = ((UIStoryboardPopoverSegue *)segue).popoverController;
+        }
+        [dest setFlightData:flight];
+        [dest setPhysicsModel:self.model];
+        [dest setRocket:self.rocket];
     }
     if ([[segue identifier] isEqualToString:@"FlightProfileSegue"]){
         [(SLFlightProfileViewController *)segue.destinationViewController setDataSource:self.model];
