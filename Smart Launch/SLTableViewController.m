@@ -218,6 +218,8 @@
     self.motorDetailDescriptionLabel.text = [cMotor fractionalImpulseClass];
     //    self.motorDetailDescriptionLabel.text =[NSString stringWithFormat:@"%1.1f Ns", [self.rocket totalImpulse]];
     UIImage *theImage;
+    
+    // This should protect against the Catalog errors about no image present
     if (self.rocket.motorManufacturer){
         theImage = [UIImage imageNamed:self.rocket.motorManufacturer];
     }else{
@@ -364,6 +366,7 @@
         [dest setFlightData:flight];
         [dest setPhysicsModel:self.model];
         [dest setRocket:self.rocket];
+        [dest setDelegate:self];
     }
     if ([[segue identifier] isEqualToString:@"FlightProfileSegue"]){
         [(SLFlightProfileViewController *)segue.destinationViewController setDataSource:self.model];

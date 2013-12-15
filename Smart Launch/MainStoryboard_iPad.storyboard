@@ -2088,7 +2088,9 @@
                                             <constraint firstItem="e8n-0K-POh" firstAttribute="leading" secondItem="IyZ-BR-ed7" secondAttribute="leading" constant="30" id="pXh-Zt-XWJ"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="Frx-w0-L3j" kind="modal" identifier="motorConfigurationSegue" id="xV2-Nw-2y2"/>
+                                            <segue destination="Frx-w0-L3j" kind="popover" identifier="motorConfigurationSegue" popoverAnchorView="IyZ-BR-ed7" id="xV2-Nw-2y2">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="xOc-vR-uW2">
@@ -2339,6 +2341,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="465"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="UaC-G2-YJg">
+                            <rect key="frame" x="0.0" y="421" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="aQ9-6l-aSh"/>
+                                <barButtonItem systemItem="save" id="vJ4-nI-28E">
+                                    <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="saveAndDismiss:" destination="Frx-w0-L3j" id="3Iz-3f-6v7"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
                         <sections>
                             <tableViewSection headerTitle="Central Motor (if any)" id="17S-31-pvF">
                                 <cells>
@@ -2576,17 +2591,8 @@
                             <outlet property="delegate" destination="Frx-w0-L3j" id="xMk-L2-RqL"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="aQ9-6l-aSh"/>
-                        <barButtonItem systemItem="save" id="vJ4-nI-28E">
-                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="saveAndDismiss:" destination="Frx-w0-L3j" id="3Iz-3f-6v7"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Motor Configuration" id="Fqy-25-peg"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="465"/>
                     <connections>

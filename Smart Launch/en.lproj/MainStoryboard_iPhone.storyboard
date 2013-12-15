@@ -1552,6 +1552,7 @@ Estes E9 x2</string>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Goblin" id="sTZ-GH-4KC">
                                                     <rect key="frame" x="15" y="0.0" width="105" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1573,6 +1574,7 @@ Estes E9 x2</string>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Apogee" id="mBE-ui-ooy">
                                                     <rect key="frame" x="15" y="0.0" width="105" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>

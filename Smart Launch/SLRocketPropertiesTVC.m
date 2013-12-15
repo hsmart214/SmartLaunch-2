@@ -256,6 +256,7 @@
 -(void)SLMotorConfigurationTVC:(SLMotorConfigurationTVC *)sender didChangeMotorConfiguration:(NSArray *)configuration{
     self.motorConfiguration = configuration;
     [self updateRocket];
+    if (self.view.window) [self updateDisplay];
 }
 
 -(void)dismissModalVC{
@@ -304,13 +305,14 @@
         SLMotorConfigurationTVC *dest;
         if ([segue isKindOfClass:[UIStoryboardPopoverSegue class]]){
             dest = (SLMotorConfigurationTVC *)segue.destinationViewController;
+            [dest setConfigDelegate:self];
+            [dest setConfigDatasource:self];
             self.popover = ((UIStoryboardPopoverSegue *)segue).popoverController;
         }else{// on the iPhone this modal VC is embedded
             dest = (SLMotorConfigurationTVC *)((UINavigationController *)segue.destinationViewController).viewControllers[0];
+            [dest setConfigDelegate:self];
+            [dest setConfigDatasource:self];
         }
-        //become the destination's delegate and datasource
-        [dest setConfigDelegate:self];
-        [dest setConfigDatasource:self];
     }
     if ([segue.identifier isEqualToString:@"kitSegue"]){
         [(SLKitsTVC *)segue.destinationViewController setDelegate:self];
