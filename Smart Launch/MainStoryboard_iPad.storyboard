@@ -743,6 +743,7 @@
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="cIS-kT-EvR"/>
                         <barButtonItem title="Use This Motor" id="kf9-yo-A7g">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="userChoseMotor:" destination="rPs-SB-YWc" id="Dme-Mt-bh7"/>
                             </connections>
@@ -943,12 +944,14 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem title="Auto Update: ON" id="ipv-p9-TX1">
+                            <color key="tintColor" red="0.0" green="0.33588047450000003" blue="0.085452782850000006" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="toggleAutoUpdate:" destination="UcW-Eg-XbB" id="bDQ-y8-vSl"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="WPy-y4-mbW"/>
                         <barButtonItem title="Saved Clusters" id="P8v-Fh-xti">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="UMY-4r-0l5" kind="push" identifier="savedClusterSegue" id="Ujy-fG-Dpe"/>
                             </connections>
@@ -1065,14 +1068,18 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem title="Calibrate" id="PAQ-4O-zjQ">
+                            <color key="tintColor" red="0.0" green="0.33588047450000003" blue="0.085452782850000006" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="calibrateButtonPressed:" destination="UMf-QM-zkj" id="xJG-DG-rd6"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="b29-KC-kbp"/>
-                        <barButtonItem systemItem="camera" id="x63-HI-QJY"/>
+                        <barButtonItem systemItem="camera" id="x63-HI-QJY">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="itU-jv-T8T"/>
                         <barButtonItem title="Motion" id="KaC-v5-rAf">
+                            <color key="tintColor" red="0.0" green="0.33588047450000003" blue="0.085452782850000006" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="motionButtonPressed:" destination="UMf-QM-zkj" id="4GN-a6-Njc"/>
                             </connections>
@@ -2081,7 +2088,7 @@
                                             <constraint firstItem="e8n-0K-POh" firstAttribute="leading" secondItem="IyZ-BR-ed7" secondAttribute="leading" constant="30" id="pXh-Zt-XWJ"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="Frx-w0-L3j" kind="push" identifier="motorConfigurationSegue" id="xV2-Nw-2y2"/>
+                                            <segue destination="Frx-w0-L3j" kind="modal" identifier="motorConfigurationSegue" id="xV2-Nw-2y2"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="xOc-vR-uW2">
@@ -2220,12 +2227,14 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem systemItem="cancel" id="RXL-R4-oHa">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="Vnk-0i-4WI" id="6h2-eE-a4o"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="ym8-Y7-Pjl"/>
                         <barButtonItem systemItem="save" id="WHM-E1-sgF">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveButtonPressed:" destination="Vnk-0i-4WI" id="nfr-UX-G7S"/>
                             </connections>
@@ -2327,14 +2336,14 @@
             <objects>
                 <tableViewController id="Frx-w0-L3j" customClass="SLMotorConfigurationTVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Kdk-1w-9Ec">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="465"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Central Motor (if any)" id="17S-31-pvF">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="motorConfigTypeCell" id="TZN-Xk-kjO">
-                                        <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="55" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TZN-Xk-kjO" id="uJI-TQ-P5k">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -2366,7 +2375,7 @@
                             <tableViewSection headerTitle="Motor Groups (2 or 3 motors each)" id="g1R-6z-2Qp">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="motorConfigTypeCell" id="vDQ-H4-oic">
-                                        <rect key="frame" x="0.0" y="211" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="147" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vDQ-H4-oic" id="eFW-VB-shc">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -2404,7 +2413,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="motorConfigTypeCell" id="tPu-iY-54S">
-                                        <rect key="frame" x="0.0" y="255" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="191" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tPu-iY-54S" id="8e5-UB-8dV">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -2432,7 +2441,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="motorConfigTypeCell" id="XyJ-s7-m1l">
-                                        <rect key="frame" x="0.0" y="299" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="235" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XyJ-s7-m1l" id="bUw-qv-V6V">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -2468,7 +2477,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="motorConfigTypeCell" id="NtE-mb-Yca">
-                                        <rect key="frame" x="0.0" y="343" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="279" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NtE-mb-Yca" id="jFf-MY-I9C">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -2496,7 +2505,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="motorConfigTypeCell" id="Zve-u3-FVc">
-                                        <rect key="frame" x="0.0" y="387" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="323" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zve-u3-FVc" id="Tpy-BQ-bj4">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -2532,7 +2541,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="motorConfigTypeCell" id="JpN-lv-kTc">
-                                        <rect key="frame" x="0.0" y="431" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="367" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JpN-lv-kTc" id="017-Pi-SaC">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -2569,14 +2578,17 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="aQ9-6l-aSh"/>
-                        <barButtonItem title="Revert" id="vJ4-nI-28E">
+                        <barButtonItem systemItem="save" id="vJ4-nI-28E">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="revertToOldConfiguration:" destination="Frx-w0-L3j" id="2Oc-DL-gvG"/>
+                                <action selector="saveAndDismiss:" destination="Frx-w0-L3j" id="3Iz-3f-6v7"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Motor Configuration" id="Fqy-25-peg"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="465"/>
                     <connections>
                         <outlet property="centralLabel" destination="w8W-j5-OwI" id="Nf7-ls-6af"/>
                         <outlet property="centralStepper" destination="NzQ-mz-gYr" id="sLl-Pr-HJF"/>
@@ -2683,17 +2695,20 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem systemItem="cancel" id="p3w-mq-iiF">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancel:" destination="fK3-jW-wyk" id="zdn-J5-j7h"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem title="Revert" id="tiq-Jm-86L">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="revert:" destination="fK3-jW-wyk" id="AeD-hf-eEv"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="as1-kl-Lfl"/>
                         <barButtonItem systemItem="save" id="LjP-ES-wvP">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="save:" destination="fK3-jW-wyk" id="3JV-KP-0et"/>
                             </connections>
@@ -2925,24 +2940,28 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                     </tableView>
                     <toolbarItems>
                         <barButtonItem title="Show All" id="aaQ-S7-Qcp">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="selectAllMotorKeys:" destination="J75-0A-tJ6" id="8Qn-QJ-zkO"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="jtJ-Vl-byY"/>
                         <barButtonItem title="Hide Hybrids" id="MRI-dg-hdn">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="toggleHybrids:" destination="J75-0A-tJ6" id="MtF-D4-pBg"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="88X-zw-nM9"/>
                         <barButtonItem title="Revert" id="9pD-0p-iyK">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="revertPrefs:" destination="J75-0A-tJ6" id="bFB-Z8-74e"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="g4G-Lg-6Cg"/>
                         <barButtonItem systemItem="save" id="LwI-Mq-tLp">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="savePrefsAndReturn:" destination="J75-0A-tJ6" id="ye6-Bb-z7e"/>
                             </connections>
@@ -3275,18 +3294,21 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                     </tableView>
                     <toolbarItems>
                         <barButtonItem title="Default" id="70r-LL-b9f">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="defaultButtonPressed:" destination="d9c-vJ-SdB" id="TnR-Cv-jhc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="rPg-7C-eaG"/>
                         <barButtonItem title="Revert" id="0IN-c2-L83">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="revertButtonPressed:" destination="d9c-vJ-SdB" id="KzX-OQ-ZN1"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="q9F-kv-VGL"/>
                         <barButtonItem systemItem="save" id="8Nh-Yx-vDs">
+                            <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveButtonPressed:" destination="d9c-vJ-SdB" id="ecF-33-ITh"/>
                             </connections>
@@ -3321,7 +3343,7 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="s7M-Af-1nP"/>
+        <segue reference="mi2-wW-OMb"/>
         <segue reference="ufW-2b-KLU"/>
     </inferredMetricsTieBreakers>
 </document>

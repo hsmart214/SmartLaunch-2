@@ -19,6 +19,7 @@
 @protocol SLMotorConfigurationDelegate <NSObject>
 
 -(void)SLMotorConfigurationTVC:(SLMotorConfigurationTVC *)sender didChangeMotorConfiguration:(NSArray *)configuration;
+-(void)dismissModalVC;
 
 @end
 

@@ -39,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *motorConfigLabel;
 @property (nonatomic, strong) id iCloudObserver;
 @property (nonatomic, strong) NSArray *motorConfiguration;
+@property (nonatomic, weak) UIPopoverController *popover;
 
 @end
 
@@ -257,6 +258,11 @@
     [self updateRocket];
 }
 
+-(void)dismissModalVC{
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.popover dismissPopoverAnimated:YES];
+}
+
 #pragma mark - SLKitTVCDelegate method
 
 -(void)SLKitTVC:(id)sender didChooseCommercialKit:(NSDictionary *)kitDict{
@@ -278,16 +284,33 @@
 
 #pragma mark - prepareForSegue
 
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    if ([identifier isEqualToString:@"motorConfigurationSegue"]){
+        //if we are planning to popover, don't do it if we already have one on screen
+        return (!self.popover);
+    }else{
+        return YES;
+    }
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"savedFlightsSegue"]){
         //pass on the model for the next table view controller
-        [(SLSavedFlightsTVC *)segue.destinationViewController setRocket:self.rocket];
-        [(SLSavedFlightsTVC *)segue.destinationViewController setRocketDelegate:self];
+        SLSavedFlightsTVC *dest = (SLSavedFlightsTVC *)segue.destinationViewController;
+        [dest setRocket:self.rocket];
+        [dest setRocketDelegate:self];
     }
     if ([segue.identifier isEqualToString:@"motorConfigurationSegue"]){
-        //become the destinations delegate and datasource
-        [(SLMotorConfigurationTVC *)segue.destinationViewController setConfigDelegate:self];
-        [(SLMotorConfigurationTVC *)segue.destinationViewController setConfigDatasource:self];
+        SLMotorConfigurationTVC *dest;
+        if ([segue isKindOfClass:[UIStoryboardPopoverSegue class]]){
+            dest = (SLMotorConfigurationTVC *)segue.destinationViewController;
+            self.popover = ((UIStoryboardPopoverSegue *)segue).popoverController;
+        }else{// on the iPhone this modal VC is embedded
+            dest = (SLMotorConfigurationTVC *)((UINavigationController *)segue.destinationViewController).viewControllers[0];
+        }
+        //become the destination's delegate and datasource
+        [dest setConfigDelegate:self];
+        [dest setConfigDatasource:self];
     }
     if ([segue.identifier isEqualToString:@"kitSegue"]){
         [(SLKitsTVC *)segue.destinationViewController setDelegate:self];

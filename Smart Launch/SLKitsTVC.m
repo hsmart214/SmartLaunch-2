@@ -103,6 +103,13 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - View Life Cycle
+
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IMAGE_FILENAME]];
+}
+
 - (void)didReceiveMemoryWarning{
     self.kits = nil;
 }

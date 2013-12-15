@@ -297,6 +297,16 @@
     if (!self.thirdGroupCount.selectedSegmentIndex) [self.thridGroupStepper setEnabled:NO];
 }
 
+- (IBAction)saveAndDismiss:(UIBarButtonItem *)sender {
+    [self.configDelegate SLMotorConfigurationTVC:self didChangeMotorConfiguration:[self.workingConfiguration copy]];
+    [self.configDelegate dismissModalVC];
+}
+
+- (IBAction)cancelAndDismiss:(UIBarButtonItem *)sender {
+    [self.configDelegate dismissModalVC];
+}
+
+
 #pragma mark - UITableView delegate methods
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -351,11 +361,6 @@
     NSArray *motorConfig = [self.configDatasource currentMotorConfiguration];
     if (motorConfig) self.workingConfiguration = [motorConfig mutableCopy];
     self.oldConfiguration = motorConfig;
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self.configDelegate SLMotorConfigurationTVC:self didChangeMotorConfiguration:[self.workingConfiguration copy]];
 }
 
 -(void)dealloc{

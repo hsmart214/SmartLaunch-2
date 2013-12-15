@@ -887,7 +887,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="3N5-Wf-79E" kind="push" identifier="motorConfigurationSegue" id="miD-pZ-u11"/>
+                                            <segue destination="zQc-FU-yWW" kind="modal" identifier="motorConfigurationSegue" id="miD-pZ-u11"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="h4H-8U-qdt">
@@ -1058,6 +1058,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="jnG-MF-NJM">
+                            <rect key="frame" x="0.0" y="485" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem systemItem="cancel" id="A8x-KI-KBL">
+                                    <connections>
+                                        <action selector="cancelAndDismiss:" destination="3N5-Wf-79E" id="ZaI-6C-UyE"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="cdB-PP-1E4"/>
+                                <barButtonItem systemItem="save" id="IQl-B0-85x">
+                                    <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="saveAndDismiss:" destination="3N5-Wf-79E" id="SUe-wl-knO"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
                         <sections>
                             <tableViewSection headerTitle="Central Motor (if any)" id="fG1-9P-eRr">
                                 <cells>
@@ -1256,16 +1274,8 @@
                             <outlet property="delegate" destination="3N5-Wf-79E" id="aNS-aN-SYb"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="cdB-PP-1E4"/>
-                        <barButtonItem title="Revert" id="hxe-tm-UR8">
-                            <connections>
-                                <action selector="revertToOldConfiguration:" destination="3N5-Wf-79E" id="iDi-f4-nNI"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Motor Configuration" id="pGk-Nx-eMY"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="centralLabel" destination="i0C-1V-NQx" id="57z-nz-3yL"/>
                         <outlet property="centralStepper" destination="xjH-sg-Szf" id="taF-Lv-gL3"/>
@@ -1286,7 +1296,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5XI-cW-LgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3295" y="-1279"/>
+            <point key="canvasLocation" x="3821" y="-1279"/>
         </scene>
         <!--Saved FlightsTVC - Saved Flights-->
         <scene sceneID="uht-L5-kLV">
@@ -2244,7 +2254,7 @@ Estes E9 x2</string>
                                                     <rect key="frame" x="20" y="16" width="280" height="173"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <mutableString key="text">Smart Launch HD 2.0.3
+                                                    <string key="text">Smart Launch HD 2.0.3
 ©2012, 2013 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
@@ -2261,7 +2271,7 @@ Apogee, Quest, Loki, CTI, AMW, Gorilla, RATTworks and RoadRunner logos used with
 Aerotech™ logos used with permission of RCS.
 All company logos are the registered trademarks of the respective motor manufacturers. No official approval or sponsorship of the data in this application should be inferred.
 
-Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</mutableString>
+Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -3293,6 +3303,24 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFd-Zn-XnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="968" y="-1317"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LAO-ca-JHI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zQc-FU-yWW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oFz-Ej-DIs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3N5-Wf-79E" kind="relationship" relationship="rootViewController" id="b7c-l8-4Sa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FBK-aA-gY9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3295" y="-1279"/>
         </scene>
     </scenes>
     <resources>
