@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5023" systemVersion="13A3017" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3DS-gC-v50">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5037" systemVersion="13A3017" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3DS-gC-v50">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -661,7 +661,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igu-Zb-QVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2392" y="-1279"/>
+            <point key="canvasLocation" x="2318" y="-1317"/>
         </scene>
         <!--Rocket PropertiesTVC - New Rocket-->
         <scene sceneID="tBl-0D-U09">
@@ -1032,10 +1032,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="hW3-bW-YsN">
-                                <rect key="frame" x="0.0" y="344" width="320" height="224"/>
+                                <rect key="frame" x="0.0" y="318" width="320" height="250"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">The kit data provided here is only approximate.  Everyone builds rockets differently, and in particular your liftoff mass will likely be different from the mass listed here. The drag coefficient is only a place-holder, and I advise you to replace it as soon as you have a real altitude to have the simulation calculate a Cd for you.</string>
+                                <string key="text">The kit data provided here is only approximate.  Everyone builds rockets differently, and in particular your liftoff mass will likely be different from the mass listed here. The drag coefficient is only a place-holder, and I advise you to replace it as soon as you have a real altitude to have the simulation calculate a Cd for you. Want to see more kits here? Send me an email with data.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
@@ -1048,7 +1048,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rgl-pO-uVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2844" y="-1325"/>
+            <point key="canvasLocation" x="2769" y="-1317"/>
         </scene>
         <!--Motor ConfigurationTVC - Motor Configuration-->
         <scene sceneID="cOG-kn-ges">
@@ -1296,7 +1296,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5XI-cW-LgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3821" y="-1279"/>
+            <point key="canvasLocation" x="3707" y="-1317"/>
         </scene>
         <!--Saved FlightsTVC - Saved Flights-->
         <scene sceneID="uht-L5-kLV">
@@ -1604,7 +1604,6 @@ Estes E9 x2</string>
                                                     <rect key="frame" x="132" y="11" width="100" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -3322,7 +3321,7 @@ Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrus
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FBK-aA-gY9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3295" y="-1279"/>
+            <point key="canvasLocation" x="3243" y="-1317"/>
         </scene>
     </scenes>
     <resources>

@@ -328,6 +328,14 @@
 
 #pragma mark - Prepare For Segue
 
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    if ([identifier isEqualToString:@"saveFlightSegue"]){
+        //prevent double popovers
+        return (!self.popover);
+    }
+    return YES;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     [segue.destinationViewController setDelegate:self];
     if ([[segue identifier] isEqualToString:@"settingsModalSegue"]){

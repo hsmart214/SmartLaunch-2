@@ -4,49 +4,6 @@
 <array>
 	<dict>
 		<key>RocketManufacturer</key>
-		<string>Polecat</string>
-		<key>RocketKitArray</key>
-		<array>
-			<dict>
-				<key>RocketName</key>
-				<string>Nike Smoke</string>
-				<key>RocketLength</key>
-				<real>1.1</real>
-				<key>RocketDiameter</key>
-				<real>0.1016</real>
-				<key>RocketCD</key>
-				<real>0.5</real>
-				<key>RocketMotorSize</key>
-				<integer>54</integer>
-				<key>RocketMass</key>
-				<integer>2</integer>
-				<key>RocketKitName</key>
-				<string>Nike Smoke</string>
-				<key>RocketManufacturer</key>
-				<string>Polecat</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>Fat Man</string>
-				<key>RocketLength</key>
-				<real>1.3</real>
-				<key>RocketDiameter</key>
-				<real>0.254</real>
-				<key>RocketCD</key>
-				<real>0.5</real>
-				<key>RocketMotorSize</key>
-				<integer>98</integer>
-				<key>RocketMass</key>
-				<integer>8</integer>
-				<key>RocketKitName</key>
-				<string>Fat Man</string>
-				<key>RocketManufacturer</key>
-				<string>Polecat</string>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>RocketManufacturer</key>
 		<string>Madcow</string>
 		<key>RocketKitArray</key>
 		<array>
@@ -1253,7 +1210,7 @@
 				<key>RocketManufacturer</key>
 				<string>Wildman</string>
 				<key>RocketMass</key>
-				<real>0.7688000202178955</real>
+				<real>0.6443964599999999</real>
 				<key>RocketMotorSize</key>
 				<integer>38</integer>
 			</dict>
@@ -1639,7 +1596,7 @@
 				<key>RocketMass</key>
 				<real>12.8758</real>
 				<key>RocketMotorSize</key>
-				<integer>75</integer>
+				<integer>98</integer>
 			</dict>
 			<dict>
 				<key>RocketCD</key>
@@ -1671,7 +1628,7 @@
 				<key>RocketMass</key>
 				<real>9.84203215</real>
 				<key>RocketMotorSize</key>
-				<integer>54</integer>
+				<integer>98</integer>
 			</dict>
 			<dict>
 				<key>RocketCD</key>
@@ -1687,7 +1644,7 @@
 				<key>RocketMass</key>
 				<real>1.59898506</real>
 				<key>RocketMotorSize</key>
-				<integer>54</integer>
+				<integer>38</integer>
 			</dict>
 			<dict>
 				<key>RocketCD</key>
@@ -1880,6 +1837,49 @@
 				<real>13.44699954986572</real>
 				<key>RocketMotorSize</key>
 				<integer>98</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>RocketManufacturer</key>
+		<string>Polecat</string>
+		<key>RocketKitArray</key>
+		<array>
+			<dict>
+				<key>RocketName</key>
+				<string>Nike Smoke</string>
+				<key>RocketLength</key>
+				<real>1.1</real>
+				<key>RocketDiameter</key>
+				<real>0.1016</real>
+				<key>RocketCD</key>
+				<real>0.5</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<integer>2</integer>
+				<key>RocketKitName</key>
+				<string>Nike Smoke</string>
+				<key>RocketManufacturer</key>
+				<string>Polecat</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Fat Man</string>
+				<key>RocketLength</key>
+				<real>1.3</real>
+				<key>RocketDiameter</key>
+				<real>0.254</real>
+				<key>RocketCD</key>
+				<real>0.5</real>
+				<key>RocketMotorSize</key>
+				<integer>98</integer>
+				<key>RocketMass</key>
+				<integer>8</integer>
+				<key>RocketKitName</key>
+				<string>Fat Man</string>
+				<key>RocketManufacturer</key>
+				<string>Polecat</string>
 			</dict>
 		</array>
 	</dict>

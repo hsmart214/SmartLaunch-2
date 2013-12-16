@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5023" systemVersion="13A3017" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="mi5-oc-GQ5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5037" systemVersion="13A3017" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="mi5-oc-GQ5">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -1555,7 +1555,6 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="YgQ-vk-aPF"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.0" green="0.33588047450000003" blue="0.085452782850000006" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -1767,7 +1766,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kqz-jd-itN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="637" y="-3072"/>
+            <point key="canvasLocation" x="69" y="-3077"/>
         </scene>
         <!--Rockets Table View Controller - Rockets-->
         <scene sceneID="4ze-Yu-hX6">
@@ -2327,11 +2326,21 @@
                             <outlet property="delegate" destination="yZR-cG-xuX" id="YGt-0i-8O5"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="A8Q-IS-b8E"/>
+                        <barButtonItem title="Kit Info" id="gJ2-g6-chs">
+                            <connections>
+                                <segue destination="igQ-RT-o7V" kind="popover" identifier="Kit Info Segue" popoverAnchorBarButtonItem="gJ2-g6-chs" id="CwQ-Ms-8pc">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="ewG-py-p9k"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZnB-AL-QNW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084" y="-3072"/>
+            <point key="canvasLocation" x="621" y="-3082"/>
         </scene>
         <!--Motor ConfigurationTVC - Motor Configuration-->
         <scene sceneID="TJP-ri-wTd">
@@ -2617,6 +2626,42 @@
             </objects>
             <point key="canvasLocation" x="1512" y="-3082"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="PRJ-KL-YZV">
+            <objects>
+                <viewController id="igQ-RT-o7V" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UNd-31-ElC"/>
+                        <viewControllerLayoutGuide type="bottom" id="tBc-FE-Xdg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PGP-rW-0OR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVu-zp-zJp">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">The kit data provided here is only approximate.  Everyone builds rockets differently, and in particular your liftoff mass will likely be different from the mass listed here. The drag coefficient is only a place-holder, and I advise you to replace it as soon as you have a real altitude to have the simulation calculate a Cd for you. Want to see more kits here? Send me an email with data.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SVu-zp-zJp" firstAttribute="leading" secondItem="PGP-rW-0OR" secondAttribute="leading" id="40x-Bm-zgR"/>
+                            <constraint firstAttribute="trailing" secondItem="SVu-zp-zJp" secondAttribute="trailing" id="TIi-Os-QfA"/>
+                            <constraint firstItem="SVu-zp-zJp" firstAttribute="top" secondItem="PGP-rW-0OR" secondAttribute="top" id="jcD-eE-Xe6"/>
+                            <constraint firstAttribute="bottom" secondItem="SVu-zp-zJp" secondAttribute="bottom" id="x1J-as-LNR"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="240"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QuF-gW-BhI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1051" y="-2776"/>
+        </scene>
         <!--Saved FlightsTVC - Saved Flights-->
         <scene sceneID="w7Q-x1-PxT">
             <objects>
@@ -2808,7 +2853,7 @@
                                                 <textView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9J-Tz-DOT">
                                                     <rect key="frame" x="30" y="22" width="260" height="307"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Smart Launch HD 2.1
+                                                    <mutableString key="text">Smart Launch HD 2.0.3
 ©2012, 2013 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
@@ -2825,7 +2870,7 @@ Apogee, Quest, Loki, CTI, AMW, Gorilla, RATTworks and RoadRunner logos used with
 Aerotech™ logos used with permission of RCS.
 All company logos are the registered trademarks of the respective motor manufacturers. No official approval or sponsorship of the data in this application should be inferred.
 
-Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</string>
+Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</mutableString>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>

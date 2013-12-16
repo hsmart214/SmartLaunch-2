@@ -13,6 +13,7 @@
 @interface SLKitsTVC ()
 
 @property (nonatomic, strong) NSArray *kits;
+@property (nonatomic, weak) UIPopoverController *popover;
 
 @end
 
@@ -101,6 +102,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.delegate SLKitTVC:self didChooseCommercialKit:self.kits[indexPath.section][MANUFACTURED_KITS_KEY][indexPath.row]];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Prepare for Segue
+
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    return (!self.popover);
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    //the current implementation only segues to the popover.
+    //this will need to change if I implement unwinding
+    if ([segue isKindOfClass:[UIStoryboardPopoverSegue class]])
+        self.popover = (UIPopoverController *)([(UIStoryboardPopoverSegue *)segue popoverController]);
 }
 
 #pragma mark - View Life Cycle
