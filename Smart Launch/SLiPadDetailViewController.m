@@ -328,6 +328,18 @@
     [self.view insertSubview:imageView atIndex:0];
     [imageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view]" options:NSLayoutFormatAlignAllCenterX metrics:nil views:@{@"view":imageView}]];
     [imageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[view]" options:NSLayoutFormatAlignAllCenterY metrics:nil views:@{@"view":imageView}]];
+    
+    UIInterpolatingMotionEffect *horiz = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"frame.origin.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    [horiz setMinimumRelativeValue:@(-MOTION_OFFSET)];
+    [horiz setMaximumRelativeValue:@(MOTION_OFFSET)];
+    UIInterpolatingMotionEffect *vert = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"frame.origin.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    [vert setMinimumRelativeValue:@(-MOTION_OFFSET)];
+    [vert setMaximumRelativeValue:@(MOTION_OFFSET)];
+    UIMotionEffectGroup *motions = [[UIMotionEffectGroup alloc] init];
+    [motions setMotionEffects:@[horiz, vert]];
+    
+    [self.rocketView addMotionEffect:motions];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated{

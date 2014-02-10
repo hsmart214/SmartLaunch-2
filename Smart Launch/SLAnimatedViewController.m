@@ -12,7 +12,6 @@
 #import "SLAnimatedRocketView.h"
 
 #define ROCKET_PIC_HEIGHT 300
-#define MOTION_OFFSET 15
 
 @interface SLAnimatedViewController ()
 
