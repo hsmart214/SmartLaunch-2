@@ -12,6 +12,7 @@
 #import "SLAnimatedRocketView.h"
 
 #define ROCKET_PIC_HEIGHT 300
+#define MOTION_OFFSET 15
 
 @interface SLAnimatedViewController ()
 
@@ -219,6 +220,22 @@
     UIImage *backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
     [backgroundView setImage:backgroundImage];
     [self.view insertSubview:backgroundView atIndex:0];
+    
+    UIInterpolatingMotionEffect *horiz = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"frame.origin.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    [horiz setMinimumRelativeValue:@(-MOTION_OFFSET)];
+    [horiz setMaximumRelativeValue:@(MOTION_OFFSET)];
+    UIInterpolatingMotionEffect *vert = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"frame.origin.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    [vert setMinimumRelativeValue:@(-MOTION_OFFSET)];
+    [vert setMaximumRelativeValue:@(MOTION_OFFSET)];
+    UIMotionEffectGroup *motions = [[UIMotionEffectGroup alloc] init];
+    [motions setMotionEffects:@[horiz, vert]];
+    
+    [self.rocketView addMotionEffect:motions];
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
     [self.rocketView startFresh];
     [self updateDisplay];
 }

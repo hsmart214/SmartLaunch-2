@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5037" systemVersion="13A3017" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="mi5-oc-GQ5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="mi5-oc-GQ5">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Table View Controller - Smart Launch HD-->
@@ -1748,7 +1748,6 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Save Flight Data" id="ETk-OU-QK3"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="500"/>
                     <connections>
                         <outlet property="actualAltitudeField" destination="yCc-kf-xw7" id="sqV-px-2Y7"/>
                         <outlet property="altUnitsLabel" destination="sZI-WT-sMl" id="YWc-R6-17G"/>
@@ -2603,7 +2602,6 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Motor Configuration" id="Fqy-25-peg"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="465"/>
                     <connections>
                         <outlet property="centralLabel" destination="w8W-j5-OwI" id="Nf7-ls-6af"/>
                         <outlet property="centralStepper" destination="NzQ-mz-gYr" id="sLl-Pr-HJF"/>
@@ -2656,7 +2654,6 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="240"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QuF-gW-BhI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2853,7 +2850,7 @@
                                                 <textView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9J-Tz-DOT">
                                                     <rect key="frame" x="30" y="22" width="260" height="307"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <mutableString key="text">Smart Launch HD 2.0.3
+                                                    <string key="text">Smart Launch HD 2.0.3
 ©2012, 2013 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
@@ -2870,7 +2867,7 @@ Apogee, Quest, Loki, CTI, AMW, Gorilla, RATTworks and RoadRunner logos used with
 Aerotech™ logos used with permission of RCS.
 All company logos are the registered trademarks of the respective motor manufacturers. No official approval or sponsorship of the data in this application should be inferred.
 
-Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</mutableString>
+Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>

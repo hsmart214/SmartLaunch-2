@@ -58,7 +58,6 @@
 		42742BBB172AE37D007229E9 /* SLClusterMotor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42742BBA172AE37D007229E9 /* SLClusterMotor.m */; };
 		427E9AE1185E26B300A1991E /* SLAvatarCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 427E9AE0185E26B300A1991E /* SLAvatarCVCell.m */; };
 		427E9AE4185E270600A1991E /* SLAvatarCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 427E9AE3185E270600A1991E /* SLAvatarCVC.m */; };
-		427E9AE6185E823600A1991E /* SmartLaunchHDAvatars.plist in Resources */ = {isa = PBXBuildFile; fileRef = 427E9AE5185E823600A1991E /* SmartLaunchHDAvatars.plist */; };
 		4292C554181F58D800C4C732 /* SLKitsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C54E181F58D800C4C732 /* SLKitsTVC.m */; };
 		4292C555181F58D800C4C732 /* SLKitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C550181F58D800C4C732 /* SLKitCell.m */; };
 		4292C556181F58D800C4C732 /* SLCommercialKitInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C552181F58D800C4C732 /* SLCommercialKitInfoViewController.m */; };
@@ -162,7 +161,6 @@
 		427E9AE0185E26B300A1991E /* SLAvatarCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAvatarCVCell.m; sourceTree = "<group>"; };
 		427E9AE2185E270600A1991E /* SLAvatarCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAvatarCVC.h; sourceTree = "<group>"; };
 		427E9AE3185E270600A1991E /* SLAvatarCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAvatarCVC.m; sourceTree = "<group>"; };
-		427E9AE5185E823600A1991E /* SmartLaunchHDAvatars.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SmartLaunchHDAvatars.plist; path = ../SmartLaunchHDAvatars.plist; sourceTree = "<group>"; };
 		4292C54E181F58D800C4C732 /* SLKitsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKitsTVC.m; sourceTree = "<group>"; };
 		4292C54F181F58D800C4C732 /* SLKitsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKitsTVC.h; sourceTree = "<group>"; };
 		4292C550181F58D800C4C732 /* SLKitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKitCell.m; sourceTree = "<group>"; };
@@ -222,7 +220,6 @@
 				4220A4E815F55D120055EE35 /* atmosphere.txt */,
 				4220A4E915F55D120055EE35 /* motors.txt */,
 				4292C557181F595300C4C732 /* kitArray.plist */,
-				427E9AE5185E823600A1991E /* SmartLaunchHDAvatars.plist */,
 				42A1B6181670599E004F1FA0 /* version.txt */,
 			);
 			name = "Data Files";
@@ -420,7 +417,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SL;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "J. HOWARD SMART";
 				TargetAttributes = {
 					4256930415F4893000F7BABC = {
@@ -464,7 +461,6 @@
 				4257FE5317DDA8BF004A5021 /* Icon-Small-29@2x.png in Resources */,
 				42A1B6191670599E004F1FA0 /* version.txt in Resources */,
 				4257FE5017DDA8BF004A5021 /* Icon-57.png in Resources */,
-				427E9AE6185E823600A1991E /* SmartLaunchHDAvatars.plist in Resources */,
 				4257FE4617DDA8BF004A5021 /* AppIcon40x40.png in Resources */,
 				4257FE4917DDA8BF004A5021 /* AppIcon50x50@2x.png in Resources */,
 				4257FE4B17DDA8BF004A5021 /* AppIcon60x60@2x.png in Resources */,
@@ -566,7 +562,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Howard SMART (TKF9Q29368)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -578,6 +574,7 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -586,9 +583,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "7EEB1B9C-DF58-4B7B-8D98-62035C7B1245";
+				PROVISIONING_PROFILE = "B08CD7C3-1A6D-4EBD-B357-777797DFBF76";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -608,11 +606,12 @@
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Howard SMART (TKF9Q29368)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -621,9 +620,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "7EEB1B9C-DF58-4B7B-8D98-62035C7B1245";
+				PROVISIONING_PROFILE = "B08CD7C3-1A6D-4EBD-B357-777797DFBF76";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -634,14 +634,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = SmartLaunch.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Howard SMART (TKF9Q29368)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "486D31CB-D1E2-4928-BA62-790E46C23558";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -655,14 +655,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = SmartLaunch.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Howard SMART (TKF9Q29368)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "486D31CB-D1E2-4928-BA62-790E46C23558";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -685,11 +685,12 @@
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -698,9 +699,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "7EEB1B9C-DF58-4B7B-8D98-62035C7B1245";
+				PROVISIONING_PROFILE = "B08CD7C3-1A6D-4EBD-B357-777797DFBF76";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = "App Store";
@@ -711,14 +713,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = SmartLaunch.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Howard SMART (TKF9Q29368)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "486D31CB-D1E2-4928-BA62-790E46C23558";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
