@@ -26,6 +26,7 @@
 
 
 @interface SLLaunchAngleViewController() <SLLaunchAngleViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
 {
     UIImagePickerController *cameraUI;
 }
@@ -37,7 +38,6 @@
 @property (weak, nonatomic) IBOutlet UISlider *angleSlider;
 @property (nonatomic, strong) CMMotionManager *motionManager;
 @property (nonatomic, strong) NSOperationQueue *motionQueue;
-@property (nonatomic, strong) CMAccelerometerData *accelerometerData;
 @property (nonatomic) double xAccel;
 @property (nonatomic) double yAccel;
 @property (nonatomic) double zAccel;
@@ -92,37 +92,38 @@
         xyAngle = atan(self.yAccel/self.xAccel) - self.yxCalibrationAngle;
         if (self.xAccel > 0) xyAngle = -xyAngle;
     }else{    // iPhone
-        xyAngle = atan(self.xAccel/self.yAccel) - self.xyCalibrationAngle;
+        xyAngle = self.yAccel != 0.0 ? atan(self.xAccel/self.yAccel) - self.xyCalibrationAngle : 0.0;
     }
     //    CGFloat yzAngle = atan(self.zAccel/self.yAccel) - self.yzCalibrationAngle;
     CGFloat angle = xyAngle;
     //    CGFloat angle = atanf(sqrtf(tanf(xyAngle)*tanf(xyAngle)+tanf(yzAngle)*tanf(yzAngle)));
     
     NSString *angleString = [NSString stringWithFormat:@"%1.1f", fabs(angle * DEGREES_PER_RADIAN)];
+    __weak SLLaunchAngleViewController *wSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.angleLabel setText:angleString];
+        wSelf.angleLabel.text = angleString;
     });
     
     if (fabs(angle - self.angleSlider.value) > TOLERANCE){
         if (!cameraUI) self.currentAngle = angle;
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.angleSlider.value = angle;
-            [self.angleView setNeedsDisplay];
+            wSelf.angleSlider.value = angle;
+            [wSelf.angleView setNeedsDisplay];
         });
     }
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.photoAngleLabel.text = [NSString stringWithFormat:@"%1.1f°", fabsf(angle) * DEGREES_PER_RADIAN];
+        wSelf.photoAngleLabel.text = [NSString stringWithFormat:@"%1.1f°", fabsf(angle) * DEGREES_PER_RADIAN];
     });
     
     if (fabsf(angle) > MAX_LAUNCH_GUIDE_ANGLE){
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.warningView setHidden:NO];
-            [self.acceptButton setHidden:YES];
+            [wSelf.warningView setHidden:NO];
+            [wSelf.acceptButton setHidden:YES];
         });
     }else{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.warningView setHidden:YES];
-            [self.acceptButton setHidden:NO];
+            [wSelf.warningView setHidden:YES];
+            [wSelf.acceptButton setHidden:NO];
         });
     }
 }
@@ -151,6 +152,7 @@
 
 - (void)stopMotionUpdates{
     [self.motionManager stopAccelerometerUpdates];
+    self.motionQueue = nil;
     self.calibrateButton.enabled = NO;
     self.motionButton.title = NSLocalizedString(@"Motion On", @"Motion On");
 }
@@ -397,8 +399,8 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
+    [self stopMotionUpdates];
     [self.delegate sender:self didChangeLaunchAngle:@(fabsf(self.angleSlider.value))];
-    [self.motionManager stopAccelerometerUpdates];
     [super viewWillDisappear:animated];
 }
 
@@ -414,7 +416,6 @@
     self.photoAngleView = nil;
     self.acceptButton = nil;
     self.cancelButton = nil;
-    self.accelerometerData = nil;
     self.warningView = nil;
 }
 
