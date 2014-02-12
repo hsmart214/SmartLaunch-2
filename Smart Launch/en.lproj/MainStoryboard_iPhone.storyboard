@@ -2216,22 +2216,6 @@ Estes E9 x2</string>
             </objects>
             <point key="canvasLocation" x="1867" y="1942"/>
         </scene>
-        <!--Photo Angle View Controller - Photo Angle Finder-->
-        <scene sceneID="egV-Pu-hlR">
-            <objects>
-                <viewController id="H1F-XQ-yQW" customClass="SLPhotoAngleViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="sKQ-Sl-XhQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Photo Angle Finder" id="I7g-i9-XTv"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pCB-Pa-hW6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2318" y="1942"/>
-        </scene>
         <!--InformationTVC - Launch Smart-->
         <scene sceneID="fRc-Mg-dkV">
             <objects>

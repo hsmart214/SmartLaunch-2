@@ -10,7 +10,6 @@
 @import CoreMotion;
 #import "SLLaunchAngleViewController.h"
 #import "SLLaunchAngleView.h"
-#import "SLPhotoAngleViewController.h"
 #import "SLAppDelegate.h"
 
 #define TOLERANCE 0.001
