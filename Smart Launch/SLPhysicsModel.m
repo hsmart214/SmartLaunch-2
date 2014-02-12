@@ -9,6 +9,15 @@
 #import "SLPhysicsModel.h"
 
 @interface SLPhysicsModel() <SLPhysicsModelDatasource>
+{
+    float topAltitude;
+    int currentStdAtmSegment;
+    float currentStdAtmBaseAlt, currentStdAtmCeilingAlt;
+    float currentBaseTemp, currentCeilingTemp;
+    float currentBasePressure, currentCeilingPressure;
+    float currentBaseRhoRatio, currentCeilingRhoRatio;
+    float currentBaseMach, currentCeilingMach;
+}
 
 /* This is the opposing acceleration from gravity, the component of g along the axis of the launch guide */
 @property (nonatomic) double altitude;      // y component of the rocket's position
@@ -102,6 +111,9 @@
 - (NSMutableArray *)flightProfile{
     if (!_flightProfile){
         _flightProfile = [NSMutableArray array];
+        currentStdAtmSegment = 0;
+        currentStdAtmBaseAlt = 0.0;
+        currentStdAtmCeilingAlt = [self.stdAtmosphere[1][ALT_MSL_KEY] floatValue];
         [self integrateToEndOfLaunchGuide];
         [self integrateToBurnout];
         [self integrateBurnoutToApogee];
@@ -110,30 +122,33 @@
 }
 
 - (NSDictionary *)atmosphereDataAtAltitudeAGL:(float)altAGL{
-    NSInteger below = 0;
-    NSInteger above = 1;
-    NSInteger max = [self.stdAtmosphere count] - 1;
-    float altMSL = altAGL + self.launchAltitude;
-    if (altMSL >= [[self.stdAtmosphere lastObject][ALT_MSL_KEY] floatValue]){
-        return [self.stdAtmosphere lastObject];
+    float altMSL = altAGL + _launchAltitude;
+    if (altMSL >= topAltitude){
+        return [_stdAtmosphere lastObject];
     }
-    while (above < max){
-        if (altMSL <= [(self.stdAtmosphere)[above][ALT_MSL_KEY] floatValue]) break;
-        above += 1;
+    if (altMSL > currentStdAtmCeilingAlt){
+        if (++currentStdAtmSegment == [_stdAtmosphere count]) return [_stdAtmosphere lastObject];
+        currentStdAtmBaseAlt = currentStdAtmCeilingAlt;
+        currentStdAtmCeilingAlt = [_stdAtmosphere[currentStdAtmSegment+1][ALT_MSL_KEY] floatValue];
+        currentBaseTemp = currentCeilingTemp;
+        currentCeilingTemp = [_stdAtmosphere[currentStdAtmSegment+1][TEMPERATURE_KEY] floatValue];
+        currentBasePressure = currentCeilingPressure;
+        currentCeilingPressure = [_stdAtmosphere[currentStdAtmSegment+1][PRESSURE_KEY] floatValue];
+        currentBaseRhoRatio = currentCeilingRhoRatio;
+        currentCeilingRhoRatio = [_stdAtmosphere[currentStdAtmSegment+1][RHO_RATIO_KEY] floatValue];
+        currentBaseMach = currentCeilingMach;
+        currentCeilingMach = [_stdAtmosphere[currentStdAtmSegment+1][MACH_ONE_KEY] floatValue];
     }
-    below = above - 1;
-    NSDictionary *aboveAtm = (self.stdAtmosphere)[above];
-    NSDictionary *belowAtm = (self.stdAtmosphere)[below];
-    float fraction = (altMSL - [belowAtm[ALT_MSL_KEY] floatValue]) / 
-                        ([aboveAtm[ALT_MSL_KEY] floatValue] - [belowAtm[ALT_MSL_KEY] floatValue]);
-    float temperature = fraction *([aboveAtm[TEMPERATURE_KEY] floatValue] - [belowAtm[TEMPERATURE_KEY] floatValue])
-        + [belowAtm[TEMPERATURE_KEY] floatValue];
-    float pressure = fraction *([aboveAtm[PRESSURE_KEY] floatValue] - [belowAtm[PRESSURE_KEY] floatValue])
-        + [belowAtm[PRESSURE_KEY] floatValue];
-    float rho_ratio = fraction *([aboveAtm[RHO_RATIO_KEY] floatValue] - [belowAtm[RHO_RATIO_KEY] floatValue])
-        + [belowAtm[RHO_RATIO_KEY] floatValue];
-    float mach_one = fraction *([aboveAtm[MACH_ONE_KEY] floatValue] - [belowAtm[MACH_ONE_KEY] floatValue])
-        + [belowAtm[MACH_ONE_KEY] floatValue];
+    float fraction = (altMSL - currentStdAtmBaseAlt) /
+                        (currentStdAtmCeilingAlt - currentStdAtmBaseAlt);
+    float temperature = fraction *(currentCeilingTemp - currentBaseTemp)
+        + currentBaseTemp;
+    float pressure = fraction *(currentCeilingPressure - currentBasePressure)
+        + currentBasePressure;
+    float rho_ratio = fraction *(currentCeilingRhoRatio - currentBaseRhoRatio)
+        + currentBaseRhoRatio;
+    float mach_one = fraction *(currentCeilingMach - currentBaseMach)
+        + currentBaseMach;
     return @{ALT_MSL_KEY: @(altMSL),
             TEMPERATURE_KEY: @(temperature),
             PRESSURE_KEY: @(pressure),
@@ -507,7 +522,13 @@
     return v;
 }
 
-
+-(instancetype)init
+{
+    if (self = [super init]){
+        topAltitude = [[self.stdAtmosphere lastObject][ALT_MSL_KEY] floatValue];
+    }
+    return self;
+}
 
 -(void)dealloc{
     self.flightProfile = nil;

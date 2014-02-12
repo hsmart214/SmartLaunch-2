@@ -114,8 +114,8 @@
                                   usingDelegate: (id <UIImagePickerControllerDelegate,
                                                   UINavigationControllerDelegate>) delegate {
     
-    if (([UIImagePickerController isSourceTypeAvailable:
-          UIImagePickerControllerSourceTypeCamera] == NO)
+    if ((![UIImagePickerController isSourceTypeAvailable:
+          UIImagePickerControllerSourceTypeCamera])
         || (delegate == nil)
         || (controller == nil))
         return NO;
@@ -129,18 +129,20 @@
     
     cameraUI.delegate = delegate;
     cameraUI.showsCameraControls = NO;
-    
-    [controller presentViewController:cameraUI animated:NO completion:nil]; // looks better not animated, besides
-                                                                    // if animated, generates "unbalanced calls" error
     cameraUI.cameraOverlayView = self.angleView;
+    [controller presentViewController:cameraUI animated:NO completion:^{
+        NSLog(@"Presented Camera View");
+    }]; // looks better not animated, besides
+                                                                    // if animated, generates "unbalanced calls" error
+    
     self.angleView.opaque = NO;
     return YES;
 }
 
 - (UIView *)angleView{
     if (!_angleView){
-        _angleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-        UIImageView * viewFinderView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+        _angleView = [[UIView alloc] initWithFrame:self.view.bounds];
+        UIImageView * viewFinderView = [[UIImageView alloc] initWithFrame:self.view.bounds];
 //        NSString *viewFinderFileName = [[NSBundle mainBundle] pathForResource: VIEW_FINDER_IMAGE_FILENAME ofType:@"png"];
 //        UIImage * viewFinderImage = [[UIImage alloc] initWithContentsOfFile:viewFinderFileName];
         UIImage * viewFinderImage = [UIImage imageNamed:VIEW_FINDER_IMAGE_FILENAME];
@@ -228,28 +230,32 @@
     NSNumber *angle = @(radians);
     [self.delegate sender:self didChangeLaunchAngle:angle];
     [self.motionManager stopAccelerometerUpdates];
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    //[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)cancel{
     [self.motionManager stopAccelerometerUpdates];
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self startCameraControllerFromViewController:self usingDelegate:self];
-    [self startMotionUpdates];
-}
-
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:animated];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self startCameraControllerFromViewController:self usingDelegate:self];
+    [self startMotionUpdates];
 }
 
 - (void)dealloc{

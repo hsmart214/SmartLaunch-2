@@ -118,6 +118,8 @@
 
 - (void)stopMotionUpdates{
     [self.motionManager stopAccelerometerUpdates];
+    self.calibrateButton.enabled = NO;
+    self.motionButton.title = NSLocalizedString(@"Motion On", @"Motion On");
 }
 
 #pragma mark SLLaunchAngleViewDataSource method
@@ -160,10 +162,6 @@
     settings[YZ_CAL_KEY] = @(self.yzCalibrationAngle);
     [defaults setObject:settings forKey:SETTINGS_KEY];
     [defaults synchronize];
-    
-}
-
-- (IBAction)cameraButtonPressed:(UIBarButtonItem*)sender{
     
 }
 
