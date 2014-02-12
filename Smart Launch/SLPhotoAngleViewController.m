@@ -39,6 +39,13 @@
 
 @implementation SLPhotoAngleViewController
 
+- (NSOperationQueue *)motionQueue{
+    if (!_motionQueue){
+        _motionQueue = [[NSOperationQueue alloc] init];
+    }
+    return _motionQueue;
+}
+
 - (CMMotionManager *)motionManager{
     if (!_motionManager){
         _motionManager = [(SLAppDelegate *)[[UIApplication sharedApplication] delegate] sharedMotionManager];

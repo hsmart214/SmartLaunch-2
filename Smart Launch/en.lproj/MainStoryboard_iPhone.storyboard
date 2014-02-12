@@ -2191,7 +2191,7 @@ Estes E9 x2</string>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="fuF-eU-gxL"/>
                         <barButtonItem systemItem="camera" id="tFg-iU-frB">
                             <connections>
-                                <segue destination="H1F-XQ-yQW" kind="modal" identifier="PhotoAngleSegue" id="sfb-By-Vma"/>
+                                <action selector="cameraButtonPressed:" destination="iOW-FR-FZW" id="90d-iC-mwj"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Ry7-LL-P0c"/>

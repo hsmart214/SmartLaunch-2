@@ -14,15 +14,31 @@
 #import "SLAppDelegate.h"
 
 #define TOLERANCE 0.001
+#define VIEW_FINDER_IMAGE_FILENAME @"Viewfinder"
+#define ANGLE_WARNING_IMAGE_FILENAME @"AngleWarning"
+#define ACCEPT_BUTTON_FILENAME @"AcceptButton"
+#define ACCEPT_SELECTED_FILENAME @"AcceptButtonSelected"
+#define CANCEL_BUTTON_FILENAME @"CancelButton"
+#define CANCEL_SELECTED_FILENAME @"CancelButtonSelected"
+#define ANGLE_WARNING_SIZE 172
+#define ANGLE_VIEW_FONT_SIZE 33
+#define BUTTON_WIDTH 120
+#define BUTTON_HEIGHT 120
 
-@interface SLLaunchAngleViewController() <SLLaunchAngleViewDataSource>
+
+@interface SLLaunchAngleViewController() <SLLaunchAngleViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+{
+    UIImagePickerController *cameraUI;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *angleLabel;
 @property (nonatomic, weak) IBOutlet SLLaunchAngleView *angleView;
+@property (nonatomic, strong) UIView *photoAngleView;
+@property (nonatomic, strong) UILabel *photoAngleLabel;
 @property (weak, nonatomic) IBOutlet UISlider *angleSlider;
 @property (nonatomic, strong) CMMotionManager *motionManager;
 @property (nonatomic, strong) NSOperationQueue *motionQueue;
-@property (nonatomic) CMAccelerometerData *accelerometerData;
+@property (nonatomic, strong) CMAccelerometerData *accelerometerData;
 @property (nonatomic) double xAccel;
 @property (nonatomic) double yAccel;
 @property (nonatomic) double zAccel;
@@ -32,6 +48,10 @@
 @property (nonatomic) CGFloat yxCalibrationAngle;   // for iPad landscape users
 @property (nonatomic) CGFloat yzCalibrationAngle;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
+@property (nonatomic, strong) UIImageView *warningView;
+@property (nonatomic, strong) UIButton *acceptButton;
+@property (nonatomic, strong) UIButton *cancelButton;
+
 
 @end
 
@@ -85,12 +105,26 @@
     });
     
     if (fabs(angle - self.angleSlider.value) > TOLERANCE){
-        self.angleSlider.value = angle;
+        if (!cameraUI) self.currentAngle = angle;
         dispatch_async(dispatch_get_main_queue(), ^{
             self.angleSlider.value = angle;
             [self.angleView setNeedsDisplay];
         });
-        
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.photoAngleLabel.text = [NSString stringWithFormat:@"%1.1f°", fabsf(angle) * DEGREES_PER_RADIAN];
+    });
+    
+    if (fabsf(angle) > MAX_LAUNCH_GUIDE_ANGLE){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.warningView setHidden:NO];
+            [self.acceptButton setHidden:YES];
+        });
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.warningView setHidden:YES];
+            [self.acceptButton setHidden:NO];
+        });
     }
 }
 
@@ -128,10 +162,153 @@
     return self.angleSlider.value;
 }
 
+#pragma mark - UIImagePickerController delegate
+
+- (BOOL)startCameraControllerFromViewController: (UIViewController*) controller
+                                  usingDelegate: (id <UIImagePickerControllerDelegate,
+                                                  UINavigationControllerDelegate>) delegate {
+    
+    if ((![UIImagePickerController isSourceTypeAvailable:
+           UIImagePickerControllerSourceTypeCamera])
+        || (delegate == nil)
+        || (controller == nil))
+        return NO;
+    
+    
+    cameraUI = [[UIImagePickerController alloc] init];
+    if (!cameraUI) return NO;
+    cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    cameraUI.allowsEditing = NO;
+    
+    cameraUI.delegate = delegate;
+    cameraUI.showsCameraControls = NO;
+    cameraUI.cameraOverlayView = self.photoAngleView;
+    [controller presentViewController:cameraUI animated:YES completion:nil];
+    
+    self.photoAngleView.opaque = NO;
+    [self startMotionUpdates];
+    return YES;
+}
+
+- (UIView *)photoAngleView{
+    if (!_photoAngleView){
+        _photoAngleView = [[UIView alloc] initWithFrame:self.view.bounds];
+        UIImageView *viewFinderView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+        //        NSString *viewFinderFileName = [[NSBundle mainBundle] pathForResource: VIEW_FINDER_IMAGE_FILENAME ofType:@"png"];
+        //        UIImage * viewFinderImage = [[UIImage alloc] initWithContentsOfFile:viewFinderFileName];
+        UIImage *viewFinderImage = [UIImage imageNamed:VIEW_FINDER_IMAGE_FILENAME];
+        
+        [viewFinderView setImage:viewFinderImage];
+        [_photoAngleView addSubview:self.warningView];
+        [self.warningView setHidden:YES];
+        [_photoAngleView addSubview:viewFinderView];
+        
+        self.photoAngleLabel = [[UILabel alloc] initWithFrame:CGRectMake(108, 20, 105, 58)];
+        UIFont *newFont =[self.angleLabel.font fontWithSize:ANGLE_VIEW_FONT_SIZE];
+        
+        [self.photoAngleLabel setFont:newFont];
+        [self.photoAngleLabel setNumberOfLines:1];
+        [self.photoAngleLabel setTextColor:[UIColor whiteColor]];
+        [self.photoAngleLabel setTextAlignment:NSTextAlignmentCenter];
+        self.photoAngleLabel.text = @"0.0°";
+        [self.photoAngleLabel setBackgroundColor:[UIColor clearColor]];
+        [_photoAngleView addSubview: self.photoAngleLabel];
+        
+        //make the accept button image
+        
+        //NSString *acceptFilename = [[NSBundle mainBundle] pathForResource: ACCEPT_BUTTON_FILENAME ofType:@"png"];
+        UIImage *acceptButtonImage = [UIImage imageNamed:ACCEPT_BUTTON_FILENAME];
+        //NSString *acceptSelectedFilename = [[NSBundle mainBundle] pathForResource: ACCEPT_SELECTED_FILENAME ofType:@"png"];
+        UIImage *acceptSelectedImage = [UIImage imageNamed:ACCEPT_SELECTED_FILENAME];
+        
+        CGRect buttonFrame = CGRectMake(self.view.bounds.size.width/2 + BUTTON_HEIGHT/4, self.view.bounds.size.height - BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT);
+        self.acceptButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.acceptButton setFrame:buttonFrame];
+        [self.acceptButton setTitle:NSLocalizedString(@"Accept", @"Accept")
+                           forState:UIControlStateNormal];
+        [self.acceptButton addTarget:self action:@selector(acceptAngle) forControlEvents:UIControlEventTouchUpInside];
+        [self.acceptButton setHidden:NO];
+        [self.acceptButton setUserInteractionEnabled:YES];
+        [self.acceptButton setImage:acceptButtonImage forState:UIControlStateNormal];
+        [self.acceptButton setImage:acceptSelectedImage forState:UIControlStateHighlighted];
+        [_photoAngleView addSubview:self.acceptButton];
+        
+        //make the cancel button image
+        
+        //NSString *cancelFilename = [[NSBundle mainBundle] pathForResource: CANCEL_BUTTON_FILENAME ofType:@"png"];
+        UIImage *cancelButtonImage = [UIImage imageNamed:CANCEL_BUTTON_FILENAME];
+        //NSString *cancelSelectedFilename = [[NSBundle mainBundle] pathForResource: CANCEL_SELECTED_FILENAME ofType:@"png"];
+        UIImage *cancelSelectedImage = [UIImage imageNamed:CANCEL_SELECTED_FILENAME];
+        
+        buttonFrame = CGRectMake(self.view.bounds.size.width/2 - BUTTON_WIDTH - BUTTON_HEIGHT/4, self.view.bounds.size.height - BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT);
+        self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.cancelButton setFrame:buttonFrame];
+        [self.cancelButton setTitle:NSLocalizedString(@"Cancel", @"Cancel")
+                           forState:UIControlStateNormal];
+        [self.cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+        [self.cancelButton setHidden:NO];
+        [self.cancelButton setUserInteractionEnabled:YES];
+        [self.cancelButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [self.cancelButton setImage:cancelButtonImage forState:UIControlStateNormal];
+        [self.cancelButton setImage:cancelSelectedImage forState:UIControlStateHighlighted];
+        
+        [_photoAngleView addSubview:self.cancelButton];
+        
+    }
+    return _photoAngleView;
+}
+
+- (UIImageView *)warningView{
+    if (!_warningView){
+        CGFloat x, y;
+        x = self.view.bounds.size.width/2 - ANGLE_WARNING_SIZE/2;
+        y = self.view.bounds.size.height/2 - ANGLE_WARNING_SIZE/2 + 5;
+        _warningView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, ANGLE_WARNING_SIZE, ANGLE_WARNING_SIZE)];
+        //NSString *warningFileName = [[NSBundle mainBundle] pathForResource: ANGLE_WARNING_IMAGE_FILENAME ofType:@"png"];
+        UIImage *warningImage = [UIImage imageNamed:ANGLE_WARNING_IMAGE_FILENAME];
+        [_warningView setImage:warningImage];
+    }
+    return _warningView;
+}
+
+#pragma mark - SLPhotoAngleViewDelegate methods
+
+- (void)acceptAngle{
+    float radians = [self.photoAngleLabel.text floatValue]/ DEGREES_PER_RADIAN;
+    if (radians > MAX_LAUNCH_GUIDE_ANGLE){
+        radians = MAX_LAUNCH_GUIDE_ANGLE;
+    }
+    NSNumber *angle = @(radians);
+    [self.delegate sender:self didChangeLaunchAngle:angle];
+    [self stopMotionUpdates];
+    self.currentAngle = radians;
+    self.angleSlider.value = radians;
+    [cameraUI dismissViewControllerAnimated:YES completion:nil];
+    cameraUI = nil;
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)cancel{
+    [self.motionManager stopAccelerometerUpdates];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    cameraUI = nil;
+    self.angleSlider.value = self.currentAngle;
+    self.angleLabel.text = [NSString stringWithFormat:@"%1.1f",fabsf(self.currentAngle * DEGREES_PER_RADIAN)];
+    [self.angleView setNeedsDisplay];
+    //[self.navigationController popViewControllerAnimated:YES];
+}
+
+
 #pragma mark - User Interface
 
+- (IBAction)cameraButtonPressed:(UIBarButtonItem *)sender {
+    [self startCameraControllerFromViewController:self usingDelegate:self];
+}
+
+
 - (IBAction)angleSliderValueChanged:(UISlider *)sender {
-    //self.angleView.angle = sender.value;
+    self.currentAngle = sender.value;
     self.angleLabel.text = [NSString stringWithFormat:@"%1.1f",fabsf(sender.value * DEGREES_PER_RADIAN)];
     [self.angleView setNeedsDisplay];
 }
@@ -165,15 +342,15 @@
     
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString:@"PhotoAngleSegue"]){
-        [segue.destinationViewController setDelegate:self.delegate];
-        [(SLPhotoAngleViewController *)segue.destinationViewController setXyCalibrationAngle: self.xyCalibrationAngle];
-        [(SLPhotoAngleViewController *)segue.destinationViewController setYxCalibrationAngle: self.yxCalibrationAngle];
-        [(SLPhotoAngleViewController *)segue.destinationViewController setYzCalibrationAngle: self.yzCalibrationAngle];
-        [self stopMotionUpdates];
-    }
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+//    if ([segue.identifier isEqualToString:@"PhotoAngleSegue"]){
+//        [segue.destinationViewController setDelegate:self.delegate];
+//        [(SLPhotoAngleViewController *)segue.destinationViewController setXyCalibrationAngle: self.xyCalibrationAngle];
+//        [(SLPhotoAngleViewController *)segue.destinationViewController setYxCalibrationAngle: self.yxCalibrationAngle];
+//        [(SLPhotoAngleViewController *)segue.destinationViewController setYzCalibrationAngle: self.yzCalibrationAngle];
+//        [self stopMotionUpdates];
+//    }
+//}
 
 #pragma mark - View lifecycle
 
@@ -202,6 +379,7 @@
     float launchAngle = [settings[LAUNCH_ANGLE_KEY] floatValue];
     self.angleLabel.text = [NSString stringWithFormat:@"%1.1f", launchAngle * DEGREES_PER_RADIAN];
     [self.angleSlider setValue: launchAngle animated:YES];
+    self.currentAngle = launchAngle;
     self.angleView.dataSource = self;
     
     // check to see if the device has a camera.  If not, or if it is an iPad remove the camera button from the toolbar
@@ -231,6 +409,14 @@
 
 -(void)dealloc{
     [self.motionManager stopAccelerometerUpdates];
+    self.motionManager = nil;
+    self.motionQueue = nil;
+    self.photoAngleLabel = nil;
+    self.photoAngleView = nil;
+    self.acceptButton = nil;
+    self.cancelButton = nil;
+    self.accelerometerData = nil;
+    self.warningView = nil;
 }
 
 @end
