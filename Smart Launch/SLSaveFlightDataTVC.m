@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *windDirectionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *altitudeLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
+
 @property (strong, nonatomic) id iCloudObserver;
 
 @end
@@ -33,36 +34,40 @@
 }
 
 - (IBAction)cancelFlightSaving:(UIBarButtonItem *)sender {
-    //[self.navigationController popViewControllerAnimated:YES];
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)saveFlightData:(UIBarButtonItem *)sender {
     float cd = [self.cdLabel.text floatValue];
     float alt = [self.actualAltitudeField.text floatValue];
-    NSMutableDictionary *newFlightData = [self.flightData mutableCopy];
-    newFlightData[FLIGHT_BEST_CD] = @(cd);
-    newFlightData[FLIGHT_ALTITUDE_KEY] = @([SLUnitsConvertor metricStandardOf:alt forKey:ALT_UNIT_KEY]);
-    //fetch the default rockets
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
-    NSMutableDictionary *rocketPlists = [[defaults objectForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
-    if (!rocketPlists) rocketPlists = [NSMutableDictionary dictionary];
-    //add the flight data
-    [self.rocket addFlight:newFlightData];
-    //put the rocket back in the dictionary
-    rocketPlists[self.rocket.name] = [self.rocket rocketPropertyList];
-    //put the dictionary back into the favorites store
-    [defaults setObject:rocketPlists forKey:FAVORITE_ROCKETS_KEY];
-    [store setDictionary:rocketPlists forKey:FAVORITE_ROCKETS_KEY];
-    [defaults synchronize];
     
-    [self.delegate sender:self didChangeRocket:self.rocket];
-    //[self.delegate SLRocketPropertiesTVC:(id)self savedRocket:self.rocket];
+    if (alt < 0.1) {
+        
+        [self.popover dismissPopoverAnimated:YES];
+        [self cancelFlightSaving:nil];
+        
+    }else{
     
-    //[self.navigationController popViewControllerAnimated:YES];
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    [self.delegate dismissModalViewController];
+        NSMutableDictionary *newFlightData = [self.flightData mutableCopy];
+        newFlightData[FLIGHT_BEST_CD] = @(cd);
+        newFlightData[FLIGHT_ALTITUDE_KEY] = @([SLUnitsConvertor metricStandardOf:alt forKey:ALT_UNIT_KEY]);
+        //fetch the default rockets
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+        NSMutableDictionary *rocketPlists = [[defaults objectForKey:FAVORITE_ROCKETS_KEY] mutableCopy];
+        if (!rocketPlists) rocketPlists = [NSMutableDictionary dictionary];
+        //add the flight data
+        [self.rocket addFlight:newFlightData];
+        //put the rocket back in the dictionary
+        rocketPlists[self.rocket.name] = [self.rocket rocketPropertyList];
+        //put the dictionary back into the favorites store
+        [defaults setObject:rocketPlists forKey:FAVORITE_ROCKETS_KEY];
+        [store setDictionary:rocketPlists forKey:FAVORITE_ROCKETS_KEY];
+        [defaults synchronize];
+        
+        [self.delegate sender:self didChangeRocket:self.rocket];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 

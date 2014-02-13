@@ -370,8 +370,9 @@
         SLSaveFlightDataTVC *dest;
         if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]){
             dest = (SLSaveFlightDataTVC *)([segue.destinationViewController viewControllers][0]);
-        }else{
+        }else{ // must be a UIPopoverController *
             dest = (SLSaveFlightDataTVC *)segue.destinationViewController;
+            [dest setPopover:self.popover];
             self.popover = ((UIStoryboardPopoverSegue *)segue).popoverController;
         }
         [dest setFlightData:flight];
@@ -399,6 +400,13 @@
         [(SLClusterMotorViewController *)segue.destinationViewController setDelegate:self];
         [(SLClusterMotorViewController *)segue.destinationViewController setPopBackViewController:self];
     }
+}
+
+#pragma mark - UIPopoverControllerDelegate
+
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    self.popover = nil;
 }
 
 #pragma mark - TableView dataSource Methods

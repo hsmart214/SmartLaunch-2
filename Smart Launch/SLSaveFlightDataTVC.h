@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSDictionary *flightData;
 @property (nonatomic, copy) Rocket *rocket;
 @property (nonatomic, weak) SLPhysicsModel *physicsModel;
-@property (nonatomic, weak) id<SLSimulationDelegate> delegate;
+@property (nonatomic, weak) id<SLSimulationDelegate, UIPopoverControllerDelegate> delegate;
+@property (weak, nonatomic) UIPopoverController *popover;
 
 @end

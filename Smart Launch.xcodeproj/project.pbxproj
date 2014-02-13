@@ -80,7 +80,6 @@
 
 /* Begin PBXFileReference section */
 		421437211601ADEE0020AA1D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		4220A4A715F55CC60055EE35 /* SLModalPresenterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLModalPresenterDelegate.h; sourceTree = "<group>"; };
 		4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSimulationDelegate.h; sourceTree = "<group>"; };
 		4220A4AA15F55CC60055EE35 /* SLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTableViewController.h; sourceTree = "<group>"; };
 		4220A4AB15F55CC60055EE35 /* SLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLTableViewController.m; sourceTree = "<group>"; };
@@ -237,6 +236,8 @@
 				4220A4CB15F55CC60055EE35 /* SLPhysicsModel.m */,
 				42E353F618AC702000E2053F /* SLFlightDataPoint.h */,
 				42E353F718AC702000E2053F /* SLFlightDataPoint.m */,
+				4220A4C415F55CC60055EE35 /* SLUnitsConvertor.h */,
+				4220A4C515F55CC60055EE35 /* SLUnitsConvertor.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -278,73 +279,9 @@
 				42397206173378B300262A6B /* MainStoryboard_iPhone.storyboard */,
 				4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */,
 				42248D7916EC384F00ABB5D7 /* Model */,
-				4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */,
-				42742BB5172A3C68007229E9 /* SLClusterBuildDelegate.h */,
-				4220A4AA15F55CC60055EE35 /* SLTableViewController.h */,
-				4220A4AB15F55CC60055EE35 /* SLTableViewController.m */,
-				42248D7A16EC416200ABB5D7 /* SLiPadDetailViewController.h */,
-				42248D7B16EC416200ABB5D7 /* SLiPadDetailViewController.m */,
-				42E7317216BF66ED00F6D468 /* SLFlightProfileViewController.h */,
-				42E7317316BF66ED00F6D468 /* SLFlightProfileViewController.m */,
-				42BB53CB16A295310029C882 /* SLSavedFlightsTVC.h */,
-				42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */,
-				42BB53C716A293D20029C882 /* SLFlightDataCell.h */,
-				42BB53C816A293D20029C882 /* SLFlightDataCell.m */,
-				42BB53CE16A38C4D0029C882 /* SLSaveFlightDataTVC.h */,
-				42BB53CF16A38C4D0029C882 /* SLSaveFlightDataTVC.m */,
-				42D780991663291B000C7D6C /* SLAnimatedRocketView.h */,
-				42D7809A1663291B000C7D6C /* SLAnimatedRocketView.m */,
-				42D78093166295F1000C7D6C /* SLAnimatedViewController.h */,
-				42D78094166295F1000C7D6C /* SLAnimatedViewController.m */,
-				4220A4A715F55CC60055EE35 /* SLModalPresenterDelegate.h */,
-				4220A4AC15F55CC60055EE35 /* SLInformationTVC.h */,
-				4220A4AD15F55CC60055EE35 /* SLInformationTVC.m */,
-				4240A07615F8341900D67F3E /* SLMotorPrefsTVC.h */,
-				4240A07715F8341900D67F3E /* SLMotorPrefsTVC.m */,
-				4220A4AE15F55CC60055EE35 /* SLSimSettingsViewController.h */,
-				4220A4AF15F55CC60055EE35 /* SLSimSettingsViewController.m */,
-				4220A4B215F55CC60055EE35 /* SLLaunchAngleViewController.h */,
-				4220A4B315F55CC60055EE35 /* SLLaunchAngleViewController.m */,
-				4220A4B415F55CC60055EE35 /* SLLaunchAngleView.h */,
-				4220A4B515F55CC60055EE35 /* SLLaunchAngleView.m */,
-				4220A4B815F55CC60055EE35 /* SLMotorSearchViewController.h */,
-				4220A4B915F55CC60055EE35 /* SLMotorSearchViewController.m */,
-				4220A4BA15F55CC60055EE35 /* SLMotorTableViewController.h */,
-				4220A4BB15F55CC60055EE35 /* SLMotorTableViewController.m */,
-				4220A4BC15F55CC60055EE35 /* SLMotorViewController.h */,
-				4220A4BD15F55CC60055EE35 /* SLMotorViewController.m */,
-				42BD6CC417377CCE00E19B50 /* SLClusterMotorViewController.h */,
-				42BD6CC517377CCE00E19B50 /* SLClusterMotorViewController.m */,
-				42F83DB6171B6EAA005FAA0C /* SLClusterTableViewController.h */,
-				42F83DB7171B6EAB005FAA0C /* SLClusterTableViewController.m */,
-				42F83DB9171B6ED2005FAA0C /* SLClusterMotorBuildViewController.h */,
-				42F83DBA171B6ED2005FAA0C /* SLClusterMotorBuildViewController.m */,
-				42F83DBC171B6EFA005FAA0C /* SLClusterMotorMemberCell.h */,
-				42F83DBD171B6EFB005FAA0C /* SLClusterMotorMemberCell.m */,
-				4220A4BE15F55CC60055EE35 /* SLCurveGraphView.h */,
-				4220A4BF15F55CC60055EE35 /* SLCurveGraphView.m */,
-				4220A4C015F55CC60055EE35 /* SLRocketsTableViewController.h */,
-				4220A4C115F55CC60055EE35 /* SLRocketsTableViewController.m */,
-				4220A4C215F55CC60055EE35 /* SLRocketPropertiesTVC.h */,
-				4220A4C315F55CC60055EE35 /* SLRocketPropertiesTVC.m */,
-				427E9ADF185E26B300A1991E /* SLAvatarCVCell.h */,
-				427E9AE0185E26B300A1991E /* SLAvatarCVCell.m */,
-				427E9AE2185E270600A1991E /* SLAvatarCVC.h */,
-				427E9AE3185E270600A1991E /* SLAvatarCVC.m */,
-				4292C54F181F58D800C4C732 /* SLKitsTVC.h */,
-				4292C54E181F58D800C4C732 /* SLKitsTVC.m */,
-				4292C551181F58D800C4C732 /* SLKitCell.h */,
-				4292C550181F58D800C4C732 /* SLKitCell.m */,
-				4292C552181F58D800C4C732 /* SLCommercialKitInfoViewController.m */,
-				4292C553181F58D800C4C732 /* SLCommercialKitInfoViewController.h */,
-				42CEE10217277F440060424F /* SLMotorConfigurationTVC.h */,
-				42CEE10317277F440060424F /* SLMotorConfigurationTVC.m */,
-				4220A4B015F55CC60055EE35 /* SLUnitsTVC.h */,
-				4220A4B115F55CC60055EE35 /* SLUnitsTVC.m */,
-				4220A4C415F55CC60055EE35 /* SLUnitsConvertor.h */,
-				4220A4C515F55CC60055EE35 /* SLUnitsConvertor.m */,
-				423D16E117053FE80007ED61 /* SLCustomUI.h */,
-				423D16E217053FE80007ED61 /* SLCustomUI.m */,
+				42E353FB18AC93C200E2053F /* Views */,
+				42E353FC18AC93CF00E2053F /* Controllers */,
+				42E353FD18AC94AD00E2053F /* Delegates */,
 				4256931015F4893000F7BABC /* Supporting Files */,
 			);
 			path = "Smart Launch";
@@ -388,6 +325,91 @@
 			path = "App Icon New";
 			sourceTree = "<group>";
 		};
+		42E353FB18AC93C200E2053F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				42F83DBC171B6EFA005FAA0C /* SLClusterMotorMemberCell.h */,
+				42F83DBD171B6EFB005FAA0C /* SLClusterMotorMemberCell.m */,
+				4220A4BE15F55CC60055EE35 /* SLCurveGraphView.h */,
+				4220A4BF15F55CC60055EE35 /* SLCurveGraphView.m */,
+				42BB53C716A293D20029C882 /* SLFlightDataCell.h */,
+				42BB53C816A293D20029C882 /* SLFlightDataCell.m */,
+				42D780991663291B000C7D6C /* SLAnimatedRocketView.h */,
+				42D7809A1663291B000C7D6C /* SLAnimatedRocketView.m */,
+				4220A4B415F55CC60055EE35 /* SLLaunchAngleView.h */,
+				4220A4B515F55CC60055EE35 /* SLLaunchAngleView.m */,
+				427E9ADF185E26B300A1991E /* SLAvatarCVCell.h */,
+				427E9AE0185E26B300A1991E /* SLAvatarCVCell.m */,
+				4292C551181F58D800C4C732 /* SLKitCell.h */,
+				4292C550181F58D800C4C732 /* SLKitCell.m */,
+				423D16E117053FE80007ED61 /* SLCustomUI.h */,
+				423D16E217053FE80007ED61 /* SLCustomUI.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		42E353FC18AC93CF00E2053F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4220A4AA15F55CC60055EE35 /* SLTableViewController.h */,
+				4220A4AB15F55CC60055EE35 /* SLTableViewController.m */,
+				42248D7A16EC416200ABB5D7 /* SLiPadDetailViewController.h */,
+				42248D7B16EC416200ABB5D7 /* SLiPadDetailViewController.m */,
+				4220A4B815F55CC60055EE35 /* SLMotorSearchViewController.h */,
+				4220A4B915F55CC60055EE35 /* SLMotorSearchViewController.m */,
+				4220A4BA15F55CC60055EE35 /* SLMotorTableViewController.h */,
+				4220A4BB15F55CC60055EE35 /* SLMotorTableViewController.m */,
+				4220A4BC15F55CC60055EE35 /* SLMotorViewController.h */,
+				4220A4BD15F55CC60055EE35 /* SLMotorViewController.m */,
+				42BD6CC417377CCE00E19B50 /* SLClusterMotorViewController.h */,
+				42BD6CC517377CCE00E19B50 /* SLClusterMotorViewController.m */,
+				42F83DB6171B6EAA005FAA0C /* SLClusterTableViewController.h */,
+				42F83DB7171B6EAB005FAA0C /* SLClusterTableViewController.m */,
+				42F83DB9171B6ED2005FAA0C /* SLClusterMotorBuildViewController.h */,
+				42F83DBA171B6ED2005FAA0C /* SLClusterMotorBuildViewController.m */,
+				42D78093166295F1000C7D6C /* SLAnimatedViewController.h */,
+				42D78094166295F1000C7D6C /* SLAnimatedViewController.m */,
+				42BB53CE16A38C4D0029C882 /* SLSaveFlightDataTVC.h */,
+				42BB53CF16A38C4D0029C882 /* SLSaveFlightDataTVC.m */,
+				42E7317216BF66ED00F6D468 /* SLFlightProfileViewController.h */,
+				42E7317316BF66ED00F6D468 /* SLFlightProfileViewController.m */,
+				42BB53CB16A295310029C882 /* SLSavedFlightsTVC.h */,
+				42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */,
+				4220A4AC15F55CC60055EE35 /* SLInformationTVC.h */,
+				4220A4AD15F55CC60055EE35 /* SLInformationTVC.m */,
+				4240A07615F8341900D67F3E /* SLMotorPrefsTVC.h */,
+				4240A07715F8341900D67F3E /* SLMotorPrefsTVC.m */,
+				4220A4AE15F55CC60055EE35 /* SLSimSettingsViewController.h */,
+				4220A4AF15F55CC60055EE35 /* SLSimSettingsViewController.m */,
+				4220A4B215F55CC60055EE35 /* SLLaunchAngleViewController.h */,
+				4220A4B315F55CC60055EE35 /* SLLaunchAngleViewController.m */,
+				4220A4C015F55CC60055EE35 /* SLRocketsTableViewController.h */,
+				4220A4C115F55CC60055EE35 /* SLRocketsTableViewController.m */,
+				4220A4C215F55CC60055EE35 /* SLRocketPropertiesTVC.h */,
+				4220A4C315F55CC60055EE35 /* SLRocketPropertiesTVC.m */,
+				427E9AE2185E270600A1991E /* SLAvatarCVC.h */,
+				427E9AE3185E270600A1991E /* SLAvatarCVC.m */,
+				4292C54F181F58D800C4C732 /* SLKitsTVC.h */,
+				4292C54E181F58D800C4C732 /* SLKitsTVC.m */,
+				4292C552181F58D800C4C732 /* SLCommercialKitInfoViewController.m */,
+				4292C553181F58D800C4C732 /* SLCommercialKitInfoViewController.h */,
+				42CEE10217277F440060424F /* SLMotorConfigurationTVC.h */,
+				42CEE10317277F440060424F /* SLMotorConfigurationTVC.m */,
+				4220A4B015F55CC60055EE35 /* SLUnitsTVC.h */,
+				4220A4B115F55CC60055EE35 /* SLUnitsTVC.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		42E353FD18AC94AD00E2053F /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */,
+				42742BB5172A3C68007229E9 /* SLClusterBuildDelegate.h */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -420,6 +442,11 @@
 				TargetAttributes = {
 					4256930415F4893000F7BABC = {
 						DevelopmentTeam = TY3543425A;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

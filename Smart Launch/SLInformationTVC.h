@@ -8,10 +8,9 @@
 
 @import UIKit;
 #import "SLSimulationDelegate.h"
-#import "SLModalPresenterDelegate.h"
 #import "SLUnitsTVC.h"
 
-@interface SLInformationTVC : UITableViewController<SLModalPresenterDelegate, UIActionSheetDelegate>
+@interface SLInformationTVC : UITableViewController<UIActionSheetDelegate>
 
 @property (weak, nonatomic) id<SLSimulationDelegate> delegate;
 
