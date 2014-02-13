@@ -12,16 +12,19 @@
 #import "RocketMotor.h"
 #import "Rocket.h"
 
+@class SLFlightDataPoint;
+
 @protocol SLPhysicsModelDatasource <NSObject>
 
 // These dataSource methods allow a customer of the model to ask details about the flight profile
 // without revealing internals, and without letting them muck with the model itself.
 // This class has really become bloated with these dataSource methods.  Oh well.  It is a singleton.
 
-- (NSArray *)flightDataWithTimeIncrement: (float)increment;
+//- (NSArray *)flightDataWithTimeIncrement: (float)increment;
     // a constructed array of time, altitude, velocity, acceleration - NSArray of NSArray
     // for use in graphing the flightProfile
 
+-(BOOL)hasValidData;
 - (float)quickFFVelocityAtLaunchAngle:(float)angle andGuideLength:(float)length;
 -(NSString *)rocketName;
 -(float)burnoutVelocity;
@@ -33,7 +36,7 @@
 -(float)apogeeAltitude;
 -(float)maxMachNumber;
 -(float)totalTime;
--(float)dataAtTime:(float)timeIndex forKey:(NSInteger)dataIndex;
+-(SLFlightDataPoint *)dataAtTime:(float)timeIndex;
 -(NSString *)motorDescription;
 
 @end
@@ -48,6 +51,8 @@
 @property (nonatomic, weak) Rocket *rocket;
 @property (nonatomic) float launchAltitude;
 @property (nonatomic, readonly) float version;
+
++(instancetype)sharedModel;
 
 
 /* The first public method returns the velocity that the rocket will attain at the end of the launch guide */

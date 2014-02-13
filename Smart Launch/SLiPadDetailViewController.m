@@ -10,6 +10,7 @@
 #import "SLCurveGraphView.h"
 #import "SLUnitsConvertor.h"
 #import "SLAnimatedRocketView.h"
+#import "SLFlightDataPoint.h"
 
 @interface SLiPadDetailViewController ()<SLCurveGraphViewDelegate, SLCurveGraphViewDataSource>
 
@@ -218,6 +219,7 @@
 }
 
 -(float)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
+    if (![self.dataSource hasValidData]) return 0.0;
     if (sender == self.flightProfileView){
         return [self.dataSource totalTime];
     }else{// must be a thrust curve
@@ -226,21 +228,23 @@
 }
 
 -(float)curveGraphView:(SLCurveGraphView *)sender dataValueForTimeIndex:(CGFloat)timeIndex{
-    if (sender == self.flightProfileView){
-        switch ((SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
-            case SLFlightProfileGraphTypeVelocity:
-                return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:VEL_INDEX] forKey:VELOCITY_UNIT_KEY];
-            case SLFlightProfileGraphTypeAcceleration:
-                return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:ACCEL_INDEX] forKey:ACCEL_UNIT_KEY];
-            case SLFlightProfileGraphTypeAltitude:
-                return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:ALT_INDEX] forKey:ALT_UNIT_KEY];
-            case SLFlightProfileGraphTypeMach:
-                return [self.dataSource dataAtTime: timeIndex forKey:MACH_INDEX];
-            case SLFlightProfileGraphTypeDrag:
-                return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:DRAG_INDEX] forKey:THRUST_UNIT_KEY];
-        }
-    }else{ //must be thrust curve
+    if (![self.dataSource hasValidData]) return 0.0;
+    if (sender != self.flightProfileView){
         return [SLUnitsConvertor displayUnitsOf:[self.model.rocket thrustAtTime:timeIndex] forKey:THRUST_UNIT_KEY];
+    }
+
+    SLFlightDataPoint *dataPoint = [self.dataSource dataAtTime:timeIndex];
+    switch ((SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
+        case SLFlightProfileGraphTypeVelocity:
+            return [SLUnitsConvertor displayUnitsOf:dataPoint->vel forKey:VELOCITY_UNIT_KEY];
+        case SLFlightProfileGraphTypeAcceleration:
+            return [SLUnitsConvertor displayUnitsOf:dataPoint->accel forKey:ACCEL_UNIT_KEY];
+        case SLFlightProfileGraphTypeAltitude:
+            return [SLUnitsConvertor displayUnitsOf:dataPoint->alt forKey:ALT_UNIT_KEY];
+        case SLFlightProfileGraphTypeMach:
+            return dataPoint->mach;
+        case SLFlightProfileGraphTypeDrag:
+            return [SLUnitsConvertor displayUnitsOf:dataPoint->drag forKey:THRUST_UNIT_KEY];
     }
 }
 

@@ -22,6 +22,7 @@
 #define MOTOR_SELECTION_ROW 1
 
 @interface SLTableViewController ()<SLMotorPickerDatasource, SLRocketPropertiesTVCDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableViewCell *rocketCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *motorCell;
 @property (weak, nonatomic) IBOutlet UIButton *windDirectionButton;
@@ -100,7 +101,7 @@
 
 - (SLPhysicsModel *)model{
     if (!_model){
-        _model = [[SLPhysicsModel alloc] init];
+        _model = [SLPhysicsModel sharedModel];
     }
     return _model;
 }
@@ -332,6 +333,8 @@
     if ([identifier isEqualToString:@"saveFlightSegue"]){
         //prevent double popovers
         return (!self.popover);
+    }else if([identifier isEqualToString:@"AnimationSegue"]){
+        return [self.rocket.motors count];
     }
     return YES;
 }

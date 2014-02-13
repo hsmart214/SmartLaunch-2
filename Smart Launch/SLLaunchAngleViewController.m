@@ -195,9 +195,8 @@
 - (UIView *)photoAngleView{
     if (!_photoAngleView){
         _photoAngleView = [[UIView alloc] initWithFrame:self.view.bounds];
-        UIImageView *viewFinderView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-        //        NSString *viewFinderFileName = [[NSBundle mainBundle] pathForResource: VIEW_FINDER_IMAGE_FILENAME ofType:@"png"];
-        //        UIImage * viewFinderImage = [[UIImage alloc] initWithContentsOfFile:viewFinderFileName];
+        
+        UIImageView *viewFinderView = [[UIImageView alloc] initWithFrame:self.view.window.bounds];
         UIImage *viewFinderImage = [UIImage imageNamed:VIEW_FINDER_IMAGE_FILENAME];
         
         [viewFinderView setImage:viewFinderImage];
@@ -218,9 +217,7 @@
         
         //make the accept button image
         
-        //NSString *acceptFilename = [[NSBundle mainBundle] pathForResource: ACCEPT_BUTTON_FILENAME ofType:@"png"];
         UIImage *acceptButtonImage = [UIImage imageNamed:ACCEPT_BUTTON_FILENAME];
-        //NSString *acceptSelectedFilename = [[NSBundle mainBundle] pathForResource: ACCEPT_SELECTED_FILENAME ofType:@"png"];
         UIImage *acceptSelectedImage = [UIImage imageNamed:ACCEPT_SELECTED_FILENAME];
         
         CGRect buttonFrame = CGRectMake(self.view.bounds.size.width/2 + BUTTON_HEIGHT/4, self.view.bounds.size.height - BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT);
@@ -237,9 +234,7 @@
         
         //make the cancel button image
         
-        //NSString *cancelFilename = [[NSBundle mainBundle] pathForResource: CANCEL_BUTTON_FILENAME ofType:@"png"];
         UIImage *cancelButtonImage = [UIImage imageNamed:CANCEL_BUTTON_FILENAME];
-        //NSString *cancelSelectedFilename = [[NSBundle mainBundle] pathForResource: CANCEL_SELECTED_FILENAME ofType:@"png"];
         UIImage *cancelSelectedImage = [UIImage imageNamed:CANCEL_SELECTED_FILENAME];
         
         buttonFrame = CGRectMake(self.view.bounds.size.width/2 - BUTTON_WIDTH - BUTTON_HEIGHT/4, self.view.bounds.size.height - BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT);
@@ -266,7 +261,6 @@
         x = self.view.bounds.size.width/2 - ANGLE_WARNING_SIZE/2;
         y = self.view.bounds.size.height/2 - ANGLE_WARNING_SIZE/2 + 5;
         _warningView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, ANGLE_WARNING_SIZE, ANGLE_WARNING_SIZE)];
-        //NSString *warningFileName = [[NSBundle mainBundle] pathForResource: ANGLE_WARNING_IMAGE_FILENAME ofType:@"png"];
         UIImage *warningImage = [UIImage imageNamed:ANGLE_WARNING_IMAGE_FILENAME];
         [_warningView setImage:warningImage];
     }
@@ -410,13 +404,13 @@
 
 -(void)dealloc{
     [self.motionManager stopAccelerometerUpdates];
-    self.motionManager = nil;
-    self.motionQueue = nil;
-    self.photoAngleLabel = nil;
-    self.photoAngleView = nil;
-    self.acceptButton = nil;
-    self.cancelButton = nil;
-    self.warningView = nil;
+    _motionManager = nil;
+    _motionQueue = nil;
+    _photoAngleLabel = nil;
+    _photoAngleView = nil;
+    _acceptButton = nil;
+    _cancelButton = nil;
+    _warningView = nil;
 }
 
 @end

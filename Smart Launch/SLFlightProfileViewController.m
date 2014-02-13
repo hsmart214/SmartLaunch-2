@@ -8,6 +8,7 @@
 
 #import "SLFlightProfileViewController.h"
 #import "SLUnitsConvertor.h"
+#import "SLFlightDataPoint.h"
 
 @interface SLFlightProfileViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *rocketNameLabel;
@@ -74,17 +75,18 @@
 }
 
 -(float)curveGraphView:(SLCurveGraphView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
+    SLFlightDataPoint *dataPoint = [self.dataSource dataAtTime:timeIndex];
     switch ((SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
         case SLFlightProfileGraphTypeVelocity:
-            return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:VEL_INDEX] forKey:VELOCITY_UNIT_KEY];
+            return [SLUnitsConvertor displayUnitsOf:dataPoint->vel forKey:VELOCITY_UNIT_KEY];
         case SLFlightProfileGraphTypeAcceleration:
-            return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:ACCEL_INDEX] forKey:ACCEL_UNIT_KEY];
+            return [SLUnitsConvertor displayUnitsOf:dataPoint->accel forKey:ACCEL_UNIT_KEY];
         case SLFlightProfileGraphTypeAltitude:
-            return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:ALT_INDEX] forKey:ALT_UNIT_KEY];
+            return [SLUnitsConvertor displayUnitsOf:dataPoint->alt forKey:ALT_UNIT_KEY];
         case SLFlightProfileGraphTypeMach:
-            return [self.dataSource dataAtTime: timeIndex forKey:MACH_INDEX];
+            return dataPoint->mach;
         case SLFlightProfileGraphTypeDrag:
-            return [SLUnitsConvertor displayUnitsOf:[self.dataSource dataAtTime: timeIndex forKey:DRAG_INDEX] forKey:THRUST_UNIT_KEY];
+            return [SLUnitsConvertor displayUnitsOf:dataPoint->drag forKey:THRUST_UNIT_KEY];
     }
 }
 
