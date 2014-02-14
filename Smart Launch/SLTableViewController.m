@@ -372,8 +372,8 @@
             dest = (SLSaveFlightDataTVC *)([segue.destinationViewController viewControllers][0]);
         }else{ // must be a UIPopoverController *
             dest = (SLSaveFlightDataTVC *)segue.destinationViewController;
-            [dest setPopover:self.popover];
             self.popover = ((UIStoryboardPopoverSegue *)segue).popoverController;
+            [dest setPopover:self.popover];
         }
         [dest setFlightData:flight];
         [dest setPhysicsModel:self.model];

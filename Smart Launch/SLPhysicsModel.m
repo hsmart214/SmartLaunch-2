@@ -11,24 +11,15 @@
 
 typedef struct  {
     float altMSL;
-    float temperature;
-    float pressure;
     float rho_ratio;
     float mach_one;
 } SLCurrentEnvironment;
-//  @{ALT_MSL_KEY: @(altMSL),
-//    TEMPERATURE_KEY: @(temperature),
-//    PRESSURE_KEY: @(pressure),
-//    RHO_RATIO_KEY: @(rho_ratio),
-//    MACH_ONE_KEY: @(mach_one)}
 
 @interface SLPhysicsModel() <SLPhysicsModelDatasource>
 {
     float topAltitude;
     int currentStdAtmSegment;
     float currentStdAtmBaseAlt, currentStdAtmCeilingAlt;
-    float currentBaseTemp, currentCeilingTemp;
-    float currentBasePressure, currentCeilingPressure;
     float currentBaseRhoRatio, currentCeilingRhoRatio;
     float currentBaseMach, currentCeilingMach;
 }
@@ -43,6 +34,7 @@ typedef struct  {
 @property (nonatomic, strong) NSMutableArray *flightProfile;
 @property (nonatomic, strong) NSArray *stdAtmosphere;
 @property (nonatomic) double angle;         // current 2D angle of flight
+@property (nonatomic, strong) SLFlightDataPoint *maxValues;
 
 @end
 
@@ -102,7 +94,8 @@ typedef struct  {
 }
 
 - (void)resetFlight{
-    self.flightProfile = nil;
+    _flightProfile = nil;
+    _maxValues = nil;
 }
 
 // each element of this mutable array will be a point of the profile
@@ -110,9 +103,14 @@ typedef struct  {
 - (NSMutableArray *)flightProfile{
     if (!_flightProfile){
         _flightProfile = [NSMutableArray array];
+        topAltitude = [[self.stdAtmosphere lastObject][ALT_MSL_KEY] floatValue];
         currentStdAtmSegment = 0;
         currentStdAtmBaseAlt = 0.0;
-        currentStdAtmCeilingAlt = [self.stdAtmosphere[1][ALT_MSL_KEY] floatValue];
+        currentStdAtmCeilingAlt = [_stdAtmosphere[1][ALT_MSL_KEY] floatValue];
+        currentBaseMach = [_stdAtmosphere[0][MACH_ONE_KEY] floatValue];
+        currentCeilingMach = [_stdAtmosphere[1][MACH_ONE_KEY] floatValue];
+        currentBaseRhoRatio = [_stdAtmosphere[0][RHO_RATIO_KEY] floatValue];
+        currentCeilingRhoRatio = [_stdAtmosphere[1][RHO_RATIO_KEY] floatValue];
         [self integrateToEndOfLaunchGuide];
         [self integrateToBurnout];
         [self integrateBurnoutToApogee];
@@ -124,8 +122,6 @@ typedef struct  {
 {
     SLCurrentEnvironment env;
     env.altMSL = [atmosphereDict[ALT_MSL_KEY] floatValue];
-    env.temperature = [atmosphereDict[TEMPERATURE_KEY] floatValue];
-    env.pressure = [atmosphereDict[PRESSURE_KEY] floatValue];
     env.rho_ratio = [atmosphereDict[RHO_RATIO_KEY] floatValue];
     env.mach_one = [atmosphereDict[MACH_ONE_KEY] floatValue];
 
@@ -143,10 +139,6 @@ typedef struct  {
         }
         currentStdAtmBaseAlt = currentStdAtmCeilingAlt;
         currentStdAtmCeilingAlt = [_stdAtmosphere[currentStdAtmSegment+1][ALT_MSL_KEY] floatValue];
-        currentBaseTemp = currentCeilingTemp;
-        currentCeilingTemp = [_stdAtmosphere[currentStdAtmSegment+1][TEMPERATURE_KEY] floatValue];
-        currentBasePressure = currentCeilingPressure;
-        currentCeilingPressure = [_stdAtmosphere[currentStdAtmSegment+1][PRESSURE_KEY] floatValue];
         currentBaseRhoRatio = currentCeilingRhoRatio;
         currentCeilingRhoRatio = [_stdAtmosphere[currentStdAtmSegment+1][RHO_RATIO_KEY] floatValue];
         currentBaseMach = currentCeilingMach;
@@ -154,28 +146,16 @@ typedef struct  {
     }
     float fraction = (altMSL - currentStdAtmBaseAlt) /
     (currentStdAtmCeilingAlt - currentStdAtmBaseAlt);
-    float temperature = fraction *(currentCeilingTemp - currentBaseTemp)
-    + currentBaseTemp;
-    float pressure = fraction *(currentCeilingPressure - currentBasePressure)
-    + currentBasePressure;
     float rho_ratio = fraction *(currentCeilingRhoRatio - currentBaseRhoRatio)
     + currentBaseRhoRatio;
     float mach_one = fraction *(currentCeilingMach - currentBaseMach)
     + currentBaseMach;
     SLCurrentEnvironment env;
     env.altMSL = altMSL;
-    env.temperature = temperature;
-    env.pressure = pressure;
     env.rho_ratio = rho_ratio;
     env.mach_one = mach_one;
 
     return env;
-
-//    return @{ALT_MSL_KEY: @(altMSL),
-//             TEMPERATURE_KEY: @(temperature),
-//             PRESSURE_KEY: @(pressure),
-//             RHO_RATIO_KEY: @(rho_ratio),
-//             MACH_ONE_KEY: @(mach_one)};  //OPT 97%
 }
 
 - (float)launchAltitude{
@@ -399,6 +379,23 @@ typedef struct  {
 
 #pragma mark - dataSource methods
 
+-(SLFlightDataPoint *)maxValues
+{
+    if (![_flightProfile count]) return nil;
+    if (!_maxValues){
+        _maxValues = [_flightProfile firstObject];
+        for (SLFlightDataPoint *dp in _flightProfile){
+            if (dp->alt > _maxValues->alt) _maxValues->alt = dp->alt;
+            if (dp->vel > _maxValues->vel) _maxValues->vel = dp->vel;
+            if (dp->trav > _maxValues->trav) _maxValues->trav = dp->trav;
+            if (dp->accel > _maxValues->accel) _maxValues->accel = dp->accel;
+            if (dp->mach > _maxValues->mach) _maxValues->mach = dp->mach;
+            if (dp->drag > _maxValues->drag) _maxValues->drag = dp->drag;
+        }
+    }
+    return _maxValues;
+}
+
 -(NSString *)rocketName{
     return [self.rocket description];
 }
@@ -448,22 +445,24 @@ typedef struct  {
 }
 
 -(float)maxVelocity{
-    float mxvel = 0.0;
-    for (SLFlightDataPoint *dataPoint in _flightProfile){
-        if (dataPoint->vel > mxvel){
-            mxvel = dataPoint->vel;
-        }
-    }
-    return mxvel;
+//    float mxvel = 0.0;
+//    for (SLFlightDataPoint *dataPoint in _flightProfile){
+//        if (dataPoint->vel > mxvel){
+//            mxvel = dataPoint->vel;
+//        }
+//    }
+//    return mxvel;
+    return self.maxValues->vel;
 }
 
 -(float)maxAcceleration{
-    float accelMax = 0.0;
-    for (SLFlightDataPoint *arr in _flightProfile){
-        float accel = arr->accel;
-        if (accel > accelMax) accelMax = accel;
-    }
-    return accelMax;
+//    float accelMax = 0.0;
+//    for (SLFlightDataPoint *arr in _flightProfile){
+//        float accel = arr->accel;
+//        if (accel > accelMax) accelMax = accel;
+//    }
+//    return accelMax;
+    return self.maxValues->accel;
 }
 
 -(float)maxDeceleration{
@@ -476,21 +475,23 @@ typedef struct  {
 }
 
 -(float)maxMachNumber{
-    float maxMach = 0.0;
-    for (SLFlightDataPoint *arr in _flightProfile){
-        float mac = arr->mach;
-        if (mac > maxMach) maxMach = mac;
-    }
-    return maxMach;
+//    float maxMach = 0.0;
+//    for (SLFlightDataPoint *arr in _flightProfile){
+//        float mac = arr->mach;
+//        if (mac > maxMach) maxMach = mac;
+//    }
+//    return maxMach;
+    return self.maxValues->mach;
 }
 
 -(float)maxDrag{
-    float maxDrag = 0.0;
-    for (SLFlightDataPoint *arr in _flightProfile){
-        float drag = arr->drag;
-        if (drag > maxDrag) maxDrag = drag;
-    }
-    return maxDrag;
+//    float maxDrag = 0.0;
+//    for (SLFlightDataPoint *arr in _flightProfile){
+//        float drag = arr->drag;
+//        if (drag > maxDrag) maxDrag = drag;
+//    }
+//    return maxDrag;
+    return self.maxValues->drag;
 }
 
 //These methods are for the plotting of the flight profile. They should run fast enough.  We shall see
@@ -517,36 +518,9 @@ typedef struct  {
 
 -(SLFlightDataPoint *)dataAtTime:(float)timeIndex{
     NSInteger i = [self dataIndexForTimeIndex:timeIndex];
-
-    // FIXME: can't index into flightProfile's objects this way any more
     SLFlightDataPoint *dataPoint = self.flightProfile[i];
     return dataPoint;
 }
-
-//This one is for plotting the flight profile - gives back an array of data with the flight data with an increment (pixel width)
-
-//- (NSArray *)flightDataWithTimeIncrement:(float)increment{
-//    // time, altitude, velocity, acceleration, mach
-//    // here I am going to make the simplifying assumption that the increment will be substantially larger than 1/DIVS
-//    // since it will be 1/ the number of pixels in one second of displayed profile - on the order of 1/100
-//    // so for each point I will take the flightProfile info at the first point AFTER the incremented time
-//    NSMutableArray *data = [NSMutableArray array];
-//    [data addObject:@[@0.0,@0.0,@0.0,@0.0,@0.0,@0.0,@0.0]];
-//    NSInteger profileIndex = 0;
-//    NSInteger dataIndex = 1;
-//    while (profileIndex < [self.flightProfile count]) {
-//        double stopTime = dataIndex++ * increment;
-//        while ([(self.flightProfile)[profileIndex][TIME_INDEX] doubleValue] < stopTime) {
-//            if (++profileIndex >= [_flightProfile count]){
-//                [data addObject:[_flightProfile lastObject]];
-//                return [NSArray arrayWithArray:data];           // increment and test, return out if we overflow the flightProfile
-//            }
-//        }
-//        // now the profileIndex points to the first time point after the requested time.  Close enough to graph well
-//        [data addObject:_flightProfile[profileIndex]];
-//    }
-//    return [data copy];
-//}
 
 // This next method is for the rapid updates necessary for the drawRect routine in the animated view
 
@@ -558,8 +532,8 @@ typedef struct  {
     //This will loop until the rocket JUST leaves the launch guide - close enough for display purposes
     while (dist < length) {
         timedex += 1.0/DIVS_DURING_BURN;
-        float mass = [self.rocket massAtTime:timedex];
-        float a = [self.rocket thrustAtTime:timedex]/mass - g - [self dragAtVelocity:v time: timedex andAltitude:dist]/mass;
+        float mass = [_rocket massAtTime:timedex];
+        float a = [_rocket thrustAtTime:timedex]/mass - g - [self dragAtVelocity:v time: timedex andAltitude:dist]/mass;
         if (a > 0) {        //remember DIVS is in units of 1/sec
             dist += (v / DIVS_DURING_BURN) + (0.5 * a /(DIVS_DURING_BURN * DIVS_DURING_BURN));
             v += a / DIVS_DURING_BURN;
@@ -568,18 +542,10 @@ typedef struct  {
     return v;
 }
 
--(instancetype)init
-{
-    if (self = [super init]){
-        topAltitude = [[self.stdAtmosphere lastObject][ALT_MSL_KEY] floatValue];
-    }
-    return self;
-}
-
 -(void)dealloc{
     self.flightProfile = nil;
     self.stdAtmosphere = nil;
-    self.rocket = nil;
+    self.maxValues = nil;
 }
 
 @end

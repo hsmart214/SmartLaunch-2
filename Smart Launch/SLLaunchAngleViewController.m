@@ -337,16 +337,6 @@
     
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-//    if ([segue.identifier isEqualToString:@"PhotoAngleSegue"]){
-//        [segue.destinationViewController setDelegate:self.delegate];
-//        [(SLPhotoAngleViewController *)segue.destinationViewController setXyCalibrationAngle: self.xyCalibrationAngle];
-//        [(SLPhotoAngleViewController *)segue.destinationViewController setYxCalibrationAngle: self.yxCalibrationAngle];
-//        [(SLPhotoAngleViewController *)segue.destinationViewController setYzCalibrationAngle: self.yzCalibrationAngle];
-//        [self stopMotionUpdates];
-//    }
-//}
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad

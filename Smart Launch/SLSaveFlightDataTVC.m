@@ -66,7 +66,11 @@
         [defaults synchronize];
         
         [self.delegate sender:self didChangeRocket:self.rocket];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        if (self.popover){
+            [self.popover dismissPopoverAnimated:YES];
+        }else{
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }
 }
 
@@ -247,7 +251,7 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     NSString *footerText;
     if (section == 0){
-        footerText = NSLocalizedString(@"Refining the Cd may take a few sec.", @"Refining the Cd may take a few sec. (header)");
+        footerText = NSLocalizedString(@"Altering Cd est. may improve the result", @"Refining the Cd may take a few sec. (header)");
     }else{  // must be last section - there are only two
         footerText = NSLocalizedString(@"New Estimate Results", @"New Estimate Results (header)");
     }

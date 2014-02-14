@@ -121,7 +121,7 @@
     // Draw the axes
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    UIGraphicsPushContext(context);
+    //    UIGraphicsPushContext(context);
     CGContextSetLineWidth(context, 1.5);
     [[UIColor blackColor] setStroke];
     CGContextBeginPath(context);
@@ -133,7 +133,7 @@
     
     // If the fmin is not zero, draw an x axis line
     
-    if (fmin != 0.0){
+    if (fmin < 0.0){
         int ex = floor(log10(fmax - fmin));
         double mant = -fmin/pow(10, ex);
         CGFloat yvalue = origin.y - mant * vscale;
@@ -148,7 +148,7 @@
     
     if ([self.delegate respondsToSelector:@selector(shouldDisplayMachOneLine:)] &&
         [self.delegate shouldDisplayMachOneLine:self] && fmax >= 1.0){
-        int ex = fmax - fmin == 0.0 ? 0.0 : floor(log10(fmax - fmin));
+        int ex = fmax - fmin <= 0.0 ? 0.0 : floor(log10(fmax - fmin));
         double mant = 1.0/pow(10, ex);
         CGFloat yvalue = origin.y - mant * vscale;
         CGContextBeginPath(context);

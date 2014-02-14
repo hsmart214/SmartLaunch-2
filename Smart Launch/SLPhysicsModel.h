@@ -46,7 +46,7 @@
 - (float)quickFFVelocityAtLaunchAngle:(float)angle andGuideLength:(float)length;
 @property (nonatomic) float launchGuideLength;
 @property (nonatomic) float launchGuideAngle;
-@property (nonatomic) enum LaunchDirection LaunchGuideDirection;
+@property (nonatomic) LaunchDirection LaunchGuideDirection;
 @property (nonatomic) float windVelocity;
 @property (nonatomic, weak) Rocket *rocket;
 @property (nonatomic) float launchAltitude;

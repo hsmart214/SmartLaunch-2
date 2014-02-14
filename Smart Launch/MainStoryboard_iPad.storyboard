@@ -1484,7 +1484,7 @@
                             </items>
                         </toolbar>
                         <sections>
-                            <tableViewSection footerTitle="Refining the Cd will take several seconds" id="Trm-RI-ct2">
+                            <tableViewSection footerTitle="Altering the initial est. may improve the result" id="Trm-RI-ct2">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="TpR-Bf-CMB" imageView="VJF-gm-TTt" style="IBUITableViewCellStyleDefault" id="pcV-uR-D71">
                                         <rect key="frame" x="0.0" y="35" width="320" height="44"/>
@@ -2677,27 +2677,33 @@
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="J350W" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IgI-PK-eSJ">
                                             <rect key="frame" x="20" y="11" width="90" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="90" id="9mv-dr-GcP"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cd:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoV-sA-TVb">
                                             <rect key="frame" x="118" y="11" width="29" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="29" id="flg-lO-8S8"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ft" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bs-c0-KGh">
                                             <rect key="frame" x="262" y="11" width="11" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="11" id="rXn-Ke-bCJ"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="3000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAZ-vi-kim">
                                             <rect key="frame" x="209" y="11" width="39" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="39" id="IBc-qv-3ur"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2705,7 +2711,7 @@
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.44" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeY-kH-U4C">
                                             <rect key="frame" x="155" y="11" width="39" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="39" id="zvP-nf-m0N"/>
+                                                <constraint firstAttribute="width" constant="39" id="u8Z-IV-HVX"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2713,21 +2719,19 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="4bs-c0-KGh" secondAttribute="trailing" constant="8" id="4OQ-Rr-FOx"/>
-                                        <constraint firstAttribute="centerY" secondItem="BoV-sA-TVb" secondAttribute="centerY" id="5f6-Tv-36s"/>
-                                        <constraint firstItem="zeY-kH-U4C" firstAttribute="baseline" secondItem="BoV-sA-TVb" secondAttribute="baseline" id="Gsl-Eh-asb"/>
-                                        <constraint firstAttribute="centerY" secondItem="IgI-PK-eSJ" secondAttribute="centerY" id="UIc-yZ-UjQ"/>
-                                        <constraint firstItem="BoV-sA-TVb" firstAttribute="leading" secondItem="IgI-PK-eSJ" secondAttribute="trailing" constant="8" symbolic="YES" id="WcI-VG-yES"/>
-                                        <constraint firstItem="4bs-c0-KGh" firstAttribute="leading" secondItem="WAZ-vi-kim" secondAttribute="trailing" constant="14" id="Y49-Xe-Zr5"/>
-                                        <constraint firstItem="4bs-c0-KGh" firstAttribute="baseline" secondItem="WAZ-vi-kim" secondAttribute="baseline" id="Zop-Gd-VpM"/>
-                                        <constraint firstItem="4bs-c0-KGh" firstAttribute="baseline" secondItem="zeY-kH-U4C" secondAttribute="baseline" id="gh8-e3-Goo"/>
-                                        <constraint firstAttribute="trailing" secondItem="zeY-kH-U4C" secondAttribute="trailing" constant="87" id="m8H-Np-HxU"/>
-                                        <constraint firstItem="zeY-kH-U4C" firstAttribute="leading" secondItem="BoV-sA-TVb" secondAttribute="trailing" constant="8" symbolic="YES" id="o9D-cF-Omw"/>
+                                        <constraint firstItem="4bs-c0-KGh" firstAttribute="leading" secondItem="WAZ-vi-kim" secondAttribute="trailing" constant="14" id="3d7-cq-Uzq"/>
+                                        <constraint firstItem="zeY-kH-U4C" firstAttribute="leading" secondItem="BoV-sA-TVb" secondAttribute="trailing" constant="8" symbolic="YES" id="HuS-6x-bmw"/>
+                                        <constraint firstItem="BoV-sA-TVb" firstAttribute="centerY" secondItem="RM0-W0-4yO" secondAttribute="centerY" id="M90-ou-7ZF"/>
+                                        <constraint firstAttribute="trailing" secondItem="4bs-c0-KGh" secondAttribute="trailing" constant="8" id="MZB-BN-RsO"/>
+                                        <constraint firstItem="BoV-sA-TVb" firstAttribute="baseline" secondItem="IgI-PK-eSJ" secondAttribute="baseline" id="OXm-pC-Rgk"/>
+                                        <constraint firstItem="IgI-PK-eSJ" firstAttribute="leading" secondItem="RM0-W0-4yO" secondAttribute="leading" constant="20" symbolic="YES" id="RrJ-Xc-wsW"/>
+                                        <constraint firstItem="zeY-kH-U4C" firstAttribute="baseline" secondItem="WAZ-vi-kim" secondAttribute="baseline" id="YWE-x9-0jz"/>
+                                        <constraint firstItem="WAZ-vi-kim" firstAttribute="baseline" secondItem="4bs-c0-KGh" secondAttribute="baseline" id="ZT8-ol-VhI"/>
+                                        <constraint firstItem="BoV-sA-TVb" firstAttribute="baseline" secondItem="zeY-kH-U4C" secondAttribute="baseline" id="hgT-p6-QYG"/>
+                                        <constraint firstItem="WAZ-vi-kim" firstAttribute="leading" secondItem="zeY-kH-U4C" secondAttribute="trailing" constant="15" id="rJV-rb-VG0"/>
+                                        <constraint firstItem="BoV-sA-TVb" firstAttribute="leading" secondItem="IgI-PK-eSJ" secondAttribute="trailing" constant="8" symbolic="YES" id="vd4-4Q-Wmx"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <constraints>
-                                    <constraint firstItem="IgI-PK-eSJ" firstAttribute="leading" secondItem="Ljz-Ul-hHa" secondAttribute="leading" constant="20" id="xcy-Fs-sZh"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="altitude" destination="WAZ-vi-kim" id="ozR-Tr-WfO"/>
                                     <outlet property="altitudeUnitsLabel" destination="4bs-c0-KGh" id="UEb-IV-nUE"/>
@@ -2850,7 +2854,7 @@
                                                 <textView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9J-Tz-DOT">
                                                     <rect key="frame" x="30" y="22" width="260" height="307"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <mutableString key="text">Smart Launch HD 2.1
+                                                    <string key="text">Smart Launch HD 2.1
 ©2012-2014 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
@@ -2869,7 +2873,7 @@ All company logos are the registered trademarks of the respective motor manufact
 
 Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.
 
-Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C code in the physics model.</mutableString>
+Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C code in the physics model.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -3393,7 +3397,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="bnM-p2-QYc"/>
         <segue reference="mi2-wW-OMb"/>
-        <segue reference="ufW-2b-KLU"/>
     </inferredMetricsTieBreakers>
 </document>
