@@ -54,6 +54,7 @@
 		4257FE5317DDA8BF004A5021 /* Icon-Small-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE4317DDA8BF004A5021 /* Icon-Small-29@2x.png */; };
 		4257FE5417DDA8BF004A5021 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE4417DDA8BF004A5021 /* iTunesArtwork.png */; };
 		4257FE5517DDA8BF004A5021 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE4517DDA8BF004A5021 /* iTunesArtwork@2x.png */; };
+		425B18C618C30A1500FBC2B8 /* SLExpandingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 425B18C518C30A1500FBC2B8 /* SLExpandingTransition.m */; };
 		42742BBB172AE37D007229E9 /* SLClusterMotor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42742BBA172AE37D007229E9 /* SLClusterMotor.m */; };
 		427E9AE1185E26B300A1991E /* SLAvatarCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 427E9AE0185E26B300A1991E /* SLAvatarCVCell.m */; };
 		427E9AE4185E270600A1991E /* SLAvatarCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 427E9AE3185E270600A1991E /* SLAvatarCVC.m */; };
@@ -150,6 +151,8 @@
 		4257FE4317DDA8BF004A5021 /* Icon-Small-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-29@2x.png"; sourceTree = "<group>"; };
 		4257FE4417DDA8BF004A5021 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		4257FE4517DDA8BF004A5021 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		425B18C418C30A1500FBC2B8 /* SLExpandingTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLExpandingTransition.h; sourceTree = "<group>"; };
+		425B18C518C30A1500FBC2B8 /* SLExpandingTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLExpandingTransition.m; sourceTree = "<group>"; };
 		42742BB5172A3C68007229E9 /* SLClusterBuildDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterBuildDelegate.h; sourceTree = "<group>"; };
 		42742BB9172AE37C007229E9 /* SLClusterMotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterMotor.h; sourceTree = "<group>"; };
 		42742BBA172AE37D007229E9 /* SLClusterMotor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotor.m; sourceTree = "<group>"; };
@@ -397,6 +400,8 @@
 				42CEE10317277F440060424F /* SLMotorConfigurationTVC.m */,
 				4220A4B015F55CC60055EE35 /* SLUnitsTVC.h */,
 				4220A4B115F55CC60055EE35 /* SLUnitsTVC.m */,
+				425B18C418C30A1500FBC2B8 /* SLExpandingTransition.h */,
+				425B18C518C30A1500FBC2B8 /* SLExpandingTransition.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -517,6 +522,7 @@
 				4220A4D215F55CC60055EE35 /* SLLaunchAngleView.m in Sources */,
 				4220A4D415F55CC60055EE35 /* SLMotorSearchViewController.m in Sources */,
 				427E9AE1185E26B300A1991E /* SLAvatarCVCell.m in Sources */,
+				425B18C618C30A1500FBC2B8 /* SLExpandingTransition.m in Sources */,
 				4220A4D515F55CC60055EE35 /* SLMotorTableViewController.m in Sources */,
 				4220A4D615F55CC60055EE35 /* SLMotorViewController.m in Sources */,
 				4220A4D715F55CC60055EE35 /* SLCurveGraphView.m in Sources */,

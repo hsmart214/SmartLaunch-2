@@ -50,7 +50,18 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-
+    if (!self.splitViewController){
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
+        [backgroundView setImage:backgroundImage];
+        [self.view insertSubview:backgroundView atIndex:0];
+    }else{
+        //self.view.backgroundColor = [SLCustomUI iPadBackgroundColor];
+        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_FOR_IPAD_MASTER_VC];
+        [backgroundView setImage:backgroundImage];
+        [self.view insertSubview:backgroundView atIndex:0];
+    }
     self.clusterMotor = [[SLClusterMotor alloc] initWithMotorLoadout:self.motorLoadoutPlist];
     self.motorMass.text = [NSString stringWithFormat:@"%1.2f kg", self.clusterMotor.mass];
     self.propellantMass.text = [NSString stringWithFormat:@"%1.2f kg", self.clusterMotor.propellantMass];

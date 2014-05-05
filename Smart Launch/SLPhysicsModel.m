@@ -381,7 +381,7 @@ typedef struct  {
 
 -(SLFlightDataPoint *)maxValues
 {
-    if (![_flightProfile count]) return nil;
+    if (![_flightProfile count]) return [[SLFlightDataPoint alloc] init];
     if (!_maxValues){
         _maxValues = [_flightProfile firstObject];
         for (SLFlightDataPoint *dp in _flightProfile){

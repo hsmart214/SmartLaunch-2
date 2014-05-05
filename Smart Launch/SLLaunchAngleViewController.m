@@ -72,8 +72,8 @@
 
 
 //Filtering constants
-#define UPDATE_INTERVAL 0.1
-#define FILTER_CONSTANT 0.05 //smaller number gives smoother, slower response
+#define UPDATE_INTERVAL 0.2
+#define FILTER_CONSTANT 0.03 //smaller number gives smoother, slower response
 
 - (void)setAccelerometerData:(CMAccelerometerData *)accelerometerData{
     CMAcceleration accel = accelerometerData.acceleration;

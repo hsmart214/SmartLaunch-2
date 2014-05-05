@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="mi5-oc-GQ5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="mi5-oc-GQ5">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Table View Controller - Smart Launch HD-->
@@ -1013,6 +1013,54 @@
             </objects>
             <point key="canvasLocation" x="1063" y="-190"/>
         </scene>
+        <!--View Controller - Flight Profile-->
+        <scene sceneID="F5h-3P-al1">
+            <objects>
+                <viewController id="uol-yg-dxP" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TTe-1M-YVZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="bQW-Yz-u9d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7QW-9r-Rn7">
+                        <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Jci-g8-aAO">
+                                <rect key="frame" x="169" y="720" width="365" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Thrust"/>
+                                    <segment title="Speed"/>
+                                    <segment title="Accel"/>
+                                    <segment title="Altitude"/>
+                                    <segment title="Mach"/>
+                                    <segment title="Drag"/>
+                                </segments>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EkS-hg-2TV" customClass="SLCurveGraphView">
+                                <rect key="frame" x="20" y="72" width="663" height="640"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="EkS-hg-2TV" secondAttribute="centerX" id="5q6-Ti-vls"/>
+                            <constraint firstAttribute="trailing" secondItem="EkS-hg-2TV" secondAttribute="trailing" constant="20" symbolic="YES" id="ACv-bO-pdZ"/>
+                            <constraint firstItem="Jci-g8-aAO" firstAttribute="top" secondItem="EkS-hg-2TV" secondAttribute="bottom" constant="8" symbolic="YES" id="bUd-ch-vEh"/>
+                            <constraint firstItem="EkS-hg-2TV" firstAttribute="leading" secondItem="7QW-9r-Rn7" secondAttribute="leading" constant="20" symbolic="YES" id="hIt-lV-ox5"/>
+                            <constraint firstItem="bQW-Yz-u9d" firstAttribute="top" secondItem="Jci-g8-aAO" secondAttribute="bottom" constant="20" id="jPS-VU-ohs"/>
+                            <constraint firstAttribute="centerX" secondItem="Jci-g8-aAO" secondAttribute="centerX" id="lkb-6s-xep"/>
+                            <constraint firstItem="EkS-hg-2TV" firstAttribute="top" secondItem="TTe-1M-YVZ" secondAttribute="bottom" constant="20" symbolic="YES" id="miq-Iv-nw1"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Flight Profile" id="bqG-jp-abW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nzh-Sg-wVB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-656" y="920"/>
+        </scene>
         <!--Launch Angle View Controller-->
         <scene sceneID="sqW-jG-jTR">
             <objects>
@@ -1171,11 +1219,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ByD-Ri-JhW" customClass="SLAnimatedRocketView">
-                                <rect key="frame" x="20" y="101" width="355" height="375"/>
+                                <rect key="frame" x="20" y="61" width="355" height="415"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="375" id="wtb-XJ-HnN"/>
+                                    <constraint firstAttribute="height" constant="415" id="2WQ-8T-PUd"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Nhf-IW-OeT" appends="YES" id="V3E-TW-vru"/>
@@ -1405,9 +1453,9 @@
                             <constraint firstItem="LAX-NJ-Zo1" firstAttribute="centerX" secondItem="5WD-fu-xOt" secondAttribute="centerX" id="knk-Qu-Mhi"/>
                             <constraint firstItem="7kB-BN-TqQ" firstAttribute="top" secondItem="FuF-Oa-iHz" secondAttribute="bottom" constant="8" symbolic="YES" id="krY-1O-ftV"/>
                             <constraint firstItem="mQB-MN-Hj7" firstAttribute="top" secondItem="2Lu-5S-eWh" secondAttribute="bottom" constant="8" symbolic="YES" id="kw3-ek-nqI"/>
-                            <constraint firstItem="ByD-Ri-JhW" firstAttribute="top" secondItem="mSh-aG-hfR" secondAttribute="bottom" constant="8" symbolic="YES" id="mJY-uf-Wv2"/>
                             <constraint firstItem="Bil-Aj-rQ6" firstAttribute="leading" secondItem="dph-TO-knY" secondAttribute="trailing" constant="8" symbolic="YES" id="mYA-QJ-0DT"/>
                             <constraint firstItem="7kB-BN-TqQ" firstAttribute="baseline" secondItem="rLC-91-4a6" secondAttribute="baseline" id="n1N-1k-Vf7"/>
+                            <constraint firstItem="dph-TO-knY" firstAttribute="top" secondItem="ByD-Ri-JhW" secondAttribute="bottom" constant="10" id="oFz-ip-6u1"/>
                             <constraint firstItem="Kby-Ls-vyx" firstAttribute="leading" secondItem="ByD-Ri-JhW" secondAttribute="trailing" constant="8" symbolic="YES" id="oml-oc-fxx"/>
                             <constraint firstItem="7xn-4E-9YY" firstAttribute="leading" secondItem="Tkh-mW-LMf" secondAttribute="leading" constant="221" id="pgb-ho-JOf"/>
                             <constraint firstItem="0sr-fV-3bF" firstAttribute="top" secondItem="Qat-Gj-YCi" secondAttribute="bottom" constant="43" id="pnf-hS-t9t"/>
@@ -1446,6 +1494,7 @@
                         <outlet property="windVelocityLabel" destination="cdg-He-bg0" id="GFs-TT-eXm"/>
                         <outlet property="windVelocityStepper" destination="Qm4-SJ-8Ld" id="kb3-R2-HKN"/>
                         <outlet property="windVelocityUnitsLabel" destination="zZC-Xt-PgI" id="Sfc-9F-E5c"/>
+                        <segue destination="uol-yg-dxP" kind="push" identifier="zoomOutSegue" id="rID-AS-4Bt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oxx-rd-BwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1748,6 +1797,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Save Flight Data" id="ETk-OU-QK3"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="500"/>
                     <connections>
                         <outlet property="actualAltitudeField" destination="yCc-kf-xw7" id="sqV-px-2Y7"/>
                         <outlet property="altUnitsLabel" destination="sZI-WT-sMl" id="YWc-R6-17G"/>
@@ -2602,6 +2652,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Motor Configuration" id="Fqy-25-peg"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="465"/>
                     <connections>
                         <outlet property="centralLabel" destination="w8W-j5-OwI" id="Nf7-ls-6af"/>
                         <outlet property="centralStepper" destination="NzQ-mz-gYr" id="sLl-Pr-HJF"/>
@@ -2654,6 +2705,7 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="240"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QuF-gW-BhI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

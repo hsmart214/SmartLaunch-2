@@ -93,7 +93,7 @@
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     if (abs(howRecent) < 15.0)
     {
-        float altGPSforDisplay = [SLUnitsConvertor displayUnitsOf:newLocation.altitude forKey:ALT_MSL_KEY];
+        float altGPSforDisplay = [SLUnitsConvertor displayUnitsOf:newLocation.altitude forKey:ALT_UNIT_KEY];
         self.siteAltitudeLabel.text = [NSString stringWithFormat:@"%1.0f",altGPSforDisplay];
         self.siteAltitudeStepper.value = altGPSforDisplay;
         [self.locationManager stopUpdatingLocation];

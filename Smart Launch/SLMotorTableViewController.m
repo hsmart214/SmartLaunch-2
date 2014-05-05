@@ -26,7 +26,7 @@
 
 #pragma mark - Table view data source
 
--(CGFloat)tableView:(UITableView *)tableView{
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return [SLCustomUI headerHeight];
 }
 
