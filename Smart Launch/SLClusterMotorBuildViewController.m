@@ -52,7 +52,7 @@
 
 -(void)setMotorLoadoutPlist:(NSArray *)motorLoadoutPlist{
     _motorLoadoutPlist = motorLoadoutPlist;
-    int diff = [self.motorConfiguration count] - [motorLoadoutPlist count];
+    NSInteger diff = [self.motorConfiguration count] - [motorLoadoutPlist count];
     if (diff > 0){
         NSMutableArray *arr = [motorLoadoutPlist mutableCopy];
         for (int i = 0; i < diff; i++){
@@ -151,8 +151,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SLClusterMotorMemberCell *cell = [tableView dequeueReusableCellWithIdentifier:@"clusterMemberCell"];
-    cell.motorMountSizeLabel.text = [NSString stringWithFormat:@"%dmm", [self.motorConfiguration[indexPath.row][MOTOR_DIAM_KEY] integerValue]];
-    cell.motorCountTextLabel.text = [NSString stringWithFormat:@"x %d", [self.motorConfiguration[indexPath.row][MOTOR_COUNT_KEY] integerValue]];
+    cell.motorMountSizeLabel.text = [NSString stringWithFormat:@"%ldmm", (long)[self.motorConfiguration[indexPath.row][MOTOR_DIAM_KEY] integerValue]];
+    cell.motorCountTextLabel.text = [NSString stringWithFormat:@"x %ld", (long)[self.motorConfiguration[indexPath.row][MOTOR_COUNT_KEY] integerValue]];
     cell.delegate = self;
 
     // need to check for the existence of motors in the loadout

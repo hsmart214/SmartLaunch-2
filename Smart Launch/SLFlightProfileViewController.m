@@ -62,7 +62,7 @@
     }
 }
 
--(float)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
+-(CGFloat)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
     if ([self.graphTypeSegmentedControl selectedSegmentIndex] == SLFlightProfileGraphTypeAcceleration){
         return [SLUnitsConvertor displayUnitsOf:[self.dataSource maxDeceleration] forKey:ACCEL_UNIT_KEY];
     }else{
@@ -70,11 +70,11 @@
     }
 }
 
--(float)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
+-(CGFloat)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
     return [self.dataSource totalTime];
 }
 
--(float)curveGraphView:(SLCurveGraphView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
+-(CGFloat)curveGraphView:(SLCurveGraphView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
     SLFlightDataPoint *dataPoint = [self.dataSource dataAtTime:timeIndex];
     switch ((SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
         case SLFlightProfileGraphTypeVelocity:

@@ -93,7 +93,7 @@ float burrnoutTime, burrnoutMass;
     RocketMotor *thisMotor = [motor copy];
     thisMotor.startDelay = delay;
     NSArray *group = self.internalMotorsByGroup[index];
-    int count = [group count];
+    NSInteger count = [group count];
     NSMutableArray *build = [[NSMutableArray alloc] init];
     for (int i = 0; i < count; i++){
         [build addObject:thisMotor];
@@ -106,7 +106,7 @@ float burrnoutTime, burrnoutMass;
     [self.internalMotorsByGroup removeAllObjects];
     for (NSDictionary *groupDict in motorLoadOut) {
         if ([groupDict count]){
-            int count = [groupDict[MOTOR_COUNT_KEY] integerValue];
+            NSInteger count = [groupDict[MOTOR_COUNT_KEY] integerValue];
             NSMutableArray *build = [[NSMutableArray alloc] init];
             for (int i = 0; i < count; i++){
                 NSDictionary *motorDict = groupDict[MOTOR_PLIST_KEY];
@@ -281,7 +281,7 @@ float burrnoutTime, burrnoutMass;
 -(NSString *)motorDescription{
     if (![self.internalMotors count]) return NSLocalizedString(@"No Motor Selected", @"No motor selected");
     if ([self.internalMotors count] == 1) return [self.internalMotors[0] name];
-    return [NSString stringWithFormat:@"%d %@", [self.internalMotors count], NSLocalizedString(@"motor cluster", @"Like '5 motor cluster'")];
+    return [NSString stringWithFormat:@"%lu %@", (unsigned long)[self.internalMotors count], NSLocalizedString(@"motor cluster", @"Like '5 motor cluster'")];
 }
 
 -(NSString *)motorManufacturer{

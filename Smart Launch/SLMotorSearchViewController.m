@@ -344,7 +344,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
         // this is the one that *does* change the settings to accomodate the current MMT size
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSMutableDictionary *motorPrefs = [self.motorKeyPrefs mutableCopy];
-        NSString *motorMM = [NSString stringWithFormat:@"%dmm", [self.dataSource motorSizeRequested]];
+        NSString *motorMM = [NSString stringWithFormat:@"%lumm", (unsigned long)[self.dataSource motorSizeRequested]];
         motorPrefs[motorMM] = @YES;
         [defaults setObject:motorPrefs forKey:MOTOR_PREFS_KEY];
         [defaults synchronize];
@@ -370,7 +370,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
 }
 
 - (IBAction)motorDiameterRestrictionChanged:(UISegmentedControl *)sender {
-    NSString *currMMT = [NSString stringWithFormat:@"%dmm", [self.dataSource motorSizeRequested]];
+    NSString *currMMT = [NSString stringWithFormat:@"%lumm", (unsigned long)[self.dataSource motorSizeRequested]];
     NSString *prevDiam = @"6mm";
     switch (sender.selectedSegmentIndex) {
         case 0:

@@ -213,7 +213,7 @@
 - (void)updateDisplay{
     self.thrustToWeightLabel.text = [NSString stringWithFormat:@"%1.1f : 1", ([self.rocket peakThrust])/(([self.rocket massAtTime:0.0])*(GRAV_ACCEL))];
     self.rocketCell.textLabel.text = self.rocket.name;
-    self.rocketCell.detailTextLabel.text = [NSString stringWithFormat:@"%dmm", self.rocket.motorSize];
+    self.rocketCell.detailTextLabel.text = [NSString stringWithFormat:@"%lumm", (unsigned long)self.rocket.motorSize];
     self.motorNameLabel.text = [self.rocket motorDescription];
     SLClusterMotor *cMotor = [[SLClusterMotor alloc] initWithMotorLoadout:self.rocket.motorLoadoutPlist];
     self.motorDetailDescriptionLabel.text = [cMotor fractionalImpulseClass];

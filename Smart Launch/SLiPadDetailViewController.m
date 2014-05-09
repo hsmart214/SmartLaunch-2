@@ -189,7 +189,7 @@
 
 #pragma mark - SLCurveGraphViewDataSource methods
 
--(float)curveGraphViewDataValueRange:(SLCurveGraphView *)sender{
+-(CGFloat)curveGraphViewDataValueRange:(SLCurveGraphView *)sender{
     if (sender == self.flightProfileView){
         switch ((SLFlightProfileGraphType)[self.graphTypeSegmentedControl selectedSegmentIndex]) {
             case SLFlightProfileGraphTypeVelocity:
@@ -208,7 +208,7 @@
     }
 }
 
--(float)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
+-(CGFloat)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
     // always zero unless we are looking at the acceleration curve
     if (sender == self.thrustCurveView) return 0.0;
     if ([self.graphTypeSegmentedControl selectedSegmentIndex] == SLFlightProfileGraphTypeAcceleration){
@@ -218,7 +218,7 @@
     }
 }
 
--(float)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
+-(CGFloat)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
     if (![self.dataSource hasValidData]) return 0.0;
     if (sender == self.flightProfileView){
         return [self.dataSource totalTime];
@@ -227,7 +227,7 @@
     }
 }
 
--(float)curveGraphView:(SLCurveGraphView *)sender dataValueForTimeIndex:(CGFloat)timeIndex{
+-(CGFloat)curveGraphView:(SLCurveGraphView *)sender dataValueForTimeIndex:(CGFloat)timeIndex{
     if (![self.dataSource hasValidData]) return 0.0;
     if (sender != self.flightProfileView){
         return [SLUnitsConvertor displayUnitsOf:[self.model.rocket thrustAtTime:timeIndex] forKey:THRUST_UNIT_KEY];

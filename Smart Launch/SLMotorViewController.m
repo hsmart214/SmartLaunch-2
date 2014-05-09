@@ -16,19 +16,19 @@
 
 #pragma mark SLMotorThrustCurveDataSource protocol methods
 
-- (float)curveGraphViewDataValueRange: (SLCurveGraphView *)sender{
+- (CGFloat)curveGraphViewDataValueRange: (SLCurveGraphView *)sender{
     return self.motor.peakThrust;
 }
 
--(float)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
+-(CGFloat)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
     return 0.0;
 }
 
-- (float)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
+- (CGFloat)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
     return [[self.motor.times lastObject] floatValue];
 }
 
-- (float)curveGraphView:(SLCurveGraphView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
+- (CGFloat)curveGraphView:(SLCurveGraphView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
     return [self.motor thrustAtTime:timeIndex];
 }
 
@@ -61,7 +61,7 @@
         [self.view insertSubview:backgroundView atIndex:0];
     }
     self.motorManufacturer.text = self.motor.manufacturer;
-    self.motorDiameter.text = [NSString stringWithFormat:@"%d", self.motor.diameter];
+    self.motorDiameter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.motor.diameter];
     self.motorMass.text = [@(self.motor.loadedMass) description];
     self.propellantMass.text = [@(self.motor.propellantMass) description];
     self.motorLength.text = [@(self.motor.length) description];

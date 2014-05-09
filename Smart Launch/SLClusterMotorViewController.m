@@ -19,19 +19,19 @@
 
 #pragma mark SLMotorThrustCurveDataSource protocol methods
 
-- (float)curveGraphViewDataValueRange: (SLCurveGraphView *)sender{
+- (CGFloat)curveGraphViewDataValueRange: (SLCurveGraphView *)sender{
     return self.clusterMotor.truePeakThrust;
 }
 
--(float)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
+-(CGFloat)curveGraphViewDataValueMinimumValue:(SLCurveGraphView *)sender{
     return 0.0;
 }
 
-- (float)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
+- (CGFloat)curveGraphViewTimeValueRange:(SLCurveGraphView *)sender{
     return self.clusterMotor.totalBurnLength;
 }
 
-- (float)curveGraphView:(SLCurveGraphView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
+- (CGFloat)curveGraphView:(SLCurveGraphView *)thrustCurveView dataValueForTimeIndex:(CGFloat)timeIndex{
     return [self.clusterMotor thrustAtTime:timeIndex];
 }
 
@@ -43,7 +43,7 @@
 -(void)listMotors{
     NSString *list = @"";
     for (NSDictionary *motorDict in self.motorLoadoutPlist) {
-        list = [list stringByAppendingString:[NSString stringWithFormat:@"%@ x%d\n", motorDict[MOTOR_PLIST_KEY][NAME_KEY], [motorDict[MOTOR_COUNT_KEY]integerValue]]];
+        list = [list stringByAppendingString:[NSString stringWithFormat:@"%@ x%ld\n", motorDict[MOTOR_PLIST_KEY][NAME_KEY], (long)[motorDict[MOTOR_COUNT_KEY]integerValue]]];
     }
     [self.motorListTextView setText:list];
 }

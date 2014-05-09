@@ -152,7 +152,7 @@
 }
 
 -(NSUInteger)indexOfMotorSize:(NSUInteger)size{
-    NSString *sizeStr = [NSString stringWithFormat:@"%dmm", size];
+    NSString *sizeStr = [NSString stringWithFormat:@"%lumm", (unsigned long)size];
     NSArray *diams = [RocketMotor motorDiameters];
     for (int i = 0; i < [diams count]; i++){
         if ([diams[i] isEqualToString:sizeStr]) return i;
@@ -184,27 +184,27 @@
 -(void)setUpControls{
     if ([self.workingConfiguration count]) {
         NSDictionary *configDict = self.workingConfiguration[0];
-        self.centralLabel.text = [NSString stringWithFormat:@"%dmm", [configDict[MOTOR_DIAM_KEY] integerValue]];
+        self.centralLabel.text = [NSString stringWithFormat:@"%ldmm", (long)[configDict[MOTOR_DIAM_KEY] integerValue]];
         [self.centralStepper setValue:[configDict[MOTOR_COUNT_KEY] integerValue]];
         if ([self.workingConfiguration count] > 1) {
             configDict = self.workingConfiguration[1];
             NSUInteger motorCount = [configDict[MOTOR_COUNT_KEY] integerValue];
             [self.firstGroupCount setSelectedSegmentIndex:motorCount - 1];
-            self.firstGroupSizeLabel.text = [NSString stringWithFormat:@"%dmm", [configDict[MOTOR_DIAM_KEY] integerValue]];
+            self.firstGroupSizeLabel.text = [NSString stringWithFormat:@"%ldmm", (long)[configDict[MOTOR_DIAM_KEY] integerValue]];
             [self.firstGroupStepper setValue:motorCount];
         }
         if ([self.workingConfiguration count] > 2) {
             configDict = self.workingConfiguration[2];
             NSUInteger motorCount = [configDict[MOTOR_COUNT_KEY] integerValue];
             [self.secondGroupCount setSelectedSegmentIndex:motorCount - 1];
-            self.secondGroupSizeLabel.text = [NSString stringWithFormat:@"%d mm", [configDict[MOTOR_DIAM_KEY] integerValue]];
+            self.secondGroupSizeLabel.text = [NSString stringWithFormat:@"%ld mm", (long)[configDict[MOTOR_DIAM_KEY] integerValue]];
             [self.secondGroupStepper setValue:motorCount];
         }
         if ([self.workingConfiguration count] > 3) {
             configDict = self.workingConfiguration[3];
             NSUInteger motorCount = [configDict[MOTOR_COUNT_KEY] integerValue];
             [self.thirdGroupCount setSelectedSegmentIndex:motorCount - 1];
-            self.thirdGroupSizeLabel.text = [NSString stringWithFormat:@"%dmm", [configDict[MOTOR_DIAM_KEY] integerValue]];
+            self.thirdGroupSizeLabel.text = [NSString stringWithFormat:@"%ldmm", (long)[configDict[MOTOR_DIAM_KEY] integerValue]];
             [self.thridGroupStepper setValue:motorCount];
         }
     }
@@ -216,7 +216,7 @@
     if ([motorConfig count]){
         NSDictionary *group = motorConfig[0];
         if ([group[MOTOR_COUNT_KEY] integerValue] == 1){
-            NSString* diamStr =[NSString stringWithFormat:@"%dmm", [group[MOTOR_DIAM_KEY] integerValue]];
+            NSString* diamStr =[NSString stringWithFormat:@"%ldmm", (long)[group[MOTOR_DIAM_KEY] integerValue]];
             self.centralLabel.text = diamStr;
             NSUInteger index = [self indexOfMotorSize:[group[MOTOR_DIAM_KEY] integerValue]];
             [self.centralStepper setValue:(double)index + 1];
@@ -225,7 +225,7 @@
             [self.centralStepper setValue:0.0];
             // set up the first group
             self.firstGroupCount.selectedSegmentIndex = [group[MOTOR_COUNT_KEY] integerValue] - 1;
-            self.firstGroupSizeLabel.text = [NSString stringWithFormat:@"%dmm", [group[MOTOR_DIAM_KEY] integerValue]];
+            self.firstGroupSizeLabel.text = [NSString stringWithFormat:@"%ldmm", (long)[group[MOTOR_DIAM_KEY] integerValue]];
             NSUInteger index = [self indexOfMotorSize:[group[MOTOR_DIAM_KEY] integerValue]];
             [self.firstGroupStepper setValue:(double)index + 1];
         }
@@ -236,13 +236,13 @@
             //the first entry was a CENTRAL motor - this is the most common
             // set up the first group
             self.firstGroupCount.selectedSegmentIndex = [group[MOTOR_COUNT_KEY] integerValue] - 1;
-            self.firstGroupSizeLabel.text = [NSString stringWithFormat:@"%dmm", [group[MOTOR_DIAM_KEY] integerValue]];
+            self.firstGroupSizeLabel.text = [NSString stringWithFormat:@"%ldmm", (long)[group[MOTOR_DIAM_KEY] integerValue]];
             NSUInteger index = [self indexOfMotorSize:[group[MOTOR_DIAM_KEY] integerValue]];
             [self.firstGroupStepper setValue:(double)index + 1];
         }else{ // the first entry was the first GROUP
                // set up the second group
             self.secondGroupCount.selectedSegmentIndex = [group[MOTOR_COUNT_KEY] integerValue] - 1;
-            self.secondGroupSizeLabel.text = [NSString stringWithFormat:@"%dmm", [group[MOTOR_DIAM_KEY] integerValue]];
+            self.secondGroupSizeLabel.text = [NSString stringWithFormat:@"%ldmm", (long)[group[MOTOR_DIAM_KEY] integerValue]];
             NSUInteger index = [self indexOfMotorSize:[group[MOTOR_DIAM_KEY] integerValue]];
             [self.secondGroupStepper setValue:(double)index + 1];
         }
@@ -253,13 +253,13 @@
             //the first entry was a CENTRAL motor - this is the most common
             // set up the second group
             self.secondGroupCount.selectedSegmentIndex = [group[MOTOR_COUNT_KEY] integerValue] - 1;
-            self.secondGroupSizeLabel.text = [NSString stringWithFormat:@"%dmm", [group[MOTOR_DIAM_KEY] integerValue]];
+            self.secondGroupSizeLabel.text = [NSString stringWithFormat:@"%ldmm", (long)[group[MOTOR_DIAM_KEY] integerValue]];
             NSUInteger index = [self indexOfMotorSize:[group[MOTOR_DIAM_KEY] integerValue]];
             [self.secondGroupStepper setValue:(double)index + 1];
         }else{ // the first entry was the first GROUP
                // set up the third group
             self.thirdGroupCount.selectedSegmentIndex = [group[MOTOR_COUNT_KEY] integerValue] - 1;
-            self.thirdGroupSizeLabel.text = [NSString stringWithFormat:@"%dmm", [group[MOTOR_DIAM_KEY] integerValue]];
+            self.thirdGroupSizeLabel.text = [NSString stringWithFormat:@"%ldmm", (long)[group[MOTOR_DIAM_KEY] integerValue]];
             NSUInteger index = [self indexOfMotorSize:[group[MOTOR_DIAM_KEY] integerValue]];
             [self.thridGroupStepper setValue:(double)index + 1];
         }
@@ -268,7 +268,7 @@
         // this means all 4 groups have been used - this must be the last group
         NSDictionary *group = motorConfig[3];
         self.thirdGroupCount.selectedSegmentIndex = [group[MOTOR_COUNT_KEY] integerValue] - 1;
-        self.thirdGroupSizeLabel.text = [NSString stringWithFormat:@"%dmm", [group[MOTOR_DIAM_KEY] integerValue]];
+        self.thirdGroupSizeLabel.text = [NSString stringWithFormat:@"%ldmm", (long)[group[MOTOR_DIAM_KEY] integerValue]];
         NSUInteger index = [self indexOfMotorSize:[group[MOTOR_DIAM_KEY] integerValue]];
         [self.thridGroupStepper setValue:(double)index + 1];
     }

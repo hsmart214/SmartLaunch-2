@@ -26,7 +26,7 @@
         NSBundle *bundle = [NSBundle mainBundle];
         NSURL *url =[bundle URLForResource:KIT_PLIST_FILENAME withExtension:@"plist"];
         NSMutableArray *mutableKits = [[NSArray arrayWithContentsOfFile: [url path]] mutableCopy];
-        int total = [mutableKits count];
+        NSInteger total = [mutableKits count];
         for (int i = 0; i < total; i++){
             NSMutableDictionary *dict = [mutableKits[i] mutableCopy];
             NSArray *arr = dict[MANUFACTURED_KITS_KEY];
@@ -93,7 +93,7 @@
     // Configure the cell...
     cell.nameLabel.text = kitDict[ROCKET_KITNAME_KEY];
     cell.diameterLabel.text = [NSString stringWithFormat:@"%1.1f inch",[kitDict[ROCKET_DIAM_KEY] floatValue] * 12 * FEET_PER_METER];
-    cell.motorSizeLabel.text = [NSString stringWithFormat:@"%d mm", [kitDict[ROCKET_MOTORSIZE_KEY] integerValue]];
+    cell.motorSizeLabel.text = [NSString stringWithFormat:@"%ld mm", (long)[kitDict[ROCKET_MOTORSIZE_KEY] integerValue]];
     float mass = [SLUnitsConvertor displayUnitsOf:[kitDict[ROCKET_MASS_KEY] floatValue] forKey:MASS_UNIT_KEY];
     cell.massLabel.text = [NSString stringWithFormat:@"%1.1f %@", mass, [SLUnitsConvertor displayStringForKey:MASS_UNIT_KEY]];
     return cell;

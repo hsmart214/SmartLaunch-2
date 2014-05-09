@@ -148,7 +148,7 @@
         NSDictionary *dict = self.motorLoadout[0];
         NSUInteger count = [dict[MOTOR_COUNT_KEY] integerValue];
         NSDictionary *motorDict = dict[MOTOR_PLIST_KEY];
-        disp = [NSString stringWithFormat:@"%d %@", count, motorDict[NAME_KEY]];
+        disp = [NSString stringWithFormat:@"%lu %@", (unsigned long)count, motorDict[NAME_KEY]];
         if (count > 1) disp = [disp stringByAppendingString:@"'s"];
     }
     if ([self.motorLoadout count] > 1){
@@ -156,7 +156,7 @@
             NSDictionary *dict = self.motorLoadout[i];
             NSUInteger count = [dict[MOTOR_COUNT_KEY] integerValue];
             NSDictionary *motorDict = dict[MOTOR_PLIST_KEY];
-            disp = [disp stringByAppendingString:[NSString stringWithFormat:@", %d %@'s", count, motorDict[NAME_KEY]]];
+            disp = [disp stringByAppendingString:[NSString stringWithFormat:@", %lu %@'s", (unsigned long)count, motorDict[NAME_KEY]]];
         }
     }
     return disp;
@@ -168,10 +168,10 @@
     for (NSDictionary *dict in self.motorLoadout) {
         NSDictionary *motorDict = dict[MOTOR_PLIST_KEY];
         if (!descr){
-            descr = [NSString stringWithFormat:@"%d %@", [dict[MOTOR_COUNT_KEY] integerValue], motorDict[NAME_KEY]];
+            descr = [NSString stringWithFormat:@"%ld %@", (long)[dict[MOTOR_COUNT_KEY] integerValue], motorDict[NAME_KEY]];
             if ([dict[MOTOR_COUNT_KEY] integerValue] > 1) descr = [descr stringByAppendingString:@"'s"];
         }else{
-            descr = [descr stringByAppendingString:[NSString stringWithFormat:@", %d %@'s", [dict[MOTOR_COUNT_KEY] integerValue], motorDict[NAME_KEY]]];
+            descr = [descr stringByAppendingString:[NSString stringWithFormat:@", %ld %@'s", (long)[dict[MOTOR_COUNT_KEY] integerValue], motorDict[NAME_KEY]]];
         }
     }
     return descr;
