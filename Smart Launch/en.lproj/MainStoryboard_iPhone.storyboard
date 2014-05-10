@@ -2134,7 +2134,14 @@ Estes E9 x2</string>
                     <navigationItem key="navigationItem" title="Thrust Curve" id="YbK-16-X4C"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="initialThrust" destination="ReR-3H-zcP" id="giz-PY-ECt"/>
+                        <outlet property="motorDiameter" destination="Y5i-ei-sqn" id="rwt-Tz-kbl"/>
+                        <outlet property="motorLength" destination="RZS-TV-aXd" id="YQX-WK-v52"/>
+                        <outlet property="motorManufacturer" destination="3zS-ay-gGn" id="1x4-vc-aDl"/>
+                        <outlet property="motorMass" destination="iRb-DA-69x" id="ZNr-aX-yPh"/>
+                        <outlet property="propellantMass" destination="0gI-6Y-hCa" id="Orn-3j-gQT"/>
                         <outlet property="thrustCurve" destination="C5T-h5-ntl" id="2IV-6G-fl6"/>
+                        <outlet property="totalImpulse" destination="UWE-qq-TS4" id="l9l-cU-fwo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWd-aG-ld1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2238,7 +2245,7 @@ Estes E9 x2</string>
                                                     <rect key="frame" x="20" y="16" width="280" height="173"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <mutableString key="text">Smart Launch HD 2.11
+                                                    <string key="text">Smart Launch HD 2.11
 ©2012-2014 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
@@ -2257,7 +2264,7 @@ All company logos are the registered trademarks of the respective motor manufact
 
 Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.
 
-Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C code in the physics model.</mutableString>
+Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C code in the physics model.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
