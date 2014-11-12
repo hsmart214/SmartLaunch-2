@@ -144,7 +144,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"launchAngleSegue"]){
         [[segue destinationViewController] setTitle:NSLocalizedString(@"Launch Angle", @"Launch Angle")];
-        [[segue destinationViewController] setDelegate:self];
+        [[segue destinationViewController] setDelegate:(id)self];
     }
 }
 

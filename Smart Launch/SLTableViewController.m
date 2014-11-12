@@ -340,12 +340,12 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    [segue.destinationViewController setDelegate:self];
+    [segue.destinationViewController setDelegate:(id)self];
     if ([[segue identifier] isEqualToString:@"settingsModalSegue"]){
-        [[(UINavigationController *)segue.destinationViewController viewControllers][0] setDelegate:self];
+        [[(UINavigationController *)segue.destinationViewController viewControllers][0] setDelegate:(id)self];
     }
     if ([[segue identifier] isEqualToString:@"settingsPushSegue"]){
-        [segue.destinationViewController setDelegate:self];
+        [segue.destinationViewController setDelegate:(id)self];
     }
     if ([[segue identifier] isEqualToString:@"motorSelectorSegue"]){
         // this is part of the model for this destination VC, so we can set this
@@ -353,7 +353,7 @@
         [(SLMotorSearchViewController *)segue.destinationViewController setPopBackController:self];
     }
     if ([[segue identifier] isEqualToString:@"AnimationSegue"]){
-        [segue.destinationViewController setDelegate:self];
+        [segue.destinationViewController setDelegate:(id)self];
         [segue.destinationViewController setDataSource:self];
     }
     if ([[segue identifier] isEqualToString:@"saveFlightSegue"]){

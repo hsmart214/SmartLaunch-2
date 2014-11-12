@@ -109,6 +109,7 @@
     if (!_dataSource) return;
     CGFloat tmax = [self.dataSource curveGraphViewTimeValueRange:self];
     CGFloat fmax = [self.dataSource curveGraphViewDataValueRange:self];
+    if (tmax * fmax == 0.0) return;
     CGFloat fmin = [self.dataSource curveGraphViewDataValueMinimumValue:self];
     CGFloat graphWidth = self.bounds.size.width * WIDTH_FRACTION;
     CGFloat margin = (self.bounds.size.width - graphWidth) / 2.0;

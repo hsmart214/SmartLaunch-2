@@ -451,7 +451,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
                                         MOTOR_SEARCH_MATCH_DIAM_KEY: @(self.restrictMotorDiametersSegmentedControl.selectedSegmentIndex)};
         [defaults setObject:lastMotorSearch forKey:LAST_MOTOR_SEARCH_KEY];
         [defaults synchronize];
-        [[segue destinationViewController]setDelegate:self.delegate];
+        [[segue destinationViewController]setDelegate:(id)self.delegate];
         NSMutableArray *searchResult = [[NSMutableArray alloc] init];
         switch (self.search1Control.selectedSegmentIndex) {
             case 0:  // Motor manufacturer selected

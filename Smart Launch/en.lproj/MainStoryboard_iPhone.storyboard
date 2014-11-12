@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3DS-gC-v50">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3DS-gC-v50">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller - Smart Launch-->
+        <!--Smart Launch-->
         <scene sceneID="cS5-hs-Mkr">
             <objects>
                 <tableViewController id="GvN-5i-deZ" customClass="SLTableViewController" sceneMemberID="viewController">
@@ -399,7 +399,7 @@
             </objects>
             <point key="canvasLocation" x="483" y="67"/>
         </scene>
-        <!--Cluster Table View Controller - Saved Clusters-->
+        <!--Saved Clusters-->
         <scene sceneID="sKJ-kX-kbX">
             <objects>
                 <tableViewController id="tVc-AY-bfJ" customClass="SLClusterTableViewController" sceneMemberID="viewController">
@@ -447,7 +447,7 @@
             </objects>
             <point key="canvasLocation" x="2313" y="984"/>
         </scene>
-        <!--Cluster Motor Build View Controller - Build Cluster-->
+        <!--Build Cluster-->
         <scene sceneID="EVU-KP-7E0">
             <objects>
                 <tableViewController id="WCr-oj-TZS" customClass="SLClusterMotorBuildViewController" sceneMemberID="viewController">
@@ -496,7 +496,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="0.10000000000000001" id="aJO-Aw-44z">
-                                            <rect key="frame" x="20" y="52" width="94" height="23"/>
+                                            <rect key="frame" x="20" y="52.5" width="94" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <connections>
                                                 <action selector="delayTimeChanged:" destination="byP-px-iUJ" eventType="valueChanged" id="Aj2-8i-cOD"/>
@@ -662,7 +662,7 @@
             </objects>
             <point key="canvasLocation" x="2318" y="-1317"/>
         </scene>
-        <!--Rocket PropertiesTVC - New Rocket-->
+        <!--New Rocket-->
         <scene sceneID="tBl-0D-U09">
             <objects>
                 <tableViewController id="zQV-Vm-7Uj" customClass="SLRocketPropertiesTVC" sceneMemberID="viewController">
@@ -1049,7 +1049,7 @@
             </objects>
             <point key="canvasLocation" x="2769" y="-1317"/>
         </scene>
-        <!--Motor ConfigurationTVC - Motor Configuration-->
+        <!--Motor Configuration-->
         <scene sceneID="cOG-kn-ges">
             <objects>
                 <tableViewController id="3N5-Wf-79E" customClass="SLMotorConfigurationTVC" sceneMemberID="viewController">
@@ -1297,7 +1297,7 @@
             </objects>
             <point key="canvasLocation" x="3707" y="-1317"/>
         </scene>
-        <!--Saved FlightsTVC - Saved Flights-->
+        <!--Saved Flights-->
         <scene sceneID="uht-L5-kLV">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="wrN-Yn-4Fh" customClass="SLSavedFlightsTVC" sceneMemberID="viewController">
@@ -1388,7 +1388,7 @@
             </objects>
             <point key="canvasLocation" x="2318" y="-626"/>
         </scene>
-        <!--Cluster Motor View Controller - Cluster Thrust Curve-->
+        <!--Cluster Thrust Curve-->
         <scene sceneID="vIQ-VD-86p">
             <objects>
                 <viewController id="PFe-ea-rSw" customClass="SLClusterMotorViewController" sceneMemberID="viewController">
@@ -1523,7 +1523,7 @@ Estes E9 x2</string>
             </objects>
             <point key="canvasLocation" x="2769" y="-626"/>
         </scene>
-        <!--Save Flight DataTVC - Save Flight Data-->
+        <!--Save Flight Data-->
         <scene sceneID="ZV6-bX-8fs">
             <objects>
                 <tableViewController id="uCi-7J-K7Z" customClass="SLSaveFlightDataTVC" sceneMemberID="viewController">
@@ -1790,7 +1790,7 @@ Estes E9 x2</string>
             </objects>
             <point key="canvasLocation" x="1396" y="-1317"/>
         </scene>
-        <!--Rockets Table View Controller - Rockets-->
+        <!--Rockets-->
         <scene sceneID="uk1-7V-zG1">
             <objects>
                 <tableViewController id="38o-7C-IHk" customClass="SLRocketsTableViewController" sceneMemberID="viewController">
@@ -1844,7 +1844,7 @@ Estes E9 x2</string>
             </objects>
             <point key="canvasLocation" x="1396" y="-626"/>
         </scene>
-        <!--Motor Search View Controller - Motor Search-->
+        <!--Motor Search-->
         <scene sceneID="BPS-Rb-uad">
             <objects>
                 <viewController id="WFU-0M-lp7" customClass="SLMotorSearchViewController" sceneMemberID="viewController">
@@ -1945,7 +1945,7 @@ Estes E9 x2</string>
             </objects>
             <point key="canvasLocation" x="1866" y="155"/>
         </scene>
-        <!--Motor Table View Controller - Motors-->
+        <!--Motors-->
         <scene sceneID="Bci-D3-DC7">
             <objects>
                 <tableViewController id="EdF-aV-KbJ" customClass="SLMotorTableViewController" sceneMemberID="viewController">
@@ -1994,7 +1994,7 @@ Estes E9 x2</string>
             </objects>
             <point key="canvasLocation" x="2318" y="155"/>
         </scene>
-        <!--Motor View Controller - Thrust Curve-->
+        <!--Thrust Curve-->
         <scene sceneID="Vad-NZ-BLT">
             <objects>
                 <viewController id="T1D-DK-4uP" customClass="SLMotorViewController" sceneMemberID="viewController">
@@ -2148,7 +2148,7 @@ Estes E9 x2</string>
             </objects>
             <point key="canvasLocation" x="2769" y="155"/>
         </scene>
-        <!--Launch Angle View Controller - Launch Angle-->
+        <!--Launch Angle-->
         <scene sceneID="Qyz-zD-QVz">
             <objects>
                 <viewController id="iOW-FR-FZW" customClass="SLLaunchAngleViewController" sceneMemberID="viewController">
@@ -2222,7 +2222,7 @@ Estes E9 x2</string>
             </objects>
             <point key="canvasLocation" x="1867" y="1942"/>
         </scene>
-        <!--InformationTVC - Launch Smart-->
+        <!--Launch Smart-->
         <scene sceneID="fRc-Mg-dkV">
             <objects>
                 <tableViewController id="hPd-e5-ij0" customClass="SLInformationTVC" sceneMemberID="viewController">
@@ -2245,7 +2245,7 @@ Estes E9 x2</string>
                                                     <rect key="frame" x="20" y="16" width="280" height="173"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <mutableString key="text">Smart Launch HD 2.12
+                                                    <string key="text">Smart Launch HD 2.12
 ©2012-2014 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
@@ -2264,7 +2264,7 @@ All company logos are the registered trademarks of the respective motor manufact
 
 Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.
 
-Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C code in the physics model.</mutableString>
+Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C code in the physics model.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -2363,7 +2363,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
             </objects>
             <point key="canvasLocation" x="1409" y="2591"/>
         </scene>
-        <!--UnitsTVC - Unit Preferences-->
+        <!--Unit Preferences-->
         <scene sceneID="uMR-4z-ReG">
             <objects>
                 <tableViewController id="Biw-b4-lIz" customClass="SLUnitsTVC" sceneMemberID="viewController">
@@ -2652,7 +2652,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
             </objects>
             <point key="canvasLocation" x="938" y="2591"/>
         </scene>
-        <!--Flight Profile View Controller - Flight Profile-->
+        <!--Flight Profile-->
         <scene sceneID="KlJ-hn-SLi">
             <objects>
                 <viewController storyboardIdentifier="FlightProfileVC" title="Flight Profile" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uXJ-y6-YPH" customClass="SLFlightProfileViewController" sceneMemberID="viewController">
@@ -2792,7 +2792,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
             </objects>
             <point key="canvasLocation" x="938" y="3237"/>
         </scene>
-        <!--Motor PrefsTVC - Motor Preferences-->
+        <!--Motor Preferences-->
         <scene sceneID="RSD-3e-Pzg">
             <objects>
                 <tableViewController id="fnV-kq-I4I" customClass="SLMotorPrefsTVC" sceneMemberID="viewController">
@@ -2852,7 +2852,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
             </objects>
             <point key="canvasLocation" x="2318" y="3237"/>
         </scene>
-        <!--Animated View Controller - Vector View-->
+        <!--Vector View-->
         <scene sceneID="f23-qs-sTr">
             <objects>
                 <viewController id="GPD-1m-Ls0" customClass="SLAnimatedViewController" sceneMemberID="viewController">
@@ -3031,7 +3031,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
             </objects>
             <point key="canvasLocation" x="938" y="1942"/>
         </scene>
-        <!--Sim Settings View Controller - Sim Settings-->
+        <!--Sim Settings-->
         <scene sceneID="YHu-gs-V94">
             <objects>
                 <tableViewController id="spy-jN-gf0" customClass="SLSimSettingsViewController" sceneMemberID="viewController">
@@ -3128,7 +3128,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                                     </connections>
                                                 </segmentedControl>
                                                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="20" stepValue="0.5" id="G1Y-xH-QTE">
-                                                    <rect key="frame" x="186" y="7" width="94" height="29"/>
+                                                    <rect key="frame" x="186" y="7.5" width="94" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <action selector="windVelocityChanged:" destination="spy-jN-gf0" eventType="valueChanged" id="Inu-W2-Pw1"/>
@@ -3176,7 +3176,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6" maximumValue="20" id="4cy-X0-grf">
-                                                    <rect key="frame" x="186" y="7" width="94" height="29"/>
+                                                    <rect key="frame" x="186" y="7.5" width="94" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <action selector="launchGuideLengthChanged:" destination="spy-jN-gf0" eventType="valueChanged" id="Ott-H7-PvX"/>
@@ -3224,7 +3224,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1000" maximumValue="10000" stepValue="100" id="dOM-gY-WgV">
-                                                    <rect key="frame" x="186" y="7" width="94" height="29"/>
+                                                    <rect key="frame" x="186" y="7.5" width="94" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <action selector="siteAltitudeChanged:" destination="spy-jN-gf0" eventType="valueChanged" id="ntg-3f-Hiz"/>
@@ -3316,7 +3316,6 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
         <image name="Apogee" width="210" height="86"/>
         <image name="Goblin" width="210" height="86"/>
     </resources>
-    <color key="tintColor" red="0.0" green="0.33588047450000003" blue="0.085452782850000006" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -3327,4 +3326,5 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
         <segue reference="Z7C-8k-JQV"/>
         <segue reference="eYh-Tw-iw8"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.0" green="0.33588047450000003" blue="0.085452782850000006" alpha="1" colorSpace="calibratedRGB"/>
 </document>

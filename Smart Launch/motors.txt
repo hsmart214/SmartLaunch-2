@@ -19055,6 +19055,46 @@ G78 29 128 7-10-13 0.0625 0.1282 A
 1.7339 1.388816
 1.8079 0.0
 ;
+;
+;G80 New Blue Thunder
+G80NBT 29 123.825 4-7-10 0.069 0.129 A
+0.013 89.054
+0.018 101.584
+0.029 105.388
+0.047 102.927
+0.104 100.018
+0.19 102.255
+0.268 104.94
+0.306 104.269
+0.352 105.835
+0.41 104.94
+0.432 106.73
+0.512 105.612
+0.563 106.954
+0.591 104.493
+0.62 106.283
+0.715 103.15
+0.76 103.374
+0.806 101.36
+0.848 102.032
+1.2 88.383
+1.243 77.866
+1.269 57.952
+1.302 44.079
+1.329 34.011
+1.367 26.403
+1.398 22.823
+1.433 20.585
+1.48 21.704
+1.508 20.809
+1.584 13.201
+1.604 11.635
+1.652 11.188
+1.683 5.37
+1.701 0
+;
+;
+;
 ; Single-Use Casing. Entered by Tim Van Milligan for RockSim Users. Used John
 ; Coker's ThrustCurve Tracer software and NAR cert paperwork dated 7-29-06.
 G77R 29 124 4 0.0591 0.122 A
@@ -21171,7 +21211,7 @@ G40W 29 124 4-7-10 0.0624 0.115 PML
 2.738 6.761
 3.039 0.0
 ;
-; PML G80T is the same as the old Aerotech G480T.
+; PML G80T is the same as the old Aerotech G-80T.
 G80T 29 124 4-7-10 0.0574 0.106 PML
 0.007 82.746
 0.018 104.754
@@ -22399,30 +22439,38 @@ G80 29 124 4-7-10 0.0479 0.1161 Estes
 ; close to the certification curve as can be with such a limited
 ; number of points (32) allowed with wRASP up to v1.6.
 F44 24 70 4-8 .0197 .0491 A
-0.00811.161
-0.01819.303
-0.02014.370
-0.03035.087
-0.03539.771
-0.04343.471
-0.05742.237
-0.06442.488
-0.10543.962
-0.14044.945
-0.16045.677
-0.16649.137
-0.17446.910
-0.18747.653
-0.19745.186
-0.28547.883
-0.39249.540
-0.44347.873
-0.53146.379
-0.61444.644
-0.70042.909
-0.76341.415
-0.81740.182
-0.87837.955
+0.008 11.161
+0.018 19.303
+0.020 14.370
+0.030 35.087
+0.035 39.771
+0.043 43.471
+0.057 42.237
+0.064 42.488
+0.105 43.962
+0.140 44.945
+0.160 45.677
+0.166 49.137
+0.174 46.910
+0.187 47.653
+0.197 45.186
+0.285 47.883
+0.392 49.540
+0.443 47.873
+0.531 46.379
+0.614 44.644
+0.700 42.909
+0.763 41.415
+0.817 40.182
+0.878 37.955
+0.895 39.921
+0.907 38.447
+0.925 28.569
+0.942 20.928
+0.962 11.552
+0.985 6.364
+1.020 2.659
+1.030 0.0
 ;
 ;Quest A8 RASP.ENG file made from NAR published data
 ; File produced Aug 2009
@@ -22592,4 +22640,77 @@ D8 24 70 0-3-5 0.0220 0.0454 Q
 2.170 3.492
 2.191 1.926
 2.200 0.000
+;
+; Estes E16 RASP.ENG file made from NAR published data
+; File produced, 2013
+; The total impulse, peak thrust, average thrust and burn time are
+; the same as the averaged static test data on the NAR web site in
+; the certification file. The curve drawn with these data points is as
+; close to the certification curve as can be with such a limited
+; number of points (32) allowed with wRASP up to v1.6.
+E16 29 114 0-4-6-8 .0400 .0820 Estes
+0.150 1.371
+0.186 1.920
+0.206 3.387
+0.242 5.587
+0.252 7.422
+0.277 8.705
+0.333 13.474
+0.359 15.858
+0.374 16.592
+0.394 18.509
+0.435 21.344
+0.476 24.631
+0.521 26.440
+0.643 21.610
+0.725 20.202
+0.821 19.201
+0.898 18.538
+1.025 18.109
+1.142 18.012
+1.259 17.634
+1.396 17.472
+1.569 17.172
+1.757 17.165
+1.895 17.076
+2.027 17.516
+2.042 12.294
+2.052 8.337
+2.063 4.850
+2.090 0.000
+;
+; Estes F15 RASP.ENG file made from NAR published data
+; File produced, 2013
+; The total impulse, peak thrust, average thrust and burn time are
+; the same as the averaged static test data on the NAR web site in
+; the certification file. The curve drawn with these data points is as
+; close to the certification curve as can be with such a limited
+; number of points (32) allowed with wRASP up to v1.6.
+F15 29 114 0-4-6-8 .0600 .1030 Estes
+0.148 7.638
+0.228 12.253
+0.294 16.391
+0.353 20.210
+0.382 22.756
+0.419 25.260
+0.477 23.074
+0.520 20.845
+0.593 19.093
+0.688 17.500
+0.855 16.225
+1.037 15.427
+1.205 14.948
+1.423 14.627
+1.452 15.741
+1.503 14.785
+1.736 14.623
+1.955 14.303
+2.210 14.141
+2.494 13.819
+2.763 13.338
+3.120 13.334
+3.382 13.013
+3.404 9.352
+3.418 4.895
+3.450 0.000
 ;

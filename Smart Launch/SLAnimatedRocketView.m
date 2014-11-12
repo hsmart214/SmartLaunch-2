@@ -44,6 +44,9 @@
 }
 
 -(void)startFresh{
+    for (UIView* v in self.subviews){
+        [v removeFromSuperview];
+    }
     self.goblin = [[UIImageView alloc] initWithImage:[UIImage imageNamed:VERTICAL_ROCKET_PIC_NAME]];
     CGPoint orig = CGPointMake(self.goblin.bounds.size.width + X_INSET, self.goblin.bounds.size.height + Y_INSET);
     CGSize s = self.bounds.size;
@@ -90,6 +93,7 @@ void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint from
 
 - (void)drawRect:(CGRect)rect
 {
+    if (!self.goblin || _rocketVelocity == 0.0) return;
     float rv = _rocketVelocity;
     float wv = _windVelocity;
     //Figure out the scale that will show the vectors the best
