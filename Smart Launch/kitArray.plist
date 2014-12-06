@@ -4,6 +4,31 @@
 <array>
 	<dict>
 		<key>RocketManufacturer</key>
+		<string>Public Missiles Ltd</string>
+		<key>RocketKitArray</key>
+		<array>
+			<dict>
+				<key>RocketName</key>
+				<string>1/4 Scale Patriot</string>
+				<key>RocketLength</key>
+				<real>1.4224</real>
+				<key>RocketDiameter</key>
+				<real>0.09906</real>
+				<key>RocketCD</key>
+				<real>0.384</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>1.42</real>
+				<key>RocketKitName</key>
+				<string>1/4 Scale Patriot</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>RocketManufacturer</key>
 		<string>Madcow</string>
 		<key>RocketKitArray</key>
 		<array>

@@ -186,6 +186,7 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] removeObserver:self.iCloudObserver];
     self.iCloudObserver = nil;
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark - UITextFieldDelegate methods

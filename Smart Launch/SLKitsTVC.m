@@ -125,6 +125,7 @@
 }
 
 - (void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
     self.kits = nil;
 }
 

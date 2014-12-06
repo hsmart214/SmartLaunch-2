@@ -182,6 +182,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.selectedFlightRow = -1;
     [self.navigationController setToolbarHidden:NO animated:animated];
     self.originalSavedFlights = [self.savedFlights copy];
@@ -220,6 +221,7 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] removeObserver:self.iCloudObserver];
     self.iCloudObserver = nil;
+    [super viewWillDisappear:animated];
 }
 
 -(void)dealloc{

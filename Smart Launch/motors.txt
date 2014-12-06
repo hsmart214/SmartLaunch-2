@@ -1960,48 +1960,6 @@ H999N 38 203 0 0.144 0.331 AT
 0.325  161
 0.329  0
 ;
-;AEROTECH I65 RASP.ENG file made from NAR published data
-;File produced OCT 3, 2002
-;The total impulse, peak thrust, average thrust and burn time are
-;the same as the averaged static test data on the NAR web site in
-;the certification file. The curve drawn with these data points is as
-;close to the certification curve as can be with such a limited
-;number of points (32) allowed with wRASP up to v1.6.
-I65 54 235 100 0.3697 0.7761 A
-0.086 55.739
-0.099 90.267
-0.148 113.911
-0.296 113.911
-0.542 121.767
-0.579 123.588
-0.825 128.953
-0.973 132.593
-1.022 138.725
-1.071 132.593
-1.33 138.629
-1.502 139.875
-1.724 150.07
-2.019 141.886
-2.733 131.923
-3.14 119.181
-3.213 122.151
-3.275 114.295
-3.57 103.948
-3.977 88.791
-4.051 93.036
-4.1 84.547
-4.432 74.229
-4.912 58.44
-5.725 34.758
-6.119 24.43
-6.611 13.489
-7.166 6.787
-7.596 3.729
-7.978 1.886
-8.114 0.665
-8.26 0
-;
-;
 ; AeroTech I132W
 ; converted from TMT test stand data 1998 (www.tripoli.org)
 ; provided by ThrustCurve.org (www.thrustcurve.org)
@@ -22713,4 +22671,20 @@ F15 29 114 0-4-6-8 .0600 .1030 Estes
 3.404 9.352
 3.418 4.895
 3.450 0.000
+;
+; From AT DMS announcement May 2014.
+I65 54 218 10 0.377 0.752 A
+0.023 148.274
+0.211 196.341
+0.398 167.827
+0.797 149.903
+1.395 135.239
+2.238 122.204
+3.199 99.392
+4.711 69.249
+5.367 48.882
+6.246 29.329
+6.926 15.479
+7.395 11.406
+8.496 0.0
 ;

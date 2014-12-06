@@ -242,6 +242,7 @@
     metricValue = [SLUnitsConvertor metricStandardOf:self.siteAltitudeStepper.value forKey:ALT_UNIT_KEY];
     (self.settings)[LAUNCH_ALTITUDE_KEY] = @(metricValue);
     [self saveSettings];
+    [super viewWillDisappear:animated];
 }
 
 - (void)dealloc{

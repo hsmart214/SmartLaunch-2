@@ -288,6 +288,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
 
 - (void)didReceiveMemoryWarning{
     self.allMotors = nil;
+    [super didReceiveMemoryWarning];
 }
 
 

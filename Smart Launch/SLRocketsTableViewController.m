@@ -131,6 +131,7 @@
 - (void)didReceiveMemoryWarning{
     self.rockets = nil;
     self.rocketArray = nil;
+    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - Seque action

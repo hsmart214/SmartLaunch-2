@@ -195,6 +195,7 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [self.alert dismissWithClickedButtonIndex:0 animated:NO];
     self.alert = nil;
+    [super viewWillDisappear:animated];
 }
 
 -(NSString *)description{

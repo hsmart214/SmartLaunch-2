@@ -103,6 +103,7 @@
 #pragma mark - View Lifecycle
 
 -(void)viewDidLoad{
+    [super viewDidLoad];
     UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
     [backgroundView setImage:backgroundImage];
@@ -117,6 +118,7 @@
     self.graphView.delegate = self;
     
     [self updateDisplay];
+    [super viewWillAppear:animated];
 }
 
 -(NSString *)description{
