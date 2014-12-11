@@ -4,1165 +4,6 @@
 <array>
 	<dict>
 		<key>RocketManufacturer</key>
-		<string>Public Missiles Ltd</string>
-		<key>RocketKitArray</key>
-		<array>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/2 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>2.54</real>
-				<key>RocketDiameter</key>
-				<real>0.194818</real>
-				<key>RocketCD</key>
-				<real>0.337</real>
-				<key>RocketMotorSize</key>
-				<integer>54</integer>
-				<key>RocketMass</key>
-				<real>6.668</real>
-				<key>RocketKitName</key>
-				<string>1/2 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>AGM-256 Pit Bull</string>
-				<key>RocketLength</key>
-				<real>0.889</real>
-				<key>RocketDiameter</key>
-				<real>0.06807199999999999</real>
-				<key>RocketCD</key>
-				<real>0.515</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>0.82214</real>
-				<key>RocketKitName</key>
-				<string>AGM-256 Pit Bull</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>AGM-600 Pit Bull</string>
-				<key>RocketLength</key>
-				<real>2.0066</real>
-				<key>RocketDiameter</key>
-				<real>0.156464</real>
-				<key>RocketCD</key>
-				<real>0.446</real>
-				<key>RocketMotorSize</key>
-				<integer>54</integer>
-				<key>RocketMass</key>
-				<real>5.47</real>
-				<key>RocketKitName</key>
-				<string>AGM-600 Pit Bull</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>AMRAAM 2.1</string>
-				<key>RocketLength</key>
-				<real>1.0668</real>
-				<key>RocketDiameter</key>
-				<real>0.057912</real>
-				<key>RocketCD</key>
-				<real>0.609</real>
-				<key>RocketMotorSize</key>
-				<integer>29</integer>
-				<key>RocketMass</key>
-				<real>0.6804</real>
-				<key>RocketKitName</key>
-				<string>AMRAAM 2.1</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>AMRAAM 3</string>
-				<key>RocketLength</key>
-				<real>1.5494</real>
-				<key>RocketDiameter</key>
-				<real>0.08</real>
-				<key>RocketCD</key>
-				<real>0.586</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.446</real>
-				<key>RocketKitName</key>
-				<string>AMRAAM 3</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>AMRAAM 4</string>
-				<key>RocketLength</key>
-				<real>1.9812</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.5610000000000001</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>3.175</real>
-				<key>RocketKitName</key>
-				<string>AMRAAM 4</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>Andromeda</string>
-				<key>RocketLength</key>
-				<real>1.9812</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.466</real>
-				<key>RocketMotorSize</key>
-				<integer>54</integer>
-				<key>RocketMass</key>
-				<real>2.948</real>
-				<key>RocketKitName</key>
-				<string>Andromeda</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>Ariel</string>
-				<key>RocketLength</key>
-				<real>1.4732</real>
-				<key>RocketDiameter</key>
-				<real>0.08</real>
-				<key>RocketCD</key>
-				<real>0.486</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.446</real>
-				<key>RocketKitName</key>
-				<string>Ariel</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>Aurora</string>
-				<key>RocketLength</key>
-				<real>1.8288</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.407</real>
-				<key>RocketMotorSize</key>
-				<integer>54</integer>
-				<key>RocketMass</key>
-				<real>2.693</real>
-				<key>RocketKitName</key>
-				<string>Aurora</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>Black Brandt VB</string>
-				<key>RocketLength</key>
-				<real>1.2954</real>
-				<key>RocketDiameter</key>
-				<real>0.06807199999999999</real>
-				<key>RocketCD</key>
-				<real>0.477</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>3.033</real>
-				<key>RocketKitName</key>
-				<string>Black Brandt VB</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>Black Brandt X</string>
-				<key>RocketLength</key>
-				<real>2.6162</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.598</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>3.0334</real>
-				<key>RocketKitName</key>
-				<string>Black Brandt X</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>Bulldog</string>
-				<key>RocketLength</key>
-				<real>1.8796</real>
-				<key>RocketDiameter</key>
-				<real>0.156464</real>
-				<key>RocketCD</key>
-				<real>0.332</real>
-				<key>RocketMotorSize</key>
-				<integer>54</integer>
-				<key>RocketMass</key>
-				<real>4.819</real>
-				<key>RocketKitName</key>
-				<string>Bulldog</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>Bullpuppy 2.1</string>
-				<key>RocketLength</key>
-				<real>0.70485</real>
-				<key>RocketDiameter</key>
-				<real>0.057912</real>
-				<key>RocketCD</key>
-				<real>0.456</real>
-				<key>RocketMotorSize</key>
-				<integer>29</integer>
-				<key>RocketMass</key>
-				<integer>567</integer>
-				<key>RocketKitName</key>
-				<string>Bullpuppy 2.1</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>Bullpuppy</string>
-				<key>RocketLength</key>
-				<real>0.9906</real>
-				<key>RocketDiameter</key>
-				<real>0.08</real>
-				<key>RocketCD</key>
-				<real>0.407</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>0.9072</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>Callisto</string>
-				<key>RocketLength</key>
-				<real>1.143</real>
-				<key>RocketDiameter</key>
-				<real>0.057912</real>
-				<key>RocketCD</key>
-				<real>0.541</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>0.7087</real>
-				<key>RocketKitName</key>
-				<string>Callisto</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>Cirrus Dart</string>
-				<key>RocketLength</key>
-				<real>1.1176</real>
-				<key>RocketDiameter</key>
-				<real>0.04191</real>
-				<key>RocketCD</key>
-				<real>0.675</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>0.5103</real>
-				<key>RocketKitName</key>
-				<string>Cirrus Dart</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>Cygnus</string>
-				<key>RocketLength</key>
-				<real>1.8288</real>
-				<key>RocketDiameter</key>
-				<real>0.06807199999999999</real>
-				<key>RocketCD</key>
-				<real>0.615</real>
-				<key>RocketMotorSize</key>
-				<integer>54</integer>
-				<key>RocketMass</key>
-				<real>1.73</real>
-				<key>RocketKitName</key>
-				<string>Cygnus</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>Delta</string>
-				<key>RocketLength</key>
-				<real>1.8288</real>
-				<key>RocketDiameter</key>
-				<real>0.06807199999999999</real>
-				<key>RocketCD</key>
-				<real>0.617</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.7</real>
-				<key>RocketKitName</key>
-				<string>Delta</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>D-Region Tomahawk</string>
-				<key>RocketLength</key>
-				<real>1.8034</real>
-				<key>RocketDiameter</key>
-				<real>0.08</real>
-				<key>RocketCD</key>
-				<real>0.587</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.56</real>
-				<key>RocketKitName</key>
-				<string>D-Region Tomahawk</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>Eagle</string>
-				<key>RocketLength</key>
-				<real>1.905</real>
-				<key>RocketDiameter</key>
-				<real>0.08</real>
-				<key>RocketCD</key>
-				<real>0.571</real>
-				<key>RocketMotorSize</key>
-				<integer>54</integer>
-				<key>RocketMass</key>
-				<real>2.07</real>
-				<key>RocketKitName</key>
-				<string>Eagle</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-			<dict>
-				<key>RocketName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketLength</key>
-				<real>1.4224</real>
-				<key>RocketDiameter</key>
-				<real>0.102362</real>
-				<key>RocketCD</key>
-				<real>0.384</real>
-				<key>RocketMotorSize</key>
-				<integer>38</integer>
-				<key>RocketMass</key>
-				<real>1.42</real>
-				<key>RocketKitName</key>
-				<string>1/4 Scale Patriot</string>
-				<key>RocketManufacturer</key>
-				<string>Public Missiles Ltd</string>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>RocketManufacturer</key>
 		<string>Madcow</string>
 		<key>RocketKitArray</key>
 		<array>
@@ -10614,6 +9455,967 @@
 				<string>Fat Man</string>
 				<key>RocketManufacturer</key>
 				<string>Polecat</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>RocketManufacturer</key>
+		<string>Public Missiles Ltd</string>
+		<key>RocketKitArray</key>
+		<array>
+			<dict>
+				<key>RocketName</key>
+				<string>1/4 Scale Patriot</string>
+				<key>RocketLength</key>
+				<real>1.4224</real>
+				<key>RocketDiameter</key>
+				<real>0.102362</real>
+				<key>RocketCD</key>
+				<real>0.384</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>1.42</real>
+				<key>RocketKitName</key>
+				<string>1/4 Scale Patriot</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>1/2 Scale Patriot</string>
+				<key>RocketLength</key>
+				<real>2.54</real>
+				<key>RocketDiameter</key>
+				<real>0.194818</real>
+				<key>RocketCD</key>
+				<real>0.337</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>6.668</real>
+				<key>RocketKitName</key>
+				<string>1/2 Scale Patriot</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>AGM-256 Pit Bull</string>
+				<key>RocketLength</key>
+				<real>0.889</real>
+				<key>RocketDiameter</key>
+				<real>0.06807199999999999</real>
+				<key>RocketCD</key>
+				<real>0.515</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>0.82214</real>
+				<key>RocketKitName</key>
+				<string>AGM-256 Pit Bull</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>AGM-600 Pit Bull</string>
+				<key>RocketLength</key>
+				<real>2.0066</real>
+				<key>RocketDiameter</key>
+				<real>0.156464</real>
+				<key>RocketCD</key>
+				<real>0.446</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>5.47</real>
+				<key>RocketKitName</key>
+				<string>AGM-600 Pit Bull</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>AMRAAM 2.1</string>
+				<key>RocketLength</key>
+				<real>1.0668</real>
+				<key>RocketDiameter</key>
+				<real>0.057912</real>
+				<key>RocketCD</key>
+				<real>0.609</real>
+				<key>RocketMotorSize</key>
+				<integer>29</integer>
+				<key>RocketMass</key>
+				<real>0.6804</real>
+				<key>RocketKitName</key>
+				<string>AMRAAM 2.1</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>AMRAAM 3</string>
+				<key>RocketLength</key>
+				<real>1.5494</real>
+				<key>RocketDiameter</key>
+				<real>0.08</real>
+				<key>RocketCD</key>
+				<real>0.586</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>1.446</real>
+				<key>RocketKitName</key>
+				<string>AMRAAM 3</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>AMRAAM 4</string>
+				<key>RocketLength</key>
+				<real>1.9812</real>
+				<key>RocketDiameter</key>
+				<real>0.102362</real>
+				<key>RocketCD</key>
+				<real>0.5610000000000001</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>3.175</real>
+				<key>RocketKitName</key>
+				<string>AMRAAM 4</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Andromeda</string>
+				<key>RocketLength</key>
+				<real>1.9812</real>
+				<key>RocketDiameter</key>
+				<real>0.102362</real>
+				<key>RocketCD</key>
+				<real>0.466</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>2.948</real>
+				<key>RocketKitName</key>
+				<string>Andromeda</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Ariel</string>
+				<key>RocketLength</key>
+				<real>1.4732</real>
+				<key>RocketDiameter</key>
+				<real>0.08</real>
+				<key>RocketCD</key>
+				<real>0.486</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>1.446</real>
+				<key>RocketKitName</key>
+				<string>Ariel</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Aurora</string>
+				<key>RocketLength</key>
+				<real>1.8288</real>
+				<key>RocketDiameter</key>
+				<real>0.102362</real>
+				<key>RocketCD</key>
+				<real>0.407</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>2.693</real>
+				<key>RocketKitName</key>
+				<string>Aurora</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Black Brandt VB</string>
+				<key>RocketLength</key>
+				<real>1.2954</real>
+				<key>RocketDiameter</key>
+				<real>0.06807199999999999</real>
+				<key>RocketCD</key>
+				<real>0.477</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>3.033</real>
+				<key>RocketKitName</key>
+				<string>Black Brandt VB</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Black Brandt X</string>
+				<key>RocketLength</key>
+				<real>2.6162</real>
+				<key>RocketDiameter</key>
+				<real>0.102362</real>
+				<key>RocketCD</key>
+				<real>0.598</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>3.0334</real>
+				<key>RocketKitName</key>
+				<string>Black Brandt X</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Bulldog</string>
+				<key>RocketLength</key>
+				<real>1.8796</real>
+				<key>RocketDiameter</key>
+				<real>0.156464</real>
+				<key>RocketCD</key>
+				<real>0.332</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>4.819</real>
+				<key>RocketKitName</key>
+				<string>Bulldog</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Bullpuppy 2.1</string>
+				<key>RocketLength</key>
+				<real>0.70485</real>
+				<key>RocketDiameter</key>
+				<real>0.057912</real>
+				<key>RocketCD</key>
+				<real>0.456</real>
+				<key>RocketMotorSize</key>
+				<integer>29</integer>
+				<key>RocketMass</key>
+				<integer>567</integer>
+				<key>RocketKitName</key>
+				<string>Bullpuppy 2.1</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Bullpuppy</string>
+				<key>RocketLength</key>
+				<real>0.9906</real>
+				<key>RocketDiameter</key>
+				<real>0.08</real>
+				<key>RocketCD</key>
+				<real>0.407</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>0.9072</real>
+				<key>RocketKitName</key>
+				<string>1/4 Scale Patriot</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Callisto</string>
+				<key>RocketLength</key>
+				<real>1.143</real>
+				<key>RocketDiameter</key>
+				<real>0.057912</real>
+				<key>RocketCD</key>
+				<real>0.541</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>0.7087</real>
+				<key>RocketKitName</key>
+				<string>Callisto</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Cirrus Dart</string>
+				<key>RocketLength</key>
+				<real>1.1176</real>
+				<key>RocketDiameter</key>
+				<real>0.04191</real>
+				<key>RocketCD</key>
+				<real>0.675</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>0.5103</real>
+				<key>RocketKitName</key>
+				<string>Cirrus Dart</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Cygnus</string>
+				<key>RocketLength</key>
+				<real>1.8288</real>
+				<key>RocketDiameter</key>
+				<real>0.06807199999999999</real>
+				<key>RocketCD</key>
+				<real>0.615</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>1.73</real>
+				<key>RocketKitName</key>
+				<string>Cygnus</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Delta</string>
+				<key>RocketLength</key>
+				<real>1.8288</real>
+				<key>RocketDiameter</key>
+				<real>0.06807199999999999</real>
+				<key>RocketCD</key>
+				<real>0.617</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>1.7</real>
+				<key>RocketKitName</key>
+				<string>Delta</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>D-Region Tomahawk</string>
+				<key>RocketLength</key>
+				<real>1.8034</real>
+				<key>RocketDiameter</key>
+				<real>0.08</real>
+				<key>RocketCD</key>
+				<real>0.587</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>1.56</real>
+				<key>RocketKitName</key>
+				<string>D-Region Tomahawk</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Eagle</string>
+				<key>RocketLength</key>
+				<real>1.905</real>
+				<key>RocketDiameter</key>
+				<real>0.08</real>
+				<key>RocketCD</key>
+				<real>0.571</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>2.07</real>
+				<key>RocketKitName</key>
+				<string>Eagle</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Eclipse A</string>
+				<key>RocketLength</key>
+				<real>2.159</real>
+				<key>RocketDiameter</key>
+				<real>0.102362</real>
+				<key>RocketCD</key>
+				<real>0.522</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>2.608</real>
+				<key>RocketKitName</key>
+				<string>Eclipse A</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Endeavour</string>
+				<key>RocketLength</key>
+				<real>1.8034</real>
+				<key>RocketDiameter</key>
+				<real>0.102362</real>
+				<key>RocketCD</key>
+				<real>0.476</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>2.013</real>
+				<key>RocketKitName</key>
+				<string>Endeavour</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Explorer</string>
+				<key>RocketLength</key>
+				<real>1.2192</real>
+				<key>RocketDiameter</key>
+				<real>0.06807199999999999</real>
+				<key>RocketCD</key>
+				<real>0.481</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>0.907</real>
+				<key>RocketKitName</key>
+				<string>Explorer</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Gamma</string>
+				<key>RocketLength</key>
+				<real>1.7526</real>
+				<key>RocketDiameter</key>
+				<real>0.057912</real>
+				<key>RocketCD</key>
+				<real>0.664</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>1.4175</real>
+				<key>RocketKitName</key>
+				<string>Gamma</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Hydra</string>
+				<key>RocketLength</key>
+				<real>1.524</real>
+				<key>RocketDiameter</key>
+				<real>0.08</real>
+				<key>RocketCD</key>
+				<real>0.591</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>1.729</real>
+				<key>RocketKitName</key>
+				<string>Hydra</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Intruder</string>
+				<key>RocketLength</key>
+				<real>1.4732</real>
+				<key>RocketDiameter</key>
+				<real>0.08</real>
+				<key>RocketCD</key>
+				<real>0.55</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>1.531</real>
+				<key>RocketKitName</key>
+				<string>Intruder</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Io</string>
+				<key>RocketLength</key>
+				<real>0.8381999999999999</real>
+				<key>RocketDiameter</key>
+				<real>0.057912</real>
+				<key>RocketCD</key>
+				<real>0.518</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>0.65</real>
+				<key>RocketKitName</key>
+				<string>Io</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Ion</string>
+				<key>RocketLength</key>
+				<real>1.5494</real>
+				<key>RocketDiameter</key>
+				<real>0.057912</real>
+				<key>RocketCD</key>
+				<real>0.669</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>1.247</real>
+				<key>RocketKitName</key>
+				<string>Ion</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Little Lunar Express</string>
+				<key>RocketLength</key>
+				<real>0.8636</real>
+				<key>RocketDiameter</key>
+				<real>0.102362</real>
+				<key>RocketCD</key>
+				<real>0.248</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>1.644</real>
+				<key>RocketKitName</key>
+				<string>Little Lunar Express</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Lunar Express</string>
+				<key>RocketLength</key>
+				<real>1.3208</real>
+				<key>RocketDiameter</key>
+				<real>0.156464</real>
+				<key>RocketCD</key>
+				<real>0.229</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>4.25</real>
+				<key>RocketKitName</key>
+				<string>Lunar Express</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Matrix</string>
+				<key>RocketLength</key>
+				<real>1.3716</real>
+				<key>RocketDiameter</key>
+				<real>0.08</real>
+				<key>RocketCD</key>
+				<real>0.645</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>1.56</real>
+				<key>RocketKitName</key>
+				<string>Matrix</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Mini BBX</string>
+				<key>RocketLength</key>
+				<real>1.5494</real>
+				<key>RocketDiameter</key>
+				<real>0.057912</real>
+				<key>RocketCD</key>
+				<real>0.6909999999999999</real>
+				<key>RocketMotorSize</key>
+				<integer>29</integer>
+				<key>RocketMass</key>
+				<real>1.1056</real>
+				<key>RocketKitName</key>
+				<string>Mini BBX</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Miranda</string>
+				<key>RocketLength</key>
+				<real>1.5748</real>
+				<key>RocketDiameter</key>
+				<real>0.08</real>
+				<key>RocketCD</key>
+				<real>0.531</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>1.474</real>
+				<key>RocketKitName</key>
+				<string>Miranda</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>MR-1</string>
+				<key>RocketLength</key>
+				<real>0.635</real>
+				<key>RocketDiameter</key>
+				<real>0.057912</real>
+				<key>RocketCD</key>
+				<real>0.237</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>0.6804</real>
+				<key>RocketKitName</key>
+				<string>MR-1</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Mystic</string>
+				<key>RocketLength</key>
+				<real>0.9448800000000001</real>
+				<key>RocketDiameter</key>
+				<real>0.08</real>
+				<key>RocketCD</key>
+				<real>0.5</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>1.0773</real>
+				<key>RocketKitName</key>
+				<string>Mystic</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Nimbus</string>
+				<key>RocketLength</key>
+				<real>1.8542</real>
+				<key>RocketDiameter</key>
+				<real>0.057912</real>
+				<key>RocketCD</key>
+				<real>0.783</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>1.361</real>
+				<key>RocketKitName</key>
+				<string>Nimbus</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Orion</string>
+				<key>RocketLength</key>
+				<real>1.9304</real>
+				<key>RocketDiameter</key>
+				<real>0.08</real>
+				<key>RocketCD</key>
+				<real>0.538</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>1.843</real>
+				<key>RocketKitName</key>
+				<string>Orion</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Phantom</string>
+				<key>RocketLength</key>
+				<real>1.1684</real>
+				<key>RocketDiameter</key>
+				<real>0.057912</real>
+				<key>RocketCD</key>
+				<real>0.656</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>0.907</real>
+				<key>RocketKitName</key>
+				<string>Phantom</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Phobos</string>
+				<key>RocketLength</key>
+				<real>1.4478</real>
+				<key>RocketDiameter</key>
+				<real>0.057912</real>
+				<key>RocketCD</key>
+				<real>0.641</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>0.907186</real>
+				<key>RocketKitName</key>
+				<string>Phobos</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Pterodactyl Jr</string>
+				<key>RocketLength</key>
+				<real>1.0414</real>
+				<key>RocketDiameter</key>
+				<real>0.102362</real>
+				<key>RocketCD</key>
+				<real>0.38</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>1.093</real>
+				<key>RocketKitName</key>
+				<string>Pterodactly Jr</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Pterodactyl</string>
+				<key>RocketLength</key>
+				<real>1.9558</real>
+				<key>RocketDiameter</key>
+				<real>0.194818</real>
+				<key>RocketCD</key>
+				<real>0.358</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>5.67</real>
+				<key>RocketKitName</key>
+				<string>Pterodactyl</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Quasar</string>
+				<key>RocketLength</key>
+				<real>1.4224</real>
+				<key>RocketDiameter</key>
+				<real>0.06807199999999999</real>
+				<key>RocketCD</key>
+				<real>0.552</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>1.1056</real>
+				<key>RocketKitName</key>
+				<string>Quasar</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Quicksilver</string>
+				<key>RocketLength</key>
+				<real>1.3843</real>
+				<key>RocketDiameter</key>
+				<real>0.057912</real>
+				<key>RocketCD</key>
+				<real>0.5</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>0.963885</real>
+				<key>RocketKitName</key>
+				<string>Quicksilver</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Small Endeavour</string>
+				<key>RocketLength</key>
+				<real>1.1938</real>
+				<key>RocketDiameter</key>
+				<real>0.06807199999999999</real>
+				<key>RocketCD</key>
+				<real>0.508</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>0.9922</real>
+				<key>RocketKitName</key>
+				<string>Small Endeavour</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Spitfire</string>
+				<key>RocketLength</key>
+				<real>1.28778</real>
+				<key>RocketDiameter</key>
+				<real>0.08</real>
+				<key>RocketCD</key>
+				<real>0.5</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>1.162332</real>
+				<key>RocketKitName</key>
+				<string>Spitfire</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Stratus</string>
+				<key>RocketLength</key>
+				<real>1.016</real>
+				<key>RocketDiameter</key>
+				<real>0.04191</real>
+				<key>RocketCD</key>
+				<real>0.5</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>0.652</real>
+				<key>RocketKitName</key>
+				<string>Stratus</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Sudden Rush</string>
+				<key>RocketLength</key>
+				<real>1.651</real>
+				<key>RocketDiameter</key>
+				<real>0.08</real>
+				<key>RocketCD</key>
+				<real>0.495</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>1.729</real>
+				<key>RocketKitName</key>
+				<string>Sudden Rush</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Tempest</string>
+				<key>RocketLength</key>
+				<real>1.6002</real>
+				<key>RocketDiameter</key>
+				<real>0.06807199999999999</real>
+				<key>RocketCD</key>
+				<real>0.638</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>1.5875</real>
+				<key>RocketKitName</key>
+				<string>Tempest</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Tethys</string>
+				<key>RocketLength</key>
+				<real>1.3462</real>
+				<key>RocketDiameter</key>
+				<real>0.102362</real>
+				<key>RocketCD</key>
+				<real>0.367</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>1.503</real>
+				<key>RocketKitName</key>
+				<string>Tethys</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Tiny Pterodactyl</string>
+				<key>RocketLength</key>
+				<real>0.6477000000000001</real>
+				<key>RocketDiameter</key>
+				<real>0.057912</real>
+				<key>RocketCD</key>
+				<real>0.438</real>
+				<key>RocketMotorSize</key>
+				<integer>29</integer>
+				<key>RocketMass</key>
+				<real>0.5103</real>
+				<key>RocketKitName</key>
+				<string>Tiny Pterodactyl</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>Ultimate Endeavour</string>
+				<key>RocketLength</key>
+				<real>2.7432</real>
+				<key>RocketDiameter</key>
+				<real>0.156464</real>
+				<key>RocketCD</key>
+				<real>0.442</real>
+				<key>RocketMotorSize</key>
+				<integer>54</integer>
+				<key>RocketMass</key>
+				<real>4.905</real>
+				<key>RocketKitName</key>
+				<string>Ultimate Endeavour</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
+			</dict>
+			<dict>
+				<key>RocketName</key>
+				<string>X-Calibur</string>
+				<key>RocketLength</key>
+				<real>1.1684</real>
+				<key>RocketDiameter</key>
+				<real>0.057912</real>
+				<key>RocketCD</key>
+				<real>0.656</real>
+				<key>RocketMotorSize</key>
+				<integer>38</integer>
+				<key>RocketMass</key>
+				<real>0.9072</real>
+				<key>RocketKitName</key>
+				<string>X-Calibur</string>
+				<key>RocketManufacturer</key>
+				<string>Public Missiles Ltd</string>
 			</dict>
 		</array>
 	</dict>

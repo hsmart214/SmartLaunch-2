@@ -11,6 +11,7 @@
 #import "SLUnitsConvertor.h"
 #import "SLSavedFlightsTVC.h"
 #import "SLKitsTVC.h"
+#import "SLKitManufacturerTVC.h"
 
 
 @class SLRocketPropertiesTVC;

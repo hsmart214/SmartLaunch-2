@@ -12,40 +12,12 @@
 
 @interface SLKitsTVC ()
 
-@property (nonatomic, strong) NSArray *kits;
+
 @property (nonatomic, weak) UIPopoverController *popover;
 
 @end
 
 @implementation SLKitsTVC
-
-
-
-- (NSArray *)kits{
-    if (!_kits){
-        NSBundle *bundle = [NSBundle mainBundle];
-        NSURL *url =[bundle URLForResource:KIT_PLIST_FILENAME withExtension:@"plist"];
-        NSMutableArray *mutableKits = [[NSArray arrayWithContentsOfFile: [url path]] mutableCopy];
-        NSInteger total = [mutableKits count];
-        for (int i = 0; i < total; i++){
-            NSMutableDictionary *dict = [mutableKits[i] mutableCopy];
-            NSArray *arr = dict[MANUFACTURED_KITS_KEY];
-            NSArray *sorted = [arr sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2){
-                NSString *name1 = ((NSDictionary *)obj1)[ROCKET_KITNAME_KEY];
-                NSString *name2 = ((NSDictionary *)obj2)[ROCKET_KITNAME_KEY];
-                if ([name1 compare:name2 options:NSCaseInsensitiveSearch] == NSOrderedSame){
-                    return [((NSDictionary *)obj1)[ROCKET_DIAM_KEY] floatValue] > [((NSDictionary *)obj2)[ROCKET_DIAM_KEY] floatValue];
-                }else{
-                    return [name1 compare:name2 options:NSCaseInsensitiveSearch];
-                }
-            }];
-            dict[MANUFACTURED_KITS_KEY] = sorted;
-            mutableKits[i] = dict;
-        }
-        _kits = [mutableKits copy];
-    }
-    return _kits;
-}
 
 #pragma mark - Table view data source
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

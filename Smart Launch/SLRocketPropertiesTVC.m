@@ -17,7 +17,7 @@
 
 #define DELETE_BUTTON_INDEX 2
 
-@interface SLRocketPropertiesTVC ()<UIScrollViewDelegate, UIActionSheetDelegate, UITableViewDelegate, SLMotorConfigurationDataSource, SLMotorConfigurationDelegate>
+@interface SLRocketPropertiesTVC ()<UIScrollViewDelegate, UIActionSheetDelegate, UITableViewDelegate, SLMotorConfigurationDataSource, SLMotorConfigurationDelegate, SLKitTVCDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *kitNameField;
 @property (weak, nonatomic) IBOutlet UITextField *manField;
@@ -316,7 +316,7 @@
         }
     }
     if ([segue.identifier isEqualToString:@"kitSegue"]){
-        [(SLKitsTVC *)segue.destinationViewController setDelegate:self];
+        [(SLKitManufacturerTVC *)segue.destinationViewController setDelegate:self];
     }
 }
 

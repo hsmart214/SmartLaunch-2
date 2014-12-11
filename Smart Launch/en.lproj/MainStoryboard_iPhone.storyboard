@@ -496,7 +496,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="0.10000000000000001" id="aJO-Aw-44z">
-                                            <rect key="frame" x="20" y="52.5" width="94" height="23"/>
+                                            <rect key="frame" x="20" y="53" width="94" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <connections>
                                                 <action selector="delayTimeChanged:" destination="byP-px-iUJ" eventType="valueChanged" id="Aj2-8i-cOD"/>
@@ -587,10 +587,57 @@
             </objects>
             <point key="canvasLocation" x="40" y="67"/>
         </scene>
+        <!--Manufacturers-->
+        <scene sceneID="BbZ-dT-xc3">
+            <objects>
+                <tableViewController storyboardIdentifier="KitManfacturerTVC" title="Manufacturers" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wZG-SC-Grs" customClass="SLKitManufacturerTVC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ulq-5R-ekL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="manCell" textLabel="mch-Yn-LJ1" detailTextLabel="SRH-Tj-ziC" imageView="r8e-vN-3zx" style="IBUITableViewCellStyleSubtitle" id="jis-XQ-pfE">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jis-XQ-pfE" id="x9U-ym-No7">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Madcow Rocketry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mch-Yn-LJ1">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Madcow" id="r8e-vN-3zx">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="17 Kits" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SRH-Tj-ziC">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Snh-MF-kmH" kind="push" identifier="Manufacturer Segue" id="its-SL-oPE"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wZG-SC-Grs" id="OsO-lC-ttC"/>
+                            <outlet property="delegate" destination="wZG-SC-Grs" id="HSZ-cs-5J4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="x2l-lg-6R1"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z9X-Il-5du" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1867" y="-1317"/>
+        </scene>
         <!--KitsTVC-->
         <scene sceneID="xJV-nq-4fo">
             <objects>
-                <tableViewController id="Snh-MF-kmH" customClass="SLKitsTVC" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="KitsTVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Snh-MF-kmH" customClass="SLKitsTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="kS2-sh-rrg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -657,6 +704,7 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
+                    <navigationItem key="navigationItem" id="cVt-ZN-tFE"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igu-Zb-QVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -968,7 +1016,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Snh-MF-kmH" kind="push" identifier="kitSegue" id="Se7-x7-gqz"/>
+                                            <segue destination="wZG-SC-Grs" kind="push" identifier="Kits Segue" id="PQ6-AR-kTf"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1093,7 +1141,7 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="150" id="xjH-sg-Szf">
-                                                    <rect key="frame" x="168" y="7" width="94" height="29"/>
+                                                    <rect key="frame" x="168" y="7.5" width="94" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <action selector="centralStepperChanged:" destination="3N5-Wf-79E" eventType="valueChanged" id="SQh-Po-esX"/>
@@ -1143,7 +1191,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="150" id="wxv-9y-o5C">
-                                                    <rect key="frame" x="168" y="7" width="94" height="29"/>
+                                                    <rect key="frame" x="168" y="7.5" width="94" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <action selector="firstStepperChanged:" destination="3N5-Wf-79E" eventType="valueChanged" id="AiO-gS-rmS"/>
@@ -1203,7 +1251,7 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="150" id="KD2-Yt-Yb8">
-                                                    <rect key="frame" x="168" y="7" width="94" height="29"/>
+                                                    <rect key="frame" x="168" y="7.5" width="94" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <action selector="secondStepperChanged:" destination="3N5-Wf-79E" eventType="valueChanged" id="Roa-ss-A3T"/>
@@ -1256,7 +1304,7 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="150" id="VZv-RA-BPL">
-                                                    <rect key="frame" x="168" y="7" width="94" height="29"/>
+                                                    <rect key="frame" x="168" y="7.5" width="94" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <action selector="thirdStepperChanged:" destination="3N5-Wf-79E" eventType="valueChanged" id="M9G-qU-EZ8"/>
@@ -2245,7 +2293,7 @@ Estes E9 x2</string>
                                                     <rect key="frame" x="20" y="16" width="280" height="173"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <string key="text">Smart Launch HD 2.13
+                                                    <mutableString key="text">Smart Launch HD 2.14
 ©2012-2014 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
@@ -2264,7 +2312,7 @@ All company logos are the registered trademarks of the respective motor manufact
 
 Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.
 
-Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C code in the physics model.</string>
+Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C code in the physics model.</mutableString>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -3128,7 +3176,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                                     </connections>
                                                 </segmentedControl>
                                                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="20" stepValue="0.5" id="G1Y-xH-QTE">
-                                                    <rect key="frame" x="186" y="7.5" width="94" height="29"/>
+                                                    <rect key="frame" x="186" y="8" width="94" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <action selector="windVelocityChanged:" destination="spy-jN-gf0" eventType="valueChanged" id="Inu-W2-Pw1"/>
@@ -3176,7 +3224,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6" maximumValue="20" id="4cy-X0-grf">
-                                                    <rect key="frame" x="186" y="7.5" width="94" height="29"/>
+                                                    <rect key="frame" x="186" y="8" width="94" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <action selector="launchGuideLengthChanged:" destination="spy-jN-gf0" eventType="valueChanged" id="Ott-H7-PvX"/>
@@ -3224,7 +3272,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1000" maximumValue="10000" stepValue="100" id="dOM-gY-WgV">
-                                                    <rect key="frame" x="186" y="7.5" width="94" height="29"/>
+                                                    <rect key="frame" x="186" y="8" width="94" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <action selector="siteAltitudeChanged:" destination="spy-jN-gf0" eventType="valueChanged" id="ntg-3f-Hiz"/>
@@ -3315,6 +3363,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
     <resources>
         <image name="Apogee" width="210" height="86"/>
         <image name="Goblin" width="210" height="86"/>
+        <image name="Madcow" width="86" height="43"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

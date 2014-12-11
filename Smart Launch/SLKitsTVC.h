@@ -10,13 +10,14 @@
 
 @class SLKitsTVC;
 @protocol SLKitTVCDelegate <NSObject>
-
+@optional
 - (void)SLKitTVC:(id)sender didChooseCommercialKit:(NSDictionary *)kitDict;
 
 @end
 
 @interface SLKitsTVC : UITableViewController
 
-@property (nonatomic, weak) id delegate;
+@property (nonatomic, weak) id<SLKitTVCDelegate> delegate;
+@property (nonatomic, strong) NSArray *kits;
 
 @end
