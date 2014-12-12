@@ -73,7 +73,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.delegate SLKitTVC:self didChooseCommercialKit:self.kits[indexPath.section][MANUFACTURED_KITS_KEY][indexPath.row]];
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Prepare for Segue
@@ -87,6 +87,9 @@
     //this will need to change if I implement unwinding
     if ([segue isKindOfClass:[UIStoryboardPopoverSegue class]])
         self.popover = (UIPopoverController *)([(UIStoryboardPopoverSegue *)segue popoverController]);
+    if ([segue.identifier isEqualToString:@"choseKit Segue"]){
+        
+    }
 }
 
 #pragma mark - View Life Cycle

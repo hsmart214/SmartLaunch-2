@@ -657,12 +657,6 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.6 inch" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qll-xI-jCf">
-                                            <rect key="frame" x="20" y="20" width="144" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.39 kg" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VPW-9J-7VP">
                                             <rect key="frame" x="238" y="2" width="62" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -681,6 +675,12 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.6 inch" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qll-xI-jCf">
+                                            <rect key="frame" x="20" y="14" width="144" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -688,6 +688,7 @@
                                     <outlet property="massLabel" destination="VPW-9J-7VP" id="mxj-0O-24P"/>
                                     <outlet property="motorSizeLabel" destination="q0T-u1-Oot" id="R71-Lr-VGx"/>
                                     <outlet property="nameLabel" destination="Sin-xG-tH2" id="dTv-SX-kCa"/>
+                                    <segue destination="cby-6g-bMV" kind="unwind" identifier="choseKit Segue" unwindAction="choseRocketKit:" id="sir-1B-3cz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -707,6 +708,7 @@
                     <navigationItem key="navigationItem" id="cVt-ZN-tFE"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igu-Zb-QVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cby-6g-bMV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2318" y="-1317"/>
         </scene>
@@ -1016,7 +1018,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="wZG-SC-Grs" kind="push" identifier="Kits Segue" id="PQ6-AR-kTf"/>
+                                            <segue destination="wZG-SC-Grs" kind="push" identifier="kitSegue" id="PQ6-AR-kTf"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

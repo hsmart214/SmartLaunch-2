@@ -32,4 +32,7 @@
 @property (nonatomic, copy) Rocket *rocket;
 
 @property (nonatomic, weak) id <SLRocketPropertiesTVCDelegate> delegate;
+
+-(IBAction)choseRocketKit:(UIStoryboardSegue *)sender;
+
 @end

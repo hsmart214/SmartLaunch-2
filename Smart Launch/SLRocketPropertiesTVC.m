@@ -286,6 +286,10 @@
 
 #pragma mark - prepareForSegue
 
+-(IBAction)choseRocketKit:(UIStoryboardSegue *)sender{
+    
+}
+
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
     if ([identifier isEqualToString:@"motorConfigurationSegue"]){
         //if we are planning to popover, don't do it if we already have one on screen
