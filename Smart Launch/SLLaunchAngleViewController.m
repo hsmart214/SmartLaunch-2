@@ -73,7 +73,7 @@
 
 //Filtering constants
 #define UPDATE_INTERVAL 0.2
-#define FILTER_CONSTANT 0.03 //smaller number gives smoother, slower response
+#define FILTER_CONSTANT 0.02 //smaller number gives smoother, slower response
 
 - (void)setAccelerometerData:(CMAccelerometerData *)accelerometerData{
     CMAcceleration accel = accelerometerData.acceleration;
@@ -140,9 +140,10 @@
     [self.motionManager setDeviceMotionUpdateInterval:UPDATE_INTERVAL];
     [self.motionManager startAccelerometerUpdatesToQueue:self.motionQueue withHandler:^(CMAccelerometerData *data, NSError *err){
         if (!err){
-            myWeakSelf.accelerometerData = data;
+            [myWeakSelf setAccelerometerData: data];
         }
         else{
+            //NSLog(@"%@",[err debugDescription]);
             [myWeakSelf stopMotionUpdates];
             [myWeakSelf.motionButton setTitle:NSLocalizedString(@"Motion On", @"Motion On")];
             myWeakSelf.calibrateButton.enabled = NO;
@@ -185,10 +186,12 @@
     cameraUI.delegate = delegate;
     cameraUI.showsCameraControls = NO;
     cameraUI.cameraOverlayView = self.photoAngleView;
-    [controller presentViewController:cameraUI animated:YES completion:nil];
+    [controller presentViewController:cameraUI animated:YES completion:^{
+        self.photoAngleView.opaque = NO;
+        [self startMotionUpdates];
+    }];
     
-    self.photoAngleView.opaque = NO;
-    [self startMotionUpdates];
+    
     return YES;
 }
 
