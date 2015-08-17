@@ -28,6 +28,8 @@
 		4220A4F515F55D120055EE35 /* motors.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E915F55D120055EE35 /* motors.txt */; };
 		42248D7C16EC416200ABB5D7 /* SLiPadDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42248D7B16EC416200ABB5D7 /* SLiPadDetailViewController.m */; };
 		422BE01B1A3970FA00C23175 /* SLKitManufacturerTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 422BE01A1A3970FA00C23175 /* SLKitManufacturerTVC.m */; };
+		423057361B81A3C1006CA5B7 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 423057351B81A3C1006CA5B7 /* GameKit.framework */; };
+		423057381B81A3C4006CA5B7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 423057371B81A3C4006CA5B7 /* StoreKit.framework */; };
 		4232060515F7124F0027A18E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4232060415F7124F0027A18E /* CoreLocation.framework */; };
 		42397204173378B300262A6B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42397206173378B300262A6B /* MainStoryboard_iPhone.storyboard */; };
 		423D16E317053FE80007ED61 /* SLCustomUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 423D16E217053FE80007ED61 /* SLCustomUI.m */; };
@@ -122,6 +124,8 @@
 		422BE0161A3970C600C23175 /* SmartLaunch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartLaunch-Bridging-Header.h"; sourceTree = "<group>"; };
 		422BE0191A3970FA00C23175 /* SLKitManufacturerTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKitManufacturerTVC.h; sourceTree = "<group>"; };
 		422BE01A1A3970FA00C23175 /* SLKitManufacturerTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKitManufacturerTVC.m; sourceTree = "<group>"; };
+		423057351B81A3C1006CA5B7 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		423057371B81A3C4006CA5B7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4232060415F7124F0027A18E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		42397207173378F900262A6B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		423D16E117053FE80007ED61 /* SLCustomUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCustomUI.h; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 			files = (
 				42D780981662AB3E000C7D6C /* QuartzCore.framework in Frameworks */,
 				421437221601ADEE0020AA1D /* MobileCoreServices.framework in Frameworks */,
+				423057361B81A3C1006CA5B7 /* GameKit.framework in Frameworks */,
+				423057381B81A3C4006CA5B7 /* StoreKit.framework in Frameworks */,
 				4232060515F7124F0027A18E /* CoreLocation.framework in Frameworks */,
 				4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */,
 				4256930C15F4893000F7BABC /* Foundation.framework in Frameworks */,
@@ -270,6 +276,8 @@
 		4256930815F4893000F7BABC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				423057371B81A3C4006CA5B7 /* StoreKit.framework */,
+				423057351B81A3C1006CA5B7 /* GameKit.framework */,
 				42D780971662AB3E000C7D6C /* QuartzCore.framework */,
 				421437211601ADEE0020AA1D /* MobileCoreServices.framework */,
 				4232060415F7124F0027A18E /* CoreLocation.framework */,
@@ -456,6 +464,12 @@
 						DevelopmentTeam = TY3543425A;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
 								enabled = 0;
 							};
 						};
