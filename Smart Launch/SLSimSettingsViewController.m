@@ -43,7 +43,6 @@
 - (CLLocationManager *)locationManager{
     if (!_locationManager){
         _locationManager = [[CLLocationManager alloc] init];
-//        _locationManager.purpose = NSLocalizedString(@"Only used to determine your altitude.", nil);
         _locationManager.delegate = self;
     }
     return _locationManager;
@@ -77,11 +76,15 @@
 }
 
 - (IBAction)GPSAltitudeRequested:(UIButton *)sender {
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized ||
+
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse ||
+        [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways ||
         [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
+            [self.locationManager requestWhenInUseAuthorization];
+        }
         [self.locationManager startUpdatingLocation];
     }
-    
 }
 
 #pragma mark - CLLocationManagerDelegate methods
@@ -91,7 +94,7 @@
     CLLocation *newLocation = [locations lastObject];
     NSDate* eventDate = newLocation.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    if (abs(howRecent) < 15.0)
+    if (fabs(howRecent) < 15.0)
     {
         float altGPSforDisplay = [SLUnitsConvertor displayUnitsOf:newLocation.altitude forKey:ALT_UNIT_KEY];
         self.siteAltitudeLabel.text = [NSString stringWithFormat:@"%1.0f",altGPSforDisplay];
@@ -99,6 +102,10 @@
         [self.locationManager stopUpdatingLocation];
     }
     // else skip the event and process the next one.
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"%@", [error debugDescription]);
 }
 
 #pragma mark - SLSimulationDelegate method
@@ -224,8 +231,9 @@
     self.siteAltitudeStepper.value = alt;
     
     // disable the GPS if location services denied
-    [self.GPSAltButton setEnabled:([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized
-                                   || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)];
+    [self.GPSAltButton setEnabled:([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse ||
+                                   [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways ||
+                                   [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

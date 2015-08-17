@@ -112,10 +112,10 @@
         });
     }
     dispatch_async(dispatch_get_main_queue(), ^{
-        wSelf.photoAngleLabel.text = [NSString stringWithFormat:@"%1.1f°", fabsf(angle) * DEGREES_PER_RADIAN];
+        wSelf.photoAngleLabel.text = [NSString stringWithFormat:@"%1.1f°", fabs(angle) * DEGREES_PER_RADIAN];
     });
     
-    if (fabsf(angle) > MAX_LAUNCH_GUIDE_ANGLE){
+    if (fabs(angle) > MAX_LAUNCH_GUIDE_ANGLE){
         dispatch_async(dispatch_get_main_queue(), ^{
             [wSelf.warningView setHidden:NO];
             [wSelf.acceptButton setHidden:YES];

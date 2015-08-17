@@ -28,7 +28,7 @@
 	<string>2.14</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationUsageDescription</key>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Only used to determine the launch elevation.</string>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard_iPhone</string>
