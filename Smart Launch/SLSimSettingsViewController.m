@@ -76,14 +76,17 @@
 }
 
 - (IBAction)GPSAltitudeRequested:(UIButton *)sender {
-
+    
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse ||
         [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways ||
+        [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized ||
         [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
         if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
-            [self.locationManager requestWhenInUseAuthorization];
+            if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]){
+                [self.locationManager requestWhenInUseAuthorization];
+            }
         }
-        [self.locationManager startUpdatingLocation];
+        [self.locationManager startUpdatingLocation]; // on iOS 7 this will trigger asking for permission
     }
 }
 
