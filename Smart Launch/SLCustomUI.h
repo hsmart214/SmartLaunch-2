@@ -15,6 +15,7 @@
 +(CGFloat)headerHeight;
 +(CGFloat)footerHeight;
 +(UIColor *)headerTextColor;
++(UIColor *)headerBackgroundColor;
 +(UIColor *)footerTextColor;
 
 +(UIColor *)windVectorColor;

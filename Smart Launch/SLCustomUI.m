@@ -30,6 +30,11 @@
 //        return [UIColor darkTextColor];
 //    }
 }
+
++(UIColor *)headerBackgroundColor{
+    return [UIColor colorWithRed:5.0/256 green:65.0/256 blue:49.0/256 alpha:1.0];
+}
+
 +(UIColor *)footerTextColor{
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
         return [UIColor whiteColor];

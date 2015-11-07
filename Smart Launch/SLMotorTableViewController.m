@@ -34,7 +34,7 @@
     NSString *headerText = [self tableView:self.tableView titleForHeaderInSection:section];
     UILabel *headerLabel = [[UILabel alloc] init];
     [headerLabel setTextColor:[SLCustomUI headerTextColor]];
-    [headerLabel setBackgroundColor:[UIColor clearColor]];
+    [headerLabel setBackgroundColor:[SLCustomUI headerBackgroundColor]];
     [headerLabel setTextAlignment:NSTextAlignmentCenter];
     [headerLabel setText:headerText];
     [headerLabel setFont:[UIFont boldSystemFontOfSize:17.0]];
