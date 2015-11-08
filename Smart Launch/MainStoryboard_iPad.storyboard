@@ -18,28 +18,28 @@
                         <sections>
                             <tableViewSection id="9Hl-Ie-d8q">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="CkJ-zH-mUA" detailTextLabel="gbL-Pc-xFf" imageView="qaM-xz-Tj8" style="IBUITableViewCellStyleValue1" id="XUB-yL-pAb">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="CkJ-zH-mUA" detailTextLabel="gbL-Pc-xFf" imageView="qaM-xz-Tj8" style="IBUITableViewCellStyleSubtitle" id="XUB-yL-pAb">
                                         <rect key="frame" x="0.0" y="99" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XUB-yL-pAb" id="C0e-Vw-09h">
                                             <rect key="frame" x="0.0" y="0.0" width="253" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Goblin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" id="CkJ-zH-mUA">
-                                                    <rect key="frame" x="136" y="12" width="53" height="20.5"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Goblin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="CkJ-zH-mUA">
+                                                    <rect key="frame" x="136" y="6" width="47" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="24 mm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gbL-Pc-xFf">
-                                                    <rect key="frame" x="199.5" y="12" width="53.5" height="20.5"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="24 mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gbL-Pc-xFf">
+                                                    <rect key="frame" x="136" y="25.5" width="36.5" height="13.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Goblin" id="qaM-xz-Tj8">
                                                     <rect key="frame" x="15" y="0.0" width="106" height="43.5"/>
@@ -3239,7 +3239,7 @@
                                                     <rect key="frame" x="30" y="12" width="260" height="332"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <mutableString key="text">Smart Launch HD 2.2
+                                                    <string key="text">Smart Launch HD 2.2
 ©2012-2015 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
@@ -3258,7 +3258,7 @@ All company logos are the registered trademarks of the respective motor manufact
 
 Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.
 
-Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C code in the physics model.</mutableString>
+Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C code in the physics model.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -3826,8 +3826,8 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bnM-p2-QYc"/>
-        <segue reference="mi2-wW-OMb"/>
+        <segue reference="s7M-Af-1nP"/>
+        <segue reference="ufW-2b-KLU"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.33588047450000003" blue="0.085452782850000006" alpha="1" colorSpace="calibratedRGB"/>
 </document>

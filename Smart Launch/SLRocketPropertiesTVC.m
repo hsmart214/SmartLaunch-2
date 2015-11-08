@@ -14,10 +14,11 @@
 
 #import "SLRocketPropertiesTVC.h"
 #import "SLMotorConfigurationTVC.h"
+#import "SLAvatarTVC.h"
 
 #define DELETE_BUTTON_INDEX 2
 
-@interface SLRocketPropertiesTVC ()<UIScrollViewDelegate, UIActionSheetDelegate, UITableViewDelegate, SLMotorConfigurationDataSource, SLMotorConfigurationDelegate, SLKitTVCDelegate>
+@interface SLRocketPropertiesTVC ()<UIScrollViewDelegate, UIActionSheetDelegate, UITableViewDelegate, SLMotorConfigurationDataSource, SLMotorConfigurationDelegate, SLKitTVCDelegate, SLAvatarDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *kitNameField;
 @property (weak, nonatomic) IBOutlet UITextField *manField;
@@ -282,6 +283,12 @@
     //    self.rocket.length = [kitDict[ROCKET_LENGTH_KEY] floatValue];
     //    self.rocket.cd = [kitDict[ROCKET_CD_KEY] floatValue];
     //    self.rocket.motorConfig = kitDict[ROCKET_MOTOR_CONFIG_KEY];
+}
+
+#pragma mark - SLAvatarDelegate
+
+-(void)avatarTVC:(SLAvatarTVC *)sender didPickAvatarNamed:(NSString *)avatarName{
+    
 }
 
 #pragma mark - prepareForSegue

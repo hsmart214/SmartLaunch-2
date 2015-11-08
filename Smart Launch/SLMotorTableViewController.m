@@ -37,7 +37,8 @@
     [headerLabel setBackgroundColor:[SLCustomUI headerBackgroundColor]];
     [headerLabel setTextAlignment:NSTextAlignmentCenter];
     [headerLabel setText:headerText];
-    [headerLabel setFont:[UIFont boldSystemFontOfSize:17.0]];
+    UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    [headerLabel setFont:font];
     
     
     return headerLabel;

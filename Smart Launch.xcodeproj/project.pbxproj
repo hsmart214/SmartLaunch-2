@@ -59,8 +59,8 @@
 		4257FE5517DDA8BF004A5021 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE4517DDA8BF004A5021 /* iTunesArtwork@2x.png */; };
 		425B18C618C30A1500FBC2B8 /* SLExpandingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 425B18C518C30A1500FBC2B8 /* SLExpandingTransition.m */; };
 		42742BBB172AE37D007229E9 /* SLClusterMotor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42742BBA172AE37D007229E9 /* SLClusterMotor.m */; };
+		427507A71BEF022700FAA8AD /* SLAvatarTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 427507A61BEF022700FAA8AD /* SLAvatarTVC.m */; };
 		427E9AE1185E26B300A1991E /* SLAvatarCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 427E9AE0185E26B300A1991E /* SLAvatarCVCell.m */; };
-		427E9AE4185E270600A1991E /* SLAvatarCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 427E9AE3185E270600A1991E /* SLAvatarCVC.m */; };
 		4292C554181F58D800C4C732 /* SLKitsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C54E181F58D800C4C732 /* SLKitsTVC.m */; };
 		4292C555181F58D800C4C732 /* SLKitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C550181F58D800C4C732 /* SLKitCell.m */; };
 		4292C556181F58D800C4C732 /* SLCommercialKitInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C552181F58D800C4C732 /* SLCommercialKitInfoViewController.m */; };
@@ -164,10 +164,10 @@
 		42742BB5172A3C68007229E9 /* SLClusterBuildDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterBuildDelegate.h; sourceTree = "<group>"; };
 		42742BB9172AE37C007229E9 /* SLClusterMotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterMotor.h; sourceTree = "<group>"; };
 		42742BBA172AE37D007229E9 /* SLClusterMotor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotor.m; sourceTree = "<group>"; };
+		427507A51BEF022700FAA8AD /* SLAvatarTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAvatarTVC.h; sourceTree = "<group>"; };
+		427507A61BEF022700FAA8AD /* SLAvatarTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAvatarTVC.m; sourceTree = "<group>"; };
 		427E9ADF185E26B300A1991E /* SLAvatarCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAvatarCVCell.h; sourceTree = "<group>"; };
 		427E9AE0185E26B300A1991E /* SLAvatarCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAvatarCVCell.m; sourceTree = "<group>"; };
-		427E9AE2185E270600A1991E /* SLAvatarCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAvatarCVC.h; sourceTree = "<group>"; };
-		427E9AE3185E270600A1991E /* SLAvatarCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAvatarCVC.m; sourceTree = "<group>"; };
 		4292C54E181F58D800C4C732 /* SLKitsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKitsTVC.m; sourceTree = "<group>"; };
 		4292C54F181F58D800C4C732 /* SLKitsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKitsTVC.h; sourceTree = "<group>"; };
 		4292C550181F58D800C4C732 /* SLKitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKitCell.m; sourceTree = "<group>"; };
@@ -403,8 +403,8 @@
 				4220A4C115F55CC60055EE35 /* SLRocketsTableViewController.m */,
 				4220A4C215F55CC60055EE35 /* SLRocketPropertiesTVC.h */,
 				4220A4C315F55CC60055EE35 /* SLRocketPropertiesTVC.m */,
-				427E9AE2185E270600A1991E /* SLAvatarCVC.h */,
-				427E9AE3185E270600A1991E /* SLAvatarCVC.m */,
+				427507A51BEF022700FAA8AD /* SLAvatarTVC.h */,
+				427507A61BEF022700FAA8AD /* SLAvatarTVC.m */,
 				422BE0191A3970FA00C23175 /* SLKitManufacturerTVC.h */,
 				422BE01A1A3970FA00C23175 /* SLKitManufacturerTVC.m */,
 				4292C54F181F58D800C4C732 /* SLKitsTVC.h */,
@@ -544,6 +544,7 @@
 				4220A4D415F55CC60055EE35 /* SLMotorSearchViewController.m in Sources */,
 				427E9AE1185E26B300A1991E /* SLAvatarCVCell.m in Sources */,
 				425B18C618C30A1500FBC2B8 /* SLExpandingTransition.m in Sources */,
+				427507A71BEF022700FAA8AD /* SLAvatarTVC.m in Sources */,
 				4220A4D515F55CC60055EE35 /* SLMotorTableViewController.m in Sources */,
 				4220A4D615F55CC60055EE35 /* SLMotorViewController.m in Sources */,
 				4220A4D715F55CC60055EE35 /* SLCurveGraphView.m in Sources */,
@@ -573,7 +574,6 @@
 				42742BBB172AE37D007229E9 /* SLClusterMotor.m in Sources */,
 				4292C554181F58D800C4C732 /* SLKitsTVC.m in Sources */,
 				42BD6CC617377CCE00E19B50 /* SLClusterMotorViewController.m in Sources */,
-				427E9AE4185E270600A1991E /* SLAvatarCVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

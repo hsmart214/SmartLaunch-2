@@ -406,6 +406,8 @@ float burrnoutTime, burrnoutMass;
     self.mass = [rocketProperties[ROCKET_MASS_KEY] floatValue];
     self.kitName = rocketProperties[ROCKET_KITNAME_KEY];
     self.manufacturer = rocketProperties[ROCKET_MAN_KEY];
+    self.avatar = rocketProperties[ROCKET_AVATAR_KEY];
+    if (!self.avatar) self.avatar = @"Goblin";
     self.recordedFlights = rocketProperties[ROCKET_RECORDED_FLIGHTS_KEY];
     [self replaceMotorLoadOutWithLoadOut:rocketProperties[ROCKET_LAST_LOADOUT_KEY]];
     self.motorConfig = rocketProperties[ROCKET_MOTOR_CONFIG_KEY];
@@ -419,6 +421,28 @@ float burrnoutTime, burrnoutMass;
 -(Rocket *)init{
     NSDictionary *rocketProperties = @{};
     self = [self initWithProperties:rocketProperties];
+    return self;
+}
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super init]){
+        burrnoutMass = 0.0;
+        burrnoutTime = 0.0;
+        self.version = [aDecoder decodeFloatForKey:SMART_LAUNCH_VERSION_KEY];
+        self.name = [aDecoder decodeObjectOfClass:[NSString class] forKey:ROCKET_NAME_KEY];
+        self.length = [aDecoder decodeFloatForKey:ROCKET_LENGTH_KEY];
+        self.diameter = [aDecoder decodeFloatForKey:ROCKET_DIAM_KEY];
+        self.cd = [aDecoder decodeFloatForKey:ROCKET_CD_KEY];
+        self.motorSize = [aDecoder decodeIntegerForKey:ROCKET_MOTORSIZE_KEY];
+        self.mass = [aDecoder decodeFloatForKey:ROCKET_MASS_KEY];
+        self.kitName = [aDecoder decodeObjectOfClass:[NSString class] forKey:ROCKET_KITNAME_KEY];
+        self.manufacturer = [aDecoder decodeObjectOfClass:[NSString class] forKey:ROCKET_MAN_KEY];
+        self.avatar = [aDecoder decodeObjectOfClass:[NSString class] forKey:ROCKET_AVATAR_KEY];
+        self.recordedFlights = [aDecoder decodeObjectOfClass:[NSArray class] forKey:ROCKET_RECORDED_FLIGHTS_KEY];
+        [self replaceMotorLoadOutWithLoadOut:[aDecoder decodeObjectOfClass:[NSArray class] forKey:ROCKET_LAST_LOADOUT_KEY]];
+        self.motorConfig = [aDecoder decodeObjectOfClass:[NSArray class] forKey:ROCKET_MOTOR_CONFIG_KEY];
+        
+    }
     return self;
 }
 
@@ -445,10 +469,27 @@ float burrnoutTime, burrnoutMass;
     if (self.mass) rocketProperties[ROCKET_MASS_KEY] = @(self.mass);
     if (self.kitName) rocketProperties[ROCKET_KITNAME_KEY] = self.kitName;
     if (self.manufacturer) rocketProperties[ROCKET_MAN_KEY] = self.manufacturer;
+    if (self.avatar) rocketProperties[ROCKET_AVATAR_KEY] = self.avatar;
     if (self.recordedFlights) rocketProperties[ROCKET_RECORDED_FLIGHTS_KEY] = self.recordedFlights;
     if ([self motorLoadoutPlist]) rocketProperties[ROCKET_LAST_LOADOUT_KEY] = [self motorLoadoutPlist];
     rocketProperties[SMART_LAUNCH_VERSION_KEY] = @(SMART_LAUNCH_VERSION);   // always save under the current version
     return rocketProperties;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.name forKey:ROCKET_NAME_KEY];
+    [aCoder encodeFloat:self.length forKey:ROCKET_LENGTH_KEY];
+    [aCoder encodeFloat:self.diameter forKey:ROCKET_DIAM_KEY];
+    [aCoder encodeFloat:self.cd forKey:ROCKET_CD_KEY];
+    [aCoder encodeInteger:self.motorSize forKey:ROCKET_MOTORSIZE_KEY];
+    [aCoder encodeObject:self.motorConfig forKey:ROCKET_MOTOR_CONFIG_KEY];
+    [aCoder encodeFloat:self.mass forKey:ROCKET_MASS_KEY];
+    [aCoder encodeObject:self.kitName forKey:ROCKET_KITNAME_KEY];
+    [aCoder encodeObject:self.manufacturer forKey:ROCKET_MAN_KEY];
+    [aCoder encodeObject:self.avatar forKey:ROCKET_AVATAR_KEY];
+    [aCoder encodeObject:self.recordedFlights forKey:ROCKET_RECORDED_FLIGHTS_KEY];
+    [aCoder encodeObject:[self motorLoadoutPlist] forKey:ROCKET_LAST_LOADOUT_KEY];
+    [aCoder encodeFloat:SMART_LAUNCH_VERSION forKey:SMART_LAUNCH_VERSION_KEY];
 }
 
 +(Rocket *)rocketWithRocketDict:(NSDictionary *)rocketDict{
@@ -476,5 +517,9 @@ float burrnoutTime, burrnoutMass;
 -(NSString *)description{
     //return [NSString stringWithFormat:@"Rocket: %@", self.name];
     return self.name;
+}
+
++(BOOL)supportsSecureCoding{
+    return YES;
 }
 @end

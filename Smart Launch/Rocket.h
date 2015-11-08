@@ -24,7 +24,7 @@
 
 @end
 
-@interface Rocket : NSObject<NSCopying, SLRocketPhysicsDatasource>
+@interface Rocket : NSObject<NSCopying, NSSecureCoding, SLRocketPhysicsDatasource>
 
 @property (nonatomic, strong) NSString * name;          //user's name for the rocket
 @property (nonatomic) float length;        //meters float
@@ -44,6 +44,7 @@
 @property (nonatomic, readonly) NSString *motorDescription;
 @property (nonatomic, readonly) BOOL hasClusterMount;
 @property (nonatomic, strong, readonly) NSArray *previousLoadOuts;
+@property (nonatomic, strong) NSString *avatar; //this corresponds to a named UIImage set in the asset catalog
 
 -(NSDictionary *)rocketPropertyList;
 -(NSArray *)motorLoadoutPlist;
