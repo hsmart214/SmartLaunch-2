@@ -288,7 +288,7 @@
 #pragma mark - SLAvatarDelegate
 
 -(void)avatarTVC:(SLAvatarTVC *)sender didPickAvatarNamed:(NSString *)avatarName{
-    
+    self.rocket.avatar = avatarName;
 }
 
 #pragma mark - prepareForSegue
@@ -328,6 +328,11 @@
     }
     if ([segue.identifier isEqualToString:@"kitSegue"]){
         [(SLKitManufacturerTVC *)segue.destinationViewController setDelegate:self];
+    }
+    if ([segue.identifier isEqualToString:@"Choose Avatar"]){
+        SLAvatarTVC *dest = segue.destinationViewController;
+        dest.delegate = self;
+        dest.avatar = self.rocket.avatar;
     }
 }
 

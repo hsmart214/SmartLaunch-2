@@ -60,7 +60,6 @@
 		425B18C618C30A1500FBC2B8 /* SLExpandingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 425B18C518C30A1500FBC2B8 /* SLExpandingTransition.m */; };
 		42742BBB172AE37D007229E9 /* SLClusterMotor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42742BBA172AE37D007229E9 /* SLClusterMotor.m */; };
 		427507A71BEF022700FAA8AD /* SLAvatarTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 427507A61BEF022700FAA8AD /* SLAvatarTVC.m */; };
-		427E9AE1185E26B300A1991E /* SLAvatarCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 427E9AE0185E26B300A1991E /* SLAvatarCVCell.m */; };
 		4292C554181F58D800C4C732 /* SLKitsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C54E181F58D800C4C732 /* SLKitsTVC.m */; };
 		4292C555181F58D800C4C732 /* SLKitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C550181F58D800C4C732 /* SLKitCell.m */; };
 		4292C556181F58D800C4C732 /* SLCommercialKitInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C552181F58D800C4C732 /* SLCommercialKitInfoViewController.m */; };
@@ -166,8 +165,6 @@
 		42742BBA172AE37D007229E9 /* SLClusterMotor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotor.m; sourceTree = "<group>"; };
 		427507A51BEF022700FAA8AD /* SLAvatarTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAvatarTVC.h; sourceTree = "<group>"; };
 		427507A61BEF022700FAA8AD /* SLAvatarTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAvatarTVC.m; sourceTree = "<group>"; };
-		427E9ADF185E26B300A1991E /* SLAvatarCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAvatarCVCell.h; sourceTree = "<group>"; };
-		427E9AE0185E26B300A1991E /* SLAvatarCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAvatarCVCell.m; sourceTree = "<group>"; };
 		4292C54E181F58D800C4C732 /* SLKitsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKitsTVC.m; sourceTree = "<group>"; };
 		4292C54F181F58D800C4C732 /* SLKitsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKitsTVC.h; sourceTree = "<group>"; };
 		4292C550181F58D800C4C732 /* SLKitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKitCell.m; sourceTree = "<group>"; };
@@ -354,8 +351,6 @@
 				42D7809A1663291B000C7D6C /* SLAnimatedRocketView.m */,
 				4220A4B415F55CC60055EE35 /* SLLaunchAngleView.h */,
 				4220A4B515F55CC60055EE35 /* SLLaunchAngleView.m */,
-				427E9ADF185E26B300A1991E /* SLAvatarCVCell.h */,
-				427E9AE0185E26B300A1991E /* SLAvatarCVCell.m */,
 				4292C551181F58D800C4C732 /* SLKitCell.h */,
 				4292C550181F58D800C4C732 /* SLKitCell.m */,
 				423D16E117053FE80007ED61 /* SLCustomUI.h */,
@@ -542,7 +537,6 @@
 				4220A4D115F55CC60055EE35 /* SLLaunchAngleViewController.m in Sources */,
 				4220A4D215F55CC60055EE35 /* SLLaunchAngleView.m in Sources */,
 				4220A4D415F55CC60055EE35 /* SLMotorSearchViewController.m in Sources */,
-				427E9AE1185E26B300A1991E /* SLAvatarCVCell.m in Sources */,
 				425B18C618C30A1500FBC2B8 /* SLExpandingTransition.m in Sources */,
 				427507A71BEF022700FAA8AD /* SLAvatarTVC.m in Sources */,
 				4220A4D515F55CC60055EE35 /* SLMotorTableViewController.m in Sources */,

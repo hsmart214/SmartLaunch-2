@@ -1175,7 +1175,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <segue destination="WbG-wf-bVN" kind="push" id="onb-tj-FEp"/>
+                                            <segue destination="WbG-wf-bVN" kind="push" identifier="Choose Avatar" id="onb-tj-FEp"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -3768,7 +3768,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
         <!--Rocket Avatars-->
         <scene sceneID="RJi-M8-zwV">
             <objects>
-                <tableViewController id="WbG-wf-bVN" sceneMemberID="viewController">
+                <tableViewController id="WbG-wf-bVN" customClass="SLAvatarTVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mnq-js-LKo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

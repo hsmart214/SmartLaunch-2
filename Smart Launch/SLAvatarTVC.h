@@ -19,4 +19,7 @@
 
 @interface SLAvatarTVC : UITableViewController
 
+@property (nonatomic, weak) id<SLAvatarDelegate> delegate;
+@property (nonatomic, copy) NSString *avatar;
+
 @end
