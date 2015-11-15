@@ -36,5 +36,5 @@
 -(float)launchSiteAltitude;
 -(LaunchDirection)launchGuideDirection;
 -(float)quickFFVelocityAtAngle:(float)angle andGuideLength:(float)length;
-
+-(NSString *)avatarName;
 @end

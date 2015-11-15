@@ -235,6 +235,7 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    self.rocketView.avatar = [self.dataSource avatarName];
     [self.rocketView startFresh];
     [self updateDisplay];
 }

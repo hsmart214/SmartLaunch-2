@@ -60,8 +60,8 @@ typedef enum {
 #define EVERY_MOTOR_CACHE_FILENAME @"everymotorcache.plist"
 #define EVERY_MOTOR_HASHTABLE_CACHE_FILENAME @"everymotorhashcache.plist"
 #define MOTOR_DATA_FILENAME @"motors.txt"
-#define VERTICAL_ROCKET_PIC_NAME @"Goblin Vertical"
-#define AVATAR_HORIZONTAL_SUFFIX @"_horiz"
+#define VERTICAL_ROCKET_PIC_NAME @"Goblin_vert"
+#define AVATAR_VERTICAL_SUFFIX @"_vert"
 #define CURVEGRAPHVIEW_DEFAULT_VERTICAL_DIVISIONS 8
 
 #define MOTION_OFFSET 15

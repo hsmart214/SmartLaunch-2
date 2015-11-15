@@ -18,9 +18,8 @@
 
 -(NSArray *)avatarNames{
     if (!_avatarNames){
-        _avatarNames = @[@"Goblin",
-                         @"Patriot",
-                         @"Sensor",
+        _avatarNames = @[@"AerobeeHi",
+                         @"Alpha",
                          @"AlphaIII",
                          @"ArmyHawk",
                          @"Batray",
@@ -30,18 +29,25 @@
                          @"Cricket",
                          @"DerRedMax",
                          @"FatBoy",
+                         @"Generic",
+                         @"Goblin",
+                         @"Interceptor",
                          @"Jayhawk",
                          @"LilGoblin",
+                         @"LittleJoeII",
                          @"MartianTransport",
                          @"Mosquito",
                          @"NikeSmoke",
+                         @"Patriot",
                          @"Phoenix",
                          @"Pike",
                          @"SeaWolf",
+                         @"Sensor",
                          @"SportX",
                          @"Squat",
                          @"SuperDX3",
                          @"Tembo",
+                         @"V2",
                          ];
     }
     return _avatarNames;

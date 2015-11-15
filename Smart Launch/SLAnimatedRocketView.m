@@ -30,6 +30,21 @@
 @synthesize launchAngle = _launchAngle;
 @synthesize windVelocity = _windVelocity;
 
+-(void)setAvatar:(NSString *)avatar{
+    if (![avatar isEqualToString:_avatar]){
+        _avatar = avatar;
+        self.goblin.image = [UIImage imageNamed:[avatar stringByAppendingString:AVATAR_VERTICAL_SUFFIX]];
+        NSAssert(self.goblin.image != nil, @"No image for vertical avatar");
+    }
+}
+
+-(UIImageView *)goblin{
+    if (!_goblin){
+        _goblin = [[UIImageView alloc] initWithImage:[UIImage imageNamed:VERTICAL_ROCKET_PIC_NAME]];
+    }
+    return _goblin;
+}
+
 -(void)tiltRocketToAngle:(float)angle{
     self.launchAngle = -angle;  //in the model the launch angle is always positive, in Quartz, ccw is negative, so we switch it here
     CGAffineTransform tx = CGAffineTransformMakeRotation(-angle);
@@ -47,7 +62,9 @@
     for (UIView* v in self.subviews){
         [v removeFromSuperview];
     }
-    self.goblin = [[UIImageView alloc] initWithImage:[UIImage imageNamed:VERTICAL_ROCKET_PIC_NAME]];
+    NSString *avatarName = self.avatar ? [self.avatar stringByAppendingString:AVATAR_VERTICAL_SUFFIX] : VERTICAL_ROCKET_PIC_NAME;
+    self.goblin.image = [UIImage imageNamed:avatarName];
+    NSAssert(self.goblin.image != nil, @"No image for vertical avatar");
     CGPoint orig = CGPointMake(self.goblin.bounds.size.width + X_INSET, self.goblin.bounds.size.height + Y_INSET);
     CGSize s = self.bounds.size;
     CGRect frame = CGRectMake(s.width - orig.x, s.height - orig.y, self.goblin.bounds.size.width, self.goblin.bounds.size.height);

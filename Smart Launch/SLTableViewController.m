@@ -290,6 +290,10 @@
 
 #pragma mark - SLSimulationDataSource methods
 
+- (NSString *)avatarName{
+    return self.rocket.avatar;
+}
+
 - (NSMutableDictionary *)simulationSettings{
     return [self.settings mutableCopy];
 }

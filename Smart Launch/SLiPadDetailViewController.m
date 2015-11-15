@@ -67,6 +67,7 @@
     [self setUpUnits];
     [self importSimValues];
     [self updateGraphDisplay];
+    self.rocketView.avatar = [self.simDataSource avatarName];
     [self updateAoADisplay];
 }
 
@@ -348,6 +349,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    self.rocketView.avatar = [self.simDataSource avatarName];
     [self.rocketView startFresh];
     [self importSimValues];
     [self updateAoADisplay];

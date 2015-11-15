@@ -11,6 +11,8 @@
 
 @interface SLAnimatedRocketView : UIView
 
+@property (nonatomic, strong) NSString* avatar;
+
 -(void)tiltRocketToAngle:(float)angle;
 -(void)UpdateVectorsWithRocketVelocity:(float)rocketVelocity
                        andWindVelocity:(float)windVelocity;
