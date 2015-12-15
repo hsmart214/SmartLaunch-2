@@ -197,6 +197,7 @@
         //cell.detailTextLabel.text = [NSString stringWithFormat:@"%1.2f m", [detailInfo floatValue]];
         cell.detailTextLabel.text = nil;
     }
+    cell.imageView.image = [UIImage imageNamed:cellRocket.avatar];
     return cell;
 }
 

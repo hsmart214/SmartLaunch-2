@@ -29,9 +29,18 @@ static CMMotionManager* sMotionManager;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //self.window.tintColor = [UIColor colorWithRed:0.0 green:0.317 blue:0.072 alpha:1.0];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger currentMotorsVersion = [defaults integerForKey:MOTOR_FILE_VERSION_KEY];
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    NSInteger bundleMotorVersion = [[NSString stringWithContentsOfURL:[mainBundle URLForResource:MOTOR_VERSION_FILENAME withExtension:@"txt"] encoding:NSUTF8StringEncoding error:nil]integerValue];
+    if (currentMotorsVersion == 0){
+        [defaults setInteger:bundleMotorVersion forKey:MOTOR_FILE_VERSION_KEY];
+        currentMotorsVersion = bundleMotorVersion;
+        [defaults synchronize];
+    }
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -62,10 +62,11 @@
         NSURL *motorFileVersionWWWURL = [NSURL URLWithString:MOTORS_VERSION_WWW_URL];
         NSError *err = nil;
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-        NSString *version = [NSString stringWithContentsOfURL:motorFileVersionWWWURL encoding:NSUTF8StringEncoding error:&err];
+        NSStringEncoding enc;
+        NSString *version = [NSString stringWithContentsOfURL:motorFileVersionWWWURL usedEncoding:&enc error:&err];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         if (err){
-            NSLog(@"Error reading Motor version from mySmartSoftware.com");
+            NSLog(@"\nError reading Motor version from mySmartSoftware.com");
             self.alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Motor List Update", @"Motor List Update")
                                                    message:NSLocalizedString(@"Unable to contact website.", @"Unable to contact website.") 
                                                   delegate:self
@@ -112,8 +113,10 @@
                 }
             }
         }else{
+            // TODO: localize this again
+            NSString *message = [NSString stringWithFormat:@"Web version:%ld, Your version:%ld", versionNumber, currentVersion];
             self.alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Motor List Update", @"Motor List Update")
-                                                   message:NSLocalizedString(@"Your motor list is current.", @"Your motor list is current.")
+                                                   message:message
                                                   delegate:self
                                          cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
                                          otherButtonTitles: nil];

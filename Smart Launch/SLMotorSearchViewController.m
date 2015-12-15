@@ -55,6 +55,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
         NSInteger currentMotorsVersion = [defaults integerForKey:MOTOR_FILE_VERSION_KEY];
         NSBundle *mainBundle = [NSBundle mainBundle];
         NSInteger bundleMotorVersion = [[NSString stringWithContentsOfURL:[mainBundle URLForResource:MOTOR_VERSION_FILENAME withExtension:@"txt"] encoding:NSUTF8StringEncoding error:nil]integerValue];
+        
         NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
         NSURL *motorFileURL = [cacheURL URLByAppendingPathComponent:MOTOR_CACHE_FILENAME];
         if ([[NSFileManager defaultManager]fileExistsAtPath:[motorFileURL path]]){
@@ -82,8 +83,8 @@ NSInteger sortFunction(id md1, id md2, void *context){
         while ([textLines count] > 0) {
             NSMutableDictionary *motorData = [NSMutableDictionary dictionary];
             NSString *header;
-            while (true){ // remove all of the comment lines
-                if ([textLines[0] characterAtIndex:0]== ';'){
+            while (true){ // remove all of the comment lines and blank lines
+                if ([textLines[0] characterAtIndex:0]== ';' || [textLines[0] count] == 0){
                     [textLines removeObjectAtIndex:0];
                     if ([textLines count] == 0){
                         header = nil;
@@ -120,7 +121,8 @@ NSInteger sortFunction(id md1, id md2, void *context){
             NSMutableArray *times = [NSMutableArray array];
             NSMutableArray *thrusts = [NSMutableArray array];
             while (true){
-                chunks = [textLines[0] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+                NSString *trimmed = [textLines[0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+                chunks = [trimmed componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
                 chunks = @[chunks[0], [chunks lastObject]];
                 [times addObject:@([chunks[0] floatValue])];
                 [thrusts addObject:@([chunks[1] floatValue])];
