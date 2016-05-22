@@ -35,7 +35,6 @@ static CMMotionManager* sMotionManager;
     NSInteger bundleMotorVersion = [[NSString stringWithContentsOfURL:[mainBundle URLForResource:MOTOR_VERSION_FILENAME withExtension:@"txt"] encoding:NSUTF8StringEncoding error:nil]integerValue];
     if (currentMotorsVersion == 0){
         [defaults setInteger:bundleMotorVersion forKey:MOTOR_FILE_VERSION_KEY];
-        currentMotorsVersion = bundleMotorVersion;
         [defaults synchronize];
     }
     return YES;

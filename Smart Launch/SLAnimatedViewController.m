@@ -39,6 +39,7 @@
 
 @implementation SLAnimatedViewController
 
+
 - (void)setDisplayLaunchAngle:(float)angle{
     if (angle == _displayLaunchAngle) return;
     if (angle < 0) angle = 0;

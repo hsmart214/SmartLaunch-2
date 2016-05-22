@@ -84,7 +84,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
             NSMutableDictionary *motorData = [NSMutableDictionary dictionary];
             NSString *header;
             while (true){ // remove all of the comment lines and blank lines
-                if ([textLines[0] characterAtIndex:0]== ';' || [textLines[0] count] == 0){
+                if ([textLines[0] characterAtIndex:0]== ';' || [textLines[0] length] == 0){
                     [textLines removeObjectAtIndex:0];
                     if ([textLines count] == 0){
                         header = nil;

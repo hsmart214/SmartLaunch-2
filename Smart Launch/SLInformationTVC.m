@@ -102,8 +102,10 @@
                 }else{
                     [defaults setInteger:versionNumber forKey:MOTOR_FILE_VERSION_KEY];
                     [defaults synchronize];
+                    // TODO: localize this message
+                    NSString *message = [NSString stringWithFormat:@"Motor list updated from v.%ld to v.%ld", (long)currentVersion, (unsigned long)versionNumber];
                     self.alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Motor List Update", @"Motor List Update")
-                                                           message:NSLocalizedString(@"Your motor list has been updated.", @"Your motor list has been updated.")
+                                                           message:message
                                                           delegate:self
                                                  cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
                                                  otherButtonTitles: nil];
@@ -114,7 +116,7 @@
             }
         }else{
             // TODO: localize this again
-            NSString *message = [NSString stringWithFormat:@"Web version:%ld, Your version:%ld", versionNumber, currentVersion];
+            NSString *message = [NSString stringWithFormat:@"Motor list is up to date: version %ld", (long)currentVersion];
             self.alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Motor List Update", @"Motor List Update")
                                                    message:message
                                                   delegate:self

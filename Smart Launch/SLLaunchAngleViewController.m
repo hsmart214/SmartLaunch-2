@@ -24,7 +24,6 @@
 #define BUTTON_WIDTH 120
 #define BUTTON_HEIGHT 120
 
-
 @interface SLLaunchAngleViewController() <SLLaunchAngleViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 {

@@ -151,7 +151,8 @@
 + (NSArray *)manufacturerNames{
     return @[@"AMW Pro-X",
             @"Aerotech RMS",
-            @"Aerotech SU+DMS",
+            @"Aerotech SU",
+            @"Aerotech DMS",
             @"Aerotech Hybrid",
             @"Animal Motor Works",
             @"Apogee",
@@ -358,7 +359,8 @@
 +(NSDictionary *)manufacturerDict{
     return @{@"AMW_ProX": @"AMW Pro-X",
             @"A-RMS": @"Aerotech RMS",
-            @"A": @"Aerotech SU+DMS",
+            @"A": @"Aerotech SU",
+            @"A-DMS": @"Aerotech DMS",
             @"ATH": @"Aerotech Hybrid",
             @"AMW": @"Animal Motor Works",
             @"Apogee": @"Apogee",
