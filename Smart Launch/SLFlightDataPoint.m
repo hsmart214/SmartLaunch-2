@@ -10,4 +10,8 @@
 
 @implementation SLFlightDataPoint
 
+-(NSString *)description{
+    return [NSString stringWithFormat:@"Time: %1.2fs Alt: %1.1fm Vel: %1.1fm/s", self->time, self->alt, self->vel];
+}
+
 @end

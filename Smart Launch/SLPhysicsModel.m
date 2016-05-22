@@ -383,7 +383,7 @@ typedef struct  {
 {
     if (![_flightProfile count]) return [[SLFlightDataPoint alloc] init];
     if (!_maxValues){
-        _maxValues = [_flightProfile firstObject];
+        _maxValues = [SLFlightDataPoint new];
         for (SLFlightDataPoint *dp in _flightProfile){
             if (dp->alt > _maxValues->alt) _maxValues->alt = dp->alt;
             if (dp->vel > _maxValues->vel) _maxValues->vel = dp->vel;

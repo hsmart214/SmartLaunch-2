@@ -18,5 +18,4 @@
     double drag;
 }
 
-
 @end
