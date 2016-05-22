@@ -10,6 +10,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RocketMotor.h"
+#import "SLClusterMotor.h"
 #import "Rocket.h"
 
 @class SLFlightDataPoint;
@@ -71,4 +72,6 @@
 - (float)fastApogee;                        // to be used in the estimations for calculating the best Cd
 
 - (float)burnoutToApogee;                  // SECONDS from burnout to apogee - the ideal motor delay
+
++ (double)totalImpulseFromFlightSettings:(NSDictionary *)settings;
 @end

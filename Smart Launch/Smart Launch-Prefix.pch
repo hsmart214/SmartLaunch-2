@@ -20,7 +20,7 @@
 /* This key-value pair can be inserted into any dictionary where future versions might add or remove features */
 
 #define SMART_LAUNCH_VERSION_KEY @"com.mySmartSoftware.SmartLaunch_Version"
-#define SMART_LAUNCH_VERSION 2.20
+#define SMART_LAUNCH_VERSION 2.30
 
 /* The LaunchDirection constants will be used in the calculation of the angle of attack
  This will tell us how to add the rocket velocity and wind vectors

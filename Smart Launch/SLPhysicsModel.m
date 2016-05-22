@@ -40,6 +40,13 @@ typedef struct  {
 
 @implementation SLPhysicsModel
 
++(double)totalImpulseFromFlightSettings:(NSDictionary *)settings{
+    
+    SLClusterMotor *cMotor = [[SLClusterMotor alloc] initWithMotorLoadout:settings[SELECTED_MOTOR_KEY]];
+    
+    return cMotor.totalImpulse;
+}
+
 +(instancetype)sharedModel
 {
     static SLPhysicsModel *sModel = nil;
