@@ -1,43 +1,36 @@
 //
-//  SLRocketsLaunchedTVC.swift
+//  SLLaunchesTVC.swift
 //  Smart Launch
 //
-//  Created by J. HOWARD SMART on 5/21/16.
+//  Created by J. HOWARD SMART on 5/22/16.
 //  Copyright © 2016 J. HOWARD SMART. All rights reserved.
 //
 
 import UIKit
 
-class SLRocketsLaunchedTVC: UITableViewController {
-    var rockets : [Rocket]?
-    
+class SLLaunchesTVC: UITableViewController {
+    var rocket : Rocket?
+
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rockets?.count ?? 0
+        return rocket?.recordedFlights?.count ?? 0
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Rocket Cell", forIndexPath: indexPath)
-        if let rocketCell = cell as? SLRocketImpulseCell{
-            rocketCell.rocket = rockets?[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("SavedFlightCell", forIndexPath: indexPath)
+        let flightData = rocket?.recordedFlights![indexPath.row] as? [String: AnyObject]
+        if let flightCell = cell as? SLFlightDataCell where flightData != nil{
+            var altitude : Float = flightData![FLIGHT_ALTITUDE_KEY] as? Float ?? 0.0
+            let cd : Double = flightData![FLIGHT_BEST_CD] as? Double ?? 0.0
+            let motor : String = flightData![FLIGHT_MOTOR_LONGNAME_KEY] as? String ?? ""
+            flightCell.cd.text = String(format: "%1.2f", cd)
+            flightCell.motorName.text = motor
+            altitude = SLUnitsConvertor.displayUnitsOf(altitude, forKey: ALT_UNIT_KEY)
+            flightCell.altitude.text = String(format: "%1.0f", altitude)
+            flightCell.altitudeUnitsLabel.text = SLUnitsConvertor.displayStringForKey(ALT_UNIT_KEY)
         }
-        
-        
         return cell
-    }
-    
-    // MARK: - Navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let dvc = segue.destinationViewController as? SLLaunchesTVC{
-            if let senderCell = sender as? SLRocketImpulseCell{
-                if let row = tableView.indexPathForCell(senderCell)?.row{
-                    dvc.rocket = rockets?[row]
-                }
-            }
-        }
     }
     
     override func viewDidLoad() {
@@ -57,5 +50,4 @@ class SLRocketsLaunchedTVC: UITableViewController {
             self.tableView.backgroundColor = UIColor.clearColor()
         }
     }
-
 }

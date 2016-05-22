@@ -27,4 +27,5 @@
 -(id)initWithMotorLoadout:(NSArray *)motorLoadout;
 -(float)thrustAtTime:(float)time;
 
++(double)totalImpulseFromFlightSettings:(NSDictionary *)settings;
 @end

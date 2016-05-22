@@ -73,5 +73,4 @@
 
 - (float)burnoutToApogee;                  // SECONDS from burnout to apogee - the ideal motor delay
 
-+ (double)totalImpulseFromFlightSettings:(NSDictionary *)settings;
 @end

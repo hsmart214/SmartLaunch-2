@@ -62,6 +62,8 @@
 		425B18C618C30A1500FBC2B8 /* SLExpandingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 425B18C518C30A1500FBC2B8 /* SLExpandingTransition.m */; };
 		42742BBB172AE37D007229E9 /* SLClusterMotor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42742BBA172AE37D007229E9 /* SLClusterMotor.m */; };
 		427507A71BEF022700FAA8AD /* SLAvatarTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 427507A61BEF022700FAA8AD /* SLAvatarTVC.m */; };
+		428E520A1CF2154D00843281 /* SLRocketImpulseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428E52091CF2154D00843281 /* SLRocketImpulseCell.swift */; };
+		428E520C1CF21EB700843281 /* SLLaunchesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428E520B1CF21EB700843281 /* SLLaunchesTVC.swift */; };
 		4292C554181F58D800C4C732 /* SLKitsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C54E181F58D800C4C732 /* SLKitsTVC.m */; };
 		4292C555181F58D800C4C732 /* SLKitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C550181F58D800C4C732 /* SLKitCell.m */; };
 		4292C556181F58D800C4C732 /* SLCommercialKitInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C552181F58D800C4C732 /* SLCommercialKitInfoViewController.m */; };
@@ -169,6 +171,8 @@
 		42742BBA172AE37D007229E9 /* SLClusterMotor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotor.m; sourceTree = "<group>"; };
 		427507A51BEF022700FAA8AD /* SLAvatarTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAvatarTVC.h; sourceTree = "<group>"; };
 		427507A61BEF022700FAA8AD /* SLAvatarTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAvatarTVC.m; sourceTree = "<group>"; };
+		428E52091CF2154D00843281 /* SLRocketImpulseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLRocketImpulseCell.swift; sourceTree = "<group>"; };
+		428E520B1CF21EB700843281 /* SLLaunchesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLLaunchesTVC.swift; sourceTree = "<group>"; };
 		4292C54E181F58D800C4C732 /* SLKitsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKitsTVC.m; sourceTree = "<group>"; };
 		4292C54F181F58D800C4C732 /* SLKitsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKitsTVC.h; sourceTree = "<group>"; };
 		4292C550181F58D800C4C732 /* SLKitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKitCell.m; sourceTree = "<group>"; };
@@ -299,7 +303,6 @@
 				42E353FC18AC93CF00E2053F /* Controllers */,
 				42E353FD18AC94AD00E2053F /* Delegates */,
 				4256931015F4893000F7BABC /* Supporting Files */,
-				422BE0161A3970C600C23175 /* SmartLaunch-Bridging-Header.h */,
 			);
 			path = "Smart Launch";
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				4220A53215F55DFF0055EE35 /* Data Files */,
+				422BE0161A3970C600C23175 /* SmartLaunch-Bridging-Header.h */,
 				4256931715F4893000F7BABC /* Smart Launch-Prefix.pch */,
 				4256931515F4893000F7BABC /* main.m */,
 				4256931815F4893000F7BABC /* SLAppDelegate.h */,
@@ -359,6 +363,7 @@
 				4292C550181F58D800C4C732 /* SLKitCell.m */,
 				423D16E117053FE80007ED61 /* SLCustomUI.h */,
 				423D16E217053FE80007ED61 /* SLCustomUI.m */,
+				428E52091CF2154D00843281 /* SLRocketImpulseCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 			children = (
 				42570B6B1CF1668200169EE4 /* SLFlightStatisticsTVC.swift */,
 				42570B6D1CF1684B00169EE4 /* SLRocketsLaunchedTVC.swift */,
+				428E520B1CF21EB700843281 /* SLLaunchesTVC.swift */,
 				4220A4AA15F55CC60055EE35 /* SLTableViewController.h */,
 				4220A4AB15F55CC60055EE35 /* SLTableViewController.m */,
 				42248D7A16EC416200ABB5D7 /* SLiPadDetailViewController.h */,
@@ -555,6 +561,7 @@
 				4220A4DB15F55CC60055EE35 /* Rocket.m in Sources */,
 				4220A4DC15F55CC60055EE35 /* RocketMotor.m in Sources */,
 				4220A4DD15F55CC60055EE35 /* SLPhysicsModel.m in Sources */,
+				428E520A1CF2154D00843281 /* SLRocketImpulseCell.swift in Sources */,
 				4240A07815F8341900D67F3E /* SLMotorPrefsTVC.m in Sources */,
 				42D78095166295F1000C7D6C /* SLAnimatedViewController.m in Sources */,
 				42D7809B1663291B000C7D6C /* SLAnimatedRocketView.m in Sources */,
@@ -566,6 +573,7 @@
 				42248D7C16EC416200ABB5D7 /* SLiPadDetailViewController.m in Sources */,
 				42570B6E1CF1684B00169EE4 /* SLRocketsLaunchedTVC.swift in Sources */,
 				423D16E317053FE80007ED61 /* SLCustomUI.m in Sources */,
+				428E520C1CF21EB700843281 /* SLLaunchesTVC.swift in Sources */,
 				42F83DB8171B6EAB005FAA0C /* SLClusterTableViewController.m in Sources */,
 				42F83DBB171B6ED3005FAA0C /* SLClusterMotorBuildViewController.m in Sources */,
 				4292C556181F58D800C4C732 /* SLCommercialKitInfoViewController.m in Sources */,

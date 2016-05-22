@@ -26,48 +26,48 @@
 
 @interface Rocket : NSObject<NSCopying, NSSecureCoding, SLRocketPhysicsDatasource>
 
-@property (nonatomic, strong) NSString * name;          //user's name for the rocket
+@property (nonatomic, strong, nullable) NSString * name;          //user's name for the rocket
 @property (nonatomic) float length;        //meters float
 @property (nonatomic) float diameter;      //meters float
 @property (nonatomic) float cd;            //dimensionless float
 @property (nonatomic) NSUInteger motorSize;     //this one is an integer number of millimeters (just the largest, central one - compatibility)
 @property (nonatomic) float mass;          //kilograms float
 @property (nonatomic) float massWithMotors;
-@property (nonatomic, strong) NSString * kitName;       //manufacturer's name for the kit
-@property (nonatomic, strong) NSString * manufacturer;  //company that made the kit (if any)
-@property (nonatomic, strong) NSArray *recordedFlights; //array of NSDictionary* plists of flight information
-@property (nonatomic, strong) NSArray *motorConfig;        //only available in v1.5 or later - may indicate single motor mount (default)
+@property (nonatomic, strong, nullable) NSString * kitName;       //manufacturer's name for the kit
+@property (nonatomic, strong, nullable) NSString * manufacturer;  //company that made the kit (if any)
+@property (nonatomic, strong, nullable) NSArray *recordedFlights; //array of NSDictionary* plists of flight information
+@property (nonatomic, strong, nullable) NSArray *motorConfig;        //only available in v1.5 or later - may indicate single motor mount (default)
 @property (nonatomic, readonly) float version;
-@property (nonatomic, readonly) NSString *motorManufacturer;
-@property (nonatomic, readonly) NSString *impulseClass;
-@property (nonatomic, readonly) NSArray *motors;
-@property (nonatomic, readonly) NSString *motorDescription;
+@property (nonatomic, readonly, nullable) NSString *motorManufacturer;
+@property (nonatomic, readonly, nullable) NSString *impulseClass;
+@property (nonatomic, readonly, nullable) NSArray *motors;
+@property (nonatomic, readonly, nullable) NSString *motorDescription;
 @property (nonatomic, readonly) BOOL hasClusterMount;
-@property (nonatomic, strong, readonly) NSArray *previousLoadOuts;
-@property (nonatomic, strong) NSString *avatar; //this corresponds to a named UIImage set in the asset catalog
+@property (nonatomic, strong, readonly, nullable) NSArray *previousLoadOuts;
+@property (nonatomic, strong, nonnull) NSString *avatar; //this corresponds to a named UIImage set in the asset catalog
 
--(NSDictionary *)rocketPropertyList;
--(NSArray *)motorLoadoutPlist;
+-(NSDictionary * _Nonnull)rocketPropertyList;
+-(NSArray * _Nullable)motorLoadoutPlist;
 -(float)totalImpulse;
 
 // methods to modify the motor cluster
 
--(void)replaceMotorForGroupAtIndex:(NSUInteger)index withMotor:(RocketMotor *)motor andStartDelay:(float)delay;
+-(void)replaceMotorForGroupAtIndex:(NSUInteger)index withMotor:(RocketMotor * _Nullable)motor andStartDelay:(float)delay;
 -(void)changeDelayTo:(float)delay forMotorGroupAtIndex:(NSUInteger)index;
 -(void)removeMotorGroupAtIndex:(NSUInteger)index;
 /* this takes an array of NSDictionary * of the form {MOTOR_COUNT_KEY: int, MOTOR_PLIST_KEY: motorDict} one for each group */
--(void)replaceMotorLoadOutWithLoadOut:(NSArray *)motorLoadOut;
+-(void)replaceMotorLoadOutWithLoadOut:(NSArray * _Nullable)motorLoadOut;
 
-+(Rocket *)rocketWithRocketDict:(NSDictionary *)rocketDict;
++(Rocket * _Nullable)rocketWithRocketDict:(NSDictionary * _Nonnull)rocketDict;
 
 // THIS is the designated initializer that the above class method uses to create a new Rocket*
--(Rocket *)initWithProperties:(NSDictionary *)properties;
--(Rocket *)copy;
--(Rocket *)copyWithZone:(NSZone *)zone;
--(void)addFlight:(NSDictionary *)flightData;
+-(Rocket * _Nullable)initWithProperties:(NSDictionary * _Nonnull)properties;
+-(Rocket * _Nonnull)copy;
+-(Rocket * _Nonnull)copyWithZone:(NSZone * _Nullable)zone;
+-(void)addFlight:(NSDictionary * _Nonnull)flightData;
 -(void)clearFlights;
 
 // This is a convenience factory method that generates a Rocket * with generic properties
-+(Rocket *)defaultRocket;
++(Rocket * _Nonnull)defaultRocket;
 
 @end

@@ -20,6 +20,13 @@
 
 @implementation SLClusterMotor
 
++(double)totalImpulseFromFlightSettings:(NSDictionary *)settings{
+    
+    SLClusterMotor *cMotor = [[SLClusterMotor alloc] initWithMotorLoadout:settings[SELECTED_MOTOR_KEY]];
+    
+    return cMotor.totalImpulse;
+}
+
 -(NSString *)firstMotorName{
     if (![self.motors count]) return nil;
     RocketMotor *motor = self.motors[0];
@@ -181,7 +188,7 @@
 
 // this is the actual designated intializer
 
--(id)initWithMotorLoadout:(NSArray *)motorLoadout{
+-(instancetype)initWithMotorLoadout:(NSArray *)motorLoadout{
     if (self){
         self.motorLoadout = motorLoadout;
         for (NSDictionary *motorGroup in motorLoadout){
@@ -196,11 +203,11 @@
     return self;
 }
 
--(id)copyWithZone:(NSZone *)zone{
+-(instancetype)copyWithZone:(NSZone *)zone{
     return [self copy];
 }
 
--(id)copy{
+-(instancetype)copy{
     return self;
 }
 
