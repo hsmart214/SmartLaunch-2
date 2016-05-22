@@ -2604,7 +2604,7 @@ Estes E9 x2</string>
                                                     <rect key="frame" x="20" y="16" width="280" height="173"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <string key="text">Smart Launch HD 2.3
+                                                    <mutableString key="text">Smart Launch HD 2.25
 ©2012-2016 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
@@ -2623,7 +2623,7 @@ All company logos are the registered trademarks of the respective motor manufact
 
 Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.
 
-Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C code in the physics model.</string>
+Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C code in the physics model.</mutableString>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -3162,7 +3162,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                         <color key="sectionIndexTrackingBackgroundColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Motor Prefs Cell" id="XWS-cp-ciK">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XWS-cp-ciK" id="Y0c-3v-doU">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
