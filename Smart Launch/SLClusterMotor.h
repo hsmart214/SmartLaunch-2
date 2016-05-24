@@ -24,7 +24,7 @@
 @property (nonatomic, readonly)NSString *firstMotorName;
 @property (nonatomic, readonly)NSString *firstMotorManufacturer;
 
--(id)initWithMotorLoadout:(NSArray *)motorLoadout;
+-(id)initWithMotorLoadout:(id)motorLoadout;
 -(float)thrustAtTime:(float)time;
 
 +(double)totalImpulseFromFlightSettings:(NSDictionary *)settings;

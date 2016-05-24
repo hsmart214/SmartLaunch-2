@@ -188,8 +188,12 @@
 
 // this is the actual designated intializer
 
--(instancetype)initWithMotorLoadout:(NSArray *)motorLoadout{
+-(instancetype)initWithMotorLoadout:(id)motorLoadout{
     if (self){
+        if ([motorLoadout isKindOfClass:[NSDictionary class]]){
+            motorLoadout = @[@{MOTOR_PLIST_KEY : motorLoadout,
+                             MOTOR_COUNT_KEY : @1}];
+        }
         self.motorLoadout = motorLoadout;
         for (NSDictionary *motorGroup in motorLoadout){
             NSDictionary *motorDict = motorGroup[MOTOR_PLIST_KEY];
