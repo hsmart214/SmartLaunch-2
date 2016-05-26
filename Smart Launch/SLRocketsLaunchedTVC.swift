@@ -10,6 +10,7 @@ import UIKit
 
 class SLRocketsLaunchedTVC: UITableViewController {
     var rockets : [Rocket]?
+    var nf : NSNumberFormatter?
     
     // MARK: - Table view data source
 
@@ -21,6 +22,7 @@ class SLRocketsLaunchedTVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Rocket Cell", forIndexPath: indexPath)
         if let rocketCell = cell as? SLRocketImpulseCell{
+            rocketCell.nf = nf
             rocketCell.rocket = rockets?[indexPath.row]
         }
         
@@ -42,6 +44,11 @@ class SLRocketsLaunchedTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nf = NSNumberFormatter()
+        nf?.usesGroupingSeparator = true
+        nf?.numberStyle = .DecimalStyle
+        nf?.maximumFractionDigits = 1
         
         if self.splitViewController == nil{
             let backgroundView = UIImageView(frame: self.view.frame)

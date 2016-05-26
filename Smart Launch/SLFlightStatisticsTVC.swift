@@ -26,7 +26,9 @@ class SLFlightStatisticsTVC: UITableViewController {
 
     @IBOutlet weak var numberOfLaunchesLabel: UILabel!
     @IBOutlet weak var totalImpulseLabel: UILabel!
+    @IBOutlet weak var totalImpulseClassLabel: UILabel!
     @IBOutlet weak var averageImpulseLabel: UILabel!
+    @IBOutlet weak var averageImpulseClassLabel: UILabel!
     @IBOutlet weak var uniqueRocketsLaunchedLabel: UILabel!
     weak var delegate : AnyObject?
     //This is the model of this TVC
@@ -34,6 +36,7 @@ class SLFlightStatisticsTVC: UITableViewController {
     //They may be changed underneath us so we should register for update notifications
     //TODO: observe for changes in user defaults
     var flownRockets = [Rocket]()
+    var nf : NSNumberFormatter?
     
     func updateUI(){
         var launches = 0
@@ -45,9 +48,13 @@ class SLFlightStatisticsTVC: UITableViewController {
             }
             totalImpulse += rocket.totalFlownImpulse()
         }
-        totalImpulseLabel.text = String(format: "%1.1f Ns", totalImpulse)
+        
+        totalImpulseLabel.text = nf?.stringFromNumber(totalImpulse)
+        totalImpulseClassLabel.text = RocketMotor.impulseClassForTotalImpulse(Float(totalImpulse))
         numberOfLaunchesLabel.text = "\(launches)"
-        averageImpulseLabel.text = String(format: "%1.1f Ns", totalImpulse/Double(launches))
+        let averageImpulse = Float(totalImpulse/Double(launches))
+        averageImpulseLabel.text = nf?.stringFromNumber(averageImpulse)
+        averageImpulseClassLabel.text = RocketMotor.impulseClassForTotalImpulse(averageImpulse)
     }
     
     func updateRocketList(){
@@ -88,6 +95,10 @@ class SLFlightStatisticsTVC: UITableViewController {
             self.tableView.backgroundColor = UIColor.clearColor()
         }
         
+        nf = NSNumberFormatter()
+        nf?.usesGroupingSeparator = true
+        nf?.numberStyle = .DecimalStyle
+        nf?.maximumFractionDigits = 1
         updateRocketList()
         updateUI()
     }
