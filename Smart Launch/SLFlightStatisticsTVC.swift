@@ -12,9 +12,9 @@ extension Rocket{
     func totalFlownImpulse() -> Double{
         var impulse = 0.0
         if self.recordedFlights != nil{
-            for flight in self.recordedFlights!{
-                if let settings = flight[FLIGHT_SETTINGS_KEY] as? [String : AnyObject]{
-                    impulse += SLClusterMotor.totalImpulseFromFlightSettings(settings)
+            for flight in self.recordedFlights! {
+                if let flightData = flight as? [String : AnyObject]{
+                    impulse += SLClusterMotor.totalImpulseFromFlight(flightData)
                 }
             }
         }

@@ -16,6 +16,7 @@
 -(void)sender:(id)sender didChangeSimSettings:(NSDictionary *)settings withUpdate:(BOOL) update;
 -(void)sender:(id)sender didChangeLaunchAngle:(NSNumber *)launchAngle;
 -(void)sender:(id)sender didChangeRocket:(Rocket *)rocket;
+// this is an array to accomodate clusters - an array of NSDictionary* with counts and motorDicts
 -(void)sender:(id)sender didChangeRocketMotor:(NSArray *)motorPlist;
 -(void)didChangeUnitPrefs:(id)sender;
 -(void)dismissModalViewController;

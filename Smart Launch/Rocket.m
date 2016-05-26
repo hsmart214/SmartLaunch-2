@@ -80,6 +80,11 @@ float burrnoutTime, burrnoutMass;
     [self updateMotorsFromGroups];
 }
 
+-(void)changeToObservedLoadedMass:(float)mass{
+    if (!self.motors.count) return;
+    self.mass += mass - [self massWithMotors];
+}
+
 -(void)changeDelayTo:(float)delay forMotorGroupAtIndex:(NSUInteger)index{
     NSArray *group = self.internalMotorsByGroup[index];
     if (![group count]) return;
@@ -242,6 +247,10 @@ float burrnoutTime, burrnoutMass;
         totalMass += motor.loadedMass;
     }
     return totalMass;
+}
+
+-(float)massWithMotors{
+    return [self massAtTime:0.0];
 }
 
 -(float)peakThrust{

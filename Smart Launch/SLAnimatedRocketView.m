@@ -75,6 +75,7 @@
 }
 
 void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint fromPt, const CGPoint toPt, const bool ccwLoop){
+    if (toPt.x == fromPt.x && toPt.y == fromPt.y) return;
     float angle = 0.5 * _PI_ + atanf((toPt.y-fromPt.y)/(toPt.x-fromPt.x));
     if (fromPt.x <= toPt.x){
         angle += _PI_;

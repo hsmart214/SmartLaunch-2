@@ -57,6 +57,8 @@
 -(void)removeMotorGroupAtIndex:(NSUInteger)index;
 /* this takes an array of NSDictionary * of the form {MOTOR_COUNT_KEY: int, MOTOR_PLIST_KEY: motorDict} one for each group */
 -(void)replaceMotorLoadOutWithLoadOut:(NSArray * _Nullable)motorLoadOut;
+// this adjusts the unloaded mass of the rocket to fit the observed loaded mass with motors in place
+-(void)changeToObservedLoadedMass:(float)mass;
 
 +(Rocket * _Nullable)rocketWithRocketDict:(NSDictionary * _Nonnull)rocketDict;
 

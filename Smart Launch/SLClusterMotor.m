@@ -20,9 +20,20 @@
 
 @implementation SLClusterMotor
 
-+(double)totalImpulseFromFlightSettings:(NSDictionary *)settings{
-    
-    SLClusterMotor *cMotor = [[SLClusterMotor alloc] initWithMotorLoadout:settings[SELECTED_MOTOR_KEY]];
++(double)totalImpulseFromFlight:(NSDictionary *)flight{
+    SLClusterMotor *cMotor;
+    // find out if the saved record is an old one - pre-clusters
+    // the settings has a complete motorPlist stashed away in it in SELECTED_MOTOR_KEY
+    // if the version is 1.5 or higher, this will be an NSArray rather than a motorDict
+    // versions 1.4 and previous did not have a SMART_LAUNCH_VERSION_KEY key at all, so it will be nil
+    if (flight[SMART_LAUNCH_VERSION_KEY]){
+        NSDictionary *settings = flight[FLIGHT_SETTINGS_KEY];
+        cMotor = [[SLClusterMotor alloc] initWithMotorLoadout:settings[SELECTED_MOTOR_KEY]];
+    }else if (flight[MOTOR_PLIST_KEY]){
+        cMotor = [[SLClusterMotor alloc] initWithMotorLoadout:flight[MOTOR_PLIST_KEY]];
+    }else{
+        return [RocketMotor totalImpulseOfMotorWithName:flight[FLIGHT_MOTOR_KEY]];
+    }
     
     return cMotor.totalImpulse;
 }

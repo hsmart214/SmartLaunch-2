@@ -18,6 +18,8 @@
 
 @implementation RocketMotor
 
+static NSMutableDictionary *sMotorsByName;
+
 -(float)burnoutTime{
     return [[self.times lastObject] floatValue] + self.startDelay;
 }
@@ -70,7 +72,8 @@
     self.calcTotalImpulse = impulse;
 }
 
--(RocketMotor *)initWithMotorDict:(NSDictionary *)motorDict{
+// Designated initializer
+-(instancetype)initWithMotorDict:(NSDictionary *)motorDict{
     _mass =       [motorDict[MOTOR_MASS_KEY] floatValue];
     _propellantMass = [motorDict[PROP_MASS_KEY] floatValue];
     _times =          motorDict[TIME_KEY];
@@ -88,6 +91,17 @@
     }
     _startDelay = [motorDict[CLUSTER_START_DELAY_KEY] floatValue];  // will be zero if the key does not exist (this is correct)
     [self calculateDerivedValues];
+    // if this is the first motor created during this run of the program we need to fire off a thread
+    // to populate the motors-by-name dictionary
+    if (!sMotorsByName){
+        dispatch_async(dispatch_queue_create("motor dict queue", DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
+            sMotorsByName = [NSMutableDictionary new];
+            for (NSDictionary *motorDict in [RocketMotor everyMotor]){
+                NSString *motorName = motorDict[NAME_KEY];
+                sMotorsByName[motorName] = motorDict;
+            }
+        });
+    }
     return self;
 }
 
@@ -488,6 +502,16 @@ NSInteger sortingFunction(id md1, id md2, void *context){
     [allMotors writeToURL:motorFileURL atomically:YES];
 
     return allMotors;
+}
+
++(double)totalImpulseOfMotorWithName:(NSString *)motorName{
+    NSDictionary *motorDict = sMotorsByName[motorName];
+    if (motorDict){
+        RocketMotor *motor = [RocketMotor motorWithMotorDict:motorDict];
+        return [motor totalImpulse];
+    }else{
+        return 0.0;
+    }
 }
 
 -(NSString *)description{

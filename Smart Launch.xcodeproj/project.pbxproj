@@ -78,6 +78,7 @@
 		42D78095166295F1000C7D6C /* SLAnimatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D78094166295F1000C7D6C /* SLAnimatedViewController.m */; };
 		42D780981662AB3E000C7D6C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D780971662AB3E000C7D6C /* QuartzCore.framework */; };
 		42D7809B1663291B000C7D6C /* SLAnimatedRocketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D7809A1663291B000C7D6C /* SLAnimatedRocketView.m */; };
+		42E337FF1CF783E00009C757 /* SLRSOModeTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E337FE1CF783E00009C757 /* SLRSOModeTVC.m */; };
 		42E353F818AC702000E2053F /* SLFlightDataPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E353F718AC702000E2053F /* SLFlightDataPoint.m */; };
 		42E7317416BF66ED00F6D468 /* SLFlightProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7317316BF66ED00F6D468 /* SLFlightProfileViewController.m */; };
 		42F83DB8171B6EAB005FAA0C /* SLClusterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83DB7171B6EAB005FAA0C /* SLClusterTableViewController.m */; };
@@ -198,6 +199,8 @@
 		42D780971662AB3E000C7D6C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		42D780991663291B000C7D6C /* SLAnimatedRocketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAnimatedRocketView.h; sourceTree = "<group>"; };
 		42D7809A1663291B000C7D6C /* SLAnimatedRocketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAnimatedRocketView.m; sourceTree = "<group>"; };
+		42E337FD1CF783E00009C757 /* SLRSOModeTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRSOModeTVC.h; sourceTree = "<group>"; };
+		42E337FE1CF783E00009C757 /* SLRSOModeTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRSOModeTVC.m; sourceTree = "<group>"; };
 		42E353F618AC702000E2053F /* SLFlightDataPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFlightDataPoint.h; sourceTree = "<group>"; };
 		42E353F718AC702000E2053F /* SLFlightDataPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFlightDataPoint.m; sourceTree = "<group>"; };
 		42E7317216BF66ED00F6D468 /* SLFlightProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFlightProfileViewController.h; sourceTree = "<group>"; };
@@ -378,6 +381,8 @@
 				4220A4AB15F55CC60055EE35 /* SLTableViewController.m */,
 				42248D7A16EC416200ABB5D7 /* SLiPadDetailViewController.h */,
 				42248D7B16EC416200ABB5D7 /* SLiPadDetailViewController.m */,
+				42E337FD1CF783E00009C757 /* SLRSOModeTVC.h */,
+				42E337FE1CF783E00009C757 /* SLRSOModeTVC.m */,
 				4220A4B815F55CC60055EE35 /* SLMotorSearchViewController.h */,
 				4220A4B915F55CC60055EE35 /* SLMotorSearchViewController.m */,
 				4220A4BA15F55CC60055EE35 /* SLMotorTableViewController.h */,
@@ -542,6 +547,7 @@
 			files = (
 				4256931615F4893000F7BABC /* main.m in Sources */,
 				4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */,
+				42E337FF1CF783E00009C757 /* SLRSOModeTVC.m in Sources */,
 				4220A4CD15F55CC60055EE35 /* SLTableViewController.m in Sources */,
 				4220A4CE15F55CC60055EE35 /* SLInformationTVC.m in Sources */,
 				4220A4CF15F55CC60055EE35 /* SLSimSettingsViewController.m in Sources */,
