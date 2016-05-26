@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *cd;
 @property (weak, nonatomic) IBOutlet UILabel *altitude;
 @property (weak, nonatomic) IBOutlet UILabel *altitudeUnitsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *motorImpulse;
 
 @end

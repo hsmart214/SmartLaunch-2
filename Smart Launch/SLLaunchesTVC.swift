@@ -29,6 +29,10 @@ class SLLaunchesTVC: UITableViewController {
             altitude = SLUnitsConvertor.displayUnitsOf(altitude, forKey: ALT_UNIT_KEY)
             flightCell.altitude.text = String(format: "%1.0f", altitude)
             flightCell.altitudeUnitsLabel.text = SLUnitsConvertor.displayStringForKey(ALT_UNIT_KEY)
+            if let settings = flightData![FLIGHT_SETTINGS_KEY] as? [String : AnyObject]{
+                let impulse = SLClusterMotor.totalImpulseFromFlightSettings(settings)
+                flightCell.motorImpulse.text = String(format: "%1.1f Ns", impulse)
+            }
         }
         return cell
     }

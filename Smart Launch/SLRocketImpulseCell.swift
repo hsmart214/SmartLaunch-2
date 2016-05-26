@@ -24,7 +24,8 @@ class SLRocketImpulseCell: UITableViewCell {
             avatarImageView.image = UIImage(named: rocket!.avatar)
             let flights = rocket!.recordedFlights!.count
             numberOfFlightsLabel.text = "\(flights)"
-            totalImpulseLabel.text = nf?.stringFromNumber(rocket!.totalFlownImpulse())
+            let impulseText = nf?.stringFromNumber(rocket!.totalFlownImpulse()) ?? "0.0"
+            totalImpulseLabel.text = impulseText + " Ns"
             totalImpulseClassLabel.text = RocketMotor.impulseClassForTotalImpulse(Float(rocket!.totalFlownImpulse()))
             let avgImpulse = rocket!.totalFlownImpulse()/Double(flights)
             averageImpulseClassLabel.text = RocketMotor.impulseClassForTotalImpulse(Float(avgImpulse))

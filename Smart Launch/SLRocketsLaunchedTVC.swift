@@ -48,7 +48,7 @@ class SLRocketsLaunchedTVC: UITableViewController {
         nf = NSNumberFormatter()
         nf?.usesGroupingSeparator = true
         nf?.numberStyle = .DecimalStyle
-        nf?.maximumFractionDigits = 1
+        nf?.maximumFractionDigits = 0
         
         if self.splitViewController == nil{
             let backgroundView = UIImageView(frame: self.view.frame)

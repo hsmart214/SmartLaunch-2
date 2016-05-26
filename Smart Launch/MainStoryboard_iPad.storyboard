@@ -3038,7 +3038,7 @@
                                                 <textView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9J-Tz-DOT">
                                                     <rect key="frame" x="30" y="12" width="260" height="332"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <mutableString key="text">Smart Launch HD 2.27
+                                                    <string key="text">Smart Launch HD 2.27
 ©2012-2016 My Smart Software
 No warranty is implied.
 Sport Rocketry entails certain risks.  Always follow the NAR Model Rocketry Safety Code and the High Power Rocketry Safety Code.
@@ -3057,7 +3057,7 @@ All company logos are the registered trademarks of the respective motor manufact
 
 Thrust curve data obtained from manufacturer websites and thrustcurve.org. Thrust curve data is necessarily approximate, and not approved by the motor manufacturers.
 
-Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C code in the physics model.</mutableString>
+Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C code in the physics model.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -3628,7 +3628,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Average per Launch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EN2-au-Aji">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Impulse Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EN2-au-Aji">
                                                     <rect key="frame" x="8" y="11" width="160" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3643,8 +3643,74 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="6d9-cC-S77">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="EAI-7f-PCg">
                                         <rect key="frame" x="0.0" y="231" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EAI-7f-PCg" id="Jqh-Zs-8GU">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7s7-BP-PBC">
+                                                    <rect key="frame" x="192" y="11" width="120" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Average per Launch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2H-RP-dVz">
+                                                    <rect key="frame" x="8" y="11" width="153" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="T5e-HQ-kSs">
+                                        <rect key="frame" x="0.0" y="275" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T5e-HQ-kSs" id="QpY-Hq-Q6A">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KM8-lP-6rA">
+                                                    <rect key="frame" x="192" y="11" width="120" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Average Impulse Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWr-sQ-MRy">
+                                                    <rect key="frame" x="8" y="11" width="173" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Rqb-m2-xiE">
+                                        <rect key="frame" x="0.0" y="319" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rqb-m2-xiE" id="8Jd-M1-VFz">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbQ-wk-Hr2">
+                                                    <rect key="frame" x="192" y="11" width="120" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avg Impulse per Rocket" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHG-e6-0pS">
+                                                    <rect key="frame" x="8" y="11" width="180" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="6d9-cC-S77">
+                                        <rect key="frame" x="0.0" y="363" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6d9-cC-S77" id="ODS-Kb-9Yn">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
@@ -3678,8 +3744,11 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                     </tableView>
                     <navigationItem key="navigationItem" title="Flight Statistics" id="8mB-im-JaH"/>
                     <connections>
-                        <outlet property="averageImpulseLabel" destination="OSL-Wi-Qwm" id="nOE-zS-k7c"/>
+                        <outlet property="averageImpulseClassLabel" destination="KM8-lP-6rA" id="d1x-1f-dZx"/>
+                        <outlet property="averageImpulseLabel" destination="7s7-BP-PBC" id="ezy-CK-lPs"/>
+                        <outlet property="avgImpulsePerRocketLabel" destination="NbQ-wk-Hr2" id="aBj-rS-zWh"/>
                         <outlet property="numberOfLaunchesLabel" destination="9Rd-6R-tzY" id="ZoM-eP-T0l"/>
+                        <outlet property="totalImpulseClassLabel" destination="OSL-Wi-Qwm" id="JC5-hW-OAH"/>
                         <outlet property="totalImpulseLabel" destination="p2C-qs-R54" id="r5g-6o-yb7"/>
                         <outlet property="uniqueRocketsLaunchedLabel" destination="Ohf-Ve-3xT" id="a38-Ep-kl8"/>
                     </connections>
@@ -3692,57 +3761,112 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
         <scene sceneID="CXL-09-iDA">
             <objects>
                 <tableViewController id="Fv6-Ys-oTW" customClass="SLRocketsLaunchedTVC" customModule="SmartLaunch" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZJf-oY-f0C">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="121" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZJf-oY-f0C">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Rocket Cell" rowHeight="85" id="fQ6-y9-YbZ" customClass="SLRocketImpulseCell" customModule="SmartLaunch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="320" height="85"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Rocket Cell" rowHeight="121" id="fQ6-y9-YbZ" customClass="SLRocketImpulseCell" customModule="SmartLaunch" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="320" height="121"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fQ6-y9-YbZ" id="aZW-AN-iJp">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="84.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="120.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AerobeeHi" translatesAutoresizingMaskIntoConstraints="NO" id="2YG-67-Of0">
-                                            <rect key="frame" x="8" y="8" width="105" height="43"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AerobeeHi" translatesAutoresizingMaskIntoConstraints="NO" id="2YG-67-Of0">
+                                            <rect key="frame" x="8" y="27" width="105" height="43"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="105" id="655-4G-H1u"/>
+                                                <constraint firstAttribute="height" constant="43" id="zz5-Sf-ifT"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Son of Thunder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJD-aK-aUA">
-                                            <rect key="frame" x="8" y="55" width="279" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Son of Thunder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJD-aK-aUA">
+                                            <rect key="frame" x="8" y="8" width="279" height="19.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tot. Impulse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuC-0W-ydS">
-                                            <rect key="frame" x="121" y="8" width="102" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Impulse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuC-0W-ydS">
+                                            <rect key="frame" x="8" y="78" width="86" height="17"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Flights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MC7-8q-kpH">
-                                            <rect key="frame" x="121" y="30" width="102" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Flights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MC7-8q-kpH">
+                                            <rect key="frame" x="121" y="27" width="94" height="14"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="47 Ns" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BkF-TQ-KFS">
-                                            <rect key="frame" x="213" y="8" width="66" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="47 Ns" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BkF-TQ-KFS">
+                                            <rect key="frame" x="102" y="78" width="38" height="17"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyK-3i-9w1">
-                                            <rect key="frame" x="237" y="30" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyK-3i-9w1">
+                                            <rect key="frame" x="272" y="27" width="7" height="14"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkl-4m-Tcu">
+                                            <rect key="frame" x="272" y="42" width="7" height="14"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Impulse Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MB-4x-nT0">
+                                            <rect key="frame" x="121" y="42" width="102" height="14"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Impulse Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xsq-K5-hb8">
+                                            <rect key="frame" x="121" y="56" width="119" height="14"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qd-N2-GI4">
+                                            <rect key="frame" x="272" y="56" width="7" height="14"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="MC7-8q-kpH" firstAttribute="leading" secondItem="2YG-67-Of0" secondAttribute="trailing" constant="8" id="172-hX-fYr"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="kuC-0W-ydS" secondAttribute="leading" id="4O5-AB-O2S"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="4qd-N2-GI4" secondAttribute="trailing" id="4hY-YL-p8f"/>
+                                        <constraint firstItem="MC7-8q-kpH" firstAttribute="top" secondItem="hJD-aK-aUA" secondAttribute="bottom" id="5J2-L4-LCd"/>
+                                        <constraint firstItem="Xsq-K5-hb8" firstAttribute="leading" secondItem="2YG-67-Of0" secondAttribute="trailing" constant="8" id="9PE-vI-htC"/>
+                                        <constraint firstItem="Xsq-K5-hb8" firstAttribute="baseline" secondItem="4qd-N2-GI4" secondAttribute="baseline" id="9iO-Td-KyB"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="dyK-3i-9w1" secondAttribute="trailing" id="AzO-A4-8Oh"/>
+                                        <constraint firstItem="Xsq-K5-hb8" firstAttribute="top" secondItem="1MB-4x-nT0" secondAttribute="bottom" id="Kaj-Se-9Fp"/>
+                                        <constraint firstItem="2YG-67-Of0" firstAttribute="top" secondItem="hJD-aK-aUA" secondAttribute="bottom" id="KuP-c0-H2c"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="2YG-67-Of0" secondAttribute="leading" id="LPK-JW-zER"/>
+                                        <constraint firstItem="1MB-4x-nT0" firstAttribute="baseline" secondItem="xkl-4m-Tcu" secondAttribute="baseline" id="OzM-19-9Il"/>
+                                        <constraint firstItem="1MB-4x-nT0" firstAttribute="leading" secondItem="2YG-67-Of0" secondAttribute="trailing" constant="8" id="PeZ-Rh-NMW"/>
+                                        <constraint firstAttribute="topMargin" secondItem="hJD-aK-aUA" secondAttribute="top" id="SX9-Ig-Ccn"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="xkl-4m-Tcu" secondAttribute="trailing" id="UEa-Uc-g3T"/>
+                                        <constraint firstItem="kuC-0W-ydS" firstAttribute="top" secondItem="2YG-67-Of0" secondAttribute="bottom" constant="8" id="Xnc-Vm-pfQ"/>
+                                        <constraint firstItem="BkF-TQ-KFS" firstAttribute="baseline" secondItem="kuC-0W-ydS" secondAttribute="baseline" id="c5O-46-lRu"/>
+                                        <constraint firstItem="BkF-TQ-KFS" firstAttribute="leading" secondItem="kuC-0W-ydS" secondAttribute="trailing" constant="8" id="fWY-aR-vQa"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="hJD-aK-aUA" secondAttribute="leading" id="nWA-pF-pQM"/>
+                                        <constraint firstItem="MC7-8q-kpH" firstAttribute="baseline" secondItem="dyK-3i-9w1" secondAttribute="baseline" id="oks-xb-mth"/>
+                                        <constraint firstItem="1MB-4x-nT0" firstAttribute="top" secondItem="MC7-8q-kpH" secondAttribute="bottom" constant="1" id="taM-5F-VbW"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hJD-aK-aUA" secondAttribute="trailing" constant="33" id="igA-vg-QEY"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="avatarImageView" destination="2YG-67-Of0" id="gIM-3x-qB6"/>
+                                    <outlet property="averageImpulseClassLabel" destination="4qd-N2-GI4" id="dIE-4I-mDG"/>
                                     <outlet property="numberOfFlightsLabel" destination="dyK-3i-9w1" id="VUB-wn-MYJ"/>
                                     <outlet property="rocketNameLabel" destination="hJD-aK-aUA" id="VtG-BW-c0U"/>
+                                    <outlet property="totalImpulseClassLabel" destination="xkl-4m-Tcu" id="1ph-19-AQb"/>
                                     <outlet property="totalImpulseLabel" destination="BkF-TQ-KFS" id="iDM-ID-HHG"/>
                                     <segue destination="ijF-uk-3bN" kind="push" id="DhW-OJ-ra5"/>
                                 </connections>
@@ -3763,54 +3887,76 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
         <scene sceneID="zrC-Zh-xQb">
             <objects>
                 <tableViewController id="ijF-uk-3bN" customClass="SLLaunchesTVC" customModule="SmartLaunch" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6wf-2r-9Ss">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="76" sectionHeaderHeight="28" sectionFooterHeight="28" id="6wf-2r-9Ss">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SavedFlightCell" id="m6w-1v-XXu" customClass="SLFlightDataCell">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SavedFlightCell" rowHeight="76" id="m6w-1v-XXu" customClass="SLFlightDataCell">
+                                <rect key="frame" x="0.0" y="92" width="320" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m6w-1v-XXu" id="ndf-H1-Oa2">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="75.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="J350W" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTL-Ll-JgC">
-                                            <rect key="frame" x="8" y="11" width="115" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cd:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3B-SM-WUS">
+                                            <rect key="frame" x="8" y="40" width="27" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Cd:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3B-SM-WUS">
-                                            <rect key="frame" x="131" y="11" width="29" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ft" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Euu-rI-BVb">
+                                            <rect key="frame" x="300" y="40" width="12" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="ft" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Euu-rI-BVb">
-                                            <rect key="frame" x="281" y="11" width="19" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="3000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KhF-Ng-AXd">
+                                            <rect key="frame" x="250" y="40" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="3000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KhF-Ng-AXd">
-                                            <rect key="frame" x="215" y="11" width="58" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.44" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpS-gg-vGn">
+                                            <rect key="frame" x="45" y="40" width="35" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="0.44" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpS-gg-vGn">
-                                            <rect key="frame" x="168" y="11" width="39" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Impulse Ns" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmC-nb-z0w">
+                                            <rect key="frame" x="227" y="11" width="85" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="J350W" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTL-Ll-JgC">
+                                            <rect key="frame" x="8" y="11" width="211" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="v3B-SM-WUS" firstAttribute="top" secondItem="eTL-Ll-JgC" secondAttribute="bottom" constant="8" id="2Xm-93-1cl"/>
+                                        <constraint firstItem="kpS-gg-vGn" firstAttribute="leading" secondItem="v3B-SM-WUS" secondAttribute="trailing" constant="10" id="Jot-5v-74f"/>
+                                        <constraint firstItem="zmC-nb-z0w" firstAttribute="baseline" secondItem="eTL-Ll-JgC" secondAttribute="baseline" id="NMh-c4-aYu"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="eTL-Ll-JgC" secondAttribute="leading" id="RiQ-av-kO4"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Euu-rI-BVb" secondAttribute="trailing" id="aSh-gU-qLu"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="v3B-SM-WUS" secondAttribute="leading" id="bOD-ix-npJ"/>
+                                        <constraint firstItem="Euu-rI-BVb" firstAttribute="leading" secondItem="KhF-Ng-AXd" secondAttribute="trailing" constant="8" id="dan-jb-jQU"/>
+                                        <constraint firstItem="eTL-Ll-JgC" firstAttribute="top" secondItem="ndf-H1-Oa2" secondAttribute="topMargin" constant="3" id="fMO-6c-2Xp"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="zmC-nb-z0w" secondAttribute="trailing" id="pxH-Y7-N92"/>
+                                        <constraint firstItem="zmC-nb-z0w" firstAttribute="leading" secondItem="eTL-Ll-JgC" secondAttribute="trailing" constant="8" id="t5R-ww-f8z"/>
+                                        <constraint firstItem="kpS-gg-vGn" firstAttribute="baseline" secondItem="KhF-Ng-AXd" secondAttribute="baseline" id="uAy-2o-Qm9"/>
+                                        <constraint firstItem="KhF-Ng-AXd" firstAttribute="baseline" secondItem="Euu-rI-BVb" secondAttribute="baseline" id="wSt-Ze-apu"/>
+                                        <constraint firstItem="v3B-SM-WUS" firstAttribute="baseline" secondItem="kpS-gg-vGn" secondAttribute="baseline" id="wZa-Kb-fHn"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="altitude" destination="KhF-Ng-AXd" id="NhZ-OP-u1z"/>
                                     <outlet property="altitudeUnitsLabel" destination="Euu-rI-BVb" id="C9P-Ij-cwG"/>
                                     <outlet property="cd" destination="kpS-gg-vGn" id="xWb-wK-DYg"/>
+                                    <outlet property="motorImpulse" destination="zmC-nb-z0w" id="JLK-nR-BvP"/>
                                     <outlet property="motorName" destination="eTL-Ll-JgC" id="JuG-cJ-hQv"/>
                                 </connections>
                             </tableViewCell>

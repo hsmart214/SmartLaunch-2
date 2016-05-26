@@ -29,6 +29,7 @@ class SLFlightStatisticsTVC: UITableViewController {
     @IBOutlet weak var totalImpulseClassLabel: UILabel!
     @IBOutlet weak var averageImpulseLabel: UILabel!
     @IBOutlet weak var averageImpulseClassLabel: UILabel!
+    @IBOutlet weak var avgImpulsePerRocketLabel: UILabel!
     @IBOutlet weak var uniqueRocketsLaunchedLabel: UILabel!
     weak var delegate : AnyObject?
     //This is the model of this TVC
@@ -55,6 +56,8 @@ class SLFlightStatisticsTVC: UITableViewController {
         let averageImpulse = Float(totalImpulse/Double(launches))
         averageImpulseLabel.text = nf?.stringFromNumber(averageImpulse)
         averageImpulseClassLabel.text = RocketMotor.impulseClassForTotalImpulse(averageImpulse)
+        let avgPerRocket = totalImpulse/Double(flownRockets.count)
+        avgImpulsePerRocketLabel.text = nf?.stringFromNumber(avgPerRocket)
     }
     
     func updateRocketList(){
