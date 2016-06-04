@@ -3,7 +3,7 @@
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
-      "filename" : "Simulator Screen Shot May 22, 2016, 1.29.51 PM.png",
+      "filename" : "4sLaunch.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "2x"
@@ -12,7 +12,7 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "retina4",
-      "filename" : "Simulator Screen Shot May 22, 2016, 1.26.24 PM.png",
+      "filename" : "5sLaunch.png",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
       "scale" : "2x"
