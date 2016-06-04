@@ -69,6 +69,7 @@
     CGSize s = self.bounds.size;
     CGRect frame = CGRectMake(s.width - orig.x, s.height - orig.y, self.goblin.bounds.size.width, self.goblin.bounds.size.height);
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) frame = CGRectMake(s.width/2 - self.goblin.bounds.size.width/2, s.height - self.goblin.bounds.size.height, self.goblin.bounds.size.width, self.goblin.bounds.size.height);
+    [self.goblin setTransform:CGAffineTransformIdentity];
     [self addSubview:self.goblin];
     [self.goblin setFrame:frame];
     [self setNeedsDisplay];

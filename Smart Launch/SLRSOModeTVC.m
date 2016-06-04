@@ -27,6 +27,10 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *massPicker;
 @property (weak, nonatomic) IBOutlet UILabel *thrustWeightLabel;
 
+@property (strong, nonatomic) NSNumber *lastLaunchGuideLength;
+@property (strong, nonatomic) NSNumber *lastWindVelocity;
+@property (strong, nonatomic) NSNumber *lastLaunchDirection;
+
 @property (nonatomic) BOOL showingMassPicker;
 @property (nonatomic) BOOL showingDiameterPicker;
 
@@ -90,7 +94,7 @@
 {
     if (pickerView == self.massPicker) component -= 1;
     if (component == 2) return @".";
-    return [NSString stringWithFormat:@"%ld", row];
+    return [NSString stringWithFormat:@"%ld", (long)row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView
@@ -261,7 +265,10 @@
 #pragma mark - SLSimulationDelegate methods
 
 - (void)sender:(id)sender didChangeSimSettings:(NSDictionary *)settings withUpdate:(BOOL)update{
-    // not sure I want to respond to this
+    // here I will remember the last wind velocity, launch direction and launch guide length
+    self.lastLaunchDirection = settings[WIND_DIRECTION_KEY];
+    self.lastLaunchGuideLength = settings[LAUNCH_GUIDE_LENGTH_KEY];
+    self.lastWindVelocity = settings[WIND_VELOCITY_KEY];
 }
 
 - (void)sender:(id)sender didChangeRocketMotor:(NSArray *)motorPlist{
@@ -285,14 +292,20 @@
     return [self.model freeFlightAngleOfAttack];
 }
 -(float)windVelocity{
-    return 0.5;
+    if (!self.lastWindVelocity){
+        self.lastWindVelocity = @(0.5);
+    }
+    return [self.lastWindVelocity floatValue];
 }
 -(float)launchAngle{
     return 0.1;
 }
 -(float)launchGuideLength;
 {
-    return 0.923;//36 inches
+    if (!self.lastLaunchGuideLength){
+        self.lastLaunchGuideLength = @(0.923); //36 inches
+    }
+    return [self.lastLaunchGuideLength floatValue];
 }
 -(float)launchSiteAltitude;
 {
@@ -300,7 +313,10 @@
 }
 -(LaunchDirection)launchGuideDirection;
 {
-    return CrossWind;
+    if (!self.lastLaunchDirection){
+        self.lastLaunchDirection = @(0);
+    }
+    return (LaunchDirection)[self.lastLaunchDirection integerValue];
 }
 -(float)quickFFVelocityAtAngle:(float)angle andGuideLength:(float)length;
 {
@@ -337,6 +353,7 @@
     NSArray *loadOut = @[@{MOTOR_COUNT_KEY : @1, MOTOR_PLIST_KEY : [self.motor motorDict]}];
     [self.rocket replaceMotorLoadOutWithLoadOut:loadOut];
     self.model.rocket = self.rocket;
+    self.model.launchGuideLength = [self launchGuideLength];
     [self updateUI];
 }
 
@@ -345,11 +362,13 @@
         SLMotorSearchViewController *dvc = segue.destinationViewController;
         dvc.popBackController = self;
         dvc.delegate = self;
+        dvc.inRSOMode = YES;
     }
     if ([segue.identifier isEqualToString:@"Vector View Segue"]){
         SLAnimatedViewController *dvc = segue.destinationViewController;
         dvc.delegate = self;
         dvc.dataSource = self;
+        dvc.inRSOMode = YES;
     }
     if ([segue.identifier isEqualToString:@"Motor Direct Thrust Segue"]){
         SLClusterMotorViewController *dvc = segue.destinationViewController;

@@ -264,6 +264,10 @@ NSInteger sortFunction(id md1, id md2, void *context){
         }
         self.restrictMotorDiametersSegmentedControl.selectedSegmentIndex = 1;   // MMT or less
     }
+    if (self.isInRSOMode){
+        self.restrictMotorDiametersSegmentedControl.selectedSegmentIndex = 0;
+        self.restrictMotorDiametersSegmentedControl.enabled = NO;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -373,6 +377,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
 }
 
 - (IBAction)motorDiameterRestrictionChanged:(UISegmentedControl *)sender {
+    if (self.isInRSOMode) return;
     NSString *currMMT = [NSString stringWithFormat:@"%lumm", (unsigned long)[self.dataSource motorSizeRequested]];
     NSString *prevDiam = @"6mm";
     switch (sender.selectedSegmentIndex) {

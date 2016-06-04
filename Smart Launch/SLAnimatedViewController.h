@@ -14,5 +14,6 @@
 
 @property (nonatomic, weak) id<SLSimulationDelegate> delegate;
 @property (nonatomic, weak) id<SLSimulationDataSource> dataSource;
+@property (nonatomic, getter= isInRSOMode) BOOL inRSOMode;
 
 @end

@@ -213,6 +213,17 @@
     [super viewWillAppear:animated];
 }
 
+- (void)viewDidDisappear:(BOOL)animated{
+    if (self.isInRSOMode){
+        [self.delegate sender:self
+         didChangeSimSettings:@{WIND_VELOCITY_KEY : @(self.displayWindVelocity),
+                                WIND_DIRECTION_KEY: @(self.displayLaunchDirection),
+                                LAUNCH_GUIDE_LENGTH_KEY: @(self.displayLaunchGuideLength)
+                                } withUpdate:NO];
+    }
+    [super viewDidDisappear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -231,6 +242,11 @@
     [motions setMotionEffects:@[horiz, vert]];
     
     [self.rocketView addMotionEffect:motions];
+    if (self.isInRSOMode){
+        UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *nonFunctionalFluff = [[UIBarButtonItem alloc] initWithTitle:@"RSO Mode" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        self.toolbarItems = @[flex, nonFunctionalFluff, flex];
+    }
 }
 
 -(void)viewDidLayoutSubviews

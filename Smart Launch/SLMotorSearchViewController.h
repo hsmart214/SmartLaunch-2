@@ -26,5 +26,6 @@
 @property (weak, nonatomic) id<SLSimulationDelegate> delegate;
 @property (weak, nonatomic) id<SLMotorPickerDatasource> dataSource;
 @property (weak, nonatomic) UIViewController *popBackController;
+@property (nonatomic, getter=isInRSOMode ) BOOL inRSOMode;
 
 @end
