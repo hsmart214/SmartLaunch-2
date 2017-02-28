@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface SLFlightDataPoint : NSObject {
-    @public double time;
+    @public
+    double time;
     double vel;
     double alt;
     double trav;

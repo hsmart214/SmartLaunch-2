@@ -14,7 +14,7 @@ extension Rocket{
         if self.recordedFlights != nil{
             for flight in self.recordedFlights! {
                 if let flightData = flight as? [String : AnyObject]{
-                    impulse += SLClusterMotor.totalImpulseFromFlight(flightData)
+                    impulse += SLClusterMotor.totalImpulse(fromFlight: flightData)
                 }
             }
         }
@@ -37,7 +37,7 @@ class SLFlightStatisticsTVC: UITableViewController {
     //They may be changed underneath us so we should register for update notifications
     //TODO: observe for changes in user defaults
     var flownRockets = [Rocket]()
-    var nf : NSNumberFormatter?
+    var nf : NumberFormatter?
     
     func updateUI(){
         var launches = 0
@@ -50,24 +50,24 @@ class SLFlightStatisticsTVC: UITableViewController {
             totalImpulse += rocket.totalFlownImpulse()
         }
         
-        totalImpulseLabel.text = nf?.stringFromNumber(totalImpulse)
-        totalImpulseClassLabel.text = RocketMotor.impulseClassForTotalImpulse(Float(totalImpulse))
+        totalImpulseLabel.text = nf?.string(from: NSNumber(value:totalImpulse))
+        totalImpulseClassLabel.text = RocketMotor.impulseClass(forTotalImpulse: Float(totalImpulse))
         numberOfLaunchesLabel.text = "\(launches)"
         let averageImpulse = Float(totalImpulse/Double(launches))
-        averageImpulseLabel.text = nf?.stringFromNumber(averageImpulse)
-        averageImpulseClassLabel.text = RocketMotor.impulseClassForTotalImpulse(averageImpulse)
+        averageImpulseLabel.text = nf?.string(from: NSNumber(value:averageImpulse))
+        averageImpulseClassLabel.text = RocketMotor.impulseClass(forTotalImpulse: averageImpulse)
         let avgPerRocket = totalImpulse/Double(flownRockets.count)
-        avgImpulsePerRocketLabel.text = nf?.stringFromNumber(avgPerRocket)
+        avgImpulsePerRocketLabel.text = nf?.string(from: NSNumber(value:avgPerRocket))
     }
     
     func updateRocketList(){
         flownRockets.removeAll()
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
-        if let allRockets = defaults.objectForKey(FAVORITE_ROCKETS_KEY) as? [String: [String: AnyObject]]{
+        if let allRockets = defaults.object(forKey: FAVORITE_ROCKETS_KEY) as? [String: [String: AnyObject]]{
             for (_, rocketPlist) in allRockets{
                 if let rocket = Rocket(properties: rocketPlist){
-                    if let flights = rocket.recordedFlights where flights.count != 0{
+                    if let flights = rocket.recordedFlights, flights.count != 0{
                         flownRockets.append(rocket)
                     }
                 }
@@ -75,8 +75,8 @@ class SLFlightStatisticsTVC: UITableViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let dvc = segue.destinationViewController as? SLRocketsLaunchedTVC{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dvc = segue.destination as? SLRocketsLaunchedTVC{
             dvc.rockets = flownRockets
         }
     }
@@ -89,18 +89,18 @@ class SLFlightStatisticsTVC: UITableViewController {
             let backgroundImage = UIImage(named: BACKGROUND_IMAGE_FILENAME)
             backgroundView.image = backgroundImage
             self.tableView.backgroundView = backgroundView
-            self.tableView.backgroundColor = UIColor.clearColor()
+            self.tableView.backgroundColor = UIColor.clear
         }else{
             let backgroundView = UIImageView(frame: self.view.frame)
             let backgroundImage = UIImage(named: BACKGROUND_FOR_IPAD_MASTER_VC)
             backgroundView.image = backgroundImage
             self.tableView.backgroundView = backgroundView
-            self.tableView.backgroundColor = UIColor.clearColor()
+            self.tableView.backgroundColor = UIColor.clear
         }
         
-        nf = NSNumberFormatter()
+        nf = NumberFormatter()
         nf?.usesGroupingSeparator = true
-        nf?.numberStyle = .DecimalStyle
+        nf?.numberStyle = .decimal
         nf?.maximumFractionDigits = 1
         updateRocketList()
         updateUI()

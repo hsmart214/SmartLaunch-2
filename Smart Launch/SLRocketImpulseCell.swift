@@ -17,18 +17,18 @@ class SLRocketImpulseCell: UITableViewCell {
     @IBOutlet weak var rocketNameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
 
-    var nf : NSNumberFormatter?
+    var nf : NumberFormatter?
     var rocket : Rocket? {
         didSet {
             rocketNameLabel.text = rocket?.name
             avatarImageView.image = UIImage(named: rocket!.avatar)
             let flights = rocket!.recordedFlights!.count
             numberOfFlightsLabel.text = "\(flights)"
-            let impulseText = nf?.stringFromNumber(rocket!.totalFlownImpulse()) ?? "0.0"
+            let impulseText = nf?.string(from: NSNumber(value:rocket!.totalFlownImpulse())) ?? "0.0"
             totalImpulseLabel.text = impulseText + " Ns"
-            totalImpulseClassLabel.text = RocketMotor.impulseClassForTotalImpulse(Float(rocket!.totalFlownImpulse()))
+            totalImpulseClassLabel.text = RocketMotor.impulseClass(forTotalImpulse: Float(rocket!.totalFlownImpulse()))
             let avgImpulse = rocket!.totalFlownImpulse()/Double(flights)
-            averageImpulseClassLabel.text = RocketMotor.impulseClassForTotalImpulse(Float(avgImpulse))
+            averageImpulseClassLabel.text = RocketMotor.impulseClass(forTotalImpulse: Float(avgImpulse))
         }
     }
 

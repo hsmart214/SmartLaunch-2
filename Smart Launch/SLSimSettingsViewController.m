@@ -79,7 +79,6 @@
     
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse ||
         [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways ||
-        [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized ||
         [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
         if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
             if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]){
