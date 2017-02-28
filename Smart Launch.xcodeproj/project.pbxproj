@@ -60,6 +60,7 @@
 		4257FE5417DDA8BF004A5021 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE4417DDA8BF004A5021 /* iTunesArtwork.png */; };
 		4257FE5517DDA8BF004A5021 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE4517DDA8BF004A5021 /* iTunesArtwork@2x.png */; };
 		425B18C618C30A1500FBC2B8 /* SLExpandingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 425B18C518C30A1500FBC2B8 /* SLExpandingTransition.m */; };
+		4268AA851E65452B00F62F8C /* UniStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4268AA841E65452B00F62F8C /* UniStoryboard.storyboard */; };
 		42742BBB172AE37D007229E9 /* SLClusterMotor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42742BBA172AE37D007229E9 /* SLClusterMotor.m */; };
 		427507A71BEF022700FAA8AD /* SLAvatarTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 427507A61BEF022700FAA8AD /* SLAvatarTVC.m */; };
 		428E520A1CF2154D00843281 /* SLRocketImpulseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428E52091CF2154D00843281 /* SLRocketImpulseCell.swift */; };
@@ -167,6 +168,7 @@
 		4257FE4517DDA8BF004A5021 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		425B18C418C30A1500FBC2B8 /* SLExpandingTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLExpandingTransition.h; sourceTree = "<group>"; };
 		425B18C518C30A1500FBC2B8 /* SLExpandingTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLExpandingTransition.m; sourceTree = "<group>"; };
+		4268AA841E65452B00F62F8C /* UniStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UniStoryboard.storyboard; sourceTree = "<group>"; };
 		42742BB5172A3C68007229E9 /* SLClusterBuildDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterBuildDelegate.h; sourceTree = "<group>"; };
 		42742BB9172AE37C007229E9 /* SLClusterMotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterMotor.h; sourceTree = "<group>"; };
 		42742BBA172AE37D007229E9 /* SLClusterMotor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotor.m; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			children = (
 				42397206173378B300262A6B /* MainStoryboard_iPhone.storyboard */,
 				4240EDC016990F1E008AB135 /* MainStoryboard_iPad.storyboard */,
+				4268AA841E65452B00F62F8C /* UniStoryboard.storyboard */,
 				42248D7916EC384F00ABB5D7 /* Model */,
 				42E353FB18AC93C200E2053F /* Views */,
 				42E353FC18AC93CF00E2053F /* Controllers */,
@@ -519,6 +522,7 @@
 				42397204173378B300262A6B /* MainStoryboard_iPhone.storyboard in Resources */,
 				4220A4F415F55D120055EE35 /* atmosphere.txt in Resources */,
 				4257FE5417DDA8BF004A5021 /* iTunesArtwork.png in Resources */,
+				4268AA851E65452B00F62F8C /* UniStoryboard.storyboard in Resources */,
 				4292C558181F595300C4C732 /* kitArray.plist in Resources */,
 				4220A4F515F55D120055EE35 /* motors.txt in Resources */,
 				4257FE4817DDA8BF004A5021 /* AppIcon50x50.png in Resources */,

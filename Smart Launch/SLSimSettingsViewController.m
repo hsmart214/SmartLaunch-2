@@ -78,8 +78,7 @@
 - (IBAction)GPSAltitudeRequested:(UIButton *)sender {
     
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse ||
-        [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways ||
-        [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
+        [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways){
         if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
             if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]){
                 [self.locationManager requestWhenInUseAuthorization];
