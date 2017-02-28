@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Kjj-TF-Pn0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -48,7 +48,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="1SO-xv-rkJ" kind="push" identifier="rocketSelectorSegue" id="lPZ-o4-fii"/>
+                                            <segue destination="1SO-xv-rkJ" kind="show" identifier="rocketSelectorSegue" id="lPZ-o4-fii"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="1EH-gt-PaL" detailTextLabel="dMe-jK-3OB" imageView="Hc0-C5-2nD" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="al5-3h-VAc">
@@ -125,7 +125,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="8M4-zH-Kiq" kind="push" identifier="launchAngleDirectSegue" id="EKl-gK-46m"/>
+                                            <segue destination="8M4-zH-Kiq" kind="show" identifier="launchAngleDirectSegue" id="EKl-gK-46m"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JO5-tD-cFN">
@@ -145,7 +145,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="5aX-UX-Uxz" kind="push" identifier="settingsSegue" id="XmM-wm-0w2"/>
+                                            <segue destination="5aX-UX-Uxz" kind="show" identifier="settingsSegue" id="XmM-wm-0w2"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wri-fm-o9N">
@@ -165,7 +165,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="HiD-2z-1B1" kind="push" identifier="AnimationSegue" id="wsu-2m-06L"/>
+                                            <segue destination="HiD-2z-1B1" kind="show" identifier="AnimationSegue" id="wsu-2m-06L"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="yiT-f4-ttV">
@@ -352,19 +352,19 @@
                     <toolbarItems>
                         <barButtonItem title="Stats" id="khk-3G-12P">
                             <connections>
-                                <segue destination="4Oy-JV-apn" kind="push" id="nAa-Xu-GZa"/>
+                                <segue destination="4Oy-JV-apn" kind="show" id="nAa-Xu-GZa"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="sC5-Hw-Ahn"/>
                         <barButtonItem title="RSO Mode" id="S3d-U7-YYE">
                             <connections>
-                                <segue destination="SsB-ic-Waz" kind="push" id="kmG-vj-RNK"/>
+                                <segue destination="SsB-ic-Waz" kind="show" action="showDetailViewController:sender:" id="kmG-vj-RNK"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="cAA-rf-V0I"/>
                         <barButtonItem title="Save/Refine Cd" id="a9I-dA-iOQ">
                             <connections>
-                                <segue destination="MkR-aR-0SI" kind="modal" identifier="saveFlightSegue" id="8ve-sG-SJk"/>
+                                <segue destination="MkR-aR-0SI" kind="presentation" identifier="saveFlightSegue" id="8ve-sG-SJk"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -382,7 +382,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="uS3-Tt-XEp" kind="modal" identifier="settingsModalSegue" modalTransitionStyle="flipHorizontal" id="nfX-xh-HIv"/>
+                                    <segue destination="uS3-Tt-XEp" kind="presentation" identifier="settingsModalSegue" id="nfX-xh-HIv"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -403,11 +403,11 @@
                         <outlet property="spinner" destination="11k-Xp-TrQ" id="ziC-E0-Rj8"/>
                         <outlet property="thrustToWeightLabel" destination="wca-N5-XpZ" id="73l-GC-tdf"/>
                         <outlet property="windDirectionButton" destination="roB-0D-CK6" id="ACw-hx-Anf"/>
-                        <segue destination="uZE-TB-0Cv" kind="push" identifier="FlightProfileSegue" id="eqe-Pw-qR7"/>
-                        <segue destination="8xk-tZ-KWh" kind="push" identifier="motorSelectorSegue" id="6CR-zP-7Wn"/>
-                        <segue destination="bIt-Wb-A6K" kind="push" identifier="clusterBuildSegue" id="wQc-iJ-Q9M"/>
-                        <segue destination="wC6-kk-xp5" kind="push" identifier="RocketDirectEditSegue" id="YI5-Ir-zZ7"/>
-                        <segue destination="72v-RW-snn" kind="push" identifier="ClusterThrustViewSegue" id="odh-uv-WaK"/>
+                        <segue destination="uZE-TB-0Cv" kind="show" identifier="FlightProfileSegue" id="eqe-Pw-qR7"/>
+                        <segue destination="8xk-tZ-KWh" kind="show" identifier="motorSelectorSegue" id="6CR-zP-7Wn"/>
+                        <segue destination="bIt-Wb-A6K" kind="show" identifier="clusterBuildSegue" id="wQc-iJ-Q9M"/>
+                        <segue destination="wC6-kk-xp5" kind="show" identifier="RocketDirectEditSegue" id="YI5-Ir-zZ7"/>
+                        <segue destination="72v-RW-snn" kind="show" identifier="ClusterThrustViewSegue" id="odh-uv-WaK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IO4-9K-SlH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -564,14 +564,14 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="eC1-QZ-zrb"/>
                         <barButtonItem title="Saved Clusters" id="b6M-eF-s8o">
                             <connections>
-                                <segue destination="tcU-wj-n9C" kind="push" identifier="savedClusterSegue" id="w0Z-2H-5mT"/>
+                                <segue destination="tcU-wj-n9C" kind="show" identifier="savedClusterSegue" id="w0Z-2H-5mT"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Build Cluster" id="Uv3-Ih-WGW"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="8xk-tZ-KWh" kind="push" identifier="clusterMemberMotorSearch" id="Il8-Xm-cMO"/>
+                        <segue destination="8xk-tZ-KWh" kind="show" identifier="clusterMemberMotorSearch" id="Il8-Xm-cMO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hgb-7Y-evl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -781,7 +781,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Ajf-OG-LUV" kind="push" identifier="RocketsLaunchedSegue" id="EBJ-bj-sri"/>
+                                            <segue destination="Ajf-OG-LUV" kind="show" identifier="RocketsLaunchedSegue" id="EBJ-bj-sri"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -899,7 +899,7 @@
                                     <outlet property="rocketNameLabel" destination="90Y-lW-xjs" id="3ep-xY-bEr"/>
                                     <outlet property="totalImpulseClassLabel" destination="Yky-uN-51E" id="lUB-bF-HQO"/>
                                     <outlet property="totalImpulseLabel" destination="ndA-rz-tXM" id="RX9-Gy-aib"/>
-                                    <segue destination="Wc5-Ed-FYe" kind="push" id="zi0-X3-8gy"/>
+                                    <segue destination="Wc5-Ed-FYe" kind="show" id="zi0-X3-8gy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1031,7 +1031,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="asp-GR-Ji2" kind="push" identifier="Manufacturer Segue" id="mkM-4a-fzQ"/>
+                                    <segue destination="asp-GR-Ji2" kind="show" identifier="Manufacturer Segue" id="mkM-4a-fzQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1113,7 +1113,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="RGf-Gf-tb1"/>
                         <barButtonItem title="Kit Info" id="x4h-ji-rsB">
                             <connections>
-                                <segue destination="Luf-9t-XhQ" kind="modal" identifier="KitInfoModalSegue" modalTransitionStyle="partialCurl" id="Lcj-ON-84m"/>
+                                <segue destination="Luf-9t-XhQ" kind="presentation" identifier="KitInfoModalSegue" id="Lcj-ON-84m"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -1348,7 +1348,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="imm-Hh-2bi" kind="modal" identifier="motorConfigurationSegue" id="Rhk-Rs-w9x"/>
+                                            <segue destination="imm-Hh-2bi" kind="show" identifier="motorConfigurationSegue" id="Rhk-Rs-w9x"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="yrh-as-TUs">
@@ -1410,7 +1410,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="SXE-dG-OJ0" kind="push" identifier="savedFlightsSegue" id="xpI-3O-5Yd"/>
+                                            <segue destination="SXE-dG-OJ0" kind="show" identifier="savedFlightsSegue" id="xpI-3O-5Yd"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="buc-21-SBE">
@@ -1430,7 +1430,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="tzc-dF-sRm" kind="push" identifier="kitSegue" id="SVs-Mn-1fg"/>
+                                            <segue destination="tzc-dF-sRm" kind="show" identifier="kitSegue" id="SVs-Mn-1fg"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="FLs-IP-AzV">
@@ -1450,7 +1450,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="rTc-F5-78C" kind="push" identifier="Choose Avatar" id="7uf-9F-Sv1"/>
+                                            <segue destination="rTc-F5-78C" kind="show" identifier="Choose Avatar" id="7uf-9F-Sv1"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -2011,7 +2011,7 @@ Estes E9 x2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08I-tw-ZVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3068" y="-627"/>
+            <point key="canvasLocation" x="4574" y="-627"/>
         </scene>
         <!--Save Flight Data-->
         <scene sceneID="L5X-Jt-MHi">
@@ -2323,12 +2323,12 @@ Estes E9 x2</string>
                     <navigationItem key="navigationItem" title="Rockets" id="YbJ-Ba-ucq">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="E9i-pU-D01">
                             <connections>
-                                <segue destination="wC6-kk-xp5" kind="push" identifier="addRocketSegue" id="k8S-cI-mwR"/>
+                                <segue destination="wC6-kk-xp5" kind="show" identifier="addRocketSegue" id="k8S-cI-mwR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="wC6-kk-xp5" kind="push" identifier="editRocketSegue" id="TWF-iG-N0A"/>
+                        <segue destination="wC6-kk-xp5" kind="show" identifier="editRocketSegue" id="TWF-iG-N0A"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mlF-rw-sjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2426,7 +2426,7 @@ Estes E9 x2</string>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="CXO-eQ-gzX"/>
                         <barButtonItem title="List Motors" id="UnL-FI-90O">
                             <connections>
-                                <segue destination="vCV-Pg-wEf" kind="push" identifier="motorSearchSegue" id="bPB-KQ-muT"/>
+                                <segue destination="vCV-Pg-wEf" kind="show" identifier="motorSearchSegue" id="bPB-KQ-muT"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -2485,7 +2485,7 @@ Estes E9 x2</string>
                     </tableView>
                     <navigationItem key="navigationItem" title="Motors" id="vej-yM-dTm"/>
                     <connections>
-                        <segue destination="SrU-Xj-Vrf" kind="push" identifier="motorDetailSegue" id="MaO-gn-oc4"/>
+                        <segue destination="SrU-Xj-Vrf" kind="show" identifier="motorDetailSegue" id="MaO-gn-oc4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GjF-nf-HVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2802,7 +2802,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Fcd-8P-BXk" kind="push" identifier="unitsSegue" id="6tT-xD-3b0"/>
+                                            <segue destination="Fcd-8P-BXk" kind="show" identifier="unitsSegue" id="6tT-xD-3b0"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Hff-zW-7lf" style="IBUITableViewCellStyleDefault" id="nxd-lZ-zD2">
@@ -2822,7 +2822,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="clt-Gg-BMp" kind="push" identifier="Motor Preferences" id="oGt-0M-sId"/>
+                                            <segue destination="clt-Gg-BMp" kind="show" identifier="Motor Preferences" id="oGt-0M-sId"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="lYt-Vo-8Ie" style="IBUITableViewCellStyleDefault" id="Hms-8n-AJ2">
@@ -3485,7 +3485,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="8xk-tZ-KWh" kind="push" identifier="Motor Search Segue" id="pMK-Qx-KFT"/>
+                                            <segue destination="8xk-tZ-KWh" kind="show" identifier="Motor Search Segue" id="pMK-Qx-KFT"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="JCo-YY-FBs" style="IBUITableViewCellStyleDefault" id="E2I-5S-Ad5">
@@ -3505,7 +3505,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="HiD-2z-1B1" kind="push" identifier="Vector View Segue" id="cCh-tP-ANT"/>
+                                            <segue destination="HiD-2z-1B1" kind="show" identifier="Vector View Segue" id="cCh-tP-ANT"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="EIY-cF-PlO" detailTextLabel="wIx-br-TQx" style="IBUITableViewCellStyleValue1" id="zth-95-y5m">
@@ -3550,7 +3550,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                         <outlet property="motorShortNameLabel" destination="ur2-cm-1o3" id="kYC-tm-9zC"/>
                         <outlet property="motorTotalImpulseLabel" destination="pkd-eE-TtO" id="BWd-mA-mTZ"/>
                         <outlet property="thrustWeightLabel" destination="wIx-br-TQx" id="gH5-Th-G0U"/>
-                        <segue destination="72v-RW-snn" kind="push" identifier="Motor Direct Thrust Segue" id="GNL-5c-3zP"/>
+                        <segue destination="72v-RW-snn" kind="show" identifier="Motor Direct Thrust Segue" id="GNL-5c-3zP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MsC-xV-hjw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3738,7 +3738,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="967" y="1942"/>
+            <point key="canvasLocation" x="1026" y="1942"/>
         </scene>
         <!--Sim Settings-->
         <scene sceneID="ZMR-VX-EZF">
@@ -3783,7 +3783,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="8M4-zH-Kiq" kind="push" identifier="launchAngleSegue" id="Mcb-To-omU"/>
+                                            <segue destination="8M4-zH-Kiq" kind="show" identifier="launchAngleSegue" id="Mcb-To-omU"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="drG-YM-MFe">
@@ -4056,7 +4056,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JzD-XJ-tDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3790" y="-627"/>
+            <point key="canvasLocation" x="3068" y="-627"/>
         </scene>
     </scenes>
     <resources>
@@ -4066,10 +4066,11 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
         <image name="Madcow" width="86" height="43"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mcb-To-omU"/>
+        <segue reference="wsu-2m-06L"/>
+        <segue reference="EKl-gK-46m"/>
+        <segue reference="6CR-zP-7Wn"/>
         <segue reference="k8S-cI-mwR"/>
-        <segue reference="cCh-tP-ANT"/>
-        <segue reference="pMK-Qx-KFT"/>
         <segue reference="GNL-5c-3zP"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>
