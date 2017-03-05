@@ -378,5 +378,10 @@
     }
 }
 
+- (IBAction)exitRSOMode:(UIBarButtonItem *)sender {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 
 @end
