@@ -231,7 +231,8 @@ static NSMutableDictionary *sMotorsByName;
 
 + (NSArray *)motorDiameters{
     return @[@"6mm", @"13mm", @"18mm", @"24mm", @"29mm",
-            @"38mm", @"54mm", @"75mm", @"98mm", @"150mm"];
+             @"38mm", @"54mm", @"64mm", @"75mm", @"76mm",
+             @"98mm", @"111mm", @"150mm"];
 }
 
 /*+ (RocketMotor *)defaultEstesMotor{  // Estes D12
