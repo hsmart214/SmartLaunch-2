@@ -5,6 +5,7 @@
 #import "Rocket.h"
 #import "RocketMotor.h"
 #import "SLClusterMotor.h"
-#import "SLPhysicsModel.h"
+//#import "SLPhysicsModel.h"
 #import "SLFlightDataCell.h"
 #import "SLUnitsConvertor.h"
+#import "SLFlightDataPoint.h"

@@ -19,4 +19,6 @@
     double drag;
 }
 
+-(void)updateTime:(double)time velocity:(double)vel altitude:(double)alt travel:(double)trav accel:(double)accel mach:(double)mach andDrag:(double)drag;
+
 @end

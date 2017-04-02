@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		420D77B41E8F60F700ACD04E /* PhysicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420D77B31E8F60F700ACD04E /* PhysicsModel.swift */; };
 		421437221601ADEE0020AA1D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 421437211601ADEE0020AA1D /* MobileCoreServices.framework */; };
 		4220A4CD15F55CC60055EE35 /* SLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AB15F55CC60055EE35 /* SLTableViewController.m */; };
 		4220A4CE15F55CC60055EE35 /* SLInformationTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AD15F55CC60055EE35 /* SLInformationTVC.m */; };
@@ -88,6 +89,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		420D77B31E8F60F700ACD04E /* PhysicsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsModel.swift; sourceTree = "<group>"; };
 		421437211601ADEE0020AA1D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSimulationDelegate.h; sourceTree = "<group>"; };
 		4220A4AA15F55CC60055EE35 /* SLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTableViewController.h; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 		425692FA15F4893000F7BABC = {
 			isa = PBXGroup;
 			children = (
+				420D77B31E8F60F700ACD04E /* PhysicsModel.swift */,
 				42BDE54A17DDA21E007F7689 /* Images.xcassets */,
 				4256930F15F4893000F7BABC /* Smart Launch */,
 				4256930815F4893000F7BABC /* Frameworks */,
@@ -589,6 +592,7 @@
 				42F83DBB171B6ED3005FAA0C /* SLClusterMotorBuildViewController.m in Sources */,
 				4292C556181F58D800C4C732 /* SLCommercialKitInfoViewController.m in Sources */,
 				42F83DBE171B6EFC005FAA0C /* SLClusterMotorMemberCell.m in Sources */,
+				420D77B41E8F60F700ACD04E /* PhysicsModel.swift in Sources */,
 				42CEE10417277F440060424F /* SLMotorConfigurationTVC.m in Sources */,
 				42570B6C1CF1668200169EE4 /* SLFlightStatisticsTVC.swift in Sources */,
 				42E353F818AC702000E2053F /* SLFlightDataPoint.m in Sources */,

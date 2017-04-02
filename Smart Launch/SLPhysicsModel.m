@@ -321,14 +321,13 @@ typedef struct  {
 
 - (void)integrateBurnoutToApogee{
     if (_timeIndex >= [self.rocket burnoutTime] && _velocity <= 0.0) return;      // Just in case you are already stopped
-    float time = [self.rocket burnoutTime];
     double t_squared = 1/ (DIVS_AFTER_BURNOUT * DIVS_AFTER_BURNOUT);
     double mass = [self.rocket burnoutMass];
     double deltaAlt = 1;
     while (deltaAlt > 0) {
         double g = GRAV_ACCEL * cos(_angle);
         _timeIndex += 1.0/DIVS_AFTER_BURNOUT;
-        double drag = [self dragAtVelocity:_velocity time:time andAltitude:_altitude]; //OPT -> 17%
+        double drag = [self dragAtVelocity:_velocity time:_timeIndex andAltitude:_altitude]; //OPT -> 17%
         double acc = - drag/mass;
         double y_accel = acc * cos(_angle) - GRAV_ACCEL;
         double x_accel = acc * sin(_angle);
