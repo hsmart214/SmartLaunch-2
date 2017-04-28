@@ -17,11 +17,14 @@
 #import "SLClusterMotorBuildViewController.h"
 #import "SLRocketPropertiesTVC.h"
 #import "SLClusterMotorViewController.h"
+#import "UIViewController+ContentViewController.h"
+#import "SLAnimatedViewController.h"
 
 #define FLIGHT_PROFILE_ROW 5
 #define MOTOR_SELECTION_ROW 1
+#define ANIMATED_VIEW_ROW 4
 
-@interface SLTableViewController ()<SLMotorPickerDatasource, SLRocketPropertiesTVCDelegate>
+@interface SLTableViewController ()<SLMotorPickerDatasource, SLRocketPropertiesTVCDelegate, UISplitViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *rocketCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *motorCell;
@@ -211,6 +214,7 @@
 }
 
 - (void)updateDisplay{
+    [[NSNotificationCenter defaultCenter] postNotificationName:SmartLaunchDidUpdateModelNotification object:self];
     self.thrustToWeightLabel.text = [NSString stringWithFormat:@"%1.1f : 1", ([self.rocket peakThrust])/(([self.rocket massAtTime:0.0])*(GRAV_ACCEL))];
     self.rocketCell.textLabel.text = self.rocket.name;
     self.rocketCell.detailTextLabel.text = [NSString stringWithFormat:@"%lumm", (unsigned long)self.rocket.motorSize];
@@ -345,7 +349,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    [segue.destinationViewController setDelegate:(id)self];
+    [(id)segue.destinationViewController.contentViewController setDelegate:(id)self];
     if ([[segue identifier] isEqualToString:@"settingsModalSegue"]){
         [[(UINavigationController *)segue.destinationViewController viewControllers][0] setDelegate:(id)self];
     }
@@ -358,8 +362,12 @@
         [(SLMotorSearchViewController *)segue.destinationViewController setPopBackController:self];
     }
     if ([[segue identifier] isEqualToString:@"AnimationSegue"]){
-        [segue.destinationViewController setDelegate:(id)self];
-        [segue.destinationViewController setDataSource:self];
+        UINavigationController *nav = segue.destinationViewController;
+        SLAnimatedViewController *anim = [[UIStoryboard storyboardWithName:@"UniStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"SLAnimatedViewController"];
+        [nav setViewControllers:@[anim]];
+        
+        [(id)segue.destinationViewController.contentViewController setDelegate:(id)self];
+        [(id)segue.destinationViewController.contentViewController setDataSource:self];
     }
     if ([[segue identifier] isEqualToString:@"saveFlightSegue"]){
         NSMutableDictionary *flightSettings = [self.settings mutableCopy];
@@ -386,7 +394,7 @@
         [dest setDelegate:self];
     }
     if ([[segue identifier] isEqualToString:@"FlightProfileSegue"]){
-        [(SLFlightProfileViewController *)segue.destinationViewController setDataSource:self.model];
+        [(SLFlightProfileViewController *)segue.destinationViewController.contentViewController setDataSource:self.model];
     }
     if ([[segue identifier] isEqualToString:@"clusterBuildSegue"]){
         [(SLClusterMotorBuildViewController *)segue.destinationViewController setSimDelegate:self];
@@ -421,6 +429,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 0 && indexPath.row == ANIMATED_VIEW_ROW){
+        if (self.simRunning){
+            return;
+        }else{
+            [self performSegueWithIdentifier:@"AnimationSegue" sender:self];
+        }
+    }
     if (indexPath.section == 0 && indexPath.row == FLIGHT_PROFILE_ROW){
         if (self.simRunning){
             return;
@@ -473,9 +488,9 @@
 
 #pragma mark - View Life Cycle
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.navigationController setToolbarHidden:NO animated:animated];
+// Register for iCloud updates
+
+- (void)registerForiCloudUpdates{
     if (!self.iCloudObserver){
         self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -487,6 +502,12 @@
             [defaults synchronize];
         }];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:NO animated:animated];
+    [self registerForiCloudUpdates];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -507,41 +528,39 @@
     id unitPrefs = [self defaultFetchWithKey:UNIT_PREFS_KEY];
     if (!unitPrefs) [SLUnitsTVC setStandardDefaults];
     
-    if (!self.splitViewController){
-        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
-        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
-        [backgroundView setImage:backgroundImage];
-        self.tableView.backgroundView = backgroundView;
-        self.tableView.backgroundColor = [UIColor clearColor];
-    }else{// we are on an iPad
-        //self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
-        //trying out the same bacjground for both systems
-        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
-        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_FOR_IPAD_MASTER_VC];
-        [backgroundView setImage:backgroundImage];
-        self.tableView.backgroundView = backgroundView;
-        self.tableView.backgroundColor = [UIColor clearColor];
-    }
-    self.iCloudObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:nil queue:nil usingBlock:^(NSNotification *notification){
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
-        NSArray *changedKeys = [[notification userInfo] objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
-        for (NSString *key in changedKeys) {
-            [defaults setObject:[store objectForKey:key] forKey:key];       // right now this can only be the favorite rockets dictionary
-        }
-        [defaults synchronize];
-    }];
+//    if (!self.splitViewController){
+//        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+//        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
+//        [backgroundView setImage:backgroundImage];
+//        self.tableView.backgroundView = backgroundView;
+//        self.tableView.backgroundColor = [UIColor clearColor];
+//    }else{// we are on an iPad
+//        //self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
+//        //trying out the same bacjground for both systems
+//        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+//        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_FOR_IPAD_MASTER_VC];
+//        [backgroundView setImage:backgroundImage];
+//        self.tableView.backgroundView = backgroundView;
+//        self.tableView.backgroundColor = [UIColor clearColor];
+//    }
+    [self registerForiCloudUpdates];
     [[NSUbiquitousKeyValueStore defaultStore] synchronize];
-    if (self.splitViewController){
-        UINavigationController *nav = (UINavigationController *)[self.splitViewController.viewControllers lastObject];
-        [(SLiPadDetailViewController *)nav.viewControllers[0] setModel:self.model];
-        [(SLiPadDetailViewController *)nav.viewControllers[0] setSimDelegate:self];
-        [(SLiPadDetailViewController *)nav.viewControllers[0] setSimDataSource:self];
-    }
+//    if (self.splitViewController){
+//        UINavigationController *nav = (UINavigationController *)[self.splitViewController.viewControllers lastObject];
+//        [(SLiPadDetailViewController *)nav.viewControllers[0] setModel:self.model];
+//        [(SLiPadDetailViewController *)nav.viewControllers[0] setSimDelegate:self];
+//        [(SLiPadDetailViewController *)nav.viewControllers[0] setSimDataSource:self];
+//    }
+}
+
+#pragma mark - UISplitViewControllerDelegate
+
+-(BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController{
+    return YES;
 }
 
 -(NSString *)description{
-    return @"Smart Launch HD TVC";
+    return @"Smart Launch 2 TVC";
 }
 
 @end

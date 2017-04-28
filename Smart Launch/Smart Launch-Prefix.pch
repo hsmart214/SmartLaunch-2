@@ -124,6 +124,8 @@ typedef enum {
 #define DRAG_INDEX 6
     
 #pragma mark String literal constants
+
+static NSString *SmartLaunchDidUpdateModelNotification = @"com.mysmartsoftware.SmartLaunchDidUpdateModelNotification";
     
 #define SETTINGS_KEY @"SmartLaunchSettingsDictionary"
 #define HAS_RUN_BEFORE_KEY @"SmartLaunchHasRunBefore"

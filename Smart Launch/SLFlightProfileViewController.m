@@ -121,6 +121,22 @@
     [super viewWillAppear:animated];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserverForName:SmartLaunchDidUpdateModelNotification
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note){
+                                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                                          [self updateDisplay];
+                                                      });
+                                                  }];
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(NSString *)description{
     return @"FlightProfileViewController";
 }

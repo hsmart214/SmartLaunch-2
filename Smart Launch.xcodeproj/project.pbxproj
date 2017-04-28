@@ -28,6 +28,7 @@
 		4220A4F415F55D120055EE35 /* atmosphere.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E815F55D120055EE35 /* atmosphere.txt */; };
 		4220A4F515F55D120055EE35 /* motors.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4220A4E915F55D120055EE35 /* motors.txt */; };
 		42248D7C16EC416200ABB5D7 /* SLiPadDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42248D7B16EC416200ABB5D7 /* SLiPadDetailViewController.m */; };
+		4229CB2D1EB2FF3B00F5CA40 /* UIViewController+ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4229CB2C1EB2FF3B00F5CA40 /* UIViewController+ContentViewController.m */; };
 		422BE01B1A3970FA00C23175 /* SLKitManufacturerTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 422BE01A1A3970FA00C23175 /* SLKitManufacturerTVC.m */; };
 		423057361B81A3C1006CA5B7 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 423057351B81A3C1006CA5B7 /* GameKit.framework */; };
 		423057381B81A3C4006CA5B7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 423057371B81A3C4006CA5B7 /* StoreKit.framework */; };
@@ -128,6 +129,8 @@
 		4220A4E915F55D120055EE35 /* motors.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = motors.txt; sourceTree = "<group>"; };
 		42248D7A16EC416200ABB5D7 /* SLiPadDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLiPadDetailViewController.h; sourceTree = "<group>"; };
 		42248D7B16EC416200ABB5D7 /* SLiPadDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLiPadDetailViewController.m; sourceTree = "<group>"; };
+		4229CB2B1EB2FF3B00F5CA40 /* UIViewController+ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ContentViewController.h"; sourceTree = "<group>"; };
+		4229CB2C1EB2FF3B00F5CA40 /* UIViewController+ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ContentViewController.m"; sourceTree = "<group>"; };
 		422BE0161A3970C600C23175 /* SmartLaunch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartLaunch-Bridging-Header.h"; sourceTree = "<group>"; };
 		422BE0191A3970FA00C23175 /* SLKitManufacturerTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKitManufacturerTVC.h; sourceTree = "<group>"; };
 		422BE01A1A3970FA00C23175 /* SLKitManufacturerTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKitManufacturerTVC.m; sourceTree = "<group>"; };
@@ -435,6 +438,8 @@
 				4220A4B115F55CC60055EE35 /* SLUnitsTVC.m */,
 				425B18C418C30A1500FBC2B8 /* SLExpandingTransition.h */,
 				425B18C518C30A1500FBC2B8 /* SLExpandingTransition.m */,
+				4229CB2B1EB2FF3B00F5CA40 /* UIViewController+ContentViewController.h */,
+				4229CB2C1EB2FF3B00F5CA40 /* UIViewController+ContentViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -564,6 +569,7 @@
 				4220A4D215F55CC60055EE35 /* SLLaunchAngleView.m in Sources */,
 				4220A4D415F55CC60055EE35 /* SLMotorSearchViewController.m in Sources */,
 				425B18C618C30A1500FBC2B8 /* SLExpandingTransition.m in Sources */,
+				4229CB2D1EB2FF3B00F5CA40 /* UIViewController+ContentViewController.m in Sources */,
 				427507A71BEF022700FAA8AD /* SLAvatarTVC.m in Sources */,
 				4220A4D515F55CC60055EE35 /* SLMotorTableViewController.m in Sources */,
 				4220A4D615F55CC60055EE35 /* SLMotorViewController.m in Sources */,

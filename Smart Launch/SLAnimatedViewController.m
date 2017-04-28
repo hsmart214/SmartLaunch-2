@@ -213,6 +213,18 @@
     [super viewWillAppear:animated];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserverForName:SmartLaunchDidUpdateModelNotification
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note){
+                                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                                          [self updateDisplay];
+                                                      });
+    }];
+}
+
 - (void)viewDidDisappear:(BOOL)animated{
     if (self.isInRSOMode){
         [self.delegate sender:self
@@ -261,6 +273,7 @@
 
 -(void)dealloc{
     self.launchGuideLengthFormatString = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(NSString *)description{

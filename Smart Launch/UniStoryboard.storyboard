@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="p79-WU-BJJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="p79-WU-BJJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,25 +24,25 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZtQ-xI-2bZ" id="It0-zs-Q7w">
-                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Goblin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="29J-yc-KRP">
-                                                    <rect key="frame" x="135" y="5" width="47" height="20"/>
+                                                    <rect key="frame" x="136" y="6" width="47" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="24 mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RDy-28-BoE">
-                                                    <rect key="frame" x="135" y="25" width="37" height="14"/>
+                                                    <rect key="frame" x="136" y="25.5" width="36.5" height="13.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Goblin" id="Kbx-mI-X8Y">
-                                                    <rect key="frame" x="15" y="0.0" width="105" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="106" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -55,25 +55,25 @@
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="al5-3h-VAc" id="sDV-zv-4du">
-                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="D10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1EH-gt-PaL">
-                                                    <rect key="frame" x="135" y="2" width="34" height="22"/>
+                                                    <rect key="frame" x="136" y="3" width="34" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="6.7 Ns" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dMe-jK-3OB">
-                                                    <rect key="frame" x="135" y="24" width="42" height="17"/>
+                                                    <rect key="frame" x="136" y="24.5" width="41.5" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Apogee" id="Hc0-C5-2nD">
-                                                    <rect key="frame" x="15" y="0.0" width="105" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="106" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -164,9 +164,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="HiD-2z-1B1" kind="show" identifier="AnimationSegue" id="wsu-2m-06L"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="yiT-f4-ttV">
                                         <rect key="frame" x="0.0" y="220" width="375" height="44"/>
@@ -405,11 +402,12 @@
                         <outlet property="spinner" destination="11k-Xp-TrQ" id="ziC-E0-Rj8"/>
                         <outlet property="thrustToWeightLabel" destination="wca-N5-XpZ" id="73l-GC-tdf"/>
                         <outlet property="windDirectionButton" destination="roB-0D-CK6" id="ACw-hx-Anf"/>
-                        <segue destination="cdU-OW-A89" kind="showDetail" identifier="FlightProfileSegue" action="showViewController:sender:" id="eqe-Pw-qR7"/>
                         <segue destination="8xk-tZ-KWh" kind="show" identifier="motorSelectorSegue" id="6CR-zP-7Wn"/>
                         <segue destination="bIt-Wb-A6K" kind="show" identifier="clusterBuildSegue" id="wQc-iJ-Q9M"/>
                         <segue destination="wC6-kk-xp5" kind="show" identifier="RocketDirectEditSegue" id="YI5-Ir-zZ7"/>
                         <segue destination="72v-RW-snn" kind="show" identifier="ClusterThrustViewSegue" id="odh-uv-WaK"/>
+                        <segue destination="cdU-OW-A89" kind="showDetail" identifier="FlightProfileSegue" id="d8Y-Eh-aKG"/>
+                        <segue destination="cdU-OW-A89" kind="showDetail" identifier="AnimationSegue" id="orW-yd-mxj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IO4-9K-SlH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1022,11 +1020,11 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6sK-Nv-Nh6" id="lo4-oN-gRT">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Madcow Rocketry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Bq-bD-lVU">
-                                            <rect key="frame" x="116" y="5" width="130" height="20"/>
+                                            <rect key="frame" x="116" y="6" width="130" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1037,7 +1035,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="17 Kits" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jfa-1m-ELG">
-                                            <rect key="frame" x="116" y="25" width="35" height="14"/>
+                                            <rect key="frame" x="116" y="25.5" width="35" height="13.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2043,18 +2041,18 @@ Estes E9 x2</string>
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Fn-Kd-Oad" id="gNU-2q-eil">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Rocket Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YyV-7Y-l7J">
-                                                    <rect key="frame" x="135" y="0.0" width="225" height="43"/>
+                                                    <rect key="frame" x="136" y="0.0" width="224" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Goblin" id="DkU-qg-OQb">
-                                                    <rect key="frame" x="15" y="0.0" width="105" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="106" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
@@ -2065,18 +2063,18 @@ Estes E9 x2</string>
                                         <rect key="frame" x="0.0" y="79" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4PH-nC-wWP" id="bTZ-Yv-OKA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="D10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="stm-vs-QFU">
-                                                    <rect key="frame" x="135" y="0.0" width="225" height="43"/>
+                                                    <rect key="frame" x="136" y="0.0" width="224" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Apogee" id="WhU-hx-erF">
-                                                    <rect key="frame" x="15" y="0.0" width="105" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="106" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
@@ -3476,25 +3474,25 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                         <rect key="frame" x="0.0" y="555" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rxn-gE-U7t" id="PtJ-BW-ucN">
-                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="D10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ur2-cm-1o3">
-                                                    <rect key="frame" x="135" y="2" width="34" height="22"/>
+                                                    <rect key="frame" x="136" y="3" width="34" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="6.7 Ns" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pkd-eE-TtO">
-                                                    <rect key="frame" x="135" y="24" width="42" height="17"/>
+                                                    <rect key="frame" x="136" y="24.5" width="41.5" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Apogee" id="JHz-tb-gc7">
-                                                    <rect key="frame" x="15" y="0.0" width="105" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="106" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -3520,7 +3518,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="HiD-2z-1B1" kind="show" identifier="Vector View Segue" id="cCh-tP-ANT"/>
+                                            <segue destination="HiD-2z-1B1" kind="showDetail" identifier="Vector View Segue" action="showViewController:sender:" id="cCh-tP-ANT"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="EIY-cF-PlO" detailTextLabel="wIx-br-TQx" style="IBUITableViewCellStyleValue1" id="zth-95-y5m">
@@ -3582,7 +3580,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
         <!--Vector View-->
         <scene sceneID="N7k-ak-ECm">
             <objects>
-                <viewController id="HiD-2z-1B1" customClass="SLAnimatedViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SLAnimatedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HiD-2z-1B1" customClass="SLAnimatedViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m4e-gs-un0"/>
                         <viewControllerLayoutGuide type="bottom" id="ixV-gg-T6v"/>
@@ -4129,12 +4127,11 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
         <image name="Madcow" width="86" height="43"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="O5l-dM-MD2"/>
         <segue reference="YI5-Ir-zZ7"/>
-        <segue reference="EKl-gK-46m"/>
-        <segue reference="6CR-zP-7Wn"/>
         <segue reference="odh-uv-WaK"/>
-        <segue reference="wsu-2m-06L"/>
+        <segue reference="6CR-zP-7Wn"/>
+        <segue reference="EKl-gK-46m"/>
+        <segue reference="orW-yd-mxj"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>
