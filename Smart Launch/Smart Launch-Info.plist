@@ -46,7 +46,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Only used to determine the launch elevation.</string>
 	<key>UIMainStoryboardFile</key>
-	<string>UniStoryboard</string>
+	<string>MainStoryboard_iPhone</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>UniStoryboard</string>
 	<key>UIPrerenderedIcon</key>

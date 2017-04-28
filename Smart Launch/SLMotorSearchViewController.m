@@ -358,6 +358,12 @@ NSInteger sortFunction(id md1, id md2, void *context){
         _motorKeyPrefs = [motorPrefs copy];
         _preferredMotorDiameters = nil;
         _allMotors = nil;   // this forces a recalculation of allMotors
+                            // find out if there is a cache of the motor data, if so, delete it to force re-initialization with the new prefs
+        NSURL *cacheURL =[[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
+        NSURL *motorFileURL = [cacheURL URLByAppendingPathComponent:MOTOR_CACHE_FILENAME];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[motorFileURL path]]){
+            [[NSFileManager defaultManager] removeItemAtURL:motorFileURL error:nil];
+        }
         [self.pickerView reloadAllComponents];
     }else{
         // do not change the preferences (likely to result in a blank screen of motors down the line)
@@ -379,7 +385,7 @@ NSInteger sortFunction(id md1, id md2, void *context){
 - (IBAction)motorDiameterRestrictionChanged:(UISegmentedControl *)sender {
     if (self.isInRSOMode) return;
     NSString *currMMT = [NSString stringWithFormat:@"%lumm", (unsigned long)[self.dataSource motorSizeRequested]];
-    NSString *prevDiam = @"6mm";
+    NSString *prevDiam =[[self preferredMotorDiameters] firstObject];
     switch (sender.selectedSegmentIndex) {
         case 0:
             self.restrictedMotorDiamPrefs = nil;
@@ -387,13 +393,13 @@ NSInteger sortFunction(id md1, id md2, void *context){
             return;
         case 1:
             // motor mount size or less
-            if ([self.dataSource motorSizeRequested] == 6){
-                self.restrictedMotorDiamPrefs = @[@"6mm"];
+            if ([currMMT isEqualToString:prevDiam]){ // this means there is no small allowed motor diameter, based on prefs
+                self.restrictedMotorDiamPrefs = @[currMMT];
                 [self.pickerView reloadAllComponents];
                 return;
             }
 
-            for (NSString *diam in [RocketMotor motorDiameters]){
+            for (NSString *diam in [self preferredMotorDiameters]){
                 if ([diam intValue] == [self.dataSource motorSizeRequested]){
                     self.restrictedMotorDiamPrefs = @[prevDiam, diam];
                     if ([prevDiam isEqualToString:diam]) self.restrictedMotorDiamPrefs = @[diam];
