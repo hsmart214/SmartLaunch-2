@@ -383,7 +383,8 @@ typedef struct  {
     if (![_flightProfile count]) return [[SLFlightDataPoint alloc] init];
     if (!_maxValues){
         _maxValues = [SLFlightDataPoint new];
-        for (SLFlightDataPoint *dp in _flightProfile){
+        NSArray *fp = [_flightProfile copy];
+        for (SLFlightDataPoint *dp in fp){
             if (dp->alt > _maxValues->alt) _maxValues->alt = dp->alt;
             if (dp->vel > _maxValues->vel) _maxValues->vel = dp->vel;
             if (dp->trav > _maxValues->trav) _maxValues->trav = dp->trav;
@@ -466,7 +467,7 @@ typedef struct  {
 
 -(float)maxDeceleration{
     float decelMax = 0.0;
-    for (SLFlightDataPoint *arr in _flightProfile){
+    for (SLFlightDataPoint *arr in [_flightProfile copy]){
         float accel = arr->accel;
         if (accel < decelMax) decelMax = accel;
     }

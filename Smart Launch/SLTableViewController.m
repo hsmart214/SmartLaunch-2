@@ -43,7 +43,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *motorNameLabel;
 
 @property (strong, nonatomic) Rocket *rocket;
-@property (strong, nonatomic) SLPhysicsModel *model;
+@property (readonly) SLPhysicsModel *model;
 @property (strong, nonatomic) NSMutableDictionary *settings;
 @property (atomic) BOOL simRunning;
 @property (nonatomic, strong) id iCloudObserver;
@@ -103,19 +103,21 @@
 }
 
 - (SLPhysicsModel *)model{
-    if (!_model){
-        _model = [SLPhysicsModel sharedModel];
-    }
-    return _model;
+    return [SLPhysicsModel sharedModel];
 }
 
 #pragma mark - Sim delegate methods
+
+- (void)postChanges{
+    [[NSNotificationCenter defaultCenter] postNotificationName:SmartLaunchDidUpdateModelNotification object:nil];
+}
 
 - (void)sender:(id)sender didChangeLaunchAngle:(NSNumber *)launchAngle{  // launch angle in radians
     self.settings[LAUNCH_ANGLE_KEY] = launchAngle;
     [self defaultStoreWithKey:SETTINGS_KEY andValue:self.settings];
     self.launchAngleLabel.text = [NSString stringWithFormat:@"%1.1f", [launchAngle floatValue] * DEGREES_PER_RADIAN];
     if (self.view.window)[self updateDisplay];
+    [self postChanges];
 }
 
 - (void)sender:(id)sender didChangeRocket:(Rocket *)rocket{
@@ -136,6 +138,7 @@
     [self SLRocketPropertiesTVC:(id)self savedRocket:self.rocket];
     
     if (self.view.window)[self updateDisplay];
+    [self postChanges];
 }
 
 - (void)sender:(id)sender didChangeRocketMotor:(NSArray *)motorPlist{
@@ -148,6 +151,7 @@
     [self defaultStoreWithKey:SETTINGS_KEY andValue:self.settings];
     if (shouldUpdate){
         [self updateDisplay];
+        [self postChanges];
     }
 }
 
@@ -156,6 +160,7 @@
         UINavigationController *nav = (UINavigationController *)[self.splitViewController.viewControllers lastObject];
         [(SLiPadDetailViewController *)nav.viewControllers[0] updateDisplay];
     }
+    [self postChanges];
 }
 
 -(BOOL)shouldAllowSimulationUpdates{
@@ -280,6 +285,7 @@
                     UINavigationController *nav = (UINavigationController *)[self.splitViewController.viewControllers lastObject];
                     [(SLiPadDetailViewController *)nav.viewControllers[0] updateDisplay];
                 }
+                [self postChanges];
             });
         });
     }
