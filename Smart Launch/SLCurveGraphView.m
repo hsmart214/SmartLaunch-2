@@ -125,7 +125,7 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     //    UIGraphicsPushContext(context);
     CGContextSetLineWidth(context, 1.5);
-    [[UIColor blackColor] setStroke];
+    [[SLCustomUI axisColor] setStroke];
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, origin.x, origin.y);
     CGContextAddLineToPoint(context, origin.x, margin);
@@ -164,7 +164,6 @@
     
     CGContextBeginPath(context);
     CGContextSetLineWidth(context, 1.0);
-    [[UIColor lightGrayColor] setStroke];
     
     for (int i = 1; i < self.verticalDivisions; i++) {
         CGFloat yoffset = (self.vrange/self.verticalDivisions)*vscale;
@@ -182,6 +181,7 @@
         [attSec drawAtPoint:secPt];
         
     }
+    [[SLCustomUI graphHashColor] setStroke];
     CGContextStrokePath(context);
     
     NSString *maxValueNotation = [NSString stringWithFormat:self.verticalUnitsFormat,self.fullrange, self.verticalUnits];

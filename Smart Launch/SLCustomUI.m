@@ -68,9 +68,17 @@
 
 #pragma mark - SLGraphView interface colors
 
++(UIColor *)axisColor{
+    return [UIColor blackColor];
+}
+
++(UIColor *)graphHashColor{
+    return [UIColor lightGrayColor];
+}
+
 +(UIColor *)graphTextColor{
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
-        return [UIColor whiteColor];
+        return [UIColor darkTextColor];
     }else{
         return [UIColor darkTextColor];
     }

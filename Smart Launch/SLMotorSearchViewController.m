@@ -344,32 +344,6 @@ NSInteger sortFunction(id md1, id md2, void *context){
     [thePickerView selectRow:row inComponent:component animated:YES];
 }
 
-#pragma mark - UIActionSheetDelegate methods
-
-- (void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == [actionSheet destructiveButtonIndex]){
-        // this is the one that *does* change the settings to accomodate the current MMT size
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSMutableDictionary *motorPrefs = [self.motorKeyPrefs mutableCopy];
-        NSString *motorMM = [NSString stringWithFormat:@"%lumm", (unsigned long)[self.dataSource motorSizeRequested]];
-        motorPrefs[motorMM] = @YES;
-        [defaults setObject:motorPrefs forKey:MOTOR_PREFS_KEY];
-        [defaults synchronize];
-        _motorKeyPrefs = [motorPrefs copy];
-        _preferredMotorDiameters = nil;
-        _allMotors = nil;   // this forces a recalculation of allMotors
-                            // find out if there is a cache of the motor data, if so, delete it to force re-initialization with the new prefs
-        NSURL *cacheURL =[[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
-        NSURL *motorFileURL = [cacheURL URLByAppendingPathComponent:MOTOR_CACHE_FILENAME];
-        if ([[NSFileManager defaultManager] fileExistsAtPath:[motorFileURL path]]){
-            [[NSFileManager defaultManager] removeItemAtURL:motorFileURL error:nil];
-        }
-        [self.pickerView reloadAllComponents];
-    }else{
-        // do not change the preferences (likely to result in a blank screen of motors down the line)
-    }
-}
-
 #pragma mark - Target Action methods
 
 - (IBAction)didUnloadMotor:(id)sender {
@@ -415,12 +389,42 @@ NSInteger sortFunction(id md1, id md2, void *context){
             self.restrictedMotorDiamPrefs = @[currMMT];
             if (![self preferredMotorDiametersContainsDiameter:currMMT]){
                 NSString *sheetTitle = [NSString stringWithFormat:NSLocalizedString(@"Would you like to show the %@ motors?", @"Shown when a hidden motor type is forced") , currMMT];
-                UIActionSheet *diameterSheet = [[UIActionSheet alloc] initWithTitle:sheetTitle
-                                                                           delegate:self
-                                                                  cancelButtonTitle:NSLocalizedString(@"No", @"No")
-                                                             destructiveButtonTitle:NSLocalizedString(@"Yes, show this size.", @"Yes, show this size.") 
-                                                                  otherButtonTitles: nil];
-                [diameterSheet showFromToolbar:self.navigationController.toolbar];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:sheetTitle
+                                                                               message:nil
+                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
+                UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"No", @"No")
+                                                                 style:UIAlertActionStyleCancel
+                                                               handler:^(UIAlertAction *act){
+                                                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                                                       [alert.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                                                   });
+                                                               }];
+                [alert addAction:action];
+                action = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes, show this size.", @"Yes, show this size.")
+                                                  style:UIAlertActionStyleDestructive
+                                                handler:^(UIAlertAction *act){
+                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                        [alert.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                                        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                                        NSMutableDictionary *motorPrefs = [self.motorKeyPrefs mutableCopy];
+                                                        NSString *motorMM = [NSString stringWithFormat:@"%lumm", (unsigned long)[self.dataSource motorSizeRequested]];
+                                                        motorPrefs[motorMM] = @YES;
+                                                        [defaults setObject:motorPrefs forKey:MOTOR_PREFS_KEY];
+                                                        [defaults synchronize];
+                                                        self->_motorKeyPrefs = [motorPrefs copy];
+                                                        self->_preferredMotorDiameters = nil;
+                                                        self->_allMotors = nil;   // this forces a recalculation of allMotors
+                                                                            // find out if there is a cache of the motor data, if so, delete it to force re-initialization with the new prefs
+                                                        NSURL *cacheURL =[[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
+                                                        NSURL *motorFileURL = [cacheURL URLByAppendingPathComponent:MOTOR_CACHE_FILENAME];
+                                                        if ([[NSFileManager defaultManager] fileExistsAtPath:[motorFileURL path]]){
+                                                            [[NSFileManager defaultManager] removeItemAtURL:motorFileURL error:nil];
+                                                        }
+                                                        [self.pickerView reloadAllComponents];
+                                                    });
+                                                }];
+                [alert addAction:action];
+                [self presentViewController:alert animated:YES completion:nil];
             }
         default:
             break;

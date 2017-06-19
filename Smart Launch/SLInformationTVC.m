@@ -9,10 +9,9 @@
 #import "SLInformationTVC.h"
 
 
-@interface SLInformationTVC ()<UIAlertViewDelegate>
+@interface SLInformationTVC ()
 @property (weak, nonatomic) IBOutlet UITextView *infoTextView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
-@property (nonatomic, strong) UIAlertView *alert;
 
 @end
 
@@ -55,7 +54,7 @@
 - (void)requestNewMotorList{
     [self.spinner startAnimating];
     dispatch_queue_t myQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(myQueue, ^(void){
+    dispatch_async(myQueue, ^{
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSInteger currentVersion = [defaults integerForKey:MOTOR_FILE_VERSION_KEY];  //nil if never used, resulting in 0
         NSURL *motorFileWWWURL = [NSURL URLWithString:MOTORS_WWW_URL];
@@ -67,13 +66,20 @@
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         if (err){
             NSLog(@"\nError reading Motor version from mySmartSoftware.com");
-            self.alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Motor List Update", @"Motor List Update")
-                                                   message:NSLocalizedString(@"Unable to contact website.", @"Unable to contact website.") 
-                                                  delegate:self
-                                         cancelButtonTitle:NSLocalizedString(@"OK", @"OK") 
-                                         otherButtonTitles: nil];
+            NSLog(@"%@", err.debugDescription);
+            UIAlertController * alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Motor List Update", @"Motor List Update")
+                                                                            message:NSLocalizedString(@"Unable to contact website.", @"Unable to contact website.")
+                                                                     preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK")
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction *act){
+                                                               dispatch_async(dispatch_get_main_queue(), ^{
+                                                                   [alert.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                                               });
+                                                           }];
+            [alert addAction:action];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.alert show];
+                [self presentViewController:alert animated:YES completion:nil];
             });
         }
         NSUInteger versionNumber = [version integerValue];
@@ -104,26 +110,38 @@
                     [defaults synchronize];
                     // TODO: localize this message
                     NSString *message = [NSString stringWithFormat:@"Motor list updated from v.%ld to v.%ld", (long)currentVersion, (unsigned long)versionNumber];
-                    self.alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Motor List Update", @"Motor List Update")
-                                                           message:message
-                                                          delegate:self
-                                                 cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
-                                                 otherButtonTitles: nil];
+                    UIAlertController * alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Motor List Update", @"Motor List Update")
+                                                                                    message:message
+                                                                             preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK")
+                                                                     style:UIAlertActionStyleDefault
+                                                                   handler:^(UIAlertAction *act){
+                                                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                                                           [alert.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                                                       });
+                                                                   }];
+                    [alert addAction:action];
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.alert show];
+                        [self presentViewController:alert animated:YES completion:nil];
                     });
                 }
             }
         }else{
             // TODO: localize this again
             NSString *message = [NSString stringWithFormat:@"Motor list is up to date: version %ld", (long)currentVersion];
-            self.alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Motor List Update", @"Motor List Update")
-                                                   message:message
-                                                  delegate:self
-                                         cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
-                                         otherButtonTitles: nil];
+            UIAlertController * alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Motor List Update", @"Motor List Update")
+                                                                            message:message
+                                                                     preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK")
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction *act){
+                                                               dispatch_async(dispatch_get_main_queue(), ^{
+                                                                   [alert.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                                               });
+                                                           }];
+            [alert addAction:action];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.alert show];
+                [self presentViewController:alert animated:YES completion:nil];
             });
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -175,40 +193,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - UIAlerViewDelegate method
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
-    
-}
-
-#pragma mark - UIActionSheet delegate method
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == [actionSheet destructiveButtonIndex]){
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
-        [defaults setNilValueForKey:FAVORITE_ROCKETS_KEY];
-        [store setNilValueForKey:FAVORITE_ROCKETS_KEY];
-        [defaults synchronize];
-    }
-    if (buttonIndex ==[actionSheet cancelButtonIndex]){
-        // do nothing
-    }
-}
-
-
-- (void)viewWillDisappear:(BOOL)animated{
-    [self.alert dismissWithClickedButtonIndex:0 animated:NO];
-    self.alert = nil;
-    [super viewWillDisappear:animated];
-}
-
 -(NSString *)description{
     return @"InformationTVC";
 }
 
--(void)dealloc{
-    self.alert = nil;
-}
 
 @end

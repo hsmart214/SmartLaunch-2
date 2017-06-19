@@ -40,7 +40,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *motorConfigLabel;
 @property (nonatomic, strong) id iCloudObserver;
 @property (nonatomic, strong) NSArray *motorConfiguration;
-@property (nonatomic, weak) UIPopoverController *popover;
 
 @end
 
@@ -262,8 +261,7 @@
 }
 
 -(void)dismissModalVC{
-    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
-    [self.popover dismissPopoverAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - SLKitTVCDelegate method
@@ -299,8 +297,8 @@
 
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
     if ([identifier isEqualToString:@"motorConfigurationSegue"]){
-        //if we are planning to popover, don't do it if we already have one on screen
-        return (!self.popover);
+        //TODO: test for de-bouncing the popovers
+        return YES;
     }else{
         return YES;
     }
@@ -315,11 +313,10 @@
     }
     if ([segue.identifier isEqualToString:@"motorConfigurationSegue"]){
         SLMotorConfigurationTVC *dest;
-        if ([segue isKindOfClass:[UIStoryboardPopoverSegue class]]){
+        if (![segue.destinationViewController isKindOfClass:[UINavigationController class]]){
             dest = (SLMotorConfigurationTVC *)segue.destinationViewController;
             [dest setConfigDelegate:self];
             [dest setConfigDatasource:self];
-            self.popover = ((UIStoryboardPopoverSegue *)segue).popoverController;
         }else{// on the iPhone this modal VC is embedded
             dest = (SLMotorConfigurationTVC *)((UINavigationController *)segue.destinationViewController).viewControllers[0];
             [dest setConfigDelegate:self];

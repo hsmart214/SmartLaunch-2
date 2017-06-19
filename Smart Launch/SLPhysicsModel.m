@@ -22,6 +22,7 @@ typedef struct  {
     float currentStdAtmBaseAlt, currentStdAtmCeilingAlt;
     float currentBaseRhoRatio, currentCeilingRhoRatio;
     float currentBaseMach, currentCeilingMach;
+    bool simRunning;
 }
 
 /* This is the opposing acceleration from gravity, the component of g along the axis of the launch guide */
@@ -101,7 +102,7 @@ typedef struct  {
 // each element of this mutable array will be a point of the profile
 // which will itself be an NSArray* (not mutable) consisting of seven NSNumber*s - [time, alt, trav, vel, accel, mach, drg]
 - (NSMutableArray *)flightProfile{
-    if (!_flightProfile){
+    if (!_flightProfile && !simRunning){
         _flightProfile = [NSMutableArray array];
         topAltitude = [[self.stdAtmosphere lastObject][ALT_MSL_KEY] floatValue];
         currentStdAtmSegment = 0;
@@ -111,9 +112,11 @@ typedef struct  {
         currentCeilingMach = [_stdAtmosphere[1][MACH_ONE_KEY] floatValue];
         currentBaseRhoRatio = [_stdAtmosphere[0][RHO_RATIO_KEY] floatValue];
         currentCeilingRhoRatio = [_stdAtmosphere[1][RHO_RATIO_KEY] floatValue];
+        simRunning = YES;
         [self integrateToEndOfLaunchGuide];
         [self integrateToBurnout];
         [self integrateBurnoutToApogee];
+        simRunning = NO;
     }
     return _flightProfile;
 }
@@ -273,7 +276,7 @@ typedef struct  {
         dataPoint->mach = _machNumber;
         dataPoint->drag = drag;
 
-        [self.flightProfile addObject:dataPoint];
+        [_flightProfile addObject:dataPoint];
 
         totalDistanceTravelled += distanceTravelled;
         if (_timeIndex >= [self.rocket burnoutTime] && _velocity <= 0.0) break;           // Just in case you don't get off the pad
@@ -312,7 +315,7 @@ typedef struct  {
         dataPoint->mach = _machNumber;
         dataPoint->drag = drag;
 
-        [self.flightProfile addObject:dataPoint];
+        [_flightProfile addObject:dataPoint];
     }
     // It turns out this is not very useful.
     // If the motor thrust trails off at the end, which is common, then burnout velocity is much less than max velocity
@@ -350,7 +353,7 @@ typedef struct  {
         dataPoint->mach = _machNumber;
         dataPoint->drag = drag;
 
-        [self.flightProfile addObject:dataPoint]; //OPT 31%
+        [_flightProfile addObject:dataPoint]; //OPT 31%
     } //OPT 10% deallocs?!
 }
 

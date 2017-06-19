@@ -43,7 +43,7 @@
     
     if (alt < 0.1) {
         
-        [self.popover dismissPopoverAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
         [self cancelFlightSaving:nil];
         
     }else{
@@ -66,11 +66,7 @@
         [defaults synchronize];
         
         [self.delegate sender:self didChangeRocket:self.rocket];
-        if (self.popover){
-            [self.popover dismissPopoverAnimated:YES];
-        }else{
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

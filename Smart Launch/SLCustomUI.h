@@ -22,7 +22,9 @@
 +(UIColor *)thrustVectorColor;
 +(UIColor *)AoAVectorColor;
 
++(UIColor *)axisColor;
 +(UIColor *)graphTextColor;
++(UIColor *)graphHashColor;
 +(UIColor *)curveGraphCurveColor;
 +(UIColor *)curveGraphBackgroundColor;
 +(UIColor *)machLineColor;

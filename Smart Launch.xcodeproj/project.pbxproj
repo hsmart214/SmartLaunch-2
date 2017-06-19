@@ -31,7 +31,6 @@
 		4229CB2D1EB2FF3B00F5CA40 /* UIViewController+ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4229CB2C1EB2FF3B00F5CA40 /* UIViewController+ContentViewController.m */; };
 		422BE01B1A3970FA00C23175 /* SLKitManufacturerTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 422BE01A1A3970FA00C23175 /* SLKitManufacturerTVC.m */; };
 		423057361B81A3C1006CA5B7 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 423057351B81A3C1006CA5B7 /* GameKit.framework */; };
-		423057381B81A3C4006CA5B7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 423057371B81A3C4006CA5B7 /* StoreKit.framework */; };
 		4232060515F7124F0027A18E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4232060415F7124F0027A18E /* CoreLocation.framework */; };
 		42397204173378B300262A6B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42397206173378B300262A6B /* MainStoryboard_iPhone.storyboard */; };
 		423D16E317053FE80007ED61 /* SLCustomUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 423D16E217053FE80007ED61 /* SLCustomUI.m */; };
@@ -72,6 +71,7 @@
 		4292C556181F58D800C4C732 /* SLCommercialKitInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292C552181F58D800C4C732 /* SLCommercialKitInfoViewController.m */; };
 		4292C558181F595300C4C732 /* kitArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4292C557181F595300C4C732 /* kitArray.plist */; };
 		42A1B6191670599E004F1FA0 /* version.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42A1B6181670599E004F1FA0 /* version.txt */; };
+		42AFC0791EF5803A00A18EC1 /* CurveGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFC0781EF5803A00A18EC1 /* CurveGraphView.swift */; };
 		42BB53C916A293D20029C882 /* SLFlightDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53C816A293D20029C882 /* SLFlightDataCell.m */; };
 		42BB53CD16A295310029C882 /* SLSavedFlightsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CC16A295310029C882 /* SLSavedFlightsTVC.m */; };
 		42BB53D016A38C4E0029C882 /* SLSaveFlightDataTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BB53CF16A38C4D0029C882 /* SLSaveFlightDataTVC.m */; };
@@ -90,7 +90,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		420D77B31E8F60F700ACD04E /* PhysicsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsModel.swift; sourceTree = "<group>"; };
+		420D77B31E8F60F700ACD04E /* PhysicsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhysicsModel.swift; path = ../PhysicsModel.swift; sourceTree = "<group>"; };
 		421437211601ADEE0020AA1D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4220A4A915F55CC60055EE35 /* SLSimulationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSimulationDelegate.h; sourceTree = "<group>"; };
 		4220A4AA15F55CC60055EE35 /* SLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTableViewController.h; sourceTree = "<group>"; };
@@ -135,7 +135,6 @@
 		422BE0191A3970FA00C23175 /* SLKitManufacturerTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKitManufacturerTVC.h; sourceTree = "<group>"; };
 		422BE01A1A3970FA00C23175 /* SLKitManufacturerTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKitManufacturerTVC.m; sourceTree = "<group>"; };
 		423057351B81A3C1006CA5B7 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		423057371B81A3C4006CA5B7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4232060415F7124F0027A18E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		42397207173378F900262A6B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		423D16E117053FE80007ED61 /* SLCustomUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCustomUI.h; sourceTree = "<group>"; };
@@ -189,6 +188,7 @@
 		4292C553181F58D800C4C732 /* SLCommercialKitInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCommercialKitInfoViewController.h; sourceTree = "<group>"; };
 		4292C557181F595300C4C732 /* kitArray.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = kitArray.plist; sourceTree = "<group>"; };
 		42A1B6181670599E004F1FA0 /* version.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = version.txt; sourceTree = "<group>"; };
+		42AFC0781EF5803A00A18EC1 /* CurveGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveGraphView.swift; sourceTree = "<group>"; };
 		42BB53C716A293D20029C882 /* SLFlightDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFlightDataCell.h; sourceTree = "<group>"; };
 		42BB53C816A293D20029C882 /* SLFlightDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFlightDataCell.m; sourceTree = "<group>"; };
 		42BB53CB16A295310029C882 /* SLSavedFlightsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSavedFlightsTVC.h; sourceTree = "<group>"; };
@@ -228,7 +228,6 @@
 				42D780981662AB3E000C7D6C /* QuartzCore.framework in Frameworks */,
 				421437221601ADEE0020AA1D /* MobileCoreServices.framework in Frameworks */,
 				423057361B81A3C1006CA5B7 /* GameKit.framework in Frameworks */,
-				423057381B81A3C4006CA5B7 /* StoreKit.framework in Frameworks */,
 				4232060515F7124F0027A18E /* CoreLocation.framework in Frameworks */,
 				4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */,
 				4256930C15F4893000F7BABC /* Foundation.framework in Frameworks */,
@@ -262,6 +261,7 @@
 				42742BBA172AE37D007229E9 /* SLClusterMotor.m */,
 				4220A4CA15F55CC60055EE35 /* SLPhysicsModel.h */,
 				4220A4CB15F55CC60055EE35 /* SLPhysicsModel.m */,
+				420D77B31E8F60F700ACD04E /* PhysicsModel.swift */,
 				42E353F618AC702000E2053F /* SLFlightDataPoint.h */,
 				42E353F718AC702000E2053F /* SLFlightDataPoint.m */,
 				4220A4C415F55CC60055EE35 /* SLUnitsConvertor.h */,
@@ -273,7 +273,6 @@
 		425692FA15F4893000F7BABC = {
 			isa = PBXGroup;
 			children = (
-				420D77B31E8F60F700ACD04E /* PhysicsModel.swift */,
 				42BDE54A17DDA21E007F7689 /* Images.xcassets */,
 				4256930F15F4893000F7BABC /* Smart Launch */,
 				4256930815F4893000F7BABC /* Frameworks */,
@@ -292,7 +291,6 @@
 		4256930815F4893000F7BABC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				423057371B81A3C4006CA5B7 /* StoreKit.framework */,
 				423057351B81A3C1006CA5B7 /* GameKit.framework */,
 				42D780971662AB3E000C7D6C /* QuartzCore.framework */,
 				421437211601ADEE0020AA1D /* MobileCoreServices.framework */,
@@ -363,6 +361,7 @@
 			children = (
 				42F83DBC171B6EFA005FAA0C /* SLClusterMotorMemberCell.h */,
 				42F83DBD171B6EFB005FAA0C /* SLClusterMotorMemberCell.m */,
+				42AFC0781EF5803A00A18EC1 /* CurveGraphView.swift */,
 				4220A4BE15F55CC60055EE35 /* SLCurveGraphView.h */,
 				4220A4BF15F55CC60055EE35 /* SLCurveGraphView.m */,
 				42BB53C716A293D20029C882 /* SLFlightDataCell.h */,
@@ -491,7 +490,7 @@
 								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Keychain = {
 								enabled = 0;
@@ -559,6 +558,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4256931615F4893000F7BABC /* main.m in Sources */,
+				42AFC0791EF5803A00A18EC1 /* CurveGraphView.swift in Sources */,
 				4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */,
 				42E337FF1CF783E00009C757 /* SLRSOModeTVC.m in Sources */,
 				4220A4CD15F55CC60055EE35 /* SLTableViewController.m in Sources */,
@@ -672,7 +672,7 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -715,7 +715,7 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -738,7 +738,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mysmartsoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -765,7 +765,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mysmartsoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -812,7 +812,7 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -834,7 +834,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mysmartsoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

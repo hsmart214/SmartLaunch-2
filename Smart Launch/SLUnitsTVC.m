@@ -33,13 +33,39 @@
 
 - (IBAction)defaultButtonPressed:(UIBarButtonItem *)sender {
     NSString *msg = NSLocalizedString(@"Reset Default Units?", @"Reset Default Units?");
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:msg
-                                                             delegate:self
-                                                    cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") 
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:NSLocalizedString(@"Metric", @"Metric"),
-                                                        NSLocalizedString(@"Standard", @"Standard"), nil];
-    [actionSheet showFromToolbar:self.navigationController.toolbar];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:msg
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel")
+                                                     style:UIAlertActionStyleCancel
+                                                   handler:^(UIAlertAction *act){
+                                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                                           [alert.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                                       });
+                                                   }];
+    [alert addAction:action];
+    action = [UIAlertAction actionWithTitle:NSLocalizedString(@"Metric", @"Metric")
+                                      style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction *act){
+                                        [SLUnitsTVC setMetricDefaults];
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            [alert.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                        });
+                                    }];
+    [alert addAction:action];
+    action = [UIAlertAction actionWithTitle:NSLocalizedString(@"Standard", @"Standard")
+                                      style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction *act){
+                                        [SLUnitsTVC setStandardDefaults];
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            [alert.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                        });
+                                    }];
+    [alert addAction:action];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alert animated:YES completion:nil];
+    });
 }
 - (IBAction)revertButtonPressed:(UIBarButtonItem *)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -225,44 +251,20 @@
     return headerLabel;
 }
 
-
-#pragma mark - UIActionSheetDelegate method
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
++(void)setMetricDefaults{
     NSDictionary *metricDefaults = @{MOTOR_SIZE_UNIT_KEY: K_MILLIMETERS,
-                                    DIAM_UNIT_KEY: K_MILLIMETERS,
-                                    LENGTH_UNIT_KEY: K_METERS,
-                                    MASS_UNIT_KEY: K_KILOGRAMS,
-                                    TEMP_UNIT_KEY: K_CELSIUS,
-                                    ALT_UNIT_KEY: K_METERS,
-                                    VELOCITY_UNIT_KEY: K_METER_PER_SEC,
-                                    THRUST_UNIT_KEY: K_NEWTONS,
-                                    ACCEL_UNIT_KEY: K_M_PER_SEC_SQ,
-                                    MACH_UNIT_KEY: K_MACH};
-    NSDictionary *standardDefaults = @{MOTOR_SIZE_UNIT_KEY: K_MILLIMETERS,
-                                      DIAM_UNIT_KEY: K_INCHES,
-                                      LENGTH_UNIT_KEY: K_INCHES,
-                                      MASS_UNIT_KEY: K_POUNDS,
-                                      TEMP_UNIT_KEY: K_FAHRENHEIT,
-                                      ALT_UNIT_KEY: K_FEET,
-                                      VELOCITY_UNIT_KEY: K_MILES_PER_HOUR,
-                                      THRUST_UNIT_KEY: K_POUNDS,
-                                      ACCEL_UNIT_KEY: K_GRAVITIES,
-                                      MACH_UNIT_KEY: K_MACH};
+                                     DIAM_UNIT_KEY: K_MILLIMETERS,
+                                     LENGTH_UNIT_KEY: K_METERS,
+                                     MASS_UNIT_KEY: K_KILOGRAMS,
+                                     TEMP_UNIT_KEY: K_CELSIUS,
+                                     ALT_UNIT_KEY: K_METERS,
+                                     VELOCITY_UNIT_KEY: K_METER_PER_SEC,
+                                     THRUST_UNIT_KEY: K_NEWTONS,
+                                     ACCEL_UNIT_KEY: K_M_PER_SEC_SQ,
+                                     MACH_UNIT_KEY: K_MACH};
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    switch (buttonIndex) {
-        case 0://metric
-            [defaults setObject:metricDefaults forKey:UNIT_PREFS_KEY];
-            [defaults synchronize];
-            break;
-        case 1:
-            [defaults setObject:standardDefaults forKey:UNIT_PREFS_KEY];
-            [defaults synchronize];
-            break;
-        default:
-            break;
-    }
-    [self updateDisplay];
+    [defaults setObject:metricDefaults forKey:UNIT_PREFS_KEY];
+    [defaults synchronize];
 }
 
 +(void)setStandardDefaults{

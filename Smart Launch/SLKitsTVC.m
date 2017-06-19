@@ -12,9 +12,6 @@
 
 @interface SLKitsTVC ()
 
-
-@property (nonatomic, weak) UIPopoverController *popover;
-
 @end
 
 @implementation SLKitsTVC
@@ -79,14 +76,13 @@
 #pragma mark - Prepare for Segue
 
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    return (!self.popover);
+    // TODO: See if I need to de-bounce the popovers
+    return YES;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     //the current implementation only segues to the popover.
     //this will need to change if I implement unwinding
-    if ([segue isKindOfClass:[UIStoryboardPopoverSegue class]])
-        self.popover = (UIPopoverController *)([(UIStoryboardPopoverSegue *)segue popoverController]);
     if ([segue.identifier isEqualToString:@"choseKit Segue"]){
         
     }

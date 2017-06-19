@@ -9,6 +9,6 @@
 @import UIKit;
 #import "SLRocketPropertiesTVC.h"
 
-@interface SLTableViewController : UITableViewController <SLSimulationDelegate, SLSimulationDataSource, UIPopoverControllerDelegate>
+@interface SLTableViewController : UITableViewController <SLSimulationDelegate, SLSimulationDataSource>
 
 @end

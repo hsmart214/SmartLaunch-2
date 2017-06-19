@@ -47,7 +47,6 @@
 @property (strong, nonatomic) NSMutableDictionary *settings;
 @property (atomic) BOOL simRunning;
 @property (nonatomic, strong) id iCloudObserver;
-@property (nonatomic, weak) UIPopoverController *popover;
 
 @end
 
@@ -169,7 +168,6 @@
 
 - (void)dismissModalViewController{
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
-    [self.popover dismissPopoverAnimated:YES];
 }
 
 #pragma mark - SLRocketPropertiesTVCDelegate
@@ -281,10 +279,10 @@
                 self.burnoutToApogeeLabel.text = [NSString stringWithFormat:@"%1.1f", coastTime];
                 self.simRunning = NO;
                 [self.spinner stopAnimating];
-                if (self.splitViewController){
-                    UINavigationController *nav = (UINavigationController *)[self.splitViewController.viewControllers lastObject];
-                    [(SLiPadDetailViewController *)nav.viewControllers[0] updateDisplay];
-                }
+//                if (self.splitViewController){
+//                    UINavigationController *nav = (UINavigationController *)[self.splitViewController.viewControllers lastObject];
+//                    [(SLiPadDetailViewController *)nav.viewControllers[0] updateDisplay];
+//                }
                 [self postChanges];
             });
         });
@@ -346,8 +344,8 @@
 
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
     if ([identifier isEqualToString:@"saveFlightSegue"]){
-        //prevent double popovers
-        return (!self.popover);
+        //TODO: prevent double popovers
+        return YES;
     }else if([identifier isEqualToString:@"AnimationSegue"]){
         return [self.rocket.motors count];
     }
@@ -371,9 +369,8 @@
         UINavigationController *nav = segue.destinationViewController;
         SLAnimatedViewController *anim = [[UIStoryboard storyboardWithName:@"UniStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"SLAnimatedViewController"];
         [nav setViewControllers:@[anim]];
-        
-        [(id)segue.destinationViewController.contentViewController setDelegate:(id)self];
-        [(id)segue.destinationViewController.contentViewController setDataSource:self];
+        anim.delegate = self;
+        anim.dataSource = self;
     }
     if ([[segue identifier] isEqualToString:@"saveFlightSegue"]){
         NSMutableDictionary *flightSettings = [self.settings mutableCopy];
@@ -391,8 +388,6 @@
             dest = (SLSaveFlightDataTVC *)([segue.destinationViewController viewControllers][0]);
         }else{ // must be a UIPopoverController *
             dest = (SLSaveFlightDataTVC *)segue.destinationViewController;
-            self.popover = ((UIStoryboardPopoverSegue *)segue).popoverController;
-            [dest setPopover:self.popover];
         }
         [dest setFlightData:flight];
         [dest setPhysicsModel:self.model];
@@ -419,13 +414,6 @@
         [(SLClusterMotorViewController *)segue.destinationViewController setDelegate:self];
         [(SLClusterMotorViewController *)segue.destinationViewController setPopBackViewController:self];
     }
-}
-
-#pragma mark - UIPopoverControllerDelegate
-
--(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-    self.popover = nil;
 }
 
 #pragma mark - TableView dataSource Methods
@@ -519,6 +507,11 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self updateDisplay];
+    if (self.simRunning){
+        [self.spinner startAnimating];
+    }else{
+        [self.spinner stopAnimating];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -534,29 +527,8 @@
     id unitPrefs = [self defaultFetchWithKey:UNIT_PREFS_KEY];
     if (!unitPrefs) [SLUnitsTVC setStandardDefaults];
     
-//    if (!self.splitViewController){
-//        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
-//        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
-//        [backgroundView setImage:backgroundImage];
-//        self.tableView.backgroundView = backgroundView;
-//        self.tableView.backgroundColor = [UIColor clearColor];
-//    }else{// we are on an iPad
-//        //self.tableView.backgroundColor = [SLCustomUI iPadBackgroundColor];
-//        //trying out the same bacjground for both systems
-//        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
-//        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_FOR_IPAD_MASTER_VC];
-//        [backgroundView setImage:backgroundImage];
-//        self.tableView.backgroundView = backgroundView;
-//        self.tableView.backgroundColor = [UIColor clearColor];
-//    }
     [self registerForiCloudUpdates];
     [[NSUbiquitousKeyValueStore defaultStore] synchronize];
-//    if (self.splitViewController){
-//        UINavigationController *nav = (UINavigationController *)[self.splitViewController.viewControllers lastObject];
-//        [(SLiPadDetailViewController *)nav.viewControllers[0] setModel:self.model];
-//        [(SLiPadDetailViewController *)nav.viewControllers[0] setSimDelegate:self];
-//        [(SLiPadDetailViewController *)nav.viewControllers[0] setSimDataSource:self];
-//    }
 }
 
 #pragma mark - UISplitViewControllerDelegate

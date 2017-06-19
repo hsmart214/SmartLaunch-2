@@ -9,3 +9,4 @@
 #import "SLFlightDataCell.h"
 #import "SLUnitsConvertor.h"
 #import "SLFlightDataPoint.h"
+#import "SLCustomUI.h"
