@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		420D77B41E8F60F700ACD04E /* PhysicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420D77B31E8F60F700ACD04E /* PhysicsModel.swift */; };
-		421437221601ADEE0020AA1D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 421437211601ADEE0020AA1D /* MobileCoreServices.framework */; };
 		4220A4CD15F55CC60055EE35 /* SLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AB15F55CC60055EE35 /* SLTableViewController.m */; };
 		4220A4CE15F55CC60055EE35 /* SLInformationTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AD15F55CC60055EE35 /* SLInformationTVC.m */; };
 		4220A4CF15F55CC60055EE35 /* SLSimSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220A4AF15F55CC60055EE35 /* SLSimSettingsViewController.m */; };
@@ -87,6 +85,9 @@
 		42F83DB8171B6EAB005FAA0C /* SLClusterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83DB7171B6EAB005FAA0C /* SLClusterTableViewController.m */; };
 		42F83DBB171B6ED3005FAA0C /* SLClusterMotorBuildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83DBA171B6ED2005FAA0C /* SLClusterMotorBuildViewController.m */; };
 		42F83DBE171B6EFC005FAA0C /* SLClusterMotorMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F83DBD171B6EFB005FAA0C /* SLClusterMotorMemberCell.m */; };
+		890D8E7020EBDCDF00D0F1BD /* PhysicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420D77B31E8F60F700ACD04E /* PhysicsModel.swift */; };
+		8914EA8B243448860001777F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8914EA8A243448860001777F /* CoreServices.framework */; };
+		896F23452436F33400B75671 /* CollapsingSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F23442436F33400B75671 /* CollapsingSplitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,7 +137,6 @@
 		422BE01A1A3970FA00C23175 /* SLKitManufacturerTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKitManufacturerTVC.m; sourceTree = "<group>"; };
 		423057351B81A3C1006CA5B7 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		4232060415F7124F0027A18E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		42397207173378F900262A6B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		423D16E117053FE80007ED61 /* SLCustomUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCustomUI.h; sourceTree = "<group>"; };
 		423D16E217053FE80007ED61 /* SLCustomUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLCustomUI.m; sourceTree = "<group>"; };
 		4240A07615F8341900D67F3E /* SLMotorPrefsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMotorPrefsTVC.h; sourceTree = "<group>"; };
@@ -218,6 +218,9 @@
 		42F83DBA171B6ED2005FAA0C /* SLClusterMotorBuildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotorBuildViewController.m; sourceTree = "<group>"; };
 		42F83DBC171B6EFA005FAA0C /* SLClusterMotorMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLClusterMotorMemberCell.h; sourceTree = "<group>"; };
 		42F83DBD171B6EFB005FAA0C /* SLClusterMotorMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotorMemberCell.m; sourceTree = "<group>"; };
+		8914EA8A243448860001777F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		896F23442436F33400B75671 /* CollapsingSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsingSplitViewController.swift; sourceTree = "<group>"; };
+		8983EF21221B4998008804C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,11 +229,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				42D780981662AB3E000C7D6C /* QuartzCore.framework in Frameworks */,
-				421437221601ADEE0020AA1D /* MobileCoreServices.framework in Frameworks */,
 				423057361B81A3C1006CA5B7 /* GameKit.framework in Frameworks */,
 				4232060515F7124F0027A18E /* CoreLocation.framework in Frameworks */,
 				4256930A15F4893000F7BABC /* UIKit.framework in Frameworks */,
 				4256930C15F4893000F7BABC /* Foundation.framework in Frameworks */,
+				8914EA8B243448860001777F /* CoreServices.framework in Frameworks */,
 				4256930E15F4893000F7BABC /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +294,7 @@
 		4256930815F4893000F7BABC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8914EA8A243448860001777F /* CoreServices.framework */,
 				423057351B81A3C1006CA5B7 /* GameKit.framework */,
 				42D780971662AB3E000C7D6C /* QuartzCore.framework */,
 				421437211601ADEE0020AA1D /* MobileCoreServices.framework */,
@@ -383,6 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				42570B6B1CF1668200169EE4 /* SLFlightStatisticsTVC.swift */,
+				896F23442436F33400B75671 /* CollapsingSplitViewController.swift */,
 				42570B6D1CF1684B00169EE4 /* SLRocketsLaunchedTVC.swift */,
 				428E520B1CF21EB700843281 /* SLLaunchesTVC.swift */,
 				4220A4AA15F55CC60055EE35 /* SLTableViewController.h */,
@@ -479,12 +484,12 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SL;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "J. HOWARD SMART";
 				TargetAttributes = {
 					4256930415F4893000F7BABC = {
 						DevelopmentTeam = TY3543425A;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 1140;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -501,11 +506,12 @@
 			};
 			buildConfigurationList = 425692FF15F4893000F7BABC /* Build configuration list for PBXProject "Smart Launch" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				de,
+				Base,
 			);
 			mainGroup = 425692FA15F4893000F7BABC;
 			productRefGroup = 4256930615F4893000F7BABC /* Products */;
@@ -569,11 +575,13 @@
 				4220A4D215F55CC60055EE35 /* SLLaunchAngleView.m in Sources */,
 				4220A4D415F55CC60055EE35 /* SLMotorSearchViewController.m in Sources */,
 				425B18C618C30A1500FBC2B8 /* SLExpandingTransition.m in Sources */,
+				896F23452436F33400B75671 /* CollapsingSplitViewController.swift in Sources */,
 				4229CB2D1EB2FF3B00F5CA40 /* UIViewController+ContentViewController.m in Sources */,
 				427507A71BEF022700FAA8AD /* SLAvatarTVC.m in Sources */,
 				4220A4D515F55CC60055EE35 /* SLMotorTableViewController.m in Sources */,
 				4220A4D615F55CC60055EE35 /* SLMotorViewController.m in Sources */,
 				4220A4D715F55CC60055EE35 /* SLCurveGraphView.m in Sources */,
+				890D8E7020EBDCDF00D0F1BD /* PhysicsModel.swift in Sources */,
 				4292C555181F58D800C4C732 /* SLKitCell.m in Sources */,
 				4220A4D815F55CC60055EE35 /* SLRocketsTableViewController.m in Sources */,
 				4220A4D915F55CC60055EE35 /* SLRocketPropertiesTVC.m in Sources */,
@@ -598,7 +606,6 @@
 				42F83DBB171B6ED3005FAA0C /* SLClusterMotorBuildViewController.m in Sources */,
 				4292C556181F58D800C4C732 /* SLCommercialKitInfoViewController.m in Sources */,
 				42F83DBE171B6EFC005FAA0C /* SLClusterMotorMemberCell.m in Sources */,
-				420D77B41E8F60F700ACD04E /* PhysicsModel.swift in Sources */,
 				42CEE10417277F440060424F /* SLMotorConfigurationTVC.m in Sources */,
 				42570B6C1CF1668200169EE4 /* SLFlightStatisticsTVC.swift in Sources */,
 				42E353F818AC702000E2053F /* SLFlightDataPoint.m in Sources */,
@@ -614,7 +621,7 @@
 		42397206173378B300262A6B /* MainStoryboard_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				42397207173378F900262A6B /* en */,
+				8983EF21221B4998008804C8 /* Base */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
@@ -638,21 +645,28 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -689,21 +703,28 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -730,11 +751,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SmartLaunch.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
@@ -746,7 +768,8 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Smart Launch/SmartLaunch-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -757,11 +780,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SmartLaunch.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
@@ -771,7 +795,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Smart Launch/SmartLaunch-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -786,21 +811,28 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -826,11 +858,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SmartLaunch.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
@@ -841,7 +874,8 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Smart Launch/SmartLaunch-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

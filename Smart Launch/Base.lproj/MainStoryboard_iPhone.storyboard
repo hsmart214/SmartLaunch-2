@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="3DS-gC-v50">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="3DS-gC-v50">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,25 +24,25 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G5y-J9-mPG" id="Vek-bs-nai">
-                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="307" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Goblin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="KgR-Q9-D1D">
-                                                    <rect key="frame" x="135" y="5" width="47" height="20"/>
+                                                    <rect key="frame" x="137" y="6" width="47" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="24 mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iCK-1f-buG">
-                                                    <rect key="frame" x="135" y="25" width="37" height="14"/>
+                                                    <rect key="frame" x="137" y="25.5" width="36.5" height="13.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Goblin" id="XtA-pq-iql">
-                                                    <rect key="frame" x="15" y="0.0" width="105" height="43"/>
+                                                    <rect key="frame" x="16" y="0.0" width="106" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -55,25 +55,25 @@
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bqh-aa-g7v" id="5r3-Eg-58t">
-                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="307" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="D10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vug-HW-n2C">
-                                                    <rect key="frame" x="135" y="2" width="34" height="22"/>
+                                                    <rect key="frame" x="137" y="3" width="34" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="6.7 Ns" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sro-GR-Ghx">
-                                                    <rect key="frame" x="135" y="24" width="42" height="17"/>
+                                                    <rect key="frame" x="137" y="24.5" width="41.5" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Apogee" id="ubp-kw-XBo">
-                                                    <rect key="frame" x="15" y="0.0" width="105" height="43"/>
+                                                    <rect key="frame" x="16" y="0.0" width="106" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -83,7 +83,7 @@
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oRf-Ij-uUA" id="Ej4-GI-Ito">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Launch Angle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="qx7-CH-lvw">
@@ -132,7 +132,7 @@
                                         <rect key="frame" x="0.0" y="132" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JOl-nm-ZG9" id="Iqy-tX-nO7">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Simulation Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="7h8-7p-aQ1">
@@ -152,7 +152,7 @@
                                         <rect key="frame" x="0.0" y="176" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FPI-CS-ece" id="g08-mo-E4n">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Animated Vector View" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="jHS-Sx-Rx5">
@@ -172,7 +172,7 @@
                                         <rect key="frame" x="0.0" y="220" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nQ6-72-ZqT" id="Pu5-i8-J8D">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flight Profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="kKf-51-ZNe">
@@ -412,14 +412,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qQ-Ry-Ebi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="483" y="67"/>
+            <point key="canvasLocation" x="772.79999999999995" y="60.26986506746627"/>
         </scene>
         <!--Saved Clusters-->
         <scene sceneID="sKJ-kX-kbX">
             <objects>
                 <tableViewController id="tVc-AY-bfJ" customClass="SLClusterTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="SB9-tJ-kNK">
-                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -438,7 +438,7 @@
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="90% H" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="S3f-Z3-XAw">
-                                            <rect key="frame" x="16" y="24.5" width="42.5" height="17"/>
+                                            <rect key="frame" x="16" y="24.5" width="43.5" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -460,14 +460,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j6q-sb-Ejs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2313" y="984"/>
+            <point key="canvasLocation" x="3700.8000000000002" y="885.1574212893554"/>
         </scene>
         <!--Build Cluster-->
         <scene sceneID="EVU-KP-7E0">
             <objects>
                 <tableViewController id="WCr-oj-TZS" customClass="SLClusterMotorBuildViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="157" sectionHeaderHeight="10" sectionFooterHeight="10" id="fa1-yh-Eux">
-                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -576,7 +576,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7X-Em-eMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1866" y="984"/>
+            <point key="canvasLocation" x="2985.5999999999999" y="885.1574212893554"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GV9-un-eTz">
@@ -585,7 +585,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="skz-Sl-D91">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -600,7 +600,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XPg-dX-sKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40" y="67"/>
+            <point key="canvasLocation" x="64" y="60.26986506746627"/>
         </scene>
         <!--Flight Statistics-->
         <scene sceneID="ttp-M5-8PB">
@@ -805,7 +805,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2kc-Zi-fqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40" y="1014"/>
+            <point key="canvasLocation" x="64" y="912.14392803598207"/>
         </scene>
         <!--Rockets Launched-->
         <scene sceneID="jqX-Bc-cWz">
@@ -912,7 +912,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0v5-9e-QaN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="483" y="1014"/>
+            <point key="canvasLocation" x="772.79999999999995" y="912.14392803598207"/>
         </scene>
         <!--Launches-->
         <scene sceneID="bDn-Y3-gmf">
@@ -992,7 +992,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i3n-cr-vOx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968" y="1019"/>
+            <point key="canvasLocation" x="1548.8" y="916.64167916041981"/>
         </scene>
         <!--Manufacturers-->
         <scene sceneID="BbZ-dT-xc3">
@@ -1011,18 +1011,18 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Madcow Rocketry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mch-Yn-LJ1">
-                                            <rect key="frame" x="117" y="6" width="130" height="19.5"/>
+                                            <rect key="frame" x="118" y="6" width="130" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Madcow" id="r8e-vN-3zx">
-                                            <rect key="frame" x="16" y="0.0" width="86" height="43"/>
+                                            <rect key="frame" x="16" y="0.0" width="87" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="17 Kits" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SRH-Tj-ziC">
-                                            <rect key="frame" x="117" y="25.5" width="35" height="13.5"/>
+                                            <rect key="frame" x="118" y="25.5" width="35" height="13.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1044,7 +1044,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9X-Il-5du" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1867" y="-1317"/>
+            <point key="canvasLocation" x="2987.1999999999998" y="-1184.7076461769116"/>
         </scene>
         <!--KitsTVC-->
         <scene sceneID="xJV-nq-4fo">
@@ -1122,7 +1122,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igu-Zb-QVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="cby-6g-bMV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2318" y="-1317"/>
+            <point key="canvasLocation" x="3708.8000000000002" y="-1184.7076461769116"/>
         </scene>
         <!--New Rocket-->
         <scene sceneID="tBl-0D-U09">
@@ -1502,7 +1502,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3H5-qb-0rQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1866" y="-626"/>
+            <point key="canvasLocation" x="2985.5999999999999" y="-563.11844077961018"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="xu2-Uw-Ggf">
@@ -1529,7 +1529,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rgl-pO-uVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2769" y="-1317"/>
+            <point key="canvasLocation" x="4430.3999999999996" y="-1184.7076461769116"/>
         </scene>
         <!--Motor Configuration-->
         <scene sceneID="cOG-kn-ges">
@@ -1575,7 +1575,7 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="150" id="xjH-sg-Szf">
-                                                    <rect key="frame" x="168" y="7.5" width="94" height="29"/>
+                                                    <rect key="frame" x="168" y="8" width="94" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <action selector="centralStepperChanged:" destination="3N5-Wf-79E" eventType="valueChanged" id="SQh-Po-esX"/>
@@ -1625,7 +1625,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="150" id="wxv-9y-o5C">
-                                                    <rect key="frame" x="168" y="7.5" width="94" height="29"/>
+                                                    <rect key="frame" x="168" y="8" width="94" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <action selector="firstStepperChanged:" destination="3N5-Wf-79E" eventType="valueChanged" id="AiO-gS-rmS"/>
@@ -1685,7 +1685,7 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="150" id="KD2-Yt-Yb8">
-                                                    <rect key="frame" x="168" y="7.5" width="94" height="29"/>
+                                                    <rect key="frame" x="168" y="8" width="94" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <action selector="secondStepperChanged:" destination="3N5-Wf-79E" eventType="valueChanged" id="Roa-ss-A3T"/>
@@ -1738,7 +1738,7 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="150" id="VZv-RA-BPL">
-                                                    <rect key="frame" x="168" y="7.5" width="94" height="29"/>
+                                                    <rect key="frame" x="168" y="8" width="94" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <action selector="thirdStepperChanged:" destination="3N5-Wf-79E" eventType="valueChanged" id="M9G-qU-EZ8"/>
@@ -1777,7 +1777,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5XI-cW-LgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3707" y="-1317"/>
+            <point key="canvasLocation" x="5931.1999999999998" y="-1184.7076461769116"/>
         </scene>
         <!--Saved Flights-->
         <scene sceneID="uht-L5-kLV">
@@ -1868,7 +1868,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rhh-oe-Gj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2318" y="-626"/>
+            <point key="canvasLocation" x="3708.8000000000002" y="-563.11844077961018"/>
         </scene>
         <!--Cluster Thrust Curve-->
         <scene sceneID="vIQ-VD-86p">
@@ -2003,14 +2003,14 @@ Estes E9 x2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGv-NT-67g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2769" y="-626"/>
+            <point key="canvasLocation" x="4430.3999999999996" y="-563.11844077961018"/>
         </scene>
         <!--Save Flight Data-->
         <scene sceneID="ZV6-bX-8fs">
             <objects>
                 <tableViewController id="uCi-7J-K7Z" customClass="SLSaveFlightDataTVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="mIf-Nc-ppN">
-                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -2024,7 +2024,7 @@ Estes E9 x2</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Rocket Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Baq-L9-YuJ">
-                                                    <rect key="frame" x="137" y="0.0" width="223" height="43.5"/>
+                                                    <rect key="frame" x="137" y="0.0" width="222" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2046,7 +2046,7 @@ Estes E9 x2</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="D10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8VS-LV-Hl2">
-                                                    <rect key="frame" x="137" y="0.0" width="223" height="43.5"/>
+                                                    <rect key="frame" x="137" y="0.0" width="222" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2271,7 +2271,7 @@ Estes E9 x2</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fk4-Zb-Afh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1396" y="-1317"/>
+            <point key="canvasLocation" x="2233.5999999999999" y="-1184.7076461769116"/>
         </scene>
         <!--Rockets-->
         <scene sceneID="uk1-7V-zG1">
@@ -2325,7 +2325,7 @@ Estes E9 x2</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3V-KP-XYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1396" y="-626"/>
+            <point key="canvasLocation" x="2233.5999999999999" y="-563.11844077961018"/>
         </scene>
         <!--Motor Search-->
         <scene sceneID="BPS-Rb-uad">
@@ -2336,13 +2336,13 @@ Estes E9 x2</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Order:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="E3q-nt-i6B">
-                                <rect key="frame" x="9" y="493.5" width="69" height="21"/>
+                                <rect key="frame" x="9" y="493" width="69" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.82033262380000005" green="0.89572063660000001" blue="0.92915675949999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="UPU-M5-ha4">
-                                <rect key="frame" x="72" y="490.5" width="283" height="30"/>
+                                <rect key="frame" x="72" y="490" width="283" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Brand"/>
@@ -2352,7 +2352,7 @@ Estes E9 x2</string>
                                 <color key="tintColor" red="0.82033262380000005" green="0.89572063660000001" blue="0.92915675949999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
                             <pickerView contentMode="scaleToFill" id="7QI-te-Bke">
-                                <rect key="frame" x="20" y="223.5" width="335" height="216"/>
+                                <rect key="frame" x="20" y="223" width="335" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82033262380000005" green="0.89572063660000001" blue="0.92915675949999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -2374,7 +2374,7 @@ Estes E9 x2</string>
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Include:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="QA4-l8-ZaZ">
-                                <rect key="frame" x="9" y="563.5" width="115" height="21"/>
+                                <rect key="frame" x="9" y="563" width="115" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.82033262380000005" green="0.89572063660000001" blue="0.92915675949999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2426,7 +2426,7 @@ Estes E9 x2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H6p-B7-D6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1866" y="155"/>
+            <point key="canvasLocation" x="2985.5999999999999" y="139.43028485757122"/>
         </scene>
         <!--Motors-->
         <scene sceneID="Bci-D3-DC7">
@@ -2446,7 +2446,7 @@ Estes E9 x2</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zg5-Ps-cN0">
-                                            <rect key="frame" x="16" y="4" width="35.5" height="21.5"/>
+                                            <rect key="frame" x="16" y="4" width="35" height="21.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2475,7 +2475,7 @@ Estes E9 x2</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXk-NL-WA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2318" y="155"/>
+            <point key="canvasLocation" x="3708.8000000000002" y="139.43028485757122"/>
         </scene>
         <!--Thrust Curve-->
         <scene sceneID="Vad-NZ-BLT">
@@ -2629,7 +2629,7 @@ Estes E9 x2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWd-aG-ld1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2769" y="155"/>
+            <point key="canvasLocation" x="4430.3999999999996" y="139.43028485757122"/>
         </scene>
         <!--Launch Angle-->
         <scene sceneID="Qyz-zD-QVz">
@@ -2703,7 +2703,7 @@ Estes E9 x2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LYS-lf-z1d" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1867" y="1942"/>
+            <point key="canvasLocation" x="2987.1999999999998" y="1746.9265367316343"/>
         </scene>
         <!--Launch Smart-->
         <scene sceneID="fRc-Mg-dkV">
@@ -2810,7 +2810,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Check for New Motors" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tlv-cV-akt">
-                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2844,7 +2844,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VmT-TL-JnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1409" y="2591"/>
+            <point key="canvasLocation" x="2254.4000000000001" y="2330.7346326836582"/>
         </scene>
         <!--Unit Preferences-->
         <scene sceneID="uMR-4z-ReG">
@@ -3109,7 +3109,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eZl-Uj-WbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2318" y="2591"/>
+            <point key="canvasLocation" x="3708.8000000000002" y="2330.7346326836582"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zwB-On-akz">
@@ -3118,7 +3118,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UVu-Bt-1vM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3133,18 +3133,18 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxl-u9-ozS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="938" y="2591"/>
+            <point key="canvasLocation" x="1500.8" y="2330.7346326836582"/>
         </scene>
         <!--Flight Profile-->
         <scene sceneID="KlJ-hn-SLi">
             <objects>
                 <viewController storyboardIdentifier="FlightProfileVC" title="Flight Profile" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uXJ-y6-YPH" customClass="SLFlightProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lUV-v9-qgh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dGp-7O-YV2">
-                                <rect key="frame" x="39.5" y="574" width="299" height="30"/>
+                                <rect key="frame" x="39" y="618" width="299" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <segments>
                                     <segment title="Speed"/>
@@ -3159,7 +3159,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" id="Wca-pf-PZA" customClass="SLCurveGraphView">
-                                <rect key="frame" x="20" y="219" width="335" height="333"/>
+                                <rect key="frame" x="20" y="219" width="335" height="377"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -3273,7 +3273,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxa-nr-x4r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="938" y="3237"/>
+            <point key="canvasLocation" x="1500.8" y="2911.8440779610196"/>
         </scene>
         <!--Motor Preferences-->
         <scene sceneID="RSD-3e-Pzg">
@@ -3333,7 +3333,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEM-mr-VxI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2318" y="3237"/>
+            <point key="canvasLocation" x="3708.8000000000002" y="2911.8440779610196"/>
         </scene>
         <!--RSO Mode-->
         <scene sceneID="9AQ-QU-NrX">
@@ -3361,7 +3361,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2.6 in" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SvT-ja-Ga8">
-                                                    <rect key="frame" x="320" y="12" width="40" height="19.5"/>
+                                                    <rect key="frame" x="319" y="12" width="40" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3403,7 +3403,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2.1 lb" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hAX-l8-f9w">
-                                                    <rect key="frame" x="322" y="12" width="38" height="19.5"/>
+                                                    <rect key="frame" x="321" y="12" width="38" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3489,7 +3489,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Thrust : Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rME-hr-2da">
-                                                    <rect key="frame" x="16" y="12" width="111.5" height="19.5"/>
+                                                    <rect key="frame" x="15" y="12" width="111.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3528,7 +3528,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ova-Ks-WvO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40" y="1942"/>
+            <point key="canvasLocation" x="64" y="1746.9265367316343"/>
         </scene>
         <!--Vector View-->
         <scene sceneID="f23-qs-sTr">
@@ -3707,7 +3707,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="483" y="1942"/>
+            <point key="canvasLocation" x="772.79999999999995" y="1746.9265367316343"/>
         </scene>
         <!--Sim Settings-->
         <scene sceneID="YHu-gs-V94">
@@ -3951,7 +3951,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSx-PB-xhN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1409" y="1942"/>
+            <point key="canvasLocation" x="2254.4000000000001" y="1746.9265367316343"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hHz-WE-NYD">
@@ -3959,7 +3959,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d8G-sU-28y" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9WN-9u-fRC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3969,7 +3969,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFd-Zn-XnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968" y="-1317"/>
+            <point key="canvasLocation" x="1548.8" y="-1184.7076461769116"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LAO-ca-JHI">
@@ -3977,7 +3977,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zQc-FU-yWW" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oFz-Ej-DIs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3987,7 +3987,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FBK-aA-gY9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3243" y="-1317"/>
+            <point key="canvasLocation" x="5188.8000000000002" y="-1184.7076461769116"/>
         </scene>
         <!--Rocket Avatars-->
         <scene sceneID="RJi-M8-zwV">
@@ -4006,7 +4006,7 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gba-CJ-lNY">
-                                            <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4025,26 +4025,21 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Hv-Uu-b1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3243" y="-626"/>
+            <point key="canvasLocation" x="5188.8000000000002" y="-563.11844077961018"/>
         </scene>
     </scenes>
     <resources>
         <image name="AerobeeHi" width="210" height="86"/>
         <image name="Apogee" width="210" height="86"/>
         <image name="Goblin" width="210" height="86"/>
-        <image name="Madcow" width="86" height="43"/>
+        <image name="Madcow" width="172" height="86"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
-    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="uwY-9t-0PR"/>
+        <segue reference="Kah-zl-qtz"/>
         <segue reference="eYh-Tw-iw8"/>
-        <segue reference="abW-Kw-AfJ"/>
-        <segue reference="n9j-0b-zsG"/>
-        <segue reference="oTj-Xa-4mD"/>
+        <segue reference="Z7C-8k-JQV"/>
+        <segue reference="uwY-9t-0PR"/>
+        <segue reference="mfH-nG-IFM"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.33588047450000003" blue="0.085452782850000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

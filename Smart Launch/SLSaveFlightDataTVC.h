@@ -10,6 +10,7 @@
 #import "Rocket.h"
 #import "SLPhysicsModel.h"
 #import "SLRocketPropertiesTVC.h"
+#import "SmartLaunch-Swift.h"
 
 @interface SLSaveFlightDataTVC : UITableViewController
 //model

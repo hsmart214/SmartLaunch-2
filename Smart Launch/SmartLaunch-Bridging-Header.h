@@ -10,3 +10,5 @@
 #import "SLUnitsConvertor.h"
 #import "SLFlightDataPoint.h"
 #import "SLCustomUI.h"
+#import "SLTableViewController.h"
+#import "SLFlightProfileViewController.h"

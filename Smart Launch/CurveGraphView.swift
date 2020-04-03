@@ -159,9 +159,10 @@ class CurveGraphView: UIView {
             path.move(to: CGPoint(x: origin.x + i*hscale, y: origin.y - 1.0))
             path.addLine(to: CGPoint(x:origin.x+i*hscale, y:margin))
             let sec = "\(Int(i))"
+            let textColor = SLCustomUI.graphTextColor() ?? UIColor.black
             let attSec = NSAttributedString(string: sec,
-                                            attributes: [NSForegroundColorAttributeName:SLCustomUI.graphTextColor(),
-                                                         NSFontAttributeName: UIFont.systemFont(ofSize: 10.0)])
+                                            attributes: [NSAttributedString.Key.foregroundColor:textColor,
+                                                         NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10.0)])
             let secPt = CGPoint(x:origin.x + i*hscale - 3, y:origin.y + Const.secOffset)
             attSec.draw(at: secPt)
             i += hStepSize
@@ -172,8 +173,9 @@ class CurveGraphView: UIView {
         // add the notation of the max at the top of the y axis
         
         let maxValueNotation = String(format: verticalUnitsFormat, fullrange, verticalUnits)
-        let notation = NSAttributedString(string: maxValueNotation, attributes: [NSForegroundColorAttributeName:SLCustomUI.graphTextColor(),
-                                                                                 NSFontAttributeName:UIFont.systemFont(ofSize: 10.0)])
+        let textColor = SLCustomUI.graphTextColor() ?? UIColor.black
+        let notation = NSAttributedString(string: maxValueNotation, attributes:
+            [NSAttributedString.Key.foregroundColor:textColor,NSAttributedString.Key.font:UIFont.systemFont(ofSize: 10.0)])
         notation.draw(at: CGPoint(x:10.0,y:10.0))
         
         // draw the curve itself

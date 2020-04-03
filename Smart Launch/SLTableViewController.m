@@ -19,6 +19,9 @@
 #import "SLClusterMotorViewController.h"
 #import "UIViewController+ContentViewController.h"
 #import "SLAnimatedViewController.h"
+#import "SmartLaunch-Swift.h"
+
+
 
 #define FLIGHT_PROFILE_ROW 5
 #define MOTOR_SELECTION_ROW 1
@@ -103,6 +106,7 @@
 
 - (SLPhysicsModel *)model{
     return [SLPhysicsModel sharedModel];
+    //return PhysicsModel.shared
 }
 
 #pragma mark - Sim delegate methods

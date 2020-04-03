@@ -256,7 +256,7 @@
     [self.rocketView addMotionEffect:motions];
     if (self.isInRSOMode){
         UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        UIBarButtonItem *nonFunctionalFluff = [[UIBarButtonItem alloc] initWithTitle:@"RSO Mode"
+        UIBarButtonItem *nonFunctionalFluff = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"RSO Mode", @"RSO Mode")
                                                                                style:UIBarButtonItemStylePlain
                                                                               target:nil action:nil];
         self.toolbarItems = @[flex, nonFunctionalFluff, flex];

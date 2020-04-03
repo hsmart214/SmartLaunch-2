@@ -25,7 +25,6 @@ struct  CurrentEnvironment{
     var mach_one : Double
 }
 
-
 @objc public protocol PhysicsModelDatasource : class{
     func hasValidData() -> Bool
     func quickFFVelocityAt(launchAngle: Float, andGuideLength: Float) -> Float
@@ -43,9 +42,12 @@ struct  CurrentEnvironment{
     func motorDescription() -> String
 }
 
-final class PhysicsModel : NSObject, PhysicsModelDatasource{
-    var launchGuideLength : Double = 2.0
-    var launchGuideAngle : Double = 0.0 {
+@objc public final class PhysicsModel : NSObject, PhysicsModelDatasource{
+    
+    public static let shared = PhysicsModel()
+    
+    public var launchGuideLength : Double = 2.0
+    public var launchGuideAngle : Double = 0.0 {
         didSet{
             let limit = Double(MAX_LAUNCH_GUIDE_ANGLE)
             if launchGuideAngle > limit{
@@ -55,9 +57,9 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
             }
         }
     }
-    var launchGuideDirection : LaunchDirection = CrossWind
-    var windVelocity : Double = 0.0
-    weak var rocket : Rocket? = nil{
+    public var launchGuideDirection : LaunchDirection = CrossWind
+    public var windVelocity : Double = 0.0
+    public weak var rocket : Rocket? = nil{
         didSet{
             resetFlight()
         }
@@ -147,7 +149,7 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
 
     /* The first public method returns the velocity that the rocket will attain at the end of the launch guide */
     
-    func velocityAtEndOfLaunchGuide() -> Double{
+    public func velocityAtEndOfLaunchGuide() -> Double{
         if liftMass() == 0.0{
             return 0.0
         }
@@ -157,7 +159,7 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
     
     /* This will give the resulting angle of attack of the rocket in the air mass at when it leaves the launch guide */
     
-    func freeFlightAngleOfAttack() -> Double{         // AOA when the rocket leaves the launch guide - RADIANS
+    public func freeFlightAngleOfAttack() -> Double{         // AOA when the rocket leaves the launch guide - RADIANS
         if liftMass() == 0.0{
             return 0.0
         }
@@ -183,7 +185,7 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
         }
     }
     
-    func velocityAt(altitude alt:Double) -> Double{   // from the profile, returns the velocity (METERS/SEC) at a given altitude (METERS)
+    public func velocityAt(altitude alt:Double) -> Double{   // from the profile, returns the velocity (METERS/SEC) at a given altitude (METERS)
         if alt < 0{
             return 0.0
         }
@@ -212,20 +214,20 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
         return v0 + slope * (alt - d0)
     }
     
-    func resetFlight(){                        // reset the flight profile
+    public func resetFlight(){                        // reset the flight profile
         _flightProfile.removeAll()
         _maxValues = nil
     }
     
-    func fastApogee() -> Float{                       // to be used in the estimations for calculating the best Cd
+    public func fastApogee() -> Float{                       // to be used in the estimations for calculating the best Cd
         return apogeeAltitude()
     }
     
-    func burnoutToApogee() -> Float{                  // SECONDS from burnout to apogee - the ideal motor delay
+    public func burnoutToApogee() -> Float{                  // SECONDS from burnout to apogee - the ideal motor delay
         return totalTime() - rocket!.burnoutTime()
     }
     
-    func hasValidData() -> Bool {
+    public func hasValidData() -> Bool {
         return flightProfile.count > 0
     }
     
@@ -256,7 +258,7 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
         }
     }
     
-    func dragAt(velocity v: Double, time : Double, andAltitude altAGL: Double) -> Double{
+    public func dragAt(velocity v: Double, time : Double, andAltitude altAGL: Double) -> Double{
         if v == 0.0 || rocket == nil{
             return 0.0
         }
@@ -279,7 +281,7 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
         return 0.5*rho*v*v*ccd*area
     }
     
-    func liftMass() -> Float{
+    public func liftMass() -> Float{
         if let r = rocket{
             return r.mass(atTime: 0.0)
         }else{
@@ -287,7 +289,7 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
         }
     }
     
-    func integrateToEndOfLaunchGuide(){
+    public func integrateToEndOfLaunchGuide(){
         if rocket == nil{
             return
         }
@@ -327,7 +329,7 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
             }
         }
     }
-    func integrateToBurnout(){
+    public func integrateToBurnout(){
         if Float(timeIndex) >= rocket!.burnoutTime() && velocity <= 0.0{
             return
         }
@@ -365,7 +367,7 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
         }
         brnoutVelocity = velocity
     }
-    func integrateBurnoutToApogee(){
+    public func integrateBurnoutToApogee(){
         if Float(timeIndex) >= rocket!.burnoutTime() && velocity <= 0.0{
             return
         }
@@ -434,15 +436,15 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
         }
     }
     
-    func rocketName() -> String{
+    public func rocketName() -> String{
         return rocket?.name ?? ""
     }
     
-    func motorDescription() -> String {
+    public func motorDescription() -> String {
         return rocket?.motorDescription ?? ""
     }
     
-    func apogeeAltitude() -> Float {
+    public func apogeeAltitude() -> Float {
         if let dp = flightProfile.last{
             return Float(dp.alt)
         }else{
@@ -450,11 +452,11 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
         }
     }
     
-    func coastTime() -> Float {
+    public func coastTime() -> Float {
         return burnoutToApogee()
     }
     
-    func totalTime() -> Float {
+    public func totalTime() -> Float {
         if let dp = flightProfile.last{
             return Float(dp.time)
         }else{
@@ -462,27 +464,27 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
         }
     }
     
-    func burnoutVelocity() -> Float {
+    public func burnoutVelocity() -> Float {
         return Float(brnoutVelocity)
     }
     
-    func maxDrag() -> Float {
+    public func maxDrag() -> Float {
         return Float(maxValues.drag)
     }
     
-    func maxVelocity() -> Float {
+    public func maxVelocity() -> Float {
         return Float(maxValues.vel)
     }
     
-    func maxMachNumber() -> Float {
+    public func maxMachNumber() -> Float {
         return Float(maxValues.mach)
     }
     
-    func maxAcceleration() -> Float {
+    public func maxAcceleration() -> Float {
         return Float(maxValues.accel)
     }
     
-    func maxDeceleration() -> Float {
+    public func maxDeceleration() -> Float {
         var decelMax = Double(0.0)
         for dp in flightProfile{
             if dp.accel < decelMax{
@@ -492,7 +494,7 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
         return Float(decelMax)
     }
     
-    func dataIndexFor(timeIndex: Double) -> Int{
+    public func dataIndexFor(timeIndex: Double) -> Int{
         var pivot : Int = flightProfile.count/2
         var move : Int = pivot/2
         while move > 1{
@@ -509,7 +511,7 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
         return pivot
     }
     
-    func dataAt(time: Float) -> SLFlightDataPoint{
+    public func dataAt(time: Float) -> SLFlightDataPoint{
         let t = Double(time)
         let dp = flightProfile[dataIndexFor(timeIndex: t)]
         let sldp = SLFlightDataPoint()
@@ -517,7 +519,7 @@ final class PhysicsModel : NSObject, PhysicsModelDatasource{
         return sldp
     }
     
-    func quickFFVelocityAt(launchAngle angle: Float, andGuideLength length: Float) -> Float {
+    public func quickFFVelocityAt(launchAngle angle: Float, andGuideLength length: Float) -> Float {
         let len = Double(length)
         let g = Double(GRAV_ACCEL) * cos(Double(angle))
         let dt = 1.0/Double(DIVS_DURING_BURN)

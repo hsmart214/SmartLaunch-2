@@ -213,7 +213,7 @@
         [self.photoAngleLabel setNumberOfLines:1];
         [self.photoAngleLabel setTextColor:[UIColor whiteColor]];
         [self.photoAngleLabel setTextAlignment:NSTextAlignmentCenter];
-        self.photoAngleLabel.text = @"0.0°";
+        self.photoAngleLabel.text = NSLocalizedString(@"0.0°", @"0.0°");
         [self.photoAngleLabel setBackgroundColor:[UIColor clearColor]];
         [_photoAngleView addSubview: self.photoAngleLabel];
         

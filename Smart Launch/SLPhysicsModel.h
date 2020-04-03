@@ -15,7 +15,7 @@
 
 @class SLFlightDataPoint;
 
-@protocol SLPhysicsModelDatasource <NSObject>
+@protocol SLPhysicsModelDatasource
 
 // These dataSource methods allow a customer of the model to ask details about the flight profile
 // without revealing internals, and without letting them muck with the model itself.
@@ -35,6 +35,7 @@
 -(float)maxDrag;
 -(float)coastTime;
 -(float)apogeeAltitude;
+-(float)fastApogee;
 -(float)maxMachNumber;
 -(float)totalTime;
 -(SLFlightDataPoint *)dataAtTime:(float)timeIndex;
@@ -64,12 +65,12 @@
 
 - (float)freeFlightAngleOfAttack;          // AOA when the rocket leaves the launch guide - RADIANS
 
-- (float)velocityAtAltitude:(float)alt;   // from the profile, returns the velocity (METERS/SEC) at a given altitude (METERS)
+//- (float)velocityAtAltitude:(float)alt;   // from the profile, returns the velocity (METERS/SEC) at a given altitude (METERS)
 
 - (void)resetFlight;                        // reset the flight profile
 
 - (float)apogee;                           // maximum altitude in METERS
-- (float)fastApogee;                        // to be used in the estimations for calculating the best Cd
+//- (float)fastApogee;                        // to be used in the estimations for calculating the best Cd
 
 - (float)burnoutToApogee;                  // SECONDS from burnout to apogee - the ideal motor delay
 
