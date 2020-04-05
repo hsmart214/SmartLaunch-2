@@ -104,5 +104,19 @@ class SLFlightStatisticsTVC: UITableViewController {
         nf?.maximumFractionDigits = 1
         updateRocketList()
         updateUI()
+        
+        NotificationCenter.default.addObserver(forName: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: self, queue: OperationQueue.main){
+            [weak self] (notification) in
+            if let keys = notification.userInfo?[NSUbiquitousKeyValueStoreChangedKeysKey] as? [NSString]{
+                if keys.contains(FAVORITE_ROCKETS_KEY as NSString){
+                    self?.updateRocketList()
+                    self?.updateUI()
+                }
+            }
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }

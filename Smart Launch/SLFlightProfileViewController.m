@@ -108,6 +108,8 @@
     UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
     [backgroundView setImage:backgroundImage];
     [self.view insertSubview:backgroundView atIndex:0];
+    [self.graphTypeSegmentedControl setTitleTextAttributes:@{NSForegroundColorAttributeName: UIColor.whiteColor} forState:UIControlStateNormal];
+    [self.graphTypeSegmentedControl setTitleTextAttributes:@{NSForegroundColorAttributeName: UIColor.blackColor} forState:UIControlStateSelected];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

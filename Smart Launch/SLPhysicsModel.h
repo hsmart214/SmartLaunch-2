@@ -40,7 +40,7 @@
 -(float)totalTime;
 -(SLFlightDataPoint *)dataAtTime:(float)timeIndex;
 -(NSString *)motorDescription;
-
+-(NSArray *)motorLoadoutPlist;
 @end
 
 @interface SLPhysicsModel: NSObject<SLPhysicsModelDatasource>

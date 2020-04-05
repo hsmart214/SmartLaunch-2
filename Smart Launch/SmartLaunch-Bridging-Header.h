@@ -12,3 +12,7 @@
 #import "SLCustomUI.h"
 #import "SLTableViewController.h"
 #import "SLFlightProfileViewController.h"
+#import "SLMotorViewController.h"
+#import "SLClusterMotorViewController.h"
+#import "SLAnimatedViewController.h"
+

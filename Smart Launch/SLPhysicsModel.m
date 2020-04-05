@@ -407,6 +407,10 @@ typedef struct  {
     return [self.rocket motorDescription];
 }
 
+-(NSArray *)motorLoadoutPlist{
+    return self.rocket.motorLoadoutPlist;
+}
+
 - (float)apogee{
     SLFlightDataPoint *point = [self.flightProfile lastObject];
     return point->alt;

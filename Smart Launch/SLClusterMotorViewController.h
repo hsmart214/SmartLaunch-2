@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet SLCurveGraphView *thrustCurve;
 @property (weak, nonatomic) IBOutlet UITextView *motorListTextView;
 
-@property (nonatomic, weak) id<SLSimulationDelegate> delegate;
+@property (nonatomic, weak) id<SLSimulationDelegate> delegate;      // never used
 @property (weak, nonatomic) UIViewController *popBackViewController;
 
 

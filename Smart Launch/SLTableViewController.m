@@ -506,6 +506,7 @@
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO animated:animated];
     [self registerForiCloudUpdates];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -516,6 +517,20 @@
     }else{
         [self.spinner stopAnimating];
     }
+    if ([self.splitViewController.viewControllers count] > 1){
+        UINavigationController *nav = self.splitViewController.viewControllers[1];
+        UIViewController *vc = nav.visibleViewController;
+        if ([vc respondsToSelector:@selector(setDelegate:)]){
+            [(id)vc setDelegate: self];
+        }
+        if ([vc respondsToSelector:@selector(setDataSource:)]){
+            [(id)vc setDataSource: self.model];
+        }
+    }
+    if (self.rocket.motors){
+        [[NSNotificationCenter defaultCenter] postNotificationName:SmartLaunchDidUpdateModelNotification object:nil];
+    }
+    self.tableView.contentOffset = CGPointMake(self.view.safeAreaInsets.left, -self.view.safeAreaInsets.top);
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -527,12 +542,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    UIImage *image = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    [self.tableView setBackgroundView:imageView];
     id unitPrefs = [self defaultFetchWithKey:UNIT_PREFS_KEY];
     if (!unitPrefs) [SLUnitsTVC setStandardDefaults];
     
     [self registerForiCloudUpdates];
-    [[NSUbiquitousKeyValueStore defaultStore] synchronize];
+    [[NSUbiquitousKeyValueStore defaultStore] synchronize];    
 }
 
 #pragma mark - UISplitViewControllerDelegate

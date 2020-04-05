@@ -42,22 +42,6 @@
 		4256931A15F4893000F7BABC /* SLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4256931915F4893000F7BABC /* SLAppDelegate.m */; };
 		42570B6C1CF1668200169EE4 /* SLFlightStatisticsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570B6B1CF1668200169EE4 /* SLFlightStatisticsTVC.swift */; };
 		42570B6E1CF1684B00169EE4 /* SLRocketsLaunchedTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570B6D1CF1684B00169EE4 /* SLRocketsLaunchedTVC.swift */; };
-		4257FE4617DDA8BF004A5021 /* AppIcon40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE3617DDA8BF004A5021 /* AppIcon40x40.png */; };
-		4257FE4717DDA8BF004A5021 /* AppIcon40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE3717DDA8BF004A5021 /* AppIcon40x40@2x.png */; };
-		4257FE4817DDA8BF004A5021 /* AppIcon50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE3817DDA8BF004A5021 /* AppIcon50x50.png */; };
-		4257FE4917DDA8BF004A5021 /* AppIcon50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE3917DDA8BF004A5021 /* AppIcon50x50@2x.png */; };
-		4257FE4A17DDA8BF004A5021 /* AppIcon60x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE3A17DDA8BF004A5021 /* AppIcon60x60.png */; };
-		4257FE4B17DDA8BF004A5021 /* AppIcon60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE3B17DDA8BF004A5021 /* AppIcon60x60@2x.png */; };
-		4257FE4C17DDA8BF004A5021 /* AppIcon72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE3C17DDA8BF004A5021 /* AppIcon72x72.png */; };
-		4257FE4D17DDA8BF004A5021 /* AppIcon72x72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE3D17DDA8BF004A5021 /* AppIcon72x72@2x.png */; };
-		4257FE4E17DDA8BF004A5021 /* AppIcon76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE3E17DDA8BF004A5021 /* AppIcon76x76.png */; };
-		4257FE4F17DDA8BF004A5021 /* AppIcon76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE3F17DDA8BF004A5021 /* AppIcon76x76@2x.png */; };
-		4257FE5017DDA8BF004A5021 /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE4017DDA8BF004A5021 /* Icon-57.png */; };
-		4257FE5117DDA8BF004A5021 /* Icon-57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE4117DDA8BF004A5021 /* Icon-57@2x.png */; };
-		4257FE5217DDA8BF004A5021 /* Icon-Small-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE4217DDA8BF004A5021 /* Icon-Small-29.png */; };
-		4257FE5317DDA8BF004A5021 /* Icon-Small-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE4317DDA8BF004A5021 /* Icon-Small-29@2x.png */; };
-		4257FE5417DDA8BF004A5021 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE4417DDA8BF004A5021 /* iTunesArtwork.png */; };
-		4257FE5517DDA8BF004A5021 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257FE4517DDA8BF004A5021 /* iTunesArtwork@2x.png */; };
 		425B18C618C30A1500FBC2B8 /* SLExpandingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 425B18C518C30A1500FBC2B8 /* SLExpandingTransition.m */; };
 		4268AA851E65452B00F62F8C /* UniStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4268AA841E65452B00F62F8C /* UniStoryboard.storyboard */; };
 		42742BBB172AE37D007229E9 /* SLClusterMotor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42742BBA172AE37D007229E9 /* SLClusterMotor.m */; };
@@ -88,6 +72,7 @@
 		890D8E7020EBDCDF00D0F1BD /* PhysicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420D77B31E8F60F700ACD04E /* PhysicsModel.swift */; };
 		8914EA8B243448860001777F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8914EA8A243448860001777F /* CoreServices.framework */; };
 		896F23452436F33400B75671 /* CollapsingSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F23442436F33400B75671 /* CollapsingSplitViewController.swift */; };
+		89B0D67A2438657100FAAF4F /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B0D6792438657100FAAF4F /* ContainerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -154,22 +139,6 @@
 		4256931915F4893000F7BABC /* SLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAppDelegate.m; sourceTree = "<group>"; };
 		42570B6B1CF1668200169EE4 /* SLFlightStatisticsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLFlightStatisticsTVC.swift; sourceTree = "<group>"; };
 		42570B6D1CF1684B00169EE4 /* SLRocketsLaunchedTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLRocketsLaunchedTVC.swift; sourceTree = "<group>"; };
-		4257FE3617DDA8BF004A5021 /* AppIcon40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon40x40.png; sourceTree = "<group>"; };
-		4257FE3717DDA8BF004A5021 /* AppIcon40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon40x40@2x.png"; sourceTree = "<group>"; };
-		4257FE3817DDA8BF004A5021 /* AppIcon50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon50x50.png; sourceTree = "<group>"; };
-		4257FE3917DDA8BF004A5021 /* AppIcon50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon50x50@2x.png"; sourceTree = "<group>"; };
-		4257FE3A17DDA8BF004A5021 /* AppIcon60x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon60x60.png; sourceTree = "<group>"; };
-		4257FE3B17DDA8BF004A5021 /* AppIcon60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon60x60@2x.png"; sourceTree = "<group>"; };
-		4257FE3C17DDA8BF004A5021 /* AppIcon72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon72x72.png; sourceTree = "<group>"; };
-		4257FE3D17DDA8BF004A5021 /* AppIcon72x72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon72x72@2x.png"; sourceTree = "<group>"; };
-		4257FE3E17DDA8BF004A5021 /* AppIcon76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon76x76.png; sourceTree = "<group>"; };
-		4257FE3F17DDA8BF004A5021 /* AppIcon76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon76x76@2x.png"; sourceTree = "<group>"; };
-		4257FE4017DDA8BF004A5021 /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
-		4257FE4117DDA8BF004A5021 /* Icon-57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57@2x.png"; sourceTree = "<group>"; };
-		4257FE4217DDA8BF004A5021 /* Icon-Small-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-29.png"; sourceTree = "<group>"; };
-		4257FE4317DDA8BF004A5021 /* Icon-Small-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-29@2x.png"; sourceTree = "<group>"; };
-		4257FE4417DDA8BF004A5021 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
-		4257FE4517DDA8BF004A5021 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		425B18C418C30A1500FBC2B8 /* SLExpandingTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLExpandingTransition.h; sourceTree = "<group>"; };
 		425B18C518C30A1500FBC2B8 /* SLExpandingTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLExpandingTransition.m; sourceTree = "<group>"; };
 		4268AA841E65452B00F62F8C /* UniStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UniStoryboard.storyboard; sourceTree = "<group>"; };
@@ -221,6 +190,7 @@
 		8914EA8A243448860001777F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		896F23442436F33400B75671 /* CollapsingSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsingSplitViewController.swift; sourceTree = "<group>"; };
 		8983EF21221B4998008804C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		89B0D6792438657100FAAF4F /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,7 +214,6 @@
 		4220A53215F55DFF0055EE35 /* Data Files */ = {
 			isa = PBXGroup;
 			children = (
-				4257FE3517DDA8BF004A5021 /* App Icon New */,
 				4220A4E815F55D120055EE35 /* atmosphere.txt */,
 				4220A4E915F55D120055EE35 /* motors.txt */,
 				4292C557181F595300C4C732 /* kitArray.plist */,
@@ -337,29 +306,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		4257FE3517DDA8BF004A5021 /* App Icon New */ = {
-			isa = PBXGroup;
-			children = (
-				4257FE3617DDA8BF004A5021 /* AppIcon40x40.png */,
-				4257FE3717DDA8BF004A5021 /* AppIcon40x40@2x.png */,
-				4257FE3817DDA8BF004A5021 /* AppIcon50x50.png */,
-				4257FE3917DDA8BF004A5021 /* AppIcon50x50@2x.png */,
-				4257FE3A17DDA8BF004A5021 /* AppIcon60x60.png */,
-				4257FE3B17DDA8BF004A5021 /* AppIcon60x60@2x.png */,
-				4257FE3C17DDA8BF004A5021 /* AppIcon72x72.png */,
-				4257FE3D17DDA8BF004A5021 /* AppIcon72x72@2x.png */,
-				4257FE3E17DDA8BF004A5021 /* AppIcon76x76.png */,
-				4257FE3F17DDA8BF004A5021 /* AppIcon76x76@2x.png */,
-				4257FE4017DDA8BF004A5021 /* Icon-57.png */,
-				4257FE4117DDA8BF004A5021 /* Icon-57@2x.png */,
-				4257FE4217DDA8BF004A5021 /* Icon-Small-29.png */,
-				4257FE4317DDA8BF004A5021 /* Icon-Small-29@2x.png */,
-				4257FE4417DDA8BF004A5021 /* iTunesArtwork.png */,
-				4257FE4517DDA8BF004A5021 /* iTunesArtwork@2x.png */,
-			);
-			path = "App Icon New";
-			sourceTree = "<group>";
-		};
 		42E353FB18AC93C200E2053F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +340,7 @@
 				4220A4AB15F55CC60055EE35 /* SLTableViewController.m */,
 				42248D7A16EC416200ABB5D7 /* SLiPadDetailViewController.h */,
 				42248D7B16EC416200ABB5D7 /* SLiPadDetailViewController.m */,
+				89B0D6792438657100FAAF4F /* ContainerViewController.swift */,
 				42E337FD1CF783E00009C757 /* SLRSOModeTVC.h */,
 				42E337FE1CF783E00009C757 /* SLRSOModeTVC.m */,
 				4220A4B815F55CC60055EE35 /* SLMotorSearchViewController.h */,
@@ -528,31 +475,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4257FE4717DDA8BF004A5021 /* AppIcon40x40@2x.png in Resources */,
-				4257FE4A17DDA8BF004A5021 /* AppIcon60x60.png in Resources */,
 				4256931415F4893000F7BABC /* InfoPlist.strings in Resources */,
-				4257FE5117DDA8BF004A5021 /* Icon-57@2x.png in Resources */,
 				42397204173378B300262A6B /* MainStoryboard_iPhone.storyboard in Resources */,
 				4220A4F415F55D120055EE35 /* atmosphere.txt in Resources */,
-				4257FE5417DDA8BF004A5021 /* iTunesArtwork.png in Resources */,
 				4268AA851E65452B00F62F8C /* UniStoryboard.storyboard in Resources */,
 				4292C558181F595300C4C732 /* kitArray.plist in Resources */,
 				4220A4F515F55D120055EE35 /* motors.txt in Resources */,
-				4257FE4817DDA8BF004A5021 /* AppIcon50x50.png in Resources */,
-				4257FE5317DDA8BF004A5021 /* Icon-Small-29@2x.png in Resources */,
 				42A1B6191670599E004F1FA0 /* version.txt in Resources */,
-				4257FE5017DDA8BF004A5021 /* Icon-57.png in Resources */,
-				4257FE4617DDA8BF004A5021 /* AppIcon40x40.png in Resources */,
-				4257FE4917DDA8BF004A5021 /* AppIcon50x50@2x.png in Resources */,
-				4257FE4B17DDA8BF004A5021 /* AppIcon60x60@2x.png in Resources */,
 				42BDE54B17DDA21E007F7689 /* Images.xcassets in Resources */,
 				4240EDC116990F1E008AB135 /* MainStoryboard_iPad.storyboard in Resources */,
-				4257FE4C17DDA8BF004A5021 /* AppIcon72x72.png in Resources */,
-				4257FE4D17DDA8BF004A5021 /* AppIcon72x72@2x.png in Resources */,
-				4257FE4F17DDA8BF004A5021 /* AppIcon76x76@2x.png in Resources */,
-				4257FE4E17DDA8BF004A5021 /* AppIcon76x76.png in Resources */,
-				4257FE5217DDA8BF004A5021 /* Icon-Small-29.png in Resources */,
-				4257FE5517DDA8BF004A5021 /* iTunesArtwork@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +516,7 @@
 				4292C555181F58D800C4C732 /* SLKitCell.m in Sources */,
 				4220A4D815F55CC60055EE35 /* SLRocketsTableViewController.m in Sources */,
 				4220A4D915F55CC60055EE35 /* SLRocketPropertiesTVC.m in Sources */,
+				89B0D67A2438657100FAAF4F /* ContainerViewController.swift in Sources */,
 				4220A4DA15F55CC60055EE35 /* SLUnitsConvertor.m in Sources */,
 				4220A4DB15F55CC60055EE35 /* Rocket.m in Sources */,
 				4220A4DC15F55CC60055EE35 /* RocketMotor.m in Sources */,
@@ -686,7 +618,7 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -736,7 +668,7 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -760,7 +692,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mysmartsoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -789,7 +721,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mysmartsoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -844,7 +776,7 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -867,7 +799,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smart Launch/Smart Launch-Prefix.pch";
 				INFOPLIST_FILE = "Smart Launch/Smart Launch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mysmartsoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
