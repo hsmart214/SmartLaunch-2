@@ -57,7 +57,7 @@
 
 - (CMMotionManager *)motionManager{
     if (!_motionManager){
-        _motionManager = [(SLAppDelegate *)[[UIApplication sharedApplication] delegate] sharedMotionManager];
+        _motionManager = [CMMotionManager new];
     }
     return _motionManager;
 }
@@ -101,6 +101,10 @@
     __weak SLLaunchAngleViewController *wSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         wSelf.angleLabel.text = angleString;
+        
+        
+        
+        
     });
     
     if (fabs(angle - self.angleSlider.value) > TOLERANCE){

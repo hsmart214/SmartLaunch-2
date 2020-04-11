@@ -72,6 +72,7 @@
 		890D8E7020EBDCDF00D0F1BD /* PhysicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420D77B31E8F60F700ACD04E /* PhysicsModel.swift */; };
 		8914EA8B243448860001777F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8914EA8A243448860001777F /* CoreServices.framework */; };
 		896F23452436F33400B75671 /* CollapsingSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F23442436F33400B75671 /* CollapsingSplitViewController.swift */; };
+		897BDC54243ABCB400F4D9BD /* LaunchAngleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897BDC53243ABCB400F4D9BD /* LaunchAngleViewController.swift */; };
 		89B0D67A2438657100FAAF4F /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B0D6792438657100FAAF4F /* ContainerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -189,6 +190,7 @@
 		42F83DBD171B6EFB005FAA0C /* SLClusterMotorMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLClusterMotorMemberCell.m; sourceTree = "<group>"; };
 		8914EA8A243448860001777F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		896F23442436F33400B75671 /* CollapsingSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsingSplitViewController.swift; sourceTree = "<group>"; };
+		897BDC53243ABCB400F4D9BD /* LaunchAngleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAngleViewController.swift; sourceTree = "<group>"; };
 		8983EF21221B4998008804C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		89B0D6792438657100FAAF4F /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -371,6 +373,7 @@
 				4220A4AF15F55CC60055EE35 /* SLSimSettingsViewController.m */,
 				4220A4B215F55CC60055EE35 /* SLLaunchAngleViewController.h */,
 				4220A4B315F55CC60055EE35 /* SLLaunchAngleViewController.m */,
+				897BDC53243ABCB400F4D9BD /* LaunchAngleViewController.swift */,
 				4220A4C015F55CC60055EE35 /* SLRocketsTableViewController.h */,
 				4220A4C115F55CC60055EE35 /* SLRocketsTableViewController.m */,
 				4220A4C215F55CC60055EE35 /* SLRocketPropertiesTVC.h */,
@@ -537,6 +540,7 @@
 				42F83DB8171B6EAB005FAA0C /* SLClusterTableViewController.m in Sources */,
 				42F83DBB171B6ED3005FAA0C /* SLClusterMotorBuildViewController.m in Sources */,
 				4292C556181F58D800C4C732 /* SLCommercialKitInfoViewController.m in Sources */,
+				897BDC54243ABCB400F4D9BD /* LaunchAngleViewController.swift in Sources */,
 				42F83DBE171B6EFC005FAA0C /* SLClusterMotorMemberCell.m in Sources */,
 				42CEE10417277F440060424F /* SLMotorConfigurationTVC.m in Sources */,
 				42570B6C1CF1668200169EE4 /* SLFlightStatisticsTVC.swift in Sources */,

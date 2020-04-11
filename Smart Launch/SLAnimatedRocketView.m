@@ -9,10 +9,7 @@
 @import QuartzCore;
 #import "SLAnimatedRocketView.h"
 
-#define X_INSET 130.0
-#define Y_INSET 100.0
-#define TOP_BUFFER 98.0 // this increased when the view went up under the top bar
-#define IPAD_COMPENSATION 40.0
+#define TOP_BUFFER 20.0
 #define VECTOR_WIDTH 3.0
 #define VECTOR_HEAD 10.0
 
@@ -65,9 +62,9 @@
     NSString *avatarName = self.avatar ? [self.avatar stringByAppendingString:AVATAR_VERTICAL_SUFFIX] : VERTICAL_ROCKET_PIC_NAME;
     self.goblin.image = [UIImage imageNamed:avatarName];
     NSAssert(self.goblin.image != nil, @"No image for vertical avatar");
-    CGPoint orig = CGPointMake(self.goblin.bounds.size.width + X_INSET, self.goblin.bounds.size.height + Y_INSET);
+    CGPoint orig = CGPointMake(self.bounds.size.width/2.0 - self.goblin.bounds.size.width/2.0, self.goblin.bounds.size.height);
     CGSize s = self.bounds.size;
-    CGRect frame = CGRectMake(s.width - orig.x, s.height - orig.y, self.goblin.bounds.size.width, self.goblin.bounds.size.height);
+    CGRect frame = CGRectMake(orig.x, s.height - orig.y, self.goblin.bounds.size.width, self.goblin.bounds.size.height);
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) frame = CGRectMake(s.width/2 - self.goblin.bounds.size.width/2, s.height - self.goblin.bounds.size.height, self.goblin.bounds.size.width, self.goblin.bounds.size.height);
     [self.goblin setTransform:CGAffineTransformIdentity];
     [self addSubview:self.goblin];
@@ -117,13 +114,8 @@ void drawVectorWithHead(CGContextRef context, UIColor *color, const CGPoint from
     float wv = _windVelocity;
     //Figure out the scale that will show the vectors the best
     CGFloat scale;
-    CGFloat xAvail = self.bounds.size.width - X_INSET;
+    CGFloat xAvail = self.bounds.size.width/2.0 - self.goblin.bounds.size.width/2.0;
     CGFloat yAvail = self.bounds.size.height - TOP_BUFFER - self.goblin.bounds.size.height;
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
-        yAvail += IPAD_COMPENSATION;
-    }else{ // this became necessary in iOS 7 when the background view went up under the nav bar
-        yAvail -= IPAD_COMPENSATION;
-    }
     
     float rhoriz = rv * sinf(-_launchAngle);
     float xExtent;

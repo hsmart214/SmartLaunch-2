@@ -357,7 +357,10 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    [(id)segue.destinationViewController.contentViewController setDelegate:(id)self];
+    id dest = segue.destinationViewController.contentViewController;
+    if ([dest respondsToSelector:@selector(setDelegate:)]){
+        [dest setDelegate:(id)self];
+    }
     if ([[segue identifier] isEqualToString:@"settingsModalSegue"]){
         [[(UINavigationController *)segue.destinationViewController viewControllers][0] setDelegate:(id)self];
     }
