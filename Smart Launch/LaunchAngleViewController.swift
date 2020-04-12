@@ -9,7 +9,11 @@
 import UIKit
 import CoreMotion
 
-class LaunchAngleViewController: UIViewController {
+class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource {
+    func angle(for sender: SLLaunchAngleView!) -> CGFloat {
+        return CGFloat(self.angleSlider.value)
+    }
+    
     
     var motionManager = CMMotionManager()
     var motionQueue = OperationQueue()
@@ -29,17 +33,22 @@ class LaunchAngleViewController: UIViewController {
     var zAccel : Float = 0.0
     let accelerometerInterval = 0.2 // seconds between updates
     let filterConstant : Float = 0.02       // smaller number gives smoother, slower response
-
+    let tolerance : Float = 0.001
+    
     func update(accel: CMAcceleration){
         // called on the main thread from within the accelerometer update background thread
         xAccel = Float(accel.x) * filterConstant + xAccel * (1.0 - filterConstant);
         yAccel = Float(accel.y) * filterConstant + yAccel * (1.0 - filterConstant);
         zAccel = Float(accel.z) * filterConstant + zAccel * (1.0 - filterConstant);
         let xyAngle = self.yAccel != 0.0 ? atanf(self.xAccel/self.yAccel) - self.xyCalibrationAngle : 0.0
-        let angle = CGFloat(xyAngle)
+        let angle = Float(xyAngle)
         let angleRadians = NSNumber.init(floatLiteral: Double(xyAngle) * Double(DEGREES_PER_RADIAN))
         if let angleString = nf.string(from: angleRadians){
             angleLabel.text = angleString
+        }
+        if fabsf(angle - self.angleSlider.value) > tolerance{
+            angleSlider.setValue(angle, animated: true)
+            self.angleView.setNeedsDisplay()
         }
     }
     
@@ -81,5 +90,6 @@ class LaunchAngleViewController: UIViewController {
         let angleString = nf.string(from: launchAngleNSNumber)
         angleLabel.text = angleString
         angleSlider.setValue(launchAngle, animated: true)
+        angleView.dataSource = self
     }
 }

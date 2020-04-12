@@ -45,6 +45,11 @@
 	<string>Used to determine launch site elevation</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Only used to determine the launch elevation.</string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>UniStoryboard</string>
 	<key>UIMainStoryboardFile</key>
@@ -63,9 +68,7 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>Supported interface orientations (iPad)</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
