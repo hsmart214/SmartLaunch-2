@@ -1564,7 +1564,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ABS-IT-xXB">
-                            <rect key="frame" x="0.0" y="506" width="453" height="44"/>
+                            <rect key="frame" x="0.0" y="422" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem systemItem="cancel" id="chM-gn-U09">
@@ -2273,7 +2273,7 @@ Estes E9 x2</string>
                         <attributedString key="attributedTitle">
                             <fragment content="Refining Cd">
                                 <attributes>
-                                    <font key="NSFont" metaFont="message" size="11"/>
+                                    <font key="NSFont" metaFont="controlContent" size="11"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                 </attributes>
                             </fragment>
@@ -2676,13 +2676,16 @@ Estes E9 x2</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="redraw" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="3wX-kE-HRW" customClass="SLLaunchAngleView">
-                                <rect key="frame" x="104" y="145" width="246" height="628"/>
+                                <rect key="frame" x="104" y="145" width="207" height="544"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-0.34906598925590515" maxValue="0.34906598925590515" translatesAutoresizingMaskIntoConstraints="NO" id="enC-fc-jfS">
-                                <rect key="frame" x="102" y="814" width="211" height="64"/>
+                                <rect key="frame" x="102" y="730" width="211" height="64"/>
                                 <color key="minimumTrackTintColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="maximumTrackTintColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="angleSliderChanged:" destination="8M4-zH-Kiq" eventType="valueChanged" id="QGI-tm-KEv"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="00.0" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="RgZ-5m-lZF">
                                 <rect key="frame" x="181.5" y="108" width="51" height="29"/>
@@ -2716,7 +2719,11 @@ Estes E9 x2</string>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems>
-                        <barButtonItem title="Calibrate" id="Brc-wm-QCq"/>
+                        <barButtonItem title="Calibrate" id="Brc-wm-QCq">
+                            <connections>
+                                <action selector="calibrate:" destination="8M4-zH-Kiq" id="eAs-fK-Xwm"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="f9p-Hr-Czf"/>
                         <barButtonItem systemItem="camera" id="5mJ-0w-Wgz">
                             <connections>
