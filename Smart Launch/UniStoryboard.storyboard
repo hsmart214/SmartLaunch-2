@@ -1564,7 +1564,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ABS-IT-xXB">
-                            <rect key="frame" x="0.0" y="422" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="421.5" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem systemItem="cancel" id="chM-gn-U09">
@@ -2273,7 +2273,7 @@ Estes E9 x2</string>
                         <attributedString key="attributedTitle">
                             <fragment content="Refining Cd">
                                 <attributes>
-                                    <font key="NSFont" metaFont="controlContent" size="11"/>
+                                    <font key="NSFont" metaFont="message" size="11"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                 </attributes>
                             </fragment>
@@ -2676,11 +2676,11 @@ Estes E9 x2</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="redraw" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="3wX-kE-HRW" customClass="SLLaunchAngleView">
-                                <rect key="frame" x="104" y="145" width="207" height="544"/>
+                                <rect key="frame" x="103.5" y="145" width="207" height="544"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-0.34906598925590515" maxValue="0.34906598925590515" translatesAutoresizingMaskIntoConstraints="NO" id="enC-fc-jfS">
-                                <rect key="frame" x="102" y="730" width="211" height="64"/>
+                                <rect key="frame" x="101.5" y="730" width="211" height="64"/>
                                 <color key="minimumTrackTintColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="maximumTrackTintColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -2751,6 +2751,68 @@ Estes E9 x2</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="soG-3Q-Ojw" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3708" y="1941.6791604197902"/>
+        </scene>
+        <!--Camera Overlay View Controller-->
+        <scene sceneID="gbM-ti-7mN">
+            <objects>
+                <viewController storyboardIdentifier="Camera Overlay VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1iB-qQ-2a0" customClass="CameraOverlayViewController" customModule="SmartLaunch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="God-Cx-ngR" customClass="OverlayView" customModule="SmartLaunch" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="Overlay" translatesAutoresizingMaskIntoConstraints="NO" id="Tih-jw-4xR">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFT-iJ-EuB">
+                                <rect key="frame" x="274" y="695" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="1de-5R-Wnn"/>
+                                    <constraint firstAttribute="width" constant="120" id="ZBr-RS-0IS"/>
+                                </constraints>
+                                <state key="normal" image="AcceptButton"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hms-jx-ZDq">
+                                <rect key="frame" x="20" y="695" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="YPQ-HL-aaz"/>
+                                    <constraint firstAttribute="height" constant="120" id="uou-ei-1Hi"/>
+                                </constraints>
+                                <state key="normal" image="CancelButton"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAH-7b-VBj">
+                                <rect key="frame" x="166.5" y="138" width="81" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="top" secondItem="Tih-jw-4xR" secondAttribute="top" id="Xk4-fO-HDW"/>
+                            <constraint firstItem="Hms-jx-ZDq" firstAttribute="bottom" secondItem="g0k-o3-Lhu" secondAttribute="bottom" constant="-47" id="cXp-5x-LcN"/>
+                            <constraint firstItem="NFT-iJ-EuB" firstAttribute="leading" secondItem="Tih-jw-4xR" secondAttribute="trailing" constant="-140" id="dun-fe-8HR"/>
+                            <constraint firstAttribute="trailing" secondItem="Tih-jw-4xR" secondAttribute="trailing" id="lHT-mi-EHI"/>
+                            <constraint firstItem="iAH-7b-VBj" firstAttribute="top" secondItem="g0k-o3-Lhu" secondAttribute="top" constant="94" id="pW8-x3-4vC"/>
+                            <constraint firstItem="g0k-o3-Lhu" firstAttribute="bottom" secondItem="NFT-iJ-EuB" secondAttribute="bottom" constant="47" id="qst-NF-8cX"/>
+                            <constraint firstItem="Tih-jw-4xR" firstAttribute="leading" secondItem="God-Cx-ngR" secondAttribute="leading" id="rBm-LA-Nfq"/>
+                            <constraint firstItem="Tih-jw-4xR" firstAttribute="bottom" secondItem="God-Cx-ngR" secondAttribute="bottom" id="sPO-fY-Pgj"/>
+                            <constraint firstItem="iAH-7b-VBj" firstAttribute="centerX" secondItem="Tih-jw-4xR" secondAttribute="centerX" id="xDd-ah-A4O"/>
+                            <constraint firstItem="Tih-jw-4xR" firstAttribute="leading" secondItem="Hms-jx-ZDq" secondAttribute="trailing" constant="-140" id="xRZ-6T-YiG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="g0k-o3-Lhu"/>
+                        <connections>
+                            <outlet property="acceptButton" destination="NFT-iJ-EuB" id="NKf-DF-f9d"/>
+                            <outlet property="angleLabel" destination="iAH-7b-VBj" id="3GH-rK-2Rd"/>
+                            <outlet property="cancelButton" destination="Hms-jx-ZDq" id="R8V-bg-Tn0"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="overlayView" destination="God-Cx-ngR" id="hxw-wt-rlE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i1Z-I7-41e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4679.7101449275369" y="1952.6785714285713"/>
         </scene>
         <!--Smart Launch 2-->
         <scene sceneID="f3D-RV-0xm">
@@ -4210,9 +4272,12 @@ Special thanks to Step Christopher from Big Nerd Ranch for help optimizing the C
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.31307025550000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
+        <image name="AcceptButton" width="190" height="190"/>
         <image name="AerobeeHi" width="210" height="86"/>
         <image name="Apogee" width="210" height="86"/>
+        <image name="CancelButton" width="190" height="190"/>
         <image name="Goblin" width="210" height="86"/>
         <image name="Madcow" width="86" height="43"/>
+        <image name="Overlay" width="414" height="736"/>
     </resources>
 </document>

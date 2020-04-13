@@ -9,17 +9,40 @@
 import UIKit
 import CoreMotion
 
-class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource {
+class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     func angle(for sender: SLLaunchAngleView!) -> CGFloat {
         return CGFloat(self.angleSlider.value)
     }
     
     let xyCalibrationKey = "com.smartsoftware.launchsafe.xyCalibrationValue"
+    let viewFinderImageName = "Viewfinder"
+    let angleWarningImageFilename = "AngleWarning"
+    let cameraOverlayVCIdentifier = "Camera Overlay VC"
+    
+    private var _wv : UIImageView?
+    var warningView : UIImageView {
+        get {
+            if let wv = _wv{
+                return wv
+            }
+            if let angleWarningImage = UIImage(named: angleWarningImageFilename){
+                let x = self.view.bounds.width/2 - angleWarningImage.size.width/2
+                let y = self.view.bounds.height/2 - angleWarningImage.size.height/2 + 5
+                _wv = UIImageView(frame: CGRect(x: x, y: y, width: angleWarningImage.size.width, height: angleWarningImage.size.height))
+                _wv?.image = angleWarningImage
+                return _wv!
+            }
+            return UIImageView() // this should not happen
+        }
+    }
 
     var motionManager = CMMotionManager()
     var motionQueue = OperationQueue()
     var nf = NumberFormatter()
     var delegate : AnyObject?
+    
+    var cameraUIVC : UIImagePickerController?
+    var photoAngleLabel : UILabel?
     
     @IBOutlet weak var angleLabel: UILabel!
     @IBOutlet weak var angleView: SLLaunchAngleView!
@@ -73,8 +96,53 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource {
     
     
     @IBAction func camera(_ sender: Any) {
+        let _ = startCameraController(from: self)
+    }
+    
+    //MARK: - UIImagePickerControllerDelegate
+    
+    func startCameraController(from viewController: UIViewController) -> Bool{
+        
+        let cameraUI = UIImagePickerController()
+        self.cameraUIVC = cameraUI // to give us a strong reference outside this scope
+        guard UIImagePickerController.isSourceTypeAvailable(.camera)
+            else {return false}
+        
+        cameraUI.sourceType = .camera
+        cameraUI.allowsEditing = false
+        cameraUI.delegate = self
+        cameraUI.showsCameraControls = false
+        //let cameraOverlayVC = self.storyboard?.instantiateViewController(withIdentifier: cameraOverlayVCIdentifier) as? CameraOverlayViewController
+        //cameraUI.cameraOverlayView = cameraOverlayVC?.overlayView
+        cameraUI.cameraOverlayView = OverlayView(frame: self.view.bounds)
+        if let ov = cameraUI.cameraOverlayView as? OverlayView{
+            ov.acceptButton.setImage(UIImage(named: "AcceptButtonSelected"), for: .highlighted)
+            ov.cancelButton.setImage(UIImage(named: "CancelButtonSelected"), for: .highlighted)
+            ov.acceptButton.addTarget(self, action: #selector(acceptPhotoAngle), for: UIControl.Event.touchUpInside)
+            ov.cancelButton.addTarget(self, action: #selector(cancelPhotoAngle), for: UIControl.Event.touchUpInside)
+            self.photoAngleLabel = ov.angleLabel
+        }
+        viewController.present(cameraUI, animated: true){
+            self.motionManager.startAccelerometerUpdates(to: self.motionQueue){
+                [weak self] (data, error) in
+                if let validData = data{
+                    self?.update(accel: validData.acceleration)
+                }
+            }
+        }
+        
+        
+        return true
+    }
+    
+    @objc func acceptPhotoAngle(){
         
     }
+    
+    @objc func cancelPhotoAngle(){
+        self.dismiss(animated: true, completion: nil)
+    }
+        
     
     @IBAction func toggleMotion(_ sender: UIBarButtonItem) {
         if sender.title == "Motion Off"{

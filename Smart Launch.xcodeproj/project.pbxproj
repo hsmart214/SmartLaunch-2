@@ -74,6 +74,8 @@
 		896F23452436F33400B75671 /* CollapsingSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F23442436F33400B75671 /* CollapsingSplitViewController.swift */; };
 		897BDC54243ABCB400F4D9BD /* LaunchAngleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897BDC53243ABCB400F4D9BD /* LaunchAngleViewController.swift */; };
 		89B0D67A2438657100FAAF4F /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B0D6792438657100FAAF4F /* ContainerViewController.swift */; };
+		89C8CFF82443CCBE00E7DE4C /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8CFF72443CCBE00E7DE4C /* OverlayView.swift */; };
+		89C8CFFA2443D43300E7DE4C /* CameraOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8CFF92443D43300E7DE4C /* CameraOverlayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -193,6 +195,8 @@
 		897BDC53243ABCB400F4D9BD /* LaunchAngleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAngleViewController.swift; sourceTree = "<group>"; };
 		8983EF21221B4998008804C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		89B0D6792438657100FAAF4F /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		89C8CFF72443CCBE00E7DE4C /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		89C8CFF92443D43300E7DE4C /* CameraOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraOverlayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +326,7 @@
 				42D7809A1663291B000C7D6C /* SLAnimatedRocketView.m */,
 				4220A4B415F55CC60055EE35 /* SLLaunchAngleView.h */,
 				4220A4B515F55CC60055EE35 /* SLLaunchAngleView.m */,
+				89C8CFF72443CCBE00E7DE4C /* OverlayView.swift */,
 				4292C551181F58D800C4C732 /* SLKitCell.h */,
 				4292C550181F58D800C4C732 /* SLKitCell.m */,
 				423D16E117053FE80007ED61 /* SLCustomUI.h */,
@@ -374,6 +379,7 @@
 				4220A4B215F55CC60055EE35 /* SLLaunchAngleViewController.h */,
 				4220A4B315F55CC60055EE35 /* SLLaunchAngleViewController.m */,
 				897BDC53243ABCB400F4D9BD /* LaunchAngleViewController.swift */,
+				89C8CFF92443D43300E7DE4C /* CameraOverlayViewController.swift */,
 				4220A4C015F55CC60055EE35 /* SLRocketsTableViewController.h */,
 				4220A4C115F55CC60055EE35 /* SLRocketsTableViewController.m */,
 				4220A4C215F55CC60055EE35 /* SLRocketPropertiesTVC.h */,
@@ -506,6 +512,7 @@
 				4220A4CF15F55CC60055EE35 /* SLSimSettingsViewController.m in Sources */,
 				4220A4D015F55CC60055EE35 /* SLUnitsTVC.m in Sources */,
 				4220A4D115F55CC60055EE35 /* SLLaunchAngleViewController.m in Sources */,
+				89C8CFF82443CCBE00E7DE4C /* OverlayView.swift in Sources */,
 				4220A4D215F55CC60055EE35 /* SLLaunchAngleView.m in Sources */,
 				4220A4D415F55CC60055EE35 /* SLMotorSearchViewController.m in Sources */,
 				425B18C618C30A1500FBC2B8 /* SLExpandingTransition.m in Sources */,
@@ -513,6 +520,7 @@
 				4229CB2D1EB2FF3B00F5CA40 /* UIViewController+ContentViewController.m in Sources */,
 				427507A71BEF022700FAA8AD /* SLAvatarTVC.m in Sources */,
 				4220A4D515F55CC60055EE35 /* SLMotorTableViewController.m in Sources */,
+				89C8CFFA2443D43300E7DE4C /* CameraOverlayViewController.swift in Sources */,
 				4220A4D615F55CC60055EE35 /* SLMotorViewController.m in Sources */,
 				4220A4D715F55CC60055EE35 /* SLCurveGraphView.m in Sources */,
 				890D8E7020EBDCDF00D0F1BD /* PhysicsModel.swift in Sources */,
