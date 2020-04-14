@@ -17,7 +17,8 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, 
     let xyCalibrationKey = "com.smartsoftware.launchsafe.xyCalibrationValue"
     let viewFinderImageName = "Viewfinder"
     let angleWarningImageFilename = "AngleWarning"
-    let cameraOverlayVCIdentifier = "Camera Overlay VC"
+    var overlayView : OverlayView?
+
     
     private var _wv : UIImageView?
     var warningView : UIImageView {
@@ -69,12 +70,13 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, 
         let angle = Float(xyAngle)
         let angleRadians = NSNumber.init(floatLiteral: Double(xyAngle) * Double(DEGREES_PER_RADIAN))
         OperationQueue.main.addOperation { [weak self] in
-            
-            self?.angleLabel.text = self?.nf.string(from: angleRadians)
+            let angleDegrees = self?.nf.string(from: angleRadians)
+            self?.angleLabel.text = angleDegrees
             
             if let currentAngle = self?.angleSlider.value, let tol = self?.tolerance, fabsf(angle - currentAngle) > tol{
                 self?.angleSlider.setValue(angle, animated: true)
                 self?.angleView.setNeedsDisplay()
+                self?.overlayView?.angleLabel.text = angleDegrees! + "°"
             }
         }
     }
@@ -114,7 +116,9 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, 
         cameraUI.showsCameraControls = false
         //let cameraOverlayVC = self.storyboard?.instantiateViewController(withIdentifier: cameraOverlayVCIdentifier) as? CameraOverlayViewController
         //cameraUI.cameraOverlayView = cameraOverlayVC?.overlayView
-        cameraUI.cameraOverlayView = OverlayView(frame: self.view.bounds)
+        self.overlayView = OverlayView.init(frame: self.view.window!.bounds)
+        cameraUI.cameraOverlayView = self.overlayView
+        cameraUI.cameraViewTransform = CGAffineTransform(scaleX: 2.5, y: 2.5)
         if let ov = cameraUI.cameraOverlayView as? OverlayView{
             ov.acceptButton.setImage(UIImage(named: "AcceptButtonSelected"), for: .highlighted)
             ov.cancelButton.setImage(UIImage(named: "CancelButtonSelected"), for: .highlighted)
@@ -136,11 +140,17 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, 
     }
     
     @objc func acceptPhotoAngle(){
-        
+        motionManager.stopAccelerometerUpdates()
+        self.presentedViewController?.dismiss(animated: true){
+            
+        }
     }
     
     @objc func cancelPhotoAngle(){
-        self.dismiss(animated: true, completion: nil)
+        motionManager.stopAccelerometerUpdates()
+        self.dismiss(animated: true){
+            self.overlayView = nil
+        }
     }
         
     

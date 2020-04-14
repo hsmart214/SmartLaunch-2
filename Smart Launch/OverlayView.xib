@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OverlayView" customModule="SmartLaunch" customModuleProvider="target">
+            <connections>
+                <outlet property="acceptButton" destination="aFY-SR-KOf" id="tA9-a3-00w"/>
+                <outlet property="angleLabel" destination="6Pu-Kd-5td" id="jwn-6W-qrG"/>
+                <outlet property="cancelButton" destination="w8N-zj-Kzg" id="Wwr-dn-Tfy"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="ytX-va-i3E"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view opaque="NO" contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Overlay" translatesAutoresizingMaskIntoConstraints="NO" id="y7Y-Xk-8jJ">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFY-SR-KOf" userLabel="acceptButton">
+                    <rect key="frame" x="294" y="695" width="120" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="IhR-Jo-abe"/>
+                        <constraint firstAttribute="height" constant="120" id="QBg-iO-53G"/>
+                    </constraints>
+                    <state key="normal" title="Accept" image="AcceptButton"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8N-zj-Kzg" userLabel="cancelButton">
+                    <rect key="frame" x="0.0" y="695" width="120" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="oz7-rJ-wUc"/>
+                        <constraint firstAttribute="width" constant="120" id="pUU-sA-tsk"/>
+                    </constraints>
+                    <state key="normal" title="Cancel" image="CancelButton"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pu-Kd-5td" userLabel="angleLabel">
+                    <rect key="frame" x="166.5" y="138" width="81" height="41"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" red="0.0" green="0.33875089879999998" blue="0.084351767110000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="y7Y-Xk-8jJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="2MJ-RS-7Kd"/>
+                <constraint firstAttribute="trailing" secondItem="y7Y-Xk-8jJ" secondAttribute="trailing" id="46y-pu-J6B"/>
+                <constraint firstItem="6Pu-Kd-5td" firstAttribute="centerX" secondItem="y7Y-Xk-8jJ" secondAttribute="centerX" id="CWC-IU-ZZl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="aFY-SR-KOf" secondAttribute="bottom" constant="47" id="T4P-td-AsO"/>
+                <constraint firstItem="aFY-SR-KOf" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Wv6-yL-iei"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="w8N-zj-Kzg" secondAttribute="bottom" constant="47" id="hQ9-mw-a2d"/>
+                <constraint firstItem="6Pu-Kd-5td" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="94" id="maR-9o-j6F"/>
+                <constraint firstItem="y7Y-Xk-8jJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="me0-bO-Mn8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="leading" secondItem="w8N-zj-Kzg" secondAttribute="leading" id="tzt-r1-MNO"/>
+                <constraint firstAttribute="bottom" secondItem="y7Y-Xk-8jJ" secondAttribute="bottom" id="yOc-Mx-u7K"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.68115942028987" y="153.34821428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AcceptButton" width="190" height="190"/>
+        <image name="CancelButton" width="190" height="190"/>
+        <image name="Overlay" width="414" height="736"/>
+    </resources>
+</document>
