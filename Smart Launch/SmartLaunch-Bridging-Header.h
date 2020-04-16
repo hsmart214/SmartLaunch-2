@@ -16,4 +16,5 @@
 #import "SLClusterMotorViewController.h"
 #import "SLAnimatedViewController.h"
 #import "SLLaunchAngleView.h"
+#import "SLSimulationDelegate.h"
 

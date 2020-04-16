@@ -40,10 +40,10 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, 
     var motionManager = CMMotionManager()
     var motionQueue = OperationQueue()
     var nf = NumberFormatter()
-    var delegate : AnyObject?
+    var delegate : SLSimulationDelegate?
     
     var cameraUIVC : UIImagePickerController?
-    var photoAngleLabel : UILabel?
+    //var photoAngleLabel : UILabel?
     
     @IBOutlet weak var angleLabel: UILabel!
     @IBOutlet weak var angleView: SLLaunchAngleView!
@@ -56,6 +56,8 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, 
     var xAccel : Float = 0.0
     var yAccel : Float = 0.0
     var zAccel : Float = 0.0
+    var currentAngle : Float = 0.0
+    var previousAngle : Float = 0.0
     let accelerometerInterval = 0.1 // seconds between updates
     let filterConstant : Float = 0.2       // smaller number gives smoother, slower response
     let tolerance : Float = 0.002
@@ -67,18 +69,33 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, 
         yAccel = Float(accel.y) * filterConstant + yAccel * (1.0 - filterConstant);
         zAccel = Float(accel.z) * filterConstant + zAccel * (1.0 - filterConstant);
         let xyAngle = self.yAccel != 0.0 ? atanf(self.xAccel/self.yAccel) - self.xyCalibrationAngle : 0.0
-        let angle = Float(xyAngle)
-        let angleRadians = NSNumber.init(floatLiteral: Double(xyAngle) * Double(DEGREES_PER_RADIAN))
-        OperationQueue.main.addOperation { [weak self] in
-            let angleDegrees = self?.nf.string(from: angleRadians)
-            self?.angleLabel.text = angleDegrees
-            
-            if let currentAngle = self?.angleSlider.value, let tol = self?.tolerance, fabsf(angle - currentAngle) > tol{
-                self?.angleSlider.setValue(angle, animated: true)
-                self?.angleView.setNeedsDisplay()
-                self?.overlayView?.angleLabel.text = angleDegrees! + "°"
+        let newAngle = Float(xyAngle)
+        if let ov = self.overlayView{
+            OperationQueue.main.addOperation { [weak self] in
+                if let prev = self?.previousAngle, let tol = self?.tolerance, fabsf(newAngle - prev) > tol{
+                    self?.previousAngle = newAngle
+                    if let angleStr = self?.degreeStringFrom(radians: newAngle){
+                        ov.angleLabel.text = angleStr
+                    }
+                }
+            }
+        }else{
+            OperationQueue.main.addOperation { [weak self] in
+                if let current = self?.angleSlider.value, let tol = self?.tolerance, fabsf(newAngle - current) > tol{
+                    let angleStr = self?.degreeStringFrom(radians: newAngle)
+                    self?.angleLabel.text = angleStr
+                    self?.angleSlider.setValue(newAngle, animated: true)
+                    self?.currentAngle = newAngle
+                    self?.angleView.setNeedsDisplay()
+                    self?.overlayView?.angleLabel.text = angleStr! + "°"
+                }
             }
         }
+    }
+    
+    func degreeStringFrom(radians: Float) -> String{
+        let numberObject = NSNumber.init(floatLiteral: Double(radians) * Double(DEGREES_PER_RADIAN))
+        return self.nf.string(from: numberObject) ?? ""
     }
     
     @IBAction func calibrate(_ sender: Any) {
@@ -114,8 +131,7 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, 
         cameraUI.allowsEditing = false
         cameraUI.delegate = self
         cameraUI.showsCameraControls = false
-        //let cameraOverlayVC = self.storyboard?.instantiateViewController(withIdentifier: cameraOverlayVCIdentifier) as? CameraOverlayViewController
-        //cameraUI.cameraOverlayView = cameraOverlayVC?.overlayView
+
         self.overlayView = OverlayView.init(frame: self.view.window!.bounds)
         cameraUI.cameraOverlayView = self.overlayView
         cameraUI.cameraViewTransform = CGAffineTransform(scaleX: 2.5, y: 2.5)
@@ -124,7 +140,6 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, 
             ov.cancelButton.setImage(UIImage(named: "CancelButtonSelected"), for: .highlighted)
             ov.acceptButton.addTarget(self, action: #selector(acceptPhotoAngle), for: UIControl.Event.touchUpInside)
             ov.cancelButton.addTarget(self, action: #selector(cancelPhotoAngle), for: UIControl.Event.touchUpInside)
-            self.photoAngleLabel = ov.angleLabel
         }
         viewController.present(cameraUI, animated: true){
             self.motionManager.startAccelerometerUpdates(to: self.motionQueue){
@@ -141,15 +156,21 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, 
     
     @objc func acceptPhotoAngle(){
         motionManager.stopAccelerometerUpdates()
+        self.motionButton.title = "Motion On"
         self.presentedViewController?.dismiss(animated: true){
-            
+            self.currentAngle = self.previousAngle
+            self.angleSlider.value = self.currentAngle
+            self.angleLabel.text = self.degreeStringFrom(radians: self.currentAngle)
+            self.angleView.setNeedsDisplay()
         }
     }
     
     @objc func cancelPhotoAngle(){
         motionManager.stopAccelerometerUpdates()
+        self.motionButton.title = "Motion On"
         self.dismiss(animated: true){
             self.overlayView = nil
+            self.previousAngle = 0.0
         }
     }
         
@@ -193,5 +214,12 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, 
         angleView.dataSource = self
         
         calibrateButton.isEnabled = false   // this is enabled during motion updates only
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super .viewWillDisappear(animated)
+        let angleObject = NSNumber(floatLiteral: fabs(Double(self.currentAngle)))
+        //OK this looks weird but the compiler is happy with it
+        self.delegate?.sender?(self, didChangeLaunchAngle: angleObject)
     }
 }
