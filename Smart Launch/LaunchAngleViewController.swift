@@ -10,6 +10,10 @@ import UIKit
 import CoreMotion
 
 class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    // these should be set on entry
+    @objc var delegate : SLSimulationDelegate?
+    @objc var currentAngle : Float = 0.0
+    
     func angle(for sender: SLLaunchAngleView!) -> CGFloat {
         return CGFloat(self.angleSlider.value)
     }
@@ -40,7 +44,7 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, 
     var motionManager = CMMotionManager()
     var motionQueue = OperationQueue()
     var nf = NumberFormatter()
-    var delegate : SLSimulationDelegate?
+    
     
     var cameraUIVC : UIImagePickerController?
     //var photoAngleLabel : UILabel?
@@ -56,7 +60,7 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, 
     var xAccel : Float = 0.0
     var yAccel : Float = 0.0
     var zAccel : Float = 0.0
-    var currentAngle : Float = 0.0
+    
     var previousAngle : Float = 0.0
     let accelerometerInterval = 0.1 // seconds between updates
     let filterConstant : Float = 0.2       // smaller number gives smoother, slower response
@@ -108,6 +112,7 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, 
     
     @IBAction func angleSliderChanged(_ sender: UISlider) {
         let newAngle = sender.value
+        self.currentAngle = newAngle
         let angleRadians = NSNumber.init(floatLiteral: Double(newAngle) * Double(DEGREES_PER_RADIAN))
         angleLabel.text = nf.string(from: angleRadians)
         angleView.setNeedsDisplay()
@@ -207,13 +212,18 @@ class LaunchAngleViewController: UIViewController, SLLaunchAngleViewDataSource, 
         let settings = UserDefaults.standard.object(forKey: SETTINGS_KEY) as! NSDictionary
         xyCalibrationAngle = (settings[xyCalibrationKey] as! NSNumber).floatValue
         let launchAngle = (settings[LAUNCH_ANGLE_KEY] as! NSNumber).floatValue // radians
-        let launchAngleNSNumber = NSNumber.init(floatLiteral: Double(launchAngle))
-        let angleString = nf.string(from: launchAngleNSNumber)
+        self.currentAngle = launchAngle
+        let angleString = degreeStringFrom(radians: launchAngle)
         angleLabel.text = angleString
         angleSlider.setValue(launchAngle, animated: true)
         angleView.dataSource = self
         
         calibrateButton.isEnabled = false   // this is enabled during motion updates only
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setToolbarHidden(false, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

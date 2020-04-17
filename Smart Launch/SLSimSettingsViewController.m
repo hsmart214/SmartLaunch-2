@@ -203,12 +203,7 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     [self.GPSAltButton setTitle: NSLocalizedString(@"GPS Disabled", @"GPS Disabled") forState:UIControlStateDisabled];
-    if (!self.splitViewController){
-        UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
-        UIImage * backgroundImage = [UIImage imageNamed:BACKGROUND_IMAGE_FILENAME];
-        [backgroundView setImage:backgroundImage];
-        self.tableView.backgroundView = backgroundView;
-    }
+    
     // set up the unit labels for the preferred units
     
     self.windVelocityUnitsLabel.text = [SLUnitsConvertor displayStringForKey:VELOCITY_UNIT_KEY];
